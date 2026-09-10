@@ -1,0 +1,12 @@
+{
+  "environment_tuned": false,
+  "mutation_changed": false,
+  "new_biological_parameters": 0,
+  "new_genotype": false,
+  "observer_only_diagnostics": true,
+  "pr44": "OPEN / DRAFT / UNMERGED / UNTOUCHED",
+  "production_reserve_enabled": false,
+  "production_source_changed": false,
+  "selection_run": false,
+  "winner_seeded": false
+}

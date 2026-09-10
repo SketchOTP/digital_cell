@@ -1234,3 +1234,6 @@ Allowed confidence values: `VERIFIED`, `SUPPORTED`, `INFERRED`, `UNRESOLVED`. Do
 - A complete sealed panel of naturally generated D096-v4 mutation offspring is required before spending a longer population assay. In this run, all `18` variants produced same-sign relative structural accumulation in Resource and Damage, so no environment-dependent reproductive tradeoff was established.
 - A difference in one binary reproduction outcome is not sufficient by itself when the matched response in the other environment is merely neutral rather than oppositely signed. Preserve that observation, but do not upgrade it to selection feasibility.
 - The R10R7 conditional `29556`-step extension must remain unrun when Gate 4 fails; the correct result is a bounded feasibility stop, not a longer unpowered assay.
+## R10R8 learning   2026-09-10
+
+A four-function genotype is not an active four-function phenotype when one endpoint is gated behind a disabled physiology. Function 3 is read in the D091 reserve-funded growth path only; reserve-off production leaves that sector dormant.

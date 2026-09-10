@@ -1,0 +1,14 @@
+{
+  "classification": "HISTORICAL_D096_TRADEOFF_RESERVE_DEPENDENT",
+  "reserve_off": {
+    "mean_B_material_effect": 5.133438437925648,
+    "mean_H_reserve_effect": 0.0
+  },
+  "reserve_on": {
+    "all_B_positive": true,
+    "all_H_positive": true,
+    "mean_B_material_effect": 3.811469763347633,
+    "mean_H_reserve_effect": 0.5988859008884884
+  },
+  "same_conditions_except_reserve": true
+}

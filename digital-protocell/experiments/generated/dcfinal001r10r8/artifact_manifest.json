@@ -1,0 +1,36 @@
+{
+  "files": [
+    "active_sector_tradeoff.json",
+    "current_reference_runs.json",
+    "architect_disposition.json",
+    "architecture_decision.json",
+    "authority.json",
+    "d096_function_ownership.json",
+    "external_prior_art.json",
+    "forbidden_information_audit.json",
+    "function3_causal_isolation.json",
+    "historical_d096_contract.json",
+    "historical_production_delta.json",
+    "historical_reference_replay.json",
+    "historical_reserve_ablation",
+    "historical_reserve_ablation.json",
+    "owner_override.json",
+    "production_reference_matrix.json",
+    "production_reference_matrix_raw.json",
+    "qualification.json",
+    "reserve_on_d087_v2",
+    "reserve_on_d087_v3",
+    "reserve_on_d087_v4",
+    "reserve_on_m1_replay.json"
+  ],
+  "generated_by": "R10R8 observer-only diagnostics",
+  "root": "/home/sketch/Projects/digital_cell-r10r6/digital-protocell/experiments/generated/dcfinal001r10r8",
+  "production_biology_delta": 0,
+  "production_biology_source_changes": [],
+  "diagnostic_source_changes": [
+    "crates/regulatory-core/Cargo.toml",
+    "examples/dcfinal001_r10r8_diagnostics.rs"
+  ],
+  "selection_and_reversal": "NOT_REACHED",
+  "end_goal": "NOT_ESTABLISHED"
+}

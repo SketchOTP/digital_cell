@@ -1,0 +1,4355 @@
+{
+  "diagnostic_only": true,
+  "historical_reference": "chemistry_core::d096_allocation::pre_fission_assay",
+  "historical_test_replay": [
+    {
+      "b_material_effect": 3.8117134429218,
+      "b_processing": {
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "b_repair": {
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "h_processing": {
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "h_repair": {
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "h_reserve_effect": 0.5986984561180293,
+      "neutral_material_difference": 3.586392014334308,
+      "neutral_processing": {
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "neutral_repair": {
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "neutral_reserve_difference": 0.5598485618064046,
+      "seed": 1
+    },
+    {
+      "b_material_effect": 3.810638255463971,
+      "b_processing": {
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "b_repair": {
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "h_processing": {
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "h_repair": {
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "h_reserve_effect": 0.6019471094861188,
+      "neutral_material_difference": 3.586213317820679,
+      "neutral_processing": {
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "neutral_repair": {
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "neutral_reserve_difference": 0.5629680602465044,
+      "seed": 2
+    },
+    {
+      "b_material_effect": 3.8123515058118755,
+      "b_processing": {
+        "activated_produced": 282.1395723171225,
+        "damage_applied": 0.384,
+        "final_material": 112.6160802174239,
+        "reserve_change": -21.741294159140068,
+        "structural_change": 14.569569393566752,
+        "survived": true
+      },
+      "b_repair": {
+        "activated_produced": 270.82003264847805,
+        "damage_applied": 0.384,
+        "final_material": 116.42843172323578,
+        "reserve_change": -22.259999632621074,
+        "structural_change": 18.38098890553043,
+        "survived": true
+      },
+      "h_processing": {
+        "activated_produced": 226.6921092586523,
+        "damage_applied": 0.0,
+        "final_material": 111.2580573450495,
+        "reserve_change": -22.88085609516726,
+        "structural_change": 13.21514774900244,
+        "survived": true
+      },
+      "h_repair": {
+        "activated_produced": 216.47313755842035,
+        "damage_applied": 0.0,
+        "final_material": 114.5785322395424,
+        "reserve_change": -23.47543135031499,
+        "structural_change": 16.532753076938263,
+        "survived": true
+      },
+      "h_reserve_effect": 0.5945752551477312,
+      "neutral_material_difference": 3.585588091404219,
+      "neutral_processing": {
+        "activated_produced": 261.3263707478501,
+        "damage_applied": 0.0,
+        "final_material": 112.11746808494728,
+        "reserve_change": -22.197368791814952,
+        "structural_change": 14.073156345720157,
+        "survived": true
+      },
+      "neutral_repair": {
+        "activated_produced": 249.94203683365083,
+        "damage_applied": 0.0,
+        "final_material": 115.7030561763515,
+        "reserve_change": -22.753240095075782,
+        "structural_change": 17.65879368368836,
+        "survived": true
+      },
+      "neutral_reserve_difference": 0.5558713032608296,
+      "seed": 3
+    },
+    {
+      "b_material_effect": 3.8117134429218,
+      "b_processing": {
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "b_repair": {
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "h_processing": {
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "h_repair": {
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "h_reserve_effect": 0.5986984561180293,
+      "neutral_material_difference": 3.586392014334308,
+      "neutral_processing": {
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "neutral_repair": {
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "neutral_reserve_difference": 0.5598485618064046,
+      "seed": 4
+    },
+    {
+      "b_material_effect": 3.810638255463971,
+      "b_processing": {
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "b_repair": {
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "h_processing": {
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "h_repair": {
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "h_reserve_effect": 0.6019471094861188,
+      "neutral_material_difference": 3.586213317820679,
+      "neutral_processing": {
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "neutral_repair": {
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "neutral_reserve_difference": 0.5629680602465044,
+      "seed": 5
+    },
+    {
+      "b_material_effect": 3.8123515058118755,
+      "b_processing": {
+        "activated_produced": 282.1395723171225,
+        "damage_applied": 0.384,
+        "final_material": 112.6160802174239,
+        "reserve_change": -21.741294159140068,
+        "structural_change": 14.569569393566752,
+        "survived": true
+      },
+      "b_repair": {
+        "activated_produced": 270.82003264847805,
+        "damage_applied": 0.384,
+        "final_material": 116.42843172323578,
+        "reserve_change": -22.259999632621074,
+        "structural_change": 18.38098890553043,
+        "survived": true
+      },
+      "h_processing": {
+        "activated_produced": 226.6921092586523,
+        "damage_applied": 0.0,
+        "final_material": 111.2580573450495,
+        "reserve_change": -22.88085609516726,
+        "structural_change": 13.21514774900244,
+        "survived": true
+      },
+      "h_repair": {
+        "activated_produced": 216.47313755842035,
+        "damage_applied": 0.0,
+        "final_material": 114.5785322395424,
+        "reserve_change": -23.47543135031499,
+        "structural_change": 16.532753076938263,
+        "survived": true
+      },
+      "h_reserve_effect": 0.5945752551477312,
+      "neutral_material_difference": 3.585588091404219,
+      "neutral_processing": {
+        "activated_produced": 261.3263707478501,
+        "damage_applied": 0.0,
+        "final_material": 112.11746808494728,
+        "reserve_change": -22.197368791814952,
+        "structural_change": 14.073156345720157,
+        "survived": true
+      },
+      "neutral_repair": {
+        "activated_produced": 249.94203683365083,
+        "damage_applied": 0.0,
+        "final_material": 115.7030561763515,
+        "reserve_change": -22.753240095075782,
+        "structural_change": 17.65879368368836,
+        "survived": true
+      },
+      "neutral_reserve_difference": 0.5558713032608296,
+      "seed": 6
+    },
+    {
+      "b_material_effect": 3.8117134429218,
+      "b_processing": {
+        "activated_produced": 282.9932589290813,
+        "damage_applied": 0.384,
+        "final_material": 113.11709742679447,
+        "reserve_change": -22.05629697975577,
+        "structural_change": 14.805896472534194,
+        "survived": true
+      },
+      "b_repair": {
+        "activated_produced": 271.6595937852832,
+        "damage_applied": 0.384,
+        "final_material": 116.92881086971627,
+        "reserve_change": -22.578600816449438,
+        "structural_change": 18.617173966138644,
+        "survived": true
+      },
+      "h_processing": {
+        "activated_produced": 227.57527044946207,
+        "damage_applied": 0.0,
+        "final_material": 111.7680740998776,
+        "reserve_change": -23.197915758567603,
+        "structural_change": 13.456809613111055,
+        "survived": true
+      },
+      "h_repair": {
+        "activated_produced": 217.33654572420326,
+        "damage_applied": 0.0,
+        "final_material": 115.08956294852456,
+        "reserve_change": -23.796614214685633,
+        "structural_change": 16.776571462363115,
+        "survived": true
+      },
+      "h_reserve_effect": 0.5986984561180293,
+      "neutral_material_difference": 3.586392014334308,
+      "neutral_processing": {
+        "activated_produced": 262.1817835181746,
+        "damage_applied": 0.0,
+        "final_material": 112.62280365768916,
+        "reserve_change": -22.513371260538534,
+        "structural_change": 14.31072860057973,
+        "survived": true
+      },
+      "neutral_repair": {
+        "activated_produced": 250.78082838861243,
+        "damage_applied": 0.0,
+        "final_material": 116.20919567202347,
+        "reserve_change": -23.07321982234494,
+        "structural_change": 17.896741335793457,
+        "survived": true
+      },
+      "neutral_reserve_difference": 0.5598485618064046,
+      "seed": 7
+    },
+    {
+      "b_material_effect": 3.810638255463971,
+      "b_processing": {
+        "activated_produced": 283.6369477551897,
+        "damage_applied": 0.384,
+        "final_material": 113.52537290061869,
+        "reserve_change": -22.309466513060542,
+        "structural_change": 14.995076819362716,
+        "survived": true
+      },
+      "b_repair": {
+        "activated_produced": 272.29412419253055,
+        "damage_applied": 0.384,
+        "final_material": 117.33601115608266,
+        "reserve_change": -22.834805460835213,
+        "structural_change": 18.805755146091307,
+        "survived": true
+      },
+      "h_processing": {
+        "activated_produced": 228.25590891801593,
+        "damage_applied": 0.0,
+        "final_material": 112.18031118911642,
+        "reserve_change": -23.452355555806548,
+        "structural_change": 13.650545787117395,
+        "survived": true
+      },
+      "h_repair": {
+        "activated_produced": 218.0038700314886,
+        "damage_applied": 0.0,
+        "final_material": 115.50265231846619,
+        "reserve_change": -24.054302665292667,
+        "structural_change": 16.972015724897737,
+        "survived": true
+      },
+      "h_reserve_effect": 0.6019471094861188,
+      "neutral_material_difference": 3.586213317820679,
+      "neutral_processing": {
+        "activated_produced": 262.83128716469156,
+        "damage_applied": 0.0,
+        "final_material": 113.03178826949986,
+        "reserve_change": -22.76711291622381,
+        "structural_change": 14.50101477424996,
+        "survived": true
+      },
+      "neutral_repair": {
+        "activated_produced": 251.42041781894105,
+        "damage_applied": 0.0,
+        "final_material": 116.61800158732053,
+        "reserve_change": -23.330080976470313,
+        "structural_change": 18.08730728059586,
+        "survived": true
+      },
+      "neutral_reserve_difference": 0.5629680602465044,
+      "seed": 8
+    }
+  ],
+  "rows": [
+    {
+      "activated_produced": 227.57527044946207,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 111.7680740998776,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -23.197915758567603,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 13.456809613111055,
+      "survived": true
+    },
+    {
+      "activated_produced": 227.8658994689507,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 103.2119114233674,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 1,
+      "structural_change": 4.906339747814883,
+      "survived": true
+    },
+    {
+      "activated_produced": 227.44802186859124,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.63306690237262,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -17.169890364894087,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 8.323010864262606,
+      "survived": true
+    },
+    {
+      "activated_produced": 228.25590891801593,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 112.18031118911642,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -23.452355555806548,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 13.650545787117395,
+      "survived": true
+    },
+    {
+      "activated_produced": 228.54855050501536,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 103.51363758905191,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 2,
+      "structural_change": 4.988615521086942,
+      "survived": true
+    },
+    {
+      "activated_produced": 228.1275295211636,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.99092846288141,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -17.358065578622302,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 8.460397086442676,
+      "survived": true
+    },
+    {
+      "activated_produced": 226.6921092586523,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 111.2580573450495,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.88085609516726,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 13.21514774900244,
+      "survived": true
+    },
+    {
+      "activated_produced": 226.9801021864415,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 102.83933825807864,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 3,
+      "structural_change": 4.801923772917512,
+      "survived": true
+    },
+    {
+      "activated_produced": 226.5662921965863,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.1946072704763,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.935524294724814,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 8.151560858355701,
+      "survived": true
+    },
+    {
+      "activated_produced": 227.57527044946207,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 111.7680740998776,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -23.197915758567603,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 13.456809613111055,
+      "survived": true
+    },
+    {
+      "activated_produced": 227.8658994689507,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 103.2119114233674,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 4,
+      "structural_change": 4.906339747814883,
+      "survived": true
+    },
+    {
+      "activated_produced": 227.44802186859124,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.63306690237262,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -17.169890364894087,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 8.323010864262606,
+      "survived": true
+    },
+    {
+      "activated_produced": 228.25590891801593,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 112.18031118911642,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -23.452355555806548,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 13.650545787117395,
+      "survived": true
+    },
+    {
+      "activated_produced": 228.54855050501536,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 103.51363758905191,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 5,
+      "structural_change": 4.988615521086942,
+      "survived": true
+    },
+    {
+      "activated_produced": 228.1275295211636,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.99092846288141,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -17.358065578622302,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 8.460397086442676,
+      "survived": true
+    },
+    {
+      "activated_produced": 226.6921092586523,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 111.2580573450495,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.88085609516726,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 13.21514774900244,
+      "survived": true
+    },
+    {
+      "activated_produced": 226.9801021864415,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 102.83933825807864,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 6,
+      "structural_change": 4.801923772917512,
+      "survived": true
+    },
+    {
+      "activated_produced": 226.5662921965863,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.1946072704763,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.935524294724814,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 8.151560858355701,
+      "survived": true
+    },
+    {
+      "activated_produced": 227.57527044946207,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 111.7680740998776,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -23.197915758567603,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 13.456809613111055,
+      "survived": true
+    },
+    {
+      "activated_produced": 227.8658994689507,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 103.2119114233674,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 7,
+      "structural_change": 4.906339747814883,
+      "survived": true
+    },
+    {
+      "activated_produced": 227.44802186859124,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.63306690237262,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -17.169890364894087,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 8.323010864262606,
+      "survived": true
+    },
+    {
+      "activated_produced": 228.25590891801593,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 112.18031118911642,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -23.452355555806548,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 13.650545787117395,
+      "survived": true
+    },
+    {
+      "activated_produced": 228.54855050501536,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 103.51363758905191,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 8,
+      "structural_change": 4.988615521086942,
+      "survived": true
+    },
+    {
+      "activated_produced": 228.1275295211636,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.99092846288141,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -17.358065578622302,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 8.460397086442676,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.9932589290813,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 113.11709742679447,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.05629697975577,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 14.805896472534194,
+      "survived": true
+    },
+    {
+      "activated_produced": 283.5130190840218,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.36325461066761,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 1,
+      "structural_change": 9.052363426188911,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.8659255772884,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.92964724279247,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -15.98625146655003,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 9.615922600928322,
+      "survived": true
+    },
+    {
+      "activated_produced": 283.6369477551897,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 113.52537290061869,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.309466513060542,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 14.995076819362716,
+      "survived": true
+    },
+    {
+      "activated_produced": 284.1606230030698,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.67597499749996,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 2,
+      "structural_change": 9.143692305357995,
+      "survived": true
+    },
+    {
+      "activated_produced": 283.5085270647237,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 108.28099628322559,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.172885994191077,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 9.748413133139216,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.1395723171225,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.6160802174239,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -21.741294159140068,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 14.569569393566752,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.6542287897075,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 106.97908639949641,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 3,
+      "structural_change": 8.935368692993919,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.0137329487396,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.49611753236006,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -15.754161697103783,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 9.450431547688304,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.9932589290813,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 113.11709742679447,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.05629697975577,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 14.805896472534194,
+      "survived": true
+    },
+    {
+      "activated_produced": 283.5130190840218,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.36325461066761,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 4,
+      "structural_change": 9.052363426188911,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.8659255772884,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.92964724279247,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -15.98625146655003,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 9.615922600928322,
+      "survived": true
+    },
+    {
+      "activated_produced": 283.6369477551897,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 113.52537290061869,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.309466513060542,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 14.995076819362716,
+      "survived": true
+    },
+    {
+      "activated_produced": 284.1606230030698,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.67597499749996,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 5,
+      "structural_change": 9.143692305357995,
+      "survived": true
+    },
+    {
+      "activated_produced": 283.5085270647237,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 108.28099628322559,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.172885994191077,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 9.748413133139216,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.1395723171225,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.6160802174239,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -21.741294159140068,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 14.569569393566752,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.6542287897075,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 106.97908639949641,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 6,
+      "structural_change": 8.935368692993919,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.0137329487396,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.49611753236006,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -15.754161697103783,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 9.450431547688304,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.9932589290813,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 113.11709742679447,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.05629697975577,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 14.805896472534194,
+      "survived": true
+    },
+    {
+      "activated_produced": 283.5130190840218,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.36325461066761,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 7,
+      "structural_change": 9.052363426188911,
+      "survived": true
+    },
+    {
+      "activated_produced": 282.8659255772884,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.92964724279247,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -15.98625146655003,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 9.615922600928322,
+      "survived": true
+    },
+    {
+      "activated_produced": 283.6369477551897,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 113.52537290061869,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.309466513060542,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 14.995076819362716,
+      "survived": true
+    },
+    {
+      "activated_produced": 284.1606230030698,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 107.67597499749996,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 8,
+      "structural_change": 9.143692305357995,
+      "survived": true
+    },
+    {
+      "activated_produced": 283.5085270647237,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 108.28099628322559,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.172885994191077,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 9.748413133139216,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.1817835181746,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 112.62280365768916,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.513371260538534,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 14.31072860057973,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.5940533826044,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 105.84211554997268,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 1,
+      "structural_change": 7.530828052647898,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.04595477884703,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 107.45835194787537,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.466254555883026,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 9.147427015371633,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.83128716469156,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 113.03178826949986,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.76711291622381,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 14.50101477424996,
+      "survived": true
+    },
+    {
+      "activated_produced": 263.2469868920544,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 106.14985664006394,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 2,
+      "structural_change": 7.617898205865629,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.6942466871654,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 107.81371066147665,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.653693294305228,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 9.281129865100304,
+      "survived": true
+    },
+    {
+      "activated_produced": 261.3263707478501,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 112.11746808494728,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.197368791814952,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 14.073156345720157,
+      "survived": true
+    },
+    {
+      "activated_produced": 261.73419361298966,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 105.46403923659571,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 3,
+      "structural_change": 7.419523868950115,
+      "survived": true
+    },
+    {
+      "activated_produced": 261.19198934327176,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 107.02560244514325,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.233056785690195,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 8.980276609505033,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.1817835181746,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 112.62280365768916,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.513371260538534,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 14.31072860057973,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.5940533826044,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 105.84211554997268,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 4,
+      "structural_change": 7.530828052647898,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.04595477884703,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 107.45835194787537,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.466254555883026,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 9.147427015371633,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.83128716469156,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 113.03178826949986,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.76711291622381,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 14.50101477424996,
+      "survived": true
+    },
+    {
+      "activated_produced": 263.2469868920544,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 106.14985664006394,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 5,
+      "structural_change": 7.617898205865629,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.6942466871654,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 107.81371066147665,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.653693294305228,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 9.281129865100304,
+      "survived": true
+    },
+    {
+      "activated_produced": 261.3263707478501,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 112.11746808494728,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.197368791814952,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 14.073156345720157,
+      "survived": true
+    },
+    {
+      "activated_produced": 261.73419361298966,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 105.46403923659571,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 6,
+      "structural_change": 7.419523868950115,
+      "survived": true
+    },
+    {
+      "activated_produced": 261.19198934327176,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 107.02560244514325,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.233056785690195,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 8.980276609505033,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.1817835181746,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 112.62280365768916,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.513371260538534,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 14.31072860057973,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.5940533826044,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 105.84211554997268,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 7,
+      "structural_change": 7.530828052647898,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.04595477884703,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 107.45835194787537,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.466254555883026,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 9.147427015371633,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.83128716469156,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 113.03178826949986,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -22.76711291622381,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 14.50101477424996,
+      "survived": true
+    },
+    {
+      "activated_produced": 263.2469868920544,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 106.14985664006394,
+      "function3_baseline": false,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 8,
+      "structural_change": 7.617898205865629,
+      "survived": true
+    },
+    {
+      "activated_produced": 262.6942466871654,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 107.81371066147665,
+      "function3_baseline": true,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "reserve_change": -16.653693294305228,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 9.281129865100304,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.33654572420326,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.08956294852456,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.796614214685633,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 16.776571462363115,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.60323165625348,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 107.50277014199713,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 1,
+      "structural_change": 9.18986947312893,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.14943657452872,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.95753171942403,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.754450419794935,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 11.643191846186824,
+      "survived": true
+    },
+    {
+      "activated_produced": 218.0038700314886,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.50265231846619,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -24.054302665292667,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 16.972015724897737,
+      "survived": true
+    },
+    {
+      "activated_produced": 218.27236044810815,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 107.81553197501404,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 2,
+      "structural_change": 9.282733702545485,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.8144514418996,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 110.3142296017023,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.94586845387039,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 11.782365770178764,
+      "survived": true
+    },
+    {
+      "activated_produced": 216.47313755842035,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 114.5785322395424,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.47543135031499,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 16.532753076938263,
+      "survived": true
+    },
+    {
+      "activated_produced": 216.73725943800954,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 107.11912959847044,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 3,
+      "structural_change": 9.071911216644843,
+      "survived": true
+    },
+    {
+      "activated_produced": 216.28891334375044,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.51683480063991,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.515924419445,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 11.469531916589034,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.33654572420326,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.08956294852456,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.796614214685633,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 16.776571462363115,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.60323165625348,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 107.50277014199713,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 4,
+      "structural_change": 9.18986947312893,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.14943657452872,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.95753171942403,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.754450419794935,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 11.643191846186824,
+      "survived": true
+    },
+    {
+      "activated_produced": 218.0038700314886,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.50265231846619,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -24.054302665292667,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 16.972015724897737,
+      "survived": true
+    },
+    {
+      "activated_produced": 218.27236044810815,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 107.81553197501404,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 5,
+      "structural_change": 9.282733702545485,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.8144514418996,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 110.3142296017023,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.94586845387039,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 11.782365770178764,
+      "survived": true
+    },
+    {
+      "activated_produced": 216.47313755842035,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 114.5785322395424,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.47543135031499,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 16.532753076938263,
+      "survived": true
+    },
+    {
+      "activated_produced": 216.73725943800954,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 107.11912959847044,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 6,
+      "structural_change": 9.071911216644843,
+      "survived": true
+    },
+    {
+      "activated_produced": 216.28891334375044,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.51683480063991,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.515924419445,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 11.469531916589034,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.33654572420326,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.08956294852456,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.796614214685633,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 16.776571462363115,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.60323165625348,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 107.50277014199713,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 7,
+      "structural_change": 9.18986947312893,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.14943657452872,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.95753171942403,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.754450419794935,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 11.643191846186824,
+      "survived": true
+    },
+    {
+      "activated_produced": 218.0038700314886,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.50265231846619,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -24.054302665292667,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 16.972015724897737,
+      "survived": true
+    },
+    {
+      "activated_produced": 218.27236044810815,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 107.81553197501404,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 8,
+      "structural_change": 9.282733702545485,
+      "survived": true
+    },
+    {
+      "activated_produced": 217.8144514418996,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 110.3142296017023,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.94586845387039,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 11.782365770178764,
+      "survived": true
+    },
+    {
+      "activated_produced": 271.6595937852832,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 116.92881086971627,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -22.578600816449438,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 18.617173966138644,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.1943267834936,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.49752833861139,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 1,
+      "structural_change": 14.182987649271865,
+      "survived": true
+    },
+    {
+      "activated_produced": 271.4625898589122,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 111.7389139280138,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -16.491052201443125,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 13.42540943407623,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.29412419253055,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 117.33601115608266,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -22.834805460835213,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 18.805755146091307,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.8324345994111,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.81664498664647,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 2,
+      "structural_change": 14.284735639599937,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.09530294986956,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.08942758342198,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -16.680676285860244,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 13.5574569833991,
+      "survived": true
+    },
+    {
+      "activated_produced": 270.82003264847805,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 116.42843172323578,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -22.259999632621074,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 18.38098890553043,
+      "survived": true
+    },
+    {
+      "activated_produced": 271.35178610943103,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.10042457556355,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 3,
+      "structural_change": 14.052953727706516,
+      "survived": true
+    },
+    {
+      "activated_produced": 270.6275889257503,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 111.30530931358948,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -16.255140511716036,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 13.260432999943895,
+      "survived": true
+    },
+    {
+      "activated_produced": 271.6595937852832,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 116.92881086971627,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -22.578600816449438,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 18.617173966138644,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.1943267834936,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.49752833861139,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 4,
+      "structural_change": 14.182987649271865,
+      "survived": true
+    },
+    {
+      "activated_produced": 271.4625898589122,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 111.7389139280138,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -16.491052201443125,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 13.42540943407623,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.29412419253055,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 117.33601115608266,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -22.834805460835213,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 18.805755146091307,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.8324345994111,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.81664498664647,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 5,
+      "structural_change": 14.284735639599937,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.09530294986956,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.08942758342198,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -16.680676285860244,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 13.5574569833991,
+      "survived": true
+    },
+    {
+      "activated_produced": 270.82003264847805,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 116.42843172323578,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -22.259999632621074,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 18.38098890553043,
+      "survived": true
+    },
+    {
+      "activated_produced": 271.35178610943103,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.10042457556355,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 6,
+      "structural_change": 14.052953727706516,
+      "survived": true
+    },
+    {
+      "activated_produced": 270.6275889257503,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 111.30530931358948,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -16.255140511716036,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 13.260432999943895,
+      "survived": true
+    },
+    {
+      "activated_produced": 271.6595937852832,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 116.92881086971627,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -22.578600816449438,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 18.617173966138644,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.1943267834936,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.49752833861139,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 7,
+      "structural_change": 14.182987649271865,
+      "survived": true
+    },
+    {
+      "activated_produced": 271.4625898589122,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 111.7389139280138,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -16.491052201443125,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 13.42540943407623,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.29412419253055,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 117.33601115608266,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -22.834805460835213,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 18.805755146091307,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.8324345994111,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.81664498664647,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 8,
+      "structural_change": 14.284735639599937,
+      "survived": true
+    },
+    {
+      "activated_produced": 272.09530294986956,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 112.08942758342198,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -16.680676285860244,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 13.5574569833991,
+      "survived": true
+    },
+    {
+      "activated_produced": 250.78082838861243,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.20919567202347,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.07321982234494,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 17.896741335793457,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.19649532323155,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.59843876406448,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 1,
+      "structural_change": 12.286395471581038,
+      "survived": true
+    },
+    {
+      "activated_produced": 250.57605429714508,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 111.04765695964375,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.011331246546078,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 12.733535729859959,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.42041781894105,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.61800158732053,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.330080976470313,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 18.08730728059586,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.83762867160448,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.91633754492642,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 2,
+      "structural_change": 12.383388761388474,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.21361368526692,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 111.39995087294128,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.20179240688637,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 12.86774121503639,
+      "survived": true
+    },
+    {
+      "activated_produced": 249.94203683365083,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 115.7030561763515,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -22.753240095075782,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 17.65879368368836,
+      "survived": true
+    },
+    {
+      "activated_produced": 250.35353572118066,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.2071923417506,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 3,
+      "structural_change": 12.161907183157048,
+      "survived": true
+    },
+    {
+      "activated_produced": 249.73955896548028,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.61191802336663,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -16.7741960829199,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 12.565837055888622,
+      "survived": true
+    },
+    {
+      "activated_produced": 250.78082838861243,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.20919567202347,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.07321982234494,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 17.896741335793457,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.19649532323155,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.59843876406448,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 4,
+      "structural_change": 12.286395471581038,
+      "survived": true
+    },
+    {
+      "activated_produced": 250.57605429714508,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 111.04765695964375,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.011331246546078,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 12.733535729859959,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.42041781894105,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.61800158732053,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.330080976470313,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 18.08730728059586,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.83762867160448,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.91633754492642,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 5,
+      "structural_change": 12.383388761388474,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.21361368526692,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 111.39995087294128,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.20179240688637,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 12.86774121503639,
+      "survived": true
+    },
+    {
+      "activated_produced": 249.94203683365083,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 115.7030561763515,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -22.753240095075782,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 17.65879368368836,
+      "survived": true
+    },
+    {
+      "activated_produced": 250.35353572118066,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.2071923417506,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 6,
+      "structural_change": 12.161907183157048,
+      "survived": true
+    },
+    {
+      "activated_produced": 249.73955896548028,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.61191802336663,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -16.7741960829199,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 12.565837055888622,
+      "survived": true
+    },
+    {
+      "activated_produced": 250.78082838861243,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.20919567202347,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.07321982234494,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 17.896741335793457,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.19649532323155,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.59843876406448,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 7,
+      "structural_change": 12.286395471581038,
+      "survived": true
+    },
+    {
+      "activated_produced": 250.57605429714508,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 111.04765695964375,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.011331246546078,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 12.733535729859959,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.42041781894105,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.61800158732053,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -23.330080976470313,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 18.08730728059586,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.83762867160448,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.91633754492642,
+      "function3_baseline": false,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 8,
+      "structural_change": 12.383388761388474,
+      "survived": true
+    },
+    {
+      "activated_produced": 251.21361368526692,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 111.39995087294128,
+      "function3_baseline": true,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "reserve_change": -17.20179240688637,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 12.86774121503639,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.3143781082417,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.47580327046275,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -25.038110924113937,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 17.16387122712613,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.52163563380842,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 105.9486728824303,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 1,
+      "structural_change": 7.636644939671974,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.1041715695678,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.04197523475096,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -17.462002953645182,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 10.728249239161912,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.98809296438796,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.9034758277972,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -25.309111443604564,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 17.37111763739734,
+      "survived": true
+    },
+    {
+      "activated_produced": 224.1984471921074,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.2551956662185,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 2,
+      "structural_change": 7.723756654087666,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.77672836280468,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.39830177937249,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -17.65201110424458,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 10.867572134203208,
+      "survived": true
+    },
+    {
+      "activated_produced": 222.4406491386599,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 114.95020221114851,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.700691901137418,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 16.90479409347455,
+      "survived": true
+    },
+    {
+      "activated_produced": 222.64469138736283,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 105.57274417241652,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 3,
+      "structural_change": 7.525886552540044,
+      "survived": true
+    },
+    {
+      "activated_produced": 222.23331955817326,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 108.59850062373962,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -17.22500302313871,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 10.554721317996076,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.3143781082417,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.47580327046275,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -25.038110924113937,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 17.16387122712613,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.52163563380842,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 105.9486728824303,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 4,
+      "structural_change": 7.636644939671974,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.1041715695678,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.04197523475096,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -17.462002953645182,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 10.728249239161912,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.98809296438796,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.9034758277972,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -25.309111443604564,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 17.37111763739734,
+      "survived": true
+    },
+    {
+      "activated_produced": 224.1984471921074,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.2551956662185,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 5,
+      "structural_change": 7.723756654087666,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.77672836280468,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.39830177937249,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -17.65201110424458,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 10.867572134203208,
+      "survived": true
+    },
+    {
+      "activated_produced": 222.4406491386599,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 114.95020221114851,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.700691901137418,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 16.90479409347455,
+      "survived": true
+    },
+    {
+      "activated_produced": 222.64469138736283,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 105.57274417241652,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 6,
+      "structural_change": 7.525886552540044,
+      "survived": true
+    },
+    {
+      "activated_produced": 222.23331955817326,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 108.59850062373962,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -17.22500302313871,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 10.554721317996076,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.3143781082417,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.47580327046275,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -25.038110924113937,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 17.16387122712613,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.52163563380842,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 105.9486728824303,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 7,
+      "structural_change": 7.636644939671974,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.1041715695678,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.04197523475096,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -17.462002953645182,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 10.728249239161912,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.98809296438796,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 115.9034758277972,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -25.309111443604564,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 17.37111763739734,
+      "survived": true
+    },
+    {
+      "activated_produced": 224.1984471921074,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 106.2551956662185,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 8,
+      "structural_change": 7.723756654087666,
+      "survived": true
+    },
+    {
+      "activated_produced": 223.77672836280468,
+      "damage_applied": 0.0,
+      "environment": "H",
+      "final_material": 109.39830177937249,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -17.65201110424458,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 10.867572134203208,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.08235407775896,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 117.20937149728908,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -23.861674908523113,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 18.896628600757985,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.52537746227534,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.56456564529104,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 1,
+      "structural_change": 12.251264048568096,
+      "survived": true
+    },
+    {
+      "activated_produced": 277.8713272060403,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.70342244440047,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.235413416691827,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 12.391827615054538,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.72153317292725,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 117.6289721924156,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.130897115131262,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 19.098160151016124,
+      "survived": true
+    },
+    {
+      "activated_produced": 279.16763374856083,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.87691577672581,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 2,
+      "structural_change": 12.346512546470422,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.5070507103771,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 111.05767205013396,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.423965152323007,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 12.524151182652666,
+      "survived": true
+    },
+    {
+      "activated_produced": 277.2374484343889,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 116.68969470759595,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -23.526433589779927,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 18.644945381561882,
+      "survived": true
+    },
+    {
+      "activated_produced": 277.67615779567524,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.17623056233175,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 3,
+      "structural_change": 12.129523618064724,
+      "survived": true
+    },
+    {
+      "activated_produced": 277.0286313654146,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.26950685338934,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.0012272031357,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 12.22586224696159,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.08235407775896,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 117.20937149728908,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -23.861674908523113,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 18.896628600757985,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.52537746227534,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.56456564529104,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 4,
+      "structural_change": 12.251264048568096,
+      "survived": true
+    },
+    {
+      "activated_produced": 277.8713272060403,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.70342244440047,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.235413416691827,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 12.391827615054538,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.72153317292725,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 117.6289721924156,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.130897115131262,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 19.098160151016124,
+      "survived": true
+    },
+    {
+      "activated_produced": 279.16763374856083,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.87691577672581,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 5,
+      "structural_change": 12.346512546470422,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.5070507103771,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 111.05767205013396,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.423965152323007,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 12.524151182652666,
+      "survived": true
+    },
+    {
+      "activated_produced": 277.2374484343889,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 116.68969470759595,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -23.526433589779927,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 18.644945381561882,
+      "survived": true
+    },
+    {
+      "activated_produced": 277.67615779567524,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.17623056233175,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 6,
+      "structural_change": 12.129523618064724,
+      "survived": true
+    },
+    {
+      "activated_produced": 277.0286313654146,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.26950685338934,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.0012272031357,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 12.22586224696159,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.08235407775896,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 117.20937149728908,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -23.861674908523113,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 18.896628600757985,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.52537746227534,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.56456564529104,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 7,
+      "structural_change": 12.251264048568096,
+      "survived": true
+    },
+    {
+      "activated_produced": 277.8713272060403,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.70342244440047,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.235413416691827,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 12.391827615054538,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.72153317292725,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 117.6289721924156,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.130897115131262,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 19.098160151016124,
+      "survived": true
+    },
+    {
+      "activated_produced": 279.16763374856083,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 110.87691577672581,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 8,
+      "structural_change": 12.346512546470422,
+      "survived": true
+    },
+    {
+      "activated_produced": 278.5070507103771,
+      "damage_applied": 0.384,
+      "environment": "B",
+      "final_material": 111.05767205013396,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.423965152323007,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 12.524151182652666,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.33797916496565,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.5473259199511,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.332464305101112,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 18.235770007687798,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.6725411838538,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 108.83506271522128,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 1,
+      "structural_change": 10.522696539078751,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.1128626350741,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.07788048572485,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.734742692226703,
+      "reserve_enabled": true,
+      "seed": 1,
+      "structural_change": 11.763788959503728,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.9815228983641,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.97150390232798,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.60262131419678,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 18.43845149148968,
+      "survived": true
+    },
+    {
+      "activated_produced": 258.3187565170818,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 109.14634492517682,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 2,
+      "structural_change": 10.613554820390661,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.7555844243427,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.43014725261756,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.923824494285952,
+      "reserve_enabled": true,
+      "seed": 2,
+      "structural_change": 11.89847561180654,
+      "survived": true
+    },
+    {
+      "activated_produced": 256.4908701407225,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.02602469968548,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -23.996259672024934,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 17.982039889763996,
+      "survived": true
+    },
+    {
+      "activated_produced": 256.82210520557027,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 108.45235200026056,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 3,
+      "structural_change": 10.406179529297908,
+      "survived": true
+    },
+    {
+      "activated_produced": 256.26811277844524,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 109.64230680655933,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.499347367340036,
+      "reserve_enabled": true,
+      "seed": 3,
+      "structural_change": 11.59549255448438,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.33797916496565,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.5473259199511,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.332464305101112,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 18.235770007687798,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.6725411838538,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 108.83506271522128,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 4,
+      "structural_change": 10.522696539078751,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.1128626350741,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.07788048572485,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.734742692226703,
+      "reserve_enabled": true,
+      "seed": 4,
+      "structural_change": 11.763788959503728,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.9815228983641,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.97150390232798,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.60262131419678,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 18.43845149148968,
+      "survived": true
+    },
+    {
+      "activated_produced": 258.3187565170818,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 109.14634492517682,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 5,
+      "structural_change": 10.613554820390661,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.7555844243427,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.43014725261756,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.923824494285952,
+      "reserve_enabled": true,
+      "seed": 5,
+      "structural_change": 11.89847561180654,
+      "survived": true
+    },
+    {
+      "activated_produced": 256.4908701407225,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.02602469968548,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -23.996259672024934,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 17.982039889763996,
+      "survived": true
+    },
+    {
+      "activated_produced": 256.82210520557027,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 108.45235200026056,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 6,
+      "structural_change": 10.406179529297908,
+      "survived": true
+    },
+    {
+      "activated_produced": 256.26811277844524,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 109.64230680655933,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.499347367340036,
+      "reserve_enabled": true,
+      "seed": 6,
+      "structural_change": 11.59549255448438,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.33797916496565,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.5473259199511,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.332464305101112,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 18.235770007687798,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.6725411838538,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 108.83506271522128,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 7,
+      "structural_change": 10.522696539078751,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.1128626350741,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.07788048572485,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.734742692226703,
+      "reserve_enabled": true,
+      "seed": 7,
+      "structural_change": 11.763788959503728,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.9815228983641,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 116.97150390232798,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -24.60262131419678,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 18.43845149148968,
+      "survived": true
+    },
+    {
+      "activated_produced": 258.3187565170818,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 109.14634492517682,
+      "function3_baseline": false,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": 0.0,
+      "reserve_enabled": false,
+      "seed": 8,
+      "structural_change": 10.613554820390661,
+      "survived": true
+    },
+    {
+      "activated_produced": 257.7555844243427,
+      "damage_applied": 0.0,
+      "environment": "Neutral",
+      "final_material": 110.43014725261756,
+      "function3_baseline": true,
+      "genotype": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "reserve_change": -16.923824494285952,
+      "reserve_enabled": true,
+      "seed": 8,
+      "structural_change": 11.89847561180654,
+      "survived": true
+    }
+  ],
+  "source_ownership": {
+    "function_0": "activation/processing gain in N+F->A reaction",
+    "function_1": "activation gain paired with function 0 in N+F->A reaction",
+    "function_2": "structural build and membrane production gain",
+    "function_3": "reserve-funded growth gain only; source grep shows mesh_growth.rs reserve branch as the production read",
+    "historical_assay": "pre_fission_assay enables ReserveParams::derived and reserve.enable=true",
+    "historical_duration_steps": 1000,
+    "historical_seeds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "reserve_off": "function 3 has no production read in the reserve-disabled surplus-A growth branch"
+  }
+}

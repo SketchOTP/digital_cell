@@ -1271,3 +1271,6 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - CLOSED
 - The implementation adds only the observer-only natural-variant panel and the conditional two-window entry point. The panel runner uses `18` sealed lawful mutation genotypes, mutation off, fixed-boundary Resource/Damage arms, and the unchanged `14778`-step reproductive horizon.
 - Gate 4 classification is `NATURAL_D096_VARIANTS_LACK_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF`: no opposite-signed relative growth/mass response was found, and the sole reproduction/death difference without a tradeoff is panel index `0` (Damage fission only).
 - Per directive, the two-window `29556`-step extension, reversal, and final integrated M1-M5 were not run. No biology or environment parameter was changed; no successor execution starts pending Architect review.
+## R10R8   diagnostic-only architecture decision   2026-09-10
+
+R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not authorize production reserve enablement, D096 redesign, selection, reversal, or a successor implementation.

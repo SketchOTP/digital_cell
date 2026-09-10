@@ -1,0 +1,38 @@
+{
+  "package_id": "digital-protocell-phase1-v1",
+  "package_dir": "/tmp/dcfinal001_r10r8_reserve_on_d087_v3/linux_runtime/digital-protocell-phase1-v1",
+  "stability_secs": 1.365728923,
+  "steps_run": 80000,
+  "crash": false,
+  "snapshot_ok": true,
+  "memory_unbounded": false,
+  "autonomous": true,
+  "offline": true,
+  "no_gpu": true,
+  "detail": "built=false bin_ok=true steps=80000 wall_s=1.4 snap_ok=true verts=50 growing_flags=0 smoke=false",
+  "diagnostics": {
+    "build_exit_status": null,
+    "build_stdout": "",
+    "build_stderr": "",
+    "binary_source_path": "/home/sketch/Projects/digital_cell-r10r6/digital-protocell/target/release/digital-protocell-phase1",
+    "binary_source_exists": true,
+    "binary_destination_path": "/tmp/dcfinal001_r10r8_reserve_on_d087_v3/linux_runtime/digital-protocell-phase1-v1/digital-protocell-phase1",
+    "binary_destination_exists": false,
+    "destination_executable": false,
+    "copy_error": "build did not complete successfully",
+    "binary_command": "/tmp/dcfinal001_r10r8_reserve_on_d087_v3/linux_runtime/digital-protocell-phase1-v1/digital-protocell-phase1 --steps 50 --out /tmp/dcfinal001_r10r8_reserve_on_d087_v3/linux_runtime/digital-protocell-phase1-v1/bin_run.json",
+    "binary_working_directory": "/home/sketch/Projects/digital_cell-r10r6/digital-protocell",
+    "binary_environment": {
+      "DCDEV020M1REPLAN002R1_V4": "0",
+      "DCDEV020R9R3_CONTRACT": "ConservativeV3",
+      "DCDEV020R9R3_RESERVE": "1"
+    },
+    "binary_exit_status": null,
+    "binary_stdout": "",
+    "binary_stderr": "",
+    "requested_output_path": "/tmp/dcfinal001_r10r8_reserve_on_d087_v3/linux_runtime/digital-protocell-phase1-v1/bin_run.json",
+    "output_exists": false,
+    "snapshot_path": "/tmp/dcfinal001_r10r8_reserve_on_d087_v3/linux_runtime/digital-protocell-phase1-v1/bin_run.snapshot.json",
+    "snapshot_exists": false
+  }
+}

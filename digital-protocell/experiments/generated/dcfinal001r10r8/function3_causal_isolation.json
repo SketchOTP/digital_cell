@@ -1,0 +1,67 @@
+{
+  "classification": "FUNCTION3_CAUSALLY_REQUIRED_FOR_HISTORICAL_SPECIALIZATION",
+  "method": "reserve-on observer-only function3=1 baseline",
+  "rows": [
+    {
+      "delta_final_material": -5.137508740045803,
+      "delta_reserve_change": 6.0322012141822725,
+      "environment": "H",
+      "function3_baseline_final_material": 106.65765007958933,
+      "function3_baseline_reserve_change": -17.18186455249985,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "normal_final_material": 111.79515881963513,
+      "normal_reserve_change": -23.214065766682122
+    },
+    {
+      "delta_final_material": -5.191925721789119,
+      "delta_reserve_change": 6.074267877537274,
+      "environment": "B",
+      "function3_baseline_final_material": 107.95302070534679,
+      "function3_baseline_reserve_change": -15.99821697205386,
+      "genotype": [
+        0.55,
+        0.25,
+        0.05,
+        0.15
+      ],
+      "normal_final_material": 113.1449464271359,
+      "normal_reserve_change": -22.072484849591135
+    },
+    {
+      "delta_final_material": -5.135594589424784,
+      "delta_reserve_change": 6.046350985084864,
+      "environment": "H",
+      "function3_baseline_final_material": 109.98111919558235,
+      "function3_baseline_reserve_change": -17.766600682485745,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "normal_final_material": 115.11671378500714,
+      "normal_reserve_change": -23.81295166757061
+    },
+    {
+      "delta_final_material": -5.1944607952977435,
+      "delta_reserve_change": 6.09184395146924,
+      "environment": "B",
+      "function3_baseline_final_material": 111.7619553951858,
+      "function3_baseline_reserve_change": -16.503183310667772,
+      "genotype": [
+        0.1,
+        0.2,
+        0.55,
+        0.15
+      ],
+      "normal_final_material": 116.95641619048354,
+      "normal_reserve_change": -22.595027262137013
+    }
+  ],
+  "source_causal_basis": "function_gain(mesh,3) appears only in reserve-enabled mesh_growth path"
+}

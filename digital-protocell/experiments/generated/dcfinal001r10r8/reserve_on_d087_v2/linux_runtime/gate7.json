@@ -1,0 +1,5 @@
+{
+  "pass": false,
+  "detail": "built=false bin_ok=true steps=80000 wall_s=2.3 snap_ok=true verts=50 growing_flags=0 smoke=false",
+  "failure": "D087_LINUX_RUNTIME_QUALIFICATION_FAILURE"
+}

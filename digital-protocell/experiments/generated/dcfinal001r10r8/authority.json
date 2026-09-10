@@ -1,0 +1,11 @@
+{
+  "directive": "DC-FINAL-001-R10R8-D096-SPECIALIZATION-CONTRACT-RECONSTRUCTION-RESERVE-DEPENDENCY-AND-M4-ARCHITECTURE-DECISION-001",
+  "notion_page": "3b3833cb-27ff-800c-a5c3-d8da621c27c2",
+  "owner_override": "ACTIVE",
+  "r10r7_artifact": "sha256:52d052dc475b856e9569e55331b6cfa5e231fc7e05637b8c9df4dc9b1978b71a",
+  "r10r7_ci": "34531048042 PASS",
+  "r10r7_classification": "NATURAL_D096_VARIANTS_LACK_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF",
+  "r10r7_mutation": "18/1800; mutation-off 0",
+  "r10r7_reproduction": "7/10 fissions, 7/10 viable pairs",
+  "starting_head": "ecf4befc00683301e4ab15f0b5302b4acc33d9be"
+}

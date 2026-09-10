@@ -931,3 +931,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The sealed natural-variant panel contains `18` unique lawful mutation offspring. Matched Resource/Damage feasibility runs complete at `14778` steps with mutation off and fixed-boundary ecology.
 - No panel variant shows an opposite-signed relative reproduction-linked response or structural-mass response between Resource and Damage. One diagnostic variant reproduces in Damage but not Resource; this is recorded as an outcome difference without a qualifying tradeoff because the Resource response is not oppositely disadvantaged.
 - Gate 4 stops R10R7 before the conditional `29556`-step selection extension. Selection, reversal, and final integrated M1-M5 remain `NOT_REACHED`; no successor execution starts. PR #44 remains open, draft, unmerged, and untouched; owner shutdown override remains active; independent Architect acceptance is `PENDING`.
+## R10R8 diagnostic decision gate   2026-09-10
+
+- Directive: DC-FINAL-001-R10R8-D096-SPECIALIZATION-CONTRACT-RECONSTRUCTION-RESERVE-DEPENDENCY-AND-M4-ARCHITECTURE-DECISION-001
+- Result: historical D096 reciprocal Resource/Damage phenotype reproduced only under reserve-enabled historical assay; function 3 is reserve-dependent; current reserve-on M1 replay is not qualified.
+- Classification: D096_FOUR_FUNCTION_SPECIALIZATION_DEPENDS_ON_UNQUALIFIED_RESERVE_PHYSIOLOGY
+- Production biology unchanged; no successor execution authorized.

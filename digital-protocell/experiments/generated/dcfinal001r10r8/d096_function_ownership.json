@@ -1,0 +1,30 @@
+{
+  "classification": "D096_FUNCTION3_RESERVE_DEPENDENT",
+  "function_0": {
+    "endpoint": "N+F to A activation processing factor",
+    "reserve_off": "ACTIVE",
+    "reserve_on": "ACTIVE",
+    "source": "mesh_reactions.rs activation branch"
+  },
+  "function_1": {
+    "endpoint": "N+F to A activation factor paired with function 0",
+    "reserve_off": "ACTIVE",
+    "reserve_on": "ACTIVE",
+    "source": "mesh_reactions.rs activation branch"
+  },
+  "function_2": {
+    "endpoint": "structural rebuilding and membrane production gain",
+    "reserve_off": "ACTIVE",
+    "reserve_on": "ACTIVE",
+    "source": "mesh_reactions.rs build/membrane branches"
+  },
+  "function_3": {
+    "endpoint": "reserve-funded growth multiplier",
+    "reserve_off": "DORMANT",
+    "reserve_on": "ACTIVE",
+    "source": "mesh_growth.rs:130-141"
+  },
+  "other_production_reads": [
+    "mesh_growth.rs reserve-enabled branch only; no reserve-disabled growth read found in source audit"
+  ]
+}

@@ -1848,3 +1848,6 @@ Use it for architectural decisions, governance changes, releases, qualification 
 - Starting governed authority: `86a113e33f1f3e7307bc06721ca9d62812123c0a`; R10R6 scientific head `7406d0e2f217c7bdfad9b033d81fc47d71cb6a87`; R10R6 CI `34512966061 PASS`; R10R6 artifact `sha256:78cd0b8b037ad8fe38ee1a6ebcc2968c34fcf35fa6b0db553ffef2f638c27bda`.
 - The sealed `18`-variant natural mutation panel completed matched Resource/Damage diagnostic campaigns. No opposite-signed relative reproduction-linked response or structural-mass response was found. One Damage-only reproduction difference is recorded but does not satisfy the preregistered tradeoff criterion.
 - Classification: `NATURAL_D096_VARIANTS_LACK_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF`. The two-window extension, selection, reversal, and final integrated M1-M5 are `NOT_REACHED`; no biology, environment, or mutation parameter changed; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`; exact-head CI and independent Architect acceptance are pending.
+## R10R8 record   2026-09-10
+
+Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PASS; artifact sha256:52d052dc475b856e9569e55331b6cfa5e231fc7e05637b8c9df4dc9b1978b71a. Diagnostic root: experiments/generated/dcfinal001r10r8/. Production source delta: zero. End goal: NOT_ESTABLISHED.

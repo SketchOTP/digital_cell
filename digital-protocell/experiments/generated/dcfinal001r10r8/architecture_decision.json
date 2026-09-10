@@ -1,0 +1,12 @@
+{
+  "causal_chain": [
+    "function 3 -> reserve-funded growth",
+    "historical assay reserve ON",
+    "reserve-off removes H reserve accumulation endpoint",
+    "reserve-on current M1 replay not qualified"
+  ],
+  "classification": "D096_FOUR_FUNCTION_SPECIALIZATION_DEPENDS_ON_UNQUALIFIED_RESERVE_PHYSIOLOGY",
+  "decision": "Current production D096-v4 cannot be accepted as an environment-dependent specialization substrate under reserve-OFF M1. Historical reciprocal phenotype requires the reserve-funded endpoint; current reserve-on certification is not qualified. No production change is authorized.",
+  "downstream_selection": "NOT_REACHED",
+  "successor_implementation": "NOT_AUTHORIZED"
+}

@@ -1,0 +1,5 @@
+{
+  "pass": true,
+  "detail": "seed_distinct_fps=3 seeds_effective=true size_pass=3/3 path=deterministic_perturbation",
+  "failure": null
+}

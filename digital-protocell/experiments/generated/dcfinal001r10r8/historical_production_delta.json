@@ -1,0 +1,59 @@
+{
+  "production_biology_delta_authorized": false,
+  "rows": [
+    {
+      "classification": "VERSIONED_CORRECTION",
+      "dimension": "D096 version",
+      "historical": "legacy D096 expression in pre_fission_assay",
+      "production": "D096-v4 centered finite-budget gain"
+    },
+    {
+      "classification": "MISSING_IN_PRODUCTION / INCOMPATIBLE_WITH_M1",
+      "dimension": "reserve",
+      "historical": "ON",
+      "production": "OFF"
+    },
+    {
+      "classification": "MISSING_IN_PRODUCTION",
+      "dimension": "function 3",
+      "historical": "active through reserve growth",
+      "production": "dormant"
+    },
+    {
+      "classification": "VERSIONED_CORRECTION",
+      "dimension": "material substrate",
+      "historical": "legacy assay mesh",
+      "production": "MaturationCoupledV4 physical mesh"
+    },
+    {
+      "classification": "MISSING_IN_PRODUCTION",
+      "dimension": "growth path",
+      "historical": "D091 reserve-funded",
+      "production": "A-surplus growth"
+    },
+    {
+      "classification": "VERSIONED_HARNESS",
+      "dimension": "boundary",
+      "historical": "direct assay exterior schedule",
+      "production": "R10R6 fixed-concentration boundary"
+    },
+    {
+      "classification": "VERSIONED_CORRECTION",
+      "dimension": "physical reproduction",
+      "historical": "pre-fission endpoint only",
+      "production": "R10 physical segment scission"
+    },
+    {
+      "classification": "VERSIONED_CORRECTION",
+      "dimension": "damage processing",
+      "historical": "AssayEnvironment B local damage",
+      "production": "R10R6 frozen Damage schedule"
+    },
+    {
+      "classification": "UNRESOLVED_CROSS-ASSAY",
+      "dimension": "assay endpoint",
+      "historical": "reserve/material pre-fission effects",
+      "production": "mass gate/fission/death"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "assay": "chemistry_core::d096_allocation::pre_fission_assay",
+  "duration_steps": 1000,
+  "environments": {
+    "B": "constant resource plus periodic structural/membrane damage",
+    "H": "pulse/lean resource schedule",
+    "Neutral": "neutral resource"
+  },
+  "genotypes": {
+    "neutral": [
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ],
+    "processing": [
+      0.55,
+      0.25,
+      0.05,
+      0.15
+    ],
+    "repair": [
+      0.1,
+      0.2,
+      0.55,
+      0.15
+    ]
+  },
+  "historical_source_lines": "d096_allocation.rs:670-735; d096_tests.rs:612-645",
+  "historical_success_predicate": "all H reserve effects positive; all B material effects positive; both exceed neutral differences",
+  "reserve": "ReserveParams::derived(80,40,0.5,0.3,2.0,0.1,area); reserve.enable=true",
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ]
+}

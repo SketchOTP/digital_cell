@@ -2591,3 +2591,6 @@ D-20260905-dcdev021-m2-native-polarity-runtime-v2 - ACCEPTED BOUNDED RESULT
 - The R10R7 feasibility runner completed all `18 × 2` matched natural-variant/environment campaigns at the unchanged `14778`-step horizon. The panel was derived only from sealed R10R6 lawful mutation offspring; no hand-authored winner or parameter sweep was used.
 - Relative structural accumulation against sealed neutral controls has the same sign in Resource and Damage for every panel variant. No opposite-signed relative response in physical reproduction/death, time-to-gate, or mass accumulation was established. The feasibility classification is `NATURAL_D096_VARIANTS_LACK_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF`.
 - The conditional two-window selection assay was not authorized by Gate 4 and remains `NOT_REACHED`; downstream selection, environment dependence, reversal, and final integration remain unestablished. Evidence is sealed under `digital-protocell/experiments/generated/dcfinal001r10r7/` pending exact-head CI and Architect acceptance.
+## R10R8 outcome   2026-09-10
+
+Historical D096 specialization is reproducible under its reserve-enabled assay. The reserve-off ablation removes the H reserve endpoint, and the current reserve-on M1 certification is not qualified. Primary classification: D096_FOUR_FUNCTION_SPECIALIZATION_DEPENDS_ON_UNQUALIFIED_RESERVE_PHYSIOLOGY.

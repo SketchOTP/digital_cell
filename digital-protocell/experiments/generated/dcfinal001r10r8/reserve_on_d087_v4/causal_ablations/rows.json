@@ -1,0 +1,94 @@
+{
+  "rows": [
+    {
+      "a": 0.18580552042541246,
+      "ablation": "no_nutrient",
+      "alive": true,
+      "area": 173.0954142634954,
+      "b": 46.61607212200035,
+      "c": 1.650079159957306,
+      "deteriorated": true
+    },
+    {
+      "a": 0.18580552042541246,
+      "ablation": "no_fuel",
+      "alive": true,
+      "area": 173.0954142634954,
+      "b": 46.61607212200035,
+      "c": 1.650079159957306,
+      "deteriorated": true
+    },
+    {
+      "a": 0.18040466299092678,
+      "ablation": "no_activation",
+      "alive": true,
+      "area": 180.61665356865626,
+      "b": 47.614550448505085,
+      "c": 1.5846217671326213,
+      "deteriorated": true
+    },
+    {
+      "a": 1.3517707382266944,
+      "ablation": "no_c_prod",
+      "alive": true,
+      "area": 429.24192712748777,
+      "b": 73.0913410113919,
+      "c": 0.46506894718018843,
+      "deteriorated": true
+    },
+    {
+      "a": 1.835478341429595,
+      "ablation": "no_build",
+      "alive": true,
+      "area": 161.40446487641498,
+      "b": 45.01883360926856,
+      "c": 3.230580813607132,
+      "deteriorated": true
+    },
+    {
+      "a": 0.6208676131006817,
+      "ablation": "no_turn",
+      "alive": true,
+      "area": 612.64034356974,
+      "b": 87.21284164058945,
+      "c": 0.8991969501016317,
+      "deteriorated": true
+    },
+    {
+      "a": 0.9488800345052215,
+      "ablation": "no_l_prod",
+      "alive": true,
+      "area": 453.4718257739,
+      "b": 2.2137535148818186,
+      "c": 0.9401607258509554,
+      "deteriorated": true
+    },
+    {
+      "a": 0.9548314887189827,
+      "ablation": "no_bind",
+      "alive": true,
+      "area": 458.4917600915766,
+      "b": 0.5633599834019268,
+      "c": 0.9246725112372415,
+      "deteriorated": true
+    },
+    {
+      "a": 0.9502347905346761,
+      "ablation": "no_selective_transport",
+      "alive": true,
+      "area": 487.2612147020947,
+      "b": 0.0,
+      "c": 0.8901382230461691,
+      "deteriorated": false
+    },
+    {
+      "a": 0.6244996272391916,
+      "ablation": "no_mechanics",
+      "alive": false,
+      "area": 598.9875762280795,
+      "b": 86.24131463664624,
+      "c": 0.9137642352961605,
+      "deteriorated": true
+    }
+  ]
+}

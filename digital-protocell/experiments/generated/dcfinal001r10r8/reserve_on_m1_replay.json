@@ -1,0 +1,46 @@
+{
+  "classification": "RESERVE_ON_CURRENT_M1_NOT_QUALIFIED",
+  "note": "Diagnostic reserve-on certification only; production reserve remains OFF and no reserve repair/adoption was performed.",
+  "v2": {
+    "conclusion": "D087_D086_ACCEPTANCE_INVALID",
+    "contract": "ConservativeV2",
+    "gates": [
+      true,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      false
+    ]
+  },
+  "v3": {
+    "conclusion": "D087_D086_ACCEPTANCE_INVALID",
+    "contract": "ConservativeV3",
+    "gates": [
+      true,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      false
+    ]
+  },
+  "v4": {
+    "conclusion": "D087_D086_REPRODUCTION_FAILURE",
+    "contract": "MaturationCoupledV4",
+    "gates": [
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      false
+    ]
+  }
+}
