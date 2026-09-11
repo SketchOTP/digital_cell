@@ -2795,7 +2795,9 @@ fn run_r10r3_integrated_reproduction(
             })
         })
         .collect::<Vec<_>>();
-    let directive = if expression_path == ExpressionPath::D096V3IntensiveGain {
+    let directive = if r10r9r3_buffered_reserve_enabled() {
+        "DC-FINAL-001-R10R9R3-D091V2-BUFFERED-RESERVE-CANONICAL-GROWTH-REPRODUCTION-SPECIALIZATION-AND-M4-CLOSURE-001"
+    } else if expression_path == ExpressionPath::D096V3IntensiveGain {
         "DC-FINAL-001-R10R4-D096-INTENSIVE-CATALYST-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001"
     } else if expression_path == ExpressionPath::D096V4CenteredGain {
         "DC-FINAL-001-R10R5-D096-FINITE-BUDGET-CENTERED-GAIN-INTEGRATED-REPRODUCTION-EVOLUTION-AND-END-GOAL-CLOSURE-001"
@@ -2873,6 +2875,14 @@ pub fn run_r10r5_d096v4_integrated_reproduction() {
         ExpressionPath::D096V4CenteredGain,
         "D096_V4_FINITE_BUDGET_CENTERED_INTENSIVE_GAIN",
         "/tmp/dcfinal001_r10r5_d096v4_reproduction.json",
+    );
+}
+
+pub fn run_r10r9r3_d091v2_integrated_reproduction() {
+    run_r10r3_integrated_reproduction(
+        ExpressionPath::D096V4CenteredGain,
+        "D091_V2_BUFFERED_RESERVE_CANONICAL_D088_GROWTH",
+        "/tmp/dcfinal001_r10r9r3_d091v2_reproduction.json",
     );
 }
 
