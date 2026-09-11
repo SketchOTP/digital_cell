@@ -1,0 +1,112 @@
+name: DC-FINAL-001-R10R9R5 lifecycle and evidence recovery
+
+on:
+  push:
+    branches: [codex/dc-final-001-r10r9r5-lifecycle-evidence-recovery]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r10r9r5-qualification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 480
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify exact authority and bounded scope
+        run: |
+          set -euo pipefail
+          start=a835937b18a7b634704657e948e217c8205e38cf
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          start = 'a835937b18a7b634704657e948e217c8205e38cf'
+          allowed = (
+              '.agent/',
+              '.github/workflows/dc-final-001-r10r9r5.yml',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/examples/dcfinal001_r4_evolution.rs',
+              'digital-protocell/examples/dcfinal001_r10r9r5_evolution.rs',
+              'digital-protocell/experiments/dcfinal001_r10r9r5_evidence.py',
+              'digital-protocell/experiments/generated/dcfinal001r10r9r5/',
+          )
+          changed = subprocess.check_output(['git', 'diff', '--name-only', f'{start}..HEAD'], text=True).splitlines()
+          bad = [path for path in changed if not any(path.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          PY
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Run focused compile and preservation checks
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo +1.89.0 test --locked -q -p chemistry-core --test d091_tests --no-fail-fast
+          cargo +1.89.0 check --locked -q -p regulatory-core --example dcfinal001_r10r9r4_evolution
+          cargo +1.89.0 check --locked -q -p regulatory-core --example dcfinal001_r10r9r5_evolution
+
+      - name: Run current composed-organism reproduction preservation
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          DCFINAL001_R10R9R1_RESERVE=1 DCFINAL001_R10R9R3_RESERVE=1 \
+            cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r10r9r3_d091v2_reproduction
+
+      - name: Reproduce the legacy lifecycle-removal control
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          DCFINAL001_R10R9R1_RESERVE=1 DCFINAL001_R10R9R3_RESERVE=1 \
+            cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r10r9r4_evolution -- --output /tmp/dcfinal001_r10r9r4_evolution.json
+
+      - name: Run canonical R5 lifecycle and population campaign
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          DCFINAL001_R10R9R1_RESERVE=1 DCFINAL001_R10R9R3_RESERVE=1 \
+            DCFINAL001_R10R9R5_CANONICAL=1 \
+            cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r10r9r5_evolution -- --output /tmp/dcfinal001_r10r9r5_evolution.json
+
+      - name: Independently rebuild R5 evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 -m py_compile experiments/dcfinal001_r10r9r5_evidence.py
+          python3 experiments/dcfinal001_r10r9r5_evidence.py
+          python3 - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('experiments/generated/dcfinal001r10r9r5')
+          manifest = json.loads((root / 'artifact_manifest.json').read_text())
+          for row in manifest['files']:
+              path = root / row['path']
+              assert hashlib.sha256(path.read_bytes()).hexdigest() == row['sha256']
+              assert path.stat().st_size == row['bytes']
+          checks = json.loads((root / 'independent_event_verifier.json').read_text())
+          assert all(row['pass'] for row in checks['canonical'])
+          PY
+          git diff --check
+
+      - name: Upload exact-head R5 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r10r9r5
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcfinal001r10r9r5
+            /tmp/dcfinal001_r10r9r3_d091v2_reproduction.json
+            /tmp/dcfinal001_r10r9r4_evolution.json
+            /tmp/dcfinal001_r10r9r5_evolution.json

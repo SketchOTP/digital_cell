@@ -1891,3 +1891,9 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Mutation-off density parity passed for 150/150 versus 900/900 founder/bath scaling with zero mutation events and sixfold extensive quantities. R10R9R3 reproduction preservation remains qualified at 8/10 and 8/10.
 - Mutation-on scaled populations show natural turnover: Resource replicates reach generation 4; Damage replicates reach generations 6 and 2; fixed reversal reaches generation 9 in both replicates. Resource selection satisfies the preregistered projection in both replicates; Damage selection does not satisfy it in either replicate. Final integrated M1-M5 is NOT_REACHED.
 - Classification: `D096_V4_NATURAL_TURNOVER_ESTABLISHED_REPLICATED_ENVIRONMENTAL_SELECTION_NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; next execution `false`; independent Architect acceptance `PENDING`.
+## DEC-DCFINAL001-R10R9R5-LIFECYCLE-EVIDENCE-RECOVERY
+
+- Date: `2026-09-11`.
+- Starting governed head: `a835937b18a7b634704657e948e217c8205e38cf`.
+- Record: `R4_PROVENANCE_RECONCILED_SCIENTIFIC_INTERPRETATION_REQUALIFICATION_REQUIRED`.
+- Status: implementation and bounded requalification pending exact-head CI; no biology, mutation, environment, fission, or selection parameter is authorized to change.

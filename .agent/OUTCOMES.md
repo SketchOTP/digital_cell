@@ -2625,3 +2625,7 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Density-preserving 900-founder/900-volume mutation-off parity passes against the 150-founder/150-volume baseline with zero mutations and sixfold extensive scaling.
 - Mutation-on population runs establish natural generation-2+ turnover and lawful mutation supply. Resource selection meets the preregistered projection in both replicates; Damage selection does not, so environment-dependent selection is not established. Reversal and final integrated M1-M5 are not reached.
 - Classification: `D096_V4_NATURAL_TURNOVER_ESTABLISHED_REPLICATED_ENVIRONMENTAL_SELECTION_NOT_ESTABLISHED`; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`.
+## DC-FINAL-001-R10R9R5 active implementation
+
+- R4 provenance is retained, but selection claims require requalification because the old path removes cohorts after computational errors and treats observer viability as lifetime authority.
+- The R5 branch adds an opt-in canonical R10 lifecycle mode with typed outcomes, legal zero-flux depletion, atomic retained rejection, observer-label noninterference, and raw lifecycle events. Scientific outcomes remain pending exact-head CI and independent verification.

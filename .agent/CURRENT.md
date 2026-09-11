@@ -968,3 +968,7 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Mutation-off 150/150 versus 900/900 controls pass density parity: founder multiplicity and fixed-boundary bath volume scale together 6x; mutation events remain zero; intensive trajectories and event timing remain within the sealed assay tolerance.
 - The scaled mutation-on assay records natural generation-2+ turnover and 18-or-more lawful mutation events per initial opportunity contract. Resource selection is directionally observed in both replicates, but Damage selection fails the preregistered reciprocal projection in both replicates. Environment dependence, reversal interpretation, and final integrated M1-M5 remain NOT_ESTABLISHED or NOT_REACHED.
 - Final bounded classification: `D096_V4_NATURAL_TURNOVER_ESTABLISHED_REPLICATED_ENVIRONMENTAL_SELECTION_NOT_ESTABLISHED`; owner override remains active; PR #44 remains untouched; next execution is false.
+## DC-FINAL-001-R10R9R5 active lifecycle and evidence recovery
+
+- Authorized from R4 governed head `a835937b18a7b634704657e948e217c8205e38cf` under owner shutdown override.
+- Scope is lifecycle/evidence recovery; no scientific result is claimed before exact-head CI.

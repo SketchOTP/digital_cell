@@ -1299,3 +1299,8 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 
 - Authorized from R10R9R3 accepted authority `31bad212c9a4da81475d79be8f1ba3a71c7e0c74`; only the assay population/bath scale was parameterized, with 150/150 retained as the mutation-off baseline and 900/900 as the density-preserving campaign.
 - Mutation-off density parity passed before mutation-on interpretation. The scaled campaign established natural multigenerational turnover, but the preregistered reciprocal Damage selection projection failed in both replicates; reversal and final integration remain not reached.
+## DC-FINAL-001-R10R9R5
+
+- Directive: `DC-FINAL-001-R10R9R5-CANONICAL-LIFECYCLE-AND-EVOLUTION-EVIDENCE-RECOVERY-001`.
+- Starting governed head: `a835937b18a7b634704657e948e217c8205e38cf`; R4 CI `34584281006 PASS`; R4 artifact `sha256:2d09050f498942390d00ed98ae0d9826ecc19681c71d618f7439c79962d810a9`.
+- Scope: reproduce defects, repair lifecycle boundaries and evidence accounting, requalify the composed organism, and run ecology only after prerequisites. Biology constants, mutation, fission, environments, and PR #44 are frozen.

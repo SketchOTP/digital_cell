@@ -9,6 +9,7 @@
 use chemistry_core::d096_allocation::{
     expression_step, expression_step_activated_material_v2, expression_step_activated_material_v4,
     mutate_allocation_at_reproduction, AllocationGenotype, AllocationParams, ExpressionLedger,
+    ExpressionReject,
 };
 use chemistry_core::material_mesh::MaterialMesh;
 use chemistry_core::mesh_fission::{segment_apposition_stress_audit, try_local_segment_fission};
@@ -43,6 +44,13 @@ const FOUNDER_MULTIPLICITY: u64 = 150;
 const REPLICATES: u64 = 2;
 const REPRODUCTION_STEPS: usize = 12_000;
 const DAUGHTER_CONTINUATION_STEPS: usize = 3_000;
+
+fn r10r9r5_canonical_lifecycle() -> bool {
+    matches!(
+        env::var("DCFINAL001_R10R9R5_CANONICAL").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
 
 fn r10r9r1_reserve_enabled() -> bool {
     matches!(
@@ -200,6 +208,12 @@ struct CampaignLedger {
     active_a_spent: f64,
     active_w_produced: f64,
     adaptation_remesh_mappings: u64,
+    legal_depletion_steps: u64,
+    observer_nonviable_observations: u64,
+    computational_rejections: u64,
+    physical_disintegrations: u64,
+    rollback_count: u64,
+    lifecycle_events: Vec<Value>,
     bootstrap_physical_fissions: u64,
     post_bootstrap_physical_fissions: u64,
     mutation_events: Vec<Value>,
@@ -308,19 +322,55 @@ fn expression_step_activated_material_candidate(
     Ok(accounting)
 }
 
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+enum ExpressionBoundaryError {
+    IncompatibleSchema,
+    InvalidAllocation,
+    InvalidStep,
+    InsufficientMaterial,
+    InsufficientActivatedResource,
+    CandidateRejected,
+}
+
+impl ExpressionBoundaryError {
+    fn label(self) -> &'static str {
+        match self {
+            Self::IncompatibleSchema => "INCOMPATIBLE_SCHEMA",
+            Self::InvalidAllocation => "INVALID_ALLOCATION",
+            Self::InvalidStep => "INVALID_STEP",
+            Self::InsufficientMaterial => "INSUFFICIENT_MATERIAL",
+            Self::InsufficientActivatedResource => "INSUFFICIENT_ACTIVATED_RESOURCE",
+            Self::CandidateRejected => "CANDIDATE_REJECTED",
+        }
+    }
+}
+
+impl From<ExpressionReject> for ExpressionBoundaryError {
+    fn from(value: ExpressionReject) -> Self {
+        match value {
+            ExpressionReject::IncompatibleSchema => Self::IncompatibleSchema,
+            ExpressionReject::InvalidAllocation => Self::InvalidAllocation,
+            ExpressionReject::InvalidStep => Self::InvalidStep,
+            ExpressionReject::InsufficientMaterial => Self::InsufficientMaterial,
+            ExpressionReject::InsufficientActivatedResource => Self::InsufficientActivatedResource,
+        }
+    }
+}
+
 fn apply_expression_path(
     mesh: &mut MaterialMesh,
     params: &AllocationParams,
     dt: f64,
     path: D096ExpressionPath,
-) -> Result<ExpressionAccounting, &'static str> {
+) -> Result<ExpressionAccounting, ExpressionBoundaryError> {
     match path {
         D096ExpressionPath::V1Structural => expression_step(mesh, params, dt)
             .map(ExpressionAccounting::from)
-            .map_err(|_| "v1 expression rejected"),
+            .map_err(ExpressionBoundaryError::from),
         D096ExpressionPath::Off => Ok(ExpressionAccounting::default()),
         D096ExpressionPath::ActivatedMaterialCandidate => {
             expression_step_activated_material_candidate(mesh, params, dt)
+                .map_err(|_| ExpressionBoundaryError::CandidateRejected)
         }
         D096ExpressionPath::V2ActivatedMaterial => {
             expression_step_activated_material_v2(mesh, params, dt)
@@ -331,7 +381,7 @@ fn apply_expression_path(
                     maintenance_consumed: ledger.maintenance_consumed,
                     turnover_waste: ledger.turnover_waste,
                 })
-                .map_err(|_| "v2 expression rejected")
+                .map_err(ExpressionBoundaryError::from)
         }
         D096ExpressionPath::V4FiniteBudgetCentered => {
             expression_step_activated_material_v4(mesh, params, dt)
@@ -342,7 +392,7 @@ fn apply_expression_path(
                     maintenance_consumed: ledger.maintenance_consumed,
                     turnover_waste: ledger.turnover_waste,
                 })
-                .map_err(|_| "v4 expression rejected")
+                .map_err(ExpressionBoundaryError::from)
         }
     }
 }
@@ -983,6 +1033,26 @@ fn dead_material_to_sink(cohort: &Cohort, world: &mut OpenMedium) {
         cohort.mesh.interior.f.max(0.0) * cohort.mesh.area() * cohort.count as f64;
     world.ledger.physical_death_structural_sink +=
         cohort.mesh.total_structural_mass() * cohort.count as f64;
+}
+
+fn lifecycle_event(
+    ledger: &mut CampaignLedger,
+    phase: &str,
+    step: usize,
+    cohort: &Cohort,
+    outcome: &str,
+    detail: Value,
+) {
+    ledger.lifecycle_events.push(json!({
+        "phase": phase,
+        "step": step,
+        "cohort_id": cohort.id,
+        "count": cohort.count,
+        "generation": cohort.generation,
+        "genotype": cohort.mesh.finite_allocation.map(|state| state.genotype.0),
+        "outcome": outcome,
+        "detail": detail,
+    }));
 }
 
 fn advance_phase(
@@ -2248,10 +2318,26 @@ fn r10_split_cohort(
             .or_else(|| try_local_segment_fission(&cohort.mesh, fission))
     });
     let Some((daughter_a, daughter_b, event)) = proposed else {
+        lifecycle_event(
+            ledger,
+            "fission_attempt",
+            step,
+            &cohort,
+            "NO_VALID_PHYSICAL_PROPOSAL",
+            json!({"mass_eligible": true}),
+        );
         return Err(cohort);
     };
     if !event.partition.ok {
         ledger.partition_failures += cohort.count;
+        lifecycle_event(
+            ledger,
+            "fission_attempt",
+            step,
+            &cohort,
+            "PARTITION_REJECTED",
+            json!({"partition": event.partition}),
+        );
         return Err(cohort);
     }
     if !polygon_simple(&cohort.mesh.vertices)
@@ -2263,6 +2349,22 @@ fn r10_split_cohort(
         || !daughter_b.lifecycle_invariants_hold()
     {
         ledger.invalid_geometry_events += cohort.count;
+        lifecycle_event(
+            ledger,
+            "fission_attempt",
+            step,
+            &cohort,
+            "DAUGHTER_GEOMETRY_REJECTED",
+            json!({
+                "parent_simple": polygon_simple(&cohort.mesh.vertices),
+                "daughter_a_simple": polygon_simple(&daughter_a.vertices),
+                "daughter_b_simple": polygon_simple(&daughter_b.vertices),
+                "daughter_a_runtime_valid": daughter_a.physical_runtime_valid(),
+                "daughter_b_runtime_valid": daughter_b.physical_runtime_valid(),
+                "daughter_a_lifecycle_valid": daughter_a.lifecycle_invariants_hold(),
+                "daughter_b_lifecycle_valid": daughter_b.lifecycle_invariants_hold(),
+            }),
+        );
         return Err(cohort);
     }
     let Some(state_a) = r10_closure::r10_partition_plasticity_state(
@@ -2270,6 +2372,14 @@ fn r10_split_cohort(
         &event.daughter_a_parent_vertex_sources,
     ) else {
         ledger.runtime_invalidations += cohort.count;
+        lifecycle_event(
+            ledger,
+            "fission_attempt",
+            step,
+            &cohort,
+            "REFRACTORY_PARTITION_REJECTED",
+            json!({"error": "LOCAL_STATE_CORRESPONDENCE_UNAVAILABLE"}),
+        );
         return Err(cohort);
     };
     let Some(state_b) = r10_closure::r10_partition_plasticity_state(
@@ -2277,10 +2387,31 @@ fn r10_split_cohort(
         &event.daughter_b_parent_vertex_sources,
     ) else {
         ledger.runtime_invalidations += cohort.count;
+        lifecycle_event(
+            ledger,
+            "fission_attempt",
+            step,
+            &cohort,
+            "REFRACTORY_PARTITION_REJECTED",
+            json!({"error": "LOCAL_STATE_CORRESPONDENCE_UNAVAILABLE"}),
+        );
         return Err(cohort);
     };
     if state_a.adaptation.len() != daughter_a.n() || state_b.adaptation.len() != daughter_b.n() {
         ledger.runtime_invalidations += cohort.count;
+        lifecycle_event(
+            ledger,
+            "fission_attempt",
+            step,
+            &cohort,
+            "REFRACTORY_PARTITION_SHAPE_MISMATCH",
+            json!({
+                "state_a": state_a.adaptation.len(),
+                "daughter_a": daughter_a.n(),
+                "state_b": state_b.adaptation.len(),
+                "daughter_b": daughter_b.n(),
+            }),
+        );
         return Err(cohort);
     }
 
@@ -2494,6 +2625,7 @@ fn r10_advance_phase(
         }
         let mut retained = Vec::new();
         for mut cohort in cohorts.drain(..) {
+            let pre_expression = cohort.clone();
             match apply_expression_path(
                 &mut cohort.mesh,
                 &allocation,
@@ -2520,9 +2652,50 @@ fn r10_advance_phase(
                         (expression.activation_consumed + expression.maintenance_consumed) * count;
                     retained.push(cohort);
                 }
-                Err(_) => {
+                Err(error) if r10r9r5_canonical_lifecycle() => {
+                    // Expression is already transactional in chemistry-core:
+                    // it computes on a clone and commits only on success.  A
+                    // depleted valid organism therefore takes a zero-flux
+                    // expression step; no cohort is computationally deleted.
+                    cohort = pre_expression;
+                    if error == ExpressionBoundaryError::InsufficientActivatedResource {
+                        ledger.legal_depletion_steps += cohort.count;
+                        lifecycle_event(
+                            ledger,
+                            "d096_expression",
+                            step,
+                            &cohort,
+                            "LEGAL_DEPLETION_ZERO_FLUX",
+                            json!({"error": error.label()}),
+                        );
+                    } else {
+                        ledger.computational_rejections += cohort.count;
+                        ledger.rollback_count += cohort.count;
+                        lifecycle_event(
+                            ledger,
+                            "d096_expression",
+                            step,
+                            &cohort,
+                            "ATOMIC_REJECTION_RETAINED",
+                            json!({"error": error.label()}),
+                        );
+                    }
+                    retained.push(cohort);
+                }
+                Err(error) => {
+                    // Preserve the historical R4 behavior only on the
+                    // explicitly legacy control. The R5 path never uses
+                    // computational removal as a biological loss.
                     ledger.expression_failures += cohort.count;
                     ledger.runtime_invalidations += cohort.count;
+                    lifecycle_event(
+                        ledger,
+                        "d096_expression",
+                        step,
+                        &cohort,
+                        "LEGACY_COMPUTATIONAL_REMOVAL",
+                        json!({"error": error.label()}),
+                    );
                     invalidated_material_to_terminal(&cohort, world);
                 }
             }
@@ -2573,6 +2746,11 @@ fn r10_advance_phase(
             }
             let topology_tick = step % 10 == 0;
             let structural_before_mechanics = cohort.mesh.total_structural_mass();
+            // Snapshot only the state entering the mechanics transition.  The
+            // reaction/growth ledgers above are already accepted for this
+            // step; a rejected mechanics proposal must not roll those global
+            // accounting entries back implicitly.
+            let pre_mechanics = cohort.clone();
             let Some((active_a, active_w, remesh_mappings)) =
                 r10_closure::r10_refractory_mechanics_step(
                     &mut cohort.mesh,
@@ -2580,9 +2758,32 @@ fn r10_advance_phase(
                     topology_tick,
                 )
             else {
-                ledger.runtime_invalidations += cohort.count;
-                ledger.invalid_geometry_events += cohort.count;
-                invalidated_material_to_terminal(&cohort, world);
+                if r10r9r5_canonical_lifecycle() {
+                    cohort = pre_mechanics;
+                    ledger.computational_rejections += cohort.count;
+                    ledger.rollback_count += cohort.count;
+                    lifecycle_event(
+                        ledger,
+                        "mechanics",
+                        step,
+                        &cohort,
+                        "ATOMIC_REJECTION_RETAINED",
+                        json!({"error": "MECHANICS_OR_REMAP_REJECTED"}),
+                    );
+                    survivors.push(cohort);
+                } else {
+                    ledger.runtime_invalidations += cohort.count;
+                    ledger.invalid_geometry_events += cohort.count;
+                    lifecycle_event(
+                        ledger,
+                        "mechanics",
+                        step,
+                        &cohort,
+                        "LEGACY_COMPUTATIONAL_REMOVAL",
+                        json!({"error": "MECHANICS_OR_REMAP_REJECTED"}),
+                    );
+                    invalidated_material_to_terminal(&cohort, world);
+                }
                 continue;
             };
             ledger.mechanics_topology_structural_net +=
@@ -2599,18 +2800,74 @@ fn r10_advance_phase(
                 || !cohort.mesh.physical_runtime_valid()
                 || !cohort.mesh.lifecycle_invariants_hold()
             {
-                ledger.runtime_invalidations += cohort.count;
-                ledger.invalid_geometry_events += cohort.count;
-                invalidated_material_to_terminal(&cohort, world);
+                if r10r9r5_canonical_lifecycle() {
+                    ledger.computational_rejections += cohort.count;
+                    lifecycle_event(
+                        ledger,
+                        "post_mechanics_validation",
+                        step,
+                        &cohort,
+                        "REPRESENTATION_BLOCKER_RETAINED",
+                        json!({
+                            "simple": polygon_simple(&cohort.mesh.vertices),
+                            "runtime_valid": cohort.mesh.physical_runtime_valid(),
+                            "lifecycle_valid": cohort.mesh.lifecycle_invariants_hold(),
+                        }),
+                    );
+                    survivors.push(cohort);
+                } else {
+                    ledger.runtime_invalidations += cohort.count;
+                    ledger.invalid_geometry_events += cohort.count;
+                    lifecycle_event(
+                        ledger,
+                        "post_mechanics_validation",
+                        step,
+                        &cohort,
+                        "LEGACY_COMPUTATIONAL_REMOVAL",
+                        json!({"error": "INVALID_GEOMETRY_OR_STATE"}),
+                    );
+                    invalidated_material_to_terminal(&cohort, world);
+                }
                 continue;
             }
-            if !cohort.mesh.observer_viable() {
+            if cohort.mesh.uses_observer_only_death() && !cohort.mesh.observer_viable() {
+                if r10r9r5_canonical_lifecycle() {
+                    ledger.observer_nonviable_observations += cohort.count;
+                    lifecycle_event(
+                        ledger,
+                        "observer",
+                        step,
+                        &cohort,
+                        "OBSERVER_NONVIABLE_NOT_AUTHORITATIVE",
+                        json!({"reason": cohort.mesh.observer_death_reason()}),
+                    );
+                    survivors.push(cohort);
+                    continue;
+                }
                 ledger.physical_deaths += cohort.count;
                 *ledger
                     .deaths_by_genotype
                     .entry(genotype_key(genotype))
                     .or_default() += cohort.count;
                 phenotype_ledger(ledger, genotype).physical_deaths += cohort.count;
+                dead_material_to_sink(&cohort, world);
+                continue;
+            }
+            if !cohort.mesh.uses_observer_only_death() && !cohort.mesh.alive {
+                ledger.physical_deaths += cohort.count;
+                *ledger
+                    .deaths_by_genotype
+                    .entry(genotype_key(genotype))
+                    .or_default() += cohort.count;
+                phenotype_ledger(ledger, genotype).physical_deaths += cohort.count;
+                lifecycle_event(
+                    ledger,
+                    "physical_death",
+                    step,
+                    &cohort,
+                    "PHYSICAL_DEATH",
+                    json!({"reason": cohort.mesh.death_reason}),
+                );
                 dead_material_to_sink(&cohort, world);
                 continue;
             }
@@ -2911,6 +3168,25 @@ fn run_r10_evolution_with_horizon(
         .collect::<Vec<_>>();
     let value = json!({
         "directive": directive,
+        "execution_identity": {
+            "kernel": "R10_CANONICAL_POPULATION_STEP_V1",
+            "kernel_contract": "D096 expression -> finite exchange -> reactions/growth -> R9/R10 mechanics -> accepted-step refractory commit -> remesh/topology -> physical fate -> R10 fission",
+            "lifecycle_mode": if r10r9r5_canonical_lifecycle() { "CANONICAL_RETAIN_AND_ROLLBACK" } else { "LEGACY_COMPUTATIONAL_REMOVAL_CONTROL" },
+            "organism_biology_source": "digital-protocell/examples/dcfinal001_r4_evolution.rs::r10_advance_phase",
+            "mechanics_source": "digital-protocell/examples/dcfinal001_r5_v4_neck.rs::r10_refractory_mechanics_step",
+            "fission_source": "chemistry-core/src/mesh_fission.rs::R10 signed segment scission",
+            "configuration_digest": deterministic_state_digest(&json!({
+                "expression_path": expression_path.label(),
+                "boundary_mode": boundary_mode.label(),
+                "founder_multiplicity": founder_multiplicity,
+                "bath_volume": bath_volume,
+                "phase_steps": phase_steps,
+                "replicates": REPLICATES,
+                "mutation_probability": AllocationParams::default().mutation_probability,
+                "mutation_sigma": AllocationParams::default().mutation_sigma,
+                "canonical_lifecycle": r10r9r5_canonical_lifecycle(),
+            })),
+        },
         "protocol": {
             "body": "MaturationCoupledV4 + R8 closure + R8R1 sign-aware mechanics + R9 refractory curvature-normal + R10 signed scission stress",
             "mutation_probability": AllocationParams::default().mutation_probability,
@@ -3104,6 +3380,22 @@ pub fn run_r10r9r4_evolution() {
         PopulationBoundaryMode::FixedConcentrationBoundary,
         founder_multiplicity,
         bath_volume,
+    );
+}
+
+/// R10R9R5 canonical lifecycle/evidence recovery.  The legacy R10R9R4
+/// population path remains available as the historical comparison control;
+/// this entry point opts into typed lifecycle retention and atomic rejection
+/// handling without changing organism equations or constants.
+pub fn run_r10r9r5_evolution() {
+    run_r10_evolution_with_horizon(
+        "/tmp/dcfinal001_r10r9r5_evolution.json",
+        "DC-FINAL-001-R10R9R5-CANONICAL-LIFECYCLE-AND-EVOLUTION-EVIDENCE-RECOVERY-001",
+        R10R7_SELECTION_STEPS,
+        D096ExpressionPath::V4FiniteBudgetCentered,
+        PopulationBoundaryMode::FixedConcentrationBoundary,
+        R10R9R4_FOUNDER_MULTIPLICITY,
+        R10R9R4_FOUNDER_MULTIPLICITY as f64,
     );
 }
 

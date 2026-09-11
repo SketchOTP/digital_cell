@@ -248,3 +248,9 @@
 - `digital-protocell/experiments/dcfinal001_r10r4_evidence.py` — deterministic R10R4 dimensional, causal, versioned-contract, reproduction, and Gate-10 stop evidence generator.
 - `digital-protocell/experiments/generated/dcfinal001r10r4/` — compact R10R4 authority, gain audits, v3 conservation/reproduction, preserved upstream state, stopped evolution, qualification, and manifest evidence.
 - `.github/workflows/dc-final-001-r10r4.yml` — exact-head Linux R10R4 authority, deterministic gain/reproduction replay, historical preservation, D-087, PR #44, evidence reproducibility, and artifact upload.
+## R10R9R5 active files
+
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — shared R10/R10R9R5 population implementation with typed lifecycle boundaries, retained legal depletion/rejections, and raw lifecycle events; legacy control remains available.
+- `digital-protocell/examples/dcfinal001_r10r9r5_evolution.rs` — canonical R5 population entry point.
+- `digital-protocell/experiments/dcfinal001_r10r9r5_evidence.py` — independent raw event/census verifier and evidence generator.
+- `.github/workflows/dc-final-001-r10r9r5.yml` — exact-head R5 validation and artifact workflow.

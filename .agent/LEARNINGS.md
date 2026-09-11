@@ -1255,3 +1255,7 @@ D091-v2 can preserve physical A↔R buffering while leaving structural incorpora
 ## R10R9R4 learning — mutation supply and population density
 
 Scaling founder multiplicity and fixed-boundary bath volume together preserves density and passes mutation-off intensive-state parity while providing the expected larger mutation opportunity surface. This establishes natural multigenerational turnover in the production V4 population, but increased turnover does not by itself establish selection: the Damage replicates failed the preregistered reciprocal hereditary projection even though Resource replicates passed it.
+## R10R9R5 learning — pending lifecycle/evidence recovery
+
+- Historical population turnover must not be interpreted until computational rejection, observer viability, bootstrap events, genotype identity, and physical fate are separated in raw event records.
+- The canonical R5 path retains valid depleted cohorts at zero expression flux and treats rejected mechanics as an atomic retained transition; exact scientific effects remain unclassified until remote execution.
