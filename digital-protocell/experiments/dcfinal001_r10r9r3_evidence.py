@@ -157,10 +157,11 @@ def main():
         'legacy_certifier_report': d087,
         'note': 'The standalone legacy phase1 certifier exercises the historical reaction-only path, not the R10 D091-v2 growth_step path. Its D087_D086_ACCEPTANCE_INVALID result is preserved rather than relabeled as a v2 organism pass.',
     })
+    counts = repro['counts']
     write('reproduction_qualification.json', {
-        'growth_qualified': repro.get('growth_qualified_count'),
-        'geometry_valid_fissions': repro.get('geometry_valid_fissions'),
-        'full_state_viable_daughter_pairs': repro.get('full_state_viable_daughter_pairs'),
+        'growth_qualified': counts.get('growth_qualified'),
+        'geometry_valid_fissions': counts.get('geometry_valid_fissions'),
+        'full_state_viable_daughter_pairs': counts.get('full_state_viable_daughter_pairs'),
         'robust_reproduction': repro.get('robust_reproduction'),
         'thresholds': {'growth': 8, 'fissions': 7, 'viable_pairs': 6},
         'status': 'PASS' if repro.get('robust_reproduction') else 'FAIL',

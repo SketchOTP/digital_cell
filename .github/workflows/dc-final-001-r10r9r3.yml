@@ -79,8 +79,8 @@ jobs:
           repro = json.load(open('/tmp/dcfinal001_r10r9r3_d091v2_reproduction.json'))
           pop = json.load(open('/tmp/dcfinal001_r10r9r3_evolution.json'))
           assert repro['robust_reproduction'] is True
-          assert repro['geometry_valid_fissions'] >= 7
-          assert repro['full_state_viable_daughter_pairs'] >= 6
+          assert repro['counts']['geometry_valid_fissions'] >= 7
+          assert repro['counts']['full_state_viable_daughter_pairs'] >= 6
           assert all(c['ledger']['reserve_r_to_m'] == 0.0 for c in pop['campaigns'])
           assert all(c['ledger']['reserve_funded_growth'] == 0.0 for c in pop['campaigns'])
           assert all(c['ledger']['mutations'] == 0 for c in pop['campaigns'] if not c['mutation_enabled'])
