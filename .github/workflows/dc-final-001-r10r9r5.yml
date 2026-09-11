@@ -36,6 +36,7 @@ jobs:
               'digital-protocell/crates/chemistry-core/src/d096_allocation.rs',
               'digital-protocell/crates/chemistry-core/tests/d096_tests.rs',
               'digital-protocell/examples/dcfinal001_r4_evolution.rs',
+              'digital-protocell/examples/dcfinal001_r5_v4_neck.rs',
               'digital-protocell/examples/dcfinal001_r10r9r5_evolution.rs',
               'digital-protocell/examples/dcfinal001_r10r9r5_contract_tests.rs',
               'digital-protocell/examples/dcfinal001_r10r9r5_shared_kernel_reproduction.rs',
