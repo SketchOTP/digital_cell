@@ -5,7 +5,7 @@ import shutil
 from pathlib import Path
 
 
-ROOT = Path('/home/sketch/Projects/digital_cell-r10r6/digital-protocell')
+ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'experiments/generated/dcfinal001r10r9r4'
 BASE = Path('/tmp/dcfinal001_r10r9r4_density_baseline.json')
 SCALED_OFF = Path('/tmp/dcfinal001_r10r9r4_density_scaled_off.json')
