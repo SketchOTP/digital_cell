@@ -1294,3 +1294,8 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Authorized from R10R9R2 accepted authority 222a40b44edb2e601ee32ec953819303692619cb; scope was limited to D091-v2 buffered reserve versioning and the existing D088 growth law. No D096 remap or new biological parameter was authorized.
 - The v2 reproduction gate passes at 8/10 fissions and 8/10 viable pairs. The natural 18-variant panel passes reciprocal Resource/Damage feasibility, so the fixed population path was executed.
 - Stop after population M4: natural generation-2+ turnover is observed, but replicated Resource and Damage selection are not established; fixed reversal runs produce no post-bootstrap fissions. No final integrated M1-M5 run or successor execution is authorized from this result.
+
+## DC-FINAL-001-R10R9R4
+
+- Authorized from R10R9R3 accepted authority `31bad212c9a4da81475d79be8f1ba3a71c7e0c74`; only the assay population/bath scale was parameterized, with 150/150 retained as the mutation-off baseline and 900/900 as the density-preserving campaign.
+- Mutation-off density parity passed before mutation-on interpretation. The scaled campaign established natural multigenerational turnover, but the preregistered reciprocal Damage selection projection failed in both replicates; reversal and final integration remain not reached.

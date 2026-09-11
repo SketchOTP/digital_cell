@@ -1,0 +1,17 @@
+{
+  "baseline": {
+    "bath_volume": 150.0,
+    "founder_multiplicity": 150
+  },
+  "breeder_selection": false,
+  "density_preserved": true,
+  "fitness_function": false,
+  "new_biological_parameters": 0,
+  "organism_biology_delta": 0,
+  "population_cap": false,
+  "resource_feedback": false,
+  "scaled": {
+    "bath_volume": 900.0,
+    "founder_multiplicity": 900
+  }
+}

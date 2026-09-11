@@ -1,0 +1,12 @@
+{
+  "damage_projection": [
+    -6.355845257643386e-06,
+    -5.863758547084527e-07
+  ],
+  "reason": "Damage projections do not satisfy the preregistered positive sign in both replicates.",
+  "resource_projection": [
+    -1.6405131743017923e-06,
+    -4.983443317689678e-07
+  ],
+  "status": "NOT_ESTABLISHED"
+}

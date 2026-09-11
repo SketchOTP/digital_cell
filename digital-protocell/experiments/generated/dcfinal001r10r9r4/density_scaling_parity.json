@@ -1,0 +1,103 @@
+{
+  "absolute_tolerance": 1e-10,
+  "mutation_events_baseline": 0,
+  "mutation_events_scaled": 0,
+  "relative_tolerance": 0.0001,
+  "rows": [
+    {
+      "baseline_events": {
+        "deaths": 0,
+        "fissions": 150,
+        "post_bootstrap_fissions": 0
+      },
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "extensive_scale": 6.0,
+      "max_intensive_diffs": {
+        "cohorts": 0,
+        "maximum_generation": 0,
+        "organism_f": 0.008599124732427299,
+        "organism_n": 0.005464086483698338,
+        "population": 0
+      },
+      "max_relative_diffs": {
+        "cohorts": 0,
+        "maximum_generation": 0,
+        "organism_f": 1.538190140050628e-08,
+        "organism_n": 1.7488714639152725e-08,
+        "population": 0
+      },
+      "replicate": 1,
+      "scaled_events": {
+        "deaths": 0,
+        "fissions": 900,
+        "post_bootstrap_fissions": 0
+      }
+    },
+    {
+      "baseline_events": {
+        "deaths": 0,
+        "fissions": 300,
+        "post_bootstrap_fissions": 150
+      },
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "extensive_scale": 6.0,
+      "max_intensive_diffs": {
+        "cohorts": 0,
+        "maximum_generation": 0,
+        "organism_f": 14.401405198703287,
+        "organism_n": 72.12854343932122,
+        "population": 0
+      },
+      "max_relative_diffs": {
+        "cohorts": 0,
+        "maximum_generation": 0,
+        "organism_f": 6.475869254344378e-05,
+        "organism_n": 3.1231476093148886e-05,
+        "population": 0
+      },
+      "replicate": 1,
+      "scaled_events": {
+        "deaths": 0,
+        "fissions": 1800,
+        "post_bootstrap_fissions": 900
+      }
+    },
+    {
+      "baseline_events": {
+        "deaths": 0,
+        "fissions": 150,
+        "post_bootstrap_fissions": 0
+      },
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "extensive_scale": 6.0,
+      "max_intensive_diffs": {
+        "cohorts": 0,
+        "maximum_generation": 0,
+        "organism_f": 4.71630158694461,
+        "organism_n": 56.19137075357139,
+        "population": 0
+      },
+      "max_relative_diffs": {
+        "cohorts": 0,
+        "maximum_generation": 0,
+        "organism_f": 2.075931520179236e-05,
+        "organism_n": 2.4192355970192892e-05,
+        "population": 0
+      },
+      "replicate": 1,
+      "scaled_events": {
+        "deaths": 0,
+        "fissions": 900,
+        "post_bootstrap_fissions": 0
+      }
+    }
+  ],
+  "status": "PASS"
+}

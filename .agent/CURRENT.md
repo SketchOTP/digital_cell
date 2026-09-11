@@ -961,3 +961,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - D091-v2 production reproduction qualifies at 8/10 geometry-valid fissions and 8/10 full-state viable daughter pairs. The 18 natural D096-v4 variant feasibility panel passes the preregistered reciprocal Resource/Damage specialization criterion.
 - Population runs establish natural generation-2+ turnover, but replicated Resource/Damage selection is not established. Fixed Resource→Damage runs have zero post-bootstrap fissions in both mutation-on replicates, so reversal is not established. Final integrated M1-M5 is NOT_REACHED.
 - Final bounded classification: D091V2_REPRODUCTION_AND_RECIPROCAL_SPECIALIZATION_QUALIFIED_SELECTION_AND_REVERSAL_NOT_ESTABLISHED. D087 reserve-on legacy-certifier scope caveat is preserved in d087_reserve_v2.json; PR #44 remains untouched; owner override remains active.
+
+## DC-FINAL-001-R10R9R4 density-preserving mutation-supply result
+
+- R10R9R3 is preserved at governed head `31bad212c9a4da81475d79be8f1ba3a71c7e0c74` with exact prior authority `d5806289ff5064a25c5f15b7c48a4e4bf98caf59`, CI `34564658072 PASS`, and artifact `sha256:c32439407b9c447b96f1c9391824dcc5320ddc7322dbfd6aafa846bcc3d2c60f`.
+- Mutation-off 150/150 versus 900/900 controls pass density parity: founder multiplicity and fixed-boundary bath volume scale together 6x; mutation events remain zero; intensive trajectories and event timing remain within the sealed assay tolerance.
+- The scaled mutation-on assay records natural generation-2+ turnover and 18-or-more lawful mutation events per initial opportunity contract. Resource selection is directionally observed in both replicates, but Damage selection fails the preregistered reciprocal projection in both replicates. Environment dependence, reversal interpretation, and final integrated M1-M5 remain NOT_ESTABLISHED or NOT_REACHED.
+- Final bounded classification: `D096_V4_NATURAL_TURNOVER_ESTABLISHED_REPLICATED_ENVIRONMENTAL_SELECTION_NOT_ESTABLISHED`; owner override remains active; PR #44 remains untouched; next execution is false.

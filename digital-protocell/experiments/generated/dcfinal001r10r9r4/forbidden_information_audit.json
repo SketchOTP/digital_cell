@@ -1,0 +1,10 @@
+{
+  "breeder_selection": false,
+  "fitness_function": false,
+  "forbidden_selection_mechanisms": [],
+  "forced_reproduction": false,
+  "new_biological_parameters": 0,
+  "population_cap": false,
+  "population_success_feedback": false,
+  "status": "PASS"
+}

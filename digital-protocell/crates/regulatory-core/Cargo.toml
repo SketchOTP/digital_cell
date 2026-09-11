@@ -233,6 +233,10 @@ name = "dcfinal001_r10r9r3_evolution"
 path = "../../examples/dcfinal001_r10r9r3_evolution.rs"
 
 [[example]]
+name = "dcfinal001_r10r9r4_evolution"
+path = "../../examples/dcfinal001_r10r9r4_evolution.rs"
+
+[[example]]
 name = "dcfinal001_r5r1_strain_contrast"
 path = "../../examples/dcfinal001_r5r1_strain_contrast.rs"
 

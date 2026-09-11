@@ -2619,3 +2619,9 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - D091-v2 preserves the existing reserve kernels and removes only direct reserve-funded structural growth. D088 canonical surplus-A growth remains authoritative. Reserve ledger evidence shows A→R, R→A, R→W active, R→M zero, and reserve-funded growth zero.
 - R10 reproduction qualifies at 8/10 fissions and 8/10 viable pairs. The unchanged 18 natural D096-v4 variants pass reciprocal Resource/Damage feasibility.
 - Population M4 reaches natural generation-2+ turnover, but selection is not established with the required replicated differential hereditary reproduction, and fixed Resource→Damage reversal has no post-bootstrap fissions. End goal remains not established; final integrated M1-M5 is not reached.
+
+## DC-FINAL-001-R10R9R4 bounded result
+
+- Density-preserving 900-founder/900-volume mutation-off parity passes against the 150-founder/150-volume baseline with zero mutations and sixfold extensive scaling.
+- Mutation-on population runs establish natural generation-2+ turnover and lawful mutation supply. Resource selection meets the preregistered projection in both replicates; Damage selection does not, so environment-dependent selection is not established. Reversal and final integrated M1-M5 are not reached.
+- Classification: `D096_V4_NATURAL_TURNOVER_ESTABLISHED_REPLICATED_ENVIRONMENTAL_SELECTION_NOT_ESTABLISHED`; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`.

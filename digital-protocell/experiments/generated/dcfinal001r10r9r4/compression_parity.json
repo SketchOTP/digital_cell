@@ -1,0 +1,50 @@
+{
+  "baseline_protocol": {
+    "body": "MaturationCoupledV4 + R8 closure + R8R1 sign-aware mechanics + R9 refractory curvature-normal + R10 signed scission stress",
+    "component_3_boundary": "reserve-only endpoint dormant under frozen reserve-OFF physiology",
+    "founder_multiplicity": 150,
+    "inflow_schedule_source": "frozen D-096 Resource/Damage values",
+    "minimum_opportunities_for_95_percent_at_least_one": 299,
+    "mutation_off_only": true,
+    "mutation_probability": 0.01,
+    "mutation_semantics": "one deterministic blind draw per daughter at geometry-valid physical fission",
+    "mutation_sigma": 0.15,
+    "open_medium_volume": 150.0,
+    "opportunities_per_initial_campaign": 300,
+    "phase_steps": 29556,
+    "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+    "replicates": 2,
+    "switch_schedule": [
+      29556,
+      59112
+    ]
+  },
+  "event_timing_parity": true,
+  "extensive_quantities_scale": 6,
+  "intensive_state_parity": true,
+  "mutation_events": {
+    "baseline": 0,
+    "scaled": 0
+  },
+  "scaled_protocol": {
+    "body": "MaturationCoupledV4 + R8 closure + R8R1 sign-aware mechanics + R9 refractory curvature-normal + R10 signed scission stress",
+    "component_3_boundary": "reserve-only endpoint dormant under frozen reserve-OFF physiology",
+    "founder_multiplicity": 900,
+    "inflow_schedule_source": "frozen D-096 Resource/Damage values",
+    "minimum_opportunities_for_95_percent_at_least_one": 299,
+    "mutation_off_only": true,
+    "mutation_probability": 0.01,
+    "mutation_semantics": "one deterministic blind draw per daughter at geometry-valid physical fission",
+    "mutation_sigma": 0.15,
+    "open_medium_volume": 900.0,
+    "opportunities_per_initial_campaign": 1800,
+    "phase_steps": 29556,
+    "population_boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+    "replicates": 2,
+    "switch_schedule": [
+      29556,
+      59112
+    ]
+  },
+  "status": "PASS"
+}

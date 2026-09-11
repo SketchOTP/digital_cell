@@ -1,0 +1,170 @@
+{
+  "files": [
+    {
+      "bytes": 99,
+      "path": "active_energy_closure.json",
+      "sha256": "2976f1411bf0916b023dfec507e37ef8fcc937282f492d7cc320d64096122f87"
+    },
+    {
+      "bytes": 167,
+      "path": "architect_disposition.json",
+      "sha256": "372787657c30ddc1ae2bf91d90961b36e6aa497ffd49d52655965f4ba0f6f5c5"
+    },
+    {
+      "bytes": 614,
+      "path": "authority.json",
+      "sha256": "937a509c61d9268f8ca58b430e6979f151404379d8bef5da745abeec75956355"
+    },
+    {
+      "bytes": 139,
+      "path": "checkpoint_restart.json",
+      "sha256": "969801ce8e22924c3c89d7234a2fb2d74f5d150ca6d96fd9d18d03e54db0b138"
+    },
+    {
+      "bytes": 1947,
+      "path": "compression_parity.json",
+      "sha256": "3bf85262aff589784635dae2e5f4ba7b18f79d5aae6be3ce0f6bc5c5f06d189d"
+    },
+    {
+      "bytes": 2543,
+      "path": "density_scaling_parity.json",
+      "sha256": "a5d27c131141e530225752c75d9ab7308e6370335f5a9e7b44bf1cde3494cb09"
+    },
+    {
+      "bytes": 63,
+      "path": "development_preservation.json",
+      "sha256": "c27c6d6fc5d2b90b7a6305f0bb6c46e8c22d2409f5b10a4d6ecf465c6579d611"
+    },
+    {
+      "bytes": 1851,
+      "path": "environment_a_selection.json",
+      "sha256": "78b7cd1de8dcf253d96f248e7d33134b9e6b0adc25a722d4f51f69b46f75eeb0"
+    },
+    {
+      "bytes": 2611,
+      "path": "environment_b_selection.json",
+      "sha256": "5e3f55c1e882c3b8a5b0e6638b43b538cf3fe374829919a58cc3b77e6a855268"
+    },
+    {
+      "bytes": 308,
+      "path": "environment_dependence.json",
+      "sha256": "f052083fc83eeb6d2ae7ddbb6d22f729952a68b4108732b4efae51ac154d8bdd"
+    },
+    {
+      "bytes": 139,
+      "path": "experiential_memory.json",
+      "sha256": "969801ce8e22924c3c89d7234a2fb2d74f5d150ca6d96fd9d18d03e54db0b138"
+    },
+    {
+      "bytes": 156,
+      "path": "external_prior_art.json",
+      "sha256": "3fab65e2e2f739418de9af08116378af5c96f57ed5fd603328554a3dcd19f920"
+    },
+    {
+      "bytes": 253,
+      "path": "final_goal_matrix.json",
+      "sha256": "c1069b403240f31a0c9822fadce480b879b2227d1927c524bd6f5327858f2489"
+    },
+    {
+      "bytes": 255,
+      "path": "forbidden_information_audit.json",
+      "sha256": "346bcae6f0c088ae1a5790a31074aa9f37fdf514744fb5a43a0e1536a58409d9"
+    },
+    {
+      "bytes": 1231,
+      "path": "generation_lineages.json",
+      "sha256": "7bc293f46a61b91f476b5abf1143f76496406b45c22743b7a159f3b14418a260"
+    },
+    {
+      "bytes": 15560,
+      "path": "genotype_phenotype_causality.json",
+      "sha256": "0a9fb71e6c4e5711948438f39f91d2719fc5f1f2c97ca94675876dbd6c0813ed"
+    },
+    {
+      "bytes": 91,
+      "path": "global_material_energy_closure.json",
+      "sha256": "59f37e1d74416987596c9867c817ef09a01a7b65d790abc7f5e1250768408e46"
+    },
+    {
+      "bytes": 139,
+      "path": "godot_independence.json",
+      "sha256": "969801ce8e22924c3c89d7234a2fb2d74f5d150ca6d96fd9d18d03e54db0b138"
+    },
+    {
+      "bytes": 139,
+      "path": "linux_runtime.json",
+      "sha256": "969801ce8e22924c3c89d7234a2fb2d74f5d150ca6d96fd9d18d03e54db0b138"
+    },
+    {
+      "bytes": 105,
+      "path": "m1_preservation.json",
+      "sha256": "680bb0947e55c4a68dfed0896050e37fb95144b0d73736a0c919de3c529a90d7"
+    },
+    {
+      "bytes": 60,
+      "path": "m2_preservation.json",
+      "sha256": "cee2a8a1af22a235a8882b776df4dc0de24470e168caf4b8bcec667bbc546cda"
+    },
+    {
+      "bytes": 38320,
+      "path": "mutation_off_control.json",
+      "sha256": "e86f8e1c44a0ca3593fcad479d12088ced53b1f48ab3f7a48389732e2cb90bae"
+    },
+    {
+      "bytes": 366,
+      "path": "mutation_supply_derivation.json",
+      "sha256": "a2263e6b240baa49e15e3cca8ccc463ea6dc51e2ba7ee274084c34d0ec567a25"
+    },
+    {
+      "bytes": 68,
+      "path": "owner_override.json",
+      "sha256": "f383024fa1f7584d7a6bce7bc66b0e878d172bcbb1a8d495c71236f514598db9"
+    },
+    {
+      "bytes": 181,
+      "path": "population_material_closure.json",
+      "sha256": "9e486c36e12df9e17c36473042e18c0d62e4fd0ecbd69ff7f82dc1b597725d63"
+    },
+    {
+      "bytes": 369,
+      "path": "population_scale_contract.json",
+      "sha256": "a844db90642a691aacced3f1c7ce86b2880bafbfda2c6829ac14706d28ac13e5"
+    },
+    {
+      "bytes": 786976,
+      "path": "population_turnover.json",
+      "sha256": "0b82b2e30b9339568fc7cd0a2074a2bd6c775f5ea76c9345f1f6df4af0f67315"
+    },
+    {
+      "bytes": 256,
+      "path": "qualification.json",
+      "sha256": "8aedd944bdcacfbbfdca5389caa9169982415218ef1c33889894ac36684dae19"
+    },
+    {
+      "bytes": 177,
+      "path": "r10r9r3_reproduction_preservation.json",
+      "sha256": "4fb537f34d9d8fe491c0a52d7eb6f9c5d35c38f583dddf7d85a315bb83288df4"
+    },
+    {
+      "bytes": 468,
+      "path": "reciprocal_axis_authority.json",
+      "sha256": "564114f8967cb7135f20fabce50ad84036d9ba436a97c88f4a02b4985d0a4a05"
+    },
+    {
+      "bytes": 271832,
+      "path": "reversal.json",
+      "sha256": "2379823289d10272a5395b7331238af096c06d6c9edb64be4a69ccb2646d0d02"
+    },
+    {
+      "bytes": 6272,
+      "path": "selection_mutation_decomposition.json",
+      "sha256": "4e4e10e7262857622e37a074a385451a23ec2b2fc31c2f9a524bac20cd797e0a"
+    },
+    {
+      "bytes": 139,
+      "path": "sensory_embodiment.json",
+      "sha256": "969801ce8e22924c3c89d7234a2fb2d74f5d150ca6d96fd9d18d03e54db0b138"
+    }
+  ],
+  "root": "/home/sketch/Projects/digital_cell-r10r6/digital-protocell/experiments/generated/dcfinal001r10r9r4"
+}

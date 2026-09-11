@@ -1,0 +1,13 @@
+{
+  "baseline_bath_volume": 150,
+  "baseline_founders": 150,
+  "density_ratio": 6,
+  "expected_initial_mutations": 18,
+  "minimum_opportunities_for_95_percent_at_least_one": 299,
+  "mutation_off_required": true,
+  "mutation_probability": 0.01,
+  "mutation_sigma": 0.15,
+  "scaled_bath_volume": 900,
+  "scaled_founders": 900,
+  "scaled_initial_opportunities": 1800
+}

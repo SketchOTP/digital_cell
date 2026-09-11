@@ -1883,3 +1883,11 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Reproduction: 8/10 geometry-valid fissions and 8/10 full-state viable pairs. Natural 18-variant reciprocal specialization feasibility: PASS. Natural generation-2+ turnover: PASS.
 - Population result: Resource and Damage selection are NOT_ESTABLISHED because replicated hereditary differential reproduction was not demonstrated; fixed Resource→Damage reversal is NOT_ESTABLISHED because both mutation-on reversal runs have zero post-bootstrap fissions. Final integrated M1-M5: NOT_REACHED.
 - Classification: D091V2_REPRODUCTION_AND_RECIPROCAL_SPECIALIZATION_QUALIFIED_SELECTION_AND_REVERSAL_NOT_ESTABLISHED; shutdown NO — OWNER OVERRIDE ACTIVE; next execution false; independent Architect acceptance PENDING.
+
+## DEC-DCFINAL001-R10R9R4-DENSITY-SUPPLY
+
+- Date: `2026-09-11`
+- Starting governed head: `31bad212c9a4da81475d79be8f1ba3a71c7e0c74`.
+- Mutation-off density parity passed for 150/150 versus 900/900 founder/bath scaling with zero mutation events and sixfold extensive quantities. R10R9R3 reproduction preservation remains qualified at 8/10 and 8/10.
+- Mutation-on scaled populations show natural turnover: Resource replicates reach generation 4; Damage replicates reach generations 6 and 2; fixed reversal reaches generation 9 in both replicates. Resource selection satisfies the preregistered projection in both replicates; Damage selection does not satisfy it in either replicate. Final integrated M1-M5 is NOT_REACHED.
+- Classification: `D096_V4_NATURAL_TURNOVER_ESTABLISHED_REPLICATED_ENVIRONMENTAL_SELECTION_NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; next execution `false`; independent Architect acceptance `PENDING`.

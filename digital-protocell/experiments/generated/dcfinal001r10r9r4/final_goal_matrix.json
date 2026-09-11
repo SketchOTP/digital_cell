@@ -1,0 +1,11 @@
+{
+  "m1": "PRESERVED",
+  "m2": "QUALIFIED",
+  "m3": "PRESERVED",
+  "m4_mutation": "QUALIFIED",
+  "m4_reproduction": "QUALIFIED",
+  "m4_reversal": "NOT_REACHED",
+  "m4_selection": "NOT_ESTABLISHED",
+  "m5": "NOT_REACHED",
+  "status": "NOT_ESTABLISHED"
+}

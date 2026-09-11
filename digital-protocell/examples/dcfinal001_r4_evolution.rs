@@ -37,6 +37,7 @@ const TEMPLATE_STEPS: usize = 6_500;
 const PHASE_STEPS: usize = 2_500;
 const R10R2_PHASE_STEPS: usize = 14_778;
 const R10R7_SELECTION_STEPS: usize = 29_556;
+const R10R9R4_FOUNDER_MULTIPLICITY: u64 = 900;
 const R10_PREFIX_STEPS: usize = 2_500;
 const FOUNDER_MULTIPLICITY: u64 = 150;
 const REPLICATES: u64 = 2;
@@ -53,6 +54,13 @@ fn r10r9r1_reserve_enabled() -> bool {
 fn r10r9r3_buffered_reserve_enabled() -> bool {
     matches!(
         env::var("DCFINAL001_R10R9R3_RESERVE").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
+
+fn r10r9r4_mutation_off_only() -> bool {
+    matches!(
+        env::var("DCFINAL001_R10R9R4_MUTATION_OFF_ONLY").ok().as_deref(),
         Some("1") | Some("on") | Some("ON") | Some("true")
     )
 }
@@ -479,8 +487,7 @@ fn signed_request(
 }
 
 impl OpenMedium {
-    fn new(environment: Environment) -> Self {
-        let volume = FOUNDER_MULTIPLICITY as f64;
+    fn new(environment: Environment, volume: f64) -> Self {
         let (n, f) = environment.fixed_inflow_concentrations(0);
         let initial_n = n * volume;
         let initial_f = f * volume;
@@ -1156,7 +1163,7 @@ fn campaign(
         &mut ledger,
     );
     let mut next_id = 10_000;
-    let mut world = OpenMedium::new(sequence[0]);
+    let mut world = OpenMedium::new(sequence[0], FOUNDER_MULTIPLICITY as f64);
     let initial_organism_n = organism_amount(&cohorts, 'n');
     let initial_organism_f = organism_amount(&cohorts, 'f');
     let initial = snapshot(&cohorts, &world, 0);
@@ -1241,7 +1248,7 @@ fn compression_parity(template: &MaterialMesh, original_birth_mass: f64) -> Valu
     }
     let transport = TransportParams::default();
     let dt = MechParams::default().dt;
-    let mut compressed_world = OpenMedium::new(Environment::Resource);
+    let mut compressed_world = OpenMedium::new(Environment::Resource, FOUNDER_MULTIPLICITY as f64);
     let mut explicit_world = compressed_world.clone();
     compressed_world.exchange(&mut compressed, &transport, dt);
     explicit_world.exchange(&mut explicit, &transport, dt);
@@ -2649,6 +2656,7 @@ fn r10_campaign(
     phase_steps: usize,
     expression_path: D096ExpressionPath,
     founder_multiplicity: u64,
+    bath_volume: f64,
     boundary_mode: PopulationBoundaryMode,
     forced_genotype: Option<AllocationGenotype>,
 ) -> Value {
@@ -2689,7 +2697,7 @@ fn r10_campaign(
         }
     }
     let mut next_id = 10_000;
-    let mut world = OpenMedium::new(sequence[0]);
+    let mut world = OpenMedium::new(sequence[0], bath_volume);
     let initial_organism_n = organism_amount(&cohorts, 'n');
     let initial_organism_f = organism_amount(&cohorts, 'f');
     let initial_structural_mass = cohorts
@@ -2850,6 +2858,8 @@ fn run_r10_evolution_with_horizon(
     phase_steps: usize,
     expression_path: D096ExpressionPath,
     boundary_mode: PopulationBoundaryMode,
+    founder_multiplicity: u64,
+    bath_volume: f64,
 ) {
     let mut output = PathBuf::from(default_output);
     let args = env::args().collect::<Vec<_>>();
@@ -2861,8 +2871,13 @@ fn run_r10_evolution_with_horizon(
     let (template, plasticity, original_birth_mass, template_step) =
         r10_closure::r10_seed3_fission_state();
     let mut handles = Vec::new();
+    let mutation_modes: Vec<bool> = if r10r9r4_mutation_off_only() {
+        vec![false]
+    } else {
+        vec![true, false]
+    };
     for replicate in 1..=REPLICATES {
-        for mutation_enabled in [true, false] {
+        for mutation_enabled in mutation_modes.iter().copied() {
             for sequence in [
                 vec![Environment::Resource],
                 vec![Environment::Damage],
@@ -2881,7 +2896,8 @@ fn run_r10_evolution_with_horizon(
                         replicate,
                         phase_steps,
                         expression_path,
-                        FOUNDER_MULTIPLICITY,
+                        founder_multiplicity,
+                        bath_volume,
                         boundary_mode,
                         None,
                     )
@@ -2901,13 +2917,14 @@ fn run_r10_evolution_with_horizon(
             "mutation_sigma": AllocationParams::default().mutation_sigma,
             "mutation_semantics": "one deterministic blind draw per daughter at geometry-valid physical fission",
             "minimum_opportunities_for_95_percent_at_least_one": 299,
-            "founder_multiplicity": FOUNDER_MULTIPLICITY,
-            "opportunities_per_initial_campaign": 2 * FOUNDER_MULTIPLICITY,
+            "founder_multiplicity": founder_multiplicity,
+            "opportunities_per_initial_campaign": 2 * founder_multiplicity,
             "replicates": REPLICATES,
+            "mutation_off_only": r10r9r4_mutation_off_only(),
             "phase_steps": phase_steps,
             "population_boundary_mode": boundary_mode.label(),
             "switch_schedule": [phase_steps, 2 * phase_steps],
-            "open_medium_volume": FOUNDER_MULTIPLICITY,
+            "open_medium_volume": bath_volume,
             "inflow_schedule_source": "frozen D-096 Resource/Damage values",
             "component_3_boundary": "reserve-only endpoint dormant under frozen reserve-OFF physiology",
         },
@@ -2950,6 +2967,7 @@ pub fn run_r10r7_variant_feasibility(default_output: &str, panel_path: &str) {
                     R10R2_PHASE_STEPS,
                     D096ExpressionPath::V4FiniteBudgetCentered,
                     FOUNDER_MULTIPLICITY,
+                    FOUNDER_MULTIPLICITY as f64,
                     PopulationBoundaryMode::FixedConcentrationBoundary,
                     Some(genotype),
                 )
@@ -2981,6 +2999,8 @@ pub fn run_r10_evolution() {
         PHASE_STEPS,
         D096ExpressionPath::V1Structural,
         PopulationBoundaryMode::RateReinterpretation,
+        FOUNDER_MULTIPLICITY,
+        FOUNDER_MULTIPLICITY as f64,
     );
 }
 
@@ -2991,6 +3011,8 @@ pub fn run_r10r2_evolution() {
         R10R2_PHASE_STEPS,
         D096ExpressionPath::V1Structural,
         PopulationBoundaryMode::RateReinterpretation,
+        FOUNDER_MULTIPLICITY,
+        FOUNDER_MULTIPLICITY as f64,
     );
 }
 
@@ -3001,6 +3023,8 @@ pub fn run_r10r5_evolution() {
         R10R2_PHASE_STEPS,
         D096ExpressionPath::V4FiniteBudgetCentered,
         PopulationBoundaryMode::RateReinterpretation,
+        FOUNDER_MULTIPLICITY,
+        FOUNDER_MULTIPLICITY as f64,
     );
 }
 
@@ -3011,6 +3035,8 @@ pub fn run_r10r6_evolution() {
         R10R2_PHASE_STEPS,
         D096ExpressionPath::V4FiniteBudgetCentered,
         PopulationBoundaryMode::FixedConcentrationBoundary,
+        FOUNDER_MULTIPLICITY,
+        FOUNDER_MULTIPLICITY as f64,
     );
 }
 
@@ -3021,6 +3047,8 @@ pub fn run_r10r7_evolution() {
         R10R7_SELECTION_STEPS,
         D096ExpressionPath::V4FiniteBudgetCentered,
         PopulationBoundaryMode::FixedConcentrationBoundary,
+        FOUNDER_MULTIPLICITY,
+        FOUNDER_MULTIPLICITY as f64,
     );
 }
 
@@ -3031,6 +3059,8 @@ pub fn run_r10r9r1_evolution() {
         R10R7_SELECTION_STEPS,
         D096ExpressionPath::V4FiniteBudgetCentered,
         PopulationBoundaryMode::FixedConcentrationBoundary,
+        FOUNDER_MULTIPLICITY,
+        FOUNDER_MULTIPLICITY as f64,
     );
 }
 
@@ -3041,6 +3071,39 @@ pub fn run_r10r9r3_evolution() {
         R10R7_SELECTION_STEPS,
         D096ExpressionPath::V4FiniteBudgetCentered,
         PopulationBoundaryMode::FixedConcentrationBoundary,
+        FOUNDER_MULTIPLICITY,
+        FOUNDER_MULTIPLICITY as f64,
+    );
+}
+
+/// R10R9R4 scales only the finite assay population and its fixed-concentration
+/// vessel together.  Set DCFINAL001_R10R9R4_BASELINE=1 for the matched 150/150
+/// mutation-off density-parity control; mutation and all organism biology stay
+/// under the caller's existing R10 contract.
+pub fn run_r10r9r4_evolution() {
+    let baseline = matches!(
+        env::var("DCFINAL001_R10R9R4_BASELINE").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    );
+    let founder_multiplicity = if baseline {
+        FOUNDER_MULTIPLICITY
+    } else {
+        R10R9R4_FOUNDER_MULTIPLICITY
+    };
+    let bath_volume = founder_multiplicity as f64;
+    let output = if baseline {
+        "/tmp/dcfinal001_r10r9r4_density_baseline.json"
+    } else {
+        "/tmp/dcfinal001_r10r9r4_evolution.json"
+    };
+    run_r10_evolution_with_horizon(
+        output,
+        "DC-FINAL-001-R10R9R4-DENSITY-PRESERVING-MUTATION-SUPPLY-SELECTION-REVERSAL-AND-FINAL-CLOSURE-001",
+        R10R7_SELECTION_STEPS,
+        D096ExpressionPath::V4FiniteBudgetCentered,
+        PopulationBoundaryMode::FixedConcentrationBoundary,
+        founder_multiplicity,
+        bath_volume,
     );
 }
 
@@ -3078,6 +3141,7 @@ pub fn run_r10r3_budget_diagnostics() {
                     R10R2_PHASE_STEPS,
                     expression_path,
                     FOUNDER_MULTIPLICITY,
+                    FOUNDER_MULTIPLICITY as f64,
                     PopulationBoundaryMode::RateReinterpretation,
                     None,
                 )

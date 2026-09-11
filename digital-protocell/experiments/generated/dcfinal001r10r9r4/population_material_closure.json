@@ -1,0 +1,7 @@
+{
+  "fixed_boundary": true,
+  "max_abs_f_residual": 4.4447564846450405e-06,
+  "max_abs_n_residual": 4.29097281084978e-06,
+  "source_sink_ledger_present": true,
+  "status": "PASS"
+}

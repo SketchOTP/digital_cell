@@ -1,0 +1,57 @@
+{
+  "campaigns_with_post_bootstrap_fission": [
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "maximum_generation": 4,
+      "post_bootstrap_fissions": 5,
+      "replicate": 1
+    },
+    {
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "maximum_generation": 6,
+      "post_bootstrap_fissions": 923,
+      "replicate": 1
+    },
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "maximum_generation": 9,
+      "post_bootstrap_fissions": 47,
+      "replicate": 1
+    },
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "maximum_generation": 4,
+      "post_bootstrap_fissions": 3,
+      "replicate": 2
+    },
+    {
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "maximum_generation": 2,
+      "post_bootstrap_fissions": 898,
+      "replicate": 2
+    },
+    {
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "maximum_generation": 9,
+      "post_bootstrap_fissions": 27,
+      "replicate": 2
+    }
+  ],
+  "natural_mutant_births": 156,
+  "no_cloning_or_forced_generation": true,
+  "status": "PASS"
+}

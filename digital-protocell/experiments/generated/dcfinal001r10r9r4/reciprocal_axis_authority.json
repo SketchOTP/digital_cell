@@ -1,0 +1,23 @@
+{
+  "axis_normalized": true,
+  "damage_axis": [
+    0.7035290471418711,
+    0.07104139516965305,
+    -0.7035290471418711,
+    -0.07104139516965305
+  ],
+  "resource_axis": [
+    -0.7035290471418711,
+    -0.07104139516965305,
+    0.7035290471418711,
+    0.07104139516965305
+  ],
+  "sealed_before_scaled_mutation_on": true,
+  "source": "sealed R10R9R3 natural_variant_panel_identity.json",
+  "status": "PASS",
+  "variant_indices_zero_based": [
+    2,
+    5,
+    17
+  ]
+}

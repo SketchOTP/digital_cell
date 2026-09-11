@@ -1251,3 +1251,7 @@ The existing reserve configuration can be composed in the assay without changing
 ## R10R9R3 learning — buffered reserve restores morphogenesis but not selection
 
 D091-v2 can preserve physical A↔R buffering while leaving structural incorporation on the already-qualified D088 surplus-A law. This restored robust R10 reproduction (8/10, 8/10) and exposed reciprocal Resource/Damage specialization in the natural 18-variant feasibility panel without remapping D096 function 3. Natural generation-2 turnover alone is still insufficient: replicated hereditary differential reproduction and fixed-schedule reversal remain required before claiming selection or the end goal.
+
+## R10R9R4 learning — mutation supply and population density
+
+Scaling founder multiplicity and fixed-boundary bath volume together preserves density and passes mutation-off intensive-state parity while providing the expected larger mutation opportunity surface. This establishes natural multigenerational turnover in the production V4 population, but increased turnover does not by itself establish selection: the Damage replicates failed the preregistered reciprocal hereditary projection even though Resource replicates passed it.

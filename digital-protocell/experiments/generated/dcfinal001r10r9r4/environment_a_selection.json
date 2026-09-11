@@ -1,0 +1,52 @@
+{
+  "causal_requirement": "replicated physical birth/death difference and negative projection on damage axis",
+  "replicates": [
+    {
+      "births_by_genotype": {
+        "0.00000000000000000,0.25000000000000000,0.50000000000000000,0.25000000000000000": 3,
+        "0.05436716519806278,0.25000000000000000,0.25000000000000000,0.44563283480193722": 1,
+        "0.09854281748501992,0.25000000000000000,0.40145718251498008,0.25000000000000000": 1,
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 900
+      },
+      "deaths_by_genotype": {},
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "exposure_weight": 828202,
+      "neutral_rate": 1.7174658722356526e-05,
+      "nonneutral_genotypes": 27,
+      "projection_damage_axis": -1.6405131743017923e-06,
+      "projection_resource_axis": 1.6405131743017923e-06,
+      "replicate": 1,
+      "selection_vector": [
+        -1.08850858038456e-06,
+        -4.752394841996804e-07,
+        1.1539565198831585e-06,
+        4.0979154470108203e-07
+      ]
+    },
+    {
+      "births_by_genotype": {
+        "0.25000000000000000,0.05557912964873010,0.44442087035126987,0.25000000000000000": 3,
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 900
+      },
+      "deaths_by_genotype": {},
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "exposure_weight": 679250,
+      "neutral_rate": 1.7126361031911207e-05,
+      "nonneutral_genotypes": 22,
+      "projection_damage_axis": -4.983443317689678e-07,
+      "projection_resource_axis": 4.983443317689678e-07,
+      "replicate": 2,
+      "selection_vector": [
+        -5.8342760703654103e-08,
+        -4.896464214892647e-07,
+        6.064678460743469e-07,
+        -5.847866388142809e-08
+      ]
+    }
+  ],
+  "status": "PASS"
+}
