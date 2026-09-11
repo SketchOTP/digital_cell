@@ -12,6 +12,11 @@ SCALED_OFF = Path('/tmp/dcfinal001_r10r9r4_density_scaled_off.json')
 SCALED_ON = Path('/tmp/dcfinal001_r10r9r4_evolution.json')
 REPRO = Path('/tmp/dcfinal001_r10r9r3_d091v2_reproduction.json')
 PANEL = ROOT / 'experiments/generated/dcfinal001r10r9r3/natural_variant_panel_identity.json'
+SEALED_AXIS_VARIANTS = [
+    [0.3243411332921808, 0.25, 0.17565886670781922, 0.25],
+    [0.25, 0.2673714958193884, 0.25, 0.2326285041806116],
+    [0.3476902840534058, 0.25, 0.1523097159465942, 0.25],
+]
 
 NEUTRAL = '0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000'
 TOL = 1e-10
@@ -128,8 +133,12 @@ def density_parity(base, scaled):
 
 
 def t_axis(panel):
-    variants = panel['panel_metadata']['variants']
-    vectors = [[x - 0.25 for x in variants[i]['genotype']] for i in (2, 5, 17)]
+    if panel is not None:
+        variants = panel['panel_metadata']['variants']
+        selected = [variants[i]['genotype'] for i in (2, 5, 17)]
+    else:
+        selected = SEALED_AXIS_VARIANTS
+    vectors = [[x - 0.25 for x in g] for g in selected]
     raw = [sum(v[j] for v in vectors) / len(vectors) for j in range(4)]
     norm = math.sqrt(sum(x * x for x in raw))
     damage = [x / norm for x in raw]
@@ -167,11 +176,11 @@ def selection_vector(c):
 
 
 def main():
-    for path in (BASE, SCALED_OFF, SCALED_ON, REPRO, PANEL):
+    for path in (BASE, SCALED_OFF, SCALED_ON, REPRO):
         assert path.exists(), path
     base, scaled_off, scaled_on = load(BASE), load(SCALED_OFF), load(SCALED_ON)
     repro = load(REPRO)
-    panel = load(PANEL)
+    panel = load(PANEL) if PANEL.exists() else None
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
