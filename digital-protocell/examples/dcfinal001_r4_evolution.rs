@@ -1092,7 +1092,7 @@ fn advance_phase(
             }
         }
         let mut retained = Vec::new();
-        for mut cohort in cohorts.drain(..) {
+        for mut cohort in std::mem::take(cohorts) {
             match expression_step(&mut cohort.mesh, &allocation, mechanics.dt) {
                 Ok(expression) => {
                     let count = cohort.count as f64;
@@ -1112,7 +1112,7 @@ fn advance_phase(
         world.exchange(cohorts, &transport, mechanics.dt);
 
         let mut survivors = Vec::new();
-        for mut cohort in cohorts.drain(..) {
+        for mut cohort in std::mem::take(cohorts) {
             let count = cohort.count as f64;
             let reactions = reactions_step(&mut cohort.mesh, &reaction, mechanics.dt, true, true);
             ledger.reaction_n_consumed += reactions.n_consumed * count;
