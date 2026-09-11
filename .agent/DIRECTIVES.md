@@ -1288,3 +1288,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - The reserve-off R10R5 control reproduced `7/10` fissions and `7/10` viable pairs. The reserve-on combined organism reproduced `0/10` fissions and `0/10` viable pairs, despite `10/10` growth qualification.
 - Per the directive, stop before specialization and population gates. Those gates and final integration are explicitly `NOT_REACHED`.
 - DC-FINAL-001-R10R9R2: diagnostic-only decomposition of the accepted D091+D096-v4 reproduction interaction. Raw reserve-off/reserve-on ten-arm trajectories are sealed under `experiments/generated/dcfinal001r10r9r2/raw/`. The 2x2 matrix establishes `D091_ALONE_REPRODUCTION_INCOMPATIBLE`; the conditional observer-only growth-path test supports `RESERVE_GROWTH_MODE_X_R9_R10_MORPHOGENESIS`. Do not implement the recommended architecture action here; selection, reversal, and final integration remain NOT_REACHED.
+
+## DC-FINAL-001-R10R9R3
+
+- Authorized from R10R9R2 accepted authority 222a40b44edb2e601ee32ec953819303692619cb; scope was limited to D091-v2 buffered reserve versioning and the existing D088 growth law. No D096 remap or new biological parameter was authorized.
+- The v2 reproduction gate passes at 8/10 fissions and 8/10 viable pairs. The natural 18-variant panel passes reciprocal Resource/Damage feasibility, so the fixed population path was executed.
+- Stop after population M4: natural generation-2+ turnover is observed, but replicated Resource and Damage selection are not established; fixed reversal runs produce no post-bootstrap fissions. No final integrated M1-M5 run or successor execution is authorized from this result.

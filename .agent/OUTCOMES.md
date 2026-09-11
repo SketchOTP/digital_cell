@@ -2613,3 +2613,9 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - R10R9R1 exact authority and the missing raw ten-arm trajectories are sealed. Matrix results: D091 OFF/D096 OFF `7/10` fissions, `6/10` viable; D091 OFF/D096-v4 `7/10`, `7/10`; D091 ON/D096 OFF `0/10`, `0/10`; D091 ON/D096-v4 `0/10`, `0/10`. All conditions are `10/10` growth-qualified.
 - Reserve-on failure is uniformly `APPOSITION_OUTSIDE_LOCAL_RANGE`, not a mass-gate, stress, topology, closure, or daughter-validity failure. The observer-only D091 chemistry with the pre-existing D-088 surplus-A growth call reaches `8/10` fissions and `8/10` viable pairs, while production biology is unchanged.
 - Final classification: `RESERVE_GROWTH_MODE_X_R9_R10_MORPHOGENESIS`. Recommended next action is an Architect replan of the D091/R10 compatibility boundary. D096-v4, R9, R10, M1, M2, and M3 remain preserved; selection, reversal, and final integrated M1-M5 are NOT_REACHED.
+
+## DC-FINAL-001-R10R9R3 bounded result
+
+- D091-v2 preserves the existing reserve kernels and removes only direct reserve-funded structural growth. D088 canonical surplus-A growth remains authoritative. Reserve ledger evidence shows A→R, R→A, R→W active, R→M zero, and reserve-funded growth zero.
+- R10 reproduction qualifies at 8/10 fissions and 8/10 viable pairs. The unchanged 18 natural D096-v4 variants pass reciprocal Resource/Damage feasibility.
+- Population M4 reaches natural generation-2+ turnover, but selection is not established with the required replicated differential hereditary reproduction, and fixed Resource→Damage reversal has no post-bootstrap fissions. End goal remains not established; final integrated M1-M5 is not reached.

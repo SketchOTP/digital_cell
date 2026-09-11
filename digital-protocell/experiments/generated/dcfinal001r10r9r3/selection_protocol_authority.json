@@ -1,0 +1,15 @@
+{
+  "breeder_selection": false,
+  "fitness_function": false,
+  "fixed_boundary": true,
+  "founder_multiplicity": 150,
+  "phase_steps": 29556,
+  "population_cap": false,
+  "replicates": 2,
+  "resource_feedback": false,
+  "status": "PASS",
+  "switch_schedule": [
+    29556,
+    59112
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "classification": "NATURAL_D096_VARIANTS_HAVE_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF",
+  "natural_selection_established": false,
+  "opposite_signed_growth_variants": [
+    2,
+    5,
+    17
+  ],
+  "panel_count": 18,
+  "reason": "Feasibility criterion passed.",
+  "reproduction_or_death_difference_without_tradeoff": [
+    1,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    16
+  ]
+}

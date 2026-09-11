@@ -1,0 +1,5 @@
+{
+  "population_material_and_active_energy_closure": "PASS",
+  "reason": "Final integrated M1-M5 run was not authorized after the M4 selection/reversal stop.",
+  "status": "NOT_REACHED_AS_FINAL_INTEGRATED_QUALIFICATION"
+}

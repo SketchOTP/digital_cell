@@ -72,6 +72,21 @@ fn r10r9r2_growth_path_surplus() -> bool {
     )
 }
 
+fn r10r9r3_buffered_reserve_enabled() -> bool {
+    matches!(
+        env::var("DCFINAL001_R10R9R3_RESERVE").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
+
+fn configured_r10_reserve(mesh: &MaterialMesh) -> ReserveParams {
+    if r10r9r3_buffered_reserve_enabled() {
+        ReserveParams::derived_buffered(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area())
+    } else {
+        ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area())
+    }
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
 enum Mode {
     Passive,
@@ -208,6 +223,10 @@ struct IntegratedExpressionBudget {
     m1_structural_turnover: f64,
     surplus_growth_structural_production: f64,
     growth_a_consumed: f64,
+    reserve_a_to_r: f64,
+    reserve_r_to_a: f64,
+    reserve_r_to_w: f64,
+    reserve_r_to_m: f64,
     active_motor_a: f64,
     active_motor_w: f64,
     remesh_topology_structural_net: f64,
@@ -1518,7 +1537,7 @@ fn run_with_expression_gain_policy(
     let contractility = ContractilityParamsV1::default();
     let mut mesh = initial_mesh;
     if r10r9r1_reserve_enabled() {
-        reaction.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
+        reaction.reserve = configured_r10_reserve(&mesh);
     }
     match expression_path {
         ExpressionPath::Off => {}
@@ -1615,6 +1634,10 @@ fn run_with_expression_gain_policy(
         let saved_catalysts = substitute_diagnostic_gain_inputs(&mut mesh, gain_policy);
         let _ = transport_step(&mut mesh, &transport, mechanics.dt);
         let reaction_ledger = reactions_step(&mut mesh, &reaction, mechanics.dt, true, true);
+        expression_budget.reserve_a_to_r += reaction_ledger.reserve.a_to_r;
+        expression_budget.reserve_r_to_a += reaction_ledger.reserve.r_to_a;
+        expression_budget.reserve_r_to_w += reaction_ledger.reserve.r_to_w;
+        expression_budget.reserve_r_to_m += reaction_ledger.reserve.r_to_m;
         expression_budget.m1_structural_build += reaction_ledger.m_produced;
         expression_budget.m1_structural_turnover += reaction_ledger.m_to_w;
         // R10R9R2-only observer counterfactual: retain D091 reserve chemistry
@@ -1629,6 +1652,7 @@ fn run_with_expression_gain_policy(
         reaction.reserve.enable = reserve_was_enabled;
         expression_budget.surplus_growth_structural_production += growth_ledger.m_grown;
         expression_budget.growth_a_consumed += growth_ledger.a_consumed_growth;
+        expression_budget.reserve_r_to_m += growth_ledger.r_consumed_growth;
         restore_diagnostic_gain_inputs(&mut mesh, saved_catalysts);
 
         let frame = observe_continuity_material_frame(&mesh, &mechanics);
@@ -2792,7 +2816,9 @@ fn run_r10r3_integrated_reproduction(
         "mutation_enabled": false,
         "horizon": 14_778,
         "d091_reserve_enabled": r10r9r1_reserve_enabled(),
-        "growth_path": if r10r9r1_reserve_enabled() && r10r9r2_growth_path_surplus() {
+        "growth_path": if r10r9r1_reserve_enabled() && r10r9r3_buffered_reserve_enabled() {
+            "D091V2_BUFFERED_RESERVE_CANONICAL_D088_GROWTH"
+        } else if r10r9r1_reserve_enabled() && r10r9r2_growth_path_surplus() {
             "D088_SURPLUS_A_OBSERVER_COUNTERFACTUAL"
         } else if r10r9r1_reserve_enabled() {
             "D091_RESERVE_FUNDED"
@@ -2801,7 +2827,7 @@ fn run_r10r3_integrated_reproduction(
         },
         "d091_configuration": if r10r9r1_reserve_enabled() {
             serde_json::to_value(
-                ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, fixture(0).area()),
+                configured_r10_reserve(&fixture(0)),
             )
             .unwrap()
         } else {

@@ -954,3 +954,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Classification: `D091_D096V4_COMBINED_REPRODUCTION_NOT_ESTABLISHED`; end goal remains `NOT_ESTABLISHED`; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`.
 - DC-FINAL-001-R10R9R2 is the active diagnostic turn. It seals the missing R10R9R1 raw trajectories and decomposes D091 reserve versus D096-v4 reproduction. The matched 2x2 matrix is A 7/6, B 7/7, C 0/0, D 0/0, with all four conditions 10/10 growth-qualified. The reserve-on failure is outside local apposition range in all ten arms.
 - The observer-only D091-chemistry plus existing D-088 surplus-A growth-path counterfactual reaches 8/10 fissions and 8/10 viable pairs. Terminal classification is `RESERVE_GROWTH_MODE_X_R9_R10_MORPHOGENESIS`; production biology remains unchanged and no successor implementation is authorized in R10R9R2.
+
+## DC-FINAL-001-R10R9R3 bounded M4 result
+
+- D091-v2 is a versioned buffered reserve: A→R, R→A, and R→W remain active; direct R→M is zero; structural growth uses the existing D088 local surplus-A law; historical v1 remains the default/preserved architecture.
+- D091-v2 production reproduction qualifies at 8/10 geometry-valid fissions and 8/10 full-state viable daughter pairs. The 18 natural D096-v4 variant feasibility panel passes the preregistered reciprocal Resource/Damage specialization criterion.
+- Population runs establish natural generation-2+ turnover, but replicated Resource/Damage selection is not established. Fixed Resource→Damage runs have zero post-bootstrap fissions in both mutation-on replicates, so reversal is not established. Final integrated M1-M5 is NOT_REACHED.
+- Final bounded classification: D091V2_REPRODUCTION_AND_RECIPROCAL_SPECIALIZATION_QUALIFIED_SELECTION_AND_REVERSAL_NOT_ESTABLISHED. D087 reserve-on legacy-certifier scope caveat is preserved in d087_reserve_v2.json; PR #44 remains untouched; owner override remains active.

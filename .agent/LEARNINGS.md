@@ -1247,3 +1247,7 @@ An exact-head replay can expose a substantive evidence conflict even when the im
 
 The existing reserve configuration can be composed in the assay without changing D091 ordering or parameters, but the combined D091+D096-v4 organism loses physical reproduction: all ten arms remain growth-qualified yet produce zero fissions and zero viable pairs. Preserve this as a bounded reproduction failure; do not infer specialization or selection failure because those gates were not reached.
 - R10R9R2: adequate total growth does not imply compatible morphogenesis. D091 reserve-on chemistry alone drives all ten R10 parents to outside-range apposition, while the same chemistry paired with the existing D-088 surplus-A growth calculation restores `8/10` fissions and `8/10` viable pairs in an observer-only counterfactual. Preserve this as a diagnostic causal result; do not enable reserve or alter the growth path in production without a new authority decision.
+
+## R10R9R3 learning — buffered reserve restores morphogenesis but not selection
+
+D091-v2 can preserve physical A↔R buffering while leaving structural incorporation on the already-qualified D088 surplus-A law. This restored robust R10 reproduction (8/10, 8/10) and exposed reciprocal Resource/Damage specialization in the natural 18-variant feasibility panel without remapping D096 function 3. Natural generation-2 turnover alone is still insufficient: replicated hereditary differential reproduction and fixed-schedule reversal remain required before claiming selection or the end goal.

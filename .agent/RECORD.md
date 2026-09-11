@@ -1874,3 +1874,12 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
   - Observer-only D091-chemistry plus D-088 surplus-A growth counterfactual: `8/10` fissions, `8/10` viable pairs.
   - Final causal classification: `RESERVE_GROWTH_MODE_X_R9_R10_MORPHOGENESIS`.
   - Production biology delta: `0`; new biological parameters: `0`; selection/reversal/final integration: `NOT_REACHED`; shutdown: `NO — OWNER OVERRIDE ACTIVE`; next execution: `false`.
+
+## DEC-DCFINAL001-R10R9R3-M4-BOUNDARY
+
+- Date: 2026-09-11
+- Starting head: 222a40b44edb2e601ee32ec953819303692619cb.
+- D091-v2 buffered reserve preserves A→R, R→A, and R→W, eliminates direct R→M, and routes structural growth through D088. New biological parameters: 0.
+- Reproduction: 8/10 geometry-valid fissions and 8/10 full-state viable pairs. Natural 18-variant reciprocal specialization feasibility: PASS. Natural generation-2+ turnover: PASS.
+- Population result: Resource and Damage selection are NOT_ESTABLISHED because replicated hereditary differential reproduction was not demonstrated; fixed Resource→Damage reversal is NOT_ESTABLISHED because both mutation-on reversal runs have zero post-bootstrap fissions. Final integrated M1-M5: NOT_REACHED.
+- Classification: D091V2_REPRODUCTION_AND_RECIPROCAL_SPECIALIZATION_QUALIFIED_SELECTION_AND_REVERSAL_NOT_ESTABLISHED; shutdown NO — OWNER OVERRIDE ACTIVE; next execution false; independent Architect acceptance PENDING.

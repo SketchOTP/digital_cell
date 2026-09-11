@@ -1,0 +1,8 @@
+{
+  "mutation_on_maximum_generation": 4,
+  "mutation_on_mutation_events": 25,
+  "mutation_on_post_bootstrap_fissions": 303,
+  "natural_lineage_observed": true,
+  "no_cloning_or_forced_generation": true,
+  "status": "PASS"
+}

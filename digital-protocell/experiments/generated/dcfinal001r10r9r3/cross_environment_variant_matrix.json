@@ -1,0 +1,1295 @@
+{
+  "boundary_mode": "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+  "diagnostic_only": true,
+  "matched_neutral_controls": {
+    "DAMAGE_CHALLENGE": {
+      "campaign_seed": 3213397127566608264,
+      "source": "sealed R10R6 mutation-off campaign"
+    },
+    "RESOURCE_CHALLENGE": {
+      "campaign_seed": 10066037471937554925,
+      "source": "sealed R10R6 mutation-off campaign"
+    }
+  },
+  "phase_steps": 14778,
+  "rows": [
+    {
+      "damage": {
+        "campaign_seed": 4953477925038252607,
+        "phenotype": {
+          "a_produced": 2217801.739817751,
+          "active_a_spent": 871.6638526262918,
+          "active_w_produced": 871.6638526264248,
+          "damage_membrane": 741.6000000000008,
+          "damage_structural": 1236.0,
+          "expression_activation": 8234.049282466432,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2156231.921479031,
+          "fission_attempts": 89250,
+          "growth_material": 268168.4721401028,
+          "n_return": 0.0,
+          "n_uptake": 2482086.5746793477,
+          "organism_step_exposure": 5315100,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2217801.739817751,
+          "reaction_n_consumed": 2217801.739817751,
+          "terminal_multiplicity": 450,
+          "w_produced": 3895160.238854554
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": 0.23514443796751736
+      },
+      "genotype": [
+        0.0,
+        0.25,
+        0.5,
+        0.25
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 0,
+      "relative_growth_signs": {
+        "damage": 1,
+        "resource": 1
+      },
+      "reproduction_death_interaction": false,
+      "resource": {
+        "campaign_seed": 12545898026491999723,
+        "phenotype": {
+          "a_produced": 1448580.1875010224,
+          "active_a_spent": 1014.5580094851284,
+          "active_w_produced": 1014.558009485781,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 6481.600951446324,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1449950.108276536,
+          "fission_attempts": 15300,
+          "growth_material": 174189.0524462861,
+          "n_return": 132323.7431699997,
+          "n_uptake": 1514860.542067437,
+          "organism_step_exposure": 4846350,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 1448580.1875010224,
+          "reaction_n_consumed": 1448580.1875010224,
+          "terminal_multiplicity": 450,
+          "w_produced": 2716335.2324054763
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": 0.1546896960368436
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 9580284656765764932,
+        "phenotype": {
+          "a_produced": 2234535.4298492754,
+          "active_a_spent": 657.6032084981986,
+          "active_w_produced": 657.6032084986572,
+          "damage_membrane": 741.6000000000008,
+          "damage_structural": 1236.0,
+          "expression_activation": 6865.420280091671,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157211.4722152515,
+          "fission_attempts": 150,
+          "growth_material": 213608.67755082774,
+          "n_return": 0.0,
+          "n_uptake": 2499615.8392787743,
+          "organism_step_exposure": 5322600,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2234535.4298492754,
+          "reaction_n_consumed": 2234535.4298492754,
+          "terminal_multiplicity": 450,
+          "w_produced": 3947706.695129086
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": -0.01614993040396788
+      },
+      "genotype": [
+        0.1915471163048518,
+        0.30845288369514823,
+        0.25,
+        0.25
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 1,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 7346053651137287020,
+        "phenotype": {
+          "a_produced": 1535687.1474989853,
+          "active_a_spent": 888.1681309796662,
+          "active_w_produced": 888.168130979815,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5423.0887807722565,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1518910.4362426926,
+          "fission_attempts": 0,
+          "growth_material": 139119.33080517713,
+          "n_return": 61188.91391480415,
+          "n_uptake": 1530983.7837119128,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1535687.1474989853,
+          "reaction_n_consumed": 1535687.1474989853,
+          "terminal_multiplicity": 300,
+          "w_produced": 2861036.7564744926
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.07778556950463462
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 17373593300518664535,
+        "phenotype": {
+          "a_produced": 2233648.8510132176,
+          "active_a_spent": 661.0061106346895,
+          "active_w_produced": 661.0061106330235,
+          "damage_membrane": 748.8000000000009,
+          "damage_structural": 1248.0,
+          "expression_activation": 6923.065025907229,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157086.307390362,
+          "fission_attempts": 6000,
+          "growth_material": 217168.5219645408,
+          "n_return": 0.0,
+          "n_uptake": 2498678.3002248527,
+          "organism_step_exposure": 5363850,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2233648.8510132176,
+          "reaction_n_consumed": 2233648.8510132176,
+          "terminal_multiplicity": 450,
+          "w_produced": 3945075.552631903
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": 0.0002461880231463932
+      },
+      "genotype": [
+        0.22152470693151596,
+        0.25,
+        0.25,
+        0.278475293068484
+      ],
+      "opposite_signed_growth_response": true,
+      "panel_index": 2,
+      "relative_growth_signs": {
+        "damage": 1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 5099503218955592391,
+        "phenotype": {
+          "a_produced": 1531253.6375714738,
+          "active_a_spent": 898.6438249472448,
+          "active_w_produced": 898.643824947464,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5457.628464948265,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1516073.197627286,
+          "fission_attempts": 0,
+          "growth_material": 141483.80203546357,
+          "n_return": 63831.46852007219,
+          "n_uptake": 1529452.2197125368,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1531253.6375714738,
+          "reaction_n_consumed": 1531253.6375714738,
+          "terminal_multiplicity": 300,
+          "w_produced": 2853539.30104041
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.06211161911656868
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 7463751156217785083,
+        "phenotype": {
+          "a_produced": 2234746.2522665,
+          "active_a_spent": 659.7896393668155,
+          "active_w_produced": 659.7896393671499,
+          "damage_membrane": 741.6000000000008,
+          "damage_structural": 1236.0,
+          "expression_activation": 6853.373701664923,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157213.020748352,
+          "fission_attempts": 150,
+          "growth_material": 212900.64985096105,
+          "n_return": 0.0,
+          "n_uptake": 2500058.673015766,
+          "organism_step_exposure": 5285100,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2234746.2522665,
+          "reaction_n_consumed": 2234746.2522665,
+          "terminal_multiplicity": 450,
+          "w_produced": 3948235.882473067
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": -0.019411001582239653
+      },
+      "genotype": [
+        0.22972596289041708,
+        0.2702740371095829,
+        0.25,
+        0.25
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 3,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 12745944602919750502,
+        "phenotype": {
+          "a_produced": 1536742.375580748,
+          "active_a_spent": 888.2089330734829,
+          "active_w_produced": 888.2089330733621,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5417.225734968017,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1519603.631377376,
+          "fission_attempts": 0,
+          "growth_material": 138641.60914226115,
+          "n_return": 60622.67639907199,
+          "n_uptake": 1531354.160781861,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1536742.375580748,
+          "reaction_n_consumed": 1536742.375580748,
+          "terminal_multiplicity": 300,
+          "w_produced": 2862678.8230575807
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.08095236026442
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 16600953684467120532,
+        "phenotype": {
+          "a_produced": 2228784.691399229,
+          "active_a_spent": 711.4164246970566,
+          "active_w_produced": 711.4164246985722,
+          "damage_membrane": 748.8000000000009,
+          "damage_structural": 1248.0,
+          "expression_activation": 7186.216901699583,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2156612.05508199,
+          "fission_attempts": 58500,
+          "growth_material": 235199.52393068993,
+          "n_return": 0.0,
+          "n_uptake": 2495451.23137089,
+          "organism_step_exposure": 5371350,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2228784.691399229,
+          "reaction_n_consumed": 2228784.691399229,
+          "terminal_multiplicity": 450,
+          "w_produced": 3931703.4320489815
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": 0.08329432418821803
+      },
+      "genotype": [
+        0.25,
+        0.12189759567667709,
+        0.25,
+        0.3781024043233229
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 4,
+      "relative_growth_signs": {
+        "damage": 1,
+        "resource": 1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 11957498144635232687,
+        "phenotype": {
+          "a_produced": 1506252.8743788074,
+          "active_a_spent": 908.6984462898955,
+          "active_w_produced": 908.6984462901877,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5623.23999830462,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1498279.6585187858,
+          "fission_attempts": 0,
+          "growth_material": 153753.2616436816,
+          "n_return": 79529.82266979347,
+          "n_uptake": 1521890.6394643004,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1506252.8743788074,
+          "reaction_n_consumed": 1506252.8743788074,
+          "terminal_multiplicity": 300,
+          "w_produced": 2812786.242268502
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": 0.019221957170714593
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 12889121989166536249,
+        "phenotype": {
+          "a_produced": 2233172.452304152,
+          "active_a_spent": 666.4701451401417,
+          "active_w_produced": 666.4701451391752,
+          "damage_membrane": 748.8000000000009,
+          "damage_structural": 1248.0,
+          "expression_activation": 6951.3471934786385,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157031.130917531,
+          "fission_attempts": 22050,
+          "growth_material": 219058.37487871907,
+          "n_return": 0.0,
+          "n_uptake": 2498257.496836456,
+          "organism_step_exposure": 5371350,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2233172.452304152,
+          "reaction_n_consumed": 2233172.452304152,
+          "terminal_multiplicity": 450,
+          "w_produced": 3943722.3569267667
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": 0.00895057186400482
+      },
+      "genotype": [
+        0.25,
+        0.20962865911715983,
+        0.25,
+        0.29037134088284017
+      ],
+      "opposite_signed_growth_response": true,
+      "panel_index": 5,
+      "relative_growth_signs": {
+        "damage": 1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 15593598632956882991,
+        "phenotype": {
+          "a_produced": 1528797.0122180334,
+          "active_a_spent": 887.5847510324946,
+          "active_w_produced": 887.5847510318965,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5473.550544438392,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1514501.5021075953,
+          "fission_attempts": 0,
+          "growth_material": 142698.32068776435,
+          "n_return": 65209.58305248762,
+          "n_uptake": 1528617.9959990538,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1528797.0122180334,
+          "reaction_n_consumed": 1528797.0122180334,
+          "terminal_multiplicity": 300,
+          "w_produced": 2849567.3536716793
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.05406064143593216
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 17412186319078805312,
+        "phenotype": {
+          "a_produced": 2234988.5398369334,
+          "active_a_spent": 701.5635492131164,
+          "active_w_produced": 701.5635492134522,
+          "damage_membrane": 748.8000000000009,
+          "damage_structural": 1248.0,
+          "expression_activation": 7147.306317111936,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157339.624274362,
+          "fission_attempts": 57600,
+          "growth_material": 211141.59707895553,
+          "n_return": 0.0,
+          "n_uptake": 2495894.842093896,
+          "organism_step_exposure": 5352600,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2234988.5398369334,
+          "reaction_n_consumed": 2234988.5398369334,
+          "terminal_multiplicity": 450,
+          "w_produced": 3943477.730101275
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": -0.027512939256325603
+      },
+      "genotype": [
+        0.25,
+        0.25,
+        0.3873357398700395,
+        0.11266426012996048
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 6,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 16897618729959980705,
+        "phenotype": {
+          "a_produced": 1550184.8821201439,
+          "active_a_spent": 910.6033351809981,
+          "active_w_produced": 910.6033351805371,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5733.655246829325,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1542087.018367644,
+          "fission_attempts": 0,
+          "growth_material": 138941.94887766725,
+          "n_return": 57990.860794778906,
+          "n_uptake": 1538916.6733348686,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1550184.8821201439,
+          "reaction_n_consumed": 1550184.8821201439,
+          "terminal_multiplicity": 300,
+          "w_produced": 2876229.789671468
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.07896142459473549
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 2456264359705526704,
+        "phenotype": {
+          "a_produced": 2235042.65912606,
+          "active_a_spent": 717.2181738198899,
+          "active_w_produced": 717.2181738201389,
+          "damage_membrane": 748.8000000000009,
+          "damage_structural": 1248.0,
+          "expression_activation": 7232.972293342593,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157373.9287004084,
+          "fission_attempts": 63000,
+          "growth_material": 210584.79876773595,
+          "n_return": 0.0,
+          "n_uptake": 2494490.230374497,
+          "organism_step_exposure": 5375100,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2235042.65912606,
+          "reaction_n_consumed": 2235042.65912606,
+          "terminal_multiplicity": 450,
+          "w_produced": 3941961.464607325
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": -0.030077470171105448
+      },
+      "genotype": [
+        0.25,
+        0.25,
+        0.4259712274641415,
+        0.07402877253585846
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 7,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 10917900876136024663,
+        "phenotype": {
+          "a_produced": 1553271.4246998788,
+          "active_a_spent": 915.0172918029747,
+          "active_w_produced": 915.0172918032448,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5818.544234845991,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1547222.510156947,
+          "fission_attempts": 0,
+          "growth_material": 138570.87117412666,
+          "n_return": 57556.9182880475,
+          "n_uptake": 1540916.7729522714,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1553271.4246998788,
+          "reaction_n_consumed": 1553271.4246998788,
+          "terminal_multiplicity": 300,
+          "w_produced": 2878978.9531171597
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.08142127838399393
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 7845309170881706238,
+        "phenotype": {
+          "a_produced": 2234900.778212679,
+          "active_a_spent": 664.8194398917414,
+          "active_w_produced": 664.8194398928854,
+          "damage_membrane": 698.4000000000005,
+          "damage_structural": 1164.0,
+          "expression_activation": 6808.186329953043,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157244.4981125398,
+          "fission_attempts": 150,
+          "growth_material": 212115.29840406857,
+          "n_return": 0.0,
+          "n_uptake": 2503159.5855757073,
+          "organism_step_exposure": 4988850,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2234900.778212679,
+          "reaction_n_consumed": 2234900.778212679,
+          "terminal_multiplicity": 450,
+          "w_produced": 3949049.95577509
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": -0.02302821453698331
+      },
+      "genotype": [
+        0.25,
+        0.25764045979040784,
+        0.24235954020959216,
+        0.25
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 8,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 5438637397425875803,
+        "phenotype": {
+          "a_produced": 1537579.097343044,
+          "active_a_spent": 887.1562707325344,
+          "active_w_produced": 887.1562707324823,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5389.793337890703,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1519349.634229748,
+          "fission_attempts": 0,
+          "growth_material": 137871.75827490847,
+          "n_return": 59889.72358333702,
+          "n_uptake": 1531531.9567677362,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1537579.097343044,
+          "reaction_n_consumed": 1537579.097343044,
+          "terminal_multiplicity": 300,
+          "w_produced": 2864490.7316359337
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.08605565953342134
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 2568310124658471099,
+        "phenotype": {
+          "a_produced": 2235136.0478016078,
+          "active_a_spent": 663.3418549607022,
+          "active_w_produced": 663.3418549603347,
+          "damage_membrane": 684.0000000000005,
+          "damage_structural": 1140.0,
+          "expression_activation": 6793.74720858764,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157295.2272146307,
+          "fission_attempts": 150,
+          "growth_material": 210803.1365957937,
+          "n_return": 0.0,
+          "n_uptake": 2503569.8886233396,
+          "organism_step_exposure": 4898850,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2235136.0478016078,
+          "reaction_n_consumed": 2235136.0478016078,
+          "terminal_multiplicity": 450,
+          "w_produced": 3949638.845953719
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": -0.02907183833164537
+      },
+      "genotype": [
+        0.25,
+        0.2673714958193884,
+        0.25,
+        0.2326285041806116
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 9,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 78221497388179986,
+        "phenotype": {
+          "a_produced": 1540129.6109017278,
+          "active_a_spent": 879.8548674053059,
+          "active_w_produced": 879.8548674060951,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5393.137118988495,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1521806.132928766,
+          "fission_attempts": 0,
+          "growth_material": 136951.5470186843,
+          "n_return": 58704.27645662447,
+          "n_uptake": 1532577.1493864837,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1540129.6109017278,
+          "reaction_n_consumed": 1540129.6109017278,
+          "terminal_multiplicity": 300,
+          "w_produced": 2868304.796153892
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.09215568959166408
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 15463254257127472736,
+        "phenotype": {
+          "a_produced": 2235471.7882907307,
+          "active_a_spent": 661.8949914941801,
+          "active_w_produced": 661.8949914940621,
+          "damage_membrane": 619.2,
+          "damage_structural": 1032.0,
+          "expression_activation": 6761.913856229485,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157346.7312936117,
+          "fission_attempts": 0,
+          "growth_material": 209599.92056933104,
+          "n_return": 0.0,
+          "n_uptake": 2498924.485263641,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 2235471.7882907307,
+          "reaction_n_consumed": 2235471.7882907307,
+          "terminal_multiplicity": 300,
+          "w_produced": 3951076.4250176353
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.034613673920663904
+      },
+      "genotype": [
+        0.25,
+        0.27895056195991824,
+        0.25,
+        0.2210494380400818
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 10,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": false,
+      "resource": {
+        "campaign_seed": 16687504111097615053,
+        "phenotype": {
+          "a_produced": 1542203.339550212,
+          "active_a_spent": 878.2716840659468,
+          "active_w_produced": 878.2716840662576,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5378.100880794094,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1523139.3193914562,
+          "fission_attempts": 0,
+          "growth_material": 135905.58481655509,
+          "n_return": 57542.55918883102,
+          "n_uptake": 1533344.5184354158,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1542203.339550212,
+          "reaction_n_consumed": 1542203.339550212,
+          "terminal_multiplicity": 300,
+          "w_produced": 2871768.0731344875
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.09908931578849435
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 13835227215040300938,
+        "phenotype": {
+          "a_produced": 2238436.1513289004,
+          "active_a_spent": 586.3897803477448,
+          "active_w_produced": 586.3897803484801,
+          "damage_membrane": 619.2,
+          "damage_structural": 1032.0,
+          "expression_activation": 6340.062057928986,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157659.814442066,
+          "fission_attempts": 0,
+          "growth_material": 199309.1796846674,
+          "n_return": 0.0,
+          "n_uptake": 2501912.3523535966,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 2238436.1513289004,
+          "reaction_n_consumed": 2238436.1513289004,
+          "terminal_multiplicity": 300,
+          "w_produced": 3963528.0641690264
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.08201130894025212
+      },
+      "genotype": [
+        0.25,
+        0.3766262872518023,
+        0.1233737127481977,
+        0.25
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 11,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": false,
+      "resource": {
+        "campaign_seed": 11102235061934369838,
+        "phenotype": {
+          "a_produced": 1530827.5168759604,
+          "active_a_spent": 821.7419156149447,
+          "active_w_produced": 821.7419156156051,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5002.677614189999,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1497947.4009559036,
+          "fission_attempts": 0,
+          "growth_material": 127112.94535115578,
+          "n_return": 50277.98474198591,
+          "n_uptake": 1511387.083798518,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1530827.5168759604,
+          "reaction_n_consumed": 1530827.5168759604,
+          "terminal_multiplicity": 300,
+          "w_produced": 2866136.2144429875
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.15737524162068317
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 2473569408449480117,
+        "phenotype": {
+          "a_produced": 2235493.93870157,
+          "active_a_spent": 660.6325393128766,
+          "active_w_produced": 660.6325393130012,
+          "damage_membrane": 619.2,
+          "damage_structural": 1032.0,
+          "expression_activation": 6760.89940188977,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157347.409096644,
+          "fission_attempts": 0,
+          "growth_material": 209493.771376897,
+          "n_return": 0.0,
+          "n_uptake": 2498846.2362253866,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 2235493.93870157,
+          "reaction_n_consumed": 2235493.93870157,
+          "terminal_multiplicity": 300,
+          "w_produced": 3951144.7943275436
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.03510258144802285
+      },
+      "genotype": [
+        0.27910228286424915,
+        0.25,
+        0.25,
+        0.22089771713575085
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 12,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": false,
+      "resource": {
+        "campaign_seed": 13321306028002960809,
+        "phenotype": {
+          "a_produced": 1542231.1199420874,
+          "active_a_spent": 879.4011336887312,
+          "active_w_produced": 879.4011336887474,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5377.920780339051,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1523157.452014976,
+          "fission_attempts": 0,
+          "growth_material": 135891.9963059291,
+          "n_return": 57528.890469714,
+          "n_uptake": 1533356.6556224127,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1542231.1199420874,
+          "reaction_n_consumed": 1542231.1199420874,
+          "terminal_multiplicity": 300,
+          "w_produced": 2871812.4306113343
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.0991793932817924
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 3098381568148541754,
+        "phenotype": {
+          "a_produced": 2236029.9073281568,
+          "active_a_spent": 641.4677738100061,
+          "active_w_produced": 641.4677738108488,
+          "damage_membrane": 619.2,
+          "damage_structural": 1032.0,
+          "expression_activation": 6631.506061296271,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157387.8954649298,
+          "fission_attempts": 0,
+          "growth_material": 207882.8047805812,
+          "n_return": 0.0,
+          "n_uptake": 2500459.326547973,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 2236029.9073281568,
+          "reaction_n_consumed": 2236029.9073281568,
+          "terminal_multiplicity": 300,
+          "w_produced": 3954430.014179284
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.04252245603399344
+      },
+      "genotype": [
+        0.29783495874649246,
+        0.25,
+        0.2021650412535075,
+        0.25
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 13,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": false,
+      "resource": {
+        "campaign_seed": 15759373397008711196,
+        "phenotype": {
+          "a_produced": 1540211.8762597812,
+          "active_a_spent": 853.5607554914517,
+          "active_w_produced": 853.5607554916647,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5253.674307251851,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1516497.5570509122,
+          "fission_attempts": 0,
+          "growth_material": 134404.60697270458,
+          "n_return": 56826.7966354454,
+          "n_uptake": 1531761.2417585147,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1540211.8762597812,
+          "reaction_n_consumed": 1540211.8762597812,
+          "terminal_multiplicity": 300,
+          "w_produced": 2871390.885954582
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.1090392157732148
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 16484256874093399504,
+        "phenotype": {
+          "a_produced": 2236902.7538185283,
+          "active_a_spent": 619.1418286637182,
+          "active_w_produced": 619.1418286635571,
+          "damage_membrane": 619.2,
+          "damage_structural": 1032.0,
+          "expression_activation": 6529.676922367957,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157480.4425488645,
+          "fission_attempts": 0,
+          "growth_material": 204948.8497387611,
+          "n_return": 0.0,
+          "n_uptake": 2501023.6768752607,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 2236902.7538185283,
+          "reaction_n_consumed": 2236902.7538185283,
+          "terminal_multiplicity": 300,
+          "w_produced": 3957732.24562144
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.05603582030918529
+      },
+      "genotype": [
+        0.3243411332921808,
+        0.25,
+        0.17565886670781922,
+        0.25
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 14,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": false,
+      "resource": {
+        "campaign_seed": 2256790143039014566,
+        "phenotype": {
+          "a_produced": 1539396.3596788805,
+          "active_a_spent": 854.1253010906778,
+          "active_w_produced": 854.1253010910575,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5167.2911030107,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1512296.9255059168,
+          "fission_attempts": 0,
+          "growth_material": 132109.1885025509,
+          "n_return": 54850.74662084521,
+          "n_uptake": 1528193.5890088996,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1539396.3596788805,
+          "reaction_n_consumed": 1539396.3596788805,
+          "terminal_multiplicity": 300,
+          "w_produced": 2872673.8105364204
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.12425541919332597
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 171249778737512200,
+        "phenotype": {
+          "a_produced": 2237619.420851193,
+          "active_a_spent": 611.7007375005672,
+          "active_w_produced": 611.7007375017406,
+          "damage_membrane": 619.2,
+          "damage_structural": 1032.0,
+          "expression_activation": 6442.952744969515,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157558.722858067,
+          "fission_attempts": 0,
+          "growth_material": 202316.38801200126,
+          "n_return": 0.0,
+          "n_uptake": 2501337.711019356,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 2237619.420851193,
+          "reaction_n_consumed": 2237619.420851193,
+          "terminal_multiplicity": 300,
+          "w_produced": 3960447.582745312
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.06816055083407371
+      },
+      "genotype": [
+        0.3476902840534058,
+        0.25,
+        0.1523097159465942,
+        0.25
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 15,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": false,
+      "resource": {
+        "campaign_seed": 3070714004775579828,
+        "phenotype": {
+          "a_produced": 1536328.8216770722,
+          "active_a_spent": 833.321628903797,
+          "active_w_produced": 833.3216289030188,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5092.313867406526,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1506649.8804561389,
+          "fission_attempts": 0,
+          "growth_material": 129939.21205785249,
+          "n_return": 52788.838304633624,
+          "n_uptake": 1521542.6533489192,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1536328.8216770722,
+          "reaction_n_consumed": 1536328.8216770722,
+          "terminal_multiplicity": 300,
+          "w_produced": 2870892.1686670515
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.13864007429160538
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 12745944602919750502,
+        "phenotype": {
+          "a_produced": 2233990.4116161177,
+          "active_a_spent": 662.0101619943263,
+          "active_w_produced": 662.0101619945981,
+          "damage_membrane": 748.8000000000009,
+          "damage_structural": 1248.0,
+          "expression_activation": 6890.735923079253,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157199.127768719,
+          "fission_attempts": 1800,
+          "growth_material": 215330.6697894693,
+          "n_return": 0.0,
+          "n_uptake": 2499067.8653600123,
+          "organism_step_exposure": 5360100,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2233990.4116161177,
+          "reaction_n_consumed": 2233990.4116161177,
+          "terminal_multiplicity": 450,
+          "w_produced": 3946373.8966298583
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": -0.008218688081528943
+      },
+      "genotype": [
+        0.3556133005275902,
+        0.1443866994724098,
+        0.25,
+        0.25
+      ],
+      "opposite_signed_growth_response": false,
+      "panel_index": 16,
+      "relative_growth_signs": {
+        "damage": -1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 7463751156217785083,
+        "phenotype": {
+          "a_produced": 1532930.254957555,
+          "active_a_spent": 894.8642206316281,
+          "active_w_produced": 894.8642206320363,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5439.020315893034,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1517156.0683591072,
+          "fission_attempts": 0,
+          "growth_material": 140409.64144047556,
+          "n_return": 62694.90249633254,
+          "n_uptake": 1530051.807942701,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1532930.254957555,
+          "reaction_n_consumed": 1532930.254957555,
+          "terminal_multiplicity": 300,
+          "w_produced": 2856734.694383777
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.06923217091648116
+      }
+    },
+    {
+      "damage": {
+        "campaign_seed": 5099503218955592391,
+        "phenotype": {
+          "a_produced": 2229589.0569897,
+          "active_a_spent": 692.8939440745255,
+          "active_w_produced": 692.8939440738859,
+          "damage_membrane": 748.8000000000009,
+          "damage_structural": 1248.0,
+          "expression_activation": 7054.37355116792,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2157118.3643469317,
+          "fission_attempts": 41850,
+          "growth_material": 228528.21783461515,
+          "n_return": 0.0,
+          "n_uptake": 2497350.5408390807,
+          "organism_step_exposure": 5378850,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 2229589.0569897,
+          "reaction_n_consumed": 2229589.0569897,
+          "terminal_multiplicity": 450,
+          "w_produced": 3936365.9992129533
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 150,
+        "relative_growth_material_vs_neutral": 0.05256727207509485
+      },
+      "genotype": [
+        0.5,
+        0.0,
+        0.25,
+        0.25
+      ],
+      "opposite_signed_growth_response": true,
+      "panel_index": 17,
+      "relative_growth_signs": {
+        "damage": 1,
+        "resource": -1
+      },
+      "reproduction_death_interaction": true,
+      "resource": {
+        "campaign_seed": 17373593300518664535,
+        "phenotype": {
+          "a_produced": 1509896.3039943941,
+          "active_a_spent": 904.0751331850582,
+          "active_w_produced": 904.0751331856995,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 5556.647534352349,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 1501351.7150308834,
+          "fission_attempts": 0,
+          "growth_material": 150643.6096633647,
+          "n_return": 76319.00314454666,
+          "n_uptake": 1523388.958060244,
+          "organism_step_exposure": 4433400,
+          "physical_deaths": 0,
+          "physical_fissions": 0,
+          "reaction_f_consumed": 1509896.3039943941,
+          "reaction_n_consumed": 1509896.3039943941,
+          "terminal_multiplicity": 300,
+          "w_produced": 2821601.796870495
+        },
+        "physical_deaths": 0,
+        "physical_fissions": 0,
+        "relative_growth_material_vs_neutral": -0.001391755628714675
+      }
+    }
+  ]
+}

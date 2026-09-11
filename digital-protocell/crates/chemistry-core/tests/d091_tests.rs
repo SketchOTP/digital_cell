@@ -44,6 +44,7 @@ fn reserve_params() -> ReserveParams {
         k_growth: 0.3,
         r_max: 2.0,
         store_horizon_mult: 4.0,
+        architecture: chemistry_core::metabolic_reserve::ReserveArchitecture::DirectReserveGrowthV1,
     }
 }
 
@@ -118,6 +119,31 @@ fn reserve_disabled_matches_default_path_identity() {
     let p = ReserveParams::default();
     assert!(!p.enable);
     assert_eq!(p.k_store, 0.0);
+}
+
+#[test]
+fn buffered_reserve_has_explicit_identity_and_no_direct_r_to_m() {
+    let mut mesh = tiny_mesh();
+    stamp_reserve_equation(&mut mesh);
+    mesh.interior.a = 2.0;
+    mesh.interior.r = 0.8;
+    let mut react = ReactionParams::default();
+    react.reserve = ReserveParams::derived_buffered(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
+    let growth = GrowthParams {
+        y_g: 0.9,
+        enable_growth: true,
+    };
+    let ledger = growth_step(&mut mesh, &react, &growth, 0.2);
+    assert_eq!(
+        react.reserve.architecture,
+        chemistry_core::metabolic_reserve::ReserveArchitecture::BufferedReserveCanonicalGrowthV2
+    );
+    assert_eq!(ledger.r_consumed_growth, 0.0);
+    assert!(ledger.a_consumed_growth >= 0.0);
+    assert!(react
+        .reserve
+        .candidate_identity_suffix()
+        .contains("buffered_canonical_d088_growth_v2"));
 }
 
 #[test]

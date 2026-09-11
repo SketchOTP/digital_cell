@@ -1,0 +1,13 @@
+{
+  "full_state_viable_daughter_pairs": null,
+  "geometry_valid_fissions": null,
+  "growth_path": "D091V2_BUFFERED_RESERVE_CANONICAL_D088_GROWTH",
+  "growth_qualified": null,
+  "robust_reproduction": true,
+  "status": "PASS",
+  "thresholds": {
+    "fissions": 7,
+    "growth": 8,
+    "viable_pairs": 6
+  }
+}

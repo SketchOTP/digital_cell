@@ -225,6 +225,14 @@ name = "dcfinal001_r10r9r2_reproduction"
 path = "../../examples/dcfinal001_r10r9r2_reproduction.rs"
 
 [[example]]
+name = "dcfinal001_r10r9r3_d091v2_reproduction"
+path = "../../examples/dcfinal001_r10r9r3_d091v2_reproduction.rs"
+
+[[example]]
+name = "dcfinal001_r10r9r3_evolution"
+path = "../../examples/dcfinal001_r10r9r3_evolution.rs"
+
+[[example]]
 name = "dcfinal001_r5r1_strain_contrast"
 path = "../../examples/dcfinal001_r5r1_strain_contrast.rs"
 

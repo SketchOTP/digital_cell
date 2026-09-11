@@ -1,0 +1,13 @@
+{
+  "forbidden_controls": [
+    "fitness function",
+    "breeder",
+    "forced birth",
+    "forced death",
+    "population cap",
+    "protected mutant",
+    "function-3 remap"
+  ],
+  "new_biological_parameters": 0,
+  "status": "PASS"
+}

@@ -1,0 +1,416 @@
+{
+  "all_mutation_off_campaigns_zero_mutations": true,
+  "campaigns": [
+    {
+      "closure_residuals": {
+        "active_energy": 6.075424607843161e-10,
+        "f": 1.7229467630386353e-08,
+        "n": 1.3969838619232178e-09
+      },
+      "deaths_by_genotype": {},
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "fissions_by_parent_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+      },
+      "flags": {
+        "breeder_selection": false,
+        "exchangeability_compression": true,
+        "fitness_function": null,
+        "population_cap": null,
+        "resource_feedback": false
+      },
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "phase_steps": 29556,
+      "phenotype_by_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": {
+          "a_produced": 3023635.3889145395,
+          "active_a_spent": 1547.6418099158636,
+          "active_w_produced": 1547.641809915256,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 10577.046349767956,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2999085.606945168,
+          "fission_attempts": 0,
+          "growth_material": 274130.1781372865,
+          "n_return": 116295.83040981364,
+          "n_uptake": 3075127.9147842876,
+          "organism_step_exposure": 8866800,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 3023635.3889145395,
+          "reaction_n_consumed": 3023635.3889145395,
+          "terminal_multiplicity": 300,
+          "w_produced": 5627267.567587918
+        }
+      },
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "reserve_ledger": {
+        "reserve_a_to_r": 526564.3721125983,
+        "reserve_active_steps": 8866800,
+        "reserve_funded_growth": 0.0,
+        "reserve_r_to_a": 406184.5716405313,
+        "reserve_r_to_m": 0.0,
+        "reserve_r_to_w": 103081.37306374748
+      },
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      }
+    },
+    {
+      "closure_residuals": {
+        "active_energy": 5.538822733797133e-10,
+        "f": 4.190951585769653e-08,
+        "n": 3.5390257835388184e-08
+      },
+      "deaths_by_genotype": {},
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "fissions_by_parent_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "flags": {
+        "breeder_selection": false,
+        "exchangeability_compression": true,
+        "fitness_function": null,
+        "population_cap": null,
+        "resource_feedback": false
+      },
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "maximum_generation": 2,
+      "mutation_enabled": false,
+      "mutation_opportunities": 600,
+      "mutations": 0,
+      "phase_steps": 29556,
+      "phenotype_by_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": {
+          "a_produced": 4452057.9438536,
+          "active_a_spent": 1107.9815312860183,
+          "active_w_produced": 1107.9815312854644,
+          "damage_membrane": 1641.6000000000065,
+          "damage_structural": 2736.0,
+          "expression_activation": 14174.863009948785,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 4373916.783643675,
+          "fission_attempts": 150,
+          "growth_material": 420537.5307694505,
+          "n_return": 0.0,
+          "n_uptake": 4718743.938263961,
+          "organism_step_exposure": 11923950,
+          "physical_deaths": 0,
+          "physical_fissions": 300,
+          "reaction_f_consumed": 4452057.9438536,
+          "reaction_n_consumed": 4452057.9438536,
+          "terminal_multiplicity": 450,
+          "w_produced": 8067405.699901902
+        }
+      },
+      "physical_deaths": 0,
+      "physical_fissions": 300,
+      "post_bootstrap_physical_fissions": 150,
+      "replicate": 1,
+      "reserve_ledger": {
+        "reserve_a_to_r": 797596.9788949654,
+        "reserve_active_steps": 11923950,
+        "reserve_funded_growth": 0.0,
+        "reserve_r_to_a": 605507.6100946168,
+        "reserve_r_to_m": 0.0,
+        "reserve_r_to_w": 138469.6235399875
+      },
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 450
+      }
+    },
+    {
+      "closure_residuals": {
+        "active_energy": 8.540155249647796e-10,
+        "f": 2.7939677238464355e-09,
+        "n": 8.195638656616211e-08
+      },
+      "deaths_by_genotype": {},
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "fissions_by_parent_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+      },
+      "flags": {
+        "breeder_selection": false,
+        "exchangeability_compression": true,
+        "fitness_function": null,
+        "population_cap": null,
+        "resource_feedback": false
+      },
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "phase_steps": 29556,
+      "phenotype_by_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": {
+          "a_produced": 7466762.261006554,
+          "active_a_spent": 2335.1870232599913,
+          "active_w_produced": 2335.1870232608453,
+          "damage_membrane": 1224.0000000000039,
+          "damage_structural": 2040.0,
+          "expression_activation": 24730.318275131653,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 7388794.81763132,
+          "fission_attempts": 144900,
+          "growth_material": 698490.3256363734,
+          "n_return": 116295.83040981364,
+          "n_uptake": 7855688.714843255,
+          "organism_step_exposure": 17733600,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 7466762.261006554,
+          "reaction_n_consumed": 7466762.261006554,
+          "terminal_multiplicity": 300,
+          "w_produced": 13658205.097830951
+        }
+      },
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 1,
+      "reserve_ledger": {
+        "reserve_a_to_r": 1317189.4012747111,
+        "reserve_active_steps": 17733600,
+        "reserve_funded_growth": 0.0,
+        "reserve_r_to_a": 1019629.3292175847,
+        "reserve_r_to_m": 0.0,
+        "reserve_r_to_w": 243641.63063724656
+      },
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      }
+    },
+    {
+      "closure_residuals": {
+        "active_energy": 6.075424607843161e-10,
+        "f": 1.7229467630386353e-08,
+        "n": 1.3969838619232178e-09
+      },
+      "deaths_by_genotype": {},
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE"
+      ],
+      "fissions_by_parent_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+      },
+      "flags": {
+        "breeder_selection": false,
+        "exchangeability_compression": true,
+        "fitness_function": null,
+        "population_cap": null,
+        "resource_feedback": false
+      },
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "phase_steps": 29556,
+      "phenotype_by_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": {
+          "a_produced": 3023635.3889145395,
+          "active_a_spent": 1547.6418099158636,
+          "active_w_produced": 1547.641809915256,
+          "damage_membrane": 0.0,
+          "damage_structural": 0.0,
+          "expression_activation": 10577.046349767956,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 2999085.606945168,
+          "fission_attempts": 0,
+          "growth_material": 274130.1781372865,
+          "n_return": 116295.83040981364,
+          "n_uptake": 3075127.9147842876,
+          "organism_step_exposure": 8866800,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 3023635.3889145395,
+          "reaction_n_consumed": 3023635.3889145395,
+          "terminal_multiplicity": 300,
+          "w_produced": 5627267.567587918
+        }
+      },
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "reserve_ledger": {
+        "reserve_a_to_r": 526564.3721125983,
+        "reserve_active_steps": 8866800,
+        "reserve_funded_growth": 0.0,
+        "reserve_r_to_a": 406184.5716405313,
+        "reserve_r_to_m": 0.0,
+        "reserve_r_to_w": 103081.37306374748
+      },
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      }
+    },
+    {
+      "closure_residuals": {
+        "active_energy": 5.538822733797133e-10,
+        "f": 4.190951585769653e-08,
+        "n": 3.5390257835388184e-08
+      },
+      "deaths_by_genotype": {},
+      "environment_sequence": [
+        "DAMAGE_CHALLENGE"
+      ],
+      "fissions_by_parent_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "flags": {
+        "breeder_selection": false,
+        "exchangeability_compression": true,
+        "fitness_function": null,
+        "population_cap": null,
+        "resource_feedback": false
+      },
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "maximum_generation": 2,
+      "mutation_enabled": false,
+      "mutation_opportunities": 600,
+      "mutations": 0,
+      "phase_steps": 29556,
+      "phenotype_by_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": {
+          "a_produced": 4452057.9438536,
+          "active_a_spent": 1107.9815312860183,
+          "active_w_produced": 1107.9815312854644,
+          "damage_membrane": 1641.6000000000065,
+          "damage_structural": 2736.0,
+          "expression_activation": 14174.863009948785,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 4373916.783643675,
+          "fission_attempts": 150,
+          "growth_material": 420537.5307694505,
+          "n_return": 0.0,
+          "n_uptake": 4718743.938263961,
+          "organism_step_exposure": 11923950,
+          "physical_deaths": 0,
+          "physical_fissions": 300,
+          "reaction_f_consumed": 4452057.9438536,
+          "reaction_n_consumed": 4452057.9438536,
+          "terminal_multiplicity": 450,
+          "w_produced": 8067405.699901902
+        }
+      },
+      "physical_deaths": 0,
+      "physical_fissions": 300,
+      "post_bootstrap_physical_fissions": 150,
+      "replicate": 2,
+      "reserve_ledger": {
+        "reserve_a_to_r": 797596.9788949654,
+        "reserve_active_steps": 11923950,
+        "reserve_funded_growth": 0.0,
+        "reserve_r_to_a": 605507.6100946168,
+        "reserve_r_to_m": 0.0,
+        "reserve_r_to_w": 138469.6235399875
+      },
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 450
+      }
+    },
+    {
+      "closure_residuals": {
+        "active_energy": 8.540155249647796e-10,
+        "f": 2.7939677238464355e-09,
+        "n": 8.195638656616211e-08
+      },
+      "deaths_by_genotype": {},
+      "environment_sequence": [
+        "RESOURCE_CHALLENGE",
+        "DAMAGE_CHALLENGE"
+      ],
+      "fissions_by_parent_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 150
+      },
+      "flags": {
+        "breeder_selection": false,
+        "exchangeability_compression": true,
+        "fitness_function": null,
+        "population_cap": null,
+        "resource_feedback": false
+      },
+      "initial_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      },
+      "maximum_generation": 1,
+      "mutation_enabled": false,
+      "mutation_opportunities": 300,
+      "mutations": 0,
+      "phase_steps": 29556,
+      "phenotype_by_genotype": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": {
+          "a_produced": 7466762.261006554,
+          "active_a_spent": 2335.1870232599913,
+          "active_w_produced": 2335.1870232608453,
+          "damage_membrane": 1224.0000000000039,
+          "damage_structural": 2040.0,
+          "expression_activation": 24730.318275131653,
+          "expression_material": 0.0,
+          "f_return": 0.0,
+          "f_uptake": 7388794.81763132,
+          "fission_attempts": 144900,
+          "growth_material": 698490.3256363734,
+          "n_return": 116295.83040981364,
+          "n_uptake": 7855688.714843255,
+          "organism_step_exposure": 17733600,
+          "physical_deaths": 0,
+          "physical_fissions": 150,
+          "reaction_f_consumed": 7466762.261006554,
+          "reaction_n_consumed": 7466762.261006554,
+          "terminal_multiplicity": 300,
+          "w_produced": 13658205.097830951
+        }
+      },
+      "physical_deaths": 0,
+      "physical_fissions": 150,
+      "post_bootstrap_physical_fissions": 0,
+      "replicate": 2,
+      "reserve_ledger": {
+        "reserve_a_to_r": 1317189.4012747111,
+        "reserve_active_steps": 17733600,
+        "reserve_funded_growth": 0.0,
+        "reserve_r_to_a": 1019629.3292175847,
+        "reserve_r_to_m": 0.0,
+        "reserve_r_to_w": 243641.63063724656
+      },
+      "terminal_genotype_frequencies": {
+        "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000": 300
+      }
+    }
+  ],
+  "status": "PASS"
+}

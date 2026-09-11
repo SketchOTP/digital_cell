@@ -50,10 +50,21 @@ fn r10r9r1_reserve_enabled() -> bool {
     )
 }
 
+fn r10r9r3_buffered_reserve_enabled() -> bool {
+    matches!(
+        env::var("DCFINAL001_R10R9R3_RESERVE").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
+
 fn r10r9r1_reaction_params(mesh: &MaterialMesh) -> ReactionParams {
     let mut reaction = ReactionParams::default();
     if r10r9r1_reserve_enabled() {
-        reaction.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
+        reaction.reserve = if r10r9r3_buffered_reserve_enabled() {
+            ReserveParams::derived_buffered(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area())
+        } else {
+            ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area())
+        };
     }
     reaction
 }
@@ -3017,6 +3028,16 @@ pub fn run_r10r9r1_evolution() {
     run_r10_evolution_with_horizon(
         "/tmp/dcfinal001_r10r9r1_evolution.json",
         "DC-FINAL-001-R10R9R1-EXACT-D091-D096V4-COMPOSITION-SPECIALIZATION-SELECTION-AND-END-GOAL-CLOSURE-001",
+        R10R7_SELECTION_STEPS,
+        D096ExpressionPath::V4FiniteBudgetCentered,
+        PopulationBoundaryMode::FixedConcentrationBoundary,
+    );
+}
+
+pub fn run_r10r9r3_evolution() {
+    run_r10_evolution_with_horizon(
+        "/tmp/dcfinal001_r10r9r3_evolution.json",
+        "DC-FINAL-001-R10R9R3-D091V2-BUFFERED-RESERVE-CANONICAL-GROWTH-REPRODUCTION-SPECIALIZATION-AND-M4-CLOSURE-001",
         R10R7_SELECTION_STEPS,
         D096ExpressionPath::V4FiniteBudgetCentered,
         PopulationBoundaryMode::FixedConcentrationBoundary,

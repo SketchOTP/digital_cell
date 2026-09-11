@@ -1,0 +1,12 @@
+{
+  "all_A_to_R_positive": true,
+  "all_R_to_A_positive": true,
+  "all_R_to_M_zero": true,
+  "all_R_to_W_positive": true,
+  "all_reserve_funded_growth_zero": true,
+  "campaign_count": 12,
+  "max_abs_F_closure_residual": 1.4901161193847656e-07,
+  "max_abs_N_closure_residual": 1.6391277313232422e-07,
+  "max_abs_active_energy_residual": 1.1791598808486015e-09,
+  "status": "PASS"
+}

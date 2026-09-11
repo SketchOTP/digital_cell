@@ -1,0 +1,13 @@
+{
+  "note": "Population output records the same D091V2 configuration and R10 population boundary protocol.",
+  "organism_biology_delta": 0,
+  "population_path": "dcfinal001_r4_evolution.rs run_r10r9r3_evolution",
+  "reproduction_path": "dcfinal001_r5_v4_neck.rs with D091V2 opt-in",
+  "shared_mechanics": [
+    "R8",
+    "R8R1",
+    "R9",
+    "R10"
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,5 @@
+{
+  "panel_feasibility": "NATURAL_D096_VARIANTS_HAVE_ENVIRONMENT_DEPENDENT_REPRODUCTIVE_TRADEOFF",
+  "reason": "The preregistered 18-variant reciprocal feasibility panel passes, but replicated population selection was not established.",
+  "status": "NOT_ESTABLISHED"
+}

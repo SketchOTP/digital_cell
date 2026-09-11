@@ -127,7 +127,10 @@ pub fn growth_step(
     let n = mesh.n();
     let area = mesh.area().max(1e-6);
 
-    if react.reserve.enable {
+    if react.reserve.enable
+        && react.reserve.architecture
+            == crate::metabolic_reserve::ReserveArchitecture::DirectReserveGrowthV1
+    {
         // D-091: growth funded by R only. No instantaneous A surplus coupling.
         if !crate::metabolic_reserve::reserve_schema_load_ok(mesh, &react.reserve) {
             return led;

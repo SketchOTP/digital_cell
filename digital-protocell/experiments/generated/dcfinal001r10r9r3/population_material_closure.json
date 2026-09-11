@@ -1,0 +1,22 @@
+{
+  "fixed_boundary_reference_parity": {
+    "delivered_f_abs_delta": 0.0,
+    "delivered_n_abs_delta": 0.0,
+    "dt": 0.02,
+    "f_in_candidate": 0.45317953127939137,
+    "f_in_reference": 0.45317953127939137,
+    "interior_f_abs_delta": 0.0,
+    "interior_n_abs_delta": 0.0,
+    "mode": "one_reference_volume_fixed_boundary_vs_direct_boundary_transport",
+    "n_in_candidate": 2.0762710589760687,
+    "n_in_reference": 2.0762710589760687,
+    "pass": true,
+    "target_f_concentration": 1.0,
+    "target_n_concentration": 2.75,
+    "tolerance": 1e-12
+  },
+  "max_abs_F_residual": 1.4901161193847656e-07,
+  "max_abs_N_residual": 1.6391277313232422e-07,
+  "source_sink_ledger_present": true,
+  "status": "PASS"
+}

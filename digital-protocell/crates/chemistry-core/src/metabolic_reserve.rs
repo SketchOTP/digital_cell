@@ -14,6 +14,23 @@ pub const EQUATION_VERSION_METABOLIC_RESERVE: &str =
 pub const FIELD_SCHEMA_METABOLIC_RESERVE: &str =
     "mesh_vertices_edges_catalyst_composition_reserve_v1";
 
+/// Versioned interpretation of reserve-funded structural growth.
+///
+/// D091-v1 is retained as the historical direct R→M architecture. D091-v2
+/// keeps reserve as an A↔R/R→W buffer while structural incorporation remains
+/// owned by the canonical D-088 A-surplus growth law.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum ReserveArchitecture {
+    DirectReserveGrowthV1,
+    BufferedReserveCanonicalGrowthV2,
+}
+
+impl Default for ReserveArchitecture {
+    fn default() -> Self {
+        Self::DirectReserveGrowthV1
+    }
+}
+
 /// Charging timescale multipliers on the maintenance horizon (at most three).
 pub const STORE_HORIZON_CANDIDATES: [f64; 3] = [2.0, 4.0, 8.0];
 
@@ -34,6 +51,9 @@ pub struct ReserveParams {
     pub r_max: f64,
     /// Selected charging horizon multiplier (2/4/8 × maintenance horizon).
     pub store_horizon_mult: f64,
+    /// Explicit equation/schema identity for reserve growth semantics.
+    #[serde(default)]
+    pub architecture: ReserveArchitecture,
 }
 
 impl Default for ReserveParams {
@@ -49,6 +69,7 @@ impl Default for ReserveParams {
             k_growth: 0.5,
             r_max: 2.0,
             store_horizon_mult: 4.0,
+            architecture: ReserveArchitecture::DirectReserveGrowthV1,
         }
     }
 }
@@ -102,12 +123,43 @@ impl ReserveParams {
             k_growth,
             r_max,
             store_horizon_mult: store_mult,
+            architecture: ReserveArchitecture::DirectReserveGrowthV1,
         }
     }
 
+    /// D091-v2: preserve all derived reserve parameters while routing
+    /// structural incorporation through canonical D-088 surplus-A growth.
+    pub fn derived_buffered(
+        t_replace: f64,
+        t_maint: f64,
+        a_median: f64,
+        a_q25: f64,
+        store_mult: f64,
+        fission_a_cost: f64,
+        area: f64,
+    ) -> Self {
+        let mut params = Self::derived(
+            t_replace,
+            t_maint,
+            a_median,
+            a_q25,
+            store_mult,
+            fission_a_cost,
+            area,
+        );
+        params.architecture = ReserveArchitecture::BufferedReserveCanonicalGrowthV2;
+        params
+    }
+
     pub fn candidate_identity_suffix(&self) -> String {
+        let architecture = match self.architecture {
+            ReserveArchitecture::DirectReserveGrowthV1 => "direct_r_to_m_v1",
+            ReserveArchitecture::BufferedReserveCanonicalGrowthV2 => {
+                "buffered_canonical_d088_growth_v2"
+            }
+        };
         format!(
-            "reserve:k_store={:.6e}:k_rel={:.6e}:k_loss={:.6e}:Ks={:.6}:Kl={:.6}:Kr={:.6}:Kg={:.6}:Rmax={:.6}:H={:.3}",
+            "reserve:architecture={architecture}:k_store={:.6e}:k_rel={:.6e}:k_loss={:.6e}:Ks={:.6}:Kl={:.6}:Kr={:.6}:Kg={:.6}:Rmax={:.6}:H={:.3}",
             self.k_store,
             self.k_release,
             self.k_r_loss,

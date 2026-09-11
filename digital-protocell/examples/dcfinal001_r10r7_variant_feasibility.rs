@@ -3,6 +3,8 @@ mod r10r7_evolution {
 }
 
 fn main() {
+    std::env::set_var("DCFINAL001_R10R9R1_RESERVE", "1");
+    std::env::set_var("DCFINAL001_R10R9R3_RESERVE", "1");
     let args = std::env::args().collect::<Vec<_>>();
     let panel = args
         .windows(2)

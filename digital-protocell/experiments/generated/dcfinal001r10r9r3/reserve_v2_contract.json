@@ -1,0 +1,16 @@
+{
+  "direct_R_to_M": false,
+  "historical_v1_preserved": true,
+  "parameters_changed": 0,
+  "preserves": [
+    "A_to_R",
+    "R_to_A",
+    "R_to_W"
+  ],
+  "source_files": [
+    "crates/chemistry-core/src/metabolic_reserve.rs",
+    "crates/chemistry-core/src/mesh_growth.rs"
+  ],
+  "structural_growth": "existing D088 local surplus-A law",
+  "version": "BufferedReserveCanonicalGrowthV2"
+}

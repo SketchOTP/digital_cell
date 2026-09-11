@@ -1,0 +1,6 @@
+{
+  "candidate_identity_versioned": true,
+  "serde_default": "v1",
+  "v1_default": "DirectReserveGrowthV1",
+  "v2_opt_in": "BufferedReserveCanonicalGrowthV2"
+}
