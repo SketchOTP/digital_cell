@@ -1,4 +1,4 @@
-name: DC-FINAL-001-R10R8 D096 specialization contract
+name: DC-FINAL-001-R10R9R1 exact D091 D096-v4 composition
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   actions: read
 
 jobs:
-  r10r8-diagnostic:
+  r10r9r1-composition:
     runs-on: ubuntu-latest
     timeout-minutes: 300
     steps:
@@ -19,28 +19,26 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.sha }}
 
-      - name: Verify R10R7 authority and diagnostic-only scope
+      - name: Verify exact entry authority and bounded scope
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          start=ecf4befc00683301e4ab15f0b5302b4acc33d9be
+          start=a4fa097ecae14dd1da432b8319f2636baf791d35
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           git merge-base --is-ancestor "$start" HEAD
           git diff --check
           python3 - <<'PY'
           import subprocess
-          start = "ecf4befc00683301e4ab15f0b5302b4acc33d9be"
+          start = "a4fa097ecae14dd1da432b8319f2636baf791d35"
           allowed = (
               ".agent/",
               ".github/workflows/dc-final-001-r10r8.yml",
+              ".github/workflows/dc-final-001-r10r9r1.yml",
               "digital-protocell/crates/regulatory-core/Cargo.toml",
-              "digital-protocell/examples/dcfinal001_r10r8_diagnostics.rs",
               "digital-protocell/examples/dcfinal001_r4_evolution.rs",
               "digital-protocell/examples/dcfinal001_r5_v4_neck.rs",
               "digital-protocell/examples/dcfinal001_r10r9r1_",
-              ".github/workflows/dc-final-001-r10r9r1.yml",
-              "digital-protocell/experiments/generated/dcfinal001r10r8/",
               "digital-protocell/experiments/generated/dcfinal001r10r9/",
               "digital-protocell/experiments/generated/dcfinal001r10r9r1/",
           )
@@ -55,7 +53,6 @@ jobs:
               for p in changed
           ), changed
           PY
-          gh run view 34531048042 --repo SketchOTP/digital_cell --json conclusion,headSha --jq '.conclusion + " " + .headSha' | grep '^success ecf4befc00683301e4ab15f0b5302b4acc33d9be$'
           gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d == {"state":"OPEN","isDraft":True,"mergedAt":None}, d'
 
       - name: Install sanctioned Rust toolchain
@@ -63,82 +60,77 @@ jobs:
           rustup toolchain install 1.89.0 --profile minimal --no-self-update
           rustup component add --toolchain 1.89.0 rustfmt
 
-      - name: Replay historical D096 reserve contract
+      - name: Compile R10R9R1 harnesses
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 check --locked -q -p regulatory-core \
+            --example dcfinal001_r10r9r1_reproduction \
+            --example dcfinal001_r10r9r1_variant_feasibility \
+            --example dcfinal001_r10r9r1_evolution
+
+      - name: Run matched reserve-off and reserve-on reproduction
         working-directory: digital-protocell
         run: |
           set -euo pipefail
-          cargo +1.89.0 run --locked --release -q -p regulatory-core --example dcfinal001_r10r8_diagnostics -- /tmp/r10r8_historical.json
+          env -u DCFINAL001_R10R9R1_RESERVE cargo +1.89.0 run --locked --release -q -p regulatory-core --example dcfinal001_r10r9r1_reproduction -- --output /tmp/r10r9r1-off.json
+          DCFINAL001_R10R9R1_RESERVE=1 cargo +1.89.0 run --locked --release -q -p regulatory-core --example dcfinal001_r10r9r1_reproduction -- --output /tmp/r10r9r1-on.json
           python3 - <<'PY'
           import json
-          data = json.load(open("/tmp/r10r8_historical.json"))
-          rows = data["historical_test_replay"]
-          assert all(r["h_reserve_effect"] > 0 and r["b_material_effect"] > 0 for r in rows)
-          off_h = [
-              r for r in data["rows"]
-              if r["environment"] == "H" and not r["reserve_enabled"]
-              and not r["function3_baseline"]
-          ]
-          assert off_h and all(abs(r["reserve_change"]) < 1e-12 for r in off_h)
-          normal = {
-              (tuple(r["genotype"]), r["environment"], r["seed"]): r
-              for r in data["rows"]
-              if r["reserve_enabled"] and not r["function3_baseline"]
-          }
-          baseline = {
-              (tuple(r["genotype"]), r["environment"], r["seed"]): r
-              for r in data["rows"]
-              if r["reserve_enabled"] and r["function3_baseline"]
-          }
-          assert normal.keys() == baseline.keys()
-          assert any(
-              abs(baseline[k]["final_material"] - normal[k]["final_material"]) > 1e-9
-              and abs(baseline[k]["reserve_change"] - normal[k]["reserve_change"]) > 1e-9
-              for k in normal
-          )
+          off = json.load(open('/tmp/r10r9r1-off.json'))
+          on = json.load(open('/tmp/r10r9r1-on.json'))
+          assert off['counts'] == {'growth_qualified': 10, 'geometry_valid_fissions': 7, 'full_state_viable_daughter_pairs': 7}, off['counts']
+          assert off['robust_reproduction'] is True
+          assert on['counts'] == {'growth_qualified': 10, 'geometry_valid_fissions': 0, 'full_state_viable_daughter_pairs': 0}, on['counts']
+          assert on['robust_reproduction'] is False
+          assert on['d091_reserve_enabled'] is True
           PY
 
-      - name: Replay current reserve-on V4 M1 boundary
+      - name: Replay canonical reserve boundary controls
         working-directory: digital-protocell
         run: |
           set -euo pipefail
-          DCDEV020R9R3_CONTRACT=ConservativeV3 DCDEV020R9R3_RESERVE=1 DCDEV020M1REPLAN002R1_V4=1 cargo +1.89.0 run --locked --release -q -p phase1-certifier --bin phase1_certification -- --output /tmp/reserve-on-v4
+          for reserve in 0 1; do
+            DCDEV020R9R3_CONTRACT=ConservativeV3 DCDEV020R9R3_RESERVE="$reserve" DCDEV020M1REPLAN002R1_V4=1 \
+              cargo +1.89.0 run --locked --release -q -p phase1-certifier --bin phase1_certification -- --output "/tmp/r10r9r1-cert-$reserve"
+          done
           python3 - <<'PY'
           import json
-          m = json.load(open("/tmp/reserve-on-v4/manifest.json"))
-          vector = [m[f"gate{i}"]["pass"] for i in range(8)]
-          assert vector == [True, True, False, True, True, True, True, True], vector
+          for reserve in ('0','1'):
+              r = json.load(open(f'/tmp/r10r9r1-cert-{reserve}/certification/report.json'))
+              assert r['gate0']['pass'] is True
+              assert r['gate2']['pass'] is False
+              assert r['phase1_status'] == 'PHASE1_NOT_REPRODUCIBLE'
           PY
 
       - name: Preserve accepted upstream surfaces
         working-directory: digital-protocell
         run: |
-          set -euo pipefail
           cargo +1.89.0 test --locked -q -p regulatory-core
           cargo +1.89.0 test --locked -q -p chemistry-core --test d096_tests --test r8_v4_closure_consistency_tests --test r4_contract_topology_tests --test d088_tests --test d091_tests
           cargo +1.89.0 test --locked -q -p evolution-harness
           cargo +1.89.0 test --locked -q -p m2-lifeform-runtime --bin digital-cell-final-lifeform
           cargo +1.89.0 check --locked -q -p godot-bridge
 
-      - name: Validate R10R8 evidence and formatting
+      - name: Validate R10R9R1 evidence
         run: |
           set -euo pipefail
-          rustfmt +1.89.0 --edition 2021 --check digital-protocell/examples/dcfinal001_r10r8_diagnostics.rs
+          rustfmt +1.89.0 --edition 2021 --check digital-protocell/examples/dcfinal001_r10r9r1_reproduction.rs digital-protocell/examples/dcfinal001_r10r9r1_variant_feasibility.rs digital-protocell/examples/dcfinal001_r10r9r1_evolution.rs
           python3 - <<'PY'
           import json
           from pathlib import Path
-          root = Path("digital-protocell/experiments/generated/dcfinal001r10r8")
-          for path in root.rglob("*.json"):
+          root = Path('digital-protocell/experiments/generated/dcfinal001r10r9r1')
+          for path in root.rglob('*.json'):
               json.loads(path.read_text())
-          q = json.loads((root / "qualification.json").read_text())
-          assert q["primary_classification"] == "D096_FOUR_FUNCTION_SPECIALIZATION_DEPENDS_ON_UNQUALIFIED_RESERVE_PHYSIOLOGY"
-          assert q["next_execution_started"] is False
+          q = json.loads((root / 'qualification.json').read_text())
+          assert q['final_classification'] == 'D091_D096V4_COMBINED_REPRODUCTION_NOT_ESTABLISHED'
+          assert q['next_execution_started'] is False
           PY
           git diff --check
 
-      - name: Upload exact-head R10R8 evidence
+      - name: Upload exact-head R10R9R1 evidence
         uses: actions/upload-artifact@v4
         with:
-          name: dcfinal001r10r8
+          name: dcfinal001r10r9r1
           if-no-files-found: error
           retention-days: 90
-          path: digital-protocell/experiments/generated/dcfinal001r10r8
+          path: digital-protocell/experiments/generated/dcfinal001r10r9r1

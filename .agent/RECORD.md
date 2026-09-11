@@ -1861,3 +1861,9 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - No production biology or phase-order change was made. D091-v2, reserve-on M1 requalification, combined reproduction, specialization, selection, reversal, and final M1-M5 remain `NOT_REACHED`.
 - Final classification: `R10R8_ENTRY_SEAL_MISMATCH_REQUIRES_ARCHITECT_RECONCILIATION`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; next execution `false`; independent Architect acceptance `PENDING`.
 - Final scoped replay: workflow `34541035958` on head `1ea2fd19be3fab4fba491ef9775dcbfc0fb3a663`; scope/authority checks passed, then the reserve-on V4 assertion failed with `[true,true,false,true,true,true,true,true]`.
+
+- Date: `2026-09-10`
+- Status: `R10R9R1_BOUNDED_NEGATIVE_COMBINED_REPRODUCTION`
+- Reserve-off control: `7/10` physical fissions, `7/10` full-state viable pairs; reserve-on exact D091+D096-v4 composition: `0/10`, `0/10`, with `10/10` growth-qualified.
+- D091 parameters and phase ordering unchanged; D096-v4 unchanged; no production biology delta. Natural-variant specialization, selection, reversal, and final integrated M1-M5 are `NOT_REACHED`.
+- Final classification: `D091_D096V4_COMBINED_REPRODUCTION_NOT_ESTABLISHED`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.

@@ -1,0 +1,1 @@
+{"evidence_root":"experiments/generated/dcfinal001r10r9r1","source_head":"a4fa097ecae14dd1da432b8319f2636baf791d35","local_checks":["cargo check --locked -p regulatory-core --example dcfinal001_r10r9r1_reproduction","reserve-on reproduction","reserve-off control","reserve-on/off phase1 certifier replay"],"scientific_artifact":"TO_BE_SEALED_BY_EXACT_HEAD_CI"}

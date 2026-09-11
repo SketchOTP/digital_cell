@@ -1,0 +1,9 @@
+{
+  "final_classification":"D091_D096V4_COMBINED_REPRODUCTION_NOT_ESTABLISHED",
+  "stop_boundary":"FIRST_FAILED_COMBINED_REPRODUCTION_GATE",
+  "selection":"NOT_REACHED",
+  "reversal":"NOT_REACHED",
+  "final_integrated_m1_m5":"NOT_REACHED",
+  "shutdown_recommended":"NO_OWNER_OVERRIDE_ACTIVE",
+  "next_execution_started":false
+}

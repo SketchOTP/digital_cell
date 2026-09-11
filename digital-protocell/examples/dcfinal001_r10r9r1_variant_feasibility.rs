@@ -1,0 +1,16 @@
+mod r10r9r1_evolution {
+    include!("dcfinal001_r4_evolution.rs");
+}
+
+fn main() {
+    let args = std::env::args().collect::<Vec<_>>();
+    let panel = args
+        .windows(2)
+        .find(|pair| pair[0] == "--panel")
+        .map(|pair| pair[1].clone())
+        .unwrap_or_else(|| "/tmp/dcfinal001_r10r7_panel.json".to_string());
+    r10r9r1_evolution::run_r10r7_variant_feasibility(
+        "/tmp/dcfinal001_r10r9r1_variant_feasibility.json",
+        &panel,
+    );
+}

@@ -1,0 +1,7 @@
+{
+  "r10r9_gate0_stop": "ACCEPTED",
+  "prior_d091_phase_order_repair": "CANCELLED",
+  "sole_authorization": "R10R9R1",
+  "stop_rule": "STOP_AT_FIRST_FAILED_BOUNDARY",
+  "final_scope": "COMBINED_D091_D096V4_REPRODUCTION_FAILED; DOWNSTREAM_NOT_REACHED"
+}

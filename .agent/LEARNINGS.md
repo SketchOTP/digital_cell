@@ -1242,3 +1242,7 @@ A four-function genotype is not an active four-function phenotype when one endpo
 
 An exact-head replay can expose a substantive evidence conflict even when the implementation and workflow execute successfully. The R10R8 reserve-on V4 manifest (`6/8`, vector `[true,false,true,true,true,true,true,false]`) does not match the CI certifier (`7/8`, vector `[true,true,false,true,true,true,true,true]`), which matches the canonical reserve-OFF vector. Preserve both observations and stop; do not infer a D091 phase-order cause until the entry seal is reconciled.
 - After the R10R9 evidence path was added to the CI scope allowlist, workflow `34541035958` passed the scope checks and reproduced the same vector conflict. The failure is therefore substantive and reproducible.
+
+## R10R9R1 learning — exact reserve composition is not production-qualified
+
+The existing reserve configuration can be composed in the assay without changing D091 ordering or parameters, but the combined D091+D096-v4 organism loses physical reproduction: all ten arms remain growth-qualified yet produce zero fissions and zero viable pairs. Preserve this as a bounded reproduction failure; do not infer specialization or selection failure because those gates were not reached.

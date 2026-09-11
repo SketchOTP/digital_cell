@@ -1,0 +1,7 @@
+{
+  "reserve_on": {"growth_qualified":10,"geometry_valid_fissions":0,"full_state_viable_daughter_pairs":0,"robust":false},
+  "reserve_off_control": {"growth_qualified":10,"geometry_valid_fissions":7,"full_state_viable_daughter_pairs":7,"robust":true},
+  "horizon":14778,
+  "mutation_enabled":false,
+  "stop_gate":"COMBINED_D091_D096V4_REPRODUCTION"
+}

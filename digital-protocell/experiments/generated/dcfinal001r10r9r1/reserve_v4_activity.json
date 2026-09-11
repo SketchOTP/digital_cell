@@ -1,0 +1,8 @@
+{
+  "reserve_on_certifier": "7/8",
+  "reserve_on_vector": [true,true,false,true,true,true,true,true],
+  "reserve_off_reference": "7/8",
+  "reserve_off_vector": [true,true,false,true,true,true,true,true],
+  "reserve_on_gate2_failure": "D087_D086_REPRODUCTION_FAILURE",
+  "source": "local phase1-certifier replay plus exact-head CI authority"
+}

@@ -20,6 +20,7 @@ use chemistry_core::mesh_self_contact::{mechanics_step_with_local_self_contact, 
 use chemistry_core::mesh_transport::{
     mean_occupancy, permeability, transport_step, TransportParams,
 };
+use chemistry_core::metabolic_reserve::ReserveParams;
 use chemistry_core::planar_ring_topology::{remesh_preserving_simple, PlanarRingTopology};
 use regulatory_core::PlasticityStateV1;
 use serde::{Deserialize, Serialize};
@@ -41,6 +42,21 @@ const FOUNDER_MULTIPLICITY: u64 = 150;
 const REPLICATES: u64 = 2;
 const REPRODUCTION_STEPS: usize = 12_000;
 const DAUGHTER_CONTINUATION_STEPS: usize = 3_000;
+
+fn r10r9r1_reserve_enabled() -> bool {
+    matches!(
+        env::var("DCFINAL001_R10R9R1_RESERVE").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
+
+fn r10r9r1_reaction_params(mesh: &MaterialMesh) -> ReactionParams {
+    let mut reaction = ReactionParams::default();
+    if r10r9r1_reserve_enabled() {
+        reaction.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
+    }
+    reaction
+}
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
 enum PopulationBoundaryMode {
@@ -153,6 +169,12 @@ struct CampaignLedger {
     m1_structural_turnover: f64,
     growth_a_consumed: f64,
     growth_w_produced: f64,
+    reserve_a_to_r: f64,
+    reserve_r_to_a: f64,
+    reserve_r_to_w: f64,
+    reserve_r_to_m: f64,
+    reserve_funded_growth: f64,
+    reserve_active_steps: u64,
     mechanics_topology_structural_net: f64,
     bootstrap_fission_closure_structural_input: f64,
     post_bootstrap_fission_closure_structural_input: f64,
@@ -397,8 +419,8 @@ fn lawful_parent_template() -> (MaterialMesh, f64, usize) {
     perturb_seed_1(&mut mesh);
     let birth_mass = mesh.total_structural_mass();
     let mechanics = MechParams::default();
-    let reaction = ReactionParams::default();
     let transport = TransportParams::default();
+    let reaction = ReactionParams::default();
     let growth = GrowthParams {
         y_g: 0.9,
         enable_growth: true,
@@ -2417,7 +2439,6 @@ fn r10_advance_phase(
 ) {
     let allocation = AllocationParams::default();
     let mechanics = MechParams::default();
-    let reaction = ReactionParams::default();
     let transport = TransportParams::default();
     let growth = GrowthParams {
         y_g: 0.9,
@@ -2494,6 +2515,7 @@ fn r10_advance_phase(
         let mut survivors = Vec::new();
         for mut cohort in cohorts.drain(..) {
             let count = cohort.count as f64;
+            let reaction = r10r9r1_reaction_params(&cohort.mesh);
             let genotype = cohort
                 .mesh
                 .finite_allocation
@@ -2510,6 +2532,19 @@ fn r10_advance_phase(
             ledger.growth_material += grown.m_grown * count;
             ledger.growth_a_consumed += grown.a_consumed_growth * count;
             ledger.growth_w_produced += grown.w_from_growth * count;
+            ledger.reserve_a_to_r += reactions.reserve.a_to_r * count;
+            ledger.reserve_r_to_a += reactions.reserve.r_to_a * count;
+            ledger.reserve_r_to_w += reactions.reserve.r_to_w * count;
+            ledger.reserve_r_to_m += reactions.reserve.r_to_m * count;
+            ledger.reserve_funded_growth += grown.r_consumed_growth * count;
+            if reactions.reserve.a_to_r.abs()
+                + reactions.reserve.r_to_a.abs()
+                + reactions.reserve.r_to_w.abs()
+                + grown.r_consumed_growth.abs()
+                > 1e-12
+            {
+                ledger.reserve_active_steps += cohort.count;
+            }
             {
                 let observer = phenotype_ledger(ledger, genotype);
                 observer.reaction_n_consumed += reactions.n_consumed * count;
@@ -2770,6 +2805,12 @@ fn r10_campaign(
         "environment_sequence": sequence.iter().map(|environment| environment.label()).collect::<Vec<_>>(),
         "phase_steps": phase_steps,
         "population_boundary_mode": boundary_mode.label(),
+        "d091_reserve_enabled": r10r9r1_reserve_enabled(),
+        "d091_configuration": if r10r9r1_reserve_enabled() {
+            serde_json::to_value(r10r9r1_reaction_params(template).reserve).unwrap()
+        } else {
+            serde_json::Value::Null
+        },
         "expression_path": expression_path.label(),
         "founder_multiplicity": founder_multiplicity,
         "template_fission_step": template_step,
@@ -2966,6 +3007,16 @@ pub fn run_r10r7_evolution() {
     run_r10_evolution_with_horizon(
         "/tmp/dcfinal001_r10r7_evolution.json",
         "DC-FINAL-001-R10R7-NATURAL-VARIANT-CROSS-ENVIRONMENT-FEASIBILITY-TWO-WINDOW-SELECTION-REVERSAL-AND-END-GOAL-CLOSURE-001",
+        R10R7_SELECTION_STEPS,
+        D096ExpressionPath::V4FiniteBudgetCentered,
+        PopulationBoundaryMode::FixedConcentrationBoundary,
+    );
+}
+
+pub fn run_r10r9r1_evolution() {
+    run_r10_evolution_with_horizon(
+        "/tmp/dcfinal001_r10r9r1_evolution.json",
+        "DC-FINAL-001-R10R9R1-EXACT-D091-D096V4-COMPOSITION-SPECIALIZATION-SELECTION-AND-END-GOAL-CLOSURE-001",
         R10R7_SELECTION_STEPS,
         D096ExpressionPath::V4FiniteBudgetCentered,
         PopulationBoundaryMode::FixedConcentrationBoundary,

@@ -1,0 +1,9 @@
+{
+  "sealed_r10r8_handoff": [true,false,true,true,true,true,true,false],
+  "pushed_r10r8_evidence": [true,true,false,true,true,true,true,false],
+  "authoritative_reserve_on_ci": [true,true,false,true,true,true,true,true],
+  "canonical_reserve_off_ci": [true,true,false,true,true,true,true,true],
+  "actual_difference": "GATE_7_STANDALONE_LINUX_RUNTIME_ONLY",
+  "vector_parity": true,
+  "d091_phase_order_delta": 0
+}

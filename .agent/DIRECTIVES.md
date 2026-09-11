@@ -1281,3 +1281,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Gate 0 failed under CI run `34540249273` on head `3fd48ba3bf81832fa7ec4630f93e16f4146804b2`: the reserve-on V4 certifier returned `[true,true,false,true,true,true,true,true]` (`7/8`), not sealed R10R8's `[true,false,true,true,true,true,true,false]` (`6/8`).
 - Per directive, stop before phase-order implementation. This is `R10R8_ENTRY_SEAL_MISMATCH_REQUIRES_ARCHITECT_RECONCILIATION`; no successor execution starts.
 - Final scoped replay is `34541035958` on head `1ea2fd19be3fab4fba491ef9775dcbfc0fb3a663`; scope/authority checks passed before the substantive vector assertion failed.
+
+## DC-FINAL-001-R10R9R1 — bounded combined-physiology result
+
+- The authorized opt-in composition used unchanged D091 reserve parameters and unchanged D096-v4, with no D091 phase-order or chemistry-core modification.
+- The reserve-off R10R5 control reproduced `7/10` fissions and `7/10` viable pairs. The reserve-on combined organism reproduced `0/10` fissions and `0/10` viable pairs, despite `10/10` growth qualification.
+- Per the directive, stop before specialization and population gates. Those gates and final integration are explicitly `NOT_REACHED`.

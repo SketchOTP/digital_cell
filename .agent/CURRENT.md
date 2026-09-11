@@ -944,3 +944,11 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Sealed R10R8 recorded reserve-on V4 `6/8`, vector `[true,false,true,true,true,true,true,false]`; the CI certifier produced `7/8`, vector `[true,true,false,true,true,true,true,true]`, identical to the canonical reserve-OFF V4 vector.
 - This is a substantive authority/evidence conflict, not a workflow-plumbing issue. Reserve-on M1, phase-order causality, D091-v2, combined reproduction, specialization, selection, reversal, and final M1-M5 are `NOT_REACHED` pending Architect reconciliation. End goal remains `NOT_ESTABLISHED`; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`.
 - Final scoped replay: workflow `34541035958` on governance head `1ea2fd19be3fab4fba491ef9775dcbfc0fb3a663` passed scope validation and failed only at the reserve-on V4 assertion, confirming the mismatch.
+
+## DC-FINAL-001-R10R9R1 — exact D091+D096-v4 composition stop
+
+- R10R9 Gate 0 was accepted; the stale R10R8 provenance was superseded for planning, with no D091 phase-order change.
+- The opt-in harness used the exact existing `ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area())` configuration and unchanged D096-v4.
+- Reserve-off control: 10/10 growth-qualified, 7/10 geometry-valid fissions, 7/10 full-state viable pairs. Reserve-on composition: 10/10 growth-qualified, 0/10 fissions, 0/10 viable pairs.
+- Stop at the first failed boundary: combined D091+D096-v4 reproduction is not established. Reference specialization, natural-variant specialization, selection, reversal, and final M1-M5 are `NOT_REACHED`.
+- Classification: `D091_D096V4_COMBINED_REPRODUCTION_NOT_ESTABLISHED`; end goal remains `NOT_ESTABLISHED`; shutdown remains `NO — OWNER OVERRIDE ACTIVE`; next execution is `false`.

@@ -23,6 +23,7 @@ use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
 use chemistry_core::mesh_self_contact::{mechanics_step_with_local_self_contact, polygon_simple};
 use chemistry_core::mesh_topology::{find_local_pinch, local_rebond_range};
 use chemistry_core::mesh_transport::{transport_step, TransportParams};
+use chemistry_core::metabolic_reserve::ReserveParams;
 use chemistry_core::planar_ring_topology::{remesh_preserving_simple, PlanarRingTopology};
 use regulatory_core::continuity::{derive_local_mapping, ContinuityNetworkV1, TopologyEventV1};
 use regulatory_core::contractility::{
@@ -56,6 +57,13 @@ const PERTURBATIONS: [(&str, f64); 10] = [
     ("c", -0.05),
     ("env", -0.08),
 ];
+
+fn r10r9r1_reserve_enabled() -> bool {
+    matches!(
+        env::var("DCFINAL001_R10R9R1_RESERVE").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
 enum Mode {
@@ -1493,7 +1501,7 @@ fn run_with_expression_gain_policy(
     gain_policy: DiagnosticGainPolicy,
 ) -> RunResult {
     let mechanics = MechParams::default();
-    let reaction = ReactionParams::default();
+    let mut reaction = ReactionParams::default();
     let transport = TransportParams::default();
     let growth = GrowthParams {
         y_g: 0.9,
@@ -1502,6 +1510,9 @@ fn run_with_expression_gain_policy(
     let fission = FissionParams::default();
     let contractility = ContractilityParamsV1::default();
     let mut mesh = initial_mesh;
+    if r10r9r1_reserve_enabled() {
+        reaction.reserve = ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, mesh.area());
+    }
     match expression_path {
         ExpressionPath::Off => {}
         ExpressionPath::D096V1 => mesh
@@ -2755,6 +2766,15 @@ fn run_r10r3_integrated_reproduction(
         "expression_contract": expression_contract,
         "mutation_enabled": false,
         "horizon": 14_778,
+        "d091_reserve_enabled": r10r9r1_reserve_enabled(),
+        "d091_configuration": if r10r9r1_reserve_enabled() {
+            serde_json::to_value(
+                ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, fixture(0).area()),
+            )
+            .unwrap()
+        } else {
+            serde_json::Value::Null
+        },
         "counts": {
             "growth_qualified": growth,
             "geometry_valid_fissions": fissions,

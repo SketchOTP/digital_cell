@@ -1,0 +1,7 @@
+{
+  "enabled": true,
+  "source": "ReserveParams::derived",
+  "parameters": {"max_r":80.0,"k_release":0.025,"k_store":0.0125,"k_store_half":0.5,"r_max":1.0,"store_horizon_mult":2.0,"k_low":0.195,"k_r":0.15,"k_r_loss":0.002166084939249829,"enable":true},
+  "phase_order_changed": false,
+  "parameter_delta": 0
+}

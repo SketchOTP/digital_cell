@@ -2601,3 +2601,10 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - No D091 phase-order candidate was executed. D091-v2, reserve-on M1 acceptance, combined D091+D096 reproduction, reciprocal specialization, turnover, selection, reversal, and final integration remain `NOT_REACHED`.
 - Classification: `R10R8_ENTRY_SEAL_MISMATCH_REQUIRES_ARCHITECT_RECONCILIATION`. End goal remains `NOT_ESTABLISHED`; owner override remains active; next execution is `false`.
 - The corrected-scope CI run `34541035958` confirms this is not an allowlist or workflow-plumbing failure: the reserve-on certifier itself returns `7/8` with the canonical reserve-OFF vector.
+
+## DC-FINAL-001-R10R9R1 bounded negative — exact D091+D096-v4 composition
+
+- Harness compilation passed for the reserve-on reproduction, natural-variant, and evolution wrappers.
+- Reserve-on used the exact existing D091 derived configuration; reserve-off was a matched control. Reserve-off: `10/10` growth, `7/10` fissions, `7/10` viable pairs. Reserve-on: `10/10` growth, `0/10` fissions, `0/10` viable pairs.
+- The first failed authorized boundary is combined reserve-on reproduction. No specialization, selection, reversal, or final integrated run was executed.
+- Final classification: `D091_D096V4_COMBINED_REPRODUCTION_NOT_ESTABLISHED`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.
