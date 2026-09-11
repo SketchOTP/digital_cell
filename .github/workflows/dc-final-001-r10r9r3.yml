@@ -28,6 +28,7 @@ jobs:
           git diff --check
           python3 - <<'PY'
           import subprocess
+          start = '222a40b44edb2e601ee32ec953819303692619cb'
           allowed = (
               '.agent/',
               '.github/workflows/dc-final-001-r10r9r3.yml',
