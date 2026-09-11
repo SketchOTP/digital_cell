@@ -241,6 +241,10 @@ name = "dcfinal001_r10r9r5_evolution"
 path = "../../examples/dcfinal001_r10r9r5_evolution.rs"
 
 [[example]]
+name = "dcfinal001_r10r9r5_shared_kernel_reproduction"
+path = "../../examples/dcfinal001_r10r9r5_shared_kernel_reproduction.rs"
+
+[[example]]
 name = "dcfinal001_r10r9r5_contract_tests"
 path = "../../examples/dcfinal001_r10r9r5_contract_tests.rs"
 

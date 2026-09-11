@@ -758,6 +758,14 @@ fn fixture(index: usize) -> MaterialMesh {
     mesh
 }
 
+/// Expose the exact frozen ten-arm production fixtures to the shared R10
+/// lifecycle harness.  The fixture construction is unchanged; this is an
+/// execution-boundary adapter, not a new biological input.
+pub fn r10_reproduction_fixture(index: usize) -> MaterialMesh {
+    assert!(index < PERTURBATIONS.len());
+    fixture(index)
+}
+
 fn geometry(mesh: &MaterialMesh) -> Value {
     json!({
         "simple": polygon_simple(&mesh.vertices),

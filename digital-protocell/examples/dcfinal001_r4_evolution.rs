@@ -3439,6 +3439,113 @@ pub fn run_r10r5_evolution() {
     );
 }
 
+/// Requalify the composed organism through the same repaired production step
+/// used by the population harness.  This deliberately uses one organism per
+/// frozen perturbation arm, so it is a bounded kernel/reproduction check and
+/// not the ecological population campaign.
+pub fn run_r10r9r5_shared_kernel_reproduction() {
+    let output = PathBuf::from("/tmp/dcfinal001_r10r9r5_shared_kernel_reproduction.json");
+    let allocation = AllocationParams::default();
+    let mut arms = Vec::new();
+    for index in 0..10 {
+        let mut mesh = r10_closure::r10_reproduction_fixture(index);
+        let birth_mass = mesh.total_structural_mass();
+        mesh.enable_finite_allocation_v4(AllocationGenotype::neutral(), &allocation);
+        let cohort = Cohort {
+            plasticity: Some(PlasticityStateV1::new(mesh.n())),
+            mesh,
+            count: 1,
+            generation: 0,
+            birth_mass,
+            id: 1,
+        };
+        let mut cohorts = vec![cohort];
+        let mut world = OpenMedium::new(Environment::Resource, 1.0);
+        let initial = snapshot(&cohorts, &world, 0);
+        let mut ledger = CampaignLedger::default();
+        let mut next_id = 2;
+        let mut trajectory = vec![initial];
+        let mut prefix = None;
+        let accepted = r10_advance_phase(
+            &mut cohorts,
+            &mut world,
+            Environment::Resource,
+            0,
+            false,
+            splitmix64((index + 1) as u64),
+            &mut next_id,
+            &mut ledger,
+            &mut trajectory,
+            &mut prefix,
+            14_778,
+            D096ExpressionPath::V4FiniteBudgetCentered,
+            PopulationBoundaryMode::FixedConcentrationBoundary,
+        );
+        let terminal = snapshot(&cohorts, &world, ledger.accepted_steps as usize);
+        let terminal_structural_mass = cohorts
+            .iter()
+            .map(|cohort| cohort.mesh.total_structural_mass() * cohort.count as f64)
+            .sum::<f64>();
+        let fission = ledger.physical_fissions > 0;
+        arms.push(json!({
+            "arm": index + 1,
+            "accepted": accepted,
+            "accepted_steps": ledger.accepted_steps,
+            "birth_mass": birth_mass,
+            "terminal_structural_mass": terminal_structural_mass,
+            "rejected_steps": ledger.rejected_steps,
+            "numerical_invalid": ledger.numerical_invalid,
+            "physical_fissions": ledger.physical_fissions,
+            "valid_simple_fissions": ledger.valid_simple_fissions,
+            "full_state_daughter_continuation": fission && cohorts.len() >= 2 && cohorts.iter().all(|cohort| {
+                cohort.mesh.physical_runtime_valid()
+                    && cohort.mesh.lifecycle_invariants_hold()
+                    && cohort.plasticity.as_ref().map(|state| state.adaptation.len() == cohort.mesh.n()).unwrap_or(false)
+            }),
+            "post_bootstrap_physical_fissions": ledger.post_bootstrap_physical_fissions,
+            "mutation_opportunities": ledger.mutation_opportunities,
+            "terminal": terminal,
+            "world": world,
+            "ledger": ledger,
+        }));
+    }
+    let fissions = arms
+        .iter()
+        .map(|arm| arm["physical_fissions"].as_u64().unwrap_or(0))
+        .sum::<u64>();
+    let viable = arms
+        .iter()
+        .filter(|arm| arm["full_state_daughter_continuation"] == true)
+        .count();
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive": "DC-FINAL-001-R10R9R5-CANONICAL-LIFECYCLE-AND-EVOLUTION-EVIDENCE-RECOVERY-001",
+            "kernel": "R10_CANONICAL_POPULATION_STEP_V1",
+            "configuration": {
+                "expression_path": D096ExpressionPath::V4FiniteBudgetCentered.label(),
+                "boundary_mode": PopulationBoundaryMode::FixedConcentrationBoundary.label(),
+                "phase_steps": 14_778,
+                "mutation_enabled": false,
+                "founder_multiplicity": 1,
+            },
+            "arms": arms,
+            "counts": {
+                "terminal_mass_qualified": arms.iter().filter(|arm| {
+                    arm["terminal_structural_mass"].as_f64().unwrap_or(0.0)
+                        >= 1.35 * arm["birth_mass"].as_f64().unwrap_or(f64::INFINITY)
+                }).count(),
+                "physical_fissions": fissions,
+                "full_state_daughter_continuations": viable,
+            },
+            "biology_delta": 0,
+            "population_campaign": "NOT_RUN",
+        }))
+        .unwrap(),
+    )
+    .unwrap();
+}
+
 pub fn run_r10r6_evolution() {
     run_r10_evolution_with_horizon(
         "/tmp/dcfinal001_r10r6_evolution.json",
