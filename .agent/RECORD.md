@@ -1867,3 +1867,10 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Reserve-off control: `7/10` physical fissions, `7/10` full-state viable pairs; reserve-on exact D091+D096-v4 composition: `0/10`, `0/10`, with `10/10` growth-qualified.
 - D091 parameters and phase ordering unchanged; D096-v4 unchanged; no production biology delta. Natural-variant specialization, selection, reversal, and final integrated M1-M5 are `NOT_REACHED`.
 - Final classification: `D091_D096V4_COMBINED_REPRODUCTION_NOT_ESTABLISHED`; end goal `NOT_ESTABLISHED`; shutdown `NO — OWNER OVERRIDE ACTIVE`; next execution `false`.
+- DEC-DCFINAL001-R10R9R2-RESERVE-GROWTH-MORPHOGENESIS
+  - Date: 2026-09-10
+  - Starting head: `eab0448dd1bb9db8c20776426a332716366d6f0c`.
+  - R10R9R1 replay: PASS. Raw ten-arm evidence sealed. 2x2 counts: A `7/6`, B `7/7`, C `0/0`, D `0/0`; all D growth-qualified `10/10`.
+  - Observer-only D091-chemistry plus D-088 surplus-A growth counterfactual: `8/10` fissions, `8/10` viable pairs.
+  - Final causal classification: `RESERVE_GROWTH_MODE_X_R9_R10_MORPHOGENESIS`.
+  - Production biology delta: `0`; new biological parameters: `0`; selection/reversal/final integration: `NOT_REACHED`; shutdown: `NO — OWNER OVERRIDE ACTIVE`; next execution: `false`.

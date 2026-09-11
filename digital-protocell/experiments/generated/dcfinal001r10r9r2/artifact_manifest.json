@@ -1,0 +1,26 @@
+{
+  "root": "experiments/generated/dcfinal001r10r9r2",
+  "algorithm": "SHA-256",
+  "files": {
+    "authority.json": "39a6ffea475db27876a6ba3de8be590f4bee59346d30dfc67609f5a4b3489bf8",
+    "architect_disposition.json": "024e13afb260bb40ba25da05bdda76299bc8a1760c94ed43eeb45efaa5fd6bfa",
+    "owner_override.json": "8d82833ba71df0e6e9db6b15087f5ef01e5972693308bb2048910fdcb2d4dd67",
+    "external_prior_art.json": "956f70fc28978a7d277944462c11803df87bace5a0380c63ea0157685f278b8f",
+    "interaction_matrix.json": "2e3eade6c62ee63693f06fe931fb2f9d508b80a44eea3e5bc0b087d57bfc0f09",
+    "per_seed_failure_classification.json": "328ebac3889e4fd7c38b31dffe7bc460ea4758f89046c17a8739940e084a4e3f",
+    "reserve_flux_comparison.json": "41c17e83bd105bce2a990c1192eb04e728e9f018eca57446385f5bb57edee1d8",
+    "growth_morphogenesis_attribution.json": "ccde1c12861b3295d16dd3e8493baa389b4d7c46c45a3b5a398b79c39868bed8",
+    "maturation_attribution.json": "bceb25b7aa7e34f658276998b340d6eaab8c4c0d7964d6e8eb97588943314270",
+    "growth_path_counterfactual.json": "ddc2e660cba6c322044250452c0d7ec2eb48d54e3e06404c94ac15ad756214fd",
+    "d096_cost_gain_decomposition.json": "58b451cafb39ba1b8a8ffb8db59b9acd82a2205fc12c924bc71c7b13e82030ac",
+    "material_energy_closure.json": "561898c45a8036a0b19dd0154d4753c023429d82b09c3ceb5adb7ddb1867088f",
+    "forbidden_information_audit.json": "0d41fd3210d3cfa1ae1b1909a0bcf519d4f1073a1b2d6db20be584e729fc4fa9",
+    "architecture_decision.json": "8ca98e6c4184d907e6c2a9f1706bc85691f252671c661306baabacf0bab32b3f",
+    "qualification.json": "c16c0e49b5fee199344e4427252841b6532d3cc7d006fa4028d1ddfdff176a6d",
+    "raw/reserve_off_d096off.json": "c4569856f1eb98361739200e2b35635d00bcc7227aa24067d7b8b153ad0b37f1",
+    "raw/reserve_off_d096v4.json": "159d3f34cf114f6ab29c2d22aeed24b76376d7e0fb724fa80ee9dd3f13fff17c",
+    "raw/reserve_on_d096off.json": "2fa1be7d4707728a4f91457e0a205b03705c223e9594008c51824a1deb951cc5",
+    "raw/reserve_on_d096v4.json": "38122952dbf814ac87eaaf0755226ed3f95edd47b654b3d9103188067d9a7e88",
+    "raw/reserve_on_d096off_growth_surplus_counterfactual.json": "ffa2bad71b03d7468a2a676bad041cbf98bc90c574bffc3eea219046eda1d086"
+  }
+}

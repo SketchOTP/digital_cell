@@ -1,0 +1,8 @@
+{
+  "classification": "MATURATION_DISTRIBUTION_CAUSAL",
+  "reserve_off_checkpoint_5000": {"mean_mature_mass": 175.7292, "mean_young_mass": 264.2808, "mean_actual_perimeter": 156.5655},
+  "reserve_on_checkpoint_5000": {"mean_mature_mass": 115.2305, "mean_young_mass": 147.7514, "mean_actual_perimeter": 109.7378},
+  "reserve_off_checkpoint_14778": {"mean_mature_mass": 550.0816, "mean_young_mass": 593.861, "mean_actual_perimeter": 193.0509},
+  "reserve_on_checkpoint_14778": {"mean_mature_mass": 298.5746, "mean_young_mass": 381.7269, "mean_actual_perimeter": 267.4478},
+  "interpretation": "reserve-funded growth changes mature/young structural distribution and rest-length evolution during the neck-forming period; the growth-path counterfactual restores reproduction without changing maturation constants"
+}

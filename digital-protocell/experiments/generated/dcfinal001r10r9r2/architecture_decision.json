@@ -1,0 +1,15 @@
+{
+  "final_causal_classification": "RESERVE_GROWTH_MODE_X_R9_R10_MORPHOGENESIS",
+  "supporting_interaction_classification": "D091_ALONE_REPRODUCTION_INCOMPATIBLE",
+  "evidence": [
+    "D091-off D096-off reproduces robust reproduction",
+    "D091-off D096-v4 reproduces robust reproduction",
+    "D091-on D096-off and D091-on D096-v4 both fail 0/10 despite 10/10 growth qualification",
+    "all reserve-on failures are outside local apposition range",
+    "D091 chemistry with observer-only D-088 growth restores 8/10 fissions and 8/10 viable pairs"
+  ],
+  "recommended_next_architecture_action": "Return to Architect to replan the D091/R10 compatibility boundary; do not modify D091 parameters/order, D096, R9, R10, or selection inside R10R9R2.",
+  "selection": "NOT_REACHED",
+  "reversal": "NOT_REACHED",
+  "end_goal": "NOT_ESTABLISHED"
+}

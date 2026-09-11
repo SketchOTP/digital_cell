@@ -1,0 +1,11 @@
+{
+  "status": "EXECUTED_OBSERVER_ONLY",
+  "condition": "D091_ON_D096_OFF_WITH_D088_SURPLUS_A_GROWTH_CALL",
+  "reserve_chemistry": "RETAINED",
+  "production_implementation": "UNCHANGED",
+  "growth_path": "D088_SURPLUS_A_OBSERVER_COUNTERFACTUAL",
+  "counts": {"growth_qualified": 10, "geometry_valid_fissions": 8, "full_state_viable_daughter_pairs": 8},
+  "failures": {"APPOSITION_OUTSIDE_LOCAL_RANGE": 1, "SCISSION_PROPOSED_INVALID_GEOMETRY": 1},
+  "causal_result": "RESERVE_GROWTH_PATH_CAUSALLY_SUPPRESSES_R10_REPRODUCTION",
+  "not_authorized_as_production": true
+}

@@ -65,6 +65,13 @@ fn r10r9r1_reserve_enabled() -> bool {
     )
 }
 
+fn r10r9r2_growth_path_surplus() -> bool {
+    matches!(
+        env::var("DCFINAL001_R10R9R2_GROWTH_PATH").ok().as_deref(),
+        Some("surplus") | Some("SURPLUS")
+    )
+}
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Serialize)]
 enum Mode {
     Passive,
@@ -1610,7 +1617,16 @@ fn run_with_expression_gain_policy(
         let reaction_ledger = reactions_step(&mut mesh, &reaction, mechanics.dt, true, true);
         expression_budget.m1_structural_build += reaction_ledger.m_produced;
         expression_budget.m1_structural_turnover += reaction_ledger.m_to_w;
+        // R10R9R2-only observer counterfactual: retain D091 reserve chemistry
+        // and A/R state, but route the diagnostic growth call through the
+        // already-qualified reserve-OFF D-088 surplus-A branch. This flag is
+        // never enabled by the production entrypoints.
+        let reserve_was_enabled = reaction.reserve.enable;
+        if reserve_was_enabled && r10r9r2_growth_path_surplus() {
+            reaction.reserve.enable = false;
+        }
         let growth_ledger = growth_step(&mut mesh, &reaction, &growth, mechanics.dt);
+        reaction.reserve.enable = reserve_was_enabled;
         expression_budget.surplus_growth_structural_production += growth_ledger.m_grown;
         expression_budget.growth_a_consumed += growth_ledger.a_consumed_growth;
         restore_diagnostic_gain_inputs(&mut mesh, saved_catalysts);
@@ -2737,11 +2753,20 @@ fn run_r10r3_integrated_reproduction(
                 "fission_step": run.fission_step,
                 "full_state_daughters_viable": run.full_state_daughters_viable,
                 "deepest_failure": run.deepest_failure,
+                "failure_counts": run.failure_counts,
+                "attempts": run.attempts,
+                "checkpoints": run.checkpoints,
                 "all_simple": run.all_simple,
                 "all_runtime_valid": run.all_runtime_valid,
                 "all_lifecycle_valid": run.all_lifecycle_valid,
+                "attribution": run.attribution,
                 "expression_budget": run.expression_budget,
                 "final_geometry": run.final_geometry,
+                "actuator_geometry": run.actuator_geometry,
+                "patch_dynamics": run.patch_dynamics,
+                "refractory_audit": run.refractory_audit,
+                "signed_stress_attempts": run.signed_stress_attempts,
+                "signed_stress_counterfactual": run.signed_stress_counterfactual,
                 "daughter_diagnostics": run.daughter_diagnostics,
             })
         })
@@ -2767,6 +2792,13 @@ fn run_r10r3_integrated_reproduction(
         "mutation_enabled": false,
         "horizon": 14_778,
         "d091_reserve_enabled": r10r9r1_reserve_enabled(),
+        "growth_path": if r10r9r1_reserve_enabled() && r10r9r2_growth_path_surplus() {
+            "D088_SURPLUS_A_OBSERVER_COUNTERFACTUAL"
+        } else if r10r9r1_reserve_enabled() {
+            "D091_RESERVE_FUNDED"
+        } else {
+            "D088_SURPLUS_A_PRODUCTION"
+        },
         "d091_configuration": if r10r9r1_reserve_enabled() {
             serde_json::to_value(
                 ReserveParams::derived(80.0, 40.0, 0.5, 0.3, 2.0, 0.1, fixture(0).area()),
@@ -2816,6 +2848,18 @@ pub fn run_r10r5_d096v4_integrated_reproduction() {
         "D096_V4_FINITE_BUDGET_CENTERED_INTENSIVE_GAIN",
         "/tmp/dcfinal001_r10r5_d096v4_reproduction.json",
     );
+}
+
+pub fn run_r10r9r2_reproduction() {
+    let mode = match env::var("DCFINAL001_R10R9R2_D096").ok().as_deref() {
+        Some("off") | Some("OFF") | None => (ExpressionPath::Off, "D096_OFF"),
+        Some("v4") | Some("V4") | Some("on") | Some("ON") => (
+            ExpressionPath::D096V4CenteredGain,
+            "D096_V4_FINITE_BUDGET_CENTERED_INTENSIVE_GAIN",
+        ),
+        Some(other) => panic!("unsupported DCFINAL001_R10R9R2_D096={other}"),
+    };
+    run_r10r3_integrated_reproduction(mode.0, mode.1, "/tmp/dcfinal001_r10r9r2_reproduction.json");
 }
 
 fn r10r4_diagnostic_campaign(policy: DiagnosticGainPolicy) -> Vec<RunResult> {

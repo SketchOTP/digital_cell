@@ -1,0 +1,20 @@
+{
+  "classification_basis": "deepest_failure_after_mass_gate",
+  "A_D091_OFF_D096_OFF": {
+    "outside_local_range": ["seed_1", "seed_2", "seed_5"],
+    "valid_fission": ["seed_3", "seed_4", "seed_6", "seed_7", "seed_8", "seed_10"],
+    "valid_fission_daughter_nonviability": ["seed_9"]
+  },
+  "B_D091_OFF_D096_V4": {
+    "outside_local_range": ["seed_1", "seed_2"],
+    "stress_condition_false": ["seed_7"],
+    "valid_fission": ["seed_3", "seed_4", "seed_5", "seed_6", "seed_8", "seed_9", "seed_10"]
+  },
+  "C_D091_ON_D096_OFF": {
+    "outside_local_range": ["seed_1", "seed_2", "seed_3", "seed_4", "seed_5", "seed_6", "seed_7", "seed_8", "seed_9", "seed_10"]
+  },
+  "D_D091_ON_D096_V4": {
+    "outside_local_range": ["seed_1", "seed_2", "seed_3", "seed_4", "seed_5", "seed_6", "seed_7", "seed_8", "seed_9", "seed_10"]
+  },
+  "mass_contract": "all four conditions growth-qualified 10/10; no mass-gate mismatch observed"
+}

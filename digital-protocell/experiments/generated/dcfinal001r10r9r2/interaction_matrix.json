@@ -1,0 +1,12 @@
+{
+  "horizon": 14778,
+  "mutation_enabled": false,
+  "conditions": {
+    "A_D091_OFF_D096_OFF": {"growth_qualified": 10, "fissions": 7, "viable_pairs": 6, "robust": true},
+    "B_D091_OFF_D096_V4": {"growth_qualified": 10, "fissions": 7, "viable_pairs": 7, "robust": true},
+    "C_D091_ON_D096_OFF": {"growth_qualified": 10, "fissions": 0, "viable_pairs": 0, "robust": false},
+    "D_D091_ON_D096_V4": {"growth_qualified": 10, "fissions": 0, "viable_pairs": 0, "robust": false}
+  },
+  "classification": "D091_ALONE_REPRODUCTION_INCOMPATIBLE",
+  "d091_d096_specific_interaction": false
+}

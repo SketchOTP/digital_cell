@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "observer_only": true,
+  "fission_information_in_growth_path": false,
+  "apposition_information_in_growth_path": false,
+  "genotype_or_population_success_feedback": false,
+  "new_biological_parameters": 0,
+  "production_biology_delta": 0
+}

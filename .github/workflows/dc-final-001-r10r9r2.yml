@@ -1,0 +1,124 @@
+name: DC-FINAL-001-R10R9R2 D091 D096-v4 reproduction interaction decomposition
+
+on:
+  push:
+    branches: [codex/dc-final-001-r10r8-specialization-contract]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r10r9r2-diagnostic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify exact entry authority and diagnostic-only scope
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          start=eab0448dd1bb9db8c20776426a332716366d6f0c
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - <<'PY'
+          import subprocess
+          start = "eab0448dd1bb9db8c20776426a332716366d6f0c"
+          allowed = (
+              ".agent/",
+              ".github/workflows/dc-final-001-r10r9r2.yml",
+              "digital-protocell/crates/regulatory-core/Cargo.toml",
+              "digital-protocell/examples/dcfinal001_r5_v4_neck.rs",
+              "digital-protocell/examples/dcfinal001_r10r9r2_reproduction.rs",
+              "digital-protocell/experiments/generated/dcfinal001r10r9r2/",
+          )
+          changed = subprocess.check_output(["git", "diff", "--name-only", f"{start}..HEAD"], text=True).splitlines()
+          bad = [p for p in changed if not any(p.startswith(prefix) for prefix in allowed)]
+          assert not bad, bad
+          assert not any(
+              p.startswith("digital-protocell/crates/chemistry-core/")
+              or p.startswith("digital-protocell/crates/phase1-certifier/")
+              for p in changed
+          ), changed
+          PY
+          gh pr view 44 --repo SketchOTP/digital_cell --json state,isDraft,mergedAt | python3 -c 'import json,sys; d=json.load(sys.stdin); assert d == {"state":"OPEN","isDraft":True,"mergedAt":None}, d'
+
+      - name: Install sanctioned Rust toolchain
+        run: |
+          rustup toolchain install 1.89.0 --profile minimal --no-self-update
+          rustup component add --toolchain 1.89.0 rustfmt
+
+      - name: Compile diagnostic harness
+        working-directory: digital-protocell
+        run: cargo +1.89.0 check --locked -q -p regulatory-core --example dcfinal001_r10r9r2_reproduction
+
+      - name: Run exact 2x2 interaction matrix and observer counterfactual
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          env -u DCFINAL001_R10R9R1_RESERVE -u DCFINAL001_R10R9R2_D096 cargo +1.89.0 run --locked --release -q -p regulatory-core --example dcfinal001_r10r9r2_reproduction -- --output /tmp/r10r9r2-a.json
+          env -u DCFINAL001_R10R9R1_RESERVE DCFINAL001_R10R9R2_D096=v4 cargo +1.89.0 run --locked --release -q -p regulatory-core --example dcfinal001_r10r9r2_reproduction -- --output /tmp/r10r9r2-b.json
+          DCFINAL001_R10R9R1_RESERVE=1 DCFINAL001_R10R9R2_D096=off cargo +1.89.0 run --locked --release -q -p regulatory-core --example dcfinal001_r10r9r2_reproduction -- --output /tmp/r10r9r2-c.json
+          DCFINAL001_R10R9R1_RESERVE=1 DCFINAL001_R10R9R2_D096=v4 cargo +1.89.0 run --locked --release -q -p regulatory-core --example dcfinal001_r10r9r2_reproduction -- --output /tmp/r10r9r2-d.json
+          DCFINAL001_R10R9R1_RESERVE=1 DCFINAL001_R10R9R2_D096=off DCFINAL001_R10R9R2_GROWTH_PATH=surplus cargo +1.89.0 run --locked --release -q -p regulatory-core --example dcfinal001_r10r9r2_reproduction -- --output /tmp/r10r9r2-growth-counterfactual.json
+          python3 - <<'PY'
+          import json
+          expected = {
+              'a': ({'growth_qualified': 10, 'geometry_valid_fissions': 7, 'full_state_viable_daughter_pairs': 6}, False),
+              'b': ({'growth_qualified': 10, 'geometry_valid_fissions': 7, 'full_state_viable_daughter_pairs': 7}, False),
+              'c': ({'growth_qualified': 10, 'geometry_valid_fissions': 0, 'full_state_viable_daughter_pairs': 0}, True),
+              'd': ({'growth_qualified': 10, 'geometry_valid_fissions': 0, 'full_state_viable_daughter_pairs': 0}, True),
+          }
+          for key, (counts, reserve) in expected.items():
+              got = json.load(open(f'/tmp/r10r9r2-{key}.json'))
+              assert got['counts'] == counts, (key, got['counts'])
+              assert got['d091_reserve_enabled'] is reserve
+          cf = json.load(open('/tmp/r10r9r2-growth-counterfactual.json'))
+          assert cf['growth_path'] == 'D088_SURPLUS_A_OBSERVER_COUNTERFACTUAL'
+          assert cf['counts'] == {'growth_qualified': 10, 'geometry_valid_fissions': 8, 'full_state_viable_daughter_pairs': 8}, cf['counts']
+          PY
+
+      - name: Validate sealed raw trajectories and architecture decision
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('digital-protocell/experiments/generated/dcfinal001r10r9r2')
+          for path in root.rglob('*.json'):
+              json.loads(path.read_text())
+          q = json.loads((root / 'qualification.json').read_text())
+          assert q['final_classification'] == 'RESERVE_GROWTH_MODE_X_R9_R10_MORPHOGENESIS'
+          assert q['next_execution_started'] is False
+          raw = root / 'raw'
+          required = ['reserve_off_d096off.json', 'reserve_off_d096v4.json', 'reserve_on_d096off.json', 'reserve_on_d096v4.json']
+          for name in required:
+              data = json.loads((raw / name).read_text())
+              assert len(data['runs']) == 10
+              assert data['horizon'] == 14778
+          PY
+          git diff --check
+
+      - name: Preserve accepted upstream surfaces
+        working-directory: digital-protocell
+        run: |
+          cargo +1.89.0 test --locked -q -p regulatory-core
+          cargo +1.89.0 test --locked -q -p chemistry-core --test d096_tests --test r8_v4_closure_consistency_tests --test r4_contract_topology_tests --test d088_tests --test d091_tests
+          cargo +1.89.0 test --locked -q -p evolution-harness
+          cargo +1.89.0 test --locked -q -p m2-lifeform-runtime --bin digital-cell-final-lifeform
+          cargo +1.89.0 check --locked -q -p godot-bridge
+
+      - name: Upload exact-head R10R9R2 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcfinal001r10r9r2
+          if-no-files-found: error
+          retention-days: 90
+          path: digital-protocell/experiments/generated/dcfinal001r10r9r2

@@ -1,0 +1,7 @@
+{
+  "basis": "raw ten-arm checkpoint trajectories",
+  "reserve_off_mean_terminal": {"A_total_mass": 1143.9426, "A_mature_mass": 550.0816, "A_young_mass": 593.861, "A_actual_perimeter": 193.0509, "A_mass_over_birth": 13.037, "B_total_mass": 1011.7819, "B_mature_mass": 488.3521, "B_young_mass": 523.4298, "B_actual_perimeter": 177.0182, "B_mass_over_birth": 11.5318},
+  "reserve_on_mean_terminal": {"C_total_mass": 680.3015, "C_mature_mass": 298.5746, "C_young_mass": 381.7269, "C_actual_perimeter": 267.4478, "C_mass_over_birth": 7.7542, "D_total_mass": 671.4826, "D_mature_mass": 295.0591, "D_young_mass": 376.4235, "D_actual_perimeter": 265.539, "D_mass_over_birth": 7.6537},
+  "interpretation": "reserve-on chemistry produces materially less structural mass and mature scaffold by the same horizon while remaining growth-qualified; this is an observer attribution, not a population controller",
+  "a_r_w_closure": "PASS"
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "r9_r10_active_a_to_w": "PASS",
+  "reserve_off_d096_off": "PASS",
+  "reserve_off_d096_v4": "PASS",
+  "reserve_on_d096_off": "PASS",
+  "reserve_on_d096_v4": "PASS",
+  "new_resource_or_energy_source": false
+}

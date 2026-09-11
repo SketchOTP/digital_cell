@@ -1,0 +1,8 @@
+{
+  "classification": "RESERVE_GROWTH_MODE_X_R9_R10_MORPHOGENESIS",
+  "reserve_on_failure": "all ten arms terminate at APPOSITION_OUTSIDE_LOCAL_RANGE",
+  "reserve_off_control": "reproduces 7/10 and 7/10 for D096-off and D096-v4 respectively",
+  "observed_chain": "D091 reserve-funded growth path -> reduced mature scaffold and altered perimeter/rest-length geometry -> no within-range apposition -> no physical fission",
+  "causal_counterfactual": "D091 chemistry retained with D-088 surplus-A growth call restored 8/10 fissions and 8/10 viable pairs",
+  "production_change": false
+}
