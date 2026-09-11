@@ -8,6 +8,7 @@
 
 use chemistry_core::d096_allocation::{
     expression_step, expression_step_activated_material_v2, expression_step_activated_material_v4,
+    expression_step_activated_material_v4_turnover_only,
     mutate_allocation_at_reproduction, AllocationGenotype, AllocationParams, ExpressionLedger,
     ExpressionReject,
 };
@@ -213,6 +214,10 @@ struct CampaignLedger {
     computational_rejections: u64,
     physical_disintegrations: u64,
     rollback_count: u64,
+    accepted_steps: u64,
+    rejected_steps: u64,
+    numerical_invalid: bool,
+    numerical_invalid_reason: Option<Value>,
     lifecycle_events: Vec<Value>,
     bootstrap_physical_fissions: u64,
     post_bootstrap_physical_fissions: u64,
@@ -2599,6 +2604,14 @@ fn r10_advance_phase(
             break;
         }
         let step = phase_index * phase_steps + phase_step + 1;
+        // Snapshot the complete accepted-step boundary before any boundary
+        // refresh, damage, cohort transition, random birth, or ledger write.
+        // A rejected mechanics/remap proposal invalidates this whole step;
+        // the campaign then stops instead of selectively advancing biology.
+        let step_cohorts_before = cohorts.clone();
+        let step_world_before = world.clone();
+        let step_ledger_before = ledger.clone();
+        let step_next_id = *next_id;
         match boundary_mode {
             PopulationBoundaryMode::RateReinterpretation => {
                 world.add_fixed_inflow(environment, phase_step, mechanics.dt)
@@ -2625,7 +2638,6 @@ fn r10_advance_phase(
         }
         let mut retained = Vec::new();
         for mut cohort in cohorts.drain(..) {
-            let pre_expression = cohort.clone();
             match apply_expression_path(
                 &mut cohort.mesh,
                 &allocation,
@@ -2657,20 +2669,97 @@ fn r10_advance_phase(
                     // it computes on a clone and commits only on success.  A
                     // depleted valid organism therefore takes a zero-flux
                     // expression step; no cohort is computationally deleted.
-                    cohort = pre_expression;
                     if error == ExpressionBoundaryError::InsufficientActivatedResource {
-                        ledger.legal_depletion_steps += cohort.count;
+                        // The synthesis proposal is zero-funded, but the
+                        // existing V4 catalyst turnover/maintenance dynamics
+                        // still run.  Only a malformed or otherwise
+                        // rejected state is restored unchanged.
+                        let turnover_result = match path {
+                            D096ExpressionPath::V4FiniteBudgetCentered => {
+                                expression_step_activated_material_v4_turnover_only(
+                                    &mut cohort.mesh,
+                                    &allocation,
+                                    mechanics.dt,
+                                )
+                                .map(|value| ExpressionAccounting {
+                                    catalyst_precursor_a: value.catalyst_precursor_consumed,
+                                    activation_consumed: value.activation_consumed,
+                                    maintenance_consumed: value.maintenance_consumed,
+                                    turnover_waste: value.turnover_waste,
+                                    ..Default::default()
+                                })
+                                .map_err(ExpressionBoundaryError::from)
+                            }
+                            _ => Err(ExpressionBoundaryError::InsufficientActivatedResource),
+                        };
+                        if let Ok(expression) = turnover_result {
+                            let count = cohort.count as f64;
+                            let genotype = cohort
+                                .mesh
+                                .finite_allocation
+                                .expect("R10 allocation")
+                                .genotype;
+                            ledger.expression_activation +=
+                                expression.maintenance_consumed * count;
+                            ledger.expression_turnover_waste +=
+                                expression.turnover_waste * count;
+                            ledger.legal_depletion_steps += cohort.count;
+                            let observer = phenotype_ledger(ledger, genotype);
+                            observer.organism_step_exposure += cohort.count;
+                            observer.expression_activation +=
+                                expression.maintenance_consumed * count;
+                            retained.push(cohort);
+                            lifecycle_event(
+                                ledger,
+                                "d096_expression",
+                                step,
+                                retained.last().expect("retained cohort"),
+                                "LEGAL_DEPLETION_TURNOVER_ONLY",
+                                json!({"error": error.label(), "synthesis": 0.0}),
+                            );
+                            continue;
+                        }
+                        let rejected_count = cohort.count;
+                        *cohorts = step_cohorts_before.clone();
+                        *world = step_world_before.clone();
+                        *ledger = step_ledger_before.clone();
+                        *next_id = step_next_id;
+                        ledger.computational_rejections += rejected_count;
+                        ledger.rejected_steps += 1;
+                        ledger.rollback_count += rejected_count;
+                        ledger.numerical_invalid = true;
+                        ledger.numerical_invalid_reason = Some(json!({
+                            "phase": phase_index,
+                            "step": step,
+                            "cohort_id": cohort.id,
+                            "error": "ZERO_FUNDED_TURNOVER_TRANSITION_REJECTED",
+                            "detail": error.label(),
+                        }));
                         lifecycle_event(
                             ledger,
                             "d096_expression",
                             step,
                             &cohort,
-                            "LEGAL_DEPLETION_ZERO_FLUX",
+                            "ATOMIC_REJECTION_CAMPAIGN_INVALIDATED",
                             json!({"error": error.label()}),
                         );
+                        return false;
                     } else {
-                        ledger.computational_rejections += cohort.count;
-                        ledger.rollback_count += cohort.count;
+                        let rejected_count = cohort.count;
+                        *cohorts = step_cohorts_before.clone();
+                        *world = step_world_before.clone();
+                        *ledger = step_ledger_before.clone();
+                        *next_id = step_next_id;
+                        ledger.computational_rejections += rejected_count;
+                        ledger.rejected_steps += 1;
+                        ledger.rollback_count += rejected_count;
+                        ledger.numerical_invalid = true;
+                        ledger.numerical_invalid_reason = Some(json!({
+                            "phase": phase_index,
+                            "step": step,
+                            "cohort_id": cohort.id,
+                            "error": error.label(),
+                        }));
                         lifecycle_event(
                             ledger,
                             "d096_expression",
@@ -2679,6 +2768,7 @@ fn r10_advance_phase(
                             "ATOMIC_REJECTION_RETAINED",
                             json!({"error": error.label()}),
                         );
+                        return false;
                     }
                     retained.push(cohort);
                 }
@@ -2759,18 +2849,35 @@ fn r10_advance_phase(
                 )
             else {
                 if r10r9r5_canonical_lifecycle() {
+                    // A mechanics/remap rejection is a transaction failure,
+                    // not a lawful organism outcome.  The whole accepted
+                    // physical step is restored below and the campaign is
+                    // invalidated; no selected cohort may advance past it.
                     cohort = pre_mechanics;
-                    ledger.computational_rejections += cohort.count;
-                    ledger.rollback_count += cohort.count;
+                    let rejected_count = cohort.count;
+                    *cohorts = step_cohorts_before.clone();
+                    *world = step_world_before.clone();
+                    *ledger = step_ledger_before.clone();
+                    *next_id = step_next_id;
+                    ledger.rejected_steps += 1;
+                    ledger.computational_rejections += rejected_count;
+                    ledger.rollback_count += rejected_count;
+                    ledger.numerical_invalid = true;
+                    ledger.numerical_invalid_reason = Some(json!({
+                        "phase": phase_index,
+                        "step": step,
+                        "cohort_id": cohort.id,
+                        "error": "MECHANICS_OR_REMAP_REJECTED",
+                    }));
                     lifecycle_event(
                         ledger,
                         "mechanics",
                         step,
                         &cohort,
-                        "ATOMIC_REJECTION_RETAINED",
+                        "ATOMIC_REJECTION_CAMPAIGN_INVALIDATED",
                         json!({"error": "MECHANICS_OR_REMAP_REJECTED"}),
                     );
-                    survivors.push(cohort);
+                    return false;
                 } else {
                     ledger.runtime_invalidations += cohort.count;
                     ledger.invalid_geometry_events += cohort.count;
@@ -2801,20 +2908,36 @@ fn r10_advance_phase(
                 || !cohort.mesh.lifecycle_invariants_hold()
             {
                 if r10r9r5_canonical_lifecycle() {
-                    ledger.computational_rejections += cohort.count;
+                    let rejected_count = cohort.count;
+                    let detail = json!({
+                        "simple": polygon_simple(&cohort.mesh.vertices),
+                        "runtime_valid": cohort.mesh.physical_runtime_valid(),
+                        "lifecycle_valid": cohort.mesh.lifecycle_invariants_hold(),
+                    });
+                    *cohorts = step_cohorts_before.clone();
+                    *world = step_world_before.clone();
+                    *ledger = step_ledger_before.clone();
+                    *next_id = step_next_id;
+                    ledger.computational_rejections += rejected_count;
+                    ledger.rejected_steps += 1;
+                    ledger.rollback_count += rejected_count;
+                    ledger.numerical_invalid = true;
+                    ledger.numerical_invalid_reason = Some(json!({
+                        "phase": phase_index,
+                        "step": step,
+                        "cohort_id": cohort.id,
+                        "error": "INVALID_POST_MECHANICS_STATE",
+                        "detail": detail.clone(),
+                    }));
                     lifecycle_event(
                         ledger,
                         "post_mechanics_validation",
                         step,
                         &cohort,
-                        "REPRESENTATION_BLOCKER_RETAINED",
-                        json!({
-                            "simple": polygon_simple(&cohort.mesh.vertices),
-                            "runtime_valid": cohort.mesh.physical_runtime_valid(),
-                            "lifecycle_valid": cohort.mesh.lifecycle_invariants_hold(),
-                        }),
+                        "ATOMIC_REJECTION_CAMPAIGN_INVALIDATED",
+                        detail,
                     );
-                    survivors.push(cohort);
+                    return false;
                 } else {
                     ledger.runtime_invalidations += cohort.count;
                     ledger.invalid_geometry_events += cohort.count;
@@ -2830,20 +2953,22 @@ fn r10_advance_phase(
                 }
                 continue;
             }
-            if cohort.mesh.uses_observer_only_death() && !cohort.mesh.observer_viable() {
+            if cohort.mesh.uses_observer_only_death() {
                 if r10r9r5_canonical_lifecycle() {
-                    ledger.observer_nonviable_observations += cohort.count;
-                    lifecycle_event(
-                        ledger,
-                        "observer",
-                        step,
-                        &cohort,
-                        "OBSERVER_NONVIABLE_NOT_AUTHORITATIVE",
-                        json!({"reason": cohort.mesh.observer_death_reason()}),
-                    );
-                    survivors.push(cohort);
-                    continue;
-                }
+                    // Record the label for audit only.  It must not alter
+                    // physical death, fission eligibility, or continuation.
+                    if !cohort.mesh.observer_viable() {
+                        ledger.observer_nonviable_observations += cohort.count;
+                        lifecycle_event(
+                            ledger,
+                            "observer",
+                            step,
+                            &cohort,
+                            "OBSERVER_NONVIABLE_NOT_AUTHORITATIVE",
+                            json!({"reason": cohort.mesh.observer_death_reason()}),
+                        );
+                    }
+                } else if !cohort.mesh.observer_viable() {
                 ledger.physical_deaths += cohort.count;
                 *ledger
                     .deaths_by_genotype
@@ -2852,6 +2977,7 @@ fn r10_advance_phase(
                 phenotype_ledger(ledger, genotype).physical_deaths += cohort.count;
                 dead_material_to_sink(&cohort, world);
                 continue;
+                }
             }
             if !cohort.mesh.uses_observer_only_death() && !cohort.mesh.alive {
                 ledger.physical_deaths += cohort.count;
@@ -2893,6 +3019,7 @@ fn r10_advance_phase(
             }
         }
         *cohorts = survivors;
+        ledger.accepted_steps += 1;
         if step == R10_PREFIX_STEPS && prefix_2500.is_none() {
             *prefix_2500 = Some(prefix_state(cohorts, world, ledger, step));
         }
@@ -2900,6 +3027,7 @@ fn r10_advance_phase(
             trajectory.push(snapshot(cohorts, world, step));
         }
     }
+    true
 }
 
 fn r10_campaign(
@@ -2976,7 +3104,7 @@ fn r10_campaign(
     let mut trajectory = vec![initial.clone()];
     let mut prefix_2500 = None;
     for (phase, environment) in sequence.iter().copied().enumerate() {
-        r10_advance_phase(
+        let phase_ok = r10_advance_phase(
             &mut cohorts,
             &mut world,
             environment,
@@ -2991,8 +3119,11 @@ fn r10_campaign(
             expression_path,
             boundary_mode,
         );
+        if !phase_ok {
+            break;
+        }
     }
-    let terminal_step = sequence.len() * phase_steps;
+    let terminal_step = ledger.accepted_steps as usize;
     let terminal = snapshot(&cohorts, &world, terminal_step);
     for cohort in &cohorts {
         let genotype = cohort
@@ -3106,6 +3237,10 @@ fn r10_campaign(
         "n_closure_residual": n_closure,
         "f_closure_residual": f_closure,
         "active_energy_residual": active_energy_residual,
+        "accepted_steps": ledger.accepted_steps,
+        "rejected_steps": ledger.rejected_steps,
+        "numerical_invalid": ledger.numerical_invalid,
+        "numerical_invalid_reason": ledger.numerical_invalid_reason,
     })
 }
 
@@ -3397,6 +3532,99 @@ pub fn run_r10r9r5_evolution() {
         R10R9R4_FOUNDER_MULTIPLICITY,
         R10R9R4_FOUNDER_MULTIPLICITY as f64,
     );
+}
+
+/// Bounded executable controls for the R5 lifecycle boundary.  These do not
+/// run the population campaign.  They exercise the same R10 population step
+/// used by the production entry point and prove that observer labels are not
+/// inputs to physical transitions, while also checking the zero-funded
+/// expression boundary.
+pub fn run_r10r9r5_contract_tests() {
+    let output = PathBuf::from("/tmp/dcfinal001_r10r9r5_contract_tests.json");
+    let (template, plasticity, original_birth_mass, template_step) =
+        r10_closure::r10_seed3_fission_state();
+    let labels = ["unchanged", "disabled", "deliberately_altered"];
+    let mut observer_runs = Vec::new();
+    for label in labels {
+        env::set_var("DCFINAL001_R10R9R5_OBSERVER_LABEL_PROBE", label);
+        let campaign = r10_campaign(
+            &template,
+            &plasticity,
+            original_birth_mass,
+            template_step,
+            &[Environment::Resource],
+            false,
+            9_001,
+            1,
+            D096ExpressionPath::V4FiniteBudgetCentered,
+            150,
+            150.0,
+            PopulationBoundaryMode::FixedConcentrationBoundary,
+            None,
+        );
+        observer_runs.push(json!({
+            "label_probe": label,
+            "physical_transition_digest": deterministic_state_digest(&json!({
+                "terminal": campaign["terminal"],
+                "ledger": campaign["ledger"],
+                "world": campaign["world"],
+            })),
+            "fission_attempts": campaign["ledger"]["physical_fissions"],
+            "accepted_steps": campaign["accepted_steps"],
+        }));
+    }
+    env::remove_var("DCFINAL001_R10R9R5_OBSERVER_LABEL_PROBE");
+    let observer_digest = observer_runs[0]["physical_transition_digest"].clone();
+    let observer_pass = observer_runs
+        .iter()
+        .all(|row| row["physical_transition_digest"] == observer_digest);
+
+    let allocation = AllocationParams::default();
+    let mut depleted = template.clone();
+    depleted.enable_finite_allocation_v4(AllocationGenotype::neutral(), &allocation);
+    depleted
+        .finite_allocation
+        .as_mut()
+        .expect("allocation")
+        .catalysts = [0.4; 4];
+    depleted.interior.a = 0.0;
+    let catalyst_before = depleted
+        .finite_allocation
+        .expect("allocation")
+        .catalysts;
+    let turnover = expression_step_activated_material_v4_turnover_only(
+        &mut depleted,
+        &allocation,
+        MechParams::default().dt,
+    )
+    .expect("zero-funded turnover remains a valid transition");
+    let catalyst_after = depleted
+        .finite_allocation
+        .expect("allocation")
+        .catalysts;
+    let turnover_pass = turnover.synthesis.iter().all(|value| *value == 0.0)
+        && turnover.turnover_waste > 0.0
+        && catalyst_after
+            .iter()
+            .zip(catalyst_before)
+            .all(|(after, before)| *after < before);
+
+    let value = json!({
+        "observer_label_independence": {
+            "runs": observer_runs,
+            "pass": observer_pass,
+            "contract": "observer labels are audit-only and cannot control fission eligibility",
+        },
+        "zero_funded_expression_turnover": {
+            "synthesis": turnover.synthesis,
+            "turnover_waste": turnover.turnover_waste,
+            "catalyst_before": catalyst_before,
+            "catalyst_after": catalyst_after,
+            "pass": turnover_pass,
+        },
+    });
+    assert!(observer_pass && turnover_pass);
+    fs::write(output, serde_json::to_vec_pretty(&value).unwrap()).unwrap();
 }
 
 /// R10R3 Gates 2, 4, and 5: matched generation-1 production daughters under

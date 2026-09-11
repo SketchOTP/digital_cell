@@ -1259,3 +1259,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 
 - Historical population turnover must not be interpreted until computational rejection, observer viability, bootstrap events, genotype identity, and physical fate are separated in raw event records.
 - The canonical R5 path retains valid depleted cohorts at zero expression flux and treats rejected mechanics as an atomic retained transition; exact scientific effects remain unclassified until remote execution.
+
+## R10R9R5 continuation learning
+
+- Retaining an observer-nonviable cohort is insufficient if the same observer label can bypass fission eligibility; observer outputs must be audit-only through the complete physical transition.
+- Zero funded synthesis is distinct from zero expression dynamics: catalyst turnover must remain a bounded material-to-waste transition even when A cannot fund new synthesis.
+- A numerical mechanics rejection cannot be treated as a biological no-op while chemistry advances; restore the whole accepted-step transaction and fail the campaign closed unless a lawful retry is implemented.

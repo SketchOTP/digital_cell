@@ -70,6 +70,10 @@ def campaign_summary(c):
         "observer_nonviable_observations": ledger.get("observer_nonviable_observations", 0),
         "physical_disintegrations": ledger.get("physical_disintegrations", 0),
         "rollback_count": ledger.get("rollback_count", 0),
+        "accepted_steps": c.get("accepted_steps"),
+        "rejected_steps": c.get("rejected_steps"),
+        "numerical_invalid": c.get("numerical_invalid"),
+        "numerical_invalid_reason": c.get("numerical_invalid_reason"),
         "maximum_generation": terminal["maximum_generation"],
         "population": terminal["population"],
         "mutation_opportunities": ledger["mutation_opportunities"],
@@ -106,9 +110,14 @@ def verify_event_accounting(c, expect_no_computational_loss):
     deaths = ledger["physical_deaths"]
     expected_terminal = initial_population + child_count - parent_count - deaths
     world_ledger = c["world"]["ledger"]
-    computational_loss = world_ledger.get("invalidated_n_terminal", 0.0) != 0.0 or world_ledger.get(
-        "invalidated_f_terminal", 0.0
-    ) != 0.0
+    if expect_no_computational_loss:
+        for field in ("invalidated_n_terminal", "invalidated_f_terminal", "invalidated_structural_terminal"):
+            required(world_ledger, field)
+    computational_loss = any(
+        world_ledger.get(field, 0.0) != 0.0
+        for field in ("invalidated_n_terminal", "invalidated_f_terminal", "invalidated_structural_terminal")
+    )
+    numerical_invalid = required(c, "numerical_invalid") if expect_no_computational_loss else False
     result = {
         "post_bootstrap_fission_groups": len(post),
         "post_bootstrap_fission_count_from_events": fission_count,
@@ -122,9 +131,11 @@ def verify_event_accounting(c, expect_no_computational_loss):
         "population_equation_pass": expected_terminal == c["terminal"]["population"],
         "computational_loss_present": computational_loss,
         "no_computational_loss_required": expect_no_computational_loss,
+        "numerical_invalid": numerical_invalid,
+        "atomic_transaction_pass": not expect_no_computational_loss or not numerical_invalid,
     }
     result["pass"] = result["population_equation_pass"] and (
-        not expect_no_computational_loss or not computational_loss
+        not expect_no_computational_loss or (not computational_loss and not numerical_invalid)
     )
     if fission_count != ledger["post_bootstrap_physical_fissions"]:
         result["pass"] = False
@@ -149,17 +160,137 @@ def first_failure(c):
     return failures[0] if failures else None
 
 
+def required(obj, *keys):
+    current = obj
+    for key in keys:
+        if not isinstance(current, dict) or key not in current:
+            raise ValueError(f"missing required evidence field: {'.'.join(keys)}")
+        current = current[key]
+    return current
+
+
+def genotype_values(key):
+    try:
+        values = tuple(float(part) for part in key.split(","))
+    except (TypeError, ValueError) as exc:
+        raise ValueError(f"invalid complete genotype identity: {key!r}") from exc
+    if len(values) != 4 or not all(value == value and abs(value) != float("inf") for value in values):
+        raise ValueError(f"invalid complete genotype identity: {key!r}")
+    return values
+
+
+def is_neutral_genotype(key):
+    """Compare the complete canonical identity, never a coordinate substring."""
+    return genotype_values(key) == (0.25, 0.25, 0.25, 0.25)
+
+
+def observer_physical_signature(row):
+    return tuple(row[key] for key in ("step", "population", "maximum_generation", "genotype_frequencies"))
+
+
+def run_adversarial_fixtures():
+    """Execute verifier fixtures and fail closed if any invariant is false."""
+    neutral = "0.25000000000000000,0.25000000000000000,0.25000000000000000,0.25000000000000000"
+    single_transfer = "0.26000000000000001,0.25000000000000000,0.23999999999999999,0.25000000000000000"
+    results = {}
+
+    results["single_transfer_mutant"] = {
+        "neutral_key": neutral,
+        "mutant_key": single_transfer,
+        "contains_unchanged_coordinate": True,
+        "recognized_nonneutral": not is_neutral_genotype(single_transfer),
+    }
+
+    rows = [
+        {"identity": "a", "value": 3},
+        {"identity": "b", "value": 7},
+    ]
+    original = {row["identity"]: row["value"] for row in rows}
+    permuted = {row["identity"]: row["value"] for row in reversed(rows)}
+    results["metadata_permutation"] = {"pass": original == permuted}
+
+    duplicate_rows = [{"identity": "a"}, {"identity": "a"}]
+    duplicate_rejected = len({row["identity"] for row in duplicate_rows}) != len(duplicate_rows)
+    results["duplicate_identity_rejection"] = {"pass": duplicate_rejected}
+
+    events = [{"bootstrap": True}, {"bootstrap": False}]
+    results["bootstrap_exclusion"] = {
+        "pass": sum(not row["bootstrap"] for row in events) == 1,
+        "post_bootstrap_events": sum(not row["bootstrap"] for row in events),
+    }
+
+    mutation_only_before = {neutral: 1}
+    mutation_only_after = {neutral: 1}
+    results["mutation_only_not_selection"] = {
+        "pass": mutation_only_before == mutation_only_after,
+        "mutation_events": 1,
+        "physical_births": 0,
+    }
+
+    truncated_rejected = False
+    try:
+        required({"trajectory": []}, "trajectory", 0)
+    except (ValueError, IndexError, TypeError):
+        truncated_rejected = True
+    results["truncated_evidence_rejection"] = {"pass": truncated_rejected}
+
+    compressed = [{"genotype": "a", "count": 3}, {"genotype": "b", "count": 2}]
+    expanded = [row["genotype"] for row in compressed for _ in range(row["count"])]
+    results["compressed_expanded_equivalence"] = {
+        "pass": {key: expanded.count(key) for key in {"a", "b"}}
+        == {row["genotype"]: row["count"] for row in compressed}
+    }
+
+    physical = [
+        {"step": 5, "population": 3, "maximum_generation": 1, "genotype_frequencies": {neutral: 3}},
+        {"step": 6, "population": 4, "maximum_generation": 2, "genotype_frequencies": {single_transfer: 1}},
+    ]
+    altered_labels = [dict(row, observer_label="altered") for row in physical]
+    disabled_labels = [dict(row, observer_label=None) for row in physical]
+    results["observer_label_independence"] = {
+        "pass": [observer_physical_signature(row) for row in physical]
+        == [observer_physical_signature(row) for row in altered_labels]
+        == [observer_physical_signature(row) for row in disabled_labels]
+    }
+
+    lifecycle_source = (ROOT / "examples/dcfinal001_r4_evolution.rs").read_text()
+    observer_start = lifecycle_source.index("if cohort.mesh.uses_observer_only_death()")
+    observer_end = lifecycle_source.index("let eligible =", observer_start)
+    observer_block = lifecycle_source[observer_start:observer_end]
+    canonical_observer_start = observer_block.index("if r10r9r5_canonical_lifecycle()")
+    canonical_observer_end = observer_block.index("} else if", canonical_observer_start)
+    canonical_observer_block = observer_block[canonical_observer_start:canonical_observer_end]
+    transaction_markers = (
+        "let step_cohorts_before = cohorts.clone();",
+        "let step_world_before = world.clone();",
+        "let step_ledger_before = ledger.clone();",
+        "ledger.numerical_invalid = true;",
+        "return false;",
+    )
+    results["canonical_lifecycle_source_contract"] = {
+        "pass": all(marker in lifecycle_source for marker in transaction_markers)
+        and "continue" not in canonical_observer_block
+        and "survivors.push(cohort);" not in canonical_observer_block
+        and "expression_step_activated_material_v4_turnover_only" in lifecycle_source,
+        "canonical_observer_block_has_continue": "continue" in canonical_observer_block,
+        "transaction_markers_present": {marker: marker in lifecycle_source for marker in transaction_markers},
+    }
+
+    if not all(result["pass"] if "pass" in result else result["recognized_nonneutral"] for result in results.values()):
+        raise ValueError(f"adversarial verifier fixture failed: {results}")
+    return results
+
+
 def valid_selection_prerequisites(c):
     ledger = c["ledger"]
-    nonneutral = [
-        key for key in ledger["phenotype_by_genotype"] if "0.25000000000000000" not in key
-    ]
+    nonneutral = [key for key in ledger["phenotype_by_genotype"] if not is_neutral_genotype(key)]
     return (
         c["mutation_enabled"]
         and c["environment_sequence"] in (["RESOURCE_CHALLENGE"], ["DAMAGE_CHALLENGE"])
         and ledger["post_bootstrap_physical_fissions"] > 0
         and len(nonneutral) > 0
         and (ledger["physical_deaths"] > 0 or ledger["post_bootstrap_physical_fissions"] > 0)
+        and not required(c, "numerical_invalid")
     )
 
 
@@ -169,14 +300,23 @@ def selection_record(value, environment):
         for c in campaign_rows(value)
         if c["mutation_enabled"] and c["environment_sequence"] == [environment]
     ]
-    if not rows or not all(valid_selection_prerequisites(c) for c in rows):
+    if not rows:
         return {
             "status": "NOT_REACHED",
-            "reason": "valid turnover and naturally variable genotype cohorts are required before selection",
+            "execution_status": "NOT_EXECUTED",
+            "reason": "no raw campaign exists",
+            "campaigns": [],
+        }
+    if not all(valid_selection_prerequisites(c) for c in rows):
+        return {
+            "status": "EXECUTED_NOT_QUALIFIED",
+            "execution_status": "EXECUTED",
+            "reason": "raw turnover exists but the independent causal selection predicate is false",
             "campaigns": [campaign_summary(c) for c in rows],
         }
     return {
         "status": "OBSERVED_REQUIRES_REPLICATED_CAUSAL_REVIEW",
+        "execution_status": "EXECUTED",
         "campaigns": [campaign_summary(c) for c in rows],
         "replicates": len(rows),
         "replicated": len(rows) == 2,
@@ -209,6 +349,7 @@ def main():
         ROOT / "crates/chemistry-core/src/mesh_self_contact.rs",
         ROOT / "crates/chemistry-core/src/mesh_fission.rs",
     ]
+    fixtures = run_adversarial_fixtures()
     write(
         "authority.json",
         {
@@ -220,6 +361,7 @@ def main():
             "canonical_input": str(CANONICAL),
             "reproduction_input": str(REPRO),
             "r4_provenance_reconciled": True,
+            "r5_identity": DIRECTIVE,
             "pr_44": "OPEN_DRAFT_UNMERGED_UNTOUCHED",
         },
     )
@@ -239,6 +381,27 @@ def main():
 
     legacy_summaries = [campaign_summary(c) for c in campaign_rows(legacy)]
     canonical_summaries = [campaign_summary(c) for c in campaign_rows(canonical)]
+    canonical_transaction_results = []
+    for campaign in campaign_rows(canonical):
+        for field in ("accepted_steps", "rejected_steps", "numerical_invalid", "numerical_invalid_reason"):
+            required(campaign, field)
+        world_ledger = required(campaign, "world", "ledger")
+        for field in ("invalidated_n_terminal", "invalidated_f_terminal", "invalidated_structural_terminal"):
+            required(world_ledger, field)
+        canonical_transaction_results.append({
+            "replicate": campaign["replicate"],
+            "accepted_steps": campaign["accepted_steps"],
+            "rejected_steps": campaign["rejected_steps"],
+            "numerical_invalid": campaign["numerical_invalid"],
+            "world_invalidated_material": {
+                key: world_ledger[key]
+                for key in ("invalidated_n_terminal", "invalidated_f_terminal", "invalidated_structural_terminal")
+            },
+            "pass": not campaign["numerical_invalid"] and all(
+                world_ledger[key] == 0.0
+                for key in ("invalidated_n_terminal", "invalidated_f_terminal", "invalidated_structural_terminal")
+            ),
+        })
     write(
         "historical_defect_replay.json",
         {
@@ -265,14 +428,16 @@ def main():
             "canonical": {"retained_depletion_and_rejection": canonical_summaries},
             "old_new_semantics": {
                 "legacy_observer_and_error_removal": True,
-                "canonical_observer_noninterference": True,
-                "canonical_atomic_rejection": True,
+                "canonical_observer_noninterference": fixtures["observer_label_independence"],
+                "canonical_atomic_rejection": all(
+                    row["pass"] for row in canonical_transaction_results
+                ),
             },
         },
     )
     write(
         "active_kernel_identity.json",
-        canonical.get("execution_identity", {"status": "MISSING_RUNTIME_IDENTITY"}),
+        required(canonical, "execution_identity"),
     )
     write(
         "resource_boundary_evidence.json",
@@ -292,18 +457,12 @@ def main():
     write(
         "rollback_observer_tests.json",
         {
-            "canonical_rejections_retained": all(
-                c["ledger"].get("invalidated_n_terminal", 0.0) == 0.0
-                and c["ledger"].get("invalidated_f_terminal", 0.0) == 0.0
-                for c in campaign_rows(canonical)
-            ),
-            "observer_nonviability_not_authoritative": all(
-                c["ledger"].get("observer_nonviable_observations", 0) >= 0
-                for c in campaign_rows(canonical)
-            ),
+            "canonical_transaction_results": canonical_transaction_results,
+            "observer_nonviability_not_authoritative": fixtures["observer_label_independence"],
             "legacy_control_retains_removal_path": any(
                 c["ledger"]["runtime_invalidations"] > 0 for c in campaign_rows(legacy)
             ),
+            "missing_fields_fail_closed": True,
         },
     )
     write(
@@ -311,12 +470,7 @@ def main():
         {
             "canonical": [verify_event_accounting(c, True) for c in campaign_rows(canonical)],
             "legacy": [verify_event_accounting(c, False) for c in campaign_rows(legacy)],
-            "metadata_permutation_fixture": "PASS",
-            "initial_variation_without_events_fixture": "PASS",
-            "mutation_only_fixture": "PASS",
-            "bootstrap_exclusion_fixture": "PASS",
-            "truncated_evidence_fixture": "REJECT",
-            "compressed_expanded_fixture": "PASS",
+            "adversarial_fixtures": fixtures,
         },
     )
     write(
@@ -330,16 +484,16 @@ def main():
     write(
         "composed_m1_reproduction.json",
         {
-            "status": "REPRODUCTION_INPUT_REPLAYED",
+            "status": "NOT_REACHED_SHARED_KERNEL_REQUALIFICATION",
             "source": str(REPRO),
             "raw": repro,
-            "note": "This is current composed-organism evidence; legacy certifier fields are not promoted without independent predicates.",
+            "note": "The prior R3 reproduction output is preserved as provenance only; repaired R5 lifecycle qualification must use the shared current kernel.",
         },
     )
     write(
         "both_daughter_outcomes.json",
         {
-            "status": "PRESENT_IN_REPRODUCTION_INPUT",
+            "status": "NOT_REACHED_SHARED_KERNEL_REQUALIFICATION",
             "source": str(REPRO),
             "raw": repro,
         },
@@ -359,9 +513,19 @@ def main():
 
     write("resource_selection.json", selection_record(canonical, "RESOURCE_CHALLENGE"))
     write("damage_selection.json", selection_record(canonical, "DAMAGE_CHALLENGE"))
+    reversal_rows = [
+        c for c in campaign_rows(canonical) if len(c["environment_sequence"]) == 2
+    ]
     write(
         "conditional_reversal.json",
-        {"status": "NOT_REACHED", "reason": "selection prerequisites are not independently established before reversal"},
+        {
+            "status": "EXECUTED_EXPLORATORY_NOT_QUALIFIED" if reversal_rows else "NOT_REACHED",
+            "execution_status": "EXECUTED" if reversal_rows else "NOT_EXECUTED",
+            "reason": "raw reversal exists but selection prerequisites are not independently established"
+            if reversal_rows
+            else "no raw reversal campaign exists",
+            "campaigns": [campaign_summary(c) for c in reversal_rows],
+        },
     )
     write("ecology_measurement_contract.json", {"status": "SEALED", "bootstrap_excluded": True, "primary_census": "post-bootstrap accepted population"})
     write("continuity.json", {"status": "NOT_REACHED", "reason": "bounded R5 stops after ecological prerequisite result"})

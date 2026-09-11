@@ -1304,3 +1304,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Directive: `DC-FINAL-001-R10R9R5-CANONICAL-LIFECYCLE-AND-EVOLUTION-EVIDENCE-RECOVERY-001`.
 - Starting governed head: `a835937b18a7b634704657e948e217c8205e38cf`; R4 CI `34584281006 PASS`; R4 artifact `sha256:2d09050f498942390d00ed98ae0d9826ecc19681c71d618f7439c79962d810a9`.
 - Scope: reproduce defects, repair lifecycle boundaries and evidence accounting, requalify the composed organism, and run ecology only after prerequisites. Biology constants, mutation, fission, environments, and PR #44 are frozen.
+
+## R10R9R5 continuation correction
+
+- Architect disposition: `CONTINUE_R5_IMPLEMENTATION_INCOMPLETE`; preserve d42f69d and its artifact as immutable diagnostic provenance.
+- Focused repair scope: observer noninterference, zero-funded catalyst turnover, whole-step transaction invalidation on mechanics/state rejection, canonical genotype identity, executable fail-closed verifier fixtures, and shared-kernel controls.
+- No renewed population campaign or scientific selection claim is authorized before these controls pass.

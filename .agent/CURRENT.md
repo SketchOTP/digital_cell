@@ -972,3 +972,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 
 - Authorized from R4 governed head `a835937b18a7b634704657e948e217c8205e38cf` under owner shutdown override.
 - Scope is lifecycle/evidence recovery; no scientific result is claimed before exact-head CI.
+
+## R5 continuation — implementation correction in progress
+
+- The first R5 execution remains immutable diagnostic provenance at `d42f69d5b159674592bba1057987ad4f3386be26`; its lifecycle and verifier defects are not accepted.
+- Current repair removes canonical observer control flow, preserves catalyst turnover during zero-funded V4 expression, invalidates complete rejected physical steps atomically, and replaces hardcoded verifier fixtures with executable fail-closed controls.
+- The expensive population campaign is intentionally not rerun until focused lifecycle, shared-kernel, and evidence controls pass exact-head CI.

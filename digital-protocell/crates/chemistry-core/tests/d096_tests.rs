@@ -2,7 +2,8 @@ use chemistry_core::d096_allocation::{
     allocation_schema_load_ok, allocation_v2_schema_load_ok, allocation_v3_schema_load_ok,
     allocation_v4_schema_load_ok, apply_assay_environment, expression_step,
     expression_step_activated_material_v2, expression_step_activated_material_v3,
-    expression_step_activated_material_v4, finite_budget_centered_gain, function_gain,
+    expression_step_activated_material_v4, expression_step_activated_material_v4_turnover_only,
+    finite_budget_centered_gain, function_gain,
     mutate_allocation_at_reproduction, pre_fission_assay, AllocationGenotype, AllocationParams,
     AssayEnvironment, EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION,
     EQUATION_VERSION_FINITE_CATALYTIC_ALLOCATION_V2,
@@ -293,6 +294,31 @@ fn d096_v4_expression_material_law_is_exactly_v3() {
     assert_eq!(v3.interior, v4.interior);
     assert_eq!(v3.finite_allocation, v4.finite_allocation);
     assert_eq!(v3.total_structural_mass(), v4.total_structural_mass());
+}
+
+#[test]
+fn d096_v4_zero_funded_synthesis_still_turns_over_catalyst() {
+    let params = AllocationParams::default();
+    let mut candidate = maturation_expression_mesh(0.4);
+    candidate.enable_finite_allocation_v4(AllocationGenotype::neutral(), &params);
+    candidate
+        .finite_allocation
+        .as_mut()
+        .unwrap()
+        .catalysts = [0.4; 4];
+    candidate.interior.a = 0.0;
+    let before = candidate.finite_allocation.unwrap().catalysts;
+    let ledger = expression_step_activated_material_v4_turnover_only(
+        &mut candidate,
+        &params,
+        0.1,
+    )
+    .unwrap();
+    let after = candidate.finite_allocation.unwrap().catalysts;
+    assert!(ledger.synthesis.iter().all(|value| *value == 0.0));
+    assert!(ledger.turnover_waste > 0.0);
+    assert!(after.iter().zip(before).all(|(next, prior)| *next < prior));
+    assert!(candidate.interior.w > 0.0);
 }
 
 #[test]

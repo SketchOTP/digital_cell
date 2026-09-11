@@ -566,6 +566,50 @@ pub fn expression_step_activated_material_v4(
     Ok(ledger)
 }
 
+/// Apply the expression dynamics that remain lawful when no activated
+/// material is available for new catalyst synthesis.  Zero funded synthesis
+/// is not equivalent to zero expression dynamics: catalyst turnover still
+/// proceeds into the existing waste pool and any affordable maintenance is
+/// charged to A.  This helper is intentionally V4-specific and commits only
+/// after evaluating the complete bounded transition on a clone.
+pub fn expression_step_activated_material_v4_turnover_only(
+    mesh: &mut MaterialMesh,
+    params: &AllocationParams,
+    dt: f64,
+) -> Result<ExpressionLedger, ExpressionReject> {
+    if !allocation_v4_schema_load_ok(mesh, params) {
+        return Err(ExpressionReject::IncompatibleSchema);
+    }
+    if !dt.is_finite() || dt <= 0.0 {
+        return Err(ExpressionReject::InvalidStep);
+    }
+    let mut next = mesh.clone();
+    let area = next.area().max(1e-9);
+    if next.total_structural_mass() <= 0.0 {
+        return Err(ExpressionReject::InsufficientMaterial);
+    }
+    let activated = (next.interior.a.max(0.0) * area).max(0.0);
+    let mut ledger = ExpressionLedger::default();
+    {
+        let state = next.finite_allocation.as_mut().expect("schema checked");
+        if !state.genotype.valid(params) {
+            return Err(ExpressionReject::InvalidAllocation);
+        }
+        let total_c = state.catalysts.iter().sum::<f64>();
+        ledger.maintenance_consumed = (params.maintenance_rate * total_c * dt).min(activated);
+        for catalyst in &mut state.catalysts {
+            let turnover = params.turnover_rate * (*catalyst).max(0.0);
+            *catalyst = (*catalyst - turnover * dt).max(0.0);
+            ledger.turnover_waste += turnover * dt;
+        }
+    }
+    let spent = ledger.maintenance_consumed / area;
+    next.interior.a -= spent;
+    next.interior.w += spent + ledger.turnover_waste / area;
+    *mesh = next;
+    Ok(ledger)
+}
+
 pub fn catalytic_gain(catalyst: f64) -> f64 {
     1.0 + catalyst.max(0.0) / (0.1 + catalyst.max(0.0))
 }

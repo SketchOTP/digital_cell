@@ -2629,3 +2629,8 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 
 - R4 provenance is retained, but selection claims require requalification because the old path removes cohorts after computational errors and treats observer viability as lifetime authority.
 - The R5 branch adds an opt-in canonical R10 lifecycle mode with typed outcomes, legal zero-flux depletion, atomic retained rejection, observer-label noninterference, and raw lifecycle events. Scientific outcomes remain pending exact-head CI and independent verification.
+
+## R10R9R5 continuation correction
+
+- The d42f69d implementation is retained as a diagnostic attempt only. Its observer short-circuit, frozen catalyst turnover at zero A, selective mechanics skip, genotype substring predicate, and literal verifier declarations remain rejected.
+- The current correction adds executable boundary controls and makes canonical numerical rejection invalidate the complete campaign step. Population results remain unqualified until the repair controls pass.

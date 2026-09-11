@@ -1897,3 +1897,10 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Starting governed head: `a835937b18a7b634704657e948e217c8205e38cf`.
 - Record: `R4_PROVENANCE_RECONCILED_SCIENTIFIC_INTERPRETATION_REQUALIFICATION_REQUIRED`.
 - Status: implementation and bounded requalification pending exact-head CI; no biology, mutation, environment, fission, or selection parameter is authorized to change.
+
+## DEC-DCFINAL001-R10R9R5-CONTINUATION-CORRECTION
+
+- Date: `2026-09-11`.
+- Architect disposition: `CONTINUE_R5_IMPLEMENTATION_INCOMPLETE`.
+- Preserve d42f69d and `sha256:dcbd6407b1966124049dc141ebb19c00b17f5dfda2c18568fa74c885d30a9672` as immutable diagnostic evidence; do not treat its PASS workflow as lifecycle acceptance.
+- Current branch adds focused executable controls before any renewed population campaign. No biological coefficients, mutation settings, environment settings, fission thresholds, commits to PR #44, or external services are changed.
