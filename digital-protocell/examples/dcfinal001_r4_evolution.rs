@@ -2637,7 +2637,7 @@ fn r10_advance_phase(
             }
         }
         let mut retained = Vec::new();
-        for mut cohort in cohorts.drain(..) {
+        for mut cohort in std::mem::take(cohorts) {
             match apply_expression_path(
                 &mut cohort.mesh,
                 &allocation,
@@ -2794,7 +2794,7 @@ fn r10_advance_phase(
         r10_exchange_with_observer(world, cohorts, &transport, mechanics.dt, ledger);
 
         let mut survivors = Vec::new();
-        for mut cohort in cohorts.drain(..) {
+        for mut cohort in std::mem::take(cohorts) {
             let count = cohort.count as f64;
             let reaction = r10r9r1_reaction_params(&cohort.mesh);
             let genotype = cohort
