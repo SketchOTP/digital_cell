@@ -2590,7 +2590,7 @@ fn r10_advance_phase(
     phase_steps: usize,
     expression_path: D096ExpressionPath,
     boundary_mode: PopulationBoundaryMode,
-) {
+) -> bool {
     let allocation = AllocationParams::default();
     let mechanics = MechParams::default();
     let transport = TransportParams::default();
@@ -2674,7 +2674,7 @@ fn r10_advance_phase(
                         // existing V4 catalyst turnover/maintenance dynamics
                         // still run.  Only a malformed or otherwise
                         // rejected state is restored unchanged.
-                        let turnover_result = match path {
+                        let turnover_result = match expression_path {
                             D096ExpressionPath::V4FiniteBudgetCentered => {
                                 expression_step_activated_material_v4_turnover_only(
                                     &mut cohort.mesh,
