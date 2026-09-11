@@ -1310,3 +1310,4 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Architect disposition: `CONTINUE_R5_IMPLEMENTATION_INCOMPLETE`; preserve d42f69d and its artifact as immutable diagnostic provenance.
 - Focused repair scope: observer noninterference, zero-funded catalyst turnover, whole-step transaction invalidation on mechanics/state rejection, canonical genotype identity, executable fail-closed verifier fixtures, and shared-kernel controls.
 - No renewed population campaign or scientific selection claim is authorized before these controls pass.
+- Focused CI `34652972566` passed the repair controls at head `d2abed3317d8c4ce47040ad43f472fd6dd5240eb`; the next lifecycle/evidence stages remain pending and no scientific acceptance is inferred.

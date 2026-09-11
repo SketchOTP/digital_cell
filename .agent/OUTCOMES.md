@@ -2634,3 +2634,4 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 
 - The d42f69d implementation is retained as a diagnostic attempt only. Its observer short-circuit, frozen catalyst turnover at zero A, selective mechanics skip, genotype substring predicate, and literal verifier declarations remain rejected.
 - The current correction adds executable boundary controls and makes canonical numerical rejection invalidate the complete campaign step. Population results remain unqualified until the repair controls pass.
+- Repair-control validation passed in exact-head CI `34652972566` at `d2abed3317d8c4ce47040ad43f472fd6dd5240eb`; the uploaded control digest is `sha256:5910c91cf5d877ac61f1816c8382250e1b5bd25819c9e6b2e40148a6759700f2`. This is implementation evidence only; the population campaign was not rerun.

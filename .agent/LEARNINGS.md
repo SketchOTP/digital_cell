@@ -1265,3 +1265,4 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Retaining an observer-nonviable cohort is insufficient if the same observer label can bypass fission eligibility; observer outputs must be audit-only through the complete physical transition.
 - Zero funded synthesis is distinct from zero expression dynamics: catalyst turnover must remain a bounded material-to-waste transition even when A cannot fund new synthesis.
 - A numerical mechanics rejection cannot be treated as a biological no-op while chemistry advances; restore the whole accepted-step transaction and fail the campaign closed unless a lawful retry is implemented.
+- Exact-head CI can validate the repair controls without validating the deferred ecological science; keep the focused control artifact separate from the immutable d42f69d population artifact.

@@ -978,3 +978,4 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The first R5 execution remains immutable diagnostic provenance at `d42f69d5b159674592bba1057987ad4f3386be26`; its lifecycle and verifier defects are not accepted.
 - Current repair removes canonical observer control flow, preserves catalyst turnover during zero-funded V4 expression, invalidates complete rejected physical steps atomically, and replaces hardcoded verifier fixtures with executable fail-closed controls.
 - The expensive population campaign is intentionally not rerun until focused lifecycle, shared-kernel, and evidence controls pass exact-head CI.
+- Focused repair CI `34652972566` passes at head `d2abed3317d8c4ce47040ad43f472fd6dd5240eb`: chemistry tests, regulatory compile, executable observer-label/turnover controls, and fail-closed verifier fixtures. No population campaign ran.
