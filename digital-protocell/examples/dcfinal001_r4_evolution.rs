@@ -3460,7 +3460,10 @@ pub fn run_r10r9r5_shared_kernel_reproduction() {
             id: 1,
         };
         let mut cohorts = vec![cohort];
-        let mut world = OpenMedium::new(Environment::Resource, 1.0);
+        let mut world = OpenMedium::new(
+            Environment::Resource,
+            R10R9R4_FOUNDER_MULTIPLICITY as f64,
+        );
         let initial = snapshot(&cohorts, &world, 0);
         let mut ledger = CampaignLedger::default();
         let mut next_id = 2;
@@ -3528,6 +3531,7 @@ pub fn run_r10r9r5_shared_kernel_reproduction() {
                 "phase_steps": 14_778,
                 "mutation_enabled": false,
                 "founder_multiplicity": 1,
+                "bath_volume": R10R9R4_FOUNDER_MULTIPLICITY,
             },
             "arms": arms,
             "counts": {
