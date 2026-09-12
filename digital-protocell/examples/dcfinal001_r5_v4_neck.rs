@@ -17,7 +17,8 @@ use chemistry_core::mesh_fission::{
 };
 use chemistry_core::mesh_growth::{growth_step, GrowthParams};
 use chemistry_core::mesh_mechanics::{
-    mechanics_step_with_reference_lengths, MechParams, MAX_EXTERNAL_FORCE_PER_VERTEX,
+    compute_forces, local_pressure, mechanics_step_with_reference_lengths, MechParams,
+    MAX_EXTERNAL_FORCE_PER_VERTEX,
 };
 use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
 use chemistry_core::mesh_self_contact::{mechanics_step_with_local_self_contact, polygon_simple};
@@ -949,6 +950,60 @@ fn pair_observer(mesh: &MaterialMesh, fission: &FissionParams) -> Value {
         "stressed_within_range_pairs": stressed_within,
         "eligible_apposition_candidate": find_local_segment_apposition(mesh, fission),
         "vertex_pinch": find_local_pinch(mesh, &fission.topo),
+    })
+}
+
+/// Observer-only geometry summary for the causal R5 comparison. Unlike the
+/// production apposition enumerator, this records the nearest geometrically
+/// eligible nonadjacent pair even when it is outside the local interaction
+/// range. No value returned here is consumed by the organism.
+pub fn r10_segment_geometry_summary(mesh: &MaterialMesh, fission: &FissionParams) -> Value {
+    let n = mesh.n();
+    let min_sep = (n / 4).max(3);
+    let range = local_rebond_range(mesh, &fission.topo);
+    let mut nearest: Option<(f64, usize, usize, usize)> = None;
+    let mut eligible_pairs = 0_usize;
+    let mut within_range_pairs = 0_usize;
+    for i in 0..n {
+        for j in (i + 1)..n {
+            let ring_separation = (j - i).min(n - (j - i));
+            if ring_separation < min_sep || j == i + 1 || (i == 0 && j + 1 == n) {
+                continue;
+            }
+            eligible_pairs += 1;
+            let distance = closest_segment_distance(
+                mesh.vertices[i],
+                mesh.vertices[(i + 1) % n],
+                mesh.vertices[j],
+                mesh.vertices[(j + 1) % n],
+            );
+            within_range_pairs += usize::from(distance <= range);
+            if nearest.map(|current| distance < current.0).unwrap_or(true) {
+                nearest = Some((distance, i, j, ring_separation));
+            }
+        }
+    }
+    let in_range_audits = segment_apposition_stress_audit(mesh, fission);
+    let nearest = nearest.map(|(distance, edge_i, edge_j, ring_separation)| {
+        json!({
+            "edge_i": edge_i,
+            "edge_j": edge_j,
+            "distance": distance,
+            "distance_over_range": distance / range.max(1e-300),
+            "range": range,
+            "ring_separation": ring_separation,
+            "within_range": distance <= range,
+        })
+    });
+    json!({
+        "eligible_pair_count": eligible_pairs,
+        "within_range_pair_count": within_range_pairs,
+        "stress_qualified_pair_count": in_range_audits
+            .iter()
+            .filter(|audit| audit.signed_magnitude_predicate)
+            .count(),
+        "range": range,
+        "nearest_geometrically_eligible_pair": nearest,
     })
 }
 
@@ -2379,6 +2434,22 @@ pub fn r10_refractory_mechanics_step(
     plasticity: &mut PlasticityStateV1,
     topology_tick: bool,
 ) -> Option<(f64, f64, usize)> {
+    r10_refractory_mechanics_step_with_diagnostics(mesh, plasticity, topology_tick, true, true)
+        .map(|(spent, waste, mappings, _)| (spent, waste, mappings))
+}
+
+/// Apply the exact R9/R10 mechanics transition while returning observer-only
+/// quantities from the same operators. The two boolean controls are diagnostic
+/// interventions only: they disable the named mechanism without changing any
+/// other production operator or parameter. The default production wrapper
+/// above uses both as true and therefore preserves the established path.
+pub fn r10_refractory_mechanics_step_with_diagnostics(
+    mesh: &mut MaterialMesh,
+    plasticity: &mut PlasticityStateV1,
+    topology_tick: bool,
+    motor_enabled: bool,
+    adaptation_enabled: bool,
+) -> Option<(f64, f64, usize, Value)> {
     if plasticity.adaptation.len() != mesh.n() || !mesh.can_advance_physics() {
         return None;
     }
@@ -2386,12 +2457,40 @@ pub fn r10_refractory_mechanics_step(
     let contractility = ContractilityParamsV1::default();
     let plasticity_params = PlasticityParamsV1::default();
     let raw_drive = curvature_components(mesh).3;
+    let adaptation_before = plasticity.adaptation.clone();
     let effective_drive = raw_drive
         .iter()
-        .zip(&plasticity.adaptation)
-        .map(|(drive, adaptation)| drive * (1.0 - adaptation))
+        .zip(&adaptation_before)
+        .map(|(drive, adaptation)| {
+            if adaptation_enabled {
+                drive * (1.0 - adaptation)
+            } else {
+                *drive
+            }
+        })
         .collect::<Vec<_>>();
-    let (forces, requested) = inward_normal_request(mesh, &effective_drive, mechanics.dt);
+    let (requested_forces, requested) =
+        inward_normal_request(mesh, &effective_drive, mechanics.dt);
+    let forces = if motor_enabled {
+        requested_forces.clone()
+    } else {
+        vec![[0.0, 0.0]; mesh.n()]
+    };
+    let passive_forces = compute_forces(mesh, &mechanics);
+    let passive_force_norm = passive_forces
+        .iter()
+        .map(|force| force[0].hypot(force[1]))
+        .sum::<f64>();
+    let pressure_values = (0..mesh.n())
+        .map(|edge| local_pressure(mesh, edge))
+        .collect::<Vec<_>>();
+    let pressure_mean = pressure_values.iter().sum::<f64>() / pressure_values.len().max(1) as f64;
+    let pressure_min = pressure_values.iter().copied().fold(f64::INFINITY, f64::min);
+    let pressure_max = pressure_values
+        .iter()
+        .copied()
+        .fold(f64::NEG_INFINITY, f64::max);
+    let before_vertices = mesh.vertices.clone();
     let zeros = vec![[0.0, 0.0]; mesh.n()];
     let ledger = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
         mesh,
@@ -2399,12 +2498,14 @@ pub fn r10_refractory_mechanics_step(
         &mechanics,
         &contractility,
         &forces,
-        requested,
+        if motor_enabled { requested } else { 0.0 },
         &zeros,
     )
     .ok()?;
-    advance_local_plasticity_trace(plasticity, &raw_drive, mechanics.dt, &plasticity_params)
-        .ok()?;
+    if adaptation_enabled {
+        advance_local_plasticity_trace(plasticity, &raw_drive, mechanics.dt, &plasticity_params)
+            .ok()?;
+    }
     let old_frame = observe_continuity_material_frame(mesh, &mechanics);
     let old_n = mesh.n();
     let _ = remesh_preserving_simple(mesh);
@@ -2420,17 +2521,68 @@ pub fn r10_refractory_mechanics_step(
         plasticity.remap(&mapping).ok()?;
         remesh_mappings = 1;
     }
-    if topology_tick {
-        let _ = topology_step(mesh, &FissionParams::default());
-    }
-    (polygon_simple(&mesh.vertices)
+    let topology = if topology_tick {
+        topology_step(mesh, &FissionParams::default())
+    } else {
+        Default::default()
+    };
+    let valid = polygon_simple(&mesh.vertices)
         && mesh.physical_runtime_valid()
         && mesh.lifecycle_invariants_hold()
-        && plasticity.adaptation.len() == mesh.n())
-    .then_some((
+        && plasticity.adaptation.len() == mesh.n();
+    let displacement_norm = before_vertices
+        .iter()
+        .zip(&mesh.vertices)
+        .map(|(before, after)| (after[0] - before[0]).hypot(after[1] - before[1]))
+        .sum::<f64>();
+    let (raw_drive_mean, raw_drive_variance) = mean_variance(&raw_drive);
+    let (effective_drive_mean, effective_drive_variance) = mean_variance(&effective_drive);
+    let (adaptation_mean, adaptation_variance) = mean_variance(&adaptation_before);
+    let adaptation_after = plasticity.adaptation.clone();
+    let diagnostic = json!({
+        "motor_enabled": motor_enabled,
+        "adaptation_enabled": adaptation_enabled,
+        "raw_curvature_drive": raw_drive,
+        "raw_drive_mean": raw_drive_mean,
+        "raw_drive_variance": raw_drive_variance,
+        "raw_drive_maximum": raw_drive.iter().copied().fold(0.0_f64, f64::max),
+        "adaptation_before": adaptation_before,
+        "adaptation_mean_before": adaptation_mean,
+        "adaptation_variance_before": adaptation_variance,
+        "adaptation_maximum_before": adaptation_before.iter().copied().fold(0.0_f64, f64::max),
+        "effective_drive": effective_drive,
+        "effective_drive_mean": effective_drive_mean,
+        "effective_drive_variance": effective_drive_variance,
+        "effective_drive_maximum": effective_drive.iter().copied().fold(0.0_f64, f64::max),
+        "requested_force_norm": requested_forces.iter().map(|force| force[0].hypot(force[1])).sum::<f64>(),
+        "requested_active_a": if motor_enabled { requested } else { 0.0 },
+        "funded_active_a": ledger.resource_spent,
+        "funding_ratio": if motor_enabled && requested > 0.0 { ledger.resource_spent / requested } else { 0.0 },
+        "active_w_produced": ledger.waste_amount_after - ledger.waste_amount_before,
+        "passive_force_norm": passive_force_norm,
+        "pressure_mean": pressure_mean,
+        "pressure_min": pressure_min,
+        "pressure_max": pressure_max,
+        "actual_displacement_norm": displacement_norm,
+        "adaptation_after": adaptation_after,
+        "topology_ruptures": topology.tension_ruptures,
+        "topology_rebonds": topology.local_rebonds,
+        "remesh_mappings": remesh_mappings,
+        "simple": polygon_simple(&mesh.vertices),
+        "runtime_valid": mesh.physical_runtime_valid(),
+        "lifecycle_valid": mesh.lifecycle_invariants_hold(),
+        "area": mesh.area(),
+        "perimeter": mesh.perimeter(),
+        "structural_mass": mesh.total_structural_mass(),
+        "young_structural_mass": mesh.total_young_structural_mass(),
+        "mature_structural_mass": mesh.total_structural_mass() - mesh.total_young_structural_mass(),
+        "mature_rest_perimeter": (0..mesh.n()).map(|index| mesh.rest_length(index)).sum::<f64>(),
+    });
+    valid.then_some((
         ledger.resource_spent,
         ledger.waste_amount_after - ledger.waste_amount_before,
         remesh_mappings,
+        diagnostic,
     ))
 }
 

@@ -106,6 +106,31 @@ impl PopulationBoundaryMode {
     }
 }
 
+/// Per-species source used only by the bounded R5 causal comparison. The
+/// scheduled Resource waveform and exact per-arm fixture values are both
+/// explicit diagnostic inputs; neither changes the production ecology.
+#[derive(Debug, Clone, Copy, PartialEq, Serialize)]
+enum DiagnosticBoundarySource {
+    Scheduled,
+    Fixture(f64),
+}
+
+impl DiagnosticBoundarySource {
+    fn value(self, environment: Environment, phase_step: usize) -> f64 {
+        match self {
+            Self::Scheduled => environment.fixed_inflow_concentrations(phase_step).0,
+            Self::Fixture(value) => value,
+        }
+    }
+
+    fn fuel_value(self, environment: Environment, phase_step: usize) -> f64 {
+        match self {
+            Self::Scheduled => environment.fixed_inflow_concentrations(phase_step).1,
+            Self::Fixture(value) => value,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
 enum FissionClockMode {
     CurrentStep,
@@ -642,6 +667,10 @@ impl OpenMedium {
         phase_step: usize,
     ) {
         let (target_n, target_f) = environment.fixed_inflow_concentrations(phase_step);
+        self.refresh_fixed_concentration_boundary_values(target_n, target_f);
+    }
+
+    fn refresh_fixed_concentration_boundary_values(&mut self, target_n: f64, target_f: f64) {
         let target_n_mass = target_n * self.volume;
         let target_f_mass = target_f * self.volume;
         let delta_n = target_n_mass - self.n_mass;
@@ -3016,6 +3045,11 @@ fn r10_advance_phase(
     reserve_resolution: ReserveResolutionMode,
     daughter_continuations: &mut Vec<Value>,
     stop_after_first_fission: bool,
+    boundary_n_source: DiagnosticBoundarySource,
+    boundary_f_source: DiagnosticBoundarySource,
+    motor_enabled: bool,
+    adaptation_enabled: bool,
+    mut mechanics_diagnostics: Option<&mut Vec<Value>>,
 ) -> bool {
     let allocation = AllocationParams::default();
     let mechanics = MechParams::default();
@@ -3045,12 +3079,17 @@ fn r10_advance_phase(
         let step_ledger_before = ledger.clone();
         let step_next_id = *next_id;
         let mut first_fission_this_step = false;
+        let boundary_target_n = boundary_n_source.value(environment, phase_step);
+        let boundary_target_f = boundary_f_source.fuel_value(environment, phase_step);
         match boundary_mode {
             PopulationBoundaryMode::RateReinterpretation => {
                 world.add_fixed_inflow(environment, phase_step, mechanics.dt)
             }
             PopulationBoundaryMode::FixedConcentrationBoundary => {
-                world.refresh_fixed_concentration_boundary(environment, phase_step)
+                world.refresh_fixed_concentration_boundary_values(
+                    boundary_target_n,
+                    boundary_target_f,
+                )
             }
             PopulationBoundaryMode::FixtureExteriorReference => {}
         }
@@ -3283,11 +3322,13 @@ fn r10_advance_phase(
             // step; a rejected mechanics proposal must not roll those global
             // accounting entries back implicitly.
             let pre_mechanics = cohort.clone();
-            let Some((active_a, active_w, remesh_mappings)) =
-                r10_closure::r10_refractory_mechanics_step(
+            let Some((active_a, active_w, remesh_mappings, mechanics_diagnostic)) =
+                r10_closure::r10_refractory_mechanics_step_with_diagnostics(
                     &mut cohort.mesh,
                     cohort.plasticity.as_mut().expect("R10 plasticity"),
                     topology_tick,
+                    motor_enabled,
+                    adaptation_enabled,
                 )
             else {
                 if r10r9r5_canonical_lifecycle() {
@@ -3344,6 +3385,24 @@ fn r10_advance_phase(
                 let observer = phenotype_ledger(ledger, genotype);
                 observer.active_a_spent += active_a * count;
                 observer.active_w_produced += active_w * count;
+            }
+            if let Some(records) = mechanics_diagnostics.as_deref_mut() {
+                if phase_step == 0 || (phase_step + 1) % 250 == 0 {
+                    let mut row = mechanics_diagnostic;
+                    row["step"] = json!(step);
+                    row["phase_step"] = json!(phase_step + 1);
+                    row["cohort_id"] = json!(cohort.id);
+                    row["boundary_target_n"] = json!(boundary_target_n);
+                    row["boundary_target_f"] = json!(boundary_target_f);
+                    row["accepted_bath_n"] = json!(world.n_mass / world.volume);
+                    row["accepted_bath_f"] = json!(world.f_mass / world.volume);
+                    row["mass_eligible"] = json!(
+                        cohort.mesh.total_structural_mass() >= 1.35 * cohort.birth_mass
+                    );
+                    row["segment_geometry"] =
+                        r10_closure::r10_segment_geometry_summary(&cohort.mesh, &fission);
+                    records.push(row);
+                }
             }
             if !polygon_simple(&cohort.mesh.vertices)
                 || !cohort.mesh.physical_runtime_valid()
@@ -3573,6 +3632,11 @@ fn r10_campaign(
             ReserveResolutionMode::PerStep,
             &mut daughter_continuations,
             false,
+            DiagnosticBoundarySource::Scheduled,
+            DiagnosticBoundarySource::Scheduled,
+            true,
+            true,
+            None,
         );
         if !phase_ok {
             break;
@@ -3944,6 +4008,11 @@ pub fn run_r10r9r5_shared_kernel_reproduction() {
             ReserveResolutionMode::PerStep,
             &mut daughter_continuations,
             true,
+            DiagnosticBoundarySource::Scheduled,
+            DiagnosticBoundarySource::Scheduled,
+            true,
+            true,
+            None,
         );
         let terminal = snapshot(&cohorts, &world, ledger.accepted_steps as usize);
         let terminal_structural_mass = cohorts
@@ -4057,6 +4126,11 @@ fn r10_current_reproduction_comparison_arm(
         reserve_resolution,
         &mut daughter_continuations,
         true,
+        DiagnosticBoundarySource::Scheduled,
+        DiagnosticBoundarySource::Scheduled,
+        true,
+        true,
+        None,
     );
     let terminal = snapshot(&cohorts, &world, ledger.accepted_steps as usize);
     let attempts = ledger
@@ -4131,6 +4205,259 @@ fn r10_current_reproduction_comparison_arm(
             "active_w_produced": ledger.active_w_produced,
         },
     })
+}
+
+#[derive(Debug, Clone, Copy)]
+struct CausalBoundaryCell {
+    label: &'static str,
+    fixture_n: bool,
+    fixture_f: bool,
+}
+
+const R5_CAUSAL_BOUNDARY_CELLS: [CausalBoundaryCell; 4] = [
+    CausalBoundaryCell {
+        label: "A_RESOURCE_N_RESOURCE_F_CURRENT_CONTROL",
+        fixture_n: false,
+        fixture_f: false,
+    },
+    CausalBoundaryCell {
+        label: "B_FIXTURE_N_RESOURCE_F",
+        fixture_n: true,
+        fixture_f: false,
+    },
+    CausalBoundaryCell {
+        label: "C_RESOURCE_N_FIXTURE_F",
+        fixture_n: false,
+        fixture_f: true,
+    },
+    CausalBoundaryCell {
+        label: "D_FIXTURE_N_FIXTURE_F",
+        fixture_n: true,
+        fixture_f: true,
+    },
+];
+
+fn r10_causal_arm(
+    index: usize,
+    cell: CausalBoundaryCell,
+    motor_enabled: bool,
+    adaptation_enabled: bool,
+) -> Value {
+    let allocation = AllocationParams::default();
+    let mut mesh = r10_closure::r10_reproduction_fixture(index);
+    let fixture_n = mesh.exterior.n;
+    let fixture_f = mesh.exterior.f;
+    let birth_mass = mesh.total_structural_mass();
+    mesh.enable_finite_allocation_v4(AllocationGenotype::neutral(), &allocation);
+    let initial_exterior = mesh.exterior;
+    let cohort = Cohort {
+        plasticity: Some(PlasticityStateV1::new(mesh.n())),
+        mesh,
+        count: 1,
+        generation: 0,
+        birth_mass,
+        id: 1,
+    };
+    let mut cohorts = vec![cohort];
+    let mut world = OpenMedium::new(Environment::Resource, R10R9R4_FOUNDER_MULTIPLICITY as f64);
+    let initial = snapshot(&cohorts, &world, 0);
+    let mut ledger = CampaignLedger::default();
+    let mut next_id = 2;
+    let mut trajectory = vec![initial];
+    let mut prefix = None;
+    let mut daughter_continuations = Vec::new();
+    let mut mechanics_trace = Vec::new();
+    let n_source = if cell.fixture_n {
+        DiagnosticBoundarySource::Fixture(fixture_n)
+    } else {
+        DiagnosticBoundarySource::Scheduled
+    };
+    let f_source = if cell.fixture_f {
+        DiagnosticBoundarySource::Fixture(fixture_f)
+    } else {
+        DiagnosticBoundarySource::Scheduled
+    };
+    let accepted = r10_advance_phase(
+        &mut cohorts,
+        &mut world,
+        Environment::Resource,
+        0,
+        false,
+        splitmix64((index + 1) as u64),
+        &mut next_id,
+        &mut ledger,
+        &mut trajectory,
+        &mut prefix,
+        R10R2_PHASE_STEPS,
+        D096ExpressionPath::V4FiniteBudgetCentered,
+        PopulationBoundaryMode::FixedConcentrationBoundary,
+        FissionClockMode::CurrentStep,
+        ReserveResolutionMode::PerStep,
+        &mut daughter_continuations,
+        true,
+        n_source,
+        f_source,
+        motor_enabled,
+        adaptation_enabled,
+        Some(&mut mechanics_trace),
+    );
+    let terminal_step = ledger.accepted_steps as usize;
+    let terminal = snapshot(&cohorts, &world, terminal_step);
+    let fission_attempts = ledger
+        .lifecycle_events
+        .iter()
+        .filter(|event| event["phase"] == "fission_attempt")
+        .cloned()
+        .collect::<Vec<_>>();
+    let fission_steps = ledger
+        .physical_birth_events
+        .iter()
+        .filter_map(|event| event["step"].as_u64())
+        .collect::<Vec<_>>();
+    let terminal_cohorts = terminal_cohort_diagnostics(&cohorts, &FissionParams::default());
+    let active_energy_residual = (ledger.active_a_spent - ledger.active_w_produced).abs();
+    let daughter_branches_viable = daughter_continuations
+        .iter()
+        .filter(|row| row["continuation"]["viable"] == true)
+        .count();
+    let full_state_viable_pairs = usize::from(
+        ledger.physical_fissions > 0
+            && daughter_continuations.len() == 2
+            && daughter_branches_viable == 2,
+    );
+    json!({
+        "cell": cell.label,
+        "arm": index + 1,
+        "environment": Environment::Resource.label(),
+        "boundary_sources": {
+            "n": if cell.fixture_n { "EXACT_PER_ARM_FIXTURE_EXTERIOR" } else { "RESOURCE_WAVEFORM" },
+            "f": if cell.fixture_f { "EXACT_PER_ARM_FIXTURE_EXTERIOR" } else { "RESOURCE_WAVEFORM" },
+            "fixture_n": fixture_n,
+            "fixture_f": fixture_f,
+            "initial_mesh_exterior": initial_exterior,
+        },
+        "motor_enabled": motor_enabled,
+        "adaptation_enabled": adaptation_enabled,
+        "accepted": accepted,
+        "accepted_steps": ledger.accepted_steps,
+        "birth_mass": birth_mass,
+        "maximum_mass_over_birth": cohorts.iter().map(|cohort| {
+            cohort.mesh.total_structural_mass() / cohort.birth_mass.max(1e-300)
+        }).fold(1.0_f64, f64::max),
+        "growth_qualified": cohorts.iter().any(|cohort| {
+            cohort.mesh.total_structural_mass() >= 1.35 * cohort.birth_mass
+        }) || ledger.physical_fissions > 0,
+        "physical_fissions": ledger.physical_fissions,
+        "full_state_viable_pairs": full_state_viable_pairs,
+        "full_state_viable_daughter_branches": daughter_branches_viable,
+        "fission_steps": fission_steps,
+        "fission_attempts": fission_attempts,
+        "daughter_continuations": daughter_continuations,
+        "trajectory": trajectory,
+        "mechanics_trace": mechanics_trace,
+        "terminal": terminal,
+        "terminal_cohorts": terminal_cohorts,
+        "world": world,
+        "ledger": ledger,
+        "active_energy_residual": active_energy_residual,
+        "material_energy": {
+            "active_a_spent": ledger.active_a_spent,
+            "active_w_produced": ledger.active_w_produced,
+            "reaction_n_consumed": ledger.reaction_n_consumed,
+            "reaction_f_consumed": ledger.reaction_f_consumed,
+            "growth_material": ledger.growth_material,
+            "m1_structural_build": ledger.m1_structural_build,
+            "m1_structural_turnover": ledger.m1_structural_turnover,
+        },
+        "numerical_invalid": ledger.numerical_invalid,
+        "rejected_steps": ledger.rejected_steps,
+    })
+}
+
+fn r10_causal_cell(cell: CausalBoundaryCell, motor_enabled: bool, adaptation_enabled: bool) -> Value {
+    let arms = (0..10)
+        .map(|index| r10_causal_arm(index, cell, motor_enabled, adaptation_enabled))
+        .collect::<Vec<_>>();
+    let physical_fissions = arms
+        .iter()
+        .map(|arm| arm["physical_fissions"].as_u64().unwrap_or(0))
+        .sum::<u64>();
+    let successful_arms = arms
+        .iter()
+        .filter(|arm| arm["physical_fissions"].as_u64().unwrap_or(0) > 0)
+        .count();
+    let viable_pairs = arms
+        .iter()
+        .map(|arm| arm["full_state_viable_pairs"].as_u64().unwrap_or(0))
+        .sum::<u64>();
+    json!({
+        "label": cell.label,
+        "fixture_n": cell.fixture_n,
+        "fixture_f": cell.fixture_f,
+        "motor_enabled": motor_enabled,
+        "adaptation_enabled": adaptation_enabled,
+        "phase_steps": R10R2_PHASE_STEPS,
+        "arms": arms,
+        "counts": {
+            "growth_qualified_arms": arms.iter().filter(|arm| arm["growth_qualified"] == true).count(),
+            "physical_fissions": physical_fissions,
+            "distinct_successful_arms": successful_arms,
+            "full_state_viable_pairs": viable_pairs,
+            "attempts": arms.iter().map(|arm| arm["fission_attempts"].as_array().map(Vec::len).unwrap_or(0)).sum::<usize>(),
+        },
+    })
+}
+
+/// Execute the bounded R5 causal comparison. Four N/F boundary cells and two
+/// named cortex controls use the shared production lifecycle; none is a
+/// production ecology replacement or a selection run.
+pub fn run_r10r9r5_causal_comparison() {
+    let mut output = PathBuf::from("/tmp/dcfinal001_r10r9r5_causal_comparison.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let mut cells = R5_CAUSAL_BOUNDARY_CELLS
+        .into_iter()
+        .map(|cell| r10_causal_cell(cell, true, true))
+        .collect::<Vec<_>>();
+    let motor_off = r10_causal_cell(R5_CAUSAL_BOUNDARY_CELLS[0], false, true);
+    let adaptation_disabled = r10_causal_cell(R5_CAUSAL_BOUNDARY_CELLS[0], true, false);
+    let resource_current = cells.remove(0);
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive": "DC-FINAL-001-R10R9R5-CANONICAL-LIFECYCLE-AND-EVOLUTION-EVIDENCE-RECOVERY-001",
+            "gate": "COHERENT_RESOURCE_MORPHOGENETIC_DRIVE_ATTRIBUTION",
+            "scientific_runtime_changed": false,
+            "population_campaign": "NOT_RUN",
+            "phase_steps": R10R2_PHASE_STEPS,
+            "bath_volume": R10R9R4_FOUNDER_MULTIPLICITY,
+            "founder_multiplicity": 1,
+            "thresholds": {
+                "fission_mass_gate": 1.35,
+                "apposition_range": "FissionParams::default().topo local_rebond_range",
+                "stress": 0.15,
+                "daughter_continuation_steps": DAUGHTER_CONTINUATION_STEPS,
+            },
+            "boundary_cells": [resource_current].into_iter().chain(cells).collect::<Vec<_>>(),
+            "controls": {
+                "motor_off": motor_off,
+                "adaptation_disabled": adaptation_disabled,
+            },
+            "interpretation_contract": {
+                "fixture_boundary": "diagnostic reference only",
+                "resource_boundary": "coherent finite bath published to mechanics",
+                "diagnostic_controls": "named mechanism intervention only; no production candidate",
+                "no_new_parameters": true,
+                "nearest_geometric_pair_includes_out_of_range": true,
+            }
+        }))
+        .unwrap(),
+    )
+    .unwrap();
 }
 
 /// Execute the preregistered R5 reproduction-equivalence matrix.  This is a
@@ -4372,6 +4699,11 @@ pub fn run_r10r9r5_contract_tests() {
             ReserveResolutionMode::PerStep,
             &mut daughter_continuations,
             true,
+            DiagnosticBoundarySource::Scheduled,
+            DiagnosticBoundarySource::Scheduled,
+            true,
+            true,
+            None,
         );
         let fission_attempts = ledger
             .lifecycle_events

@@ -41,7 +41,9 @@ jobs:
               'digital-protocell/examples/dcfinal001_r10r9r5_contract_tests.rs',
               'digital-protocell/examples/dcfinal001_r10r9r5_shared_kernel_reproduction.rs',
               'digital-protocell/examples/dcfinal001_r10r9r5_reproduction_equivalence.rs',
+              'digital-protocell/examples/dcfinal001_r10r9r5_causal_comparison.rs',
               'digital-protocell/experiments/dcfinal001_r10r9r5_evidence.py',
+              'digital-protocell/experiments/dcfinal001_r10r9r5_causal_verify.py',
               'digital-protocell/experiments/generated/dcfinal001r10r9r5/',
           )
           changed = subprocess.check_output(['git', 'diff', '--name-only', f'{start}..HEAD'], text=True).splitlines()
@@ -63,6 +65,7 @@ jobs:
           cargo +1.89.0 check --locked -q -p regulatory-core --example dcfinal001_r10r9r5_contract_tests
           cargo +1.89.0 check --locked -q -p regulatory-core --example dcfinal001_r10r9r5_shared_kernel_reproduction
           cargo +1.89.0 check --locked -q -p regulatory-core --example dcfinal001_r10r9r5_reproduction_equivalence
+          cargo +1.89.0 check --locked -q -p regulatory-core --example dcfinal001_r10r9r5_causal_comparison
 
       - name: Run executable R5 lifecycle boundary controls
         working-directory: digital-protocell
@@ -103,6 +106,18 @@ jobs:
             cargo +1.89.0 run --locked -q --release -p regulatory-core \
             --example dcfinal001_r10r9r5_reproduction_equivalence
 
+      - name: Run coherent Resource causal comparison
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          DCFINAL001_R10R9R1_RESERVE=1 DCFINAL001_R10R9R3_RESERVE=1 \
+            DCFINAL001_R10R9R5_CANONICAL=1 \
+            cargo +1.89.0 run --locked -q --release -p regulatory-core \
+            --example dcfinal001_r10r9r5_causal_comparison
+          python3 experiments/dcfinal001_r10r9r5_causal_verify.py \
+            --input /tmp/dcfinal001_r10r9r5_causal_comparison.json \
+            --output /tmp/dcfinal001_r10r9r5_causal_comparison_verification.json
+
       - name: Run executable evidence-verifier fixtures
         working-directory: digital-protocell
         run: |
@@ -140,3 +155,5 @@ jobs:
             /tmp/dcfinal001_r10r9r5_shared_kernel_reproduction.json
             /tmp/dcfinal001_r10r9r5_reproduction_equivalence.json
             /tmp/dcfinal001_r10r9r5_reproduction_equivalence_verification.json
+            /tmp/dcfinal001_r10r9r5_causal_comparison.json
+            /tmp/dcfinal001_r10r9r5_causal_comparison_verification.json

@@ -1285,3 +1285,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - `mesh.exterior` is a physical pressure input, not disposable fixture metadata. A transport-only bath substitution followed by restoration creates a cross-phase environment mismatch even when the transport ledger is otherwise correct.
 - The narrow repair is to publish one accepted finite-bath boundary after complete exchange and before mechanics; this preserves finite-donor conservation, cohort-order independence, and separation between transport allocation limits and physical pressure.
 - Coherent Resource-boundary reproduction remains below threshold: `0/10` fissions, with every attempt failing first at `APPOSITION_OUTSIDE_LOCAL_RANGE`. The corrected negative must not be converted into motor tuning or environmental rescue.
+- Four-cell N/F substitution and named cortex controls are diagnostic comparisons only. A richer fixture cell cannot qualify the frozen Resource ecology.
+
+## R10R9R5 coherent-Resource morphogenesis attribution learning
+
+- Endpoint motor expenditure cannot distinguish missing excitation, refractory suppression, inadequate funding, passive opposition, or local growth distribution; these must be measured at common accepted times.
+- A null in-range apposition set is incomplete geometry evidence; the nearest ring-eligible pair must also be recorded when it lies outside the interaction range.

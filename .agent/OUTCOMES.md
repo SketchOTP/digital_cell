@@ -2655,3 +2655,9 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Reproduction verdict: `BOUNDARY_COHERENCE_REPAIRED_RESOURCE_REPRODUCTION_NOT_ESTABLISHED`. Fixture-boundary control is `8/10` fissions and `8/8` viable pairs; coherent Resource-boundary replay is `0/10` fissions after `14,778` accepted parent steps, with all attempts first failing `APPOSITION_OUTSIDE_LOCAL_RANGE`. All ten Resource arms are terminal-mass-qualified and numerically valid.
 - Source head `c5b31e2a6de636c854f9395344070e8a3a15bf68`; exact-head CI `34691090129 PASS`; artifact ZIP SHA256 `a4b8bc4f88368e7dbece9193097019238247eeb4562e7254fb4366ead4c9e307`.
 - Scientific conclusion is a bounded coherent-Resource negative. Population selection, reversal, and final integrated M1-M5 remain `NOT_REACHED`; no successor execution is authorized.
+- The four-cell comparison keeps Resource forcing and exact fixture N/F values separate, preserves fixture reproduction as diagnostic reference only, and records the nearest eligible pair even when outside the local range.
+
+## DC-FINAL-001-R10R9R5 coherent-Resource morphogenesis attribution
+
+- Implementation is pending exact-head CI. The new evidence path samples raw/effective curvature, adaptation, requested/funded active work, passive force and pressure observables, displacement, structural maturity, and out-of-range nearest eligible geometry from the shared lifecycle.
+- No causal classification or reproduction qualification is inferred before independent verification of the raw comparison artifact.

@@ -1333,3 +1333,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Executable controls and independent verifier pass at `c5b31e2a6de636c854f9395344070e8a3a15bf68`, CI `34691090129`; artifact ZIP SHA256 `a4b8bc4f88368e7dbece9193097019238247eeb4562e7254fb4366ead4c9e307`.
 - Historical fixture-boundary reproduction remains a control at `8/10` fissions and `8/8` viable pairs. Corrected coherent Resource-boundary reproduction remains `0/10` with all attempts failing first at `APPOSITION_OUTSIDE_LOCAL_RANGE`; it is a valid below-threshold result, not evidence for changing the organism or ecology.
 - Downstream population, selection, reversal, and final integration remain `NOT_REACHED` under the R5 stop rule. PR #44 remains open, draft, unmerged, and untouched.
+- No new force law, parameter, resource rescue, horizon extension, population campaign, selection, reversal, or successor is authorized by this continuation.
+
+## R10R9R5 coherent-Resource morphogenesis continuation
+
+- Record: `R5_BOUNDARY_REPAIR_ACCEPTED_COHERENT_RESOURCE_MORPHOGENESIS_REPLAN`.
+- Scope is shared R9/R10 operator instrumentation, four exact N/F diagnostic cells, Resource motor-off and adaptation-disabled controls, independent verification, and only directly demonstrated in-scope execution repair.

@@ -1001,3 +1001,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Exact implementation head `c5b31e2a6de636c854f9395344070e8a3a15bf68` passed exact-head CI `34691090129`; downloaded artifact ZIP SHA256 is `a4b8bc4f88368e7dbece9193097019238247eeb4562e7254fb4366ead4c9e307`.
 - Fixture-boundary shared-kernel reproduction remains `8/10` distinct fissions with `8/8` viable pairs. Coherent Resource-bath reproduction remains `0/10` fissions and `0/0` daughter pairs after `14,778` accepted parent steps; all `5,839`/`5,840` attempts fail first at `APPOSITION_OUTSIDE_LOCAL_RANGE`, while `10/10` arms are terminal-mass-qualified and numerically valid.
 - Final R5 classification: `BOUNDARY_COHERENCE_REPAIRED_RESOURCE_REPRODUCTION_NOT_ESTABLISHED`. Population selection, reversal, and downstream final integration are `NOT_REACHED`; no R6 or successor execution is authorized.
+- No causal classification or reproduction result is accepted before exact-head CI and independent raw-output verification.
+
+## R5 coherent-Resource morphogenesis attribution — pending validation
+
+- Architect continuation: `R5_BOUNDARY_REPAIR_ACCEPTED_COHERENT_RESOURCE_MORPHOGENESIS_REPLAN`.
+- Shared-operator diagnostics and the fixed four-cell N/F comparison plus named cortex controls are prepared; no population, selection, reversal, or successor run is authorized.

@@ -1930,3 +1930,10 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Exact implementation head `c5b31e2a6de636c854f9395344070e8a3a15bf68`; CI `34691090129 PASS`; independently downloaded artifact ZIP SHA256 `a4b8bc4f88368e7dbece9193097019238247eeb4562e7254fb4366ead4c9e307`.
 - Fixture-boundary control: `8/10` distinct fissions and `8/8` full-state viable pairs. Corrected coherent Resource boundary: `0/10` fissions, `0/0` daughter pairs, `10/10` terminal-mass-qualified, `0` numerical rejections; all `5,839`/`5,840` attempts fail first at `APPOSITION_OUTSIDE_LOCAL_RANGE`.
 - Final classification: `BOUNDARY_COHERENCE_REPAIRED_RESOURCE_REPRODUCTION_NOT_ESTABLISHED`. Population selection, reversal, and final integrated qualification are `NOT_REACHED`; no successor execution starts automatically. PR #44 remains open/draft/unmerged/untouched.
+- No production biology, force strength, environment, fission threshold, horizon, population size, or selection runtime changes. Causal classification is pending exact-head CI and independent verification.
+
+## DEC-DCFINAL001-R10R9R5-COHERENT-RESOURCE-MORPHOGENESIS-REPLAN
+
+- Date: `2026-09-12`.
+- Record: `R5_BOUNDARY_REPAIR_ACCEPTED_COHERENT_RESOURCE_MORPHOGENESIS_REPLAN`.
+- The active package is diagnostic only: shared causal instrumentation, fixed four-cell N/F comparison, named cortex controls, and fail-closed verification. Prior attempts and the accepted boundary repair remain immutable.
