@@ -12,11 +12,11 @@ use chemistry_core::d096_allocation::{
     mutate_allocation_at_reproduction, AllocationGenotype, AllocationParams, ExpressionLedger,
     ExpressionReject,
 };
-use chemistry_core::material_mesh::MaterialMesh;
+use chemistry_core::material_mesh::{LumpedChem, MaterialMesh};
 use chemistry_core::mesh_fission::{segment_apposition_stress_audit, try_local_segment_fission};
 use chemistry_core::mesh_fission::{topology_step, try_local_fission, FissionParams};
 use chemistry_core::mesh_growth::{growth_step, GrowthParams};
-use chemistry_core::mesh_mechanics::{remesh, MechParams};
+use chemistry_core::mesh_mechanics::{local_pressure, remesh, MechParams};
 use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
 use chemistry_core::mesh_self_contact::{mechanics_step_with_local_self_contact, polygon_simple};
 use chemistry_core::mesh_transport::{
@@ -213,6 +213,15 @@ struct OpenMedium {
     n_mass: f64,
     f_mass: f64,
     ledger: WorldLedger,
+}
+
+#[derive(Debug, Clone, Serialize)]
+struct BoundaryExchangeReport {
+    sampled_boundary_n: f64,
+    sampled_boundary_f: f64,
+    transport_boundaries: Vec<[f64; 2]>,
+    published_boundary_n: f64,
+    published_boundary_f: f64,
 }
 
 #[derive(Debug, Clone, Default, Serialize)]
@@ -584,6 +593,21 @@ fn signed_request(
 }
 
 impl OpenMedium {
+    fn accepted_boundary(&self) -> LumpedChem {
+        LumpedChem {
+            n: self.n_mass / self.volume,
+            f: self.f_mass / self.volume,
+            ..LumpedChem::default()
+        }
+    }
+
+    fn publish_accepted_boundary(&self, cohorts: &mut [Cohort]) {
+        let boundary = self.accepted_boundary();
+        for cohort in cohorts {
+            cohort.mesh.exterior = boundary;
+        }
+    }
+
     fn new(environment: Environment, volume: f64) -> Self {
         let (n, f) = environment.fixed_inflow_concentrations(0);
         let initial_n = n * volume;
@@ -642,11 +666,23 @@ impl OpenMedium {
 
     /// Exact multiplicity-aware finite shared-boundary exchange. The effective
     /// boundary passed to the frozen transport law is reduced only by the one
-    /// common finite-world allocation scale.
+    /// common finite-world allocation scale. The staged transport boundary is
+    /// not a mechanical boundary: after all requests are settled, the actual
+    /// accepted finite-bath state is published to every downstream consumer.
     fn exchange(&mut self, cohorts: &mut [Cohort], transport: &TransportParams, dt: f64) {
+        let _ = self.exchange_with_report(cohorts, transport, dt);
+    }
+
+    fn exchange_with_report(
+        &mut self,
+        cohorts: &mut [Cohort],
+        transport: &TransportParams,
+        dt: f64,
+    ) -> BoundaryExchangeReport {
         let boundary_n = self.n_mass / self.volume;
         let boundary_f = self.f_mass / self.volume;
         let mut raw = Vec::with_capacity(cohorts.len());
+        let mut transport_boundaries = Vec::with_capacity(cohorts.len());
         let mut requested_n = 0.0;
         let mut requested_f = 0.0;
         let mut returned_n = 0.0;
@@ -698,7 +734,6 @@ impl OpenMedium {
         let scale = n_scale.min(f_scale).clamp(0.0, 1.0);
 
         for (cohort, (rn, rf)) in cohorts.iter_mut().zip(raw) {
-            let original = cohort.mesh.exterior;
             cohort.mesh.exterior.c = 0.0;
             cohort.mesh.exterior.a = 0.0;
             cohort.mesh.exterior.w = 0.0;
@@ -712,8 +747,8 @@ impl OpenMedium {
             } else {
                 boundary_f
             };
+            transport_boundaries.push([cohort.mesh.exterior.n, cohort.mesh.exterior.f]);
             let ledger = transport_step(&mut cohort.mesh, transport, dt);
-            cohort.mesh.exterior = original;
             let count = cohort.count as f64;
             self.n_mass += count * (ledger.n_out - ledger.n_in);
             self.f_mass += count * (ledger.f_out - ledger.f_in);
@@ -727,6 +762,14 @@ impl OpenMedium {
         }
         self.n_mass = self.n_mass.max(0.0);
         self.f_mass = self.f_mass.max(0.0);
+        self.publish_accepted_boundary(cohorts);
+        BoundaryExchangeReport {
+            sampled_boundary_n: boundary_n,
+            sampled_boundary_f: boundary_f,
+            transport_boundaries,
+            published_boundary_n: self.n_mass / self.volume,
+            published_boundary_f: self.f_mass / self.volume,
+        }
     }
 }
 
@@ -850,6 +893,191 @@ fn fixed_boundary_transport_reference_parity() -> Value {
         "delivered_f_abs_delta": delivered_f_delta,
         "tolerance": 1e-12,
         "pass": pass,
+    })
+}
+
+fn boundary_state_coherence_contract() -> Value {
+    let (template, _, birth_mass, _) = r10_closure::r10_seed3_fission_state();
+    let transport = TransportParams::default();
+    let dt = MechParams::default().dt;
+    let fixture_exterior = template.exterior;
+    let pressure_cases = [
+        ("resource_pulse", Environment::Resource, 0_usize),
+        ("resource_lean", Environment::Resource, 100_usize),
+        ("damage", Environment::Damage, 0_usize),
+    ];
+    let pressure_rows = pressure_cases
+        .into_iter()
+        .map(|(label, environment, phase_step)| {
+            let (target_n, target_f) = environment.fixed_inflow_concentrations(phase_step);
+            let stale_pressure = local_pressure(&template, 0);
+            let mut coherent = template.clone();
+            coherent.exterior = LumpedChem {
+                n: target_n,
+                f: target_f,
+                ..LumpedChem::default()
+            };
+            let coherent_pressure = local_pressure(&coherent, 0);
+            let expected_outside = 0.5 * (target_n + target_f);
+            let expected_inside = template.interior.c
+                + template.interior.a
+                + 0.5 * (template.interior.n + template.interior.f);
+            json!({
+                "label": label,
+                "environment": environment.label(),
+                "phase_step": phase_step,
+                "scheduled_reservoir_concentration": [target_n, target_f],
+                "fixture_exterior": fixture_exterior,
+                "fixture_pressure": stale_pressure,
+                "coherent_boundary_outside_pressure_term": expected_outside,
+                "coherent_pressure": coherent_pressure,
+                "pressure_delta_from_stale_fixture": coherent_pressure - stale_pressure,
+                "pressure_equation_pass": (coherent_pressure - (expected_inside - expected_outside)).abs() <= 1e-12,
+                "pressure_equation": "inside - (C_out + A_out + 0.5*(N_out + F_out))",
+            })
+        })
+        .collect::<Vec<_>>();
+
+    let allocation = AllocationParams::default();
+    let mut candidate_mesh = template.clone();
+    candidate_mesh.enable_finite_allocation_v4(AllocationGenotype::neutral(), &allocation);
+    let mut candidate = Cohort {
+        mesh: candidate_mesh,
+        plasticity: None,
+        count: 1,
+        generation: 0,
+        birth_mass,
+        id: 1,
+    };
+    let stale_before_exchange = candidate.mesh.exterior;
+    let mut bath = OpenMedium::new(Environment::Resource, 150.0);
+    bath.refresh_fixed_concentration_boundary(Environment::Resource, 0);
+    let sampled_boundary = bath.accepted_boundary();
+    let report = bath.exchange_with_report(std::slice::from_mut(&mut candidate), &transport, dt);
+    let published = candidate.mesh.exterior;
+    let actual = bath.accepted_boundary();
+    let published_matches_world = published == actual;
+    let stale_was_not_published = published != stale_before_exchange;
+    let mechanics_reads_published_boundary = {
+        let mut expected = candidate.mesh.clone();
+        expected.exterior = actual;
+        (local_pressure(&candidate.mesh, 0) - local_pressure(&expected, 0)).abs() <= 1e-12
+    };
+
+    let make_order_cohort = |index: usize, count: u64| {
+        let mut mesh = r10_closure::r10_reproduction_fixture(index);
+        mesh.enable_finite_allocation_v4(AllocationGenotype::neutral(), &allocation);
+        let vertex_count = mesh.n();
+        Cohort {
+            birth_mass: mesh.total_structural_mass(),
+            mesh,
+            plasticity: Some(PlasticityStateV1::new(vertex_count)),
+            count,
+            generation: 0,
+            id: index as u64 + 1,
+        }
+    };
+    let run_order = |reverse: bool| {
+        let mut cohorts = vec![make_order_cohort(0, 75), make_order_cohort(1, 75)];
+        if reverse {
+            cohorts.reverse();
+        }
+        let initial_n = OpenMedium::new(Environment::Resource, 150.0).n_mass
+            + organism_amount(&cohorts, 'n');
+        let initial_f = OpenMedium::new(Environment::Resource, 150.0).f_mass
+            + organism_amount(&cohorts, 'f');
+        let mut world = OpenMedium::new(Environment::Resource, 150.0);
+        world.refresh_fixed_concentration_boundary(Environment::Resource, 0);
+        let before_refresh_n = world.n_mass;
+        let before_refresh_f = world.f_mass;
+        let report = world.exchange_with_report(&mut cohorts, &transport, dt);
+        cohorts.sort_by_key(|cohort| cohort.id);
+        let mut internal_state = cohorts.clone();
+        for cohort in &mut internal_state {
+            cohort.mesh.exterior = LumpedChem::default();
+        }
+        let final_n = world.n_mass + organism_amount(&cohorts, 'n');
+        let final_f = world.f_mass + organism_amount(&cohorts, 'f');
+        (
+            deterministic_state_digest(&internal_state),
+            world,
+            report,
+            [initial_n, initial_f, before_refresh_n, before_refresh_f, final_n, final_f],
+        )
+    };
+    let (ordered_digest, ordered_world, ordered_report, ordered_totals) = run_order(false);
+    let (reversed_digest, reversed_world, reversed_report, reversed_totals) = run_order(true);
+    let order_tolerance = 1e-12;
+    let order_independent = ordered_digest == reversed_digest
+        && (ordered_world.n_mass - reversed_world.n_mass).abs() <= order_tolerance
+        && (ordered_world.f_mass - reversed_world.f_mass).abs() <= order_tolerance;
+    let finite_donor_n_residual = (ordered_totals[0] - ordered_totals[4]).abs();
+    let finite_donor_f_residual = (ordered_totals[1] - ordered_totals[5]).abs();
+    let finite_donor_conservation = finite_donor_n_residual <= order_tolerance
+        && finite_donor_f_residual <= order_tolerance;
+    let pressure_cases_pass = pressure_rows
+        .iter()
+        .all(|row| row["pressure_equation_pass"] == true);
+    let fixture_mismatch_observed = pressure_rows.iter().any(|row| {
+        row["pressure_delta_from_stale_fixture"]
+            .as_f64()
+            .map(|delta| delta.abs() > order_tolerance)
+            .unwrap_or(false)
+    });
+    let transport_cap_is_staged_separately = report
+        .transport_boundaries
+        .iter()
+        .all(|boundary| boundary[0].is_finite() && boundary[1].is_finite())
+        && report.published_boundary_n.is_finite()
+        && report.published_boundary_f.is_finite();
+    let pass = pressure_rows.len() == 3
+        && pressure_cases_pass
+        && fixture_mismatch_observed
+        && published_matches_world
+        && stale_was_not_published
+        && mechanics_reads_published_boundary
+        && order_independent
+        && finite_donor_conservation
+        && transport_cap_is_staged_separately;
+    json!({
+        "pass": pass,
+        "pressure_cases_pass": pressure_cases_pass,
+        "fixture_mismatch_observed": fixture_mismatch_observed,
+        "pressure_cases": pressure_rows,
+        "exchange_provenance": {
+            "sampled_boundary": sampled_boundary,
+            "sampled_stage": "accepted finite bath before transport",
+            "transport_allocation_boundaries": report.transport_boundaries,
+            "published_mechanical_boundary": published,
+            "published_stage": "accepted finite bath after complete simultaneous exchange before mechanics",
+            "actual_world_boundary": actual,
+            "published_matches_world": published_matches_world,
+            "stale_fixture_before_exchange": stale_before_exchange,
+            "stale_fixture_was_not_published": stale_was_not_published,
+            "mechanics_reads_published_boundary": mechanics_reads_published_boundary,
+            "transport_cap_is_staged_separately": transport_cap_is_staged_separately,
+        },
+        "finite_donor_conservation": {
+            "ordered_initial_total_n": ordered_totals[0],
+            "ordered_final_total_n": ordered_totals[4],
+            "ordered_initial_total_f": ordered_totals[1],
+            "ordered_final_total_f": ordered_totals[5],
+            "n_residual": finite_donor_n_residual,
+            "f_residual": finite_donor_f_residual,
+            "pass": finite_donor_conservation,
+        },
+        "cohort_order_independence": {
+            "ordered_digest": ordered_digest,
+            "reversed_digest": reversed_digest,
+            "ordered_world_n": ordered_world.n_mass,
+            "reversed_world_n": reversed_world.n_mass,
+            "ordered_world_f": ordered_world.f_mass,
+            "reversed_world_f": reversed_world.f_mass,
+            "ordered_transport_boundaries": ordered_report.transport_boundaries,
+            "reversed_transport_boundaries": reversed_report.transport_boundaries,
+            "tolerance": order_tolerance,
+            "pass": order_independent,
+        },
     })
 }
 
@@ -3851,6 +4079,11 @@ fn r10_current_reproduction_comparison_arm(
             .map(|cohort| &cohort.plasticity)
             .collect::<Vec<_>>(),
     );
+    let accepted_boundary = world.accepted_boundary();
+    let boundary_consistent = boundary_mode == PopulationBoundaryMode::FixtureExteriorReference
+        || cohorts
+            .iter()
+            .all(|cohort| cohort.mesh.exterior == accepted_boundary);
     json!({
         "arm": index + 1,
         "driver": "SHARED_CURRENT_KERNEL",
@@ -3875,6 +4108,16 @@ fn r10_current_reproduction_comparison_arm(
         "prefix_2500": prefix,
         "final_mesh_digest": final_mesh_digest,
         "final_plasticity_digest": final_plasticity_digest,
+        "boundary_state": {
+            "mode": boundary_mode.label(),
+            "accepted_bath_boundary": accepted_boundary,
+            "all_surviving_cohort_exteriors_match_bath": boundary_consistent,
+            "mechanics_boundary_contract": if boundary_mode == PopulationBoundaryMode::FixtureExteriorReference {
+                "explicit historical fixture exterior"
+            } else {
+                "accepted finite bath after complete exchange"
+            },
+        },
         "world": world,
         "ledger_summary": {
             "rejected_steps": ledger.rejected_steps,
@@ -3970,7 +4213,9 @@ pub fn run_r10r9r5_reproduction_equivalence() {
             "current_counts": current_counts,
             "interpretation_contract": {
                 "historical_boundary": "direct fixture mesh.exterior transport",
-                "current_boundary": "fixed concentration Resource bath or diagnostic fixture adapter",
+                "current_boundary": "fixed concentration Resource bath published to mechanics after complete exchange; diagnostic fixture adapter remains explicit",
+                "boundary_state_contract": "one accepted finite-bath N/F snapshot is used by transport and subsequent mechanics",
+                "transport_allocation_boundary_is_not_mechanical_boundary": true,
                 "clock_difference": "historical (absolute_step - 1) modulo cadence vs current step modulo cadence",
                 "reserve_difference": "initial mesh resolution vs current mesh resolution each step",
                 "no_biological_parameter_change": true,
@@ -4195,8 +4440,9 @@ pub fn run_r10r9r5_contract_tests() {
             "catalyst_after": catalyst_after,
             "pass": turnover_pass,
         },
+        "boundary_state_coherence": boundary_state_coherence_contract(),
     });
-    assert!(observer_pass && turnover_pass);
+    assert!(observer_pass && turnover_pass && value["boundary_state_coherence"]["pass"] == true);
     fs::write(output, serde_json::to_vec_pretty(&value).unwrap()).unwrap();
 }
 

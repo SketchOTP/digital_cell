@@ -353,6 +353,10 @@ def verify_reproduction_equivalence(path: Path):
         return fissions, viable
 
     def current_arm_counts(arm):
+        boundary_state = required(arm, "boundary_state")
+        if boundary_state["mode"] != "HISTORICAL_FIXTURE_EXTERIOR_REFERENCE":
+            if boundary_state.get("all_surviving_cohort_exteriors_match_bath") is not True:
+                raise ValueError(f"current arm has stale mechanical boundary: {arm!r}")
         births = required(arm, "physical_birth_events")
         groups = {}
         for row in births:

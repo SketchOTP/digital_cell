@@ -72,6 +72,18 @@ jobs:
             DCFINAL001_R10R9R5_CANONICAL=1 \
             cargo +1.89.0 run --locked -q --release -p regulatory-core \
             --example dcfinal001_r10r9r5_contract_tests
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          value = json.loads(Path('/tmp/dcfinal001_r10r9r5_contract_tests.json').read_text())
+          boundary = value['boundary_state_coherence']
+          assert boundary['pass'] is True, boundary
+          assert boundary['pressure_cases_pass'] is True, boundary
+          assert boundary['fixture_mismatch_observed'] is True, boundary
+          assert boundary['exchange_provenance']['published_matches_world'] is True, boundary
+          assert boundary['finite_donor_conservation']['pass'] is True, boundary
+          assert boundary['cohort_order_independence']['pass'] is True, boundary
+          PY
 
       - name: Run shared current-kernel reproduction qualification
         working-directory: digital-protocell
