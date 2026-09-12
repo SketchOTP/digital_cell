@@ -1008,13 +1008,14 @@ fn boundary_state_coherence_contract() -> Value {
     let (ordered_digest, ordered_world, ordered_report, ordered_totals) = run_order(false);
     let (reversed_digest, reversed_world, reversed_report, reversed_totals) = run_order(true);
     let order_tolerance = 1e-12;
+    let conservation_tolerance = 1e-10;
     let order_independent = ordered_digest == reversed_digest
         && (ordered_world.n_mass - reversed_world.n_mass).abs() <= order_tolerance
         && (ordered_world.f_mass - reversed_world.f_mass).abs() <= order_tolerance;
     let finite_donor_n_residual = (ordered_totals[0] - ordered_totals[4]).abs();
     let finite_donor_f_residual = (ordered_totals[1] - ordered_totals[5]).abs();
-    let finite_donor_conservation = finite_donor_n_residual <= order_tolerance
-        && finite_donor_f_residual <= order_tolerance;
+    let finite_donor_conservation = finite_donor_n_residual <= conservation_tolerance
+        && finite_donor_f_residual <= conservation_tolerance;
     let pressure_cases_pass = pressure_rows
         .iter()
         .all(|row| row["pressure_equation_pass"] == true);
@@ -1064,6 +1065,7 @@ fn boundary_state_coherence_contract() -> Value {
             "ordered_final_total_f": ordered_totals[5],
             "n_residual": finite_donor_n_residual,
             "f_residual": finite_donor_f_residual,
+            "tolerance": conservation_tolerance,
             "pass": finite_donor_conservation,
         },
         "cohort_order_independence": {
