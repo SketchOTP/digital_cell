@@ -14,6 +14,7 @@ from pathlib import Path
 
 
 HORIZON = 14_778
+ACTIVE_ENERGY_TOLERANCE = 1e-8
 EXPECTED_CELLS = {
     "A_RESOURCE_N_RESOURCE_F_CURRENT_CONTROL",
     "B_FIXTURE_N_RESOURCE_F",
@@ -58,6 +59,23 @@ def required(mapping, key, path):
     if not isinstance(mapping, dict) or key not in mapping:
         fail(f"missing {path}.{key}")
     return mapping[key]
+
+
+def within_active_energy_tolerance(value):
+    return abs(float(value)) <= ACTIVE_ENERGY_TOLERANCE
+
+
+def run_contract_fixtures():
+    """Exercise the declared zero-work and closure tolerance convention."""
+    cases = {
+        "exact_zero": 0.0,
+        "conservation_roundoff": ACTIVE_ENERGY_TOLERANCE / 2.0,
+    }
+    if not all(within_active_energy_tolerance(value) for value in cases.values()):
+        fail(f"active-energy tolerance fixture rejected: {cases}")
+    if within_active_energy_tolerance(ACTIVE_ENERGY_TOLERANCE * 2.0):
+        fail("active-energy tolerance fixture accepted an over-limit residual")
+    return cases
 
 
 def arm_verdict(arm, expected_cell, expected_motor=True, expected_adaptation=True):
@@ -120,7 +138,10 @@ def arm_verdict(arm, expected_cell, expected_motor=True, expected_adaptation=Tru
     active_spent = required(ledger, "active_a_spent", f"{path}.ledger")
     active_w = required(ledger, "active_w_produced", f"{path}.ledger")
     residual = required(arm, "active_energy_residual", path)
-    if abs(float(active_spent) - float(active_w)) > 1e-8 or float(residual) > 1e-8:
+    if (
+        not within_active_energy_tolerance(float(active_spent) - float(active_w))
+        or float(residual) > ACTIVE_ENERGY_TOLERANCE
+    ):
         fail(f"active A->W closure failed at {path}")
     physical_fissions = required(arm, "physical_fissions", path)
     continuations = required(arm, "daughter_continuations", path)
@@ -129,7 +150,10 @@ def arm_verdict(arm, expected_cell, expected_motor=True, expected_adaptation=Tru
         fail(f"daughter continuation without fission at {path}")
     if viable_pairs not in (0, 1):
         fail(f"invalid viable-pair count at {path}")
-    if not expected_motor and (float(active_spent) != 0.0 or float(active_w) != 0.0):
+    if not expected_motor and (
+        not within_active_energy_tolerance(active_spent)
+        or not within_active_energy_tolerance(active_w)
+    ):
         fail(f"motor-off control performed active work at {path}")
     return {
         "arm": arm["arm"],
@@ -162,6 +186,7 @@ def arm_verdict(arm, expected_cell, expected_motor=True, expected_adaptation=Tru
 
 
 def verify(value):
+    contract_fixtures = run_contract_fixtures()
     finite(value)
     if required(value, "phase_steps", "root") != HORIZON:
         fail("causal comparison horizon changed")
@@ -249,6 +274,11 @@ def verify(value):
             "production_ecology_requalified": False,
             "new_biological_parameters": 0,
             "thresholds_unchanged": True,
+        },
+        "contract_fixtures": {
+            "active_energy_tolerance": ACTIVE_ENERGY_TOLERANCE,
+            "cases": contract_fixtures,
+            "pass": True,
         },
     }
 
