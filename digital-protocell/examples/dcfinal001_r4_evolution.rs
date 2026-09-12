@@ -2765,13 +2765,15 @@ fn r10_split_cohort(
     };
     if !event.partition.ok {
         ledger.partition_failures += cohort.count;
+        let mut detail = r10_fission_attempt_detail(&cohort.mesh, fission);
+        detail["dispatch_outcome"] = json!("PARTITION_REJECTED");
         lifecycle_event(
             ledger,
             "fission_attempt",
             step,
             &cohort,
             "PARTITION_REJECTED",
-            json!({"partition": event.partition}),
+            detail,
         );
         return Err(cohort);
     }
@@ -2784,21 +2786,24 @@ fn r10_split_cohort(
         || !daughter_b.lifecycle_invariants_hold()
     {
         ledger.invalid_geometry_events += cohort.count;
+        let mut detail = r10_fission_attempt_detail(&cohort.mesh, fission);
+        detail["dispatch_outcome"] = json!("DAUGHTER_GEOMETRY_REJECTED");
+        detail["daughter_geometry"] = json!({
+            "parent_simple": polygon_simple(&cohort.mesh.vertices),
+            "daughter_a_simple": polygon_simple(&daughter_a.vertices),
+            "daughter_b_simple": polygon_simple(&daughter_b.vertices),
+            "daughter_a_runtime_valid": daughter_a.physical_runtime_valid(),
+            "daughter_b_runtime_valid": daughter_b.physical_runtime_valid(),
+            "daughter_a_lifecycle_valid": daughter_a.lifecycle_invariants_hold(),
+            "daughter_b_lifecycle_valid": daughter_b.lifecycle_invariants_hold(),
+        });
         lifecycle_event(
             ledger,
             "fission_attempt",
             step,
             &cohort,
             "DAUGHTER_GEOMETRY_REJECTED",
-            json!({
-                "parent_simple": polygon_simple(&cohort.mesh.vertices),
-                "daughter_a_simple": polygon_simple(&daughter_a.vertices),
-                "daughter_b_simple": polygon_simple(&daughter_b.vertices),
-                "daughter_a_runtime_valid": daughter_a.physical_runtime_valid(),
-                "daughter_b_runtime_valid": daughter_b.physical_runtime_valid(),
-                "daughter_a_lifecycle_valid": daughter_a.lifecycle_invariants_hold(),
-                "daughter_b_lifecycle_valid": daughter_b.lifecycle_invariants_hold(),
-            }),
+            detail,
         );
         return Err(cohort);
     }
@@ -2807,13 +2812,16 @@ fn r10_split_cohort(
         &event.daughter_a_parent_vertex_sources,
     ) else {
         ledger.runtime_invalidations += cohort.count;
+        let mut detail = r10_fission_attempt_detail(&cohort.mesh, fission);
+        detail["dispatch_outcome"] = json!("REFRACTORY_PARTITION_REJECTED");
+        detail["error"] = json!("LOCAL_STATE_CORRESPONDENCE_UNAVAILABLE");
         lifecycle_event(
             ledger,
             "fission_attempt",
             step,
             &cohort,
             "REFRACTORY_PARTITION_REJECTED",
-            json!({"error": "LOCAL_STATE_CORRESPONDENCE_UNAVAILABLE"}),
+            detail,
         );
         return Err(cohort);
     };
@@ -2822,30 +2830,36 @@ fn r10_split_cohort(
         &event.daughter_b_parent_vertex_sources,
     ) else {
         ledger.runtime_invalidations += cohort.count;
+        let mut detail = r10_fission_attempt_detail(&cohort.mesh, fission);
+        detail["dispatch_outcome"] = json!("REFRACTORY_PARTITION_REJECTED");
+        detail["error"] = json!("LOCAL_STATE_CORRESPONDENCE_UNAVAILABLE");
         lifecycle_event(
             ledger,
             "fission_attempt",
             step,
             &cohort,
             "REFRACTORY_PARTITION_REJECTED",
-            json!({"error": "LOCAL_STATE_CORRESPONDENCE_UNAVAILABLE"}),
+            detail,
         );
         return Err(cohort);
     };
     if state_a.adaptation.len() != daughter_a.n() || state_b.adaptation.len() != daughter_b.n() {
         ledger.runtime_invalidations += cohort.count;
+        let mut detail = r10_fission_attempt_detail(&cohort.mesh, fission);
+        detail["dispatch_outcome"] = json!("REFRACTORY_PARTITION_SHAPE_MISMATCH");
+        detail["state_shape"] = json!({
+            "state_a": state_a.adaptation.len(),
+            "daughter_a": daughter_a.n(),
+            "state_b": state_b.adaptation.len(),
+            "daughter_b": daughter_b.n(),
+        });
         lifecycle_event(
             ledger,
             "fission_attempt",
             step,
             &cohort,
             "REFRACTORY_PARTITION_SHAPE_MISMATCH",
-            json!({
-                "state_a": state_a.adaptation.len(),
-                "daughter_a": daughter_a.n(),
-                "state_b": state_b.adaptation.len(),
-                "daughter_b": daughter_b.n(),
-            }),
+            detail,
         );
         return Err(cohort);
     }
