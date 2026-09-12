@@ -90,6 +90,10 @@ fn r10r9r1_reaction_params(mesh: &MaterialMesh) -> ReactionParams {
 enum PopulationBoundaryMode {
     RateReinterpretation,
     FixedConcentrationBoundary,
+    /// Diagnostic-only adapter for the historical reproduction assay.  It
+    /// delegates directly to each fixture mesh's exterior field and does not
+    /// participate in population ecology.
+    FixtureExteriorReference,
 }
 
 impl PopulationBoundaryMode {
@@ -97,6 +101,44 @@ impl PopulationBoundaryMode {
         match self {
             Self::RateReinterpretation => "SEALED_R10R5_RATE_REINTERPRETATION",
             Self::FixedConcentrationBoundary => "R10R6_FIXED_CONCENTRATION_BOUNDARY",
+            Self::FixtureExteriorReference => "HISTORICAL_FIXTURE_EXTERIOR_REFERENCE",
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+enum FissionClockMode {
+    CurrentStep,
+    HistoricalStepMinusOne,
+}
+
+impl FissionClockMode {
+    fn label(self) -> &'static str {
+        match self {
+            Self::CurrentStep => "STEP_MODULO_CADENCE",
+            Self::HistoricalStepMinusOne => "ABSOLUTE_STEP_MINUS_ONE_MODULO_CADENCE",
+        }
+    }
+
+    fn cadence_step(self, step: usize) -> usize {
+        match self {
+            Self::CurrentStep => step,
+            Self::HistoricalStepMinusOne => step.saturating_sub(1),
+        }
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+enum ReserveResolutionMode {
+    PerStep,
+    OnceBeforeTrajectory,
+}
+
+impl ReserveResolutionMode {
+    fn label(self) -> &'static str {
+        match self {
+            Self::PerStep => "RESOLVED_FROM_CURRENT_MESH_EACH_STEP",
+            Self::OnceBeforeTrajectory => "RESOLVED_ON_INITIAL_MESH",
         }
     }
 }
@@ -724,6 +766,39 @@ fn r10_exchange_with_observer(
     }
 }
 
+/// Execute the historical fixture-boundary transport contract without a
+/// shared bath.  The fixture's own exterior concentrations are the complete
+/// boundary input, matching the direct `transport_step` used by the original
+/// reproduction assay.  This is intentionally a diagnostic adapter only.
+fn r10_fixture_exterior_exchange_with_observer(
+    cohorts: &mut [Cohort],
+    transport: &TransportParams,
+    dt: f64,
+    ledger: &mut CampaignLedger,
+) {
+    for cohort in cohorts {
+        let before_n = cohort.mesh.interior.n * cohort.mesh.area();
+        let before_f = cohort.mesh.interior.f * cohort.mesh.area();
+        let _ = transport_step(&mut cohort.mesh, transport, dt);
+        let after_n = cohort.mesh.interior.n * cohort.mesh.area();
+        let after_f = cohort.mesh.interior.f * cohort.mesh.area();
+        let count = cohort.count as f64;
+        let genotype = cohort
+            .mesh
+            .finite_allocation
+            .expect("R10 allocation")
+            .genotype;
+        let observer = phenotype_ledger(ledger, genotype);
+        observer.n_uptake += (after_n - before_n).max(0.0) * count;
+        observer.f_uptake += (after_f - before_f).max(0.0) * count;
+        observer.n_return += (before_n - after_n).max(0.0) * count;
+        observer.f_return += (before_f - after_f).max(0.0) * count;
+        // The direct fixture has no population bath.  Do not fabricate world
+        // source/sink entries for this comparison adapter; the per-genotype
+        // uptake/return accounting above is the diagnostic record.
+    }
+}
+
 fn fixed_boundary_transport_reference_parity() -> Value {
     let (template, _, _, _) = r10_closure::r10_seed3_fission_state();
     let transport = TransportParams::default();
@@ -931,6 +1006,98 @@ fn terminal_cohort_diagnostics(cohorts: &[Cohort], fission: &FissionParams) -> V
             })
         })
         .collect()
+}
+
+/// Re-evaluate the real R10 fission dispatch without mutating the parent.
+/// This replaces the opaque `NO_VALID_PHYSICAL_PROPOSAL` observer record with
+/// the production predicates that can actually reject a mass-eligible attempt.
+/// The nearest in-range candidate carries all four incident edge states; the
+/// aggregate counts preserve the remaining candidate population without
+/// duplicating large geometry payloads for every attempt.
+fn r10_fission_attempt_detail(mesh: &MaterialMesh, fission: &FissionParams) -> Value {
+    let audits = segment_apposition_stress_audit(mesh, fission);
+    let signed_stress_count = audits
+        .iter()
+        .filter(|audit| audit.signed_magnitude_predicate)
+        .count();
+    let proposal = try_local_fission(mesh, fission).or_else(|| {
+        PlanarRingTopology::from_mesh(mesh)
+            .and_then(|topology| topology.try_local_scission(mesh, fission))
+            .or_else(|| try_local_segment_fission(mesh, fission))
+    });
+    let proposal_validation = proposal.as_ref().map(|(daughter_a, daughter_b, event)| {
+        json!({
+            "partition_ok": event.partition.ok,
+            "parent_simple": polygon_simple(&mesh.vertices),
+            "daughter_a_simple": polygon_simple(&daughter_a.vertices),
+            "daughter_b_simple": polygon_simple(&daughter_b.vertices),
+            "daughter_a_runtime_valid": daughter_a.physical_runtime_valid(),
+            "daughter_b_runtime_valid": daughter_b.physical_runtime_valid(),
+            "daughter_a_lifecycle_valid": daughter_a.lifecycle_invariants_hold(),
+            "daughter_b_lifecycle_valid": daughter_b.lifecycle_invariants_hold(),
+            "partition": event.partition,
+        })
+    });
+    let proposal_valid = proposal_validation.as_ref().is_some_and(|value| {
+        value["partition_ok"] == true
+            && value["parent_simple"] == true
+            && value["daughter_a_simple"] == true
+            && value["daughter_b_simple"] == true
+            && value["daughter_a_runtime_valid"] == true
+            && value["daughter_b_runtime_valid"] == true
+            && value["daughter_a_lifecycle_valid"] == true
+            && value["daughter_b_lifecycle_valid"] == true
+    });
+    let failure_class = if !mesh.can_advance_physics() || !polygon_simple(&mesh.vertices) {
+        "FISSION_CANDIDATE_TOPOLOGY_INVALID"
+    } else if audits.is_empty() {
+        "APPOSITION_OUTSIDE_LOCAL_RANGE"
+    } else if signed_stress_count == 0 {
+        "APPOSITION_PRESENT_STRESS_FALSE"
+    } else if proposal.is_some() && !proposal_valid {
+        "FISSION_CANDIDATE_TOPOLOGY_INVALID"
+    } else if proposal.is_none() {
+        "OTHER_WITH_EVIDENCE"
+    } else {
+        "PROPOSAL_AVAILABLE"
+    };
+    let nearest = audits.first().map(|audit| {
+        json!({
+            "edge_i": audit.edge_i,
+            "edge_j": audit.edge_j,
+            "segment_i_fraction": audit.segment_i_fraction,
+            "segment_j_fraction": audit.segment_j_fraction,
+            "distance": audit.distance,
+            "range": audit.range,
+            "distance_over_range": audit.distance / audit.range.max(1e-300),
+            "ring_separation": audit.ring_separation,
+            "incident_edges": audit.incident_edges,
+            "raw_strains": audit.raw_strains,
+            "mature_fractions": audit.mature_fractions,
+            "effective_signed_strains": audit.effective_signed_strains,
+            "maximum_tensile_effective_strain": audit.maximum_tensile_effective_strain,
+            "maximum_compressive_effective_strain_magnitude": audit.maximum_compressive_effective_strain_magnitude,
+            "legacy_tensile_only_predicate": audit.legacy_tensile_only_predicate,
+            "signed_magnitude_predicate": audit.signed_magnitude_predicate,
+        })
+    });
+    let closure_a_required = nearest
+        .as_ref()
+        .and_then(|candidate| candidate["distance"].as_f64())
+        .map(|distance| 2.0 * mesh.rho_s * distance / 0.9);
+    json!({
+        "mass_eligible": true,
+        "failure_class": failure_class,
+        "structural_mass": mesh.total_structural_mass(),
+        "absolute_a": mesh.interior.a.max(0.0) * mesh.area().max(1e-300),
+        "in_range_candidate_count": audits.len(),
+        "signed_stress_qualified_candidate_count": signed_stress_count,
+        "nearest_candidate": nearest,
+        "closure_a_required_for_two_v4_edges": closure_a_required,
+        "proposal_available": proposal.is_some(),
+        "proposal_valid": proposal_valid,
+        "proposal_validation": proposal_validation,
+    })
 }
 
 fn split_cohort(
@@ -2304,6 +2471,8 @@ fn r10_split_cohort(
     allocation: &AllocationParams,
     fission: &FissionParams,
     ledger: &mut CampaignLedger,
+    mut daughter_continuation: Option<&mut Vec<Value>>,
+    capture_daughter_continuation: bool,
 ) -> Result<Vec<Cohort>, Cohort> {
     let parent_cohort_id = cohort.id;
     let parent_generation = cohort.generation;
@@ -2329,7 +2498,7 @@ fn r10_split_cohort(
             step,
             &cohort,
             "NO_VALID_PHYSICAL_PROPOSAL",
-            json!({"mass_eligible": true}),
+            r10_fission_attempt_detail(&cohort.mesh, fission),
         );
         return Err(cohort);
     };
@@ -2522,6 +2691,27 @@ fn r10_split_cohort(
                 &event.daughter_b_parent_vertex_sources
             },
         }));
+        if capture_daughter_continuation {
+            if let Some(records) = daughter_continuation.as_mut() {
+                let records = &mut **records;
+                records.push(json!({
+                    "step": step,
+                    "bootstrap": step == 0,
+                    "parent_cohort_id": parent_cohort_id,
+                    "parent_generation": parent_generation,
+                    "daughter_side": side,
+                    "daughter_cohort_id": id,
+                    "daughter_generation": parent_generation + 1,
+                    "daughter_count": count,
+                    "daughter_genotype": daughter_genotype.0,
+                    "refractory_state_digest": deterministic_state_digest(&plasticity),
+                    "continuation": r10_closure::r10_current_daughter_continuation_json(
+                        mesh.clone(),
+                        plasticity.clone(),
+                    ),
+                }));
+            }
+        }
         result.push(Cohort {
             birth_mass: mesh.total_structural_mass(),
             mesh,
@@ -2572,6 +2762,8 @@ fn r10_initial_population(
         &allocation,
         &fission,
         ledger,
+        None,
+        false,
     )
     .expect("qualified R10 parent must physically fission")
 }
@@ -2590,6 +2782,10 @@ fn r10_advance_phase(
     phase_steps: usize,
     expression_path: D096ExpressionPath,
     boundary_mode: PopulationBoundaryMode,
+    clock_mode: FissionClockMode,
+    reserve_resolution: ReserveResolutionMode,
+    daughter_continuations: &mut Vec<Value>,
+    stop_after_first_fission: bool,
 ) -> bool {
     let allocation = AllocationParams::default();
     let mechanics = MechParams::default();
@@ -2599,6 +2795,12 @@ fn r10_advance_phase(
         enable_growth: true,
     };
     let fission = FissionParams::default();
+    let initial_resolved_reaction = match reserve_resolution {
+        ReserveResolutionMode::PerStep => None,
+        ReserveResolutionMode::OnceBeforeTrajectory => {
+            cohorts.first().map(|cohort| r10r9r1_reaction_params(&cohort.mesh))
+        }
+    };
     for phase_step in 0..phase_steps {
         if cohorts.is_empty() {
             break;
@@ -2612,6 +2814,7 @@ fn r10_advance_phase(
         let step_world_before = world.clone();
         let step_ledger_before = ledger.clone();
         let step_next_id = *next_id;
+        let mut first_fission_this_step = false;
         match boundary_mode {
             PopulationBoundaryMode::RateReinterpretation => {
                 world.add_fixed_inflow(environment, phase_step, mechanics.dt)
@@ -2619,6 +2822,7 @@ fn r10_advance_phase(
             PopulationBoundaryMode::FixedConcentrationBoundary => {
                 world.refresh_fixed_concentration_boundary(environment, phase_step)
             }
+            PopulationBoundaryMode::FixtureExteriorReference => {}
         }
         if environment == Environment::Damage {
             for cohort in cohorts.iter_mut() {
@@ -2791,12 +2995,19 @@ fn r10_advance_phase(
             }
         }
         *cohorts = retained;
-        r10_exchange_with_observer(world, cohorts, &transport, mechanics.dt, ledger);
+        if boundary_mode == PopulationBoundaryMode::FixtureExteriorReference {
+            r10_fixture_exterior_exchange_with_observer(cohorts, &transport, mechanics.dt, ledger);
+        } else {
+            r10_exchange_with_observer(world, cohorts, &transport, mechanics.dt, ledger);
+        }
 
         let mut survivors = Vec::new();
         for mut cohort in std::mem::take(cohorts) {
             let count = cohort.count as f64;
-            let reaction = r10r9r1_reaction_params(&cohort.mesh);
+            let reaction = initial_resolved_reaction
+                .as_ref()
+                .cloned()
+                .unwrap_or_else(|| r10r9r1_reaction_params(&cohort.mesh));
             let genotype = cohort
                 .mesh
                 .finite_allocation
@@ -2834,7 +3045,8 @@ fn r10_advance_phase(
                 observer.w_produced += reactions.w_produced * count;
                 observer.growth_material += grown.m_grown * count;
             }
-            let topology_tick = step % 10 == 0;
+            let cadence_step = clock_mode.cadence_step(step);
+            let topology_tick = cadence_step % 10 == 0;
             let structural_before_mechanics = cohort.mesh.total_structural_mass();
             // Snapshot only the state entering the mechanics transition.  The
             // reaction/growth ledgers above are already accepted for this
@@ -2997,8 +3209,8 @@ fn r10_advance_phase(
                 dead_material_to_sink(&cohort, world);
                 continue;
             }
-            let eligible =
-                cohort.mesh.total_structural_mass() >= 1.35 * cohort.birth_mass && step % 25 == 0;
+            let eligible = cohort.mesh.total_structural_mass() >= 1.35 * cohort.birth_mass
+                && cadence_step % 25 == 0;
             if eligible {
                 phenotype_ledger(ledger, genotype).fission_attempts += cohort.count;
                 match r10_split_cohort(
@@ -3010,8 +3222,13 @@ fn r10_advance_phase(
                     &allocation,
                     &fission,
                     ledger,
+                    Some(daughter_continuations),
+                    expression_path == D096ExpressionPath::V4FiniteBudgetCentered,
                 ) {
-                    Ok(children) => survivors.extend(children),
+                    Ok(children) => {
+                        first_fission_this_step = true;
+                        survivors.extend(children)
+                    }
                     Err(parent) => survivors.push(parent),
                 }
             } else {
@@ -3025,6 +3242,9 @@ fn r10_advance_phase(
         }
         if phase_step == 0 || (phase_step + 1) % 250 == 0 {
             trajectory.push(snapshot(cohorts, world, step));
+        }
+        if stop_after_first_fission && first_fission_this_step {
+            return true;
         }
     }
     true
@@ -3103,6 +3323,7 @@ fn r10_campaign(
     let initial = snapshot(&cohorts, &world, 0);
     let mut trajectory = vec![initial.clone()];
     let mut prefix_2500 = None;
+    let mut daughter_continuations = Vec::new();
     for (phase, environment) in sequence.iter().copied().enumerate() {
         let phase_ok = r10_advance_phase(
             &mut cohorts,
@@ -3118,6 +3339,10 @@ fn r10_campaign(
             phase_steps,
             expression_path,
             boundary_mode,
+            FissionClockMode::CurrentStep,
+            ReserveResolutionMode::PerStep,
+            &mut daughter_continuations,
+            false,
         );
         if !phase_ok {
             break;
@@ -3231,6 +3456,7 @@ fn r10_campaign(
         "prefix_2500": prefix_2500,
         "terminal": terminal,
         "terminal_cohorts": terminal_cohorts,
+        "daughter_continuations": daughter_continuations,
         "world": world,
         "ledger": ledger,
         "structural_budget": structural_budget,
@@ -3469,6 +3695,7 @@ pub fn run_r10r9r5_shared_kernel_reproduction() {
         let mut next_id = 2;
         let mut trajectory = vec![initial];
         let mut prefix = None;
+        let mut daughter_continuations = Vec::new();
         let accepted = r10_advance_phase(
             &mut cohorts,
             &mut world,
@@ -3483,13 +3710,16 @@ pub fn run_r10r9r5_shared_kernel_reproduction() {
             14_778,
             D096ExpressionPath::V4FiniteBudgetCentered,
             PopulationBoundaryMode::FixedConcentrationBoundary,
+            FissionClockMode::CurrentStep,
+            ReserveResolutionMode::PerStep,
+            &mut daughter_continuations,
+            true,
         );
         let terminal = snapshot(&cohorts, &world, ledger.accepted_steps as usize);
         let terminal_structural_mass = cohorts
             .iter()
             .map(|cohort| cohort.mesh.total_structural_mass() * cohort.count as f64)
             .sum::<f64>();
-        let fission = ledger.physical_fissions > 0;
         arms.push(json!({
             "arm": index + 1,
             "accepted": accepted,
@@ -3500,11 +3730,14 @@ pub fn run_r10r9r5_shared_kernel_reproduction() {
             "numerical_invalid": ledger.numerical_invalid,
             "physical_fissions": ledger.physical_fissions,
             "valid_simple_fissions": ledger.valid_simple_fissions,
-            "full_state_daughter_continuation": fission && cohorts.len() >= 2 && cohorts.iter().all(|cohort| {
-                cohort.mesh.physical_runtime_valid()
-                    && cohort.mesh.lifecycle_invariants_hold()
-                    && cohort.plasticity.as_ref().map(|state| state.adaptation.len() == cohort.mesh.n()).unwrap_or(false)
-            }),
+            "full_state_daughter_continuation": if daughter_continuations.is_empty() {
+                Value::Null
+            } else {
+                Value::Bool(daughter_continuations.iter().all(|record| {
+                    record["continuation"]["viable"] == true
+                }))
+            },
+            "daughter_continuations": daughter_continuations,
             "post_bootstrap_physical_fissions": ledger.post_bootstrap_physical_fissions,
             "mutation_opportunities": ledger.mutation_opportunities,
             "terminal": terminal,
@@ -3544,6 +3777,204 @@ pub fn run_r10r9r5_shared_kernel_reproduction() {
             },
             "biology_delta": 0,
             "population_campaign": "NOT_RUN",
+        }))
+        .unwrap(),
+    )
+    .unwrap();
+}
+
+fn r10_current_reproduction_comparison_arm(
+    index: usize,
+    boundary_mode: PopulationBoundaryMode,
+    clock_mode: FissionClockMode,
+    reserve_resolution: ReserveResolutionMode,
+) -> Value {
+    let allocation = AllocationParams::default();
+    let mut mesh = r10_closure::r10_reproduction_fixture(index);
+    let birth_mass = mesh.total_structural_mass();
+    mesh.enable_finite_allocation_v4(AllocationGenotype::neutral(), &allocation);
+    let cohort = Cohort {
+        plasticity: Some(PlasticityStateV1::new(mesh.n())),
+        mesh,
+        count: 1,
+        generation: 0,
+        birth_mass,
+        id: 1,
+    };
+    let mut cohorts = vec![cohort];
+    let mut world = OpenMedium::new(Environment::Resource, R10R9R4_FOUNDER_MULTIPLICITY as f64);
+    let initial = snapshot(&cohorts, &world, 0);
+    let mut ledger = CampaignLedger::default();
+    let mut next_id = 2;
+    let mut trajectory = vec![initial.clone()];
+    let mut prefix = None;
+    let mut daughter_continuations = Vec::new();
+    let accepted = r10_advance_phase(
+        &mut cohorts,
+        &mut world,
+        Environment::Resource,
+        0,
+        false,
+        splitmix64((index + 1) as u64),
+        &mut next_id,
+        &mut ledger,
+        &mut trajectory,
+        &mut prefix,
+        R10R2_PHASE_STEPS,
+        D096ExpressionPath::V4FiniteBudgetCentered,
+        boundary_mode,
+        clock_mode,
+        reserve_resolution,
+        &mut daughter_continuations,
+        true,
+    );
+    let terminal = snapshot(&cohorts, &world, ledger.accepted_steps as usize);
+    let attempts = ledger
+        .lifecycle_events
+        .iter()
+        .filter(|event| event["phase"] == "fission_attempt")
+        .cloned()
+        .collect::<Vec<_>>();
+    let fission_step = ledger
+        .physical_birth_events
+        .first()
+        .and_then(|event| event["step"].as_u64());
+    let final_mesh_digest = deterministic_state_digest(
+        &cohorts
+            .iter()
+            .map(|cohort| &cohort.mesh)
+            .collect::<Vec<_>>(),
+    );
+    let final_plasticity_digest = deterministic_state_digest(
+        &cohorts
+            .iter()
+            .map(|cohort| &cohort.plasticity)
+            .collect::<Vec<_>>(),
+    );
+    json!({
+        "arm": index + 1,
+        "driver": "SHARED_CURRENT_KERNEL",
+        "boundary_mode": boundary_mode.label(),
+        "fission_clock": clock_mode.label(),
+        "reserve_resolution": reserve_resolution.label(),
+        "accepted": accepted,
+        "accepted_steps": ledger.accepted_steps,
+        "birth_mass": birth_mass,
+        "maximum_mass_over_birth": cohorts.iter().map(|cohort| {
+            cohort.mesh.total_structural_mass() / cohort.birth_mass.max(1e-300)
+        }).fold(1.0_f64, f64::max),
+        "physical_fissions": ledger.physical_fissions,
+        "post_bootstrap_physical_fissions": ledger.post_bootstrap_physical_fissions,
+        "fission_step": fission_step,
+        "fission_attempt_count": attempts.len(),
+        "fission_attempts": attempts,
+        "physical_birth_events": ledger.physical_birth_events,
+        "daughter_continuations": daughter_continuations,
+        "terminal": terminal,
+        "trajectory": trajectory,
+        "prefix_2500": prefix,
+        "final_mesh_digest": final_mesh_digest,
+        "final_plasticity_digest": final_plasticity_digest,
+        "world": world,
+        "ledger_summary": {
+            "rejected_steps": ledger.rejected_steps,
+            "computational_rejections": ledger.computational_rejections,
+            "runtime_invalidations": ledger.runtime_invalidations,
+            "n_closure_relevant": [world.ledger.initial_n, world.n_mass],
+            "f_closure_relevant": [world.ledger.initial_f, world.f_mass],
+            "active_a_spent": ledger.active_a_spent,
+            "active_w_produced": ledger.active_w_produced,
+        },
+    })
+}
+
+/// Execute the preregistered R5 reproduction-equivalence matrix.  This is a
+/// bounded ten-arm comparison only; it does not run the population ecology.
+/// The historical fixture driver, direct-boundary adapter, cadence origin,
+/// and reserve-parameter lifetime are varied one at a time so an outcome is
+/// not attributed to the shared-kernel refactor without evidence.
+pub fn run_r10r9r5_reproduction_equivalence() {
+    let output = PathBuf::from("/tmp/dcfinal001_r10r9r5_reproduction_equivalence.json");
+    let variants = [
+        ("shared_fixture_historical_contract", PopulationBoundaryMode::FixtureExteriorReference, FissionClockMode::HistoricalStepMinusOne, ReserveResolutionMode::OnceBeforeTrajectory),
+        ("shared_fixture_current_clock", PopulationBoundaryMode::FixtureExteriorReference, FissionClockMode::CurrentStep, ReserveResolutionMode::OnceBeforeTrajectory),
+        ("shared_fixture_per_step_reserve", PopulationBoundaryMode::FixtureExteriorReference, FissionClockMode::HistoricalStepMinusOne, ReserveResolutionMode::PerStep),
+        ("shared_resource_historical_contract", PopulationBoundaryMode::FixedConcentrationBoundary, FissionClockMode::HistoricalStepMinusOne, ReserveResolutionMode::OnceBeforeTrajectory),
+        ("shared_resource_current_contract", PopulationBoundaryMode::FixedConcentrationBoundary, FissionClockMode::CurrentStep, ReserveResolutionMode::PerStep),
+    ];
+    let mut handles = Vec::new();
+    handles.push(std::thread::spawn(|| {
+        (0..10)
+            .map(r10_closure::r10_historical_fixture_reproduction_json)
+            .collect::<Vec<_>>()
+    }));
+    for (label, boundary_mode, clock_mode, reserve_resolution) in variants {
+        handles.push(std::thread::spawn(move || {
+            (0..10)
+                .map(|index| {
+                    let mut result = r10_current_reproduction_comparison_arm(
+                        index,
+                        boundary_mode,
+                        clock_mode,
+                        reserve_resolution,
+                    );
+                    result
+                        .as_object_mut()
+                        .expect("comparison arm object")
+                        .insert("variant".into(), Value::String(label.into()));
+                    result
+                })
+                .collect::<Vec<_>>()
+        }));
+    }
+    let historical = handles
+        .remove(0)
+        .join()
+        .expect("historical comparison arms");
+    let current = handles
+        .into_iter()
+        .map(|handle| handle.join().expect("current comparison arms"))
+        .collect::<Vec<_>>();
+    let historical_counts = json!({
+        "physical_fissions": historical.iter().filter(|arm| arm["result"]["physical_fission"] == true).count(),
+        "full_state_viable_pairs": historical.iter().filter(|arm| arm["result"]["full_state_daughters_viable"] == true).count(),
+    });
+    let current_counts = current
+        .iter()
+        .map(|arms| {
+            let label = arms
+                .first()
+                .and_then(|arm| arm["variant"].as_str())
+                .unwrap_or("UNKNOWN");
+            json!({
+                "variant": label,
+                "physical_fissions": arms.iter().map(|arm| arm["physical_fissions"].as_u64().unwrap_or(0)).sum::<u64>(),
+                "distinct_successful_arms": arms.iter().filter(|arm| arm["physical_fissions"].as_u64().unwrap_or(0) > 0).count(),
+                "attempts": arms.iter().map(|arm| arm["fission_attempt_count"].as_u64().unwrap_or(0)).sum::<u64>(),
+            })
+        })
+        .collect::<Vec<_>>();
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive": "DC-FINAL-001-R10R9R5-CANONICAL-LIFECYCLE-AND-EVOLUTION-EVIDENCE-RECOVERY-001",
+            "comparison": "HISTORICAL_DIRECT_FIXTURE_VS_SHARED_CURRENT_KERNEL",
+            "population_campaign": "NOT_RUN",
+            "phase_steps": R10R2_PHASE_STEPS,
+            "expression_path": D096ExpressionPath::V4FiniteBudgetCentered.label(),
+            "mutation_enabled": false,
+            "reserve_enabled": r10r9r1_reserve_enabled(),
+            "historical": historical,
+            "historical_counts": historical_counts,
+            "current_variants": current,
+            "current_counts": current_counts,
+            "interpretation_contract": {
+                "historical_boundary": "direct fixture mesh.exterior transport",
+                "current_boundary": "fixed concentration Resource bath or diagnostic fixture adapter",
+                "clock_difference": "historical (absolute_step - 1) modulo cadence vs current step modulo cadence",
+                "reserve_difference": "initial mesh resolution vs current mesh resolution each step",
+                "no_biological_parameter_change": true,
+            },
         }))
         .unwrap(),
     )
@@ -3658,30 +4089,61 @@ pub fn run_r10r9r5_contract_tests() {
     let mut observer_runs = Vec::new();
     for label in labels {
         env::set_var("DCFINAL001_R10R9R5_OBSERVER_LABEL_PROBE", label);
-        let campaign = r10_campaign(
-            &template,
-            &plasticity,
-            original_birth_mass,
-            template_step,
-            &[Environment::Resource],
+        let allocation = AllocationParams::default();
+        let mut probe_mesh = template.clone();
+        probe_mesh.enable_finite_allocation_v4(AllocationGenotype::neutral(), &allocation);
+        let probe = Cohort {
+            mesh: probe_mesh,
+            plasticity: Some(plasticity.clone()),
+            count: 1,
+            generation: 0,
+            birth_mass: original_birth_mass,
+            id: 1,
+        };
+        let mut cohorts = vec![probe];
+        let mut world = OpenMedium::new(Environment::Resource, 150.0);
+        let mut ledger = CampaignLedger::default();
+        let mut next_id = 2;
+        let mut trajectory = vec![snapshot(&cohorts, &world, 0)];
+        let mut prefix = None;
+        let mut daughter_continuations = Vec::new();
+        let accepted = r10_advance_phase(
+            &mut cohorts,
+            &mut world,
+            Environment::Resource,
+            0,
             false,
             9_001,
+            &mut next_id,
+            &mut ledger,
+            &mut trajectory,
+            &mut prefix,
             1,
             D096ExpressionPath::V4FiniteBudgetCentered,
-            150,
-            150.0,
-            PopulationBoundaryMode::FixedConcentrationBoundary,
-            None,
+            PopulationBoundaryMode::FixtureExteriorReference,
+            FissionClockMode::HistoricalStepMinusOne,
+            ReserveResolutionMode::PerStep,
+            &mut daughter_continuations,
+            true,
         );
+        let fission_attempts = ledger
+            .lifecycle_events
+            .iter()
+            .filter(|event| event["phase"] == "fission_attempt")
+            .count();
         observer_runs.push(json!({
             "label_probe": label,
+            "template_fission_step": template_step,
+            "accepted": accepted,
             "physical_transition_digest": deterministic_state_digest(&json!({
-                "terminal": campaign["terminal"],
-                "ledger": campaign["ledger"],
-                "world": campaign["world"],
+                "cohorts": &cohorts,
+                "ledger": &ledger,
+                "world": &world,
             })),
-            "fission_attempts": campaign["ledger"]["physical_fissions"],
-            "accepted_steps": campaign["accepted_steps"],
+            "fission_attempts": fission_attempts,
+            "physical_fissions": ledger.physical_fissions,
+            "daughter_continuations": daughter_continuations,
+            "accepted_steps": ledger.accepted_steps,
         }));
     }
     env::remove_var("DCFINAL001_R10R9R5_OBSERVER_LABEL_PROBE");

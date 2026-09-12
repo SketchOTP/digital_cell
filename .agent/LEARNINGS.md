@@ -1267,3 +1267,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - A numerical mechanics rejection cannot be treated as a biological no-op while chemistry advances; restore the whole accepted-step transaction and fail the campaign closed unless a lawful retry is implemented.
 - Exact-head CI can validate the repair controls without validating the deferred ecological science; keep the focused control artifact separate from the immutable d42f69d population artifact.
 - R5 lifecycle repair controls can pass while the repaired composed organism still fails physical reproduction: the buffered-reserve/D096-v4 shared-kernel ten-arm run reached terminal mass in all arms but fissioned none. Treat this as a composed-qualification boundary, not as permission to launch ecology; exact-head CI success alone does not establish reproduction.
+
+## R10R9R5 reproduction-equivalence continuation learning
+
+- A generic `NO_VALID_PHYSICAL_PROPOSAL` event is insufficient to attribute a reproduction negative. The current kernel must expose apposition range, signed load-bearing stress, closure funding, proposal validity, and daughter-state validity at the actual attempt.
+- Historical reproduction and current ecological reproduction can differ through boundary implementation, cadence origin, and parameter-resolution lifetime even when coefficients are unchanged; isolate those dimensions before assigning causality.
+- Daughter continuation is a per-daughter qualification predicate from the actual physical birth. Aggregate fission totals or terminal descendant snapshots cannot replace the frozen 3,000 accepted-step contract.

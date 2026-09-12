@@ -766,6 +766,36 @@ pub fn r10_reproduction_fixture(index: usize) -> MaterialMesh {
     fixture(index)
 }
 
+/// Replay one historical direct-fixture reproduction arm.  The returned
+/// object is an immutable comparison record for R5: it uses the original
+/// direct `transport_step` boundary and the historical `(step - 1)` cadence
+/// already implemented by `run_with_expression`.  It is never used by the
+/// population ecology.
+pub fn r10_historical_fixture_reproduction_json(index: usize) -> Value {
+    assert!(index < PERTURBATIONS.len());
+    let initial_mesh = fixture(index);
+    let birth_mass = initial_mesh.total_structural_mass();
+    let result = run_with_expression(
+        initial_mesh,
+        &format!("historical_fixture_arm_{}", index + 1),
+        Mode::RefractoryCurvatureNormalSignedStress,
+        0,
+        14_778,
+        birth_mass,
+        ExpressionPath::D096V4CenteredGain,
+    );
+    json!({
+        "arm": index + 1,
+        "driver": "HISTORICAL_DIRECT_FIXTURE_EXTERIOR",
+        "boundary_contract": "mesh.exterior -> direct transport_step",
+        "fission_clock": "ABSOLUTE_STEP_MINUS_ONE_MODULO_CADENCE",
+        "reserve_resolution": "INITIAL_MESH",
+        "result": &result,
+        "final_mesh": &result.final_mesh,
+        "final_plasticity": &result.final_plasticity,
+    })
+}
+
 fn geometry(mesh: &MaterialMesh) -> Value {
     json!({
         "simple": polygon_simple(&mesh.vertices),
@@ -924,7 +954,10 @@ fn pair_observer(mesh: &MaterialMesh, fission: &FissionParams) -> Value {
 
 fn daughter_viability(mut mesh: MaterialMesh) -> Value {
     let mechanics = MechParams::default();
-    let reaction = ReactionParams::default();
+    let mut reaction = ReactionParams::default();
+    if r10r9r1_reserve_enabled() {
+        reaction.reserve = configured_r10_reserve(&mesh);
+    }
     let transport = TransportParams::default();
     let fission = FissionParams::default();
     let growth = GrowthParams {
@@ -1103,7 +1136,10 @@ fn daughter_viability_with_plasticity_and_expression(
     expression_path: ExpressionPath,
 ) -> Value {
     let mechanics = MechParams::default();
-    let reaction = ReactionParams::default();
+    let mut reaction = ReactionParams::default();
+    if r10r9r1_reserve_enabled() {
+        reaction.reserve = configured_r10_reserve(&mesh);
+    }
     let transport = TransportParams::default();
     let fission = FissionParams::default();
     let contractility = ContractilityParamsV1::default();
@@ -2318,6 +2354,20 @@ pub fn r10_partition_plasticity_state(
     sources: &[usize],
 ) -> Option<PlasticityStateV1> {
     partition_plasticity_state(parent, sources)
+}
+
+/// Run the frozen full-state daughter continuation used by the current R10
+/// organism.  This is an observer clone of an already-created daughter: it
+/// does not feed its result back into the parent or population transition.
+pub fn r10_current_daughter_continuation_json(
+    mesh: MaterialMesh,
+    plasticity: PlasticityStateV1,
+) -> Value {
+    daughter_viability_with_plasticity_and_expression(
+        mesh,
+        plasticity,
+        ExpressionPath::D096V4CenteredGain,
+    )
 }
 
 /// Apply exactly one accepted R9/R10 refractory curvature-normal mechanics

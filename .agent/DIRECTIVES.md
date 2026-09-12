@@ -1312,3 +1312,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - No renewed population campaign or scientific selection claim is authorized before these controls pass.
 - Focused CI `34652972566` passed the repair controls at head `d2abed3317d8c4ce47040ad43f472fd6dd5240eb`; the next lifecycle/evidence stages remain pending and no scientific acceptance is inferred.
 - R5 continuation validation: executable observer-label independence and zero-funded catalyst-turnover controls pass; exact-head CI `34654263562` also passes the bounded shared current-kernel ten-arm run. That run records `0/10` fissions and `0/10` daughter continuations under the buffered-reserve/D096-v4 configuration, with `10/10` terminal-mass qualification and no numerical rejection. No ecological population campaign is authorized from this negative; R5 remains incomplete pending the Architect’s disposition of composed-organism qualification.
+
+## R10R9R5 reproduction-equivalence continuation
+
+- Record: `BOUNDED_STOP_ACCEPTED_CONTINUE_R5_REPRODUCTION_EQUIVALENCE_REQUIRED`.
+- The implementation package is limited to matched-contract diagnostics and qualification enforcement: historical direct fixture boundary, current Resource boundary, clock-origin variants, reserve-resolution variants, actual fission prerequisite diagnostics, and full-state daughter continuation capture for bounded reproduction arms.
+- The existing `0/10` shared-kernel result remains immutable diagnostic evidence. The new comparison has not yet been interpreted; population ecology and downstream selection remain blocked.

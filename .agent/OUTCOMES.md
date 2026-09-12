@@ -2636,3 +2636,8 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - The current correction adds executable boundary controls and makes canonical numerical rejection invalidate the complete campaign step. Population results remain unqualified until the repair controls pass.
 - Repair-control validation passed in exact-head CI `34652972566` at `d2abed3317d8c4ce47040ad43f472fd6dd5240eb`; the uploaded control digest is `sha256:5910c91cf5d877ac61f1816c8382250e1b5bd25819c9e6b2e40148a6759700f2`. This is implementation evidence only; the population campaign was not rerun.
 - R5 repair controls and bounded shared-kernel qualification: observer labels produced identical physical transition digests; zero-funded V4 expression preserved catalyst turnover into W; fail-closed verifier fixtures executed. CI `34654263562` passed at head `3c424c155e8fe39434ebe204cb7334700589518e`. The shared ten-arm current-kernel run completed `14,778` accepted steps per arm, with `10/10` terminal-mass qualification but `0/10` fissions and `0/10` full-state daughter continuations. The population ecology and downstream selection/reversal remain unrun.
+
+## R10R9R5 reproduction-equivalence continuation
+
+- The bounded stop is accepted for continuation under `BOUNDED_STOP_ACCEPTED_CONTINUE_R5_REPRODUCTION_EQUIVALENCE_REQUIRED`.
+- No biological conclusion is added. The pending package compares historical direct-boundary execution with the shared current kernel while isolating cadence and reserve-configuration lifetime, and replaces generic no-proposal records with the current apposition, signed-stress, funding, geometry, and partition diagnostics.

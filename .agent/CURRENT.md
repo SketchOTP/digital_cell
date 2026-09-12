@@ -980,3 +980,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The expensive population campaign is intentionally not rerun until focused lifecycle, shared-kernel, and evidence controls pass exact-head CI.
 - Focused repair CI `34652972566` passes at head `d2abed3317d8c4ce47040ad43f472fd6dd5240eb`: chemistry tests, regulatory compile, executable observer-label/turnover controls, and fail-closed verifier fixtures. No population campaign ran.
 - Shared current-kernel reproduction CI `34654263562` passes at head `3c424c155e8fe39434ebe204cb7334700589518e`. The bounded ten-arm buffered-reserve/D096-v4 run completed all `14,778` accepted steps with zero numerical rejection, but produced `0/10` physical fissions and `0/10` daughter continuations despite `10/10` terminal-mass qualification. The population campaign remains intentionally unrun; composed-organism qualification is not established.
+
+## R5 reproduction-equivalence continuation — implementation pending validation
+
+- Architect disposition: `BOUNDED_STOP_ACCEPTED_CONTINUE_R5_REPRODUCTION_EQUIVALENCE_REQUIRED`; preserve governed head `c177a4e056a80938fc3a91c72bc0888b761a5078`, prior `d42f69d`, and all prior artifacts unchanged.
+- The active package adds a diagnostic-only direct fixture-boundary adapter, explicit historical/current cadence modes, explicit initial/per-step reserve resolution, real per-attempt signed-stress/apposition/closure/proposal diagnostics, and bounded full-state daughter continuation records.
+- The comparison matrix and new executable wrapper are prepared but not yet CI-validated. No population, selection, reversal, or successor campaign is authorized from this pending state.

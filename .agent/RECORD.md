@@ -1906,3 +1906,10 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Current branch adds focused executable controls before any renewed population campaign. No biological coefficients, mutation settings, environment settings, fission thresholds, commits to PR #44, or external services are changed.
 - Validation: head `d2abed3317d8c4ce47040ad43f472fd6dd5240eb`, CI `34652972566 PASS`, repair-control digest `sha256:5910c91cf5d877ac61f1816c8382250e1b5bd25819c9e6b2e40148a6759700f2`; deferred reproduction/ecology evidence remains unexecuted in this continuation.
 - R5 continuation seal: immutable diagnostic attempt `d42f69d5b159674592bba1057987ad4f3386be26` and artifact `sha256:dcbd6407b1966124049dc141ebb19c00b17f5dfda2c18568fa74c885d30a9672` remain preserved. Repair/control head `3c424c155e8fe39434ebe204cb7334700589518e` passed exact-head CI `34654263562`; the downloaded shared-kernel result JSON digest is `sha256:d1807c196540d3f3e7c53d742ad4068f6f0aff59dde42276b8d6d4f1b34b566d`. The ten-arm buffered-reserve/D096-v4 current-kernel run completed with zero numerical rejection, `10/10` terminal-mass-qualified, `0/10` fissions, and `0/10` daughter continuations. Population, matched ecology, selection, reversal, and E5 continuity remain unexecuted.
+
+## DEC-DCFINAL001-R10R9R5-REPRODUCTION-EQUIVALENCE-CONTINUATION
+
+- Date: `2026-09-11`.
+- Record: `BOUNDED_STOP_ACCEPTED_CONTINUE_R5_REPRODUCTION_EQUIVALENCE_REQUIRED`.
+- Preserve governed head `c177a4e056a80938fc3a91c72bc0888b761a5078`, CI `34654675545 PASS`, artifact `sha256:c97cf7e124aec29786a8cc07fad758fd8130ec0cb77c65eaadf14faaf6576e4b`, and the prior `d42f69d` diagnostic artifact unchanged.
+- Pending implementation package isolates direct fixture boundary versus Resource bath, cadence origin, and reserve-resolution lifetime; records actual current fission prerequisites; and enforces per-daughter continuation qualification. No scientific result, population rerun, selection claim, or successor execution is recorded here.
