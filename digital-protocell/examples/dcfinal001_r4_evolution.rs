@@ -1351,6 +1351,8 @@ fn r10_fission_attempt_detail(mesh: &MaterialMesh, fission: &FissionParams) -> V
         "absolute_a": mesh.interior.a.max(0.0) * mesh.area().max(1e-300),
         "in_range_candidate_count": audits.len(),
         "signed_stress_qualified_candidate_count": signed_stress_count,
+        "in_range_pairs": audits.len(),
+        "signed_stress_qualified_pairs": signed_stress_count,
         "nearest_candidate": nearest,
         "closure_a_required_for_two_v4_edges": closure_a_required,
         "proposal_available": proposal.is_some(),
