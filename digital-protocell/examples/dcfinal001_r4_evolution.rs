@@ -4442,6 +4442,10 @@ pub fn run_r10r9r5_contract_tests() {
         },
         "boundary_state_coherence": boundary_state_coherence_contract(),
     });
+    eprintln!(
+        "R5 boundary-state control: {}",
+        serde_json::to_string(&value["boundary_state_coherence"]).unwrap()
+    );
     assert!(observer_pass && turnover_pass && value["boundary_state_coherence"]["pass"] == true);
     fs::write(output, serde_json::to_vec_pretty(&value).unwrap()).unwrap();
 }
