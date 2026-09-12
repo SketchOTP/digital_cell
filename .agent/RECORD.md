@@ -1913,3 +1913,10 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Record: `BOUNDED_STOP_ACCEPTED_CONTINUE_R5_REPRODUCTION_EQUIVALENCE_REQUIRED`.
 - Preserve governed head `c177a4e056a80938fc3a91c72bc0888b761a5078`, CI `34654675545 PASS`, artifact `sha256:c97cf7e124aec29786a8cc07fad758fd8130ec0cb77c65eaadf14faaf6576e4b`, and the prior `d42f69d` diagnostic artifact unchanged.
 - Pending implementation package isolates direct fixture boundary versus Resource bath, cadence origin, and reserve-resolution lifetime; records actual current fission prerequisites; and enforces per-daughter continuation qualification. No scientific result, population rerun, selection claim, or successor execution is recorded here.
+
+## DEC-DCFINAL001-R10R9R5-REPRODUCTION-EQUIVALENCE-RESULT
+
+- Date: `2026-09-11`.
+- Exact implementation head: `2ec64c3e36980076fc70bb374ce8cfe33c50d766`; exact-head CI `34662654463 PASS`; downloaded artifact ZIP `sha256:ff7f3f4cd8f96eea93a19915bad9fe3ef3c9f93260681ad861a3b8e6c2bf0167`.
+- Historical direct and shared fixture-boundary contracts each yield `8/10` distinct fissions and `8/8` full-state viable pairs. Each fixture variant records both daughters completing the actual 3,000 accepted-step continuation. Shared Resource-boundary variants yield `0/10`; all `5,820`/`5,818` attempts fail first at `APPOSITION_OUTSIDE_LOCAL_RANGE`.
+- Final bounded classification: `ECOLOGY_MORPHOGENESIS_COMPATIBILITY_LIMITATION`; implementation controls and independent verifier pass, current Resource ecology remains unqualified, downstream population/selection/reversal/final integration remain `NOT_REACHED`, and PR #44 remains untouched.

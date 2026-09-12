@@ -1318,3 +1318,10 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Record: `BOUNDED_STOP_ACCEPTED_CONTINUE_R5_REPRODUCTION_EQUIVALENCE_REQUIRED`.
 - The implementation package is limited to matched-contract diagnostics and qualification enforcement: historical direct fixture boundary, current Resource boundary, clock-origin variants, reserve-resolution variants, actual fission prerequisite diagnostics, and full-state daughter continuation capture for bounded reproduction arms.
 - The existing `0/10` shared-kernel result remains immutable diagnostic evidence. The new comparison has not yet been interpreted; population ecology and downstream selection remain blocked.
+
+## R10R9R5 reproduction-equivalence result
+
+- Record: `BOUNDED_STOP_ACCEPTED_CONTINUE_R5_REPRODUCTION_EQUIVALENCE_REQUIRED`.
+- Exact implementation head `2ec64c3e36980076fc70bb374ce8cfe33c50d766` passed CI `34662654463`; artifact ZIP SHA256: `ff7f3f4cd8f96eea93a19915bad9fe3ef3c9f93260681ad861a3b8e6c2bf0167`.
+- The direct historical fixture and all three shared fixture-contract variants reproduce `8/10` distinct-arm fissions with `8/8` full-state viable pairs; each fixture variant records both daughters through 3,000 accepted continuation steps. The two shared Resource-boundary variants reproduce `0/10` fissions, with all 5,820/5,818 attempts failing first at `APPOSITION_OUTSIDE_LOCAL_RANGE`.
+- Exact clock and reserve-resolution variants do not explain the divergence. The remaining result is `ECOLOGY_MORPHOGENESIS_COMPATIBILITY_LIMITATION`; historical-boundary reproduction is diagnostic only and does not qualify current Resource ecology. No population, selection, reversal, or successor campaign is authorized from this bounded stop.

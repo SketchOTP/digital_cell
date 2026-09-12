@@ -986,3 +986,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Architect disposition: `BOUNDED_STOP_ACCEPTED_CONTINUE_R5_REPRODUCTION_EQUIVALENCE_REQUIRED`; preserve governed head `c177a4e056a80938fc3a91c72bc0888b761a5078`, prior `d42f69d`, and all prior artifacts unchanged.
 - The active package adds a diagnostic-only direct fixture-boundary adapter, explicit historical/current cadence modes, explicit initial/per-step reserve resolution, real per-attempt signed-stress/apposition/closure/proposal diagnostics, and bounded full-state daughter continuation records.
 - The comparison matrix and new executable wrapper are prepared but not yet CI-validated. No population, selection, reversal, or successor campaign is authorized from this pending state.
+
+## R10R9R5 reproduction-equivalence result — bounded stop
+
+- Exact implementation head `2ec64c3e36980076fc70bb374ce8cfe33c50d766` passed exact-head CI `34662654463`; the independently downloaded repair-controls ZIP is `sha256:ff7f3f4cd8f96eea93a19915bad9fe3ef3c9f93260681ad861a3b8e6c2bf0167`.
+- Historical direct fixture replay is `8/10` physical fissions and `8/8` full-state viable pairs. The shared current kernel reproduces `8/10` under the historical fixture boundary with historical clock/initial-reserve, current clock, and per-step reserve variants; all sixteen daughter branches per fixture variant completed the actual 3,000 accepted-step continuation and were viable.
+- Both current Resource-bath variants remain `0/10`, with `5,820` and `5,818` attempts respectively, all classified `APPOSITION_OUTSIDE_LOCAL_RANGE`. The shared current negative remains `10/10` terminal-mass-qualified and `0/10` fissions. The independent raw-event verifier passes.
+- Classification: `ECOLOGY_MORPHOGENESIS_COMPATIBILITY_LIMITATION`. This is a bounded current-Resource ecology negative, not a kernel regression; population ecology, selection, reversal, and final integration remain `NOT_REACHED`.

@@ -1273,3 +1273,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - A generic `NO_VALID_PHYSICAL_PROPOSAL` event is insufficient to attribute a reproduction negative. The current kernel must expose apposition range, signed load-bearing stress, closure funding, proposal validity, and daughter-state validity at the actual attempt.
 - Historical reproduction and current ecological reproduction can differ through boundary implementation, cadence origin, and parameter-resolution lifetime even when coefficients are unchanged; isolate those dimensions before assigning causality.
 - Daughter continuation is a per-daughter qualification predicate from the actual physical birth. Aggregate fission totals or terminal descendant snapshots cannot replace the frozen 3,000 accepted-step contract.
+
+## R10R9R5 reproduction-equivalence result
+
+- The shared current kernel reproduces the historical `8/10` result when the diagnostic fixture boundary is held constant; changing cadence origin and reserve-configuration lifetime leaves the same outcome. This isolates the divergence to the Resource-bath boundary in the tested comparison.
+- The current Resource-bath arms fail before signed stress, closure funding, or daughter validation: every attempt is classified `APPOSITION_OUTSIDE_LOCAL_RANGE`. Do not name a downstream predicate or repair the motor without new evidence.
+- Historical-boundary success is not current ecological qualification. Distinct-arm counting and both-daughter 3,000-step continuation are now independently recomputed from raw birth/continuation events.

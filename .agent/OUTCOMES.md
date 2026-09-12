@@ -2641,3 +2641,10 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 
 - The bounded stop is accepted for continuation under `BOUNDED_STOP_ACCEPTED_CONTINUE_R5_REPRODUCTION_EQUIVALENCE_REQUIRED`.
 - No biological conclusion is added. The pending package compares historical direct-boundary execution with the shared current kernel while isolating cadence and reserve-configuration lifetime, and replaces generic no-proposal records with the current apposition, signed-stress, funding, geometry, and partition diagnostics.
+
+## DC-FINAL-001-R10R9R5 bounded result
+
+- Implementation acceptance: `PASS_FOR_R5_EQUIVALENCE_AND_QUALIFICATION_CONTROLS`. Observer-label independence, zero-funded catalyst turnover, atomic lifecycle controls, executable verifier fixtures, shared-kernel diagnostics, and exact-head CI pass.
+- Historical direct fixture: `8/10` physical fissions and `8/8` viable pairs. Shared fixture-boundary replay is `8/10` and `8/8` across historical-clock/initial-reserve, current-clock, and per-step-reserve variants; all recorded daughter branches completed 3,000 accepted steps and remained viable.
+- Current Resource-bath replay is `0/10` in both contract variants. The raw attempts are `5,820` and `5,818`, all failing first at `APPOSITION_OUTSIDE_LOCAL_RANGE`; clock origin and reserve-resolution lifetime are therefore not the cause of the divergence.
+- Scientific verdict: `VALID_MATCHED_ECOLOGY_NEGATIVE`, classified `ECOLOGY_MORPHOGENESIS_COMPATIBILITY_LIMITATION`. Current Resource ecology does not qualify reproduction; population selection, reversal, and final integration are `NOT_REACHED`. Historical reproduction remains immutable diagnostic provenance only.
