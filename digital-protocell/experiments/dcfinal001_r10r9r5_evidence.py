@@ -328,6 +328,118 @@ def write_not_reached(names, reason):
         write(name, {"status": "NOT_REACHED", "reason": reason})
 
 
+def verify_reproduction_equivalence(path: Path):
+    """Recompute the bounded R5 comparison from raw arm events.
+
+    The Rust diagnostic's aggregate counts are intentionally treated as
+    untrusted.  This verifier derives physical fissions from daughter birth
+    events and derives viable pairs from both recorded daughter continuations.
+    It also fails closed when a physical attempt lacks a predicate-level
+    diagnostic.
+    """
+    value = load(path)
+    for key in ("historical", "historical_counts", "current_variants"):
+        required(value, key)
+
+    def historical_counts():
+        fissions = 0
+        viable = 0
+        for arm in value["historical"]:
+            result = required(arm, "result")
+            if required(result, "physical_fission"):
+                fissions += 1
+                if result.get("full_state_daughters_viable") is True:
+                    viable += 1
+        return fissions, viable
+
+    def current_arm_counts(arm):
+        births = required(arm, "physical_birth_events")
+        groups = {}
+        for row in births:
+            key = (required(row, "step"), required(row, "parent_cohort_id"))
+            groups.setdefault(key, []).append(row)
+        fissions = 0
+        for rows in groups.values():
+            sides = {required(row, "daughter_side") for row in rows}
+            parent_count = required(rows[0], "parent_count")
+            daughter_count = sum(required(row, "daughter_count") for row in rows)
+            if sides != {0, 1} or daughter_count != 2 * parent_count:
+                raise ValueError(f"invalid two-daughter birth group: {rows!r}")
+            fissions += parent_count
+        continuations = required(arm, "daughter_continuations")
+        viable_pair = (
+            fissions > 0
+            and len(continuations) == 2
+            and all(
+                required(record, "continuation").get("viable") is True
+                for record in continuations
+            )
+        )
+        for attempt in required(arm, "fission_attempts"):
+            detail = required(attempt, "detail")
+            if not isinstance(detail, dict):
+                raise ValueError(f"attempt detail is not an object: {attempt!r}")
+            if attempt.get("outcome") == "NO_VALID_PHYSICAL_PROPOSAL":
+                required(detail, "failure_class")
+        if required(arm, "physical_fissions") != fissions:
+            raise ValueError(f"emitted fission count disagrees with birth events: {arm!r}")
+        if required(arm, "fission_attempt_count") != len(required(arm, "fission_attempts")):
+            raise ValueError(f"attempt count disagrees with raw attempts: {arm!r}")
+        return fissions, int(viable_pair)
+
+    historical_fissions, historical_viable = historical_counts()
+    if (historical_fissions, historical_viable) != (
+        value["historical_counts"]["physical_fissions"],
+        value["historical_counts"]["full_state_viable_pairs"],
+    ):
+        raise ValueError("historical aggregate disagrees with raw results")
+
+    matrix = {}
+    expected = {
+        "shared_fixture_historical_contract": (8, 8),
+        "shared_fixture_current_clock": (8, 8),
+        "shared_fixture_per_step_reserve": (8, 8),
+        "shared_resource_historical_contract": (0, 0),
+        "shared_resource_current_contract": (0, 0),
+    }
+    for arms in value["current_variants"]:
+        if not arms:
+            raise ValueError("empty comparison variant")
+        label = required(arms[0], "variant")
+        if label in matrix or label not in expected or len(arms) != 10:
+            raise ValueError(f"invalid comparison variant set: {label!r}")
+        per_arm = [current_arm_counts(arm) for arm in arms]
+        counts = (sum(row[0] for row in per_arm), sum(row[1] for row in per_arm))
+        matrix[label] = {
+            "physical_fissions": counts[0],
+            "full_state_viable_pairs": counts[1],
+            "distinct_successful_arms": sum(row[0] > 0 for row in per_arm),
+            "per_arm": [
+                {"arm": arm["arm"], "physical_fissions": row[0], "viable_pair": bool(row[1])}
+                for arm, row in zip(arms, per_arm)
+            ],
+            "matches_preregistered_diagnostic": counts == expected[label],
+        }
+    if set(matrix) != set(expected) or not all(
+        row["matches_preregistered_diagnostic"] for row in matrix.values()
+    ):
+        raise ValueError(f"comparison matrix did not match the preregistered diagnostic: {matrix!r}")
+    return {
+        "pass": True,
+        "historical": {
+            "physical_fissions": historical_fissions,
+            "full_state_viable_pairs": historical_viable,
+        },
+        "current": matrix,
+        "qualification_contract": {
+            "distinct_successful_arms": True,
+            "both_daughters_recorded": True,
+            "daughter_continuation_viability": "actual 3000-step current continuation",
+            "no_proposal_predicate_detail_required": True,
+        },
+    }
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     legacy = load(LEGACY)

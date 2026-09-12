@@ -95,6 +95,17 @@ jobs:
         working-directory: digital-protocell
         run: |
           set -euo pipefail
+          python3 - <<'PY'
+          import importlib.util
+          import json
+          from pathlib import Path
+          spec = importlib.util.spec_from_file_location('r5evidence', 'experiments/dcfinal001_r10r9r5_evidence.py')
+          module = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          result = module.verify_reproduction_equivalence(Path('/tmp/dcfinal001_r10r9r5_reproduction_equivalence.json'))
+          Path('/tmp/dcfinal001_r10r9r5_reproduction_equivalence_verification.json').write_text(json.dumps(result, indent=2, sort_keys=True) + '\n')
+          assert result['pass']
+          PY
           python3 -m py_compile experiments/dcfinal001_r10r9r5_evidence.py
           python3 - <<'PY'
           import importlib.util
@@ -116,3 +127,4 @@ jobs:
             /tmp/dcfinal001_r10r9r5_contract_tests.json
             /tmp/dcfinal001_r10r9r5_shared_kernel_reproduction.json
             /tmp/dcfinal001_r10r9r5_reproduction_equivalence.json
+            /tmp/dcfinal001_r10r9r5_reproduction_equivalence_verification.json
