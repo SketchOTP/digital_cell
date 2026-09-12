@@ -4426,6 +4426,9 @@ pub fn run_r10r9r5_causal_comparison() {
     let motor_off = r10_causal_cell(R5_CAUSAL_BOUNDARY_CELLS[0], false, true);
     let adaptation_disabled = r10_causal_cell(R5_CAUSAL_BOUNDARY_CELLS[0], true, false);
     let resource_current = cells.remove(0);
+    let mut boundary_cells = Vec::with_capacity(4);
+    boundary_cells.push(resource_current);
+    boundary_cells.extend(cells);
     fs::write(
         output,
         serde_json::to_vec_pretty(&json!({
@@ -4442,7 +4445,7 @@ pub fn run_r10r9r5_causal_comparison() {
                 "stress": 0.15,
                 "daughter_continuation_steps": DAUGHTER_CONTINUATION_STEPS,
             },
-            "boundary_cells": [resource_current].into_iter().chain(cells).collect::<Vec<_>>(),
+            "boundary_cells": boundary_cells,
             "controls": {
                 "motor_off": motor_off,
                 "adaptation_disabled": adaptation_disabled,
