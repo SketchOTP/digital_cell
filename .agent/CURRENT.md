@@ -1007,3 +1007,10 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 
 - Architect continuation: `R5_BOUNDARY_REPAIR_ACCEPTED_COHERENT_RESOURCE_MORPHOGENESIS_REPLAN`.
 - Shared-operator diagnostics and the fixed four-cell N/F comparison plus named cortex controls are prepared; no population, selection, reversal, or successor run is authorized.
+
+## R5 coherent-Resource morphogenesis attribution — bounded result
+
+- Exact implementation head `35e978afeab183d5678206c1f545953d828c6d53` passed exact-head CI `34712233123`; independently downloaded artifact ZIP SHA256 is `adee6cd0716c3f2fb775f72c546295449f1041445be33fd1144899c60fac4c760`.
+- The causal verifier and executable control fixtures pass. The coherent Resource cell (Resource N waveform + Resource F waveform) is `0/10` physical fissions with `10/10` growth-qualified arms; all `5,839` attempts first fail `APPOSITION_OUTSIDE_LOCAL_RANGE`. Fixture-N/Resource-F is `0/10` (`5,840` attempts) and Resource-N/fixture-F is `0/10` (`5,841` attempts). The fixture-N/fixture-F diagnostic is `7/10` fissions and `7/10` viable pairs, with both daughters completing `3,000` accepted continuation steps; it is not Resource qualification.
+- Resource motor-off and adaptation-disabled controls are both `0/10` and remain outside apposition. Resource raw drive is present but low (sampled maximum `0.156665209978581` versus `1.0` in the fully fixture-bound diagnostic); requested and funded active A maxima are equal (`0.00014224417819922477`), so funding limitation is not supported. Classification: `RESOURCE_MORPHOGENETIC_DRIVE_LIMIT_IDENTIFIED`.
+- This is a valid bounded morphogenesis negative, not a new biology authorization. Population selection, reversal, and final integrated qualification remain `NOT_REACHED`; binary digest was not separately published. The final result was not independently read back through a Notion connector in this execution. PR #44 remains open/draft/unmerged/untouched.

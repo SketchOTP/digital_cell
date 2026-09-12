@@ -1291,3 +1291,10 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 
 - Endpoint motor expenditure cannot distinguish missing excitation, refractory suppression, inadequate funding, passive opposition, or local growth distribution; these must be measured at common accepted times.
 - A null in-range apposition set is incomplete geometry evidence; the nearest ring-eligible pair must also be recorded when it lies outside the interaction range.
+
+## R10R9R5 coherent-Resource morphogenesis attribution result
+
+- In the coherent Resource replay, mass eligibility did not produce apposition: all `5,839` attempts first failed outside the unchanged local range. The nearest eligible pair remained at least `1.9914438192034025` times the range in sampled traces.
+- Resource raw curvature drive was present but weak; the maximum sampled raw drive was `0.156665209978581`, while the fully fixture-bound diagnostic reached `1.0`. The adaptation-disabled control remained `0/10`, so refractory attenuation was not supported as the primary limiter.
+- Requested and funded active A matched exactly in the Resource control, with activated A present at attempts; motor-off produced zero funded A and only `5.684341886080802e-14` W roundoff. The evidence supports `RESOURCE_MORPHOGENETIC_DRIVE_LIMIT_IDENTIFIED`, not funding rescue or motor strengthening.
+- The N/F four-cell result is a boundary-conditioned diagnostic: neither one-species fixture substitution reproduces, while both fixture inputs do. Rich fixture reproduction cannot be promoted to coherent Resource qualification.

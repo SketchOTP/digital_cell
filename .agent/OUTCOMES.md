@@ -2661,3 +2661,10 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 
 - Implementation is pending exact-head CI. The new evidence path samples raw/effective curvature, adaptation, requested/funded active work, passive force and pressure observables, displacement, structural maturity, and out-of-range nearest eligible geometry from the shared lifecycle.
 - No causal classification or reproduction qualification is inferred before independent verification of the raw comparison artifact.
+
+## DC-FINAL-001-R10R9R5 coherent-Resource morphogenesis attribution — completed
+
+- Implementation verdict: `PASS_FOR_R5_CAUSAL_ATTRIBUTION`. Exact head `35e978afeab183d5678206c1f545953d828c6d53`, CI `34712233123 PASS`, artifact ZIP SHA256 `adee6cd0716c3f2fb775f72c546295449f1041445be33fd1144899c60fac4c760`; local recomputation matches the uploaded causal verification (`pass=true`).
+- Scientific verdict: `VALID_BOUNDED_RESOURCE_MORPHOGENESIS_NEGATIVE`. Coherent Resource is `0/10` fissions and `0/10` viable pairs despite `10/10` growth qualification. Its `5,839` attempts all first fail `APPOSITION_OUTSIDE_LOCAL_RANGE`; the two one-species fixture hybrids also remain `0/10`.
+- The fully fixture-bound diagnostic reaches `7/10` distinct fissions and `7/10` full-state viable pairs; seeds `3,4,5,6,7,9,10` fission at `6550,8575,5425,7125,6850,12625,12450`, and both daughter branches complete `3000` steps. This is a diagnostic reference, not Resource ecology.
+- Matched controls show no Resource funding gap and no fission-count change with adaptation disabled; motor-off also remains `0/10`. The bounded classification is `RESOURCE_MORPHOGENETIC_DRIVE_LIMIT_IDENTIFIED`, not a force-tuning authorization. Downstream ecology, selection, reversal, and final integration are `NOT_REACHED`.

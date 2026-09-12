@@ -1339,3 +1339,10 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 
 - Record: `R5_BOUNDARY_REPAIR_ACCEPTED_COHERENT_RESOURCE_MORPHOGENESIS_REPLAN`.
 - Scope is shared R9/R10 operator instrumentation, four exact N/F diagnostic cells, Resource motor-off and adaptation-disabled controls, independent verification, and only directly demonstrated in-scope execution repair.
+
+## R10R9R5 coherent-Resource morphogenesis result
+
+- The bounded causal package passed exact-head CI `34712233123` at `35e978afeab183d5678206c1f545953d828c6d53`; artifact ZIP SHA256: `adee6cd0716c3f2fb775f72c546295449f1041445be33fd1144899c60fac4c760`.
+- Four-cell matrix: Resource/Resource `0/10`, fixture-N/Resource-F `0/10`, Resource-N/fixture-F `0/10`, and fixture-N/fixture-F diagnostic `7/10` with `7/10` viable pairs. All cells are `10/10` growth-qualified. Resource motor-off and adaptation-disabled controls are each `0/10`.
+- All coherent Resource attempts fail first at `APPOSITION_OUTSIDE_LOCAL_RANGE`; Resource drive is nonzero but weak, adaptation-disabled dynamics do not change the fission count, and requested/funded active A match. Final bounded classification is `RESOURCE_MORPHOGENETIC_DRIVE_LIMIT_IDENTIFIED`.
+- The fixture-boundary positive remains diagnostic only. No population, selection, reversal, or final-integration work is authorized from this result; no successor starts automatically.

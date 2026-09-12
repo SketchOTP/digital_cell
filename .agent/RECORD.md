@@ -1937,3 +1937,11 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Date: `2026-09-12`.
 - Record: `R5_BOUNDARY_REPAIR_ACCEPTED_COHERENT_RESOURCE_MORPHOGENESIS_REPLAN`.
 - The active package is diagnostic only: shared causal instrumentation, fixed four-cell N/F comparison, named cortex controls, and fail-closed verification. Prior attempts and the accepted boundary repair remain immutable.
+
+## DEC-DCFINAL001-R10R9R5-COHERENT-RESOURCE-MORPHOGENESIS-RESULT
+
+- Date: `2026-09-12`.
+- Exact implementation head `35e978afeab183d5678206c1f545953d828c6d53`; exact-head CI `34712233123 PASS`; independently computed artifact ZIP SHA256 `adee6cd0716c3f2fb775f72c546295449f1041445be33fd1144899c60fac4c760`.
+- Causal verifier pass: four-cell counts are Resource/Resource `0/10`, fixture-N/Resource-F `0/10`, Resource-N/fixture-F `0/10`, and fixture-N/fixture-F diagnostic `7/10` with `7/10` viable pairs. The coherent Resource arm is `10/10` growth-qualified, with `5,839` attempts all first failing `APPOSITION_OUTSIDE_LOCAL_RANGE`; controls motor-off and adaptation-disabled are also `0/10`.
+- Resource requested/funded active A matches, adaptation-disabled does not change reproduction, and raw drive is nonzero but substantially below the fully fixture-bound diagnostic. Final classification: `RESOURCE_MORPHOGENETIC_DRIVE_LIMIT_IDENTIFIED`.
+- Implementation acceptance is limited to the causal instrumentation/verifier package. Coherent Resource reproduction, population selection, reversal, final integrated M1–M5, and the Digital Cell end goal remain unestablished; no successor started. Binary digest unavailable. Notion final readback was not independently available in this execution. PR #44 remains open/draft/unmerged/untouched.
