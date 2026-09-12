@@ -1279,3 +1279,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - The shared current kernel reproduces the historical `8/10` result when the diagnostic fixture boundary is held constant; changing cadence origin and reserve-configuration lifetime leaves the same outcome. This isolates the divergence to the Resource-bath boundary in the tested comparison.
 - The current Resource-bath arms fail before signed stress, closure funding, or daughter validation: every attempt is classified `APPOSITION_OUTSIDE_LOCAL_RANGE`. Do not name a downstream predicate or repair the motor without new evidence.
 - Historical-boundary success is not current ecological qualification. Distinct-arm counting and both-daughter 3,000-step continuation are now independently recomputed from raw birth/continuation events.
+
+## R10R9R5 boundary-state correction learning
+
+- `mesh.exterior` is a physical pressure input, not disposable fixture metadata. A transport-only bath substitution followed by restoration creates a cross-phase environment mismatch even when the transport ledger is otherwise correct.
+- The narrow repair is to publish one accepted finite-bath boundary after complete exchange and before mechanics; this preserves finite-donor conservation, cohort-order independence, and separation between transport allocation limits and physical pressure.
+- Coherent Resource-boundary reproduction remains below threshold: `0/10` fissions, with every attempt failing first at `APPOSITION_OUTSIDE_LOCAL_RANGE`. The corrected negative must not be converted into motor tuning or environmental rescue.

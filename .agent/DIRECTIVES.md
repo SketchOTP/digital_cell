@@ -1325,3 +1325,11 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Exact implementation head `2ec64c3e36980076fc70bb374ce8cfe33c50d766` passed CI `34662654463`; artifact ZIP SHA256: `ff7f3f4cd8f96eea93a19915bad9fe3ef3c9f93260681ad861a3b8e6c2bf0167`.
 - The direct historical fixture and all three shared fixture-contract variants reproduce `8/10` distinct-arm fissions with `8/8` full-state viable pairs; each fixture variant records both daughters through 3,000 accepted continuation steps. The two shared Resource-boundary variants reproduce `0/10` fissions, with all 5,820/5,818 attempts failing first at `APPOSITION_OUTSIDE_LOCAL_RANGE`.
 - Exact clock and reserve-resolution variants do not explain the divergence. The remaining result is `ECOLOGY_MORPHOGENESIS_COMPATIBILITY_LIMITATION`; historical-boundary reproduction is diagnostic only and does not qualify current Resource ecology. No population, selection, reversal, or successor campaign is authorized from this bounded stop.
+
+## R10R9R5 boundary-state correction continuation
+
+- Record: `R5_BOUNDARY_DEPENDENCE_ACCEPTED_CROSS_PHASE_EXTERIOR_REQUALIFICATION_REQUIRED`.
+- The narrow implementation publishes the accepted finite-bath N/F boundary to surviving meshes after the complete simultaneous exchange. Mechanics therefore reads the actual accepted habitat state rather than a restored fixture exterior. Transport allocation limits remain separate from mechanical pressure inputs; no equation, coefficient, threshold, forcing, bath volume, or organism mechanism changed.
+- Executable controls and independent verifier pass at `c5b31e2a6de636c854f9395344070e8a3a15bf68`, CI `34691090129`; artifact ZIP SHA256 `a4b8bc4f88368e7dbece9193097019238247eeb4562e7254fb4366ead4c9e307`.
+- Historical fixture-boundary reproduction remains a control at `8/10` fissions and `8/8` viable pairs. Corrected coherent Resource-boundary reproduction remains `0/10` with all attempts failing first at `APPOSITION_OUTSIDE_LOCAL_RANGE`; it is a valid below-threshold result, not evidence for changing the organism or ecology.
+- Downstream population, selection, reversal, and final integration remain `NOT_REACHED` under the R5 stop rule. PR #44 remains open, draft, unmerged, and untouched.

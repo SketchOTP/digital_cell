@@ -2648,3 +2648,10 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Historical direct fixture: `8/10` physical fissions and `8/8` viable pairs. Shared fixture-boundary replay is `8/10` and `8/8` across historical-clock/initial-reserve, current-clock, and per-step-reserve variants; all recorded daughter branches completed 3,000 accepted steps and remained viable.
 - Current Resource-bath replay is `0/10` in both contract variants. The raw attempts are `5,820` and `5,818`, all failing first at `APPOSITION_OUTSIDE_LOCAL_RANGE`; clock origin and reserve-resolution lifetime are therefore not the cause of the divergence.
 - Scientific verdict: `VALID_MATCHED_ECOLOGY_NEGATIVE`, classified `ECOLOGY_MORPHOGENESIS_COMPATIBILITY_LIMITATION`. Current Resource ecology does not qualify reproduction; population selection, reversal, and final integration are `NOT_REACHED`. Historical reproduction remains immutable diagnostic provenance only.
+
+## DC-FINAL-001-R10R9R5 boundary-state correction
+
+- Implementation verdict: `PASS`. The Resource boundary is now published as the accepted physical external state after finite exchange, so transport and mechanics share the same world/stage provenance. Pressure, conservation, cohort-order, stale-fixture, rollback, and independent-verifier controls pass; the fixture adapter remains preserved.
+- Reproduction verdict: `BOUNDARY_COHERENCE_REPAIRED_RESOURCE_REPRODUCTION_NOT_ESTABLISHED`. Fixture-boundary control is `8/10` fissions and `8/8` viable pairs; coherent Resource-boundary replay is `0/10` fissions after `14,778` accepted parent steps, with all attempts first failing `APPOSITION_OUTSIDE_LOCAL_RANGE`. All ten Resource arms are terminal-mass-qualified and numerically valid.
+- Source head `c5b31e2a6de636c854f9395344070e8a3a15bf68`; exact-head CI `34691090129 PASS`; artifact ZIP SHA256 `a4b8bc4f88368e7dbece9193097019238247eeb4562e7254fb4366ead4c9e307`.
+- Scientific conclusion is a bounded coherent-Resource negative. Population selection, reversal, and final integrated M1-M5 remain `NOT_REACHED`; no successor execution is authorized.

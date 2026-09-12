@@ -1920,3 +1920,13 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Exact implementation head: `2ec64c3e36980076fc70bb374ce8cfe33c50d766`; exact-head CI `34662654463 PASS`; downloaded artifact ZIP `sha256:ff7f3f4cd8f96eea93a19915bad9fe3ef3c9f93260681ad861a3b8e6c2bf0167`.
 - Historical direct and shared fixture-boundary contracts each yield `8/10` distinct fissions and `8/8` full-state viable pairs. Each fixture variant records both daughters completing the actual 3,000 accepted-step continuation. Shared Resource-boundary variants yield `0/10`; all `5,820`/`5,818` attempts fail first at `APPOSITION_OUTSIDE_LOCAL_RANGE`.
 - Final bounded classification: `ECOLOGY_MORPHOGENESIS_COMPATIBILITY_LIMITATION`; implementation controls and independent verifier pass, current Resource ecology remains unqualified, downstream population/selection/reversal/final integration remain `NOT_REACHED`, and PR #44 remains untouched.
+
+## DEC-DCFINAL001-R10R9R5-BOUNDARY-STATE-CORRECTION
+
+- Date: `2026-09-12`.
+- Record: `R5_BOUNDARY_DEPENDENCE_ACCEPTED_CROSS_PHASE_EXTERIOR_REQUALIFICATION_REQUIRED`.
+- Boundary ownership is corrected narrowly: after complete finite-bath exchange, the accepted bath N/F state is published to all surviving meshes before mechanics. The historical fixture-boundary adapter remains explicit; no organism equation, coefficient, forcing, threshold, or PR #44 state changed.
+- Controls: frozen pressure cases, world/mechanics provenance, stale-fixture exclusion, finite-donor N/F conservation, cohort-order independence, current-arm consistency, rollback, and independent raw-event verification pass. Active A→W and prior lifecycle controls remain passing.
+- Exact implementation head `c5b31e2a6de636c854f9395344070e8a3a15bf68`; CI `34691090129 PASS`; independently downloaded artifact ZIP SHA256 `a4b8bc4f88368e7dbece9193097019238247eeb4562e7254fb4366ead4c9e307`.
+- Fixture-boundary control: `8/10` distinct fissions and `8/8` full-state viable pairs. Corrected coherent Resource boundary: `0/10` fissions, `0/0` daughter pairs, `10/10` terminal-mass-qualified, `0` numerical rejections; all `5,839`/`5,840` attempts fail first at `APPOSITION_OUTSIDE_LOCAL_RANGE`.
+- Final classification: `BOUNDARY_COHERENCE_REPAIRED_RESOURCE_REPRODUCTION_NOT_ESTABLISHED`. Population selection, reversal, and final integrated qualification are `NOT_REACHED`; no successor execution starts automatically. PR #44 remains open/draft/unmerged/untouched.
