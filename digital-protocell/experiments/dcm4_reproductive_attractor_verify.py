@@ -352,6 +352,7 @@ def main():
     repo = args.repo
     root = args.output
     root.mkdir(parents=True, exist_ok=True)
+    (root / "raw").mkdir(parents=True, exist_ok=True)
     raw = load(args.input)
     shutil.copy2(args.input, root / "raw/architecture_raw.json")
     cells = raw["cells"]
