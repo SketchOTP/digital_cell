@@ -32,6 +32,7 @@ jobs:
           allowed = (
               '.agent/',
               '.github/workflows/dc-m4-reproductive-attractor.yml',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
               'digital-protocell/examples/dcfinal001_r4_evolution.rs',
               'digital-protocell/examples/dcfinal001_r5_v4_neck.rs',
               'digital-protocell/examples/dcm4_reproductive_attractor.rs',
