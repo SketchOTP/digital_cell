@@ -254,3 +254,10 @@
 - `digital-protocell/examples/dcfinal001_r10r9r5_evolution.rs` — canonical R5 population entry point.
 - `digital-protocell/experiments/dcfinal001_r10r9r5_evidence.py` — independent raw event/census verifier and evidence generator.
 - `.github/workflows/dc-final-001-r10r9r5.yml` — exact-head R5 validation and artifact workflow.
+
+## DC-M4 reproductive-attractor architecture gate
+
+- `digital-protocell/examples/dcm4_reproductive_attractor.rs` — observer-only entry point for the ten-arm Resource/fixture material-geometry and frozen-mechanics stability gate; no production biology changes.
+- `digital-protocell/experiments/dcm4_reproductive_attractor_verify.py` — independent verifier for fission authority, observer invariance, causal ledger, stability records, external-prior-art classifications, route specification, and fail-closed scope checks.
+- `.github/workflows/dc-m4-reproductive-attractor.yml` — exact-head Linux observer compilation, preserved chemistry/topology tests, ten-arm diagnostic run, verifier, and artifact sealing.
+- `experiments/generated/dcm4reproductiveattractor/` — CI-sealed architecture-gate evidence root containing protocol, raw trajectories, material-geometry ledger, frozen stability records, fission-authority audit, route decision, qualification, and manifest. The large generated payload is retained in the immutable CI artifact rather than committed to source.
