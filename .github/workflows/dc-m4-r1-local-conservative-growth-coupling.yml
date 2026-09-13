@@ -106,4 +106,4 @@ jobs:
           retention-days: 90
           path: |
             digital-protocell/experiments/generated/dcm4r1localconservativegrowthcoupling/
-            digital-protocell/target/release/dcm4_r1_local_conservative_growth_coupling
+            digital-protocell/target/release/examples/dcm4_r1_local_conservative_growth_coupling
