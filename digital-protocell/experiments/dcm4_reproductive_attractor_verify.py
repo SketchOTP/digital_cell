@@ -323,7 +323,7 @@ def route_decision(cells, stability):
         "resource_growing_mode_observed": resource_growing,
         "resource_reached_apposition_range": resource_in_range,
         "fixture_growing_mode_observed": fixture_growing,
-        "no_production_route_selected": route["classification"]
+        "no_production_route_selected": route
         != "ROUTE_A_EXISTING_GROWTH_INSTABILITY_SUPPORTED",
     }
 
