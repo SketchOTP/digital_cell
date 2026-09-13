@@ -187,11 +187,12 @@ def source_audit(repo: Path):
         "current_source_hashes": {str(path): sha(path) for path in paths},
         "current_call_path": [
             source_line(fission, "pub fn try_local_segment_fission("),
-            source_line(fission, "if !polygon_simple(&parent.vertices)"),
-            source_line(topology, "&& !crate::mesh_self_contact::polygon_simple(&mesh.vertices)"),
+            source_line(fission, "!crate::mesh_self_contact::polygon_simple(&parent.vertices)"),
+            source_line(topology, "|| !crate::mesh_self_contact::polygon_simple(&mesh.vertices)"),
             source_line(self_contact, "pub fn mechanics_step_with_local_self_contact("),
             source_line(evolution, "fn r10_split_cohort("),
             source_line(evolution, "if !polygon_simple(&cohort.mesh.vertices)"),
+            source_line(evolution, "|| !polygon_simple(&daughter_a.vertices)"),
             source_line(evolution, "if !event.partition.ok"),
         ],
         "current_contract": {
