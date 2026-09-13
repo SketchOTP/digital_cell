@@ -2696,3 +2696,8 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Standalone benchmark passes: a dimensionless two-state mass-conserving reaction-diffusion system has all nonzero modes decaying at one total mass and a positive mode-4 growth rate with finite-volume amplitude amplification at another; global mass residuals remain below `2.2e-14`.
 - Final R2 classification: `ROUTE_B_NEW_CONSERVED_POLARITY_SUBSTRATE_REQUIRED`. `PolarityMassStateV1` is specified but not implemented. Digital Cell production reproduction, evolution, selection, reversal, and final M1-M5 remain `NOT_REACHED`.
 - R2 implementation acceptance is local/CI-pending until the diagnostic workflow runs. Notion readback was unavailable in this execution; PR #44 remains open/draft/unmerged/untouched.
+
+## DC-M4-R2 exact-head validation result
+
+- Exact commit `1e9390126cbc2ea50a3df99b58ee59cba33697dc` passed CI `34776033860`. The downloaded artifact ZIP independently streamed to SHA-256 `17ca2d3b87e57aef8ed29007668f83326d54d1b65617c811197d03dbe76d8f41`; all 14 internal manifest hashes recomputed successfully.
+- The R2 decision remains `ROUTE_B_NEW_CONSERVED_POLARITY_SUBSTRATE_REQUIRED`, with implementation acceptance `PASS`, production biology delta `0`, and all production reproduction/selection/reversal/final integration stages `NOT_REACHED`.

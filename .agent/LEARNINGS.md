@@ -1323,3 +1323,8 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - State reuse is a semantic and lifecycle decision, not a code-location decision. Structural mass, maturation, strain, lumped chemistry, and refractory adaptation cannot become polarity merely because they are already serialized.
 - A standalone mass-conserving reaction-diffusion benchmark should classify instability from a nonzero-mode dispersion rate before any fission observable. Finite-volume conservation is an independent check, not a proxy for reproduction.
 - Existing native-ring M2 polarity code is valuable implementation precedent, but bringing it into M4 would be a new material/state contract requiring fresh source, energy, remesh, restart, and fission authorization.
+
+## DC-M4-R2 exact-head validation
+
+- The architecture decision can be CI-sealed without compiling or executing production biology: source-scope enforcement plus an independent symbolic MCRD benchmark is sufficient for this diagnostic gate.
+- Evidence artifacts should carry both a compact immutable upstream reconciliation fixture and a recomputable internal manifest when the accepted upstream raw trajectory is too large or ignored by source control.

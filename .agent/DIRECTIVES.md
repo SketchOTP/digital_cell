@@ -1375,3 +1375,7 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - R2 reconciles R1, audits all current M4 causal state ownership and lifecycle semantics, independently verifies a target-free mass-conserving instability benchmark, and decides whether a current state can be extended without semantic relabeling.
 - No production biology, parameter, ecology, fission rule, coefficient, or successor mechanism may change. R1 Route-OFF remains current authority; the old native-ring polarity carrier remains separate M2 precedent only.
 - Required terminal decision is one of the four R2 H classifications. No E5 production implementation, reproduction, selection, reversal, or final integrated qualification is authorized in this gate.
+
+## DC-M4-R2 exact-head validation result
+
+- Commit `1e9390126cbc2ea50a3df99b58ee59cba33697dc` passed exact-head CI workflow `34776033860`. The independent verifier selected `ROUTE_B_NEW_CONSERVED_POLARITY_SUBSTRATE_REQUIRED`; the proposed successor remains unimplemented and no production run was launched.

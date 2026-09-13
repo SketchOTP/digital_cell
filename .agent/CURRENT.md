@@ -1045,3 +1045,8 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The complete current-M4 state inventory rejects reuse of structural material, derived strain, lumped chemistry/D096, dimensionless PlasticityStateV1 adaptation, or step-local mechanics as a polarity carrier without changing established meaning. The separate native-ring M2 runtime is adaptable precedent, not an existing M4 causal state.
 - Terminal architecture decision: `ROUTE_B_NEW_CONSERVED_POLARITY_SUBSTRATE_REQUIRED`. The proposed `PolarityMassStateV1` contract is not implemented; production reproduction, selection, reversal, and final M1-M5 integration are `NOT_REACHED`. Next execution is `false`; PR #44 remains untouched.
 - Notion update/readback was not available through the configured connector in this execution; this repository record does not claim it.
+
+## DC-M4-R2 exact-head CI seal
+
+- Implementation commit `1e9390126cbc2ea50a3df99b58ee59cba33697dc` passed workflow `34776033860`; the diagnostic-only scope, independent R1 reconciliation, MCRD benchmark, architecture decision, and internal artifact manifest all passed.
+- The downloaded artifact contained 14 manifest-listed evidence files plus the verifier and compact R1 fixture. Independent post-download manifest verification passed; streamed artifact ZIP SHA-256 was `17ca2d3b87e57aef8ed29007668f83326d54d1b65617c811197d03dbe76d8f41`.
