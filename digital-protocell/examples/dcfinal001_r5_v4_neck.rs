@@ -2502,6 +2502,15 @@ pub fn r10_refractory_mechanics_step_with_diagnostics(
         &zeros,
     )
     .ok()?;
+    let funding_ratio = if requested > 0.0 {
+        (ledger.resource_spent / requested).clamp(0.0, 1.0)
+    } else {
+        0.0
+    };
+    let funded_inward_normal_forces = requested_forces
+        .iter()
+        .map(|force| [force[0] * funding_ratio, force[1] * funding_ratio])
+        .collect::<Vec<_>>();
     if adaptation_enabled {
         advance_local_plasticity_trace(plasticity, &raw_drive, mechanics.dt, &plasticity_params)
             .ok()?;
@@ -2555,9 +2564,11 @@ pub fn r10_refractory_mechanics_step_with_diagnostics(
         "effective_drive_variance": effective_drive_variance,
         "effective_drive_maximum": effective_drive.iter().copied().fold(0.0_f64, f64::max),
         "requested_force_norm": requested_forces.iter().map(|force| force[0].hypot(force[1])).sum::<f64>(),
+        "requested_inward_normal_forces": requested_forces,
+        "funded_inward_normal_forces": funded_inward_normal_forces,
         "requested_active_a": if motor_enabled { requested } else { 0.0 },
         "funded_active_a": ledger.resource_spent,
-        "funding_ratio": if motor_enabled && requested > 0.0 { ledger.resource_spent / requested } else { 0.0 },
+        "funding_ratio": if motor_enabled { funding_ratio } else { 0.0 },
         "active_w_produced": ledger.waste_amount_after - ledger.waste_amount_before,
         "passive_force_norm": passive_force_norm,
         "pressure_mean": pressure_mean,
@@ -2584,6 +2595,19 @@ pub fn r10_refractory_mechanics_step_with_diagnostics(
         remesh_mappings,
         diagnostic,
     ))
+}
+
+/// Observer-only access to the exact local curvature quantities consumed by
+/// the R9/R10 actuator.  The returned values are never fed back into a
+/// production transition.
+pub fn r10_curvature_summary(mesh: &MaterialMesh) -> Value {
+    let (signed_turn, concavity, deficit, drive) = curvature_components(mesh);
+    json!({
+        "signed_turn": signed_turn,
+        "concavity": concavity,
+        "turning_deficit": deficit,
+        "raw_drive": drive,
+    })
 }
 
 /// Observer-only R9 Gate 1 replay of the sealed R8R1 curvature-normal campaign.

@@ -16,7 +16,9 @@ use chemistry_core::material_mesh::{LumpedChem, MaterialMesh};
 use chemistry_core::mesh_fission::{segment_apposition_stress_audit, try_local_segment_fission};
 use chemistry_core::mesh_fission::{topology_step, try_local_fission, FissionParams};
 use chemistry_core::mesh_growth::{growth_step, GrowthParams};
-use chemistry_core::mesh_mechanics::{local_pressure, remesh, MechParams};
+use chemistry_core::mesh_mechanics::{
+    compute_forces, local_pressure, mechanics_step_with_external_forces, remesh, MechParams,
+};
 use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
 use chemistry_core::mesh_self_contact::{mechanics_step_with_local_self_contact, polygon_simple};
 use chemistry_core::mesh_transport::{
@@ -45,6 +47,11 @@ const FOUNDER_MULTIPLICITY: u64 = 150;
 const REPLICATES: u64 = 2;
 const REPRODUCTION_STEPS: usize = 12_000;
 const DAUGHTER_CONTINUATION_STEPS: usize = 3_000;
+// Numerical probe settings for the observer-only stability assay. These are
+// not organism parameters and never enter a production transition.
+const STABILITY_PROBE_EPSILON: f64 = 1.0e-7;
+const STABILITY_PROBE_STEPS: usize = 24;
+const STABILITY_CLASSIFICATION_TOLERANCE: f64 = 1.0e-3;
 
 fn r10r9r5_canonical_lifecycle() -> bool {
     matches!(
@@ -1213,6 +1220,344 @@ fn prefix_state(
         "ledger_state_digest": deterministic_state_digest(ledger),
         "world": world,
         "ledger": ledger,
+    })
+}
+
+fn vector_norm_sum(vectors: &[[f64; 2]]) -> f64 {
+    vectors
+        .iter()
+        .map(|force| force[0].hypot(force[1]))
+        .sum()
+}
+
+/// Reuse the frozen mechanics operator with one coefficient disabled at a
+/// time. This is an observer decomposition of the exact force calculation;
+/// it is not a production parameter override.
+fn passive_force_components(mesh: &MaterialMesh, params: &MechParams) -> Value {
+    let mut stretch_params = *params;
+    stretch_params.kappa_b = 0.0;
+    stretch_params.k_pi = 0.0;
+    let mut bending_params = *params;
+    bending_params.k_s = 0.0;
+    bending_params.k_pi = 0.0;
+    let mut pressure_params = *params;
+    pressure_params.k_s = 0.0;
+    pressure_params.kappa_b = 0.0;
+    let stretch = compute_forces(mesh, &stretch_params);
+    let bending = compute_forces(mesh, &bending_params);
+    let pressure = compute_forces(mesh, &pressure_params);
+    let total = compute_forces(mesh, params);
+    json!({
+        "stretch_force_norm_sum": vector_norm_sum(&stretch),
+        "bending_force_norm_sum": vector_norm_sum(&bending),
+        "pressure_force_norm_sum": vector_norm_sum(&pressure),
+        "passive_force_norm_sum": vector_norm_sum(&total),
+        "pressure_values": (0..mesh.n()).map(|edge| local_pressure(mesh, edge)).collect::<Vec<_>>(),
+    })
+}
+
+fn low_order_shape_modes(mesh: &MaterialMesh) -> Value {
+    let center = mesh.centroid();
+    let radii = mesh
+        .vertices
+        .iter()
+        .map(|point| {
+            let dx = point[0] - center[0];
+            let dy = point[1] - center[1];
+            (dx.hypot(dy), dy.atan2(dx))
+        })
+        .collect::<Vec<_>>();
+    let mean_radius = radii.iter().map(|(radius, _)| *radius).sum::<f64>()
+        / radii.len().max(1) as f64;
+    let modes = (2..=4)
+        .map(|mode| {
+            let (cosine, sine) = radii.iter().fold((0.0, 0.0), |(c, s), (radius, angle)| {
+                let phase = *angle * mode as f64;
+                (c + radius * phase.cos(), s + radius * phase.sin())
+            });
+            let normalization = radii.len().max(1) as f64 * mean_radius.max(1e-300);
+            json!({
+                "mode": mode,
+                "cosine_coefficient": cosine / radii.len().max(1) as f64,
+                "sine_coefficient": sine / radii.len().max(1) as f64,
+                "normalized_amplitude": cosine.hypot(sine) / normalization,
+            })
+        })
+        .collect::<Vec<_>>();
+    json!({"centroid": center, "mean_radius": mean_radius, "modes": modes})
+}
+
+fn deterministic_zero_mean_mode(mesh: &mut MaterialMesh, mode: usize) -> f64 {
+    let center = mesh.centroid();
+    let scale = mesh
+        .vertices
+        .iter()
+        .map(|point| (point[0] - center[0]).hypot(point[1] - center[1]))
+        .sum::<f64>()
+        / mesh.n().max(1) as f64;
+    let mut displacement = Vec::with_capacity(mesh.n());
+    for point in &mesh.vertices {
+        let dx = point[0] - center[0];
+        let dy = point[1] - center[1];
+        let radius = dx.hypot(dy).max(1e-300);
+        let phase = (mode as f64) * dy.atan2(dx);
+        displacement.push([
+            STABILITY_PROBE_EPSILON * scale * phase.cos() * dx / radius,
+            STABILITY_PROBE_EPSILON * scale * phase.cos() * dy / radius,
+        ]);
+    }
+    let mean = displacement.iter().fold([0.0, 0.0], |sum, delta| {
+        [sum[0] + delta[0], sum[1] + delta[1]]
+    });
+    let mean = [
+        mean[0] / displacement.len().max(1) as f64,
+        mean[1] / displacement.len().max(1) as f64,
+    ];
+    let mut initial_rms = 0.0;
+    for (point, delta) in mesh.vertices.iter_mut().zip(displacement) {
+        let centered = [delta[0] - mean[0], delta[1] - mean[1]];
+        point[0] += centered[0];
+        point[1] += centered[1];
+        initial_rms += centered[0] * centered[0] + centered[1] * centered[1];
+    }
+    (initial_rms / mesh.n().max(1) as f64).sqrt()
+}
+
+fn vertex_rms_difference(left: &MaterialMesh, right: &MaterialMesh) -> Option<f64> {
+    (left.n() == right.n()).then(|| {
+        (left
+            .vertices
+            .iter()
+            .zip(&right.vertices)
+            .map(|(a, b)| {
+                let dx = a[0] - b[0];
+                let dy = a[1] - b[1];
+                dx * dx + dy * dy
+            })
+            .sum::<f64>()
+            / left.n().max(1) as f64)
+            .sqrt()
+    })
+}
+
+/// Run the frozen passive local mechanics on a real accepted trajectory
+/// snapshot and on a one-shot, zero-mean Fourier perturbation. The perturbed
+/// clone is never returned to the production trajectory.
+fn frozen_stability_assay(mesh: &MaterialMesh, mechanics: &MechParams) -> Value {
+    let modes = (2..=4)
+        .map(|mode| {
+            let mut baseline = mesh.clone();
+            let mut perturbed = mesh.clone();
+            let initial_rms = deterministic_zero_mean_mode(&mut perturbed, mode);
+            let mut trace = Vec::new();
+            let mut valid = polygon_simple(&perturbed.vertices);
+            for step in 0..STABILITY_PROBE_STEPS {
+                let baseline_ok = mechanics_step_with_local_self_contact(&mut baseline, mechanics)
+                    .is_some();
+                let perturbed_ok = mechanics_step_with_local_self_contact(&mut perturbed, mechanics)
+                    .is_some();
+                valid &= baseline_ok
+                    && perturbed_ok
+                    && polygon_simple(&baseline.vertices)
+                    && polygon_simple(&perturbed.vertices);
+                let rms = vertex_rms_difference(&baseline, &perturbed);
+                trace.push(json!({
+                    "step": step + 1,
+                    "baseline_accepted": baseline_ok,
+                    "perturbed_accepted": perturbed_ok,
+                    "rms_difference": rms,
+                }));
+                if !valid {
+                    break;
+                }
+            }
+            let final_rms = trace
+                .last()
+                .and_then(|row| row["rms_difference"].as_f64());
+            let growth_ratio = final_rms
+                .zip(Some(initial_rms))
+                .map(|(final_value, initial)| final_value / initial.max(1e-300));
+            let classification = growth_ratio.map(|ratio| {
+                if ratio > 1.0 + STABILITY_CLASSIFICATION_TOLERANCE {
+                    "GROWING"
+                } else if ratio < 1.0 - STABILITY_CLASSIFICATION_TOLERANCE {
+                    "DECAYING"
+                } else {
+                    "NEUTRAL"
+                }
+            });
+            json!({
+                "mode": mode,
+                "initial_perturbation_rms": initial_rms,
+                "final_difference_rms": final_rms,
+                "growth_ratio": growth_ratio,
+                "classification": classification,
+                "valid": valid,
+                "trace": trace,
+            })
+        })
+        .collect::<Vec<_>>();
+    json!({
+        "observer_only": true,
+        "mechanics": "frozen passive local mechanics with current edge masses/rest lengths",
+        "epsilon": STABILITY_PROBE_EPSILON,
+        "steps": STABILITY_PROBE_STEPS,
+        "classification_tolerance": STABILITY_CLASSIFICATION_TOLERANCE,
+        "modes": modes,
+    })
+}
+
+fn architecture_geometry_record(
+    before: &MaterialMesh,
+    after: &MaterialMesh,
+    diagnostic: &Value,
+    fission: &FissionParams,
+    mechanics: &MechParams,
+    transport: Option<[f64; 2]>,
+    expression: Option<ExpressionAccounting>,
+    reactions: &chemistry_core::mesh_reactions::ReactionLedger,
+    growth: &chemistry_core::mesh_growth::GrowthLedger,
+    active_a: f64,
+    active_w: f64,
+    step: usize,
+) -> Value {
+    let perimeter = after.perimeter();
+    let area = after.area().max(1e-300);
+    let mature_rest_perimeter = (0..after.n())
+        .map(|edge| after.rest_length(edge))
+        .sum::<f64>();
+    let material_equivalent_perimeter = after
+        .edges
+        .iter()
+        .map(|edge| edge.m.max(0.0) / after.rho_s.max(1e-15))
+        .sum::<f64>();
+    let rest_lengths = (0..after.n())
+        .map(|edge| after.rest_length(edge))
+        .collect::<Vec<_>>();
+    let rest_length_delta = (before.n() == after.n()).then(|| {
+        (0..after.n())
+            .map(|edge| after.rest_length(edge) - before.rest_length(edge))
+            .collect::<Vec<_>>()
+    });
+    let passive = passive_force_components(before, mechanics);
+    let active_requested = diagnostic["requested_inward_normal_forces"]
+        .as_array()
+        .map(|values| {
+            values
+                .iter()
+                .filter_map(|value| {
+                    Some([value[0].as_f64()?, value[1].as_f64()?])
+                })
+                .collect::<Vec<_>>()
+        })
+        .unwrap_or_default();
+    let active_funded = diagnostic["funded_inward_normal_forces"]
+        .as_array()
+        .map(|values| {
+            values
+                .iter()
+                .filter_map(|value| {
+                    Some([value[0].as_f64()?, value[1].as_f64()?])
+                })
+                .collect::<Vec<_>>()
+        })
+        .unwrap_or_default();
+    let passive_forces = compute_forces(before, mechanics);
+    let combined_forces = passive_forces
+        .iter()
+        .zip(&active_funded)
+        .map(|(passive, active)| [passive[0] + active[0], passive[1] + active[1]])
+        .collect::<Vec<_>>();
+    let mut no_contact = before.clone();
+    let no_contact_accepted = combined_forces.len() == before.n()
+        && mechanics_step_with_external_forces(&mut no_contact, mechanics, &combined_forces)
+            .is_some();
+    let no_contact_displacement = no_contact_accepted
+        .then(|| {
+            before
+                .vertices
+                .iter()
+                .zip(&no_contact.vertices)
+                .map(|(a, b)| (a[0] - b[0]).hypot(a[1] - b[1]))
+                .sum::<f64>()
+        });
+    let active_requested_norm = vector_norm_sum(&active_requested);
+    let active_funded_norm = vector_norm_sum(&active_funded);
+    json!({
+        "step": step,
+        "accepted_snapshot": true,
+        "vertices": after.vertices,
+        "perimeter": perimeter,
+        "area": area,
+        "shape_factor_p_squared_over_4pi_area": perimeter * perimeter / (4.0 * std::f64::consts::PI * area),
+        "reduced_area_inverse_shape_factor": 4.0 * std::f64::consts::PI * area / perimeter.max(1e-300).powi(2),
+        "mature_rest_perimeter": mature_rest_perimeter,
+        "material_equivalent_perimeter": material_equivalent_perimeter,
+        "perimeter_minus_mature_rest_perimeter": perimeter - mature_rest_perimeter,
+        "young_structural_mass": after.total_young_structural_mass(),
+        "mature_structural_mass": after.total_structural_mass() - after.total_young_structural_mass(),
+        "total_structural_mass": after.total_structural_mass(),
+        "edge_material": (0..after.n()).map(|edge| json!({
+            "edge": edge,
+            "m": after.edges[edge].m,
+            "m_young": after.young_structural_mass(edge),
+            "m_mature": after.mature_structural_mass(edge),
+            "geometric_length": after.edge_length(edge),
+            "rest_length": after.rest_length(edge),
+            "rest_length_delta": rest_length_delta.as_ref().and_then(|values| values.get(edge).copied()),
+            "strain": after.strain(edge),
+            "mature_fraction": after.mature_structural_fraction(edge),
+        })).collect::<Vec<_>>(),
+        "rest_lengths": rest_lengths,
+        "rest_length_delta": rest_length_delta,
+        "shape_modes": low_order_shape_modes(after),
+        "curvature": r10_closure::r10_curvature_summary(after),
+        "segment_geometry": r10_closure::r10_segment_geometry_summary(after, fission),
+        "passive_force_components_at_mechanics_input": passive,
+        "active_force": {
+            "requested_vector_norm_sum": active_requested_norm,
+            "funded_vector_norm_sum": active_funded_norm,
+            "requested_active_a": diagnostic["requested_active_a"],
+            "funded_active_a": diagnostic["funded_active_a"],
+            "funding_ratio": diagnostic["funding_ratio"],
+        },
+        "contact_intervention": {
+            "no_contact_composed_mechanics_accepted": no_contact_accepted,
+            "no_contact_displacement_norm": no_contact_displacement,
+            "contact_or_projection_observed": !no_contact_accepted,
+        },
+        "boundary": {
+            "organism_n_f_before_mechanics": transport,
+            "mechanics_exterior": [after.exterior.n, after.exterior.f, after.exterior.c, after.exterior.a, after.exterior.w],
+        },
+        "fluxes": {
+            "transport_delta_n_f": transport,
+            "expression": expression.map(|value| json!({
+                "structural_consumed": value.structural_consumed,
+                "catalyst_precursor_a": value.catalyst_precursor_a,
+                "activation_consumed": value.activation_consumed,
+                "maintenance_consumed": value.maintenance_consumed,
+                "turnover_waste": value.turnover_waste,
+            })),
+            "reaction_n_consumed": reactions.n_consumed,
+            "reaction_f_consumed": reactions.f_consumed,
+            "a_produced": reactions.a_produced,
+            "w_produced": reactions.w_produced,
+            "growth_material": growth.m_grown,
+            "growth_a_consumed": growth.a_consumed_growth,
+            "growth_w_produced": growth.w_from_growth,
+            "active_w_produced": active_w,
+            "active_a_spent": active_a,
+        },
+        "interior": {
+            "n": after.interior.n,
+            "f": after.interior.f,
+            "a": after.interior.a,
+            "r": after.interior.r,
+            "w": after.interior.w,
+        },
+        "raw_diagnostic": diagnostic,
+        "stability_assay": frozen_stability_assay(after, mechanics),
     })
 }
 
@@ -3095,6 +3440,7 @@ fn r10_advance_phase(
         let step_ledger_before = ledger.clone();
         let step_next_id = *next_id;
         let mut first_fission_this_step = false;
+        let mut expression_by_cohort = BTreeMap::<u64, ExpressionAccounting>::new();
         let boundary_target_n = boundary_n_source.value(environment, phase_step);
         let boundary_target_f = boundary_f_source.fuel_value(environment, phase_step);
         match boundary_mode {
@@ -3146,6 +3492,7 @@ fn r10_advance_phase(
                     ledger.expression_activation +=
                         (expression.activation_consumed + expression.maintenance_consumed) * count;
                     ledger.expression_turnover_waste += expression.turnover_waste * count;
+                    expression_by_cohort.insert(cohort.id, expression);
                     let observer = phenotype_ledger(ledger, genotype);
                     observer.organism_step_exposure += cohort.count;
                     observer.expression_material += expression.structural_consumed * count;
@@ -3192,6 +3539,7 @@ fn r10_advance_phase(
                                 expression.maintenance_consumed * count;
                             ledger.expression_turnover_waste +=
                                 expression.turnover_waste * count;
+                            expression_by_cohort.insert(cohort.id, expression);
                             ledger.legal_depletion_steps += cohort.count;
                             let observer = phenotype_ledger(ledger, genotype);
                             observer.organism_step_exposure += cohort.count;
@@ -3280,6 +3628,18 @@ fn r10_advance_phase(
             }
         }
         *cohorts = retained;
+        let transport_before = cohorts
+            .iter()
+            .map(|cohort| {
+                (
+                    cohort.id,
+                    [
+                        cohort.mesh.interior.n * cohort.mesh.area(),
+                        cohort.mesh.interior.f * cohort.mesh.area(),
+                    ],
+                )
+            })
+            .collect::<BTreeMap<_, _>>();
         if boundary_mode == PopulationBoundaryMode::FixtureExteriorReference {
             r10_fixture_exterior_exchange_with_observer(cohorts, &transport, mechanics.dt, ledger);
         } else {
@@ -3417,6 +3777,26 @@ fn r10_advance_phase(
                     );
                     row["segment_geometry"] =
                         r10_closure::r10_segment_geometry_summary(&cohort.mesh, &fission);
+                    let transport_delta = transport_before.get(&cohort.id).map(|before| {
+                        [
+                            cohort.mesh.interior.n * cohort.mesh.area() - before[0],
+                            cohort.mesh.interior.f * cohort.mesh.area() - before[1],
+                        ]
+                    });
+                    row["material_geometry"] = architecture_geometry_record(
+                        &pre_mechanics,
+                        &cohort.mesh,
+                        &row,
+                        &fission,
+                        &mechanics,
+                        transport_delta,
+                        expression_by_cohort.get(&cohort.id).copied(),
+                        &reactions,
+                        &grown,
+                        active_a,
+                        active_w,
+                        step,
+                    );
                     records.push(row);
                 }
             }
@@ -4473,6 +4853,63 @@ pub fn run_r10r9r5_causal_comparison() {
                 "no_new_parameters": true,
                 "nearest_geometric_pair_includes_out_of_range": true,
             }
+        }))
+        .unwrap(),
+    )
+    .unwrap();
+}
+
+/// Execute the DC-M4 reproductive-attractor architecture gate. This is an
+/// observer-only extension of the already-authoritative R5 causal runner:
+/// Resource and fully fixture-bound arms use the same accepted transition,
+/// while each sampled accepted state carries material/rest-geometry,
+/// component-force, cortex, and frozen-mechanics perturbation records.
+pub fn run_dc_m4_architecture_gate() {
+    let mut output = PathBuf::from("/tmp/dcm4_reproductive_attractor.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let resource = r10_causal_cell(R5_CAUSAL_BOUNDARY_CELLS[0], true, true);
+    let fixture = r10_causal_cell(R5_CAUSAL_BOUNDARY_CELLS[3], true, true);
+    let motor_off = r10_causal_cell(R5_CAUSAL_BOUNDARY_CELLS[0], false, true);
+    let adaptation_disabled = r10_causal_cell(R5_CAUSAL_BOUNDARY_CELLS[0], true, false);
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive": "DC-M4-REPRODUCTIVE-ATTRACTOR-ARCHITECTURE-001",
+            "observer_only": true,
+            "production_biology_changed": false,
+            "resource_ecology_changed": false,
+            "accepted_horizon": R10R2_PHASE_STEPS,
+            "matched_arm_count": 10,
+            "cells": {
+                "resource_n_resource_f": resource,
+                "fixture_n_fixture_f": fixture,
+            },
+            "controls": {
+                "resource_motor_off": motor_off,
+                "resource_adaptation_disabled": adaptation_disabled,
+            },
+            "stability_contract": {
+                "mechanics": "frozen local mechanics on cloned accepted snapshots",
+                "modes": [2, 3, 4],
+                "perturbation": "one deterministic zero-mean radial Fourier mode",
+                "epsilon": STABILITY_PROBE_EPSILON,
+                "steps": STABILITY_PROBE_STEPS,
+                "classification_tolerance": STABILITY_CLASSIFICATION_TOLERANCE,
+                "no_shape_or_neck_target": true,
+                "no_persistent_external_force": true,
+            },
+            "interpretation_contract": {
+                "fixture_boundary": "diagnostic reproductive reference only",
+                "resource_boundary": "current coherent finite bath",
+                "all_metrics_observer_only": true,
+                "no_values_feed_back_into_biology": true,
+                "no_success_conditioned_execution": true,
+            },
         }))
         .unwrap(),
     )
