@@ -1,0 +1,107 @@
+name: DC-M4 R1 local conservative growth coupling
+
+on:
+  push:
+    branches: [codex/dc-final-001-r10r9r5-lifecycle-evidence-recovery]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r1-route-a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 480
+    steps:
+      - name: Check out exact pushed head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify exact authority and bounded source scope
+        run: |
+          set -euo pipefail
+          start=baac0a03417973b09018ff92423d029145b80e77
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$start" HEAD
+          git diff --check
+          python3 - "$start" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          changed = subprocess.check_output(
+              ['git', 'diff', '--name-only', f'{start}..HEAD'], text=True
+          ).splitlines()
+          allowed = (
+              '.agent/',
+              '.github/workflows/dc-m4-r1-local-conservative-growth-coupling.yml',
+              'digital-protocell/crates/regulatory-core/Cargo.toml',
+              'digital-protocell/crates/chemistry-core/src/mesh_growth.rs',
+              'digital-protocell/crates/chemistry-core/tests/d088_tests.rs',
+              'digital-protocell/examples/dcfinal001_r4_evolution.rs',
+              'digital-protocell/examples/dcm4_r1_local_conservative_growth_coupling.rs',
+              'digital-protocell/experiments/dcm4_r1_local_conservative_growth_coupling_verify.py',
+              'digital-protocell/experiments/generated/dcm4r1localconservativegrowthcoupling/',
+          )
+          unexpected = [path for path in changed if not any(path.startswith(item) for item in allowed)]
+          assert not unexpected, unexpected
+          print('bounded R1 source scope passed')
+          PY
+
+      - name: Install sanctioned Rust toolchain
+        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+
+      - name: Run focused Route-A compile and contract tests
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          rustfmt +1.89.0 --config skip_children=true --check ../examples/dcm4_r1_local_conservative_growth_coupling.rs
+          cargo +1.89.0 test --locked -q -p chemistry-core --test d088_tests --no-fail-fast
+          cargo +1.89.0 check --locked -q -p regulatory-core --example dcm4_r1_local_conservative_growth_coupling
+          python3 -m py_compile experiments/dcm4_r1_local_conservative_growth_coupling_verify.py
+
+      - name: Run the preregistered ten-arm Route-A comparison
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          DCFINAL001_R10R9R1_RESERVE=1 DCFINAL001_R10R9R3_RESERVE=1 \
+            DCFINAL001_R10R9R5_CANONICAL=1 \
+            cargo +1.89.0 run --locked --release -q -p regulatory-core \
+            --example dcm4_r1_local_conservative_growth_coupling -- \
+            --output /tmp/dcm4r1_local_conservative_growth_coupling.json
+          python3 experiments/dcm4_r1_local_conservative_growth_coupling_verify.py \
+            --repo . \
+            --input /tmp/dcm4r1_local_conservative_growth_coupling.json \
+            --output experiments/generated/dcm4r1localconservativegrowthcoupling
+
+      - name: Enforce implementation acceptance and fail closed on invalid evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('experiments/generated/dcm4r1localconservativegrowthcoupling')
+          qualification = json.loads((root / 'qualification.json').read_text())
+          contract = json.loads((root / 'conservation_locality.json').read_text())
+          forbidden = json.loads((root / 'forbidden_information_audit.json').read_text())
+          assert qualification['implementation_acceptance'] == 'PASS', qualification
+          assert contract['pass'] is True, contract
+          assert forbidden['pass'] is True, forbidden
+          assert qualification['next_execution_started'] is False, qualification
+          print(json.dumps(qualification, sort_keys=True))
+          PY
+          git diff --check
+
+      - name: Upload Route-A evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcm4r1localconservativegrowthcoupling-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcm4r1localconservativegrowthcoupling/
+            digital-protocell/target/release/dcm4_r1_local_conservative_growth_coupling

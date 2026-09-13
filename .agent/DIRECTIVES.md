@@ -1354,3 +1354,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Matched observer cells preserve the bounded R5 result: Resource/Resource, Resource motor-off, and Resource adaptation-disabled are each `0/10` with `10/10` growth-qualified arms; fixture/fixture is `7/10` with `7/10` viable pairs. The frozen stability assay has no Resource growing modes and valid fixture growing modes.
 - Final architecture decision: `ROUTE_A_NEW_LOCAL_GROWTH_COUPLING_REQUIRED`. The proposed route is diagnostic-only and `PROPOSED_NOT_IMPLEMENTED`; it reuses existing local edge material/maturation state and total D088 growth flux, with no new state variable or selected parameter. E5 production implementation is not authorized.
 - Implementation acceptance is limited to the observer diagnostics, source audit, invariance/verifier controls, and route specification. Production reproduction, population selection, reversal, and final integrated qualification remain `NOT_REACHED`. No automatic successor starts; PR #44 remains open/draft/unmerged/untouched.
+
+## DC-M4-R1-LOCAL-CONSERVATIVE-GROWTH-COUPLING-001 — active
+
+- Record: Route-A implementation is authorized after `ROUTE_A_NEW_LOCAL_GROWTH_COUPLING_REQUIRED`; the superseded global allocator is not authorized.
+- The candidate must conserve the exact frozen D-088 per-edge growth amount, use only immediate compression differences, preserve route-off parity, and pass the held-out E2 mechanistic gate before any Resource reproduction or birth-to-birth interpretation.
+- Required execution order is E0/E1 contract tests, ten paired Resource stability comparisons, E3 reproduction only if E2 passes, and E4 birth-to-birth only if E3 passes. Selection, reversal, and population expansion are not authorized here.

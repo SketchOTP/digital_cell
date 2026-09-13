@@ -2675,3 +2675,8 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Scientific verdict: `RESOURCE_MORPHOGENETIC_DRIVE_LIMIT_IDENTIFIED`. Across matched accepted-time traces, coherent Resource remains `0/10` fissions and all `1,800` valid frozen-mechanics perturbation records are decaying. The fixture diagnostic has `7/10` fissions, `7/10` viable pairs, and `388` valid growing perturbation records. All four diagnostic cells remain `10/10` growth-qualified.
 - Architecture decision: `ROUTE_A_NEW_LOCAL_GROWTH_COUPLING_REQUIRED`. This means the existing substrate does not show a useful Resource-regime instability in the bounded assay; a future local growth/rest-geometry coupling is the smallest selected route. Its detailed state/equation/conservation/anti-controller/falsifiable-prediction specification is `PROPOSED_NOT_IMPLEMENTED`, not a production claim.
 - Production implementation, reproduction requalification, population selection, reversal, and final integrated M1–M5 are `NOT_REACHED`. The Digital Cell end goal remains unestablished; no successor execution was started.
+
+## DC-M4-R1-LOCAL-CONSERVATIVE-GROWTH-COUPLING-001 — implementation in progress
+
+- The authorized candidate is an opt-in V4 destination-only redistribution of frozen D-088 young structural mass. Route-off remains a direct call to the prior growth operator; no biological coefficient or total flux changes.
+- E0/E1 source and contract artifacts are being prepared. The mechanistic E2 result and any conditional reproduction result remain `NOT_REACHED` until exact-head CI and independent raw-output verification complete.

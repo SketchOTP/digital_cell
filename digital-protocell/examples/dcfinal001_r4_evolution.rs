@@ -15,7 +15,7 @@ use chemistry_core::d096_allocation::{
 use chemistry_core::material_mesh::{LumpedChem, MaterialMesh};
 use chemistry_core::mesh_fission::{segment_apposition_stress_audit, try_local_segment_fission};
 use chemistry_core::mesh_fission::{topology_step, try_local_fission, FissionParams};
-use chemistry_core::mesh_growth::{growth_step, GrowthParams};
+use chemistry_core::mesh_growth::{growth_step, growth_step_with_placement, GrowthParams, GrowthPlacementMode};
 use chemistry_core::mesh_mechanics::{
     compute_forces, local_pressure, mechanics_step_with_external_forces, remesh, MechParams,
 };
@@ -3409,6 +3409,7 @@ fn r10_advance_phase(
     boundary_f_source: DiagnosticBoundarySource,
     motor_enabled: bool,
     adaptation_enabled: bool,
+    growth_placement: GrowthPlacementMode,
     mut mechanics_diagnostics: Option<&mut Vec<Value>>,
 ) -> bool {
     let allocation = AllocationParams::default();
@@ -3664,7 +3665,13 @@ fn r10_advance_phase(
             ledger.w_produced += reactions.w_produced * count;
             ledger.m1_structural_build += reactions.m_produced * count;
             ledger.m1_structural_turnover += reactions.m_to_w * count;
-            let grown = growth_step(&mut cohort.mesh, &reaction, &growth, mechanics.dt);
+            let grown = growth_step_with_placement(
+                &mut cohort.mesh,
+                &reaction,
+                &growth,
+                mechanics.dt,
+                growth_placement,
+            );
             ledger.growth_material += grown.m_grown * count;
             ledger.growth_a_consumed += grown.a_consumed_growth * count;
             ledger.growth_w_produced += grown.w_from_growth * count;
@@ -4031,6 +4038,7 @@ fn r10_campaign(
             DiagnosticBoundarySource::Scheduled,
             true,
             true,
+            GrowthPlacementMode::FrozenD088,
             None,
         );
         if !phase_ok {
@@ -4407,6 +4415,7 @@ pub fn run_r10r9r5_shared_kernel_reproduction() {
             DiagnosticBoundarySource::Scheduled,
             true,
             true,
+            GrowthPlacementMode::FrozenD088,
             None,
         );
         let terminal = snapshot(&cohorts, &world, ledger.accepted_steps as usize);
@@ -4525,6 +4534,7 @@ fn r10_current_reproduction_comparison_arm(
         DiagnosticBoundarySource::Scheduled,
         true,
         true,
+        GrowthPlacementMode::FrozenD088,
         None,
     );
     let terminal = snapshot(&cohorts, &world, ledger.accepted_steps as usize);
@@ -4637,6 +4647,7 @@ fn r10_causal_arm(
     cell: CausalBoundaryCell,
     motor_enabled: bool,
     adaptation_enabled: bool,
+    growth_placement: GrowthPlacementMode,
 ) -> Value {
     let allocation = AllocationParams::default();
     let mut mesh = r10_closure::r10_reproduction_fixture(index);
@@ -4694,6 +4705,7 @@ fn r10_causal_arm(
         f_source,
         motor_enabled,
         adaptation_enabled,
+        growth_placement,
         Some(&mut mechanics_trace),
     );
     let terminal_step = ledger.accepted_steps as usize;
@@ -4770,8 +4782,30 @@ fn r10_causal_arm(
 }
 
 fn r10_causal_cell(cell: CausalBoundaryCell, motor_enabled: bool, adaptation_enabled: bool) -> Value {
+    r10_causal_cell_with_growth_placement(
+        cell,
+        motor_enabled,
+        adaptation_enabled,
+        GrowthPlacementMode::FrozenD088,
+    )
+}
+
+fn r10_causal_cell_with_growth_placement(
+    cell: CausalBoundaryCell,
+    motor_enabled: bool,
+    adaptation_enabled: bool,
+    growth_placement: GrowthPlacementMode,
+) -> Value {
     let arms = (0..10)
-        .map(|index| r10_causal_arm(index, cell, motor_enabled, adaptation_enabled))
+        .map(|index| {
+            r10_causal_arm(
+                index,
+                cell,
+                motor_enabled,
+                adaptation_enabled,
+                growth_placement,
+            )
+        })
         .collect::<Vec<_>>();
     let physical_fissions = arms
         .iter()
@@ -4791,6 +4825,7 @@ fn r10_causal_cell(cell: CausalBoundaryCell, motor_enabled: bool, adaptation_ena
         "fixture_f": cell.fixture_f,
         "motor_enabled": motor_enabled,
         "adaptation_enabled": adaptation_enabled,
+        "growth_placement": format!("{growth_placement:?}"),
         "phase_steps": R10R2_PHASE_STEPS,
         "arms": arms,
         "counts": {
@@ -4909,6 +4944,73 @@ pub fn run_dc_m4_architecture_gate() {
                 "no_values_feed_back_into_biology": true,
                 "no_success_conditioned_execution": true,
             },
+        }))
+    .unwrap(),
+    )
+    .unwrap();
+}
+
+/// Execute the bounded Route-A R1 comparison.  The route-on candidate is an
+/// opt-in destination-only redistribution of frozen D-088 growth; all other
+/// operators, ecology, cadence, and fission contracts remain shared with the
+/// accepted R5 path.  This function intentionally stops at the mechanistic
+/// gate: population selection is outside this directive.
+pub fn run_dc_m4_r1_local_growth_coupling() {
+    let mut output = PathBuf::from("/tmp/dcm4r1_local_conservative_growth_coupling.json");
+    let args = env::args().collect::<Vec<_>>();
+    for index in 1..args.len() {
+        if args[index] == "--output" && index + 1 < args.len() {
+            output = PathBuf::from(&args[index + 1]);
+        }
+    }
+    let resource = R5_CAUSAL_BOUNDARY_CELLS[0];
+    let route_off = r10_causal_cell_with_growth_placement(
+        resource,
+        true,
+        true,
+        GrowthPlacementMode::FrozenD088,
+    );
+    let route_on = r10_causal_cell_with_growth_placement(
+        resource,
+        true,
+        true,
+        GrowthPlacementMode::LocalCompressionNeighborV1,
+    );
+    fs::write(
+        output,
+        serde_json::to_vec_pretty(&json!({
+            "directive": "DC-M4-R1-LOCAL-CONSERVATIVE-GROWTH-COUPLING-001",
+            "observer_only": false,
+            "candidate_is_opt_in": true,
+            "production_ecology": "R10R9R5_COHERENT_RESOURCE_UNCHANGED",
+            "accepted_horizon": R10R2_PHASE_STEPS,
+            "matched_arm_count": 10,
+            "growth_placement_contract": {
+                "route_off": "FROZEN_D088",
+                "route_on": "LOCAL_COMPRESSION_NEIGHBOR_V1",
+                "base_increment": "exact edge delta produced by frozen growth_step on the same pre-step clone",
+                "compression": "q_i = max(0, -strain_i)",
+                "neighborhood": "immediate cyclic neighbors only",
+                "routing": "self plus compression-gradient neighbor shares; ruptured neighbors are ineligible",
+                "maturation": "unchanged; routed increment enters existing m and m_young",
+                "dt_application": "base increment is already time-integrated; no second dt",
+                "new_state_variables": 0,
+                "new_parameters": 0,
+                "target_shape_or_division_signal": false,
+                "observer_or_population_input": false,
+            },
+            "cells": {
+                "resource_route_off": route_off,
+                "resource_route_on": route_on,
+            },
+            "e2_gate": {
+                "valid_growing_modes_per_arm": "route-on must add at least one valid GROWING mode absent from matched route-off",
+                "late_distance": "route-on must reduce nearest geometrically eligible pair distance/range in at least 7/10 matched arms",
+                "minimum_arms": 7,
+                "mechanistic_only_before_e3": true,
+            },
+            "e3_status": "INTERPRETATION_BLOCKED_UNTIL_E2_VERIFIED",
+            "e4_status": "NOT_REACHED_UNTIL_E3_VERIFIED",
         }))
         .unwrap(),
     )
@@ -5158,6 +5260,7 @@ pub fn run_r10r9r5_contract_tests() {
             DiagnosticBoundarySource::Scheduled,
             true,
             true,
+            GrowthPlacementMode::FrozenD088,
             None,
         );
         let fission_attempts = ledger

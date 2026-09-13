@@ -261,3 +261,12 @@
 - `digital-protocell/experiments/dcm4_reproductive_attractor_verify.py` — independent verifier for fission authority, observer invariance, causal ledger, stability records, external-prior-art classifications, route specification, and fail-closed scope checks.
 - `.github/workflows/dc-m4-reproductive-attractor.yml` — exact-head Linux observer compilation, preserved chemistry/topology tests, ten-arm diagnostic run, verifier, and artifact sealing.
 - `experiments/generated/dcm4reproductiveattractor/` — CI-sealed architecture-gate evidence root containing protocol, raw trajectories, material-geometry ledger, frozen stability records, fission-authority audit, route decision, qualification, and manifest. The large generated payload is retained in the immutable CI artifact rather than committed to source.
+
+## DC-M4 R1 local conservative growth coupling
+
+- `digital-protocell/crates/chemistry-core/src/mesh_growth.rs` — owns the frozen D-088 growth calculation and the opt-in V4 `GrowthPlacementMode::LocalCompressionNeighborV1` conservative one-hop routing helper.
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — shares the explicit growth-placement mode through the current R10/R5 transition; existing callers remain `FrozenD088` and the R1 runner opts in only for its matched Resource comparison.
+- `digital-protocell/examples/dcm4_r1_local_conservative_growth_coupling.rs` — bounded ten-arm Route-A producer; it does not launch population selection or a successor.
+- `digital-protocell/experiments/dcm4_r1_local_conservative_growth_coupling_verify.py` — independent conservation/locality, source-contract, route-off parity, and E2/E3 verifier.
+- `.github/workflows/dc-m4-r1-local-conservative-growth-coupling.yml` — exact-head Linux build, focused tests, bounded Route-A run, fail-closed verifier, and artifact upload.
+- `experiments/generated/dcm4r1localconservativegrowthcoupling/` — CI-sealed raw Route-A comparison and bounded qualification evidence.

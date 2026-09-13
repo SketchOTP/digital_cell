@@ -1953,3 +1953,9 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Architecture gate head `97f2e353312b0cf33ff4129670ac87b0dc7f1b09`; exact-head CI `34764877883 PASS`; artifact ZIP SHA256 `c6908209d913bae5fb194f3b87111db76b9c03fc4b30d97884d87e3a4d7ca9cd`. All 12 manifest entries independently recomputed successfully.
 - Observer-only protocol: Resource/Resource, motor-off Resource, and adaptation-disabled Resource are each `0/10` fissions with `10/10` growth-qualified arms; fixture/fixture is `7/10` fissions and `7/10` viable pairs. Resource frozen-mechanics modes are `1,800 DECAYING`, `0 GROWING`; fixture includes `388` valid growing records. No production state or coefficient changed.
 - Final architecture decision: `ROUTE_A_NEW_LOCAL_GROWTH_COUPLING_REQUIRED`. Specification status: `PROPOSED_NOT_IMPLEMENTED`; no successor biology, ecological tuning, force rescue, or production implementation authorized. Selection, reversal, and final integrated M1–M5 remain `NOT_REACHED`. PR #44 remains open/draft/unmerged/untouched. Current Notion readback was not independently available through a connector.
+
+## DEC-DC-M4-R1-LOCAL-CONSERVATIVE-GROWTH-COUPLING-001
+
+- Date: `2026-09-13`.
+- Route-A implementation is authorized as one opt-in V4 nearest-neighbor redistribution of exact frozen D-088 young structural increments toward greater local compression. The superseded global allocator is not authorized.
+- Route-off remains the frozen `growth_step`; route-on adds no material, active energy, persistent state, coefficient, ecology input, target geometry, or fission signal. E2 held-out mechanistic validation precedes any conditional reproduction or birth-to-birth interpretation.

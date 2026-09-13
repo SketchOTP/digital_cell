@@ -249,6 +249,10 @@ name = "dcfinal001_r10r9r5_contract_tests"
 path = "../../examples/dcfinal001_r10r9r5_contract_tests.rs"
 
 [[example]]
+name = "dcm4_r1_local_conservative_growth_coupling"
+path = "../../examples/dcm4_r1_local_conservative_growth_coupling.rs"
+
+[[example]]
 name = "dcfinal001_r5r1_strain_contrast"
 path = "../../examples/dcfinal001_r5r1_strain_contrast.rs"
 

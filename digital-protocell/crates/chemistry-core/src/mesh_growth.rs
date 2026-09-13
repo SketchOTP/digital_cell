@@ -18,6 +18,18 @@ pub struct GrowthParams {
     pub enable_growth: bool,
 }
 
+/// Placement of the already-authorized D-088 structural growth increment.
+///
+/// This is an opt-in experimental execution mode, not organism state.  The
+/// default remains the frozen D-088 per-edge placement.  The candidate mode
+/// only applies to the V4 surplus-growth path and conservatively routes each
+/// donor's existing increment to its immediate, more-compressed neighbors.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum GrowthPlacementMode {
+    FrozenD088,
+    LocalCompressionNeighborV1,
+}
+
 impl Default for GrowthParams {
     fn default() -> Self {
         Self {
@@ -219,6 +231,102 @@ pub fn growth_step(
         led.w_from_growth += w_product;
     }
     led
+}
+
+/// Apply the frozen D-088 growth calculation, then optionally redistribute
+/// only its already-produced young structural mass over one-hop neighbors.
+///
+/// The first pass deliberately calls `growth_step` on a clone.  This keeps
+/// the D-088 sequential A-consumption, yield, genotype/build gain, W ledger,
+/// and timestep semantics byte-for-byte in the route-off path and exposes
+/// `dm_i^0` without duplicating the biological calculation.  The candidate
+/// route changes only the destination of that increment on a V4 mesh.
+pub fn growth_step_with_placement(
+    mesh: &mut MaterialMesh,
+    react: &ReactionParams,
+    growth: &GrowthParams,
+    dt: f64,
+    placement: GrowthPlacementMode,
+) -> GrowthLedger {
+    if placement == GrowthPlacementMode::FrozenD088
+        || !mesh.is_maturation_coupled()
+        || (react.reserve.enable
+            && react.reserve.architecture
+                == crate::metabolic_reserve::ReserveArchitecture::DirectReserveGrowthV1)
+    {
+        return growth_step(mesh, react, growth, dt);
+    }
+
+    let before = mesh.clone();
+    let mut frozen = before.clone();
+    let ledger = growth_step(&mut frozen, react, growth, dt);
+    let n = before.n();
+    if n == 0 {
+        return ledger;
+    }
+
+    // D-088 additions are time-integrated already.  Reading the edge delta
+    // after the exact frozen calculation avoids a second dt multiplication.
+    let base_dm = (0..n)
+        .map(|i| frozen.edges[i].m - before.edges[i].m)
+        .collect::<Vec<_>>();
+    let compression = (0..n)
+        .map(|i| (-before.strain(i)).max(0.0))
+        .collect::<Vec<_>>();
+    let routed = local_compression_neighbor_routing(&base_dm, &compression, &before);
+
+    // Preserve all non-growth effects from the frozen calculation (notably
+    // the exact interior A/W balance), while replacing only V4 young-mass
+    // placement.  The candidate is valid only for the non-ruptured V4 mesh.
+    mesh.interior = frozen.interior;
+    for i in 0..n {
+        if before.edges[i].ruptured {
+            mesh.edges[i].m = before.edges[i].m;
+            mesh.edges[i].m_young = before.edges[i].m_young;
+        } else {
+            mesh.edges[i].m = before.edges[i].m + routed[i];
+            mesh.edges[i].m_young = before.edges[i].m_young + routed[i];
+        }
+    }
+    debug_assert!((routed.iter().sum::<f64>() - ledger.m_grown).abs() <= 1e-10);
+    ledger
+}
+
+/// Route already-computed donor increments using only the immediate ring
+/// neighborhood.  This helper has no chemistry or geometry side effects and
+/// is kept separate so the conservation/locality contract can be tested with
+/// synthetic vectors as well as real meshes.
+pub fn local_compression_neighbor_routing(
+    base_dm: &[f64],
+    compression: &[f64],
+    mesh: &MaterialMesh,
+) -> Vec<f64> {
+    let n = base_dm.len();
+    assert_eq!(compression.len(), n);
+    assert_eq!(mesh.n(), n);
+    let mut routed = vec![0.0; n];
+    for i in 0..n {
+        if mesh.edges[i].ruptured || base_dm[i] <= 0.0 {
+            continue;
+        }
+        let left = (i + n - 1) % n;
+        let right = (i + 1) % n;
+        let left_rate = if mesh.edges[left].ruptured {
+            0.0
+        } else {
+            (compression[left] - compression[i]).max(0.0)
+        };
+        let right_rate = if mesh.edges[right].ruptured {
+            0.0
+        } else {
+            (compression[right] - compression[i]).max(0.0)
+        };
+        let denominator = 1.0 + left_rate + right_rate;
+        routed[i] += base_dm[i] / denominator;
+        routed[left] += base_dm[i] * left_rate / denominator;
+        routed[right] += base_dm[i] * right_rate / denominator;
+    }
+    routed
 }
 
 /// Observer shape factor Ψ = P²/(4πA). Biology must not read this.
