@@ -1062,3 +1062,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Implementation head `238fd76577b51b660adbe7c97db9f3170962e91e` passed exact-head workflow `34789648939`. Independent ZIP SHA-256 is `39648c23e762662a9af4f7c1d5662dbbc91b291ac398fbb6a68aea5ed2515efa`; all 20 internal manifest hashes recompute successfully.
 - Hosted evidence confirms the isolated benchmark and held-out pre-fission result: stable amplification `0.0428128643`, candidate amplification `1.4954911641`, half-step `1.4952718542`, Route-ON `10/10` growing histories, polarity-null `10/10` decaying histories, and 10 distinct dominant orientations.
 - A governance-only result seal remains to be committed for the final exact-head run. No production polarity coupling, reproduction, selection, reversal, or final M1-M5 execution has started. Notion readback is not independently available through the configured connector; PR #44 remains untouched.
+
+## DC-M4-R3 post-seal evidence-contract hardening
+
+- The pending hardening remains evidence-only: the polarity equations, parameters, production wiring, and terminal scientific result are unchanged.
+- The focused `PolarityMassStateV1` suite now executes five tests, including an actual JSON serialization/restart round trip with schema, accepted-step, pool-shape, and floating-point tolerance assertions.
+- Held-out evidence now records a canonical SHA-256 digest for each of the ten sealed history rows, in addition to the fixture digest and stable history identities. Local seal/benchmark/held-out verification passes with these checks.

@@ -1339,3 +1339,8 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 
 - Exact-head CI must validate the committed source scope after implementation changes; the implementation-head pass alone is not the final governance identity. The hosted artifact must be downloaded and its internal manifest recomputed independently.
 - A hosted PASS here establishes only a conserved pre-fission pattern generator. It must not be promoted to mechanical coupling, reproduction, selection, reversal, or final Digital Cell completion.
+
+## DC-M4-R3 evidence-contract hardening
+
+- Restart evidence must execute a serialization/deserialization round trip and compare persisted state fields within a declared floating-point tolerance; prose saying that serialization exists is insufficient.
+- Held-out preregistration is stronger when each immutable history row has its own canonical digest, not only a digest for the containing fixture.

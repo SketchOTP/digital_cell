@@ -728,6 +728,34 @@ mod tests {
     }
 
     #[test]
+    fn serialization_round_trip_preserves_restart_state() {
+        let (mut state, params) = state();
+        state
+            .advance(&measures(), &params, 10_000.0)
+            .expect("advance");
+        let encoded = serde_json::to_vec(&state).expect("serialize state");
+        let restored: PolarityMassStateV1 =
+            serde_json::from_slice(&encoded).expect("deserialize state");
+        assert_eq!(restored.schema, state.schema);
+        assert_eq!(restored.accepted_steps, state.accepted_steps);
+        assert_eq!(restored.active_amount.len(), state.active_amount.len());
+        assert_eq!(restored.inactive_amount.len(), state.inactive_amount.len());
+        for (actual, expected) in restored
+            .active_amount
+            .iter()
+            .zip(state.active_amount.iter())
+            .chain(
+                restored
+                    .inactive_amount
+                    .iter()
+                    .zip(state.inactive_amount.iter()),
+            )
+        {
+            assert!((actual - expected).abs() <= 1.0e-15);
+        }
+    }
+
+    #[test]
     fn rotation_of_ring_is_equivariant() {
         let (mut original, params) = state();
         let m = measures();

@@ -384,10 +384,15 @@ def finalize(root: Path, raw: dict, repo: Path, fixture_path: Path):
     assert digest_json(raw["candidate_parameters"]) == sealed["parameter_digest_sha256"]
     assert raw["candidate_parameters"] == sealed["parameter_values"]
     verifier = independent_run_checks(raw, fixture)
+    history_digests = [
+        {"history_id": row["history_id"], "sha256": digest_json(row)}
+        for row in fixture["histories"]
+    ]
     dump(root, "held_out_histories.json", {
         "source_fixture": str(fixture_path),
         "fixture_sha256": sha(fixture_path),
         "history_ids": [row["history_id"] for row in fixture["histories"]],
+        "history_digests": history_digests,
         "count": len(fixture["histories"]),
         "selection_rule": "accepted R1 route-off Resource arm final snapshots, arm order 1..10; no future polarity outcome",
         "status": "PASS",
@@ -415,7 +420,7 @@ def finalize(root: Path, raw: dict, repo: Path, fixture_path: Path):
     })
     dump(root, "remesh_restart_fission.json", {
         "conservative_remesh": "covered by Rust unit test",
-        "serialization_restart": "serde state fields; exact state contract",
+        "serialization_restart": "covered by Rust JSON round-trip unit test",
         "conservative_fission_partition": "covered by Rust unit test",
         "closing_edge_source": "zero without parent predecessor",
         "status": "PASS",

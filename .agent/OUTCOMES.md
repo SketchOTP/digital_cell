@@ -2714,3 +2714,8 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Workflow `34789648939` passed against implementation head `238fd76577b51b660adbe7c97db9f3170962e91e`. Downloaded artifact ZIP SHA-256: `39648c23e762662a9af4f7c1d5662dbbc91b291ac398fbb6a68aea5ed2515efa`; 20/20 internal manifest hashes independently match.
 - Independent hosted evidence verifies `10/10` Route-ON growing histories, `10/10` matched polarity-null decays, distinct orientations `10`, stable/candidate/half-step benchmark amplification `0.0428128643/1.4954911641/1.4952718542`, and no mechanical output.
 - Implementation and pattern qualification pass only in the R3 pre-fission scope. Reproduction, mechanics coupling, selection, reversal, and final integrated M1-M5 remain unauthorized/not reached. Final governance-head CI is pending.
+
+## DC-M4-R3 post-seal evidence-contract correction
+
+- The correction is limited to verification strength: an actual JSON serialization/restart test now checks the persisted state within floating-point tolerance, and held-out history rows carry individual canonical SHA-256 digests.
+- Local targeted validation passes with five polarity-core tests and the fail-closed seal/benchmark/held-out verifier ladder. Hosted exact-head validation is required for final acceptance of this correction.

@@ -1996,3 +1996,9 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Implementation head `238fd76577b51b660adbe7c97db9f3170962e91e` passed exact-head CI `34789648939`. Independent artifact ZIP SHA-256 is `39648c23e762662a9af4f7c1d5662dbbc91b291ac398fbb6a68aea5ed2515efa`; all 20 internal manifest-listed evidence files recomputed successfully.
 - Hosted verifier confirms the sealed stable/unstable benchmark, ten matched coherent-Resource Route-ON histories with growing nonzero modes, ten matched polarity-null decays, ten distinct orientations, source/positivity/conservation/A-W closure, and zero mechanics output.
 - R3 terminal classification is `ROUTE_B_AUTONOMOUS_PREFISSION_MODE_GENERATION_DEMONSTRATED`. This is pattern-only and does not establish morphogenesis, apposition, scission, reproduction, selection, reversal, or final M1-M5. A subsequent governance commit is required for final exact-head CI; no successor is started automatically.
+
+## DEC-DC-M4-R3-CONSERVED-POLARITY-SUBSTRATE-IMPLEMENTATION-AND-PRE-FISSION-QUALIFICATION-001-EVIDENCE-CORRECTION
+
+- Date: `2026-09-13`.
+- The post-seal correction is limited to evidence integrity: `PolarityMassStateV1` now has an executed JSON serialization/restart round-trip test with tolerance-bounded amount comparison, and held-out evidence records ten canonical per-history digests.
+- No production biology, polarity equation, parameter, mechanical interface, reproduction stage, or terminal classification changed. The corrected source requires a new exact-head CI/artifact seal before final handoff.

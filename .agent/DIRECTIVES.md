@@ -1390,3 +1390,8 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 
 - Exact implementation head `238fd76577b51b660adbe7c97db9f3170962e91e` passed workflow `34789648939`; its 20-file evidence manifest independently verifies against ZIP SHA-256 `39648c23e762662a9af4f7c1d5662dbbc91b291ac398fbb6a68aea5ed2515efa`.
 - The observed result is accepted locally as `ROUTE_B_AUTONOMOUS_PREFISSION_MODE_GENERATION_DEMONSTRATED` within the pattern-only scope. The final governance commit must receive exact-head CI; no successor execution is authorized automatically.
+
+## DC-M4-R3 evidence-contract correction
+
+- A narrow post-seal correction adds an executed JSON restart round-trip assertion to the polarity-core tests and per-history canonical digests to the held-out evidence. It changes no equation, parameter, production wiring, or scientific result.
+- The final exact-head CI must validate the corrected five-test suite and the ten history digests before the R3 seal is considered complete.
