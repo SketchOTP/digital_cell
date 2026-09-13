@@ -328,6 +328,85 @@ def route_decision(cells, stability):
     }
 
 
+def successor_route_specification(classification):
+    """Describe the selected successor without implementing or authorizing it."""
+    if classification == "ROUTE_A_NEW_LOCAL_GROWTH_COUPLING_REQUIRED":
+        return {
+            "status": "PROPOSED_NOT_IMPLEMENTED",
+            "route": classification,
+            "state_variables": {
+                "existing_per_edge": [
+                    "m_i",
+                    "m_young_i",
+                    "m_mature_i",
+                    "ell_i",
+                    "ell0_i = m_mature_i / rho_s",
+                    "signed_strain_i",
+                    "local_turning_or_curvature_i",
+                ],
+                "new_per_edge": [],
+                "lumped_inputs": [
+                    "existing D088 total accepted growth flux G_total",
+                    "existing A and W pools and ledgers",
+                ],
+            },
+            "local_equations": [
+                "q_i = max(0, (ell0_i - ell_i) / max(ell0_i, f64::MIN_POSITIVE))",
+                "w_i = (1 + q_i) / sum_j(1 + q_j)",
+                "delta_m_young_i = G_total * w_i * accepted_dt",
+                "delta_m_mature_i = 0 before the unchanged maturation operator",
+                "ell0_i is updated only by the existing mature-material rest-length map",
+            ],
+            "coupling_interpretation": "Redistribute the already-authorized D088 growth flux toward locally compressed edges so local rest-length mismatch can amplify a physical deformation; do not add total growth.",
+            "material_conservation": {
+                "total_growth": "sum_i(delta_m_young_i) equals the unchanged accepted D088 growth amount",
+                "substrate": "existing A-to-structure and A-to-W conversion remains the sole source of growth material",
+                "state": "no new material pool or nonlocal remapping",
+                "ledger": "N/F/C/A/R/W ledgers and active-energy accounting remain authoritative",
+            },
+            "active_energy": "No incremental active motor is introduced; existing D088 growth funding and existing R9 A-to-W work must close unchanged. Any future active term would require separate authorization.",
+            "symmetry_breaking": "Only local edge compression/rest mismatch is read. Infinitesimal local differences may be amplified; an exactly symmetric deterministic state remains symmetric and is a falsifiable boundary, not an observer seed.",
+            "anti_controller": [
+                "no centroid, global size, target area, target perimeter, division plane, neck target, fission success, observer label, population outcome, or genotype-frequency input",
+                "no persistent external force or production shape perturbation",
+                "no ecology-dependent target or success feedback",
+            ],
+            "falsifiable_resource_prediction": "Under the unchanged coherent Resource waveform and bath, held-out states should show increased local compression-mode amplification and a reduced nearest eligible-pair distance relative to the route-off control before any fission claim is made; absence of amplification or persistent out-of-range apposition falsifies this route.",
+            "validation_domain": {
+                "environment": "current coherent Resource bath only",
+                "resource_waveform": "N=2.75 for positions 1..100 of each 400-step cycle, otherwise N=0.264; F=1.0",
+                "bath_volume": 900,
+                "accepted_parent_steps": 14778,
+                "fixture": "diagnostic control only, never production qualification",
+            },
+            "held_out_validation": "Ten held-out initial states and histories, selected before execution, with matched route-off controls and no favorable-seed substitution.",
+            "preservation_tests": [
+                "route-off current R5 prefix/state parity within the existing deterministic tolerance",
+                "D088 total growth and A/W material closure",
+                "M1 starvation, damage, repair, death, and no reseeding",
+                "R9 refractory and R10 signed-stress mechanics unchanged",
+                "simple-parent/simple-daughter conservative fission guards",
+                "rigid-transform and ordinary-remesh observer invariance",
+                "no observer or population value reaches the production transition",
+            ],
+            "expected_failure_classification": [
+                "RESOURCE_LOCAL_GROWTH_COUPLING_FAILS_TO_AMPLIFY_MODES",
+                "RESOURCE_APPOSITION_REMAINS_OUTSIDE_LOCAL_RANGE",
+                "MATERIAL_OR_ACTIVE_ENERGY_LEDGER_MISMATCH",
+                "ANTI_CONTROLLER_OR_NONLOCAL_INPUT_DETECTED",
+            ],
+            "parameter_policy": "No successor parameter is selected or implemented by this gate. If the proposed parameter-free coupling is inadequate, a later directive must authorize and preregister any new coefficient before implementation.",
+        }
+    return {
+        "status": "PROPOSED_NOT_IMPLEMENTED",
+        "route": classification,
+        "state_variables": "Route-specific variables not specified because this route was not selected.",
+        "material_conservation": "Existing N/F/C/A/R/W ledgers remain mandatory.",
+        "active_energy": "Existing A-to-W closure remains mandatory.",
+        "anti_controller": "No global target, observer input, or population-success input.",
+    }
+
+
 def source_delta(repo: Path):
     try:
         head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
@@ -502,14 +581,7 @@ def main():
             "decision_observations": route,
             "selected_route_is_diagnostic_only": True,
             "successor_implementation_authorized": False,
-            "route_specification": {
-                "state_variables": "must be specified by Architect in a successor directive; no production state added here",
-                "material_conservation": "all new state/material must be booked in existing N/F/C/A/R/W ledgers",
-                "active_energy": "any active work must be funded from existing A and close to W",
-                "symmetry_breaking": "must arise locally from state and interactions, never a global target or observer input",
-                "anti_controller": "must not read size, centroid, division plane, fission success, observer labels, or population outcome",
-                "held_out_validation": "ten held-out initial states and histories under preregistered coherent Resource conditions",
-            },
+            "route_specification": successor_route_specification(route["classification"]),
             "recommended_next_action": "Architect review of the selected route; do not implement automatically",
         },
     )

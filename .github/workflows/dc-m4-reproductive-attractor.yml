@@ -95,6 +95,22 @@ jobs:
               'ROUTE_B_ENDOGENOUS_POLARITY_REQUIRED',
               'REPRODUCTIVE_ATTRACTOR_ARCHITECTURE_UNRESOLVED',
           }, decision
+          assert decision['selected_route_is_diagnostic_only'] is True
+          assert decision['successor_implementation_authorized'] is False
+          spec = decision['route_specification']
+          assert spec['status'] == 'PROPOSED_NOT_IMPLEMENTED'
+          assert spec['route'] == decision['decision']
+          assert spec['material_conservation']
+          assert spec['active_energy']
+          assert spec['anti_controller']
+          if decision['decision'] == 'ROUTE_A_NEW_LOCAL_GROWTH_COUPLING_REQUIRED':
+              assert spec['state_variables']['existing_per_edge']
+              assert spec['local_equations']
+              assert spec['falsifiable_resource_prediction']
+              assert spec['validation_domain']['accepted_parent_steps'] == 14778
+              assert spec['held_out_validation']
+              assert spec['preservation_tests']
+              assert spec['expected_failure_classification']
           PY
 
       - name: Upload architecture evidence
