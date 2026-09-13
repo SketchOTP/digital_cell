@@ -2708,3 +2708,9 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Isolated benchmark: stable total concentration `0.4` gives amplification `0.0428128643`; candidate total concentration `0.8` gives `1.4954911641`; half-step candidate gives `1.4952718542`. Mass residuals remain below `1e-13` and the sealed timestep comparison passes.
 - Held-out coherent-Resource diagnostic: Route-ON has `10/10` growing nonzero-mode histories; matched polarity-null has `10/10` decaying histories; ten distinct dominant orientations are observed. This is pre-fission pattern evidence only, not reproduction or ecological selection.
 - Local verdict is `ROUTE_B_AUTONOMOUS_PREFISSION_MODE_GENERATION_DEMONSTRATED`, pending hosted exact-head CI/artifact seal. Mechanical coupling, reproduction, selection, reversal, and final integrated M1-M5 remain `NOT_AUTHORIZED`/`NOT_REACHED`; Digital Cell end goal remains `NOT_ESTABLISHED`.
+
+## DC-M4-R3 exact-head implementation seal
+
+- Workflow `34789648939` passed against implementation head `238fd76577b51b660adbe7c97db9f3170962e91e`. Downloaded artifact ZIP SHA-256: `39648c23e762662a9af4f7c1d5662dbbc91b291ac398fbb6a68aea5ed2515efa`; 20/20 internal manifest hashes independently match.
+- Independent hosted evidence verifies `10/10` Route-ON growing histories, `10/10` matched polarity-null decays, distinct orientations `10`, stable/candidate/half-step benchmark amplification `0.0428128643/1.4954911641/1.4952718542`, and no mechanical output.
+- Implementation and pattern qualification pass only in the R3 pre-fission scope. Reproduction, mechanics coupling, selection, reversal, and final integrated M1-M5 remain unauthorized/not reached. Final governance-head CI is pending.

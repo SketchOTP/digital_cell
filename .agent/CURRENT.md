@@ -1056,3 +1056,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - R2 is accepted at governed head `66bba0a3f511ba6ebd048fa574d8a6d5ebc171ab`; R3 adds one opt-in `PolarityMassStateV1` with nonnegative edge-local active/inactive amounts, finite source-A provenance, conservative local reaction/transport, and explicit A-to-W accounting. It is not wired into the production transition.
 - Parameters and the pre-fission criterion are sealed before held-out execution. No existing M1/D088/D091/D096/R9/R10 coefficient or production biology changed; the new values are assay-substrate parameters only.
 - Local validation passes: four polarity-core tests, example check, and fail-closed seal/benchmark/held-out verifier ladder. Hosted exact-head CI and artifact identity are pending. Production mechanics, growth, reproduction, selection, reversal, and final M1-M5 remain `NOT_AUTHORIZED`/`NOT_REACHED`.
+
+## DC-M4-R3 exact-head implementation seal
+
+- Implementation head `238fd76577b51b660adbe7c97db9f3170962e91e` passed exact-head workflow `34789648939`. Independent ZIP SHA-256 is `39648c23e762662a9af4f7c1d5662dbbc91b291ac398fbb6a68aea5ed2515efa`; all 20 internal manifest hashes recompute successfully.
+- Hosted evidence confirms the isolated benchmark and held-out pre-fission result: stable amplification `0.0428128643`, candidate amplification `1.4954911641`, half-step `1.4952718542`, Route-ON `10/10` growing histories, polarity-null `10/10` decaying histories, and 10 distinct dominant orientations.
+- A governance-only result seal remains to be committed for the final exact-head run. No production polarity coupling, reproduction, selection, reversal, or final M1-M5 execution has started. Notion readback is not independently available through the configured connector; PR #44 remains untouched.

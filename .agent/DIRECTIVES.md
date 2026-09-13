@@ -1385,3 +1385,8 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Authorized from R2 governed head `66bba0a3f511ba6ebd048fa574d8a6d5ebc171ab`; scope is one opt-in conserved polarity substrate and pre-fission pattern qualification only.
 - `PolarityMassStateV1` uses amount-based active/inactive pools, finite source-funded initialization, local donor-limited redistribution, explicitly accounted non-equilibrium A/W conversion, and conservative remesh/restart/fission contracts. No mechanical output is exposed.
 - Parameters and thresholds are sealed before held-out Resource execution. Production polarity wiring, mechanics coupling, reproduction, selection, reversal, and final integration are forbidden in this directive.
+
+## DC-M4-R3 implementation-CI disposition
+
+- Exact implementation head `238fd76577b51b660adbe7c97db9f3170962e91e` passed workflow `34789648939`; its 20-file evidence manifest independently verifies against ZIP SHA-256 `39648c23e762662a9af4f7c1d5662dbbc91b291ac398fbb6a68aea5ed2515efa`.
+- The observed result is accepted locally as `ROUTE_B_AUTONOMOUS_PREFISSION_MODE_GENERATION_DEMONSTRATED` within the pattern-only scope. The final governance commit must receive exact-head CI; no successor execution is authorized automatically.

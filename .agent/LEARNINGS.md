@@ -1334,3 +1334,8 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Pattern generation must be qualified independently of actuation. `PolarityMassStateV1` therefore has no coordinates, forces, growth-placement, apposition, scission, or observer inputs and cannot influence the production organism in R3.
 - Amount-based local pools make provenance and conservation auditable: source-funded initialization debits explicit A, local reaction/transport preserves combined polarity amount, and non-equilibrium conversion books A consumed against equal W produced. Production biology parameter count remains zero even though the opt-in assay substrate has prospectively sealed parameters.
 - Held-out pattern evidence must use exactly matched Route-ON/null initial state and source ledgers. The bounded result is pre-fission autonomous mode generation, not evidence of a reproductive attractor or selection.
+
+## DC-M4-R3 implementation seal
+
+- Exact-head CI must validate the committed source scope after implementation changes; the implementation-head pass alone is not the final governance identity. The hosted artifact must be downloaded and its internal manifest recomputed independently.
+- A hosted PASS here establishes only a conserved pre-fission pattern generator. It must not be promoted to mechanical coupling, reproduction, selection, reversal, or final Digital Cell completion.

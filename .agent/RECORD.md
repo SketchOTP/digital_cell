@@ -1990,3 +1990,9 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - The parameter set was sealed before held-out execution from the R2 standalone instability contract and dimensional/numerical constraints. No held-out Resource, apposition, fission, deformation, or selection outcome was used.
 - Local outcome: stable benchmark decays, candidate benchmark amplifies, and all ten matched coherent-Resource Route-ON histories amplify a nonzero mode while all ten polarity-null histories decay. The terminal scientific classification is `ROUTE_B_AUTONOMOUS_PREFISSION_MODE_GENERATION_DEMONSTRATED`.
 - This decision qualifies pattern generation only. Production coupling, reproduction, selection, reversal, and final M1-M5 remain not authorized/not reached; PR #44 remains open/draft/unmerged/untouched. Notion write/readback is not independently available through the configured connector in this execution.
+
+## DEC-DC-M4-R3-CONSERVED-POLARITY-SUBSTRATE-IMPLEMENTATION-AND-PRE-FISSION-QUALIFICATION-001-CI
+
+- Implementation head `238fd76577b51b660adbe7c97db9f3170962e91e` passed exact-head CI `34789648939`. Independent artifact ZIP SHA-256 is `39648c23e762662a9af4f7c1d5662dbbc91b291ac398fbb6a68aea5ed2515efa`; all 20 internal manifest-listed evidence files recomputed successfully.
+- Hosted verifier confirms the sealed stable/unstable benchmark, ten matched coherent-Resource Route-ON histories with growing nonzero modes, ten matched polarity-null decays, ten distinct orientations, source/positivity/conservation/A-W closure, and zero mechanics output.
+- R3 terminal classification is `ROUTE_B_AUTONOMOUS_PREFISSION_MODE_GENERATION_DEMONSTRATED`. This is pattern-only and does not establish morphogenesis, apposition, scission, reproduction, selection, reversal, or final M1-M5. A subsequent governance commit is required for final exact-head CI; no successor is started automatically.
