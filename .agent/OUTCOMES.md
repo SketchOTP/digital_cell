@@ -2701,3 +2701,10 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 
 - Exact commit `1e9390126cbc2ea50a3df99b58ee59cba33697dc` passed CI `34776033860`. The downloaded artifact ZIP independently streamed to SHA-256 `17ca2d3b87e57aef8ed29007668f83326d54d1b65617c811197d03dbe76d8f41`; all 14 internal manifest hashes recomputed successfully.
 - The R2 decision remains `ROUTE_B_NEW_CONSERVED_POLARITY_SUBSTRATE_REQUIRED`, with implementation acceptance `PASS`, production biology delta `0`, and all production reproduction/selection/reversal/final integration stages `NOT_REACHED`.
+
+## DC-M4-R3 conserved polarity substrate — local result
+
+- Implementation is an opt-in pattern-only substrate. The independent verifier passes source scope, exact parameter handoff, source/A/W accounting, positivity, conservation, matched initialization, mode recomputation, and no-mechanics-output checks.
+- Isolated benchmark: stable total concentration `0.4` gives amplification `0.0428128643`; candidate total concentration `0.8` gives `1.4954911641`; half-step candidate gives `1.4952718542`. Mass residuals remain below `1e-13` and the sealed timestep comparison passes.
+- Held-out coherent-Resource diagnostic: Route-ON has `10/10` growing nonzero-mode histories; matched polarity-null has `10/10` decaying histories; ten distinct dominant orientations are observed. This is pre-fission pattern evidence only, not reproduction or ecological selection.
+- Local verdict is `ROUTE_B_AUTONOMOUS_PREFISSION_MODE_GENERATION_DEMONSTRATED`, pending hosted exact-head CI/artifact seal. Mechanical coupling, reproduction, selection, reversal, and final integrated M1-M5 remain `NOT_AUTHORIZED`/`NOT_REACHED`; Digital Cell end goal remains `NOT_ESTABLISHED`.

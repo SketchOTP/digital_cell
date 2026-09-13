@@ -1328,3 +1328,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 
 - The architecture decision can be CI-sealed without compiling or executing production biology: source-scope enforcement plus an independent symbolic MCRD benchmark is sufficient for this diagnostic gate.
 - Evidence artifacts should carry both a compact immutable upstream reconciliation fixture and a recomputable internal manifest when the accepted upstream raw trajectory is too large or ignored by source control.
+
+## DC-M4-R3 conserved polarity substrate
+
+- Pattern generation must be qualified independently of actuation. `PolarityMassStateV1` therefore has no coordinates, forces, growth-placement, apposition, scission, or observer inputs and cannot influence the production organism in R3.
+- Amount-based local pools make provenance and conservation auditable: source-funded initialization debits explicit A, local reaction/transport preserves combined polarity amount, and non-equilibrium conversion books A consumed against equal W produced. Production biology parameter count remains zero even though the opt-in assay substrate has prospectively sealed parameters.
+- Held-out pattern evidence must use exactly matched Route-ON/null initial state and source ledgers. The bounded result is pre-fission autonomous mode generation, not evidence of a reproductive attractor or selection.

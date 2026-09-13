@@ -20,6 +20,7 @@ pub mod finite_world;
 pub mod intrinsic_exploration;
 pub mod low_level_sensory;
 pub mod moving_membrane_flux;
+pub mod polarity_mass;
 pub mod plasticity;
 pub mod shared_extracellular_medium;
 pub mod spatial;
@@ -110,6 +111,12 @@ pub use shared_extracellular_medium::{
 pub use moving_membrane_flux::{
     segment_circle_intersection_length, MovingMembraneDeliveryV1, MovingMembraneFiniteFluxV1,
     MOVING_MEMBRANE_FINITE_FLUX_SCHEMA_V1,
+};
+
+pub use polarity_mass::{
+    PolarityMassError, PolarityMassParamsV1, PolarityMassStateV1, PolarityModeSummaryV1,
+    PolaritySourceLedgerV1, PolarityStepLedgerV1, POLARITY_MASS_PARAMS_SCHEMA_V1,
+    POLARITY_MASS_SCHEMA_V1, POLARITY_SOURCE_LEDGER_SCHEMA_V1, POLARITY_STEP_LEDGER_SCHEMA_V1,
 };
 
 pub use stick_slip_traction::{

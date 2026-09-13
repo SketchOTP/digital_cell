@@ -1982,3 +1982,11 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Commit `1e9390126cbc2ea50a3df99b58ee59cba33697dc` passed exact-head workflow `34776033860`.
 - Independent artifact verification recomputed all 14 manifest-listed evidence files. Streamed artifact ZIP SHA-256: `17ca2d3b87e57aef8ed29007668f83326d54d1b65617c811197d03dbe76d8f41`.
 - R2 implementation and architecture-gate acceptance pass; the selected `PolarityMassStateV1` successor is proposed only, not implemented or started. Production reproduction, selection, reversal, and final integrated M1-M5 remain `NOT_REACHED`.
+
+## DEC-DC-M4-R3-CONSERVED-POLARITY-SUBSTRATE-IMPLEMENTATION-AND-PRE-FISSION-QUALIFICATION-001
+
+- Date: `2026-09-13`; entry authority is R2 governed head `66bba0a3f511ba6ebd048fa574d8a6d5ebc171ab`; exact-head CI/artifact pending at repository seal.
+- The implementation adds only an opt-in `PolarityMassStateV1` diagnostic substrate. It has edge-local active/inactive physical amounts, finite source-A initialization, local conservative redistribution, explicit reaction A/W ledger, positivity checks, and conservative remesh/restart/fission partition helpers.
+- The parameter set was sealed before held-out execution from the R2 standalone instability contract and dimensional/numerical constraints. No held-out Resource, apposition, fission, deformation, or selection outcome was used.
+- Local outcome: stable benchmark decays, candidate benchmark amplifies, and all ten matched coherent-Resource Route-ON histories amplify a nonzero mode while all ten polarity-null histories decay. The terminal scientific classification is `ROUTE_B_AUTONOMOUS_PREFISSION_MODE_GENERATION_DEMONSTRATED`.
+- This decision qualifies pattern generation only. Production coupling, reproduction, selection, reversal, and final M1-M5 remain not authorized/not reached; PR #44 remains open/draft/unmerged/untouched. Notion write/readback is not independently available through the configured connector in this execution.

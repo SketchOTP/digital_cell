@@ -279,3 +279,11 @@
 - `digital-protocell/experiments/fixtures/dcm4r2/r1_e2_compact.json` — compact immutable R1 E2 paired summary used for independent CI recomputation without carrying the large ignored raw trajectory.
 - `.github/workflows/dc-m4-r2-endogenous-polarity-substrate.yml` — exact-R1-descendant scope check, Python verifier, manifest verification, and diagnostic artifact upload; it does not run production Rust or experiments.
 - `experiments/generated/dcm4r2endogenouspolaritysubstrate/` — CI-sealed R2 authority, state inventory, benchmark, symbolic substrate contract, architecture decision, and manifest evidence.
+
+## DC-M4 R3 conserved polarity substrate
+
+- `digital-protocell/crates/regulatory-core/src/polarity_mass.rs` — opt-in amount-based `PolarityMassStateV1` substrate with local conservative reaction/transport, source/A/W ledgers, and remesh/restart/fission partition helpers; not wired to production transitions.
+- `digital-protocell/examples/dcm4_r3_conserved_polarity_substrate.rs` — standalone R3 seal, isolated benchmark, and held-out Resource pre-fission diagnostic runner.
+- `digital-protocell/experiments/dcm4_r3_conserved_polarity_substrate_verify.py` — independent fail-closed verifier for source scope, parameter sealing, mode recomputation, conservation, and matched Route-ON/null qualification.
+- `digital-protocell/experiments/fixtures/dcm4r3/held_out_resource_histories.json` — compact immutable projection of ten accepted R1 Resource snapshots used to seed matched diagnostic histories.
+- `.github/workflows/dc-m4-r3-conserved-polarity-substrate.yml` — exact-head hosted R3 source-scope, test, benchmark, held-out verifier, manifest, and artifact workflow.

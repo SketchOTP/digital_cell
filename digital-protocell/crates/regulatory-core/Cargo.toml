@@ -435,3 +435,7 @@ path = "../../examples/dcfinal001_r10r9r5_causal_comparison.rs"
 [[example]]
 name = "dcm4_reproductive_attractor"
 path = "../../examples/dcm4_reproductive_attractor.rs"
+
+[[example]]
+name = "dcm4_r3_conserved_polarity_substrate"
+path = "../../examples/dcm4_r3_conserved_polarity_substrate.rs"

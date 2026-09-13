@@ -1379,3 +1379,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 ## DC-M4-R2 exact-head validation result
 
 - Commit `1e9390126cbc2ea50a3df99b58ee59cba33697dc` passed exact-head CI workflow `34776033860`. The independent verifier selected `ROUTE_B_NEW_CONSERVED_POLARITY_SUBSTRATE_REQUIRED`; the proposed successor remains unimplemented and no production run was launched.
+
+## DC-M4-R3-CONSERVED-POLARITY-SUBSTRATE-IMPLEMENTATION-AND-PRE-FISSION-QUALIFICATION-001
+
+- Authorized from R2 governed head `66bba0a3f511ba6ebd048fa574d8a6d5ebc171ab`; scope is one opt-in conserved polarity substrate and pre-fission pattern qualification only.
+- `PolarityMassStateV1` uses amount-based active/inactive pools, finite source-funded initialization, local donor-limited redistribution, explicitly accounted non-equilibrium A/W conversion, and conservative remesh/restart/fission contracts. No mechanical output is exposed.
+- Parameters and thresholds are sealed before held-out Resource execution. Production polarity wiring, mechanics coupling, reproduction, selection, reversal, and final integration are forbidden in this directive.

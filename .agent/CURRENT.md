@@ -1050,3 +1050,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 
 - Implementation commit `1e9390126cbc2ea50a3df99b58ee59cba33697dc` passed workflow `34776033860`; the diagnostic-only scope, independent R1 reconciliation, MCRD benchmark, architecture decision, and internal artifact manifest all passed.
 - The downloaded artifact contained 14 manifest-listed evidence files plus the verifier and compact R1 fixture. Independent post-download manifest verification passed; streamed artifact ZIP SHA-256 was `17ca2d3b87e57aef8ed29007668f83326d54d1b65617c811197d03dbe76d8f41`.
+
+## DC-M4-R3 conserved polarity substrate — implementation and pre-fission qualification
+
+- R2 is accepted at governed head `66bba0a3f511ba6ebd048fa574d8a6d5ebc171ab`; R3 adds one opt-in `PolarityMassStateV1` with nonnegative edge-local active/inactive amounts, finite source-A provenance, conservative local reaction/transport, and explicit A-to-W accounting. It is not wired into the production transition.
+- Parameters and the pre-fission criterion are sealed before held-out execution. No existing M1/D088/D091/D096/R9/R10 coefficient or production biology changed; the new values are assay-substrate parameters only.
+- Local validation passes: four polarity-core tests, example check, and fail-closed seal/benchmark/held-out verifier ladder. Hosted exact-head CI and artifact identity are pending. Production mechanics, growth, reproduction, selection, reversal, and final M1-M5 remain `NOT_AUTHORIZED`/`NOT_REACHED`.
