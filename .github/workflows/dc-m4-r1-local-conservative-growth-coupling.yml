@@ -59,7 +59,7 @@ jobs:
         working-directory: digital-protocell
         run: |
           set -euo pipefail
-          rustfmt +1.89.0 --config skip_children=true --check ../examples/dcm4_r1_local_conservative_growth_coupling.rs
+          rustfmt +1.89.0 --config skip_children=true --check examples/dcm4_r1_local_conservative_growth_coupling.rs
           cargo +1.89.0 test --locked -q -p chemistry-core --test d088_tests --no-fail-fast
           cargo +1.89.0 check --locked -q -p regulatory-core --example dcm4_r1_local_conservative_growth_coupling
           python3 -m py_compile experiments/dcm4_r1_local_conservative_growth_coupling_verify.py
