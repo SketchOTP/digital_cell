@@ -51,7 +51,9 @@ jobs:
           PY
 
       - name: Install sanctioned Rust toolchain
-        run: rustup toolchain install 1.89.0 --profile minimal --no-self-update
+        run: |
+          rustup toolchain install 1.89.0 --profile minimal --no-self-update
+          rustup component add rustfmt --toolchain 1.89.0
 
       - name: Run focused Route-A compile and contract tests
         working-directory: digital-protocell
