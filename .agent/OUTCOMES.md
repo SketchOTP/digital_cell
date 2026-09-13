@@ -2688,3 +2688,11 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - E2 paired coherent-Resource result: route-OFF and route-ON are each `0/10` fissions and `10/10` growth-qualified. Route-ON lowers the late nearest geometrically eligible distance in `10/10` arms, but produces `0/10` arms with a new valid `GROWING` mode; route-OFF also has `0/10`. No numerical invalidity occurred.
 - E2 fails the preregistered mechanistic gate. E3 Resource reproduction and E4 birth-to-birth are `NOT_REACHED`; no selection, reversal, population, or successor execution occurred.
 - Scientific verdict: `RESOURCE_LOCAL_GROWTH_COUPLING_FAILS_TO_AMPLIFY_MODES`. The candidate shows a small local geometric effect but not the required instability amplification. This bounded negative does not authorize tuning the route or changing frozen biology/ecology/fission rules. Notion readback was unavailable through configured connectors; PR #44 remains untouched.
+
+## DC-M4-R2 endogenous polarity substrate gate — result
+
+- R1 authority was independently reconciled from a compact sealed ten-arm fixture: both routes were `0/10` fissions and `10/10` growth-qualified; Route-ON reduced late nearest-pair distance in `10/10` but added `0/10` valid growing-mode arms.
+- Current M4 causal-state audit finds no existing conserved local active/inactive polarity carrier whose meaning, energy ownership, remesh/restart mapping, fission partition, and daughter inheritance can be extended without semantic corruption. The separate M2 native-ring carrier is an adaptable precedent, not current M4 state.
+- Standalone benchmark passes: a dimensionless two-state mass-conserving reaction-diffusion system has all nonzero modes decaying at one total mass and a positive mode-4 growth rate with finite-volume amplitude amplification at another; global mass residuals remain below `2.2e-14`.
+- Final R2 classification: `ROUTE_B_NEW_CONSERVED_POLARITY_SUBSTRATE_REQUIRED`. `PolarityMassStateV1` is specified but not implemented. Digital Cell production reproduction, evolution, selection, reversal, and final M1-M5 remain `NOT_REACHED`.
+- R2 implementation acceptance is local/CI-pending until the diagnostic workflow runs. Notion readback was unavailable in this execution; PR #44 remains open/draft/unmerged/untouched.

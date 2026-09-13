@@ -1316,3 +1316,10 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Conserving total D-088 growth and biasing only one-hop placement toward greater local compression reduced late nearest-pair distance in all ten coherent-Resource arms, but did not create a valid growing stability mode in any arm.
 - The result separates a small geometric displacement effect from the stronger claim of a reproductive instability. E2 therefore fails before reproduction is interpreted; no fission count, ecology, or motor change is justified.
 - Packaging matters for evidence authority: Cargo example binaries live under `target/release/examples/`, and hosted artifact manifest hashes must be checked independently. The final CI artifact includes both raw JSON and the binary.
+
+## DC-M4-R2 learning
+
+- A local conservative growth bias can move geometry measurably while leaving every nonzero mechanical mode decaying. Distance improvement must not be promoted to instability evidence.
+- State reuse is a semantic and lifecycle decision, not a code-location decision. Structural mass, maturation, strain, lumped chemistry, and refractory adaptation cannot become polarity merely because they are already serialized.
+- A standalone mass-conserving reaction-diffusion benchmark should classify instability from a nonzero-mode dispersion rate before any fission observable. Finite-volume conservation is an independent check, not a proxy for reproduction.
+- Existing native-ring M2 polarity code is valuable implementation precedent, but bringing it into M4 would be a new material/state contract requiring fresh source, energy, remesh, restart, and fission authorization.

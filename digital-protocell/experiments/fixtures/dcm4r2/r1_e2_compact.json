@@ -1,0 +1,25 @@
+{
+  "directive": "DC-M4-R1-LOCAL-CONSERVATIVE-GROWTH-COUPLING-001",
+  "source": "accepted R1 E2 paired summary, compact verifier fixture",
+  "source_head": "cd6cb020ff95b69fdf3d65cea79a611cc9d40036",
+  "source_governed_head": "ed44319baae9801111a282ae60fef7f957420cf3",
+  "source_ci": "34773668279",
+  "source_artifact_sha256": "c6483571177e3e4081962d0187c6eaa21186ceb5d8a9f0280849e5b0523641a8",
+  "accepted_horizon": 14778,
+  "route_off_fissions": 0,
+  "route_on_fissions": 0,
+  "route_off_growth_qualified": 10,
+  "route_on_growth_qualified": 10,
+  "arms": [
+    {"arm": 1, "route_off_late_distance_over_range": 2.303559081253148, "route_on_late_distance_over_range": 2.3035411722359105, "route_off_growing_modes": [], "route_on_growing_modes": []},
+    {"arm": 2, "route_off_late_distance_over_range": 2.4396909005483534, "route_on_late_distance_over_range": 2.4396063407193145, "route_off_growing_modes": [], "route_on_growing_modes": []},
+    {"arm": 3, "route_off_late_distance_over_range": 2.335737850622363, "route_on_late_distance_over_range": 2.3356445459551516, "route_off_growing_modes": [], "route_on_growing_modes": []},
+    {"arm": 4, "route_off_late_distance_over_range": 2.3162124583443244, "route_on_late_distance_over_range": 2.316119736319336, "route_off_growing_modes": [], "route_on_growing_modes": []},
+    {"arm": 5, "route_off_late_distance_over_range": 2.450024453005763, "route_on_late_distance_over_range": 2.4499944347660563, "route_off_growing_modes": [], "route_on_growing_modes": []},
+    {"arm": 6, "route_off_late_distance_over_range": 2.323956515890388, "route_on_late_distance_over_range": 2.323860672582799, "route_off_growing_modes": [], "route_on_growing_modes": []},
+    {"arm": 7, "route_off_late_distance_over_range": 2.2757017593863593, "route_on_late_distance_over_range": 2.275608785683626, "route_off_growing_modes": [], "route_on_growing_modes": []},
+    {"arm": 8, "route_off_late_distance_over_range": 2.46066155393834, "route_on_late_distance_over_range": 2.4605783018279497, "route_off_growing_modes": [], "route_on_growing_modes": []},
+    {"arm": 9, "route_off_late_distance_over_range": 2.317182680048399, "route_on_late_distance_over_range": 2.3170855463021187, "route_off_growing_modes": [], "route_on_growing_modes": []},
+    {"arm": 10, "route_off_late_distance_over_range": 2.3088530955497926, "route_on_late_distance_over_range": 2.3087585421767916, "route_off_growing_modes": [], "route_on_growing_modes": []}
+  ]
+}

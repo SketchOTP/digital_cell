@@ -1368,3 +1368,10 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Hosted ten-arm coherent-Resource result: route-OFF `0/10` fissions, route-ON `0/10` fissions; both `10/10` growth-qualified and numerically valid. Route-ON has `10/10` lower late nearest-pair distances but `0/10` newly valid growing modes.
 - E2 is `FAIL` because its required new-growing-mode count is `0/10` (<7), despite the distance subcriterion passing `10/10`. E3 and E4 are correctly `NOT_REACHED`; selection, reversal, and final integrated qualification remain unauthorized/not reached.
 - Classification: `RESOURCE_LOCAL_GROWTH_COUPLING_FAILS_TO_AMPLIFY_MODES`. The packaged example binary is present; its SHA-256 is `b44641274464f5caf57ccb7a191e5973cf55e9e84d19c3776b19e63d86e7b902`. Notion readback was unavailable in this execution; PR #44 is untouched.
+
+## DC-M4-R2-ENDOGENOUS-POLARITY-SUBSTRATE-GATE-001
+
+- Authorized from accepted R1 governed head `ed44319baae9801111a282ae60fef7f957420cf3`; scope is diagnostic architecture/substrate analysis only.
+- R2 reconciles R1, audits all current M4 causal state ownership and lifecycle semantics, independently verifies a target-free mass-conserving instability benchmark, and decides whether a current state can be extended without semantic relabeling.
+- No production biology, parameter, ecology, fission rule, coefficient, or successor mechanism may change. R1 Route-OFF remains current authority; the old native-ring polarity carrier remains separate M2 precedent only.
+- Required terminal decision is one of the four R2 H classifications. No E5 production implementation, reproduction, selection, reversal, or final integrated qualification is authorized in this gate.

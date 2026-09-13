@@ -1037,3 +1037,11 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - E2 fails its preregistered dual requirement (`>=7/10` new valid growing-mode arms and `>=7/10` lower late distance). E3 Resource reproduction and E4 birth-to-birth are `NOT_REACHED`; no population/selection/reversal work started.
 - Hosted artifact ZIP digest: `sha256:c6483571177e3e4081962d0187c6eaa21186ceb5d8a9f0280849e5b0523641a8`. The 14 manifest JSON hashes recompute successfully; the packaged example binary hash is `b44641274464f5caf57ccb7a191e5973cf55e9e84d19c3776b19e63d86e7b902`.
 - Final R1 classification: `RESOURCE_LOCAL_GROWTH_COUPLING_FAILS_TO_AMPLIFY_MODES`. This is a bounded route failure, not evidence for force, ecology, fission, or coefficient changes. Notion readback was unavailable through the configured connectors in this execution; PR #44 remains open/draft/unmerged/untouched.
+
+## DC-M4-R2 endogenous polarity substrate gate — diagnostic implementation
+
+- R1 is accepted as a bounded negative: the tested one-hop compression-gradient placement is insufficient for a coherent-Resource growing mode, without disproving all mechanically driven Route-A architectures.
+- R2 is diagnostic only. It adds an independent source/evidence verifier, a compact sealed R1 reconciliation fixture, and a standalone mass-conserving reaction-diffusion benchmark. No Digital Cell production biology, coefficient, ecology, fission contract, or successor mechanism is changed.
+- The complete current-M4 state inventory rejects reuse of structural material, derived strain, lumped chemistry/D096, dimensionless PlasticityStateV1 adaptation, or step-local mechanics as a polarity carrier without changing established meaning. The separate native-ring M2 runtime is adaptable precedent, not an existing M4 causal state.
+- Terminal architecture decision: `ROUTE_B_NEW_CONSERVED_POLARITY_SUBSTRATE_REQUIRED`. The proposed `PolarityMassStateV1` contract is not implemented; production reproduction, selection, reversal, and final M1-M5 integration are `NOT_REACHED`. Next execution is `false`; PR #44 remains untouched.
+- Notion update/readback was not available through the configured connector in this execution; this repository record does not claim it.

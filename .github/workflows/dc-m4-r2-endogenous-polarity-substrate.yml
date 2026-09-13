@@ -1,0 +1,101 @@
+name: DC-M4 R2 endogenous polarity substrate gate
+
+on:
+  push:
+    branches: [codex/dc-final-001-r10r9r5-lifecycle-evidence-recovery]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  r2-architecture-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out exact pushed head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify R1 authority and diagnostic-only source scope
+        run: |
+          set -euo pipefail
+          r1=ed44319baae9801111a282ae60fef7f957420cf3
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor "$r1" HEAD
+          git diff --check
+          python3 - "$r1" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", f"{start}..HEAD"], text=True
+          ).splitlines()
+          allowed = (
+              ".agent/",
+              ".github/workflows/dc-m4-r2-endogenous-polarity-substrate.yml",
+              "digital-protocell/experiments/dcm4_r2_endogenous_polarity_substrate_verify.py",
+              "digital-protocell/experiments/fixtures/dcm4r2/",
+          )
+          unexpected = [path for path in changed if not any(path.startswith(item) for item in allowed)]
+          assert not unexpected, unexpected
+          assert not any(path.startswith("digital-protocell/crates/") for path in changed)
+          assert not any(path.startswith("digital-protocell/examples/") for path in changed)
+          print("R2 diagnostic-only source scope passed")
+          PY
+
+      - name: Run the independent R2 verifier
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 -m py_compile experiments/dcm4_r2_endogenous_polarity_substrate_verify.py
+          python3 experiments/dcm4_r2_endogenous_polarity_substrate_verify.py \
+            --repo . \
+            --output experiments/generated/dcm4r2endogenouspolaritysubstrate
+
+      - name: Enforce architecture gate and manifest
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcm4r2endogenouspolaritysubstrate")
+          decision = json.loads((root / "architecture_decision.json").read_text())
+          qualification = json.loads((root / "qualification.json").read_text())
+          benchmark = json.loads((root / "external_benchmark.json").read_text())
+          extension = json.loads((root / "existing_state_extensibility.json").read_text())
+          forbidden = json.loads((root / "forbidden_information_audit.json").read_text())
+          manifest = json.loads((root / "artifact_manifest.json").read_text())
+          assert decision["pass"] is True, decision
+          assert decision["classification"] == "ROUTE_B_NEW_CONSERVED_POLARITY_SUBSTRATE_REQUIRED", decision
+          assert qualification["implementation_acceptance"] == "PASS", qualification
+          assert benchmark["pass"] is True, benchmark
+          assert extension["pass"] is True and extension["existing_state_extensible"] is False, extension
+          assert forbidden["pass"] is True, forbidden
+          assert qualification["next_execution_started"] is False, qualification
+          assert qualification["production_biology_delta"] == 0, qualification
+          assert qualification["new_biological_parameters"] == 0, qualification
+          assert manifest["file_count"] == len(manifest["files"]), manifest
+          for relative, expected in manifest["files"].items():
+              actual = hashlib.sha256((root / relative).read_bytes()).hexdigest()
+              assert actual == expected, (relative, actual, expected)
+          print(json.dumps({"classification": decision["classification"], "files": len(manifest["files"])}, sort_keys=True))
+          PY
+          git diff --check
+
+      - name: Upload R2 architecture evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcm4r2endogenouspolaritysubstrate-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcm4r2endogenouspolaritysubstrate/
+            digital-protocell/experiments/dcm4_r2_endogenous_polarity_substrate_verify.py
+            digital-protocell/experiments/fixtures/dcm4r2/r1_e2_compact.json

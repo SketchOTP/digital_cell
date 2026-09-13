@@ -272,3 +272,10 @@
 - `experiments/generated/dcm4r1localconservativegrowthcoupling/` — CI-sealed raw Route-A comparison and bounded qualification evidence.
 
 - Final R1 evidence: hosted workflow `34773172149` at governed head `cd6cb020ff95b69fdf3d65cea79a611cc9d40036`; artifact ZIP digest `sha256:c6483571177e3e4081962d0187c6eaa21186ceb5d8a9f0280849e5b0523641a8`; Route-A E2 classification `RESOURCE_LOCAL_GROWTH_COUPLING_FAILS_TO_AMPLIFY_MODES`.
+
+## DC-M4 R2 endogenous polarity substrate gate
+
+- `digital-protocell/experiments/dcm4_r2_endogenous_polarity_substrate_verify.py` — diagnostic-only R1 reconciliation, current causal-state ownership inventory, standalone mass-conserving reaction-diffusion benchmark, and fail-closed Route-B architecture decision.
+- `digital-protocell/experiments/fixtures/dcm4r2/r1_e2_compact.json` — compact immutable R1 E2 paired summary used for independent CI recomputation without carrying the large ignored raw trajectory.
+- `.github/workflows/dc-m4-r2-endogenous-polarity-substrate.yml` — exact-R1-descendant scope check, Python verifier, manifest verification, and diagnostic artifact upload; it does not run production Rust or experiments.
+- `experiments/generated/dcm4r2endogenouspolaritysubstrate/` — CI-sealed R2 authority, state inventory, benchmark, symbolic substrate contract, architecture decision, and manifest evidence.
