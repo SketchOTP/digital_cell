@@ -2680,3 +2680,11 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 
 - The authorized candidate is an opt-in V4 destination-only redistribution of frozen D-088 young structural mass. Route-off remains a direct call to the prior growth operator; no biological coefficient or total flux changes.
 - E0/E1 source and contract artifacts are being prepared. The mechanistic E2 result and any conditional reproduction result remain `NOT_REACHED` until exact-head CI and independent raw-output verification complete.
+
+## DC-M4-R1-LOCAL-CONSERVATIVE-GROWTH-COUPLING-001 — completed bounded result
+
+- Implementation acceptance: `PASS`. The exact D-088 route-off delegate and V4-only one-hop compression routing satisfy the conservation, zero/equal-compression identity, locality, rotation, source-scope, and raw route-off parity controls. No new biological parameters were introduced.
+- Exact governed head `cd6cb020ff95b69fdf3d65cea79a611cc9d40036`; exact-head workflow `34773172149 PASS`; hosted artifact ZIP SHA-256 `c6483571177e3e4081962d0187c6eaa21186ceb5d8a9f0280849e5b0523641a8`. All 14 manifest JSON hashes independently match; the example binary is packaged.
+- E2 paired coherent-Resource result: route-OFF and route-ON are each `0/10` fissions and `10/10` growth-qualified. Route-ON lowers the late nearest geometrically eligible distance in `10/10` arms, but produces `0/10` arms with a new valid `GROWING` mode; route-OFF also has `0/10`. No numerical invalidity occurred.
+- E2 fails the preregistered mechanistic gate. E3 Resource reproduction and E4 birth-to-birth are `NOT_REACHED`; no selection, reversal, population, or successor execution occurred.
+- Scientific verdict: `RESOURCE_LOCAL_GROWTH_COUPLING_FAILS_TO_AMPLIFY_MODES`. The candidate shows a small local geometric effect but not the required instability amplification. This bounded negative does not authorize tuning the route or changing frozen biology/ecology/fission rules. Notion readback was unavailable through configured connectors; PR #44 remains untouched.

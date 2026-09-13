@@ -270,3 +270,5 @@
 - `digital-protocell/experiments/dcm4_r1_local_conservative_growth_coupling_verify.py` — independent conservation/locality, source-contract, route-off parity, and E2/E3 verifier.
 - `.github/workflows/dc-m4-r1-local-conservative-growth-coupling.yml` — exact-head Linux build, focused tests, bounded Route-A run, fail-closed verifier, and artifact upload.
 - `experiments/generated/dcm4r1localconservativegrowthcoupling/` — CI-sealed raw Route-A comparison and bounded qualification evidence.
+
+- Final R1 evidence: hosted workflow `34773172149` at governed head `cd6cb020ff95b69fdf3d65cea79a611cc9d40036`; artifact ZIP digest `sha256:c6483571177e3e4081962d0187c6eaa21186ceb5d8a9f0280849e5b0523641a8`; Route-A E2 classification `RESOURCE_LOCAL_GROWTH_COUPLING_FAILS_TO_AMPLIFY_MODES`.

@@ -1028,3 +1028,12 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Architect acceptance authorizes exactly one opt-in Route-A candidate: redistribute the already-produced D-088 young structural increment through immediate neighbors toward greater local V4 compression. No new state, coefficient, total growth, A/W cost, ecology, mechanics, or fission rule is authorized.
 - Route-off delegates directly to the frozen `growth_step`; route-on is bounded to the V4 surplus-growth path and uses `dm_i^0` from an exact frozen-growth clone, with cyclic one-hop conservative routing. The current population and historical diagnostic paths remain route-off.
 - The preregistered ten-arm coherent-Resource comparison, E2 stability gate, and conditional E3/E4 stages are not yet executed. No successor starts automatically. PR #44 remains open/draft/unmerged/untouched.
+
+## DC-M4 R1 local conservative growth coupling — bounded result
+
+- Implementation commit `342aa87686128b391794ba641e09da390e0e412d` plus CI packaging fixes is sealed at final governed head `cd6cb020ff95b69fdf3d65cea79a611cc9d40036`; exact-head workflow `34773172149` passed.
+- The route is an opt-in V4 destination-only redistribution of exact frozen D-088 young structural increments. Route-OFF delegates directly to `growth_step`; no new state, coefficient, total growth, A/W cost, ecology, mechanics, fission rule, or observer/population input was added.
+- Hosted raw comparison: route-OFF `0/10` fissions and route-ON `0/10`; both are `10/10` growth-qualified, with `5,839` attempts per route and no numerical invalidity. Route-ON reduced the late nearest eligible-pair distance in `10/10` arms but added `0/10` valid growing modes; route-OFF also had `0/10` growing-mode arms.
+- E2 fails its preregistered dual requirement (`>=7/10` new valid growing-mode arms and `>=7/10` lower late distance). E3 Resource reproduction and E4 birth-to-birth are `NOT_REACHED`; no population/selection/reversal work started.
+- Hosted artifact ZIP digest: `sha256:c6483571177e3e4081962d0187c6eaa21186ceb5d8a9f0280849e5b0523641a8`. The 14 manifest JSON hashes recompute successfully; the packaged example binary hash is `b44641274464f5caf57ccb7a191e5973cf55e9e84d19c3776b19e63d86e7b902`.
+- Final R1 classification: `RESOURCE_LOCAL_GROWTH_COUPLING_FAILS_TO_AMPLIFY_MODES`. This is a bounded route failure, not evidence for force, ecology, fission, or coefficient changes. Notion readback was unavailable through the configured connectors in this execution; PR #44 remains open/draft/unmerged/untouched.

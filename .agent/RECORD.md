@@ -1959,3 +1959,11 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Date: `2026-09-13`.
 - Route-A implementation is authorized as one opt-in V4 nearest-neighbor redistribution of exact frozen D-088 young structural increments toward greater local compression. The superseded global allocator is not authorized.
 - Route-off remains the frozen `growth_step`; route-on adds no material, active energy, persistent state, coefficient, ecology input, target geometry, or fission signal. E2 held-out mechanistic validation precedes any conditional reproduction or birth-to-birth interpretation.
+
+## DEC-DC-M4-R1-LOCAL-CONSERVATIVE-GROWTH-COUPLING-001-RESULT
+
+- Date: `2026-09-13`.
+- Final governed head `cd6cb020ff95b69fdf3d65cea79a611cc9d40036`; exact-head CI `34773172149 PASS`; hosted artifact ZIP SHA-256 `c6483571177e3e4081962d0187c6eaa21186ceb5d8a9f0280849e5b0523641a8`.
+- Exact implementation: route-OFF calls frozen `growth_step`; route-ON runs that exact calculation on a clone and routes only its already-integrated V4 young structural increment to immediate cyclic neighbors according to local compression differences. Conservation/locality/identity and route-OFF parity pass; new parameters `0`.
+- E2 raw result is route-OFF `0/10` and route-ON `0/10` fissions, with `10/10` growth-qualified in each. Route-ON has lower late nearest-pair distance in `10/10`, but `0/10` newly valid growing-mode arms, so the preregistered E2 gate fails. E3/E4, selection, reversal, and final integration are `NOT_REACHED`.
+- Final classification: `RESOURCE_LOCAL_GROWTH_COUPLING_FAILS_TO_AMPLIFY_MODES`. This is a bounded negative for this parameter-free local routing candidate; no successor implementation is authorized automatically. Notion readback was unavailable in this execution; PR #44 remains open/draft/unmerged/untouched.

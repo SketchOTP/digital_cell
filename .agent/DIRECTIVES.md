@@ -1360,3 +1360,11 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Record: Route-A implementation is authorized after `ROUTE_A_NEW_LOCAL_GROWTH_COUPLING_REQUIRED`; the superseded global allocator is not authorized.
 - The candidate must conserve the exact frozen D-088 per-edge growth amount, use only immediate compression differences, preserve route-off parity, and pass the held-out E2 mechanistic gate before any Resource reproduction or birth-to-birth interpretation.
 - Required execution order is E0/E1 contract tests, ten paired Resource stability comparisons, E3 reproduction only if E2 passes, and E4 birth-to-birth only if E3 passes. Selection, reversal, and population expansion are not authorized here.
+
+## DC-M4-R1-LOCAL-CONSERVATIVE-GROWTH-COUPLING-001 — bounded completion
+
+- Exact governed head `cd6cb020ff95b69fdf3d65cea79a611cc9d40036`; workflow `34773172149 PASS`; artifact ZIP `sha256:c6483571177e3e4081962d0187c6eaa21186ceb5d8a9f0280849e5b0523641a8`.
+- Route-OFF remains the exact frozen D-088 call. Route-ON uses only cyclic one-hop compression-gradient routing of the precomputed time-integrated D-088 increment, with exact synthetic conservation/locality and route-OFF ledger/flux parity. New biological parameters: `0`.
+- Hosted ten-arm coherent-Resource result: route-OFF `0/10` fissions, route-ON `0/10` fissions; both `10/10` growth-qualified and numerically valid. Route-ON has `10/10` lower late nearest-pair distances but `0/10` newly valid growing modes.
+- E2 is `FAIL` because its required new-growing-mode count is `0/10` (<7), despite the distance subcriterion passing `10/10`. E3 and E4 are correctly `NOT_REACHED`; selection, reversal, and final integrated qualification remain unauthorized/not reached.
+- Classification: `RESOURCE_LOCAL_GROWTH_COUPLING_FAILS_TO_AMPLIFY_MODES`. The packaged example binary is present; its SHA-256 is `b44641274464f5caf57ccb7a191e5973cf55e9e84d19c3776b19e63d86e7b902`. Notion readback was unavailable in this execution; PR #44 is untouched.

@@ -1310,3 +1310,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 
 - A safe way to expose frozen D-088 `dm_i^0` is to run the exact existing growth calculation on a cloned pre-step mesh, then replace only V4 edge destinations on the real mesh. This preserves sequential A consumption and A/W accounting without duplicating chemistry or applying `dt` twice.
 - Compression-biased growth is a local routing hypothesis, not evidence of reproduction. Conservation, zero/equal-compression identity, cyclic locality, route-off parity, and held-out mode/distance predictions must be checked before interpreting any fission.
+
+## DC-M4 R1 local conservative growth coupling result
+
+- Conserving total D-088 growth and biasing only one-hop placement toward greater local compression reduced late nearest-pair distance in all ten coherent-Resource arms, but did not create a valid growing stability mode in any arm.
+- The result separates a small geometric displacement effect from the stronger claim of a reproductive instability. E2 therefore fails before reproduction is interpreted; no fission count, ecology, or motor change is justified.
+- Packaging matters for evidence authority: Cargo example binaries live under `target/release/examples/`, and hosted artifact manifest hashes must be checked independently. The final CI artifact includes both raw JSON and the binary.
