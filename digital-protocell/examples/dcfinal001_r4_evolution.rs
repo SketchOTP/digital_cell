@@ -1470,8 +1470,7 @@ fn architecture_geometry_record(
         .collect::<Vec<_>>();
     let mut no_contact = before.clone();
     let no_contact_accepted = combined_forces.len() == before.n()
-        && mechanics_step_with_external_forces(&mut no_contact, mechanics, &combined_forces)
-            .is_some();
+        && mechanics_step_with_external_forces(&mut no_contact, mechanics, &combined_forces);
     let no_contact_displacement = no_contact_accepted
         .then(|| {
             before
@@ -3784,7 +3783,7 @@ fn r10_advance_phase(
                         ]
                     });
                     row["material_geometry"] = architecture_geometry_record(
-                        &pre_mechanics,
+                        &pre_mechanics.mesh,
                         &cohort.mesh,
                         &row,
                         &fission,
