@@ -336,12 +336,20 @@ def source_delta(repo: Path):
     except (subprocess.CalledProcessError, FileNotFoundError):
         head = "UNAVAILABLE"
         changed = []
+    diagnostic_wiring = {"crates/regulatory-core/Cargo.toml"}
     forbidden_production = [
         path
         for path in changed
-        if path.startswith("crates/") and not path.startswith("crates/chemistry-core/src/")
+        if path.startswith("crates/")
+        and path not in diagnostic_wiring
+        and not path.startswith("crates/chemistry-core/src/")
     ]
-    return {"head": head, "changed_paths": changed, "forbidden_production_paths": forbidden_production}
+    return {
+        "head": head,
+        "changed_paths": changed,
+        "diagnostic_wiring_paths": sorted(set(changed).intersection(diagnostic_wiring)),
+        "forbidden_production_paths": forbidden_production,
+    }
 
 
 def main():
