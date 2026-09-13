@@ -323,7 +323,8 @@ def route_decision(cells, stability):
         "resource_growing_mode_observed": resource_growing,
         "resource_reached_apposition_range": resource_in_range,
         "fixture_growing_mode_observed": fixture_growing,
-        "no_production_route_selected": route != "ROUTE_A_EXISTING_GROWTH_INSTABILITY_SUPPORTED",
+        "no_production_route_selected": route["classification"]
+        != "ROUTE_A_EXISTING_GROWTH_INSTABILITY_SUPPORTED",
     }
 
 
@@ -497,7 +498,8 @@ def main():
         root,
         "architecture_decision.json",
         {
-            "decision": route,
+            "decision": route["classification"],
+            "decision_observations": route,
             "selected_route_is_diagnostic_only": True,
             "successor_implementation_authorized": False,
             "route_specification": {
