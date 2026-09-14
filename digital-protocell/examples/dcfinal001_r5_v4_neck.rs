@@ -2450,8 +2450,39 @@ pub fn r10_refractory_mechanics_step_with_diagnostics(
     motor_enabled: bool,
     adaptation_enabled: bool,
 ) -> Option<(f64, f64, usize, Value)> {
+    r10_refractory_mechanics_step_with_polarity_diagnostics(
+        mesh,
+        plasticity,
+        topology_tick,
+        motor_enabled,
+        adaptation_enabled,
+        None,
+    )
+}
+
+/// Apply the exact R9/R10 transition while optionally feeding a local
+/// polarity-derived activity vector into the existing paid actuator.  The
+/// optional vector is an input adapter only; mechanics, force limits and
+/// mechanical A->W accounting remain owned by the frozen actuator path.
+pub fn r10_refractory_mechanics_step_with_polarity_diagnostics(
+    mesh: &mut MaterialMesh,
+    plasticity: &mut PlasticityStateV1,
+    topology_tick: bool,
+    motor_enabled: bool,
+    adaptation_enabled: bool,
+    polarity_activity: Option<&[f64]>,
+) -> Option<(f64, f64, usize, Value)> {
     if plasticity.adaptation.len() != mesh.n() || !mesh.can_advance_physics() {
         return None;
+    }
+    if let Some(activity) = polarity_activity {
+        if activity.len() != mesh.n()
+            || activity
+                .iter()
+                .any(|value| !value.is_finite() || !(0.0..=1.0).contains(value))
+        {
+            return None;
+        }
     }
     let mechanics = MechParams::default();
     let contractility = ContractilityParamsV1::default();
@@ -2492,9 +2523,12 @@ pub fn r10_refractory_mechanics_step_with_diagnostics(
         .fold(f64::NEG_INFINITY, f64::max);
     let before_vertices = mesh.vertices.clone();
     let zeros = vec![[0.0, 0.0]; mesh.n()];
+    let polarity_activity_values = polarity_activity
+        .map(ToOwned::to_owned)
+        .unwrap_or_else(|| vec![0.0; mesh.n()]);
     let ledger = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
         mesh,
-        &vec![0.0; mesh.n()],
+        &polarity_activity_values,
         &mechanics,
         &contractility,
         &forces,
@@ -2568,6 +2602,8 @@ pub fn r10_refractory_mechanics_step_with_diagnostics(
         "funded_inward_normal_forces": funded_inward_normal_forces,
         "requested_active_a": if motor_enabled { requested } else { 0.0 },
         "funded_active_a": ledger.resource_spent,
+        "requested_active_a_total": ledger.requested_resource,
+        "funded_active_a_total": ledger.resource_spent,
         "funding_ratio": if motor_enabled { funding_ratio } else { 0.0 },
         "active_w_produced": ledger.waste_amount_after - ledger.waste_amount_before,
         "passive_force_norm": passive_force_norm,
@@ -2576,6 +2612,8 @@ pub fn r10_refractory_mechanics_step_with_diagnostics(
         "pressure_max": pressure_max,
         "actual_displacement_norm": displacement_norm,
         "adaptation_after": adaptation_after,
+        "polarity_activity": polarity_activity_values,
+        "polarity_connected": polarity_activity.is_some(),
         "topology_ruptures": topology.tension_ruptures,
         "topology_rebonds": topology.local_rebonds,
         "remesh_mappings": remesh_mappings,

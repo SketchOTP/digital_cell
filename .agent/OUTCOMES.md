@@ -2709,6 +2709,13 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Held-out coherent-Resource diagnostic: Route-ON has `10/10` growing nonzero-mode histories; matched polarity-null has `10/10` decaying histories; ten distinct dominant orientations are observed. This is pre-fission pattern evidence only, not reproduction or ecological selection.
 - Local verdict is `ROUTE_B_AUTONOMOUS_PREFISSION_MODE_GENERATION_DEMONSTRATED`, pending hosted exact-head CI/artifact seal. Mechanical coupling, reproduction, selection, reversal, and final integrated M1-M5 remain `NOT_AUTHORIZED`/`NOT_REACHED`; Digital Cell end goal remains `NOT_ESTABLISHED`.
 
+## DC-M4-R4 polarity-to-paid-actuation — bounded negative
+
+- The implementation preserves the accepted R3 pattern generator and connects it only to the existing A-funded local contractility input through a prospectively sealed local activity adapter. No production default, R3 parameter, actuator cap/cost, force law, ecology, fission rule, or successor biology changed.
+- Independent verification of the corrected release output passes: 20 matched arms completed `14,778` accepted steps; disconnected and connected arms each have `0/10` fissions; N/F bath closure, reaction A+R closure, polarity chemistry A→W, mechanical A→W, positivity, simple geometry and no-rejection controls pass.
+- Connected arms produce `3/10` new growing mechanical-mode classifications and `9/10` lower late nearest-pair distances. The preregistered E2 threshold is `>=7/10` for both, so E2 fails; E3 and E4 are explicitly `NOT_REACHED`.
+- Terminal classification: `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`. This is a bounded failure of the sealed polarity-to-existing-actuator coupling under coherent Resource, not evidence against all possible couplings. Hosted exact-head CI and final artifact identity remain pending.
+
 ## DC-M4-R3 exact-head implementation seal
 
 - Workflow `34789648939` passed against implementation head `238fd76577b51b660adbe7c97db9f3170962e91e`. Downloaded artifact ZIP SHA-256: `39648c23e762662a9af4f7c1d5662dbbc91b291ac398fbb6a68aea5ed2515efa`; 20/20 internal manifest hashes independently match.

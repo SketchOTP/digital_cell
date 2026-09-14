@@ -287,3 +287,14 @@
 - `digital-protocell/experiments/dcm4_r3_conserved_polarity_substrate_verify.py` — independent fail-closed verifier for source scope, parameter sealing, mode recomputation, conservation, and matched Route-ON/null qualification.
 - `digital-protocell/experiments/fixtures/dcm4r3/held_out_resource_histories.json` — compact immutable projection of ten accepted R1 Resource snapshots used to seed matched diagnostic histories.
 - `.github/workflows/dc-m4-r3-conserved-polarity-substrate.yml` — exact-head hosted R3 source-scope, test, benchmark, held-out verifier, manifest, and artifact workflow.
+
+## DC-M4 R4 polarity-to-paid-actuation
+
+- `digital-protocell/crates/regulatory-core/src/polarity_actuation.rs` — opt-in local adapter from accepted R3 active-polarity amounts to the existing bounded actuator activity domain; no force or energy law.
+- `digital-protocell/crates/regulatory-core/src/polarity_mass.rs` — equation-derived homogeneous R3 active reference used by the sealed R4 adapter.
+- `digital-protocell/examples/dcfinal001_r5_v4_neck.rs` — shared R9/R10 mechanics path with the narrow optional polarity activity input; existing disconnected callers delegate unchanged.
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — shared current population lifecycle with transactional polarity sidecar, conservative remesh/fission partition, separate chemistry/mechanical ledgers, and the R4 ten-arm runner.
+- `digital-protocell/examples/dcm4_r4_polarity_paid_actuation.rs` — R4 seal and matched disconnected/connected coherent-Resource diagnostic entry point; no E3/E4 launch after E2 failure.
+- `digital-protocell/experiments/dcm4_r4_polarity_paid_actuation_verify.py` — independent fail-closed verifier for actuator contract, raw vertices/modes, paired E2 predicates, material and energy ledgers, and terminal classification.
+- `.github/workflows/dc-m4-r4-polarity-to-paid-actuation.yml` — exact-head hosted R4 authority, focused tests, prospective seal, bounded matched execution, independent verification and artifact upload.
+- `experiments/generated/dcm4r4polaritypaidactuation/` — R4 actuator audit, coupling seal, raw matched arms, independent verification, preservation, E2 bounded negative, and explicit unreached E3/E4 evidence.

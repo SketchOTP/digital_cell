@@ -1068,3 +1068,11 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - The pending hardening remains evidence-only: the polarity equations, parameters, production wiring, and terminal scientific result are unchanged.
 - The focused `PolarityMassStateV1` suite now executes five tests, including an actual JSON serialization/restart round trip with schema, accepted-step, pool-shape, and floating-point tolerance assertions.
 - Held-out evidence now records a canonical SHA-256 digest for each of the ten sealed history rows, in addition to the fixture digest and stable history identities. Local seal/benchmark/held-out verification passes with these checks.
+
+## DC-M4-R4 polarity-to-paid-actuation — bounded result pending hosted seal
+
+- R3 is preserved as `ROUTE_B_AUTONOMOUS_PREFISSION_MODE_GENERATION_DEMONSTRATED` in pattern-only scope. R4 adds one opt-in local adapter from the accepted polarity field to the existing A-funded contractility actuator; the default remains disconnected.
+- The adapter uses local active-polarity concentration above the equation-derived R3 homogeneous reference, averaged only from the two incident edges, and clamps into the existing `[0,1]` actuator input domain. It adds no force law, cap, cost, state, geometry target, or reproductive input.
+- Local release execution completed the identical 10-arm disconnected/connected coherent-Resource comparison for `14,778` accepted steps per arm with no numerical rejection, geometry invalidity, or observer culling. Independent verification recomputes shape modes from vertices and checks N/F closure, reaction A+R closure, polarity A→W, and mechanical A→W separately.
+- Disconnected arms: `0/10` valid fissions. Connected arms: `0/10` valid fissions; `3/10` newly growing mechanical-mode classifications and `9/10` lower late nearest-pair distances, below the preregistered `7/10` mode and distance thresholds. E3 reproduction and E4 birth-to-birth are `NOT_REACHED`.
+- Local terminal classification: `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`. Exact-head CI/artifact and Notion readback remain pending the final hosted seal; PR #44 remains open/draft/unmerged/untouched.

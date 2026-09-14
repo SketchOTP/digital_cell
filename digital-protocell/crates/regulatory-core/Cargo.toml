@@ -439,3 +439,7 @@ path = "../../examples/dcm4_reproductive_attractor.rs"
 [[example]]
 name = "dcm4_r3_conserved_polarity_substrate"
 path = "../../examples/dcm4_r3_conserved_polarity_substrate.rs"
+
+[[example]]
+name = "dcm4_r4_polarity_paid_actuation"
+path = "../../examples/dcm4_r4_polarity_paid_actuation.rs"

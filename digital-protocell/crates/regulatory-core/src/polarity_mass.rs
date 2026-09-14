@@ -498,6 +498,38 @@ impl PolarityMassStateV1 {
     }
 }
 
+/// Solve the homogeneous active concentration implied by the sealed R3 local
+/// reaction at a specified total concentration.  This is an equation-derived
+/// reference used by the R4 input adapter; it is not an organism transition
+/// and introduces no parameter or state.
+pub fn homogeneous_active_concentration(
+    total_concentration: f64,
+    params: &PolarityMassParamsV1,
+) -> Result<f64, PolarityMassError> {
+    params.validate()?;
+    if !total_concentration.is_finite() || total_concentration <= 0.0 {
+        return Err(PolarityMassError::InvalidParameters(
+            "total concentration must be finite and positive".to_string(),
+        ));
+    }
+    let mut lo = 0.0;
+    let mut hi = total_concentration;
+    for _ in 0..100 {
+        let mid = 0.5 * (lo + hi);
+        let inactive = total_concentration - mid;
+        let rate = (params.basal_activation_rate + params.positive_feedback_rate * mid * mid)
+            * inactive
+            - (params.basal_deactivation_rate + params.quadratic_deactivation_rate * mid * mid)
+                * mid;
+        if rate > 0.0 {
+            lo = mid;
+        } else {
+            hi = mid;
+        }
+    }
+    Ok(0.5 * (lo + hi))
+}
+
 fn validate_measures(measures: &[f64]) -> Result<(), PolarityMassError> {
     if measures.len() < 3 {
         return Err(PolarityMassError::InvalidMeasures(

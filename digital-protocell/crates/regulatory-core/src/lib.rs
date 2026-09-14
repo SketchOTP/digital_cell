@@ -21,6 +21,7 @@ pub mod intrinsic_exploration;
 pub mod low_level_sensory;
 pub mod moving_membrane_flux;
 pub mod polarity_mass;
+pub mod polarity_actuation;
 pub mod plasticity;
 pub mod shared_extracellular_medium;
 pub mod spatial;
@@ -114,9 +115,16 @@ pub use moving_membrane_flux::{
 };
 
 pub use polarity_mass::{
-    PolarityMassError, PolarityMassParamsV1, PolarityMassStateV1, PolarityModeSummaryV1,
+    homogeneous_active_concentration, PolarityMassError, PolarityMassParamsV1, PolarityMassStateV1,
+    PolarityModeSummaryV1,
     PolaritySourceLedgerV1, PolarityStepLedgerV1, POLARITY_MASS_PARAMS_SCHEMA_V1,
     POLARITY_MASS_SCHEMA_V1, POLARITY_SOURCE_LEDGER_SCHEMA_V1, POLARITY_STEP_LEDGER_SCHEMA_V1,
+};
+
+pub use polarity_actuation::{
+    derive_local_activity, PolarityActuationError, PolarityActuationParamsV1,
+    PolarityActuationProposalV1, POLARITY_ACTUATION_SCHEMA_V1,
+    R3_TOTAL_POLARITY_CONCENTRATION,
 };
 
 pub use stick_slip_traction::{

@@ -26,7 +26,10 @@ use chemistry_core::mesh_transport::{
 };
 use chemistry_core::metabolic_reserve::ReserveParams;
 use chemistry_core::planar_ring_topology::{remesh_preserving_simple, PlanarRingTopology};
-use regulatory_core::PlasticityStateV1;
+use regulatory_core::{
+    derive_local_activity, PolarityActuationParamsV1,
+    PolarityMassParamsV1, PolarityMassStateV1, PlasticityStateV1,
+};
 use serde::{Deserialize, Serialize};
 use serde_json::{json, Value};
 use std::collections::BTreeMap;
@@ -210,6 +213,12 @@ struct Cohort {
     id: u64,
 }
 
+/// R4-only sidecar for the accepted R3 polarity state.  It is deliberately
+/// keyed by physical cohort identity and is not part of the existing cohort
+/// biology schema.  Fission insertion/removal is handled at the same event as
+/// the corresponding physical daughter transition.
+type PolarityStateMap = BTreeMap<u64, PolarityMassStateV1>;
+
 #[derive(Debug, Clone, Default, Serialize)]
 struct WorldLedger {
     initial_n: f64,
@@ -291,6 +300,10 @@ struct CampaignLedger {
     post_bootstrap_fission_closure_structural_input: f64,
     active_a_spent: f64,
     active_w_produced: f64,
+    reaction_activation_equivalent_closure_residual: f64,
+    polarity_source_a_debited: f64,
+    polarity_a_spent: f64,
+    polarity_w_produced: f64,
     adaptation_remesh_mappings: u64,
     legal_depletion_steps: u64,
     observer_nonviable_observations: u64,
@@ -1138,6 +1151,8 @@ fn organism_amount(cohorts: &[Cohort], species: char) -> f64 {
             let concentration = match species {
                 'n' => cohort.mesh.interior.n,
                 'f' => cohort.mesh.interior.f,
+                'a' => cohort.mesh.interior.a,
+                'w' => cohort.mesh.interior.w,
                 _ => 0.0,
             };
             concentration.max(0.0) * cohort.mesh.area() * cohort.count as f64
@@ -1189,6 +1204,12 @@ fn snapshot(cohorts: &[Cohort], world: &OpenMedium, step: usize) -> Value {
         "world_f": world.f_mass,
         "organism_n": organism_amount(cohorts, 'n'),
         "organism_f": organism_amount(cohorts, 'f'),
+        "organism_a": organism_amount(cohorts, 'a'),
+        "organism_w": organism_amount(cohorts, 'w'),
+        "organism_structural_mass": cohorts
+            .iter()
+            .map(|cohort| cohort.mesh.total_structural_mass() * cohort.count as f64)
+            .sum::<f64>(),
         "all_simple": cohorts.iter().all(|c| polygon_simple(&c.mesh.vertices)),
     })
 }
@@ -1542,6 +1563,7 @@ fn architecture_geometry_record(
             "reaction_f_consumed": reactions.f_consumed,
             "a_produced": reactions.a_produced,
             "w_produced": reactions.w_produced,
+            "activation_equivalent_closure_residual": reactions.activation_equivalent_closure_residual,
             "growth_material": growth.m_grown,
             "growth_a_consumed": growth.a_consumed_growth,
             "growth_w_produced": growth.w_from_growth,
@@ -3078,6 +3100,7 @@ fn r10_split_cohort(
     ledger: &mut CampaignLedger,
     mut daughter_continuation: Option<&mut Vec<Value>>,
     capture_daughter_continuation: bool,
+    mut polarity_states: Option<&mut PolarityStateMap>,
 ) -> Result<Vec<Cohort>, Cohort> {
     let parent_cohort_id = cohort.id;
     let parent_generation = cohort.generation;
@@ -3207,6 +3230,68 @@ fn r10_split_cohort(
         );
         return Err(cohort);
     }
+
+    // Partition the accepted polarity material by the exact physical parent
+    // correspondence before any child is published.  A missing or invalid
+    // mapping is a lifecycle error, not a reason to discard the parent.
+    let polarity_children = if let Some(states) = polarity_states.as_deref() {
+        let Some(parent_polarity) = states.get(&parent_cohort_id) else {
+            ledger.runtime_invalidations += cohort.count;
+            lifecycle_event(
+                ledger,
+                "polarity_fission_partition",
+                step,
+                &cohort,
+                "POLARITY_PARTITION_REJECTED",
+                json!({"error": "PARENT_POLARITY_STATE_MISSING"}),
+            );
+            return Err(cohort);
+        };
+        let parent_measures = (0..cohort.mesh.n())
+            .map(|index| cohort.mesh.edge_length(index))
+            .collect::<Vec<_>>();
+        let daughter_a_measures = (0..daughter_a.n())
+            .map(|index| daughter_a.edge_length(index))
+            .collect::<Vec<_>>();
+        let daughter_b_measures = (0..daughter_b.n())
+            .map(|index| daughter_b.edge_length(index))
+            .collect::<Vec<_>>();
+        let daughter_a_parent = event
+            .daughter_a_parent_vertex_sources
+            .iter()
+            .copied()
+            .map(Some)
+            .collect::<Vec<_>>();
+        let daughter_b_parent = event
+            .daughter_b_parent_vertex_sources
+            .iter()
+            .copied()
+            .map(Some)
+            .collect::<Vec<_>>();
+        match parent_polarity.split_by_correspondence(
+            &parent_measures,
+            &daughter_a_measures,
+            &daughter_a_parent,
+            &daughter_b_measures,
+            &daughter_b_parent,
+        ) {
+            Ok((a, b)) => Some((a, b)),
+            Err(error) => {
+                ledger.runtime_invalidations += cohort.count;
+                lifecycle_event(
+                    ledger,
+                    "polarity_fission_partition",
+                    step,
+                    &cohort,
+                    "POLARITY_PARTITION_REJECTED",
+                    json!({"error": error.to_string()}),
+                );
+                return Err(cohort);
+            }
+        }
+    } else {
+        None
+    };
 
     let closure_input = (daughter_a.total_structural_mass() + daughter_b.total_structural_mass()
         - parent_structural_mass)
@@ -3339,6 +3424,14 @@ fn r10_split_cohort(
             generation: parent_generation + 1,
             id,
         });
+        if let (Some(states), Some((state_a, state_b))) =
+            (polarity_states.as_deref_mut(), polarity_children.as_ref())
+        {
+            states.insert(id, if side == 0 { state_a.clone() } else { state_b.clone() });
+        }
+    }
+    if let Some(states) = polarity_states.as_deref_mut() {
+        states.remove(&parent_cohort_id);
     }
     Ok(result)
 }
@@ -3383,6 +3476,7 @@ fn r10_initial_population(
         ledger,
         None,
         false,
+        None,
     )
     .expect("qualified R10 parent must physically fission")
 }
@@ -3411,6 +3505,8 @@ fn r10_advance_phase(
     adaptation_enabled: bool,
     growth_placement: GrowthPlacementMode,
     mut mechanics_diagnostics: Option<&mut Vec<Value>>,
+    mut polarity_states: Option<&mut PolarityStateMap>,
+    polarity_actuator_connected: bool,
 ) -> bool {
     let allocation = AllocationParams::default();
     let mechanics = MechParams::default();
@@ -3439,8 +3535,11 @@ fn r10_advance_phase(
         let step_world_before = world.clone();
         let step_ledger_before = ledger.clone();
         let step_next_id = *next_id;
+        let step_polarity_before = polarity_states.as_deref().cloned();
         let mut first_fission_this_step = false;
         let mut expression_by_cohort = BTreeMap::<u64, ExpressionAccounting>::new();
+        let mut polarity_activity: Option<Vec<f64>> = None;
+        let mut polarity_observation: Option<Value> = None;
         let boundary_target_n = boundary_n_source.value(environment, phase_step);
         let boundary_target_f = boundary_f_source.fuel_value(environment, phase_step);
         match boundary_mode {
@@ -3663,6 +3762,8 @@ fn r10_advance_phase(
             ledger.reaction_f_consumed += reactions.f_consumed * count;
             ledger.a_produced += reactions.a_produced * count;
             ledger.w_produced += reactions.w_produced * count;
+            ledger.reaction_activation_equivalent_closure_residual +=
+                reactions.activation_equivalent_closure_residual * count;
             ledger.m1_structural_build += reactions.m_produced * count;
             ledger.m1_structural_turnover += reactions.m_to_w * count;
             let grown = growth_step_with_placement(
@@ -3696,6 +3797,91 @@ fn r10_advance_phase(
                 observer.w_produced += reactions.w_produced * count;
                 observer.growth_material += grown.m_grown * count;
             }
+            if let Some(states) = polarity_states.as_deref_mut() {
+                let measures = (0..cohort.mesh.n())
+                    .map(|index| cohort.mesh.edge_length(index))
+                    .collect::<Vec<_>>();
+                let polarity_params = PolarityMassParamsV1::candidate();
+                let actuation_params = PolarityActuationParamsV1::sealed_r3_candidate();
+                let polarity_result = states
+                    .get_mut(&cohort.id)
+                    .ok_or_else(|| "POLARITY_STATE_MISSING".to_string())
+                    .and_then(|state| {
+                        let available_a = cohort.mesh.interior.a.max(0.0) * cohort.mesh.area();
+                        let step_ledger = state
+                            .advance(&measures, &polarity_params, available_a)
+                            .map_err(|error| error.to_string())?;
+                        let area = cohort.mesh.area();
+                        if !area.is_finite() || area <= 0.0 {
+                            return Err("POLARITY_INVALID_AREA".to_string());
+                        }
+                        let a_before = cohort.mesh.interior.a.max(0.0) * area;
+                        let w_before = cohort.mesh.interior.w.max(0.0) * area;
+                        if step_ledger.a_consumed > a_before + 1e-10 {
+                            return Err("POLARITY_A_OVERDRAW".to_string());
+                        }
+                        cohort.mesh.interior.a =
+                            (a_before - step_ledger.a_consumed).max(0.0) / area;
+                        cohort.mesh.interior.w = (w_before + step_ledger.w_produced) / area;
+                        let actuation_params = actuation_params.map_err(|error| error.to_string())?;
+                        let proposal = derive_local_activity(state, &measures, &actuation_params)
+                            .map_err(|error| error.to_string())?;
+                        polarity_activity = Some(proposal.vertex_activity.clone());
+                        ledger.polarity_a_spent += step_ledger.a_consumed * count;
+                        ledger.polarity_w_produced += step_ledger.w_produced * count;
+                        Ok(json!({
+                            "state_schema": state.schema,
+                            "accepted": step_ledger.accepted,
+                            "a_consumed": step_ledger.a_consumed,
+                            "w_produced": step_ledger.w_produced,
+                            "total_before": step_ledger.total_before,
+                            "total_after": step_ledger.total_after,
+                            "total_residual": step_ledger.total_after - step_ledger.total_before,
+                            "active_before": step_ledger.active_before,
+                            "active_after": step_ledger.active_after,
+                            "inactive_before": step_ledger.inactive_before,
+                            "inactive_after": step_ledger.inactive_after,
+                            "mode_summaries": state.mode_summaries(&measures, 8)
+                                .map_err(|error| error.to_string())?,
+                            "actuation": proposal,
+                            "mechanical_output": polarity_actuator_connected,
+                        }))
+                    });
+                match polarity_result {
+                    Ok(observation) => polarity_observation = Some(observation),
+                    Err(error) => {
+                        *cohorts = step_cohorts_before.clone();
+                        *world = step_world_before.clone();
+                        *ledger = step_ledger_before.clone();
+                        *next_id = step_next_id;
+                        if let (Some(states), Some(snapshot)) =
+                            (polarity_states.as_deref_mut(), step_polarity_before.clone())
+                        {
+                            *states = snapshot;
+                        }
+                        ledger.computational_rejections += cohort.count;
+                        ledger.rejected_steps += 1;
+                        ledger.rollback_count += cohort.count;
+                        ledger.numerical_invalid = true;
+                        ledger.numerical_invalid_reason = Some(json!({
+                            "phase": phase_index,
+                            "step": step,
+                            "cohort_id": cohort.id,
+                            "error": "POLARITY_TRANSACTION_REJECTED",
+                            "detail": error,
+                        }));
+                        lifecycle_event(
+                            ledger,
+                            "polarity",
+                            step,
+                            &cohort,
+                            "ATOMIC_REJECTION_CAMPAIGN_INVALIDATED",
+                            json!({"error": "POLARITY_TRANSACTION_REJECTED"}),
+                        );
+                        return false;
+                    }
+                }
+            }
             let cadence_step = clock_mode.cadence_step(step);
             let topology_tick = cadence_step % 10 == 0;
             let structural_before_mechanics = cohort.mesh.total_structural_mass();
@@ -3704,13 +3890,26 @@ fn r10_advance_phase(
             // step; a rejected mechanics proposal must not roll those global
             // accounting entries back implicitly.
             let pre_mechanics = cohort.clone();
+            let polarity_measures_before_mechanics = polarity_states
+                .as_ref()
+                .and_then(|states| states.get(&cohort.id))
+                .map(|_| {
+                    (0..cohort.mesh.n())
+                        .map(|index| cohort.mesh.edge_length(index))
+                        .collect::<Vec<_>>()
+                });
             let Some((active_a, active_w, remesh_mappings, mechanics_diagnostic)) =
-                r10_closure::r10_refractory_mechanics_step_with_diagnostics(
+                r10_closure::r10_refractory_mechanics_step_with_polarity_diagnostics(
                     &mut cohort.mesh,
                     cohort.plasticity.as_mut().expect("R10 plasticity"),
                     topology_tick,
                     motor_enabled,
                     adaptation_enabled,
+                    if polarity_actuator_connected {
+                        polarity_activity.as_deref()
+                    } else {
+                        None
+                    },
                 )
             else {
                 if r10r9r5_canonical_lifecycle() {
@@ -3724,6 +3923,11 @@ fn r10_advance_phase(
                     *world = step_world_before.clone();
                     *ledger = step_ledger_before.clone();
                     *next_id = step_next_id;
+                    if let (Some(states), Some(snapshot)) =
+                        (polarity_states.as_deref_mut(), step_polarity_before.clone())
+                    {
+                        *states = snapshot;
+                    }
                     ledger.rejected_steps += 1;
                     ledger.computational_rejections += rejected_count;
                     ledger.rollback_count += rejected_count;
@@ -3758,6 +3962,59 @@ fn r10_advance_phase(
                 }
                 continue;
             };
+            if remesh_mappings > 0 {
+                let remap_result = polarity_measures_before_mechanics
+                    .as_deref()
+                    .ok_or_else(|| "POLARITY_REMAP_SOURCE_MISSING".to_string())
+                    .and_then(|old_measures| {
+                        let new_measures = (0..cohort.mesh.n())
+                            .map(|index| cohort.mesh.edge_length(index))
+                            .collect::<Vec<_>>();
+                        let states = polarity_states
+                            .as_deref_mut()
+                            .ok_or_else(|| "POLARITY_REMAP_STATE_MISSING".to_string())?;
+                        let state = states
+                            .get(&cohort.id)
+                            .ok_or_else(|| "POLARITY_STATE_MISSING".to_string())?;
+                        let remapped = state
+                            .remap_conservative(old_measures, &new_measures)
+                            .map_err(|error| error.to_string())?;
+                        states.insert(cohort.id, remapped);
+                        Ok(())
+                    });
+                if let Err(error) = remap_result {
+                    let rejected_count = cohort.count;
+                    *cohorts = step_cohorts_before.clone();
+                    *world = step_world_before.clone();
+                    *ledger = step_ledger_before.clone();
+                    *next_id = step_next_id;
+                    if let (Some(states), Some(snapshot)) =
+                        (polarity_states.as_deref_mut(), step_polarity_before.clone())
+                    {
+                        *states = snapshot;
+                    }
+                    ledger.rejected_steps += 1;
+                    ledger.computational_rejections += rejected_count;
+                    ledger.rollback_count += rejected_count;
+                    ledger.numerical_invalid = true;
+                    ledger.numerical_invalid_reason = Some(json!({
+                        "phase": phase_index,
+                        "step": step,
+                        "cohort_id": cohort.id,
+                        "error": "POLARITY_REMAP_REJECTED",
+                        "detail": error,
+                    }));
+                    lifecycle_event(
+                        ledger,
+                        "polarity_remap",
+                        step,
+                        &cohort,
+                        "ATOMIC_REJECTION_CAMPAIGN_INVALIDATED",
+                        json!({"error": error}),
+                    );
+                    return false;
+                }
+            }
             ledger.mechanics_topology_structural_net +=
                 (cohort.mesh.total_structural_mass() - structural_before_mechanics) * count;
             ledger.active_a_spent += active_a * count;
@@ -3803,6 +4060,7 @@ fn r10_advance_phase(
                         active_w,
                         step,
                     );
+                    row["polarity"] = polarity_observation.clone().unwrap_or(Value::Null);
                     records.push(row);
                 }
             }
@@ -3821,6 +4079,11 @@ fn r10_advance_phase(
                     *world = step_world_before.clone();
                     *ledger = step_ledger_before.clone();
                     *next_id = step_next_id;
+                    if let (Some(states), Some(snapshot)) =
+                        (polarity_states.as_deref_mut(), step_polarity_before.clone())
+                    {
+                        *states = snapshot;
+                    }
                     ledger.computational_rejections += rejected_count;
                     ledger.rejected_steps += 1;
                     ledger.rollback_count += rejected_count;
@@ -3915,6 +4178,7 @@ fn r10_advance_phase(
                     ledger,
                     Some(daughter_continuations),
                     expression_path == D096ExpressionPath::V4FiniteBudgetCentered,
+                    polarity_states.as_deref_mut(),
                 ) {
                     Ok(children) => {
                         first_fission_this_step = true;
@@ -4040,6 +4304,8 @@ fn r10_campaign(
             true,
             GrowthPlacementMode::FrozenD088,
             None,
+            None,
+            false,
         );
         if !phase_ok {
             break;
@@ -4417,6 +4683,8 @@ pub fn run_r10r9r5_shared_kernel_reproduction() {
             true,
             GrowthPlacementMode::FrozenD088,
             None,
+            None,
+            false,
         );
         let terminal = snapshot(&cohorts, &world, ledger.accepted_steps as usize);
         let terminal_structural_mass = cohorts
@@ -4486,6 +4754,193 @@ pub fn run_r10r9r5_shared_kernel_reproduction() {
     .unwrap();
 }
 
+const R4_POLARITY_INITIAL_TOTAL_CONCENTRATION: f64 =
+    regulatory_core::R3_TOTAL_POLARITY_CONCENTRATION;
+const R4_POLARITY_INITIAL_SIGNAL_SENSITIVITY: f64 = 0.02;
+const R4_POLARITY_INITIAL_INACTIVE_MODE_RATIO: f64 = -0.15575423416695056;
+
+/// Source-fund the accepted R3 polarity state from existing organism A and a
+/// local young-structure history signal.  The source debit is committed to
+/// the organism's A amount before the first accepted transition; polarity
+/// material is the resulting physical state, not a hidden free reservoir.
+fn initialize_r4_polarity(
+    mesh: &mut MaterialMesh,
+) -> Result<(PolarityMassStateV1, Value), String> {
+    let actuation = PolarityActuationParamsV1::sealed_r3_candidate()
+        .map_err(|error| error.to_string())?;
+    let n = mesh.n();
+    let measures = (0..n).map(|index| mesh.edge_length(index)).collect::<Vec<_>>();
+    let active_equilibrium = actuation.reference_active_concentration;
+    let mut active = Vec::with_capacity(n);
+    let mut inactive = Vec::with_capacity(n);
+    for (index, measure) in measures.iter().enumerate() {
+        let young_density = mesh.young_structural_mass(index) / measure;
+        let delta = R4_POLARITY_INITIAL_SIGNAL_SENSITIVITY * (young_density - 1.0);
+        active.push(
+            (active_equilibrium + delta)
+                .max(0.0)
+                .min(R4_POLARITY_INITIAL_TOTAL_CONCENTRATION),
+        );
+        inactive.push(
+            (R4_POLARITY_INITIAL_TOTAL_CONCENTRATION
+                - active_equilibrium
+                + R4_POLARITY_INITIAL_INACTIVE_MODE_RATIO * delta)
+                .max(0.0),
+        );
+    }
+    let area = mesh.area();
+    let source_a_available = mesh.interior.a.max(0.0) * area;
+    let (state, source) = PolarityMassStateV1::from_source_funded_concentrations(
+        &measures,
+        &active,
+        &inactive,
+        source_a_available,
+        &PolarityMassParamsV1::candidate(),
+    )
+    .map_err(|error| error.to_string())?;
+    mesh.interior.a = (source_a_available - source.source_a_debited) / area;
+    Ok((
+        state,
+        json!({
+            "source_ledger": source,
+            "initial_active_concentrations": active,
+            "initial_inactive_concentrations": inactive,
+            "initial_measures": measures,
+            "a_after_source_conversion": mesh.interior.a,
+            "polarity_initialization": "existing_A_to_R3_amounts_with_local_young_structure_signal",
+        }),
+    ))
+}
+
+/// Run one current-kernel R4 parent arm under coherent Resource conditions.
+/// This is the bounded ten-arm pre-fission comparison; it does not launch
+/// population selection or alter the production default.
+pub fn run_r4_polarity_arm(index: usize, connected: bool) -> Value {
+    assert!(index < 10);
+    let allocation = AllocationParams::default();
+    let mut mesh = r10_closure::r10_reproduction_fixture(index);
+    let birth_mass = mesh.total_structural_mass();
+    mesh.enable_finite_allocation_v4(AllocationGenotype::neutral(), &allocation);
+    let initialization = initialize_r4_polarity(&mut mesh).expect("lawful R4 polarity source");
+    let mut polarity_states = PolarityStateMap::new();
+    polarity_states.insert(1, initialization.0);
+    let cohort = Cohort {
+        plasticity: Some(PlasticityStateV1::new(mesh.n())),
+        mesh,
+        count: 1,
+        generation: 0,
+        birth_mass,
+        id: 1,
+    };
+    let mut cohorts = vec![cohort];
+    let mut world = OpenMedium::new(Environment::Resource, R10R9R4_FOUNDER_MULTIPLICITY as f64);
+    let initial = snapshot(&cohorts, &world, 0);
+    let mut ledger = CampaignLedger::default();
+    ledger.polarity_source_a_debited = initialization.1["source_ledger"]["source_a_debited"]
+        .as_f64()
+        .unwrap_or(0.0);
+    let mut next_id = 2;
+    let mut trajectory = vec![initial];
+    let mut prefix = None;
+    let mut daughter_continuations = Vec::new();
+    let mut mechanics_trace = Vec::new();
+    let accepted = r10_advance_phase(
+        &mut cohorts,
+        &mut world,
+        Environment::Resource,
+        0,
+        false,
+        splitmix64((index + 1) as u64),
+        &mut next_id,
+        &mut ledger,
+        &mut trajectory,
+        &mut prefix,
+        R10R2_PHASE_STEPS,
+        D096ExpressionPath::V4FiniteBudgetCentered,
+        PopulationBoundaryMode::FixedConcentrationBoundary,
+        FissionClockMode::CurrentStep,
+        ReserveResolutionMode::PerStep,
+        &mut daughter_continuations,
+        false,
+        DiagnosticBoundarySource::Scheduled,
+        DiagnosticBoundarySource::Scheduled,
+        true,
+        true,
+        GrowthPlacementMode::FrozenD088,
+        Some(&mut mechanics_trace),
+        Some(&mut polarity_states),
+        connected,
+    );
+    let terminal_step = ledger.accepted_steps as usize;
+    let terminal = snapshot(&cohorts, &world, terminal_step);
+    let polarity_total = polarity_states
+        .values()
+        .map(PolarityMassStateV1::total_amount)
+        .sum::<f64>();
+    let polarity_active = polarity_states
+        .values()
+        .map(PolarityMassStateV1::active_total)
+        .sum::<f64>();
+    let first_mode = mechanics_trace
+        .first()
+        .and_then(|row| row["material_geometry"]["shape_modes"]["modes"].as_array())
+        .and_then(|modes| modes.iter().map(|mode| mode["normalized_amplitude"].as_f64().unwrap_or(0.0)).reduce(f64::max))
+        .unwrap_or(0.0);
+    let late_mode = mechanics_trace
+        .last()
+        .and_then(|row| row["material_geometry"]["shape_modes"]["modes"].as_array())
+        .and_then(|modes| modes.iter().map(|mode| mode["normalized_amplitude"].as_f64().unwrap_or(0.0)).reduce(f64::max))
+        .unwrap_or(0.0);
+    let mode_ratio = late_mode / first_mode.max(1e-300);
+    let classification = if mode_ratio > 1.001 {
+        "GROWING"
+    } else if mode_ratio < 0.999 {
+        "DECAYING"
+    } else {
+        "NEUTRAL"
+    };
+    let nearest_distance = |row: &Value| {
+        row["material_geometry"]["segment_geometry"]
+            ["nearest_geometrically_eligible_pair"]["distance_over_range"]
+            .as_f64()
+    };
+    let first_distance = mechanics_trace.first().and_then(nearest_distance);
+    let late_distance = mechanics_trace.last().and_then(nearest_distance);
+    json!({
+        "arm": index + 1,
+        "connected": connected,
+        "driver": "SHARED_CURRENT_KERNEL_R4_POLARITY_TO_EXISTING_PAID_ACTUATOR",
+        "accepted": accepted,
+        "accepted_steps": ledger.accepted_steps,
+        "birth_mass": birth_mass,
+        "maximum_mass_over_birth": cohorts.iter().map(|cohort| cohort.mesh.total_structural_mass() / cohort.birth_mass.max(1e-300)).fold(1.0_f64, f64::max),
+        "physical_fissions": ledger.physical_fissions,
+        "post_bootstrap_physical_fissions": ledger.post_bootstrap_physical_fissions,
+        "fission_attempts": ledger.phenotype_by_genotype.values().map(|value| value.fission_attempts).sum::<u64>(),
+        "first_mode_amplitude": first_mode,
+        "late_mode_amplitude": late_mode,
+        "mechanical_mode_ratio": mode_ratio,
+        "mechanical_mode_classification": classification,
+        "first_nearest_distance_over_range": first_distance,
+        "late_nearest_distance_over_range": late_distance,
+        "polarity_total_amount": polarity_total,
+        "polarity_active_amount": polarity_active,
+        "polarity_states": polarity_states,
+        "initialization": initialization.1,
+        "terminal": terminal,
+        "trajectory": trajectory,
+        "prefix_2500": prefix,
+        "mechanics_trace": mechanics_trace,
+        "daughter_continuations": daughter_continuations,
+        "world": world,
+        "ledger": ledger,
+        "all_simple": cohorts.iter().all(|cohort| polygon_simple(&cohort.mesh.vertices)),
+        "all_runtime_valid": cohorts.iter().all(|cohort| cohort.mesh.physical_runtime_valid()),
+        "all_lifecycle_valid": cohorts.iter().all(|cohort| cohort.mesh.lifecycle_invariants_hold()),
+        "source_material_and_audit": "explicit_source_debit; no polarity material or mechanical work is hidden",
+    })
+}
+
 fn r10_current_reproduction_comparison_arm(
     index: usize,
     boundary_mode: PopulationBoundaryMode,
@@ -4536,6 +4991,8 @@ fn r10_current_reproduction_comparison_arm(
         true,
         GrowthPlacementMode::FrozenD088,
         None,
+        None,
+        false,
     );
     let terminal = snapshot(&cohorts, &world, ledger.accepted_steps as usize);
     let attempts = ledger
@@ -4707,6 +5164,8 @@ fn r10_causal_arm(
         adaptation_enabled,
         growth_placement,
         Some(&mut mechanics_trace),
+        None,
+        false,
     );
     let terminal_step = ledger.accepted_steps as usize;
     let terminal = snapshot(&cohorts, &world, terminal_step);
@@ -5262,6 +5721,8 @@ pub fn run_r10r9r5_contract_tests() {
             true,
             GrowthPlacementMode::FrozenD088,
             None,
+            None,
+            false,
         );
         let fission_attempts = ledger
             .lifecycle_events

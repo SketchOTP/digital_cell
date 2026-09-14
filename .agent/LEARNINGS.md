@@ -1335,6 +1335,13 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Amount-based local pools make provenance and conservation auditable: source-funded initialization debits explicit A, local reaction/transport preserves combined polarity amount, and non-equilibrium conversion books A consumed against equal W produced. Production biology parameter count remains zero even though the opt-in assay substrate has prospectively sealed parameters.
 - Held-out pattern evidence must use exactly matched Route-ON/null initial state and source ledgers. The bounded result is pre-fission autonomous mode generation, not evidence of a reproductive attractor or selection.
 
+## DC-M4-R4 polarity-to-paid-actuation
+
+- A pattern generator must be qualified separately from the actuator it feeds. The R4 adapter remains local and target-free, while the existing contractility routine retains sole ownership of force integration and mechanical A→W payment.
+- Gross A/W reconstruction from aggregate ledgers is not valid when reaction ledgers expose intermediate flux semantics. Use the authoritative reaction A+R closure residual and separate polarity-chemistry and mechanical-work transactions; independently verify N/F source/bath/organism closure.
+- In the corrected matched run, connected polarity actuation improves late geometric distance in `9/10` arms but creates a new growing mechanical mode in only `3/10`. Geometry improvement alone is not morphogenetic-mode qualification.
+- R4's bounded negative does not justify increasing coupling, actuator strength, changing ecology, or adding another pattern generator. E3/E4 remain prerequisite-gated and unreached.
+
 ## DC-M4-R3 implementation seal
 
 - Exact-head CI must validate the committed source scope after implementation changes; the implementation-head pass alone is not the final governance identity. The hosted artifact must be downloaded and its internal manifest recomputed independently.

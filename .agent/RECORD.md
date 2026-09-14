@@ -2002,3 +2002,12 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Date: `2026-09-13`.
 - The post-seal correction is limited to evidence integrity: `PolarityMassStateV1` now has an executed JSON serialization/restart round-trip test with tolerance-bounded amount comparison, and held-out evidence records ten canonical per-history digests.
 - No production biology, polarity equation, parameter, mechanical interface, reproduction stage, or terminal classification changed. The corrected source requires a new exact-head CI/artifact seal before final handoff.
+
+## DEC-DC-M4-R4-POLARITY-TO-PAID-ACTUATION-CAUSAL-COUPLING-001
+
+- Date: `2026-09-13`.
+- R3 authority is preserved at head `70f869bd90c48834e3fcd6e57d845eef99a09247`, CI `34790316854 PASS`, artifact `sha256:4e778d9ca4378cbd3a0bc9b3912797e26ecbb4a94fc280cc49fc98c72f2f9c99`. R4 is limited to one opt-in local polarity-to-existing-paid-actuator adapter; polarity remains disconnected by default.
+- The sealed adapter derives per-vertex activity from incident-edge active polarity concentration above the equation-derived R3 homogeneous reference. It preserves the existing contractility cap, finite-A funding rule, mechanics ownership, and mechanical A→W work debit. Polarity chemistry A→W is separately paid before mechanics.
+- Local controls and corrected release evidence pass for source scope, feature-OFF path, locality/invariance tests, positivity, simple geometry, accepted clocks, N/F closure, reaction A+R closure, polarity A→W, and mechanical A→W. The previous verifier's unsupported gross A/W reconstruction was removed.
+- Matched coherent-Resource E2 result: disconnected `0/10`; connected `0/10`; connected new growing mechanical modes `3/10`; lower late nearest-pair distance `9/10`; no numerical rejection. E2 fails its preregistered dual threshold, so E3 reproduction and E4 birth-to-birth are `NOT_REACHED`.
+- Terminal bounded classification: `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`. No production biology or successor implementation is authorized automatically. PR #44 remains open/draft/unmerged/untouched; hosted exact-head CI/artifact and Notion readback are pending.

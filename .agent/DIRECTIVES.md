@@ -1395,3 +1395,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 
 - A narrow post-seal correction adds an executed JSON restart round-trip assertion to the polarity-core tests and per-history canonical digests to the held-out evidence. It changes no equation, parameter, production wiring, or scientific result.
 - The final exact-head CI must validate the corrected five-test suite and the ten history digests before the R3 seal is considered complete.
+
+## DC-M4-R4-POLARITY-TO-PAID-ACTUATION-CAUSAL-COUPLING-001
+
+- Authorized one opt-in target-free local mapping from `PolarityMassStateV1` active concentration to the existing paid local contractility input. R3 polarity equations/parameters, actuator force/cost/cap, mechanics, ecology, fission and daughter contracts remain frozen.
+- Prerequisites are strict: actuator audit and prospective coupling seal, feature-OFF/invariance/ledger controls, then ten matched disconnected/connected coherent-Resource histories. E3 reproduction and E4 birth-to-birth are conditional on E2 and must not run after an E2 failure.
+- Current local result is below the E2 threshold: connected arms have `3/10` new growing mechanical modes and `9/10` lower pair distances, with no invalidity. Terminal bounded result is `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`; no successor starts automatically.
