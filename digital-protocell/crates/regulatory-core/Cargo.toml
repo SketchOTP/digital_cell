@@ -451,3 +451,7 @@ path = "../../examples/dcm4_r6_atomic_coupled_state.rs"
 [[example]]
 name = "dcm4_r7_full_cycle_same_boundary"
 path = "../../examples/dcm4_r7_full_cycle_same_boundary.rs"
+
+[[example]]
+name = "dcm4_r8_nonlinear_mechanochemical_causal_edge"
+path = "../../examples/dcm4_r8_nonlinear_mechanochemical_causal_edge.rs"

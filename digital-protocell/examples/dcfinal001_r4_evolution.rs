@@ -63,6 +63,17 @@ const R6_ATOMIC_CHECKPOINTS: [usize; 3] = [3_694, 7_389, 11_083];
 // pre-polarity.advance boundary.
 const R7_FULL_CYCLE_CHECKPOINTS: [usize; 3] = R6_ATOMIC_CHECKPOINTS;
 
+/// R8 asks the shared R7 lifecycle only for its exact replay seeds.  Skipping
+/// R7's already-sealed response probe in that mode changes no organism
+/// transition; it only avoids recomputing a superseded global Jacobian while
+/// the clone-local causal-edge cuts are collected.
+fn r8_capture_only() -> bool {
+    matches!(
+        env::var("DCFINAL001_R8_CAPTURE_ONLY").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
+
 fn r10r9r5_canonical_lifecycle() -> bool {
     matches!(
         env::var("DCFINAL001_R10R9R5_CANONICAL").ok().as_deref(),
@@ -212,7 +223,7 @@ impl Environment {
     }
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct Cohort {
     mesh: MaterialMesh,
     plasticity: Option<PlasticityStateV1>,
@@ -231,7 +242,7 @@ type PolarityStateMap = BTreeMap<u64, PolarityMassStateV1>;
 /// Diagnostic-only clone of the complete state presented at the R7
 /// pre-polarity.advance boundary.  It is never part of the production
 /// transition or used to steer an organism.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Deserialize)]
 struct R7BoundarySeed {
     cohort: Cohort,
     world: OpenMedium,
@@ -243,7 +254,7 @@ struct R7BoundarySeed {
     connected: bool,
 }
 
-#[derive(Debug, Clone, Default, Serialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 struct WorldLedger {
     initial_n: f64,
     initial_f: f64,
@@ -270,7 +281,7 @@ struct WorldLedger {
     invalidated_structural_terminal: f64,
 }
 
-#[derive(Debug, Clone, Serialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 struct OpenMedium {
     /// One fixed reference volume per preregistered founder. This scales the
     /// assay vessel, not any organism rule, and never follows population size.
@@ -289,7 +300,7 @@ struct BoundaryExchangeReport {
     published_boundary_f: f64,
 }
 
-#[derive(Debug, Clone, Default, Serialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 struct CampaignLedger {
     mutation_opportunities: u64,
     mutations: u64,
@@ -522,7 +533,7 @@ fn apply_expression_path(
     }
 }
 
-#[derive(Debug, Clone, Default, Serialize)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 struct GenotypePhenotypeLedger {
     organism_step_exposure: u64,
     expression_material: f64,
@@ -3878,11 +3889,23 @@ fn r10_advance_phase(
                         connected: polarity_actuator_connected,
                     };
                     let replay = r7_replay_full_cycle(&seed);
-                    let response_operator = r7_full_cycle_response_probe(&seed);
+                    let response_operator = if r8_capture_only() {
+                        json!({
+                            "status": "SKIPPED_FOR_R8_CAPTURE_ONLY",
+                            "reason": "R8 reuses the exact same-phase replay seeds and applies clone-local modular cuts; the superseded R7 global response probe is not part of the R8 measurement",
+                            "observer_only": true,
+                        })
+                    } else {
+                        r7_full_cycle_response_probe(&seed)
+                    };
                     let same_state_disconnected_replay = if polarity_actuator_connected {
-                        let mut disconnected_seed = seed.clone();
-                        disconnected_seed.connected = false;
-                        r7_replay_full_cycle(&disconnected_seed)
+                        if r8_capture_only() {
+                            Value::Null
+                        } else {
+                            let mut disconnected_seed = seed.clone();
+                            disconnected_seed.connected = false;
+                            r7_replay_full_cycle(&disconnected_seed)
+                        }
                     } else {
                         Value::Null
                     };
@@ -5605,6 +5628,12 @@ fn r7_replay_polarity_and_mechanics(
             "w_produced": step_ledger.w_produced,
             "total_before": step_ledger.total_before,
             "total_after": step_ledger.total_after,
+            "active_amount_after": polarity_states
+                .get(&cohort.id)
+                .map(|state| state.active_amount.clone()),
+            "inactive_amount_after": polarity_states
+                .get(&cohort.id)
+                .map(|state| state.inactive_amount.clone()),
             "actuation": proposal,
         },
         "mechanics": {
@@ -5612,6 +5641,7 @@ fn r7_replay_polarity_and_mechanics(
             "active_w": active_w,
             "remesh_mappings": remesh_mappings,
             "diagnostic": mechanics_diagnostic,
+            "post_mechanics_cohort": cohort,
         },
         "connected": connected,
         "accepted_step": step,
@@ -5995,6 +6025,642 @@ fn r7_full_cycle_response_probe(seed: &R7BoundarySeed) -> Value {
         "leading_eigenvalues": "NOT_IDENTIFIED",
         "connected_disconnected_operator_difference":
             "SAME_STATE_REPLAY_RECORDED; FULL_OPERATOR_NOT_IDENTIFIED",
+    })
+}
+
+/// R8 uses the exact R7 replay seed, but it does not reuse R7's incomplete
+/// global response probe.  These helpers cut only one named module edge on a
+/// cloned state and return the local response in the physical coordinates
+/// consumed by the adjacent module.
+fn r8_seed_from_snapshot(snapshot: &Value) -> Result<R7BoundarySeed, String> {
+    let boundary = snapshot
+        .get("input_boundary")
+        .ok_or_else(|| "R8_INPUT_BOUNDARY_MISSING".to_string())?;
+    Ok(R7BoundarySeed {
+        cohort: serde_json::from_value(
+            boundary
+                .get("cohort")
+                .cloned()
+                .ok_or_else(|| "R8_COHORT_BOUNDARY_MISSING".to_string())?,
+        )
+        .map_err(|error| format!("R8_COHORT_DESERIALIZE:{error}"))?,
+        world: serde_json::from_value(
+            boundary
+                .get("world")
+                .cloned()
+                .ok_or_else(|| "R8_WORLD_BOUNDARY_MISSING".to_string())?,
+        )
+        .map_err(|error| format!("R8_WORLD_DESERIALIZE:{error}"))?,
+        ledger: serde_json::from_value(
+            boundary
+                .get("ledger")
+                .cloned()
+                .ok_or_else(|| "R8_LEDGER_BOUNDARY_MISSING".to_string())?,
+        )
+        .map_err(|error| format!("R8_LEDGER_DESERIALIZE:{error}"))?,
+        polarity_states: serde_json::from_value(
+            boundary
+                .get("polarity_states")
+                .cloned()
+                .ok_or_else(|| "R8_POLARITY_BOUNDARY_MISSING".to_string())?,
+        )
+        .map_err(|error| format!("R8_POLARITY_DESERIALIZE:{error}"))?,
+        next_id: boundary
+            .get("next_id")
+            .and_then(Value::as_u64)
+            .ok_or_else(|| "R8_NEXT_ID_MISSING".to_string())?,
+        step: boundary
+            .get("step")
+            .and_then(Value::as_u64)
+            .ok_or_else(|| "R8_STEP_MISSING".to_string())? as usize,
+        campaign_seed: boundary
+            .get("configuration")
+            .and_then(|configuration| configuration.get("campaign_seed"))
+            .and_then(Value::as_u64)
+            .ok_or_else(|| "R8_CAMPAIGN_SEED_MISSING".to_string())?,
+        connected: boundary
+            .get("configuration")
+            .and_then(|configuration| configuration.get("polarity_actuator_connected"))
+            .and_then(Value::as_bool)
+            .ok_or_else(|| "R8_CONNECTION_FLAG_MISSING".to_string())?,
+    })
+}
+
+fn r8_constraint_basis(mesh: &MaterialMesh) -> Vec<Vec<f64>> {
+    let n = mesh.n();
+    let centroid = mesh.centroid();
+    let mut translation_x = vec![0.0; 2 * n];
+    let mut translation_y = vec![0.0; 2 * n];
+    let mut rotation = vec![0.0; 2 * n];
+    for (index, point) in mesh.vertices.iter().enumerate() {
+        translation_x[2 * index] = 1.0;
+        translation_y[2 * index + 1] = 1.0;
+        rotation[2 * index] = -(point[1] - centroid[1]);
+        rotation[2 * index + 1] = point[0] - centroid[0];
+    }
+    r6_orthogonalized_basis(vec![translation_x, translation_y, rotation], &[])
+}
+
+/// Build radial normal Fourier modes.  The radial frame is derived from the
+/// current mesh and the sine/cosine partners transform together under cyclic
+/// reindexing; no absolute axis or preferred edge is introduced.
+fn r8_normal_harmonic_basis(mesh: &MaterialMesh) -> Vec<(usize, String, Vec<f64>)> {
+    let n = mesh.n();
+    if n < 3 {
+        return Vec::new();
+    }
+    let centroid = mesh.centroid();
+    let mut normals = Vec::with_capacity(n);
+    for point in &mesh.vertices {
+        let dx = point[0] - centroid[0];
+        let dy = point[1] - centroid[1];
+        let norm = dx.hypot(dy);
+        if !norm.is_finite() || norm <= 1.0e-12 {
+            return Vec::new();
+        }
+        normals.push([dx / norm, dy / norm]);
+    }
+    let constraints = r8_constraint_basis(mesh);
+    let mut modes = Vec::new();
+    for harmonic in 0..=(n / 2) {
+        let phases = if harmonic == 0 || harmonic * 2 == n {
+            vec![("cos", 0.0_f64)]
+        } else {
+            vec![("cos", 0.0_f64), ("sin", std::f64::consts::FRAC_PI_2)]
+        };
+        for (phase, phase_shift) in phases {
+            let mut vector = vec![0.0; 2 * n];
+            for (index, normal) in normals.iter().enumerate() {
+                let angle = std::f64::consts::TAU * harmonic as f64 * index as f64 / n as f64;
+                let value = (angle + phase_shift).cos();
+                vector[2 * index] = normal[0] * value;
+                vector[2 * index + 1] = normal[1] * value;
+            }
+            for constraint in &constraints {
+                let projection = vector
+                    .iter()
+                    .zip(constraint)
+                    .map(|(left, right)| left * right)
+                    .sum::<f64>();
+                for (value, constraint_value) in vector.iter_mut().zip(constraint) {
+                    *value -= projection * constraint_value;
+                }
+            }
+            let norm = vector.iter().map(|value| value * value).sum::<f64>().sqrt();
+            if norm > 1.0e-10 {
+                vector.iter_mut().for_each(|value| *value /= norm);
+                modes.push((harmonic, phase.to_string(), vector));
+            }
+        }
+    }
+    modes
+}
+
+fn r8_scalar_harmonics(values: &[f64]) -> Vec<Value> {
+    let n = values.len();
+    if n == 0 {
+        return Vec::new();
+    }
+    (0..=(n / 2))
+        .map(|harmonic| {
+            let mut cosine = 0.0;
+            let mut sine = 0.0;
+            for (index, value) in values.iter().enumerate() {
+                let angle = std::f64::consts::TAU * harmonic as f64 * index as f64 / n as f64;
+                cosine += value * angle.cos();
+                sine += value * angle.sin();
+            }
+            let factor = if harmonic == 0 || harmonic * 2 == n {
+                1.0 / n as f64
+            } else {
+                2.0 / n as f64
+            };
+            let cosine = cosine * factor;
+            let sine = sine * factor;
+            json!({
+                "harmonic": harmonic,
+                "cosine": cosine,
+                "sine": sine,
+                "amplitude": cosine.hypot(sine),
+            })
+        })
+        .collect()
+}
+
+fn r8_normal_modal_projections(
+    displacement: &[[f64; 2]],
+    modes: &[(usize, String, Vec<f64>)],
+) -> Vec<Value> {
+    modes
+        .iter()
+        .map(|(harmonic, phase, vector)| {
+            let projection = displacement
+                .iter()
+                .enumerate()
+                .map(|(index, point)| {
+                    point[0] * vector[2 * index] + point[1] * vector[2 * index + 1]
+                })
+                .sum::<f64>();
+            json!({
+                "harmonic": harmonic,
+                "phase": phase,
+                "projection": projection,
+                "absolute_projection": projection.abs(),
+            })
+        })
+        .collect()
+}
+
+fn r8_vertices(value: &Value, path: &str) -> Result<Vec<[f64; 2]>, String> {
+    serde_json::from_value(value[path].clone())
+        .map_err(|error| format!("R8_{path}_VERTICES_DESERIALIZE:{error}"))
+}
+
+fn r8_mesh_from_transition(value: &Value) -> Result<Cohort, String> {
+    serde_json::from_value(
+        value["transition"]["mechanics"]["post_mechanics_cohort"].clone(),
+    )
+    .map_err(|error| format!("R8_POST_MECHANICS_COHORT_DESERIALIZE:{error}"))
+}
+
+fn r8_transition_summary(value: &Value) -> Value {
+    let diagnostic = value["transition"]["mechanics"]["diagnostic"].clone();
+    json!({
+        "status": value["status"].clone(),
+        "accepted_steps": value["accepted_steps"].clone(),
+        "active_a": diagnostic["funded_active_a"].clone(),
+        "active_w": diagnostic["active_w_produced"].clone(),
+        "requested_active_a": diagnostic["requested_active_a"].clone(),
+        "funding_ratio": diagnostic["funding_ratio"].clone(),
+        "remesh_mappings": diagnostic["remesh_mappings"].clone(),
+        "topology_ruptures": diagnostic["topology_ruptures"].clone(),
+        "topology_rebonds": diagnostic["topology_rebonds"].clone(),
+        "simple": diagnostic["simple"].clone(),
+        "runtime_valid": diagnostic["runtime_valid"].clone(),
+        "lifecycle_valid": diagnostic["lifecycle_valid"].clone(),
+        "mechanics_diagnostic": diagnostic,
+    })
+}
+
+fn r8_p_to_m_record(seed: &R7BoundarySeed) -> Result<Value, String> {
+    let mut cut_seed = seed.clone();
+    cut_seed.connected = false;
+    let full = r7_replay_full_cycle(seed);
+    let cut = r7_replay_full_cycle(&cut_seed);
+    if full["status"] != "ACCEPTED" || cut["status"] != "ACCEPTED" {
+        return Ok(json!({
+            "status": "P_TO_M_NONSMOOTH",
+            "reason": "one or both matched clone transitions were not accepted",
+            "full": r8_transition_summary(&full),
+            "cut": r8_transition_summary(&cut),
+        }));
+    }
+    let full_cohort = r8_mesh_from_transition(&full)?;
+    let cut_cohort = r8_mesh_from_transition(&cut)?;
+    let pre_vertices = &seed.cohort.mesh.vertices;
+    let full_vertices = &full_cohort.mesh.vertices;
+    let cut_vertices = &cut_cohort.mesh.vertices;
+    if full_vertices.len() != cut_vertices.len() || full_vertices.len() != pre_vertices.len() {
+        return Ok(json!({
+            "status": "P_TO_M_NONSMOOTH",
+            "reason": "matched actuator clones changed topology",
+            "full": r8_transition_summary(&full),
+            "cut": r8_transition_summary(&cut),
+        }));
+    }
+    let full_cut_delta = full_vertices
+        .iter()
+        .zip(cut_vertices)
+        .map(|(full, cut)| [full[0] - cut[0], full[1] - cut[1]])
+        .collect::<Vec<_>>();
+    let full_displacement = full_vertices
+        .iter()
+        .zip(pre_vertices)
+        .map(|(after, before)| [after[0] - before[0], after[1] - before[1]])
+        .collect::<Vec<_>>();
+    let modes = r8_normal_harmonic_basis(&seed.cohort.mesh);
+    let activity = full["transition"]["polarity"]["actuation"]["vertex_activity"]
+        .as_array()
+        .ok_or_else(|| "R8_ACTIVITY_MISSING".to_string())?
+        .iter()
+        .map(|value| value.as_f64().unwrap_or(f64::NAN))
+        .collect::<Vec<_>>();
+    let full_polarity = full["transition"]["polarity"]["active_amount_after"].clone();
+    let cut_polarity = cut["transition"]["polarity"]["active_amount_after"].clone();
+    let branch_equal = full["transition"]["mechanics"]["remesh_mappings"]
+        == cut["transition"]["mechanics"]["remesh_mappings"]
+        && full["transition"]["mechanics"]["diagnostic"]["topology_ruptures"]
+            == cut["transition"]["mechanics"]["diagnostic"]["topology_ruptures"]
+        && full["transition"]["mechanics"]["diagnostic"]["topology_rebonds"]
+            == cut["transition"]["mechanics"]["diagnostic"]["topology_rebonds"];
+    let full_polarity_state = full["transition"]["polarity"];
+    let cut_polarity_state = cut["transition"]["polarity"];
+    let mechanical_delta_norm = full_cut_delta
+        .iter()
+        .map(|point| point[0].hypot(point[1]))
+        .sum::<f64>();
+    let polarity_a_delta = full_polarity_state["a_consumed"].as_f64().unwrap_or(0.0)
+        - cut_polarity_state["a_consumed"].as_f64().unwrap_or(0.0);
+    let active_work_delta = full["transition"]["mechanics"]["active_a"]
+        .as_f64()
+        .unwrap_or(0.0)
+        - cut["transition"]["mechanics"]["active_a"]
+            .as_f64()
+            .unwrap_or(0.0);
+    let normal_modal_delta = r8_normal_modal_projections(&full_cut_delta, &modes);
+    let full_normal_modal = r8_normal_modal_projections(&full_displacement, &modes);
+    Ok(json!({
+        "status": if branch_equal { "VALID" } else { "P_TO_M_NONSMOOTH" },
+        "input_digest": deterministic_state_digest(&r7_boundary_state_value(
+            &seed.cohort,
+            &seed.world,
+            &seed.ledger,
+            &seed.polarity_states,
+            seed.next_id,
+            seed.step,
+            seed.campaign_seed,
+            seed.connected,
+        )),
+        "clone_equality_before_intervention": true,
+        "full": r8_transition_summary(&full),
+        "cut": r8_transition_summary(&cut),
+        "post_polarity_active_equal": full_polarity == cut_polarity,
+        "post_polarity_inactive_equal": full_polarity_state["inactive_amount_after"]
+            == cut_polarity_state["inactive_amount_after"],
+        "branch_equal": branch_equal,
+        "polarity_activity": activity,
+        "polarity_activity_harmonics": r8_scalar_harmonics(&activity),
+        "mechanical_delta_vertices": full_cut_delta,
+        "mechanical_delta_norm": mechanical_delta_norm,
+        "full_displacement_norm": full_displacement
+            .iter()
+            .map(|point| point[0].hypot(point[1]))
+            .sum::<f64>(),
+        "normal_modal_delta": normal_modal_delta,
+        "full_normal_modal": full_normal_modal,
+        "active_work_delta": active_work_delta,
+        "polarity_chemistry_a_delta": polarity_a_delta,
+        "polarity_a_consumed_full": full_polarity_state["a_consumed"].clone(),
+        "polarity_a_consumed_cut": cut_polarity_state["a_consumed"].clone(),
+        "mechanical_cut_scope": "only R4 polarity-derived actuator input; legacy/passive mechanics and actuator cost remain enabled",
+        "observer_only": true,
+    }))
+}
+
+fn r8_polarity_update(
+    seed: &R7BoundarySeed,
+    cohort: &Cohort,
+    measures: &[f64],
+) -> Result<Value, String> {
+    let mut states = seed.polarity_states.clone();
+    let state = states
+        .get_mut(&cohort.id)
+        .ok_or_else(|| "R8_POLARITY_STATE_MISSING".to_string())?;
+    let area = cohort.mesh.area();
+    if !area.is_finite() || area <= 0.0 {
+        return Err("R8_POLARITY_INVALID_AREA".to_string());
+    }
+    let a_before = cohort.mesh.interior.a.max(0.0) * area;
+    let w_before = cohort.mesh.interior.w.max(0.0) * area;
+    let step = state
+        .advance(measures, &PolarityMassParamsV1::candidate(), a_before)
+        .map_err(|error| format!("R8_POLARITY_UPDATE:{error}"))?;
+    let a_after = a_before - step.a_consumed;
+    let w_after = w_before + step.w_produced;
+    if a_after < -1.0e-10 || !a_after.is_finite() || !w_after.is_finite() {
+        return Err("R8_POLARITY_ENERGY_INVALID".to_string());
+    }
+    Ok(json!({
+        "active_after": state.active_amount.clone(),
+        "inactive_after": state.inactive_amount.clone(),
+        "total_before": step.total_before,
+        "total_after": step.total_after,
+        "total_residual": step.total_after - step.total_before,
+        "a_consumed": step.a_consumed,
+        "w_produced": step.w_produced,
+        "a_before": a_before,
+        "a_after": a_after.max(0.0),
+        "w_before": w_before,
+        "w_after": w_after,
+        "accepted": step.accepted,
+        "measure_count": measures.len(),
+    }))
+}
+
+fn r8_perturbed_cohort(
+    seed: &R7BoundarySeed,
+    mode: &[f64],
+    amplitude: f64,
+    sign: f64,
+) -> Result<Cohort, String> {
+    let mut cohort = seed.cohort.clone();
+    for (index, point) in cohort.mesh.vertices.iter_mut().enumerate() {
+        point[0] += sign * amplitude * mode[2 * index];
+        point[1] += sign * amplitude * mode[2 * index + 1];
+    }
+    if !polygon_simple(&cohort.mesh.vertices) || !cohort.mesh.physical_runtime_valid() {
+        return Err("R8_GEOMETRY_PERTURBATION_INVALID".to_string());
+    }
+    Ok(cohort)
+}
+
+fn r8_amount_difference(left: &Value, right: &Value, field: &str) -> Vec<f64> {
+    let left = left[field].as_array().cloned().unwrap_or_default();
+    let right = right[field].as_array().cloned().unwrap_or_default();
+    left.iter()
+        .zip(right.iter())
+        .map(|(left, right)| left.as_f64().unwrap_or(f64::NAN) - right.as_f64().unwrap_or(f64::NAN))
+        .collect()
+}
+
+fn r8_vector_norm(vector: &[f64]) -> f64 {
+    vector.iter().map(|value| value * value).sum::<f64>().sqrt()
+}
+
+fn r8_g_to_p_record(seed: &R7BoundarySeed) -> Result<Value, String> {
+    let n = seed.cohort.mesh.n();
+    let baseline_measures = (0..n)
+        .map(|index| seed.cohort.mesh.edge_length(index))
+        .collect::<Vec<_>>();
+    let mean_edge = baseline_measures.iter().sum::<f64>() / n.max(1) as f64;
+    let modes = r8_normal_harmonic_basis(&seed.cohort.mesh);
+    let mut mode_records = Vec::new();
+    for (harmonic, phase, mode) in modes {
+        let mut scales = Vec::new();
+        for normalized in [1.0e-3_f64, 5.0e-4_f64] {
+            let amplitude = normalized * mean_edge;
+            let mut signs = Vec::new();
+            for sign in [1.0_f64, -1.0_f64] {
+                let cohort = match r8_perturbed_cohort(seed, &mode, amplitude, sign) {
+                    Ok(cohort) => cohort,
+                    Err(reason) => {
+                        signs.push(json!({"status": "NONSMOOTH_OR_INVALID", "reason": reason}));
+                        continue;
+                    }
+                };
+                let actual_measures = (0..cohort.mesh.n())
+                    .map(|index| cohort.mesh.edge_length(index))
+                    .collect::<Vec<_>>();
+                let full = r8_polarity_update(seed, &cohort, &actual_measures);
+                let cut = r8_polarity_update(seed, &cohort, &baseline_measures);
+                match (full, cut) {
+                    (Ok(full), Ok(cut)) => {
+                        let active_delta = r8_amount_difference(&full, &cut, "active_after");
+                        let inactive_delta = r8_amount_difference(&full, &cut, "inactive_after");
+                        signs.push(json!({
+                            "status": "VALID",
+                            "full": full,
+                            "cut": cut,
+                            "active_delta": active_delta,
+                            "inactive_delta": inactive_delta,
+                        }));
+                    }
+                    (full, cut) => signs.push(json!({
+                        "status": "NONSMOOTH_OR_INVALID",
+                        "full_error": full.err(),
+                        "cut_error": cut.err(),
+                    })),
+                }
+            }
+            let response = |record: &Value| {
+                let mut values = record["active_delta"].as_array().cloned().unwrap_or_default()
+                    .iter()
+                    .map(|value| value.as_f64().unwrap_or(f64::NAN))
+                    .collect::<Vec<_>>();
+                values.extend(
+                    record["inactive_delta"]
+                        .as_array()
+                        .cloned()
+                        .unwrap_or_default()
+                        .iter()
+                        .map(|value| value.as_f64().unwrap_or(f64::NAN)),
+                );
+                values
+            };
+            let symmetry = if signs.len() == 2 && signs.iter().all(|record| record["status"] == "VALID") {
+                let plus = response(&signs[0]);
+                let minus = response(&signs[1]);
+                let sum = plus
+                    .iter()
+                    .zip(&minus)
+                    .map(|(left, right)| left + right)
+                    .collect::<Vec<_>>();
+                let difference = plus
+                    .iter()
+                    .zip(&minus)
+                    .map(|(left, right)| left - right)
+                    .collect::<Vec<_>>();
+                let opposite_error = r8_vector_norm(&sum) / r8_vector_norm(&difference).max(1.0e-300);
+                json!({
+                    "status": if opposite_error <= 0.05 { "PASS" } else { "FAIL" },
+                    "opposite_error": opposite_error,
+                    "plus_norm": r8_vector_norm(&plus),
+                    "minus_norm": r8_vector_norm(&minus),
+                })
+            } else {
+                json!({"status": "NONSMOOTH_OR_INVALID"})
+            };
+            scales.push(json!({
+                "normalized_amplitude": normalized,
+                "amplitude": amplitude,
+                "signs": signs,
+                "sign_symmetry": symmetry,
+            }));
+        }
+        let valid = scales.iter().all(|scale| {
+            scale["sign_symmetry"]["status"] == "PASS"
+                && scale["signs"].as_array().is_some_and(|signs| {
+                    signs.len() == 2 && signs.iter().all(|sign| sign["status"] == "VALID")
+                })
+        });
+        mode_records.push(json!({
+            "harmonic": harmonic,
+            "phase": phase,
+            "scales": scales,
+            "status": if valid { "VALID" } else { "G_NONLINEAR_OR_NONSMOOTH" },
+        }));
+    }
+    Ok(json!({
+        "status": "PASS",
+        "baseline_measures": baseline_measures,
+        "mean_edge_length": mean_edge,
+        "modes": mode_records,
+        "perturbation_contract": {
+            "normalized_amplitudes": [1.0e-3, 5.0e-4],
+            "definition": "mean edge length times radial normal Fourier mode",
+            "measurement": "FULL minus G_TO_P_CUT immediately after polarity.advance and before mechanics",
+        },
+        "observer_only": true,
+    }))
+}
+
+fn r8_rotate_seed(seed: &R7BoundarySeed, angle: f64) -> R7BoundarySeed {
+    let mut rotated = seed.clone();
+    let (sin, cos) = angle.sin_cos();
+    for point in &mut rotated.cohort.mesh.vertices {
+        *point = [cos * point[0] - sin * point[1], sin * point[0] + cos * point[1]];
+    }
+    rotated
+}
+
+fn r8_p_to_m_scalar_summary(value: &Value) -> Value {
+    json!({
+        "status": value["status"].clone(),
+        "mechanical_delta_norm": value["mechanical_delta_norm"].clone(),
+        "full_displacement_norm": value["full_displacement_norm"].clone(),
+        "active_work_delta": value["active_work_delta"].clone(),
+        "polarity_activity_harmonics": value["polarity_activity_harmonics"].clone(),
+        "normal_modal_delta": value["normal_modal_delta"].clone(),
+        "polarity_chemistry_a_delta": value["polarity_chemistry_a_delta"].clone(),
+    })
+}
+
+fn r8_rotation_control(seed: &R7BoundarySeed) -> Result<Value, String> {
+    let rotated = r8_rotate_seed(seed, 0.371_f64);
+    let original = r8_p_to_m_record(seed)?;
+    let rotated_result = r8_p_to_m_record(&rotated)?;
+    let scalar_equal = original["status"] == rotated_result["status"]
+        && (original["mechanical_delta_norm"].as_f64().unwrap_or(f64::NAN)
+            - rotated_result["mechanical_delta_norm"].as_f64().unwrap_or(f64::NAN))
+            .abs()
+            <= 1.0e-8
+        && (original["full_displacement_norm"].as_f64().unwrap_or(f64::NAN)
+            - rotated_result["full_displacement_norm"].as_f64().unwrap_or(f64::NAN))
+            .abs()
+            <= 1.0e-8;
+    let modal_invariant = original["normal_modal_delta"]
+        .as_array()
+        .zip(rotated_result["normal_modal_delta"].as_array())
+        .map(|(left, right)| {
+            left.len() == right.len()
+                && left.iter().zip(right).all(|(left, right)| {
+                    (left["projection"].as_f64().unwrap_or(f64::NAN)
+                        - right["projection"].as_f64().unwrap_or(f64::NAN))
+                        .abs()
+                        <= 1.0e-8
+                })
+        })
+        .unwrap_or(false);
+    let activity_invariant = original["polarity_activity_harmonics"]
+        .as_array()
+        .zip(rotated_result["polarity_activity_harmonics"].as_array())
+        .map(|(left, right)| {
+            left.len() == right.len()
+                && left.iter().zip(right).all(|(left, right)| {
+                    (left["cosine"].as_f64().unwrap_or(f64::NAN)
+                        - right["cosine"].as_f64().unwrap_or(f64::NAN))
+                        .abs()
+                        <= 1.0e-8
+                        && (left["sine"].as_f64().unwrap_or(f64::NAN)
+                            - right["sine"].as_f64().unwrap_or(f64::NAN))
+                            .abs()
+                            <= 1.0e-8
+                })
+        })
+        .unwrap_or(false);
+    Ok(json!({
+        "rigid_rotation_angle": 0.371_f64,
+        "scalar_response_invariant": scalar_equal && modal_invariant && activity_invariant,
+        "modal_response_invariant": modal_invariant,
+        "activity_spectrum_invariant": activity_invariant,
+        "original": r8_p_to_m_scalar_summary(&original),
+        "rotated": r8_p_to_m_scalar_summary(&rotated_result),
+        "observer_only": true,
+    }))
+}
+
+/// R8 entry point.  The canonical R7 arm is executed only to recreate its
+/// sealed same-phase replay seeds.  All causal cuts and geometry perturbations
+/// thereafter run on clones and are discarded before the arm returns.
+pub fn run_r8_modular_edge_arm(index: usize) -> Value {
+    let mut snapshots = Vec::new();
+    let result = run_r4_polarity_arm_with_atomic_capture(
+        index,
+        true,
+        None,
+        Some(&mut snapshots),
+    );
+    let mut records = Vec::new();
+    for snapshot in snapshots.iter() {
+        let record = match r8_seed_from_snapshot(snapshot).and_then(|seed| {
+            let p_to_m = r8_p_to_m_record(&seed)?;
+            let g_to_p = r8_g_to_p_record(&seed)?;
+            let rotation = r8_rotation_control(&seed)?;
+            Ok(json!({
+                "checkpoint_step": snapshot["checkpoint_step"],
+                "expected_next_step": snapshot["expected_next_step"],
+                "input_boundary_digest": deterministic_state_digest(&snapshot["input_boundary"]),
+                "r7_replay_identity": snapshot["identity"].clone(),
+                "p_to_m": p_to_m,
+                "g_to_p": g_to_p,
+                "rotation_control": rotation,
+                "observer_only": true,
+            }))
+        }) {
+            Ok(record) => record,
+            Err(reason) => json!({
+                "checkpoint_step": snapshot["checkpoint_step"],
+                "status": "ERROR",
+                "error": reason,
+                "observer_only": true,
+            }),
+        };
+        records.push(record);
+    }
+    json!({
+        "arm": result["arm"].clone(),
+        "connected": true,
+        "accepted": result["accepted"].clone(),
+        "accepted_steps": result["accepted_steps"].clone(),
+        "physical_fissions": result["physical_fissions"].clone(),
+        "mechanical_mode_classification": result["mechanical_mode_classification"].clone(),
+        "r7_snapshot_count": records.len(),
+        "snapshots": records,
+        "reproduction": "NOT_REACHED",
+        "population_selection": "NOT_REACHED",
+        "reversal": "NOT_REACHED",
+        "observer_only": true,
+        "production_transition_modified": false,
     })
 }
 
