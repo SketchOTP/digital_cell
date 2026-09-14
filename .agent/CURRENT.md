@@ -1082,3 +1082,11 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Implementation head `c778e2a4fc858354b7c661a091837e6cc1dab5ee` passed exact-head hosted workflow `34801587951`.
 - Independently downloaded artifact ZIP SHA-256: `07b3c062065a58d832ac2c93a5b296b654bfaeeeab6f89081f086f97a007e78a`; hosted manifest `18/18` verified; hosted release binary SHA-256: `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82`.
 - Hosted qualification confirms implementation `PASS`, bounded scientific negative, E2 `FAIL`, E3/E4 `NOT_REACHED`, and `next_execution_started=false`. Notion SOT was updated and read back. No successor was started; PR #44 remains untouched.
+
+## DC-M4 R5 mechanochemical-instability attribution — bounded result
+
+- R4 is preserved at final governance head `38de33d6ed2741a60b3e825360a45b8ff4686792`, exact-head CI `34802371283 PASS`, artifact `sha256:1be6045d0fdc0b91dda666baefe363e9490ee1cc2be498169b5a0cd3219b677b`, and binary `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82`.
+- R5 independently recomputes the sealed R4 connected Resource histories from raw hash `a97852f34c8bb63c86d1367ec512a69e3ae4a421d559fa3dd7054d9ee878c8bd`: all ten arms complete `14,778` accepted steps, are growth-qualified and simple, and produce `0/10` physical fissions. The endpoint shape predicate is `3/10` GROWING (arms 2, 5, 8) and `7/10` DECAYING; this is descriptive, not a causal intervention.
+- Polarity activity is nonzero after initialization in all arms; the existing actuator request is fully funded (`funding_ratio=1.0`), and the polarity request is independently reconstructed from the frozen local tension equation. The frozen passive perturbation assay has `1,800 DECAYING`, `0 GROWING`, `0 NEUTRAL`, and `0 INVALID` valid records.
+- Exact coupled local Jacobian/modal response is not identifiable from the sealed R4 raw schema because pre-mechanics vertices and the polarity edge-tension field are not serialized together. Post-mechanics projection proxies are recorded but not promoted to causal proof.
+- Terminal classification: `R4_ATTRIBUTION_INCONCLUSIVE`. Implementation/evidence acceptance passes in observer-only scope; production biology, reproduction, selection, reversal, and successor implementation remain `NOT_REACHED`; no successor started; PR #44 remains untouched.

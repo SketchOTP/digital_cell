@@ -1356,3 +1356,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 
 - Restart evidence must execute a serialization/deserialization round trip and compare persisted state fields within a declared floating-point tolerance; prose saying that serialization exists is insufficient.
 - Held-out preregistration is stronger when each immutable history row has its own canonical digest, not only a digest for the containing fixture.
+
+## DC-M4-R5 mechanochemical-instability attribution
+
+- A nonzero polarity signal and a fully funded existing actuator request do not by themselves establish a self-amplifying coupled mechanical mode. The sealed R4 run contains endpoint shape growth in three arms, while all `1,800` valid frozen passive perturbation records decay.
+- The 3/7 endpoint grouping is descriptive only. The current raw schema does not serialize pre-mechanics vertices together with the polarity edge-tension field, so post-mechanics modal projections cannot be promoted to a full coupled Jacobian or causal projection result.
+- The correct bounded handoff is `R4_ATTRIBUTION_INCONCLUSIVE`, not a gain, actuator, ecology or successor-architecture change. Future attribution requires an observer-only pre-mechanics force/state trace and a matched local perturbation or converged response replay.

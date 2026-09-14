@@ -2017,3 +2017,9 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Exact-head hosted workflow `34801587951` passed against `c778e2a4fc858354b7c661a091837e6cc1dab5ee`.
 - Independently downloaded artifact ZIP SHA-256 is `07b3c062065a58d832ac2c93a5b296b654bfaeeeab6f89081f086f97a007e78a`; all `18/18` hosted manifest entries verify; release binary SHA-256 is `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82`.
 - Hosted qualification is implementation `PASS`, scientific `BOUNDED_NEGATIVE`: connected new growing mechanical modes `3/10`, lower late distance `9/10`, both fission counts `0/10`, E2 `FAIL`, E3/E4 `NOT_REACHED`. The final classification remains `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`; no successor started. Notion SOT was updated and read back; PR #44 remains untouched.
+
+## DEC-DC-M4-R5-MECHANOCHEMICAL-INSTABILITY-ATTRIBUTION-GATE-001
+
+- R5 diagnostic authority is R4 final governance head `38de33d6ed2741a60b3e825360a45b8ff4686792`, exact-head CI `34802371283 PASS`, artifact `sha256:1be6045d0fdc0b91dda666baefe363e9490ee1cc2be498169b5a0cd3219b677b`, with sealed raw connected-history hash `sha256:a97852f34c8bb63c86d1367ec512a69e3ae4a421d559fa3dd7054d9ee878c8bd`.
+- Observer-only evidence verifies complete ten-arm Resource trajectories, `0/10` fissions, `3/10` endpoint shape-growth arms, fully funded actuator requests, and `1,800` valid decaying frozen passive perturbation records. No production transition or successor biology was executed.
+- Decision: `R4_ATTRIBUTION_INCONCLUSIVE`. The R4 schema cannot supply an exact pre-mechanics polarity-force state paired with geometry, so the full closed-loop modal projection and geometry-to-polarity sign are not established. Post-mechanics projection records remain descriptive limitations, not causal proof.

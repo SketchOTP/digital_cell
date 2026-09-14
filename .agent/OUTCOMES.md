@@ -2732,3 +2732,10 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 
 - The correction is limited to verification strength: an actual JSON serialization/restart test now checks the persisted state within floating-point tolerance, and held-out history rows carry individual canonical SHA-256 digests.
 - Local targeted validation passes with five polarity-core tests and the fail-closed seal/benchmark/held-out verifier ladder. Hosted exact-head validation is required for final acceptance of this correction.
+
+## DC-M4-R5 mechanochemical-instability attribution — bounded inconclusive
+
+- R5 uses only the sealed R4 connected Resource raw input (`sha256:a97852f34c8bb63c86d1367ec512a69e3ae4a421d559fa3dd7054d9ee878c8bd`) and preserves the R4 authority chain: governed head `38de33d6ed2741a60b3e825360a45b8ff4686792`, CI `34802371283 PASS`, artifact `sha256:1be6045d0fdc0b91dda666baefe363e9490ee1cc2be498169b5a0cd3219b677b`.
+- Independent recomputation confirms ten accepted, growth-qualified, simple connected arms, `0/10` fissions, endpoint shape grouping `3` growing / `7` decaying, nonzero polarity activity after initialization, fully funded actuator requests, and `1,800` valid frozen passive decaying stability records with no growing records.
+- The observer-only causal graph and matched checkpoint ledger pass. Exact coupled modal projection and the complete geometry-to-polarity feedback sign remain unavailable from the sealed R4 schema; the post-mechanics force projection is explicitly limited to a descriptive proxy.
+- Terminal classification: `R4_ATTRIBUTION_INCONCLUSIVE`; implementation acceptance `PASS`, scientific result `BOUNDED_INCONCLUSIVE`, reproduction/selection/reversal/final integration `NOT_REACHED`, next execution `false`, PR #44 untouched.

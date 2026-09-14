@@ -300,3 +300,10 @@
 - `experiments/generated/dcm4r4polaritypaidactuation/` — R4 actuator audit, coupling seal, raw matched arms, independent verification, preservation, E2 bounded negative, and explicit unreached E3/E4 evidence.
 
 R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab5ee`; artifact ZIP `07b3c062065a58d832ac2c93a5b296b654bfaeeeab6f89081f086f97a007e78a`; binary `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82`.
+
+## DC-M4 R5 mechanochemical-instability attribution
+
+- `digital-protocell/experiments/dcm4_r5_mechanochemical_instability_verify.py` — observer-only independent recomputation of sealed R4 polarity, activity, funding, shape, frozen-stability and modal-projection evidence; no production transition.
+- `.github/workflows/dc-m4-r5-mechanochemical-instability.yml` — exact-R4-descendant source-scope check, sealed R4 artifact download/hash verification, attribution run, fail-closed terminal decision and artifact upload.
+- `experiments/generated/dcm4r5mechanochemicalinstability/` — R4 authority, causal graph, source/trajectory audit, matched checkpoint ledger, group comparison, frozen stability/modal projection, geometry feedback, prior art, verifier, preservation, decision and qualification evidence.
+- Terminal classification is `R4_ATTRIBUTION_INCONCLUSIVE`: all valid frozen passive modes decay, but the sealed R4 schema does not identify a full coupled local Jacobian or exact pre-mechanics polarity-force projection. No successor mechanism or reproduction run was started.

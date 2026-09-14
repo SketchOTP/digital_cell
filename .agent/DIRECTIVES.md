@@ -1407,3 +1407,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Exact-head workflow `34801587951` passed against `c778e2a4fc858354b7c661a091837e6cc1dab5ee`.
 - Artifact ZIP SHA-256: `07b3c062065a58d832ac2c93a5b296b654bfaeeeab6f89081f086f97a007e78a`; hosted internal manifest `18/18` verified; binary SHA-256 `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82`.
 - The sealed E2 result is confirmed: connected new growing modes `3/10`, lower late distance `9/10`, both conditions `0/10` fissions. E3 and E4 remain `NOT_REACHED`; terminal classification is `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`. Notion was updated/read back and no successor started.
+
+## DC-M4-R5-MECHANOCHEMICAL-INSTABILITY-ATTRIBUTION-GATE-001
+
+- Authorized from R4 governed head `38de33d6ed2741a60b3e825360a45b8ff4686792` as a diagnostic-only attribution gate. No production source, R3 parameter, R4 gain, actuator force/cost, ecology, fission or reproduction rule may change.
+- The implementation reads the sealed R4 connected Resource raw trajectory, publishes the ordered polarity-to-actuator-to-mechanics-to-geometry graph, recomputes shape and frozen stability predicates, and records per-checkpoint material, activity, funding, force, modal and geometry evidence.
+- The final decision is fail-closed: `R4_ATTRIBUTION_INCONCLUSIVE`. All frozen passive modes decay, but the R4 artifact lacks a matched pre-mechanics polarity-force state needed to discriminate a full coupled modal projection or geometry-to-polarity Jacobian. No successor mechanism is selected or started.
