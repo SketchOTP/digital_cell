@@ -2758,3 +2758,9 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 
 - The final governance result at `e1c8d5dd63fcdce3d19edbc12bb9e53674e3864c` passed exact-head workflow `34854828443`; the final artifact ZIP is `sha256:1225f713fd2eeb645e7d8cbe5ae8451e1edf1e2ffae0d49544c2eee3818d6795` and its `20/20` manifest entries verify.
 - Notion R7 and the Digital Cell SOT were updated and read back. This supersedes the earlier pending wording without changing the scientific result: `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`, implementation `PASS`, scientific attribution `BOUNDED_INCONCLUSIVE`, downstream stages `NOT_REACHED`.
+
+## DC-M4 R8 nonlinear mechanochemical causal-edge decomposition
+
+- The corrected R8 implementation at `023248e30a454d51a2a6f6c3450b0221659abf65` passed exact-head workflow `34865117387`. The downloaded artifact ZIP independently hashes to `384b92b4c1dcd5609e608f7b8bf8c86ce2e95b74c016bb18ae6b42dbd9b6dbf9`; all 17/17 internal manifest entries verify and the release binary hashes to `ec852cd9110577406103c40003f5f39292aad0d0f58d1927864211cf2b920812`.
+- Independent recomputation verifies 30 fixed R7 snapshots, 30/30 P_TO_M valid cuts, 30/30 G_TO_P snapshots with valid modes, 30/30 usable snapshots, sign symmetry and polarity conservation, and zero non-smooth exclusions. The sealed modular rule reports all 30 G_TO_P indicators damping and all 30 P_TO_M indicators modal-misaligned; terminal classification is `R4_GEOMETRY_TO_POLARITY_FEEDBACK_DAMPING`.
+- Implementation verdict: `PASS`. Scientific verdict: `BOUNDED MODULAR ATTRIBUTION ACCEPTED`. The result does not establish morphogenesis or reproduction; reproduction, population, selection, reversal and final integration are `NOT_REACHED`. No successor started; PR #44 remains untouched.

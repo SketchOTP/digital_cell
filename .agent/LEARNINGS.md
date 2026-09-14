@@ -1377,3 +1377,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 ## DC-M4 R7 final authority readback
 
 - A bounded diagnostic result is not fully handed off until the exact governance tip, hosted artifact, append-only records and external SOT all agree. R7's final hosted seal and Notion readback now agree on the same bounded-inconclusive result.
+
+## DC-M4 R8 modular mechanochemical attribution
+
+- A complete global hybrid-system Jacobian is not required for this bounded question: matched clone-local cuts can isolate the existing P_TO_M and G_TO_P causal edges while keeping intra-module operations fixed.
+- Corrected R8 evidence is usable at all 30 fixed snapshots. P_TO_M is causally present but fails the sealed non-rigid modal-alignment criterion in 30/30 records. G_TO_P has valid sign-symmetric conservative responses in every snapshot, and its phase-aware indicator is damping in 30/30 records.
+- The supported bounded result is `R4_GEOMETRY_TO_POLARITY_FEEDBACK_DAMPING`. This is not a global eigenvalue, not proof of immutable biological impossibility, and not authorization to increase gain or begin reproduction. No production biology changed.

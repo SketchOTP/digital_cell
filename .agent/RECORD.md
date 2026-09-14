@@ -2044,3 +2044,10 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Date: `2026-09-14`.
 - The R7 governance result is externally synchronized and read back. Tip `e1c8d5dd63fcdce3d19edbc12bb9e53674e3864c` passed workflow `34854828443`; the independently verified artifact is `sha256:1225f713fd2eeb645e7d8cbe5ae8451e1edf1e2ffae0d49544c2eee3818d6795` with `20/20` manifest entries. Notion R7 and the Digital Cell SOT both record the accepted bounded-inconclusive result.
 - This is a governance/readback correction only. No source biology, diagnostic result, reproduction, selection, reversal or successor execution changed; terminal classification remains `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`.
+
+## DEC-DC-M4-R8-NONLINEAR-MECHANOCHEMICAL-CAUSAL-EDGE-DECOMPOSITION-001
+
+- Date: `2026-09-14`. R8 is authorized from R7 final governance head `73d2e420da8a704926ebdd47e0d0b76dd63d2fbb` as a diagnostic-only modular causal-edge decomposition. No production biology or global Jacobian is authorized.
+- Corrected implementation head `023248e30a454d51a2a6f6c3450b0221659abf65` passed exact-head CI `34865117387`; independently downloaded artifact ZIP SHA-256 is `384b92b4c1dcd5609e608f7b8bf8c86ce2e95b74c016bb18ae6b42dbd9b6dbf9`; 17/17 manifest entries verify; binary SHA-256 is `ec852cd9110577406103c40003f5f39292aad0d0f58d1927864211cf2b920812`.
+- Fixed checkpoints `3694`, `7389`, `11083` across ten connected histories yield 30/30 valid P_TO_M clone cuts, 30/30 valid G_TO_P snapshots with sign-symmetric conservative modes, 30/30 usable snapshots, and no non-smooth exclusions. The independent terminal predicate is `R4_GEOMETRY_TO_POLARITY_FEEDBACK_DAMPING`: G_TO_P phase-aware indicators damp in all 30 usable snapshots; P_TO_M modal alignment is absent in all 30.
+- Implementation acceptance is `PASS`; bounded scientific attribution is accepted. This modular indicator is not a complete organism eigenvalue and does not establish morphogenesis or reproduction. Reproduction, population, selection, reversal and final integration are `NOT_REACHED`; no successor started; PR #44 remains open/draft/unmerged/untouched.

@@ -326,3 +326,12 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `experiments/generated/dcm4r7fullcyclesameboundary/` — R7 raw qualification, same-phase replay identity, response operator, connected/disconnected comparison, preservation, decision and manifest evidence. Hosted R7 terminal classification is `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`; no downstream reproduction, selection or reversal was executed.
 
 - R7 authority/readback: final hosted governance tip `e1c8d5dd63fcdce3d19edbc12bb9e53674e3864c`, workflow `34854828443`, artifact `sha256:1225f713fd2eeb645e7d8cbe5ae8451e1edf1e2ffae0d49544c2eee3818d6795`; Notion R7 and Digital Cell SOT updated/read back. No successor started.
+
+## DC-M4 R8 nonlinear mechanochemical causal-edge decomposition
+
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — current lifecycle plus observer-only clone-local P_TO_M and G_TO_P edge cuts and matched modular response records; the point-vector norm uses the independently verified flattened Euclidean convention.
+- `digital-protocell/examples/dcm4_r8_nonlinear_mechanochemical_causal_edge.rs` — R8 authority/seal and ten-history, three-checkpoint diagnostic runner; it does not launch reproduction, population, selection or reversal.
+- `digital-protocell/experiments/dcm4_r8_nonlinear_mechanochemical_causal_edge_verify.py` — independent fail-closed verifier for R7 authority, clone equality, edge cuts, sign symmetry, conservation, locality/coordinates, branch handling, artifact manifest and the modular terminal predicate.
+- `.github/workflows/dc-m4-r8-nonlinear-mechanochemical-causal-edge.yml` — exact-head focused checks, contract seal, observer-only execution, independent verification, downstream-stop assertion and artifact upload.
+- `experiments/generated/dcm4r8nonlinearmechanochemicalcausaledge/` — hosted R8 authority, graph, coordinates, perturbation contract, P_TO_M/G_TO_P raw summaries, modular indicators, preservation, decision, qualification and manifest evidence.
+- R8 hosted seal: workflow `34865117387` on implementation head `023248e30a454d51a2a6f6c3450b0221659abf65`; artifact ZIP `sha256:384b92b4c1dcd5609e608f7b8bf8c86ce2e95b74c016bb18ae6b42dbd9b6dbf9`; binary `ec852cd9110577406103c40003f5f39292aad0d0f58d1927864211cf2b920812`; terminal classification `R4_GEOMETRY_TO_POLARITY_FEEDBACK_DAMPING`.

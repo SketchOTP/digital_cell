@@ -1431,3 +1431,10 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 
 - The R7 result seal and external authority readback are complete. Final governance tip `e1c8d5dd63fcdce3d19edbc12bb9e53674e3864c` passed workflow `34854828443`; Notion R7 and the Digital Cell SOT now record `COMPLETED / ACCEPTED BOUNDED INCONCLUSIVE` and the exact terminal classification.
 - No successor is authorized or started. Preserve R1-R7, keep the full-cycle Jacobian `NOT_IDENTIFIED`, and leave PR #44 untouched.
+
+## DC-M4-R8-NONLINEAR-MECHANOCHEMICAL-CAUSAL-EDGE-DECOMPOSITION-001
+
+- Authorized from R7 final governance head `73d2e420da8a704926ebdd47e0d0b76dd63d2fbb` as clone-local diagnostic decomposition only. R3/R4 biology, parameters, actuator cost/cap, mechanics, ecology, fission and reproduction remain frozen.
+- Implementation head `023248e30a454d51a2a6f6c3450b0221659abf65` passed workflow `34865117387`; hosted artifact ZIP is `sha256:384b92b4c1dcd5609e608f7b8bf8c86ce2e95b74c016bb18ae6b42dbd9b6dbf9`, with 17/17 manifest entries verified and binary `ec852cd9110577406103c40003f5f39292aad0d0f58d1927864211cf2b920812`.
+- The run reuses checkpoints `3694`, `7389`, `11083` and produces 30/30 valid P_TO_M cuts, 30/30 G_TO_P snapshots with valid modes, 30/30 usable snapshots, and no branch/non-smooth exclusions. All 30 G_TO_P indicators are damping-sign; all 30 P_TO_M records are modal-misaligned under the sealed rule. Terminal result: `R4_GEOMETRY_TO_POLARITY_FEEDBACK_DAMPING`.
+- This accepts implementation and bounded modular attribution only. No global Jacobian, production biology, reproduction, population, selection, reversal or final integration was executed. Do not start another instrumentation campaign or successor automatically; PR #44 remains untouched.
