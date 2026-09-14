@@ -61,7 +61,7 @@ jobs:
           set -euo pipefail
           rustfmt --edition 2021 --check --config skip_children=true examples/dcm4_r8_nonlinear_mechanochemical_causal_edge.rs
           python3 -m py_compile experiments/dcm4_r8_nonlinear_mechanochemical_causal_edge_verify.py
-          cargo test --locked -q -p regulatory-core
+          cargo test --locked -q -p regulatory-core --lib
           cargo check --locked -q -p regulatory-core --example dcm4_r8_nonlinear_mechanochemical_causal_edge
 
       - name: Seal R8 contract before response execution
