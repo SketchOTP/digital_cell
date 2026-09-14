@@ -1342,6 +1342,11 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - In the corrected matched run, connected polarity actuation improves late geometric distance in `9/10` arms but creates a new growing mechanical mode in only `3/10`. Geometry improvement alone is not morphogenetic-mode qualification.
 - R4's bounded negative does not justify increasing coupling, actuator strength, changing ecology, or adding another pattern generator. E3/E4 remain prerequisite-gated and unreached.
 
+## DC-M4-R4 hosted seal
+
+- Exact-head hosted CI is the governing release identity: workflow `34801587951` passed on `c778e2a4fc858354b7c661a091837e6cc1dab5ee`; artifact ZIP `07b3c062065a58d832ac2c93a5b296b654bfaeeeab6f89081f086f97a007e78a`; binary `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82`.
+- The hosted run confirms implementation acceptance but not morphogenesis acceptance: only `3/10` connected arms gain a new growing mechanical mode versus the `7/10` preregistered threshold. E3/E4 were correctly not launched. Notion write/readback completed.
+
 ## DC-M4-R3 implementation seal
 
 - Exact-head CI must validate the committed source scope after implementation changes; the implementation-head pass alone is not the final governance identity. The hosted artifact must be downloaded and its internal manifest recomputed independently.

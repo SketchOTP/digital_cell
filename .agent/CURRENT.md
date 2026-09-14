@@ -1076,3 +1076,9 @@ CLOSURE-005 final authority: result head `90f5d2a10007455117b1278c5b902af896d95d
 - Local release execution completed the identical 10-arm disconnected/connected coherent-Resource comparison for `14,778` accepted steps per arm with no numerical rejection, geometry invalidity, or observer culling. Independent verification recomputes shape modes from vertices and checks N/F closure, reaction A+R closure, polarity A→W, and mechanical A→W separately.
 - Disconnected arms: `0/10` valid fissions. Connected arms: `0/10` valid fissions; `3/10` newly growing mechanical-mode classifications and `9/10` lower late nearest-pair distances, below the preregistered `7/10` mode and distance thresholds. E3 reproduction and E4 birth-to-birth are `NOT_REACHED`.
 - Local terminal classification: `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`. Exact-head CI/artifact and Notion readback remain pending the final hosted seal; PR #44 remains open/draft/unmerged/untouched.
+
+## DC-M4-R4 exact-head seal
+
+- Implementation head `c778e2a4fc858354b7c661a091837e6cc1dab5ee` passed exact-head hosted workflow `34801587951`.
+- Independently downloaded artifact ZIP SHA-256: `07b3c062065a58d832ac2c93a5b296b654bfaeeeab6f89081f086f97a007e78a`; hosted manifest `18/18` verified; hosted release binary SHA-256: `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82`.
+- Hosted qualification confirms implementation `PASS`, bounded scientific negative, E2 `FAIL`, E3/E4 `NOT_REACHED`, and `next_execution_started=false`. Notion SOT was updated and read back. No successor was started; PR #44 remains untouched.

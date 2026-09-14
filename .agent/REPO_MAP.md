@@ -298,3 +298,5 @@
 - `digital-protocell/experiments/dcm4_r4_polarity_paid_actuation_verify.py` — independent fail-closed verifier for actuator contract, raw vertices/modes, paired E2 predicates, material and energy ledgers, and terminal classification.
 - `.github/workflows/dc-m4-r4-polarity-to-paid-actuation.yml` — exact-head hosted R4 authority, focused tests, prospective seal, bounded matched execution, independent verification and artifact upload.
 - `experiments/generated/dcm4r4polaritypaidactuation/` — R4 actuator audit, coupling seal, raw matched arms, independent verification, preservation, E2 bounded negative, and explicit unreached E3/E4 evidence.
+
+R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab5ee`; artifact ZIP `07b3c062065a58d832ac2c93a5b296b654bfaeeeab6f89081f086f97a007e78a`; binary `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82`.

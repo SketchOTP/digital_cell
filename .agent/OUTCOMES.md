@@ -2716,6 +2716,12 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Connected arms produce `3/10` new growing mechanical-mode classifications and `9/10` lower late nearest-pair distances. The preregistered E2 threshold is `>=7/10` for both, so E2 fails; E3 and E4 are explicitly `NOT_REACHED`.
 - Terminal classification: `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`. This is a bounded failure of the sealed polarity-to-existing-actuator coupling under coherent Resource, not evidence against all possible couplings. Hosted exact-head CI and final artifact identity remain pending.
 
+## DC-M4-R4 hosted exact-head result
+
+- Workflow `34801587951` passed on implementation head `c778e2a4fc858354b7c661a091837e6cc1dab5ee`.
+- Artifact ZIP SHA-256 `07b3c062065a58d832ac2c93a5b296b654bfaeeeab6f89081f086f97a007e78a`; `18/18` hosted manifest hashes and the release binary digest `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82` verify.
+- Hosted evidence confirms the bounded negative and prerequisite stop: E2 `FAIL`, E3/E4 `NOT_REACHED`, terminal `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`, next execution `false`. Notion SOT was updated and read back.
+
 ## DC-M4-R3 exact-head implementation seal
 
 - Workflow `34789648939` passed against implementation head `238fd76577b51b660adbe7c97db9f3170962e91e`. Downloaded artifact ZIP SHA-256: `39648c23e762662a9af4f7c1d5662dbbc91b291ac398fbb6a68aea5ed2515efa`; 20/20 internal manifest hashes independently match.

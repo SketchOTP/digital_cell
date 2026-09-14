@@ -2011,3 +2011,9 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Local controls and corrected release evidence pass for source scope, feature-OFF path, locality/invariance tests, positivity, simple geometry, accepted clocks, N/F closure, reaction A+R closure, polarity A→W, and mechanical A→W. The previous verifier's unsupported gross A/W reconstruction was removed.
 - Matched coherent-Resource E2 result: disconnected `0/10`; connected `0/10`; connected new growing mechanical modes `3/10`; lower late nearest-pair distance `9/10`; no numerical rejection. E2 fails its preregistered dual threshold, so E3 reproduction and E4 birth-to-birth are `NOT_REACHED`.
 - Terminal bounded classification: `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`. No production biology or successor implementation is authorized automatically. PR #44 remains open/draft/unmerged/untouched; hosted exact-head CI/artifact and Notion readback are pending.
+
+## DEC-DC-M4-R4-POLARITY-TO-PAID-ACTUATION-CAUSAL-COUPLING-001-HOSTED-SEAL
+
+- Exact-head hosted workflow `34801587951` passed against `c778e2a4fc858354b7c661a091837e6cc1dab5ee`.
+- Independently downloaded artifact ZIP SHA-256 is `07b3c062065a58d832ac2c93a5b296b654bfaeeeab6f89081f086f97a007e78a`; all `18/18` hosted manifest entries verify; release binary SHA-256 is `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82`.
+- Hosted qualification is implementation `PASS`, scientific `BOUNDED_NEGATIVE`: connected new growing mechanical modes `3/10`, lower late distance `9/10`, both fission counts `0/10`, E2 `FAIL`, E3/E4 `NOT_REACHED`. The final classification remains `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`; no successor started. Notion SOT was updated and read back; PR #44 remains untouched.

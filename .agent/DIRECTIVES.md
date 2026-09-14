@@ -1401,3 +1401,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Authorized one opt-in target-free local mapping from `PolarityMassStateV1` active concentration to the existing paid local contractility input. R3 polarity equations/parameters, actuator force/cost/cap, mechanics, ecology, fission and daughter contracts remain frozen.
 - Prerequisites are strict: actuator audit and prospective coupling seal, feature-OFF/invariance/ledger controls, then ten matched disconnected/connected coherent-Resource histories. E3 reproduction and E4 birth-to-birth are conditional on E2 and must not run after an E2 failure.
 - Current local result is below the E2 threshold: connected arms have `3/10` new growing mechanical modes and `9/10` lower pair distances, with no invalidity. Terminal bounded result is `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`; no successor starts automatically.
+
+## DC-M4-R4 exact-head disposition
+
+- Exact-head workflow `34801587951` passed against `c778e2a4fc858354b7c661a091837e6cc1dab5ee`.
+- Artifact ZIP SHA-256: `07b3c062065a58d832ac2c93a5b296b654bfaeeeab6f89081f086f97a007e78a`; hosted internal manifest `18/18` verified; binary SHA-256 `fbd0607c1867ca2c661da17d51ca36980e1eed87e63e1f70ff54154335d7fb82`.
+- The sealed E2 result is confirmed: connected new growing modes `3/10`, lower late distance `9/10`, both conditions `0/10` fissions. E3 and E4 remain `NOT_REACHED`; terminal classification is `ROUTE_B_POLARITY_ACTUATION_FAILS_TO_GENERATE_MECHANICAL_MODES`. Notion was updated/read back and no successor started.
