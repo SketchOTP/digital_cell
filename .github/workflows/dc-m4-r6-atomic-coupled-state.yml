@@ -1,0 +1,196 @@
+name: DC-M4 R6 atomic coupled-state replay and Jacobian identification
+
+on:
+  push:
+    branches: [codex/dc-final-001-r10r9r5-lifecycle-evidence-recovery]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  r6-atomic-coupled-state:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Check out exact pushed head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+
+      - name: Verify exact authority and diagnostic-only source scope
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          r5=c1af2a6de5b43df2bf27dc99fca25d667b302598
+          git merge-base --is-ancestor "$r5" HEAD
+          python3 - "$r5" <<'PY'
+          import subprocess
+          import sys
+
+          start = sys.argv[1]
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only", f"{start}..HEAD"], text=True
+          ).splitlines()
+          allowed = (
+              ".agent/",
+              ".github/workflows/dc-m4-r6-atomic-coupled-state.yml",
+              "digital-protocell/crates/regulatory-core/Cargo.toml",
+              "digital-protocell/examples/dcfinal001_r4_evolution.rs",
+              "digital-protocell/examples/dcm4_r6_atomic_coupled_state.rs",
+              "digital-protocell/experiments/dcm4_r6_atomic_coupled_state_verify.py",
+              "digital-protocell/experiments/generated/dcm4r6atomiccoupledstate/",
+          )
+          unexpected = [
+              path for path in changed if not any(path.startswith(prefix) for prefix in allowed)
+          ]
+          assert not unexpected, unexpected
+          assert not any(path.startswith("digital-protocell/crates/chemistry-core/") for path in changed)
+          assert not any(path.startswith("digital-protocell/crates/m2-lifeform-runtime/") for path in changed)
+          print("R6 diagnostic-only source scope passed")
+          PY
+          git diff --check
+
+      - name: Run focused R6 syntax and compile checks
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          rustfmt --edition 2021 --check --config skip_children=true examples/dcm4_r6_atomic_coupled_state.rs
+          python3 -m py_compile experiments/dcm4_r6_atomic_coupled_state_verify.py
+          cargo check --locked -q -p regulatory-core --example dcm4_r6_atomic_coupled_state
+
+      - name: Seal checkpoints and perturbation contract before execution
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          run_root="$(mktemp -d)"
+          cargo run --locked -q -p regulatory-core --example dcm4_r6_atomic_coupled_state -- \
+            --stage seal --output "$run_root/seal.json"
+          python3 experiments/dcm4_r6_atomic_coupled_state_verify.py \
+            --repo . --raw "$run_root/seal.json" \
+            --output experiments/generated/dcm4r6atomiccoupledstate --stage seal
+          test -s experiments/generated/dcm4r6atomiccoupledstate/checkpoint_preregistration.json
+          test -s experiments/generated/dcm4r6atomiccoupledstate/perturbation_preregistration.json
+
+      - name: Download and hash the sealed R4 raw input
+        working-directory: digital-protocell
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          run_root="$(mktemp -d)"
+          curl --fail --silent --show-error --location \
+            --header "Authorization: Bearer ${GH_TOKEN}" \
+            --header "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/artifacts/10331644383/zip" \
+            --output "$run_root/r4.zip"
+          test "$(sha256sum "$run_root/r4.zip" | awk '{print $1}')" = \
+            "1be6045d0fdc0b91dda666baefe363e9490ee1cc2be498169b5a0cd3219b677b"
+          unzip -q "$run_root/r4.zip" -d "$run_root/r4"
+          raw="$(find "$run_root/r4" -type f -path '*/raw/qualification.json' -print -quit)"
+          test -n "$raw"
+          test "$(sha256sum "$raw" | awk '{print $1}')" = \
+            "a97852f34c8bb63c86d1367ec512a69e3ae4a421d559fa3dd7054d9ee878c8bd"
+          python3 - "$run_root/r4.zip" "$raw" <<'PY'
+          import hashlib
+          import json
+          import sys
+          from pathlib import Path
+
+          def digest(path):
+              h = hashlib.sha256()
+              with Path(path).open("rb") as stream:
+                  for block in iter(lambda: stream.read(1 << 20), b""):
+                      h.update(block)
+              return h.hexdigest()
+
+          Path("experiments/generated/dcm4r6atomiccoupledstate/r4_input_provenance.json").write_text(
+              json.dumps({
+                  "r4_artifact_zip_sha256": digest(sys.argv[1]),
+                  "r4_raw_sha256": digest(sys.argv[2]),
+                  "r4_artifact": "sha256:1be6045d0fdc0b91dda666baefe363e9490ee1cc2be498169b5a0cd3219b677b",
+                  "r4_raw_expected": "a97852f34c8bb63c86d1367ec512a69e3ae4a421d559fa3dd7054d9ee878c8bd",
+                  "preserved_as_input_only": True,
+              }, indent=2, sort_keys=True) + "\n"
+          )
+          PY
+
+      - name: Execute exact R6 observer-only replay and retain raw evidence
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          run_root="$(mktemp -d)"
+          cargo run --locked --release -q -p regulatory-core --example dcm4_r6_atomic_coupled_state -- \
+            --stage qualification --output "$run_root/qualification.json"
+          mkdir -p experiments/generated/dcm4r6atomiccoupledstate/raw
+          cp "$run_root/qualification.json" \
+            experiments/generated/dcm4r6atomiccoupledstate/raw/qualification.json
+          python3 experiments/dcm4_r6_atomic_coupled_state_verify.py \
+            --repo . --raw experiments/generated/dcm4r6atomiccoupledstate/raw/qualification.json \
+            --output experiments/generated/dcm4r6atomiccoupledstate --stage qualification
+          sha256sum target/release/examples/dcm4_r6_atomic_coupled_state \
+            > experiments/generated/dcm4r6atomiccoupledstate/binary_sha256.txt
+          python3 experiments/dcm4_r6_atomic_coupled_state_verify.py \
+            --repo . --raw experiments/generated/dcm4r6atomiccoupledstate/raw/qualification.json \
+            --output experiments/generated/dcm4r6atomiccoupledstate --stage qualification
+
+      - name: Enforce R6 terminal decision and independent manifest
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path("experiments/generated/dcm4r6atomiccoupledstate")
+          qualification = json.loads((root / "qualification.json").read_text())
+          decision = json.loads((root / "architecture_decision.json").read_text())
+          verifier = json.loads((root / "independent_verifier.json").read_text())
+          identity = json.loads((root / "atomic_replay_identity.json").read_text())
+          response = json.loads((root / "response_operator.json").read_text())
+          preservation = json.loads((root / "preservation.json").read_text())
+          manifest = json.loads((root / "artifact_manifest.json").read_text())
+          assert qualification["implementation_acceptance"] == "PASS", qualification
+          assert qualification["scientific_acceptance"] == "BOUNDED_INCONCLUSIVE", qualification
+          assert qualification["terminal_classification"] == \
+              "R4_COUPLED_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE", qualification
+          assert decision["classification"] == qualification["terminal_classification"], decision
+          assert decision["successor"]["production_implementation_started"] is False, decision
+          assert verifier["status"] == "PASS", verifier
+          assert identity["exact_replay_count"] == 60, identity
+          assert identity["world_unchanged_count"] == 60, identity
+          assert identity["next_id_unchanged_count"] == 60, identity
+          assert identity["accepted_once_count"] == 60, identity
+          assert response["full_closed_loop_jacobian"] == "NOT_IDENTIFIED", response
+          assert preservation["status"] == "PASS", preservation
+          assert qualification["reproduction"] == "NOT_REACHED", qualification
+          assert qualification["population_selection"] == "NOT_REACHED", qualification
+          assert qualification["reversal"] == "NOT_REACHED", qualification
+          assert qualification["next_execution_started"] is False, qualification
+          assert manifest["file_count"] == len(manifest["files"]), manifest
+          for relative, expected in manifest["files"].items():
+              actual = hashlib.sha256((root / relative).read_bytes()).hexdigest()
+              assert actual == expected, (relative, actual, expected)
+          print(json.dumps({
+              "classification": qualification["terminal_classification"],
+              "exact_replays": identity["exact_replay_count"],
+              "full_closed_loop_jacobian": response["full_closed_loop_jacobian"],
+              "files": len(manifest["files"]),
+          }, sort_keys=True))
+          PY
+          git diff --check
+
+      - name: Upload exact-head R6 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcm4r6atomiccoupledstate-${{ github.sha }}
+          if-no-files-found: error
+          retention-days: 90
+          path: |
+            digital-protocell/experiments/generated/dcm4r6atomiccoupledstate/
+            digital-protocell/experiments/dcm4_r6_atomic_coupled_state_verify.py
+            digital-protocell/examples/dcm4_r6_atomic_coupled_state.rs
+            digital-protocell/target/release/examples/dcm4_r6_atomic_coupled_state

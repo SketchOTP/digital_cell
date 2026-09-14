@@ -443,3 +443,7 @@ path = "../../examples/dcm4_r3_conserved_polarity_substrate.rs"
 [[example]]
 name = "dcm4_r4_polarity_paid_actuation"
 path = "../../examples/dcm4_r4_polarity_paid_actuation.rs"
+
+[[example]]
+name = "dcm4_r6_atomic_coupled_state"
+path = "../../examples/dcm4_r6_atomic_coupled_state.rs"
