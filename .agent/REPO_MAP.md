@@ -316,3 +316,11 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `.github/workflows/dc-m4-r6-atomic-coupled-state.yml` — exact-head authority/source-scope, R4 artifact input hash, prospective checkpoint seal, observer run, independent verification, manifest and upload workflow.
 - `experiments/generated/dcm4r6atomiccoupledstate/` — R6 raw snapshots, authority, state contract, replay identity, response operator, causal comparison, preservation, verifier, decision, qualification and manifest evidence.
 - R6 terminal classification is `R4_COUPLED_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`; full closed-loop Jacobian, reproduction, selection, reversal and final integration remain unestablished.
+
+## DC-M4 R7 full-cycle same-boundary coupled response identification
+
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — current R4 lifecycle plus the observer-only pre-polarity boundary snapshot, complete-cycle replay, R6-contract response probes and fail-closed non-smooth/incomplete operator summaries.
+- `digital-protocell/examples/dcm4_r7_full_cycle_same_boundary.rs` — R7 fixed-checkpoint connected/disconnected diagnostic runner; no production coupling or reproduction stage.
+- `digital-protocell/experiments/dcm4_r7_full_cycle_same_boundary_verify.py` — independent R7 state-completeness, exact same-phase replay, response-contract and terminal-classification verifier.
+- `.github/workflows/dc-m4-r7-full-cycle-same-boundary.yml` — exact-head source-scope, focused checks, seal, full-cycle observer run, independent verification, manifest and artifact workflow.
+- `experiments/generated/dcm4r7fullcyclesameboundary/` — R7 raw qualification, same-phase replay identity, response operator, connected/disconnected comparison, preservation, decision and manifest evidence. Hosted R7 terminal classification is `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`; no downstream reproduction, selection or reversal was executed.

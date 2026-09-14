@@ -1420,3 +1420,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Implementation head `bb49b15ebcdca8298a9b626f7b79bcd42ac3a723` passed exact-head workflow `34843935536`; artifact ZIP `sha256:e2d2eed37e5aaf749afa74fba56a26c51e1314d15a8b67d653cece659902b929`; hosted manifest `21/21` verified.
 - Fixed checkpoints are `3,694`, `7,389`, and `11,083`; all ten connected and ten disconnected histories are complete. Independent verification recomputes `60/60` exact unperturbed replays and `30/30` connected same-state causal response records.
 - A finite-difference pre-mechanics-to-post-mechanics local response is recorded, but the full next-equivalent-boundary polarity-chemistry/mechanics Jacobian is not identified from this boundary. Terminal classification is `R4_COUPLED_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`; no successor is selected or started.
+
+## DC-M4-R7-FULL-CYCLE-SAME-BOUNDARY-COUPLED-RESPONSE-IDENTIFICATION-001
+
+- Authorized as the final bounded diagnostic attempt from R6. The implementation captures immediately before `PolarityMassStateV1::advance`, replays through unchanged polarity chemistry, paid mechanics, accepted time and the next equivalent pre-polarity boundary, and reuses the sealed R6 perturbation contract.
+- Implementation head `c2aea0d8f30a4ec34282791ebb93934f8343de14` passed workflow `34853031606`; hosted artifact ZIP digest is `sha256:039068bec2f0f6d74b2be9eb1baab3b48d69b8f90bd604d00b4696144b43f51b`, with `60/60` exact next-boundary identities and `20/20` completed arms. Full closed-loop Jacobian remains `NOT_IDENTIFIED` and the terminal result is `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`.
+- No production biology, reproduction, population, selection, reversal or final integration was executed. Do not automatically issue another Jacobian/instrumentation campaign; preserve R1-R6 and PR #44.

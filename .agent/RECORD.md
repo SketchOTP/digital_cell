@@ -2031,3 +2031,10 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - The observer-only atomic state at checkpoints `3,694`, `7,389`, and `11,083` is complete for all twenty arms. Independent recomputation verifies `60/60` exact replays and `30/30` same-state connected/disconnected causal response records.
 - The captured finite-difference operator covers the pre-mechanics-to-post-mechanics local boundary. It does not identify the complete next-equivalent-boundary polarity-chemistry/mechanics Jacobian; adaptation-boundary columns are explicitly non-smooth/invalid. Terminal decision: `R4_COUPLED_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`.
 - No production biology, reproduction, population, selection, reversal, or final integration was executed. No successor started; PR #44 remains open/draft/unmerged/untouched.
+
+## DEC-DC-M4-R7-FULL-CYCLE-SAME-BOUNDARY-COUPLED-RESPONSE-IDENTIFICATION-001
+
+- Date: `2026-09-14`.
+- R7 extends the observer-only capture to the exact phase immediately before `PolarityMassStateV1::advance` and replays one complete accepted cycle to the next same-phase boundary. The implementation head `c2aea0d8f30a4ec34282791ebb93934f8343de14` passed exact-head workflow `34853031606`; the independently downloaded artifact ZIP is `sha256:039068bec2f0f6d74b2be9eb1baab3b48d69b8f90bd604d00b4696144b43f51b`, with `20/20` internal manifest entries verified.
+- All 60 fixed-checkpoint transitions replay exactly, including accepted clocks and causal state identity. Connected/disconnected same-state full-cycle responses differ in `30/30` records. The reused R6 perturbation basis does not close a converged square tangent over every chemistry/world component, so the full-cycle Jacobian remains `NOT_IDENTIFIED` and branch-sensitive/incomplete channels are fail-closed.
+- Decision: `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`, implementation `PASS`, scientific attribution `BOUNDED_INCONCLUSIVE`. No production biology, reproduction, population, selection, reversal or final integration was executed; no successor started; PR #44 remains open/draft/unmerged/untouched.

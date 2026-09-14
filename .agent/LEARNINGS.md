@@ -1368,3 +1368,8 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Exact state capture is necessary but not sufficient for a coupled Jacobian: a pre-mechanics snapshot can prove replay identity and same-state actuator causality while still omitting the next polarity-chemistry boundary needed for a closed-loop tangent.
 - R6 independently verifies `60/60` exact unperturbed transitions and `30/30` connected/disconnected same-state responses. Discrete adaptation bounds are recorded as non-smooth/invalid rather than silently forced into a derivative.
 - The correct scientific boundary is `R4_COUPLED_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`, not a fitted gain or architecture replacement. No reproduction, selection, reversal or production coupling change is justified by this result.
+
+## DC-M4 R7 full-cycle same-boundary response
+
+- Atomic replay at the correct biological phase is necessary but not sufficient for a closed Jacobian. R7 verifies `60/60` exact pre-polarity-to-next-pre-polarity transitions and `30/30` same-state connected/disconnected effects, while the reused R6 channels remain incomplete or branch-sensitive over the full causal chemistry/world state.
+- The correct bounded result is `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`; do not infer local stability, fit a gain, or start another instrumentation campaign automatically. No production biology, reproduction, selection, reversal or final integration was executed.
