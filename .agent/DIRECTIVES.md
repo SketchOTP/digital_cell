@@ -1413,3 +1413,10 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Authorized from R4 governed head `38de33d6ed2741a60b3e825360a45b8ff4686792` as a diagnostic-only attribution gate. No production source, R3 parameter, R4 gain, actuator force/cost, ecology, fission or reproduction rule may change.
 - The implementation reads the sealed R4 connected Resource raw trajectory, publishes the ordered polarity-to-actuator-to-mechanics-to-geometry graph, recomputes shape and frozen stability predicates, and records per-checkpoint material, activity, funding, force, modal and geometry evidence.
 - The final decision is fail-closed: `R4_ATTRIBUTION_INCONCLUSIVE`. All frozen passive modes decay, but the R4 artifact lacks a matched pre-mechanics polarity-force state needed to discriminate a full coupled modal projection or geometry-to-polarity Jacobian. No successor mechanism is selected or started.
+
+## DC-M4-R6-ATOMIC-COUPLED-STATE-REPLAY-AND-JACOBIAN-IDENTIFICATION-001
+
+- Authorized from R5 final head `c1af2a6de5b43df2bf27dc99fca25d667b302598` as a diagnostic-only atomic replay and response-identification gate. R3/R4 biology, parameters, actuator cost/cap, ecology, fission and reproduction remain frozen.
+- Implementation head `bb49b15ebcdca8298a9b626f7b79bcd42ac3a723` passed exact-head workflow `34843935536`; artifact ZIP `sha256:e2d2eed37e5aaf749afa74fba56a26c51e1314d15a8b67d653cece659902b929`; hosted manifest `21/21` verified.
+- Fixed checkpoints are `3,694`, `7,389`, and `11,083`; all ten connected and ten disconnected histories are complete. Independent verification recomputes `60/60` exact unperturbed replays and `30/30` connected same-state causal response records.
+- A finite-difference pre-mechanics-to-post-mechanics local response is recorded, but the full next-equivalent-boundary polarity-chemistry/mechanics Jacobian is not identified from this boundary. Terminal classification is `R4_COUPLED_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`; no successor is selected or started.

@@ -307,3 +307,12 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `.github/workflows/dc-m4-r5-mechanochemical-instability.yml` — exact-R4-descendant source-scope check, sealed R4 artifact download/hash verification, attribution run, fail-closed terminal decision and artifact upload.
 - `experiments/generated/dcm4r5mechanochemicalinstability/` — R4 authority, causal graph, source/trajectory audit, matched checkpoint ledger, group comparison, frozen stability/modal projection, geometry feedback, prior art, verifier, preservation, decision and qualification evidence.
 - Terminal classification is `R4_ATTRIBUTION_INCONCLUSIVE`: all valid frozen passive modes decay, but the sealed R4 schema does not identify a full coupled local Jacobian or exact pre-mechanics polarity-force projection. No successor mechanism or reproduction run was started.
+
+## DC-M4 R6 atomic coupled-state replay
+
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — unchanged R4 current-kernel lifecycle plus R6 observer-only complete pre-mechanics snapshots, exact clone replay, and local central-difference boundary response summaries.
+- `digital-protocell/examples/dcm4_r6_atomic_coupled_state.rs` — R6 fixed-checkpoint seal and ten-arm connected/disconnected diagnostic runner; no production coupling or reproduction stage.
+- `digital-protocell/experiments/dcm4_r6_atomic_coupled_state_verify.py` — independent state-completeness, replay-identity, same-state response, finite-difference convergence and fail-closed terminal verifier.
+- `.github/workflows/dc-m4-r6-atomic-coupled-state.yml` — exact-head authority/source-scope, R4 artifact input hash, prospective checkpoint seal, observer run, independent verification, manifest and upload workflow.
+- `experiments/generated/dcm4r6atomiccoupledstate/` — R6 raw snapshots, authority, state contract, replay identity, response operator, causal comparison, preservation, verifier, decision, qualification and manifest evidence.
+- R6 terminal classification is `R4_COUPLED_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`; full closed-loop Jacobian, reproduction, selection, reversal and final integration remain unestablished.

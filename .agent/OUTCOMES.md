@@ -2739,3 +2739,11 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Independent recomputation confirms ten accepted, growth-qualified, simple connected arms, `0/10` fissions, endpoint shape grouping `3` growing / `7` decaying, nonzero polarity activity after initialization, fully funded actuator requests, and `1,800` valid frozen passive decaying stability records with no growing records.
 - The observer-only causal graph and matched checkpoint ledger pass. Exact coupled modal projection and the complete geometry-to-polarity feedback sign remain unavailable from the sealed R4 schema; the post-mechanics force projection is explicitly limited to a descriptive proxy.
 - Terminal classification: `R4_ATTRIBUTION_INCONCLUSIVE`; implementation acceptance `PASS`, scientific result `BOUNDED_INCONCLUSIVE`, reproduction/selection/reversal/final integration `NOT_REACHED`, next execution `false`, PR #44 untouched.
+
+## DC-M4 R6 atomic coupled-state replay and Jacobian identification
+
+- The exact R5 authority was reconciled and a diagnostic-only capture was added at the R4 paid-mechanics boundary. The default R4 path remains unchanged.
+- The hosted exact-head result for implementation head `bb49b15ebcdca8298a9b626f7b79bcd42ac3a723` is workflow `34843935536 PASS`; artifact ZIP `e2d2eed37e5aaf749afa74fba56a26c51e1314d15a8b67d653cece659902b929`; all `21/21` manifest entries verify.
+- All `60/60` snapshots contain mesh/material/rest/maturation, chemistry, polarity amounts/activity/measures, plasticity, world/ledger, seed, clocks and configuration. Unperturbed replay identity is independently recomputed for `60/60`; connected versus disconnected same-state response is nonzero in all `30/30` connected records.
+- The pre-mechanics local response is finite-difference instrumented with explicit non-smooth adaptation-boundary handling. The full closed-loop Jacobian remains unmeasured because the next polarity chemistry transition is outside the captured response boundary.
+- Terminal classification: `R4_COUPLED_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`; implementation `PASS`, scientific attribution `BOUNDED_INCONCLUSIVE`; reproduction, population, selection, reversal and final integration `NOT_REACHED`.

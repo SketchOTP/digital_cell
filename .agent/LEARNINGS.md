@@ -1362,3 +1362,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - A nonzero polarity signal and a fully funded existing actuator request do not by themselves establish a self-amplifying coupled mechanical mode. The sealed R4 run contains endpoint shape growth in three arms, while all `1,800` valid frozen passive perturbation records decay.
 - The 3/7 endpoint grouping is descriptive only. The current raw schema does not serialize pre-mechanics vertices together with the polarity edge-tension field, so post-mechanics modal projections cannot be promoted to a full coupled Jacobian or causal projection result.
 - The correct bounded handoff is `R4_ATTRIBUTION_INCONCLUSIVE`, not a gain, actuator, ecology or successor-architecture change. Future attribution requires an observer-only pre-mechanics force/state trace and a matched local perturbation or converged response replay.
+
+## DC-M4-R6 atomic coupled-state replay
+
+- Exact state capture is necessary but not sufficient for a coupled Jacobian: a pre-mechanics snapshot can prove replay identity and same-state actuator causality while still omitting the next polarity-chemistry boundary needed for a closed-loop tangent.
+- R6 independently verifies `60/60` exact unperturbed transitions and `30/30` connected/disconnected same-state responses. Discrete adaptation bounds are recorded as non-smooth/invalid rather than silently forced into a derivative.
+- The correct scientific boundary is `R4_COUPLED_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`, not a fitted gain or architecture replacement. No reproduction, selection, reversal or production coupling change is justified by this result.

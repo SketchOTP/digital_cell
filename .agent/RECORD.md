@@ -2023,3 +2023,11 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - R5 diagnostic authority is R4 final governance head `38de33d6ed2741a60b3e825360a45b8ff4686792`, exact-head CI `34802371283 PASS`, artifact `sha256:1be6045d0fdc0b91dda666baefe363e9490ee1cc2be498169b5a0cd3219b677b`, with sealed raw connected-history hash `sha256:a97852f34c8bb63c86d1367ec512a69e3ae4a421d559fa3dd7054d9ee878c8bd`.
 - Observer-only evidence verifies complete ten-arm Resource trajectories, `0/10` fissions, `3/10` endpoint shape-growth arms, fully funded actuator requests, and `1,800` valid decaying frozen passive perturbation records. No production transition or successor biology was executed.
 - Decision: `R4_ATTRIBUTION_INCONCLUSIVE`. The R4 schema cannot supply an exact pre-mechanics polarity-force state paired with geometry, so the full closed-loop modal projection and geometry-to-polarity sign are not established. Post-mechanics projection records remain descriptive limitations, not causal proof.
+
+## DEC-DC-M4-R6-ATOMIC-COUPLED-STATE-REPLAY-AND-JACOBIAN-IDENTIFICATION-001
+
+- Date: `2026-09-14`.
+- R6 implementation head `bb49b15ebcdca8298a9b626f7b79bcd42ac3a723` passed exact-head workflow `34843935536`; independently verified artifact ZIP SHA-256 is `e2d2eed37e5aaf749afa74fba56a26c51e1314d15a8b67d653cece659902b929`; hosted manifest is `21/21`.
+- The observer-only atomic state at checkpoints `3,694`, `7,389`, and `11,083` is complete for all twenty arms. Independent recomputation verifies `60/60` exact replays and `30/30` same-state connected/disconnected causal response records.
+- The captured finite-difference operator covers the pre-mechanics-to-post-mechanics local boundary. It does not identify the complete next-equivalent-boundary polarity-chemistry/mechanics Jacobian; adaptation-boundary columns are explicitly non-smooth/invalid. Terminal decision: `R4_COUPLED_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`.
+- No production biology, reproduction, population, selection, reversal, or final integration was executed. No successor started; PR #44 remains open/draft/unmerged/untouched.
