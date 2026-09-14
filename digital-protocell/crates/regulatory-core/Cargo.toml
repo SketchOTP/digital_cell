@@ -447,3 +447,7 @@ path = "../../examples/dcm4_r4_polarity_paid_actuation.rs"
 [[example]]
 name = "dcm4_r6_atomic_coupled_state"
 path = "../../examples/dcm4_r6_atomic_coupled_state.rs"
+
+[[example]]
+name = "dcm4_r7_full_cycle_same_boundary"
+path = "../../examples/dcm4_r7_full_cycle_same_boundary.rs"
