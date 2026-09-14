@@ -54,6 +54,9 @@ fn write_json(path: &str, value: &Value) {
 fn seal() -> Value {
     json!({
         "directive": DIRECTIVE,
+        "status": "PASS",
+        "horizon": HORIZON,
+        "checkpoints": CHECKPOINTS,
         "entry_authority": {
             "r7_final_head": R7_FINAL_HEAD,
             "r7_ci": R7_CI,
@@ -98,7 +101,7 @@ fn seal() -> Value {
         "reproduction": "NOT_REACHED",
         "population_selection": "NOT_REACHED",
         "reversal": "NOT_REACHED",
-        "status": "PASS",
+        "observer_only": true,
     })
 }
 
