@@ -6295,10 +6295,7 @@ fn r8_p_to_m_record(seed: &R7BoundarySeed) -> Result<Value, String> {
             == cut["transition"]["mechanics"]["diagnostic"]["topology_rebonds"];
     let full_polarity_state = &full["transition"]["polarity"];
     let cut_polarity_state = &cut["transition"]["polarity"];
-    let mechanical_delta_norm = full_cut_delta
-        .iter()
-        .map(|point| point[0].hypot(point[1]))
-        .sum::<f64>();
+    let mechanical_delta_norm = r8_point_vector_norm(&full_cut_delta);
     let polarity_a_delta = full_polarity_state["a_consumed"].as_f64().unwrap_or(0.0)
         - cut_polarity_state["a_consumed"].as_f64().unwrap_or(0.0);
     let active_work_delta = full["transition"]["mechanics"]["active_a"]
@@ -6332,10 +6329,7 @@ fn r8_p_to_m_record(seed: &R7BoundarySeed) -> Result<Value, String> {
         "polarity_activity_harmonics": r8_scalar_harmonics(&activity),
         "mechanical_delta_vertices": full_cut_delta,
         "mechanical_delta_norm": mechanical_delta_norm,
-        "full_displacement_norm": full_displacement
-            .iter()
-            .map(|point| point[0].hypot(point[1]))
-            .sum::<f64>(),
+        "full_displacement_norm": r8_point_vector_norm(&full_displacement),
         "normal_modal_delta": normal_modal_delta,
         "full_normal_modal": full_normal_modal,
         "active_work_delta": active_work_delta,
@@ -6415,6 +6409,15 @@ fn r8_amount_difference(left: &Value, right: &Value, field: &str) -> Vec<f64> {
 
 fn r8_vector_norm(vector: &[f64]) -> f64 {
     vector.iter().map(|value| value * value).sum::<f64>().sqrt()
+}
+
+fn r8_point_vector_norm(points: &[[f64; 2]]) -> f64 {
+    points
+        .iter()
+        .flat_map(|point| point.iter())
+        .map(|value| value * value)
+        .sum::<f64>()
+        .sqrt()
 }
 
 fn r8_g_to_p_record(seed: &R7BoundarySeed) -> Result<Value, String> {
