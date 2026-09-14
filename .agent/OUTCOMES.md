@@ -2753,3 +2753,8 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - The diagnostic-only implementation at `c2aea0d8f30a4ec34282791ebb93934f8343de14` passed exact-head workflow `34853031606`. The hosted artifact ZIP independently hashes to `sha256:039068bec2f0f6d74b2be9eb1baab3b48d69b8f90bd604d00b4696144b43f51b`; its `20/20` internal manifest entries verify and its release binary hash is `430496f154b4019e651bfa4d9232fb6d22f8cf2897eff1bce93bfa6736ef1ae2`.
 - All 20 connected/disconnected arms completed `14,778` accepted steps with no numerical invalidity or fission. The captured pre-polarity to next pre-polarity map has `60/60` exact replay identities and `30/30` same-state connected/disconnected response records; the full-cycle Jacobian is fail-closed as `NOT_IDENTIFIED`.
 - Terminal classification: `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`. Implementation acceptance is `PASS`; scientific attribution is `BOUNDED_INCONCLUSIVE`; reproduction, selection, reversal and final integration are `NOT_REACHED`, with no successor started. Final governance-head validation and Notion readback remain pending.
+
+## DC-M4 R7 final governance and Notion readback
+
+- The final governance result at `e1c8d5dd63fcdce3d19edbc12bb9e53674e3864c` passed exact-head workflow `34854828443`; the final artifact ZIP is `sha256:1225f713fd2eeb645e7d8cbe5ae8451e1edf1e2ffae0d49544c2eee3818d6795` and its `20/20` manifest entries verify.
+- Notion R7 and the Digital Cell SOT were updated and read back. This supersedes the earlier pending wording without changing the scientific result: `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`, implementation `PASS`, scientific attribution `BOUNDED_INCONCLUSIVE`, downstream stages `NOT_REACHED`.

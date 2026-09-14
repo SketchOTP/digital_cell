@@ -2038,3 +2038,9 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - R7 extends the observer-only capture to the exact phase immediately before `PolarityMassStateV1::advance` and replays one complete accepted cycle to the next same-phase boundary. The implementation head `c2aea0d8f30a4ec34282791ebb93934f8343de14` passed exact-head workflow `34853031606`; the independently downloaded artifact ZIP is `sha256:039068bec2f0f6d74b2be9eb1baab3b48d69b8f90bd604d00b4696144b43f51b`, with `20/20` internal manifest entries verified.
 - All 60 fixed-checkpoint transitions replay exactly, including accepted clocks and causal state identity. Connected/disconnected same-state full-cycle responses differ in `30/30` records. The reused R6 perturbation basis does not close a converged square tangent over every chemistry/world component, so the full-cycle Jacobian remains `NOT_IDENTIFIED` and branch-sensitive/incomplete channels are fail-closed.
 - Decision: `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`, implementation `PASS`, scientific attribution `BOUNDED_INCONCLUSIVE`. No production biology, reproduction, population, selection, reversal or final integration was executed; no successor started; PR #44 remains open/draft/unmerged/untouched.
+
+## DEC-DC-M4-R7-FINAL-GOVERNANCE-AND-NOTION-READBACK
+
+- Date: `2026-09-14`.
+- The R7 governance result is externally synchronized and read back. Tip `e1c8d5dd63fcdce3d19edbc12bb9e53674e3864c` passed workflow `34854828443`; the independently verified artifact is `sha256:1225f713fd2eeb645e7d8cbe5ae8451e1edf1e2ffae0d49544c2eee3818d6795` with `20/20` manifest entries. Notion R7 and the Digital Cell SOT both record the accepted bounded-inconclusive result.
+- This is a governance/readback correction only. No source biology, diagnostic result, reproduction, selection, reversal or successor execution changed; terminal classification remains `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`.

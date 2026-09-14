@@ -324,3 +324,5 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `digital-protocell/experiments/dcm4_r7_full_cycle_same_boundary_verify.py` — independent R7 state-completeness, exact same-phase replay, response-contract and terminal-classification verifier.
 - `.github/workflows/dc-m4-r7-full-cycle-same-boundary.yml` — exact-head source-scope, focused checks, seal, full-cycle observer run, independent verification, manifest and artifact workflow.
 - `experiments/generated/dcm4r7fullcyclesameboundary/` — R7 raw qualification, same-phase replay identity, response operator, connected/disconnected comparison, preservation, decision and manifest evidence. Hosted R7 terminal classification is `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`; no downstream reproduction, selection or reversal was executed.
+
+- R7 authority/readback: final hosted governance tip `e1c8d5dd63fcdce3d19edbc12bb9e53674e3864c`, workflow `34854828443`, artifact `sha256:1225f713fd2eeb645e7d8cbe5ae8451e1edf1e2ffae0d49544c2eee3818d6795`; Notion R7 and Digital Cell SOT updated/read back. No successor started.

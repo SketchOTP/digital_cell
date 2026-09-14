@@ -1426,3 +1426,8 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Authorized as the final bounded diagnostic attempt from R6. The implementation captures immediately before `PolarityMassStateV1::advance`, replays through unchanged polarity chemistry, paid mechanics, accepted time and the next equivalent pre-polarity boundary, and reuses the sealed R6 perturbation contract.
 - Implementation head `c2aea0d8f30a4ec34282791ebb93934f8343de14` passed workflow `34853031606`; hosted artifact ZIP digest is `sha256:039068bec2f0f6d74b2be9eb1baab3b48d69b8f90bd604d00b4696144b43f51b`, with `60/60` exact next-boundary identities and `20/20` completed arms. Full closed-loop Jacobian remains `NOT_IDENTIFIED` and the terminal result is `R4_FULL_CYCLE_RESPONSE_NONSMOOTH_OR_UNIDENTIFIABLE`.
 - No production biology, reproduction, population, selection, reversal or final integration was executed. Do not automatically issue another Jacobian/instrumentation campaign; preserve R1-R6 and PR #44.
+
+## DC-M4 R7 final governance reconciliation
+
+- The R7 result seal and external authority readback are complete. Final governance tip `e1c8d5dd63fcdce3d19edbc12bb9e53674e3864c` passed workflow `34854828443`; Notion R7 and the Digital Cell SOT now record `COMPLETED / ACCEPTED BOUNDED INCONCLUSIVE` and the exact terminal classification.
+- No successor is authorized or started. Preserve R1-R7, keep the full-cycle Jacobian `NOT_IDENTIFIED`, and leave PR #44 untouched.
