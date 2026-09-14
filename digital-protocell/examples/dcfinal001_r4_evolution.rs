@@ -6293,8 +6293,8 @@ fn r8_p_to_m_record(seed: &R7BoundarySeed) -> Result<Value, String> {
             == cut["transition"]["mechanics"]["diagnostic"]["topology_ruptures"]
         && full["transition"]["mechanics"]["diagnostic"]["topology_rebonds"]
             == cut["transition"]["mechanics"]["diagnostic"]["topology_rebonds"];
-    let full_polarity_state = full["transition"]["polarity"];
-    let cut_polarity_state = cut["transition"]["polarity"];
+    let full_polarity_state = &full["transition"]["polarity"];
+    let cut_polarity_state = &cut["transition"]["polarity"];
     let mechanical_delta_norm = full_cut_delta
         .iter()
         .map(|point| point[0].hypot(point[1]))
