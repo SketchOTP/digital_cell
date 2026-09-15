@@ -23,8 +23,7 @@ const R10_HEAD: &str = "8bdcadf4b03c503d0871d02c600849fb2ebfe915";
 const R10_CI: &str = "34947560845";
 const R10_ARTIFACT: &str =
     "sha256:a1956be7b49cc475e95d0806370e4dacf8e162a19777a0466dc717d2b111c938";
-const R10_BINARY: &str =
-    "025ea9bbcfd2d9b19b1470a589a4526231a631b96e4b2ae34af2f6ef8d2d4ca6";
+const R10_BINARY: &str = "025ea9bbcfd2d9b19b1470a589a4526231a631b96e4b2ae34af2f6ef8d2d4ca6";
 const HORIZON: usize = 14_778;
 const CHECKPOINTS: [usize; 3] = [3_694, 7_389, 11_083];
 const ALIGNMENT_THRESHOLD: f64 = 0.50;
