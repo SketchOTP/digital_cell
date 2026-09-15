@@ -1,12 +1,13 @@
 //! DC-M4-R3: an opt-in, pre-fission conserved polarity substrate.
 //!
-//! This module is intentionally not wired into any production transition.  It
-//! owns only two edge-local material pools (`active_amount` and
+//! The default R3 transition remains the unchanged amount-based chemistry.
+//! This module owns only two edge-local material pools (`active_amount` and
 //! `inactive_amount`) and their conservative reaction/transport ledger.  It
 //! accepts edge control-volume lengths, not coordinates, forces, fission
-//! decisions, or observer labels.  Consequently the R3 pattern qualification
-//! cannot alter mechanics, growth placement, pressure, apposition, or
-//! scission.
+//! decisions, or observer labels.  The separate R9 opt-in variant accepts an
+//! explicitly supplied local load-bearing strain vector and modifies only the
+//! existing activation term; it still cannot inspect or invoke mechanics,
+//! growth placement, apposition, or scission.
 
 use serde::{Deserialize, Serialize};
 use thiserror::Error;
@@ -275,8 +276,37 @@ impl PolarityMassStateV1 {
         params: &PolarityMassParamsV1,
         available_a: f64,
     ) -> Result<PolarityStepLedgerV1, PolarityMassError> {
+        self.advance_with_load_bearing_strain(measures, params, available_a, None)
+    }
+
+    /// R9 opt-in variant of [`Self::advance`].  When a local load-bearing
+    /// strain vector is supplied, only the existing inactive-to-active
+    /// reaction term is multiplied by `(1 + max(0, strain_i))`.  The signal is
+    /// dimensionless and is supplied by the authoritative material mesh; this
+    /// method does not inspect coordinates, targets, fission state or
+    /// observer output.  `None`, zero strain and compression take the exact
+    /// R3 reaction path.
+    pub fn advance_with_load_bearing_strain(
+        &mut self,
+        measures: &[f64],
+        params: &PolarityMassParamsV1,
+        available_a: f64,
+        load_bearing_strain: Option<&[f64]>,
+    ) -> Result<PolarityStepLedgerV1, PolarityMassError> {
         params.validate()?;
         self.validate(measures)?;
+        if let Some(strain) = load_bearing_strain {
+            if strain.len() != measures.len() {
+                return Err(PolarityMassError::InvalidState(
+                    "load-bearing strain and measure lengths differ".to_string(),
+                ));
+            }
+            if strain.iter().any(|value| !value.is_finite()) {
+                return Err(PolarityMassError::InvalidState(
+                    "load-bearing strain must be finite".to_string(),
+                ));
+            }
+        }
         if !available_a.is_finite() || available_a < 0.0 {
             return Err(PolarityMassError::InsufficientEnergy {
                 required: 0.0,
@@ -304,9 +334,21 @@ impl PolarityMassStateV1 {
             for i in 0..measures.len() {
                 let active_concentration = reacted_active[i] / measures[i];
                 let inactive_concentration = reacted_inactive[i] / measures[i];
-                let rate = (params.basal_activation_rate
+                let activation_rate = (params.basal_activation_rate
                     + params.positive_feedback_rate * active_concentration * active_concentration)
-                    * inactive_concentration
+                    * inactive_concentration;
+                let activation_rate = match load_bearing_strain {
+                    Some(strain) => {
+                        let signal = strain[i].max(0.0);
+                        if signal == 0.0 {
+                            activation_rate
+                        } else {
+                            (1.0 + signal) * activation_rate
+                        }
+                    }
+                    None => activation_rate,
+                };
+                let rate = activation_rate
                     - (params.basal_deactivation_rate
                         + params.quadratic_deactivation_rate
                             * active_concentration
@@ -725,6 +767,59 @@ mod tests {
         assert!((state.total_amount() - before).abs() < 1.0e-10);
         assert!((ledger.a_consumed - ledger.w_produced).abs() < 1.0e-12);
         assert!((ledger.diffusion_residual).abs() < 1.0e-10);
+    }
+
+    #[test]
+    fn mechanosensitive_zero_and_compression_are_exact_r3() {
+        let m = measures();
+        let params = PolarityMassParamsV1::candidate();
+        let (original, _) = state();
+        let mut legacy = original.clone();
+        let mut zero = original.clone();
+        let mut compression = original;
+        let legacy_ledger = legacy.advance(&m, &params, 10_000.0).expect("legacy");
+        let zero_ledger = zero
+            .advance_with_load_bearing_strain(&m, &params, 10_000.0, Some(&vec![0.0; 8]))
+            .expect("zero strain");
+        let compression_ledger = compression
+            .advance_with_load_bearing_strain(&m, &params, 10_000.0, Some(&vec![-0.5; 8]))
+            .expect("compression");
+        assert_eq!(legacy, zero);
+        assert_eq!(legacy, compression);
+        assert_eq!(legacy_ledger, zero_ledger);
+        assert_eq!(legacy_ledger, compression_ledger);
+    }
+
+    #[test]
+    fn mechanosensitive_tension_preserves_material_and_pays_existing_cost() {
+        let m = measures();
+        let params = PolarityMassParamsV1::candidate();
+        let (mut state, _) = state();
+        let before = state.total_amount();
+        let ledger = state
+            .advance_with_load_bearing_strain(&m, &params, 10_000.0, Some(&vec![0.5; 8]))
+            .expect("tensile strain");
+        assert!((state.total_amount() - before).abs() < 1.0e-10);
+        assert!((ledger.a_consumed - ledger.w_produced).abs() < 1.0e-12);
+        assert!(ledger.a_consumed.is_finite());
+        assert!(state
+            .active_amount
+            .iter()
+            .chain(&state.inactive_amount)
+            .all(|value| value.is_finite() && *value >= 0.0));
+    }
+
+    #[test]
+    fn mechanosensitive_strain_input_is_atomic_and_local() {
+        let m = measures();
+        let params = PolarityMassParamsV1::candidate();
+        let (mut state, _) = state();
+        let original = state.clone();
+        let error = state
+            .advance_with_load_bearing_strain(&m, &params, 10_000.0, Some(&vec![0.0; 7]))
+            .expect_err("length mismatch must reject");
+        assert!(matches!(error, PolarityMassError::InvalidState(_)));
+        assert_eq!(state, original);
     }
 
     #[test]

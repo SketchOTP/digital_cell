@@ -1438,3 +1438,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Implementation head `023248e30a454d51a2a6f6c3450b0221659abf65` passed workflow `34865117387`; hosted artifact ZIP is `sha256:384b92b4c1dcd5609e608f7b8bf8c86ce2e95b74c016bb18ae6b42dbd9b6dbf9`, with 17/17 manifest entries verified and binary `ec852cd9110577406103c40003f5f39292aad0d0f58d1927864211cf2b920812`.
 - The run reuses checkpoints `3694`, `7389`, `11083` and produces 30/30 valid P_TO_M cuts, 30/30 G_TO_P snapshots with valid modes, 30/30 usable snapshots, and no branch/non-smooth exclusions. All 30 G_TO_P indicators are damping-sign; all 30 P_TO_M records are modal-misaligned under the sealed rule. Terminal result: `R4_GEOMETRY_TO_POLARITY_FEEDBACK_DAMPING`.
 - This accepts implementation and bounded modular attribution only. No global Jacobian, production biology, reproduction, population, selection, reversal or final integration was executed. Do not start another instrumentation campaign or successor automatically; PR #44 remains untouched.
+
+## DC-M4-R9-LOCAL-MECHANOSENSITIVE-POLARITY-ACTIVATION-001
+
+- Authorized from R8 final governance head `18cd5daff29267469db838acbba9bf9691e94ba6` as one opt-in local tensile mechanosensitive activation path. Preserve amount/current-edge-length concentration physics, R3 parameters, R4 paid actuation and all mechanics/ecology/fission contracts.
+- `s_i = max(0, load_bearing_strain_i)` multiplies only the existing R3 inactive-to-active activation term by `(1 + s_i)`. The source is local `MaterialMesh::load_bearing_strain`; no new coefficient, polarity pool, mechanical output or observer input is authorized.
+- Required sequence is E0 source/energy audit, E1 preservation and ledger tests, fixed thirty-snapshot R8 G_TO_P correction, then conditional held-out morphogenesis/reproduction/birth-to-birth only if each prerequisite passes. No successor or downstream stage is started automatically.

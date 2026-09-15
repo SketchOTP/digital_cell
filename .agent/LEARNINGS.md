@@ -1383,3 +1383,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - A complete global hybrid-system Jacobian is not required for this bounded question: matched clone-local cuts can isolate the existing P_TO_M and G_TO_P causal edges while keeping intra-module operations fixed.
 - Corrected R8 evidence is usable at all 30 fixed snapshots. P_TO_M is causally present but fails the sealed non-rigid modal-alignment criterion in 30/30 records. G_TO_P has valid sign-symmetric conservative responses in every snapshot, and its phase-aware indicator is damping in 30/30 records.
 - The supported bounded result is `R4_GEOMETRY_TO_POLARITY_FEEDBACK_DAMPING`. This is not a global eigenvalue, not proof of immutable biological impossibility, and not authorization to increase gain or begin reproduction. No production biology changed.
+
+## DC-M4 R9 local mechanosensitive polarity activation — implementation note
+
+- The R9 candidate must be additive to legitimate amount/current-edge-length concentration physics: local tensile load-bearing strain may enhance inactive-to-active conversion, while compression and zero strain follow the exact R3 reaction path.
+- Polarity chemistry A→W remains a separate transaction from any future mechanical A→W transaction. R9's fixed causal-edge qualification is pattern/feedback evidence only and must not be interpreted as mechanical or reproductive qualification.
+- The fixed R8 G_TO_P result remains the preserved route-OFF control. If the sealed mechanosensitive path fails the `24/30` correction gate, stop without tuning; if it passes, downstream gates remain conditional and must use new preregistered histories.

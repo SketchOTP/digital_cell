@@ -335,3 +335,12 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `.github/workflows/dc-m4-r8-nonlinear-mechanochemical-causal-edge.yml` — exact-head focused checks, contract seal, observer-only execution, independent verification, downstream-stop assertion and artifact upload.
 - `experiments/generated/dcm4r8nonlinearmechanochemicalcausaledge/` — hosted R8 authority, graph, coordinates, perturbation contract, P_TO_M/G_TO_P raw summaries, modular indicators, preservation, decision, qualification and manifest evidence.
 - R8 hosted seal: workflow `34865117387` on implementation head `023248e30a454d51a2a6f6c3450b0221659abf65`; artifact ZIP `sha256:384b92b4c1dcd5609e608f7b8bf8c86ce2e95b74c016bb18ae6b42dbd9b6dbf9`; binary `ec852cd9110577406103c40003f5f39292aad0d0f58d1927864211cf2b920812`; terminal classification `R4_GEOMETRY_TO_POLARITY_FEEDBACK_DAMPING`.
+
+## DC-M4 R9 local mechanosensitive polarity activation
+
+- `digital-protocell/crates/regulatory-core/src/polarity_mass.rs` — opt-in strain-aware extension of the existing R3 polarity advance; legacy `advance` remains the Route-OFF path.
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — opt-in production wiring and clone-local R9 G_TO_P diagnostic path; no default mechanics output or reproduction stage is enabled.
+- `digital-protocell/examples/dcm4_r9_local_mechanosensitive_polarity_activation.rs` — R9 contract seal and fixed R8 checkpoint runner.
+- `digital-protocell/experiments/dcm4_r9_local_mechanosensitive_polarity_activation_verify.py` — independent source, ledger, sign-symmetry, conservation and terminal-predicate verifier.
+- `.github/workflows/dc-m4-r9-local-mechanosensitive-polarity-activation.yml` — exact-head authority, focused checks, contract seal, fixed diagnostic execution, independent verification and artifact upload.
+- `experiments/generated/dcm4r9localmechanosensitivepolarityactivation/` — reserved hosted R9 contract, raw diagnostic, verifier and manifest evidence root. E2 and downstream statuses remain pending; PR #44 is untouched.

@@ -2051,3 +2051,9 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Corrected implementation head `023248e30a454d51a2a6f6c3450b0221659abf65` passed exact-head CI `34865117387`; independently downloaded artifact ZIP SHA-256 is `384b92b4c1dcd5609e608f7b8bf8c86ce2e95b74c016bb18ae6b42dbd9b6dbf9`; 17/17 manifest entries verify; binary SHA-256 is `ec852cd9110577406103c40003f5f39292aad0d0f58d1927864211cf2b920812`.
 - Fixed checkpoints `3694`, `7389`, `11083` across ten connected histories yield 30/30 valid P_TO_M clone cuts, 30/30 valid G_TO_P snapshots with sign-symmetric conservative modes, 30/30 usable snapshots, and no non-smooth exclusions. The independent terminal predicate is `R4_GEOMETRY_TO_POLARITY_FEEDBACK_DAMPING`: G_TO_P phase-aware indicators damp in all 30 usable snapshots; P_TO_M modal alignment is absent in all 30.
 - Implementation acceptance is `PASS`; bounded scientific attribution is accepted. This modular indicator is not a complete organism eigenvalue and does not establish morphogenesis or reproduction. Reproduction, population, selection, reversal and final integration are `NOT_REACHED`; no successor started; PR #44 remains open/draft/unmerged/untouched.
+
+## DEC-DC-M4-R9-LOCAL-MECHANOSENSITIVE-POLARITY-ACTIVATION-001 — staged implementation
+
+- Date: `2026-09-14`.
+- R9 is authorized from R8 final governance head `18cd5daff29267469db838acbba9bf9691e94ba6` to test one parameter-free local tensile activation multiplier using `MaterialMesh::load_bearing_strain(i)`. The accepted R3 amount semantics, reaction parameters, source provenance and A→W chemistry ledger remain frozen.
+- The staged source preserves the default R3/R4 path and adds only opt-in strain-aware polarity advancement plus clone-local fixed-R8 diagnostic records. Hosted Rust validation and E2 outcomes are pending; no production reproduction, population, selection, reversal or final integration is authorized.

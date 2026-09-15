@@ -74,6 +74,26 @@ fn r8_capture_only() -> bool {
     )
 }
 
+/// R9 is opt-in and remains disabled for every historical/current entry point
+/// unless the dedicated R9 workflow explicitly enables it.  The flag changes
+/// only the polarity chemistry input; it never changes the actuator or
+/// mechanics contract.
+fn r9_mechanosensitive_polarity_enabled() -> bool {
+    matches!(
+        env::var("DCFINAL001_R9_MECHANOSENSITIVE").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
+
+/// R9 held-out histories use a domain-separated campaign seed.  This is an
+/// assay identity only and is never selected from a morphogenetic outcome.
+fn r9_held_out_history_mode() -> bool {
+    matches!(
+        env::var("DCFINAL001_R9_HELD_OUT").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
+
 fn r10r9r5_canonical_lifecycle() -> bool {
     matches!(
         env::var("DCFINAL001_R10R9R5_CANONICAL").ok().as_deref(),
@@ -3927,6 +3947,15 @@ fn r10_advance_phase(
                 let measures = (0..cohort.mesh.n())
                     .map(|index| cohort.mesh.edge_length(index))
                     .collect::<Vec<_>>();
+                let local_load_bearing_strain = if r9_mechanosensitive_polarity_enabled() {
+                    Some(
+                        (0..cohort.mesh.n())
+                            .map(|index| cohort.mesh.load_bearing_strain(index))
+                            .collect::<Vec<_>>(),
+                    )
+                } else {
+                    None
+                };
                 let polarity_params = PolarityMassParamsV1::candidate();
                 let actuation_params = PolarityActuationParamsV1::sealed_r3_candidate();
                 let polarity_result = states
@@ -3935,7 +3964,12 @@ fn r10_advance_phase(
                     .and_then(|state| {
                         let available_a = cohort.mesh.interior.a.max(0.0) * cohort.mesh.area();
                         let step_ledger = state
-                            .advance(&measures, &polarity_params, available_a)
+                            .advance_with_load_bearing_strain(
+                                &measures,
+                                &polarity_params,
+                                available_a,
+                                local_load_bearing_strain.as_deref(),
+                            )
                             .map_err(|error| error.to_string())?;
                         let area = cohort.mesh.area();
                         if !area.is_finite() || area <= 0.0 {
@@ -6381,6 +6415,72 @@ fn r8_polarity_update(
     }))
 }
 
+/// R9 diagnostic polarity update.  The caller supplies the physical mesh
+/// whose local strain is authoritative for this update.  `measures` can be a
+/// diagnostic cut vector, while `strain_source` remains the explicitly named
+/// geometry input; this keeps the G_TO_P intervention limited to the edge
+/// measure vector and makes the extra R9 signal auditable.
+fn r9_polarity_update(
+    seed: &R7BoundarySeed,
+    cohort: &Cohort,
+    measures: &[f64],
+    strain_source: &Cohort,
+) -> Result<Value, String> {
+    let mut states = seed.polarity_states.clone();
+    let state = states
+        .get_mut(&cohort.id)
+        .ok_or_else(|| "R9_POLARITY_STATE_MISSING".to_string())?;
+    let area = cohort.mesh.area();
+    if !area.is_finite() || area <= 0.0 {
+        return Err("R9_POLARITY_INVALID_AREA".to_string());
+    }
+    if strain_source.mesh.n() != measures.len() {
+        return Err("R9_STRAIN_MEASURE_LENGTH_MISMATCH".to_string());
+    }
+    let load_bearing_strain = (0..strain_source.mesh.n())
+        .map(|index| strain_source.mesh.load_bearing_strain(index))
+        .collect::<Vec<_>>();
+    let tensile_signal = load_bearing_strain
+        .iter()
+        .map(|value| value.max(0.0))
+        .collect::<Vec<_>>();
+    let a_before = cohort.mesh.interior.a.max(0.0) * area;
+    let w_before = cohort.mesh.interior.w.max(0.0) * area;
+    let step = state
+        .advance_with_load_bearing_strain(
+            measures,
+            &PolarityMassParamsV1::candidate(),
+            a_before,
+            Some(&load_bearing_strain),
+        )
+        .map_err(|error| format!("R9_POLARITY_UPDATE:{error}"))?;
+    let a_after = a_before - step.a_consumed;
+    let w_after = w_before + step.w_produced;
+    if a_after < -1.0e-10 || !a_after.is_finite() || !w_after.is_finite() {
+        return Err("R9_POLARITY_ENERGY_INVALID".to_string());
+    }
+    Ok(json!({
+        "active_after": state.active_amount.clone(),
+        "inactive_after": state.inactive_amount.clone(),
+        "total_before": step.total_before,
+        "total_after": step.total_after,
+        "total_residual": step.total_after - step.total_before,
+        "a_consumed": step.a_consumed,
+        "w_produced": step.w_produced,
+        "a_before": a_before,
+        "a_after": a_after.max(0.0),
+        "w_before": w_before,
+        "w_after": w_after,
+        "accepted": step.accepted,
+        "measure_count": measures.len(),
+        "load_bearing_strain": load_bearing_strain,
+        "tensile_signal": tensile_signal,
+        "mechanosensitive_equation": "(1 + max(0, load_bearing_strain_i)) * existing_R3_activation_term - existing_R3_deactivation_term",
+        "mechanical_output": false,
+        "observer_only": true,
+    }))
+}
+
 fn r8_perturbed_cohort(
     seed: &R7BoundarySeed,
     mode: &[f64],
@@ -6396,6 +6496,129 @@ fn r8_perturbed_cohort(
         return Err("R8_GEOMETRY_PERTURBATION_INVALID".to_string());
     }
     Ok(cohort)
+}
+
+/// R9 repeats the sealed R8 G_TO_P perturbation contract with the only
+/// difference being the opt-in local tensile activation input.  The baseline
+/// measure cut also uses the baseline strain source, so no other geometry
+/// input is left active in the cut clone.
+fn r9_g_to_p_record(seed: &R7BoundarySeed) -> Result<Value, String> {
+    let n = seed.cohort.mesh.n();
+    let baseline_measures = (0..n)
+        .map(|index| seed.cohort.mesh.edge_length(index))
+        .collect::<Vec<_>>();
+    let mean_edge = baseline_measures.iter().sum::<f64>() / n.max(1) as f64;
+    let modes = r8_normal_harmonic_basis(&seed.cohort.mesh);
+    let mut mode_records = Vec::new();
+    for (harmonic, phase, mode) in modes {
+        let mut scales = Vec::new();
+        for normalized in [1.0e-3_f64, 5.0e-4_f64] {
+            let amplitude = normalized * mean_edge;
+            let mut signs = Vec::new();
+            for sign in [1.0_f64, -1.0_f64] {
+                let cohort = match r8_perturbed_cohort(seed, &mode, amplitude, sign) {
+                    Ok(cohort) => cohort,
+                    Err(reason) => {
+                        signs.push(json!({"status": "NONSMOOTH_OR_INVALID", "reason": reason}));
+                        continue;
+                    }
+                };
+                let actual_measures = (0..cohort.mesh.n())
+                    .map(|index| cohort.mesh.edge_length(index))
+                    .collect::<Vec<_>>();
+                let full = r9_polarity_update(seed, &cohort, &actual_measures, &cohort);
+                let cut = r9_polarity_update(seed, &cohort, &baseline_measures, &seed.cohort);
+                match (full, cut) {
+                    (Ok(full), Ok(cut)) => {
+                        let active_delta = r8_amount_difference(&full, &cut, "active_after");
+                        let inactive_delta = r8_amount_difference(&full, &cut, "inactive_after");
+                        signs.push(json!({
+                            "status": "VALID",
+                            "full": full,
+                            "cut": cut,
+                            "active_delta": active_delta,
+                            "inactive_delta": inactive_delta,
+                        }));
+                    }
+                    (full, cut) => signs.push(json!({
+                        "status": "NONSMOOTH_OR_INVALID",
+                        "full_error": full.err(),
+                        "cut_error": cut.err(),
+                    })),
+                }
+            }
+            let response = |record: &Value| {
+                let mut values = record["active_delta"].as_array().cloned().unwrap_or_default()
+                    .iter()
+                    .map(|value| value.as_f64().unwrap_or(f64::NAN))
+                    .collect::<Vec<_>>();
+                values.extend(
+                    record["inactive_delta"]
+                        .as_array()
+                        .cloned()
+                        .unwrap_or_default()
+                        .iter()
+                        .map(|value| value.as_f64().unwrap_or(f64::NAN)),
+                );
+                values
+            };
+            let symmetry = if signs.len() == 2 && signs.iter().all(|record| record["status"] == "VALID") {
+                let plus = response(&signs[0]);
+                let minus = response(&signs[1]);
+                let sum = plus
+                    .iter()
+                    .zip(&minus)
+                    .map(|(left, right)| left + right)
+                    .collect::<Vec<_>>();
+                let difference = plus
+                    .iter()
+                    .zip(&minus)
+                    .map(|(left, right)| left - right)
+                    .collect::<Vec<_>>();
+                let opposite_error = r8_vector_norm(&sum)
+                    / r8_vector_norm(&difference).max(1.0e-300);
+                json!({
+                    "status": if opposite_error <= 0.05 { "PASS" } else { "FAIL" },
+                    "opposite_error": opposite_error,
+                    "plus_norm": r8_vector_norm(&plus),
+                    "minus_norm": r8_vector_norm(&minus),
+                })
+            } else {
+                json!({"status": "NONSMOOTH_OR_INVALID"})
+            };
+            scales.push(json!({
+                "normalized_amplitude": normalized,
+                "amplitude": amplitude,
+                "signs": signs,
+                "sign_symmetry": symmetry,
+            }));
+        }
+        let valid = scales.iter().all(|scale| {
+            scale["sign_symmetry"]["status"] == "PASS"
+                && scale["signs"].as_array().is_some_and(|signs| {
+                    signs.len() == 2 && signs.iter().all(|sign| sign["status"] == "VALID")
+                })
+        });
+        mode_records.push(json!({
+            "harmonic": harmonic,
+            "phase": phase,
+            "scales": scales,
+            "status": if valid { "VALID" } else { "G_NONLINEAR_OR_NONSMOOTH" },
+        }));
+    }
+    Ok(json!({
+        "status": "PASS",
+        "mechanosensitive": true,
+        "baseline_measures": baseline_measures,
+        "mean_edge_length": mean_edge,
+        "modes": mode_records,
+        "perturbation_contract": {
+            "normalized_amplitudes": [1.0e-3, 5.0e-4],
+            "definition": "mean edge length times radial normal Fourier mode",
+            "measurement": "FULL minus G_TO_P_CUT immediately after mechanosensitive polarity.advance and before mechanics",
+        },
+        "observer_only": true,
+    }))
 }
 
 fn r8_amount_difference(left: &Value, right: &Value, field: &str) -> Vec<f64> {
@@ -6664,6 +6887,64 @@ pub fn run_r8_modular_edge_arm(index: usize) -> Value {
         "reversal": "NOT_REACHED",
         "observer_only": true,
         "production_transition_modified": false,
+    })
+}
+
+/// R9 reuses the exact R8 fixed histories/checkpoints and compares the
+/// accepted R4 G_TO_P response with the one opt-in mechanosensitive chemistry
+/// path.  The two records are computed from the same serialized boundary
+/// seed; neither result is fed into the production transition.
+pub fn run_r9_mechanosensitive_edge_arm(index: usize) -> Value {
+    let r7 = run_r7_full_cycle_arm(index, true);
+    let snapshots = r7["full_cycle_snapshots"]
+        .as_array()
+        .cloned()
+        .unwrap_or_default();
+    let records = snapshots
+        .iter()
+        .map(|snapshot| {
+            let record = r8_seed_from_snapshot(snapshot).and_then(|seed| {
+                let p_to_m = r8_p_to_m_record(&seed)?;
+                let baseline = r8_g_to_p_record(&seed)?;
+                let mechanosensitive = r9_g_to_p_record(&seed)?;
+                Ok(json!({
+                    "checkpoint_step": snapshot["checkpoint_step"],
+                    "expected_next_step": snapshot["expected_next_step"],
+                    "input_boundary_digest": deterministic_state_digest(&snapshot["input_boundary"]),
+                    "r7_replay_identity": snapshot["identity"].clone(),
+                    "p_to_m": p_to_m,
+                    "r4_baseline": baseline,
+                    "r9_mechanosensitive": mechanosensitive,
+                    "same_snapshot_for_conditions": true,
+                    "observer_only": true,
+                }))
+            });
+            match record {
+                Ok(value) => value,
+                Err(reason) => json!({
+                    "checkpoint_step": snapshot["checkpoint_step"],
+                    "status": "ERROR",
+                    "error": reason,
+                    "observer_only": true,
+                }),
+            }
+        })
+        .collect::<Vec<_>>();
+    json!({
+        "arm": r7["arm"].clone(),
+        "connected": true,
+        "accepted": r7["accepted"].clone(),
+        "accepted_steps": r7["accepted_steps"].clone(),
+        "physical_fissions": r7["physical_fissions"].clone(),
+        "r7_snapshot_count": records.len(),
+        "snapshots": records,
+        "mechanosensitive_equation": "(1 + max(0, load_bearing_strain_i)) * existing_R3_activation_term - existing_R3_deactivation_term",
+        "mechanosensitive_coefficient": "NONE; unit coefficient is fixed by the parameter-free contract",
+        "production_transition_modified": false,
+        "reproduction": "NOT_REACHED",
+        "population_selection": "NOT_REACHED",
+        "reversal": "NOT_REACHED",
+        "observer_only": true,
     })
 }
 
