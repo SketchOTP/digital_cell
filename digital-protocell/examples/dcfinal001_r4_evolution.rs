@@ -19,9 +19,13 @@ use chemistry_core::mesh_growth::{
 };
 use chemistry_core::mesh_mechanics::{
     compute_forces, local_pressure, mechanics_step_with_external_forces, remesh, MechParams,
+    MAX_EXTERNAL_FORCE_PER_VERTEX,
 };
 use chemistry_core::mesh_reactions::{reactions_step, ReactionParams};
-use chemistry_core::mesh_self_contact::{mechanics_step_with_local_self_contact, polygon_simple};
+use chemistry_core::mesh_self_contact::{
+    mechanics_step_with_edge_tensions_external_forces_and_local_self_contact,
+    mechanics_step_with_local_self_contact, polygon_simple,
+};
 use chemistry_core::mesh_transport::{
     mean_occupancy, permeability, transport_step, TransportParams,
 };
@@ -62,6 +66,10 @@ const R6_ATOMIC_CHECKPOINTS: [usize; 3] = [3_694, 7_389, 11_083];
 // R7 reuses the exact R6 checkpoint contract, but captures the earlier
 // pre-polarity.advance boundary.
 const R7_FULL_CYCLE_CHECKPOINTS: [usize; 3] = R6_ATOMIC_CHECKPOINTS;
+// R11 observer-only ideal susceptibility probe. These are assay-contract
+// values, not organism parameters or production controls.
+const R11_ALIGNMENT_THRESHOLD: f64 = 0.50;
+const R11_SIGN_SYMMETRY_TOLERANCE: f64 = 0.05;
 
 /// R8 asks the shared R7 lifecycle only for its exact replay seeds.  Skipping
 /// R7's already-sealed response probe in that mode changes no organism
@@ -6011,6 +6019,469 @@ fn r10_normal_remap_record(seed: &R7BoundarySeed) -> Result<Value, String> {
         "observer_only": true,
         "production_transition_modified": false,
     }))
+}
+
+fn r11_spectrum(values: &[f64]) -> Value {
+    let harmonics = r8_scalar_harmonics(values);
+    let dc = harmonics
+        .first()
+        .and_then(|value| value["amplitude"].as_f64())
+        .unwrap_or(0.0);
+    let non_dc_energy = harmonics
+        .iter()
+        .skip(1)
+        .map(|value| {
+            let cosine = value["cosine"].as_f64().unwrap_or(f64::NAN);
+            let sine = value["sine"].as_f64().unwrap_or(f64::NAN);
+            cosine * cosine + sine * sine
+        })
+        .sum::<f64>();
+    let dominant = harmonics
+        .iter()
+        .skip(1)
+        .max_by(|left, right| {
+            left["amplitude"]
+                .as_f64()
+                .unwrap_or(0.0)
+                .total_cmp(&right["amplitude"].as_f64().unwrap_or(0.0))
+        })
+        .cloned()
+        .unwrap_or_else(|| json!({"harmonic": 0, "amplitude": 0.0}));
+    let dominant_harmonic = dominant["harmonic"].as_u64().unwrap_or(0) as usize;
+    let dominant_energy = dominant["amplitude"].as_f64().unwrap_or(0.0).powi(2);
+    json!({
+        "values": values,
+        "dc": dc,
+        "harmonics": harmonics,
+        "non_dc_energy": non_dc_energy,
+        "dominant_non_dc_harmonic": dominant_harmonic,
+        "dominant_non_dc_energy_fraction": if non_dc_energy > 1.0e-300 { dominant_energy / non_dc_energy } else { 0.0 },
+    })
+}
+
+fn r11_spectral_coherence(left: &[f64], right: &[f64]) -> f64 {
+    let left = r8_scalar_harmonics(left);
+    let right = r8_scalar_harmonics(right);
+    let (dot, left_norm, right_norm) = left.iter().zip(right.iter()).fold(
+        (0.0, 0.0, 0.0),
+        |(dot, left_norm, right_norm), (left, right)| {
+            let lc = left["cosine"].as_f64().unwrap_or(f64::NAN);
+            let ls = left["sine"].as_f64().unwrap_or(f64::NAN);
+            let rc = right["cosine"].as_f64().unwrap_or(f64::NAN);
+            let rs = right["sine"].as_f64().unwrap_or(f64::NAN);
+            (
+                dot + lc * rc + ls * rs,
+                left_norm + lc * lc + ls * ls,
+                right_norm + rc * rc + rs * rs,
+            )
+        },
+    );
+    dot / (left_norm.sqrt() * right_norm.sqrt()).max(1.0e-300)
+}
+
+fn r11_activity_spectral_audit(seed: &R7BoundarySeed) -> Result<Value, String> {
+    let state = seed
+        .polarity_states
+        .get(&seed.cohort.id)
+        .ok_or_else(|| "R11_POLARITY_STATE_MISSING".to_string())?;
+    let measures = (0..seed.cohort.mesh.n())
+        .map(|index| seed.cohort.mesh.edge_length(index))
+        .collect::<Vec<_>>();
+    let params = PolarityActuationParamsV1::sealed_r3_candidate()
+        .map_err(|error| format!("R11_ACTUATION_PARAMS:{error}"))?;
+    let proposal = derive_local_activity(state, &measures, &params)
+        .map_err(|error| format!("R11_ACTIVITY:{error}"))?;
+    let edge_deviation = proposal
+        .edge_active_concentrations
+        .iter()
+        .map(|value| value - proposal.reference_active_concentration)
+        .collect::<Vec<_>>();
+    let vertex_deviation = (0..measures.len())
+        .map(|vertex| {
+            let previous = proposal.edge_active_concentrations
+                [(vertex + measures.len() - 1) % measures.len()];
+            let next = proposal.edge_active_concentrations[vertex];
+            0.5 * (previous + next) - proposal.reference_active_concentration
+        })
+        .collect::<Vec<_>>();
+    Ok(json!({
+        "edge_active_concentration_deviation": r11_spectrum(&edge_deviation),
+        "signed_vertex_deviation_before_clipping": r11_spectrum(&vertex_deviation),
+        "final_r4_activity": r11_spectrum(&proposal.vertex_activity),
+        "edge_to_vertex_spectral_coherence": r11_spectral_coherence(&edge_deviation, &vertex_deviation),
+        "vertex_to_final_spectral_coherence": r11_spectral_coherence(&vertex_deviation, &proposal.vertex_activity),
+        "reference_active_concentration": proposal.reference_active_concentration,
+        "homogeneous_activity_zero": proposal.homogeneous_activity_zero,
+    }))
+}
+
+fn r11_force_vectors_from_r10(r10: &Value) -> Result<(Vec<[f64; 2]>, f64), String> {
+    let normal = r10["normal_route"]["funded_inward_normal_forces"]
+        .as_array()
+        .ok_or_else(|| "R11_R10_NORMAL_FORCES_MISSING".to_string())?;
+    let cut = r10["cut_route"]["funded_inward_normal_forces"]
+        .as_array()
+        .ok_or_else(|| "R11_R10_CUT_FORCES_MISSING".to_string())?;
+    if normal.len() != cut.len() || normal.is_empty() {
+        return Err("R11_R10_FORCE_LENGTH_MISMATCH".to_string());
+    }
+    let mut delta = Vec::with_capacity(normal.len());
+    for (normal, cut) in normal.iter().zip(cut) {
+        let normal = normal
+            .as_array()
+            .filter(|value| value.len() == 2)
+            .ok_or_else(|| "R11_R10_NORMAL_FORCE_INVALID".to_string())?;
+        let cut = cut
+            .as_array()
+            .filter(|value| value.len() == 2)
+            .ok_or_else(|| "R11_R10_CUT_FORCE_INVALID".to_string())?;
+        delta.push([
+            normal[0].as_f64().unwrap_or(f64::NAN) - cut[0].as_f64().unwrap_or(f64::NAN),
+            normal[1].as_f64().unwrap_or(f64::NAN) - cut[1].as_f64().unwrap_or(f64::NAN),
+        ]);
+    }
+    if delta.iter().any(|force| force.iter().any(|value| !value.is_finite())) {
+        return Err("R11_R10_FORCE_NONFINITE".to_string());
+    }
+    let rms = (delta
+        .iter()
+        .map(|force| force[0] * force[0] + force[1] * force[1])
+        .sum::<f64>()
+        / delta.len() as f64)
+        .sqrt();
+    if !rms.is_finite() || rms <= 0.0 {
+        return Err("R11_R10_INCREMENTAL_FORCE_ZERO".to_string());
+    }
+    Ok((delta, rms))
+}
+
+fn r11_ideal_mode_forces(
+    mesh: &MaterialMesh,
+    harmonic: usize,
+    phase: f64,
+    rms_force: f64,
+    sign: f64,
+) -> Result<(Vec<[f64; 2]>, Vec<f64>), String> {
+    let n = mesh.n();
+    if n < 3 || !rms_force.is_finite() || rms_force <= 0.0 {
+        return Err("R11_IDEAL_FORCE_INVALID".to_string());
+    }
+    let raw = (0..n)
+        .map(|index| {
+            (std::f64::consts::TAU * harmonic as f64 * index as f64 / n as f64 + phase).cos()
+        })
+        .collect::<Vec<_>>();
+    let raw_rms = (raw.iter().map(|value| value * value).sum::<f64>() / n as f64).sqrt();
+    if !raw_rms.is_finite() || raw_rms <= 1.0e-12 {
+        return Err("R11_IDEAL_MODE_DEGENERATE".to_string());
+    }
+    let weights = raw
+        .iter()
+        .map(|value| sign * value / raw_rms)
+        .collect::<Vec<_>>();
+    let forces = weights
+        .iter()
+        .enumerate()
+        .map(|(vertex, weight)| {
+            let (normal, _) = r10_closure::local_inward_normal_and_tangent(mesh, vertex);
+            [rms_force * weight * normal[0], rms_force * weight * normal[1]]
+        })
+        .collect::<Vec<_>>();
+    let observed_rms = (forces
+        .iter()
+        .map(|force| force[0] * force[0] + force[1] * force[1])
+        .sum::<f64>()
+        / n as f64)
+        .sqrt();
+    if !observed_rms.is_finite()
+        || (observed_rms - rms_force).abs() > 1.0e-12_f64.max(rms_force * 1.0e-10)
+        || forces.iter().any(|force| {
+            force[0].hypot(force[1]) > MAX_EXTERNAL_FORCE_PER_VERTEX + 1.0e-12
+        })
+    {
+        return Err("R11_IDEAL_FORCE_CAP_OR_RMS_INVALID".to_string());
+    }
+    Ok((forces, weights))
+}
+
+fn r11_modal_fraction(
+    displacement: &[[f64; 2]],
+    modes: &[(usize, String, Vec<f64>)],
+    harmonic: usize,
+) -> (f64, f64, f64) {
+    let projections = r8_normal_modal_projections(displacement, modes);
+    let total = projections
+        .iter()
+        .map(|value| value["projection"].as_f64().unwrap_or(f64::NAN).powi(2))
+        .sum::<f64>();
+    let corresponding = projections
+        .iter()
+        .filter(|value| value["harmonic"].as_u64() == Some(harmonic as u64))
+        .map(|value| value["projection"].as_f64().unwrap_or(f64::NAN).powi(2))
+        .sum::<f64>();
+    (
+        corresponding,
+        total,
+        if total > 1.0e-300 {
+            corresponding / total
+        } else {
+            0.0
+        },
+    )
+}
+
+fn r11_record_fraction(record: &Value, harmonic: usize) -> f64 {
+    let modes = record["normal_modal_delta"].as_array().cloned().unwrap_or_default();
+    let total = modes
+        .iter()
+        .map(|mode| mode["projection"].as_f64().unwrap_or(f64::NAN).powi(2))
+        .sum::<f64>();
+    let corresponding = modes
+        .iter()
+        .filter(|mode| mode["harmonic"].as_u64() == Some(harmonic as u64))
+        .map(|mode| mode["projection"].as_f64().unwrap_or(f64::NAN).powi(2))
+        .sum::<f64>();
+    if total > 1.0e-300 {
+        corresponding / total
+    } else {
+        0.0
+    }
+}
+
+fn r11_probe(
+    seed: &R7BoundarySeed,
+    harmonic: usize,
+    phase_name: &str,
+    phase: f64,
+    normalized_scale: f64,
+    rms_force: f64,
+    sign: f64,
+) -> Result<Value, String> {
+    let (forces, weights) = r11_ideal_mode_forces(
+        &seed.cohort.mesh,
+        harmonic,
+        phase,
+        rms_force * normalized_scale,
+        sign,
+    )?;
+    let mut mesh = seed.cohort.mesh.clone();
+    let before_vertices = mesh.vertices.clone();
+    let before_n = mesh.n();
+    let before_area = mesh.area();
+    let before_chem = mesh.interior;
+    let before_structural = mesh.total_structural_mass();
+    let before_bound_membrane = mesh.total_bound_membrane();
+    let before_free_l = mesh.free_l;
+    let zero_tensions = vec![0.0; mesh.n()];
+    let contact =
+        mechanics_step_with_edge_tensions_external_forces_and_local_self_contact(
+            &mut mesh,
+            &MechParams::default(),
+            &zero_tensions,
+            &forces,
+        )
+        .ok_or_else(|| "R11_MECHANICS_PROBE_REJECTED".to_string())?;
+    let (splits, merges, fallback) = remesh_preserving_simple(&mut mesh);
+    let same_topology = mesh.n() == before_n && splits == 0 && merges == 0 && !fallback;
+    let simple = polygon_simple(&mesh.vertices);
+    let runtime_valid = mesh.physical_runtime_valid();
+    let lifecycle_valid = mesh.lifecycle_invariants_hold();
+    let displacement = if same_topology {
+        mesh.vertices
+            .iter()
+            .zip(&before_vertices)
+            .map(|(after, before)| [after[0] - before[0], after[1] - before[1]])
+            .collect::<Vec<_>>()
+    } else {
+        Vec::new()
+    };
+    let normals = (0..before_n)
+        .map(|vertex| r10_closure::local_inward_normal_and_tangent(&seed.cohort.mesh, vertex).0)
+        .collect::<Vec<_>>();
+    let normal_displacement = displacement
+        .iter()
+        .zip(&normals)
+        .map(|(delta, normal)| delta[0] * normal[0] + delta[1] * normal[1])
+        .collect::<Vec<_>>();
+    let modes = r8_normal_harmonic_basis(&seed.cohort.mesh);
+    let (corresponding_energy, modal_energy, fraction) =
+        r11_modal_fraction(&displacement, &modes, harmonic);
+    let after_area = mesh.area();
+    let chem_amount_delta = |before: f64, after: f64| after * after_area - before * before_area;
+    let chemistry_amount_residuals = json!({
+        "c": chem_amount_delta(before_chem.c, mesh.interior.c),
+        "a": chem_amount_delta(before_chem.a, mesh.interior.a),
+        "n": chem_amount_delta(before_chem.n, mesh.interior.n),
+        "f": chem_amount_delta(before_chem.f, mesh.interior.f),
+        "w": chem_amount_delta(before_chem.w, mesh.interior.w),
+        "r": chem_amount_delta(before_chem.r, mesh.interior.r),
+    });
+    Ok(json!({
+        "status": if same_topology && simple && runtime_valid && lifecycle_valid { "VALID" } else { "NONSMOOTH" },
+        "phase": phase_name,
+        "phase_radians": phase,
+        "sign": sign,
+        "normalized_scale": normalized_scale,
+        "rms_force": rms_force * normalized_scale,
+        "force_weights": weights,
+        "force_vectors": forces,
+        "force_cap_valid": forces.iter().all(|force| force[0].hypot(force[1]) <= MAX_EXTERNAL_FORCE_PER_VERTEX + 1.0e-12),
+        "clone_equality_before_intervention": true,
+        "branch": {
+            "same_topology": same_topology,
+            "splits": splits,
+            "merges": merges,
+            "fallback": fallback,
+            "simple": simple,
+            "runtime_valid": runtime_valid,
+            "lifecycle_valid": lifecycle_valid,
+        },
+        "contact": contact,
+        "displacement": displacement,
+        "normal_displacement": normal_displacement.clone(),
+        "normal_displacement_spectrum": r11_spectrum(&normal_displacement),
+        "normal_modal_projections": r8_normal_modal_projections(&displacement, &modes),
+        "corresponding_harmonic": harmonic,
+        "corresponding_modal_energy": corresponding_energy,
+        "total_modal_energy": modal_energy,
+        "corresponding_modal_energy_fraction": fraction,
+        "geometry_invariant": {
+            "structural_mass_residual": mesh.total_structural_mass() - before_structural,
+            "bound_membrane_residual": mesh.total_bound_membrane() - before_bound_membrane,
+            "free_l_residual": mesh.free_l - before_free_l,
+            "chemistry_amount_residuals": chemistry_amount_residuals,
+            "area_before": before_area,
+            "area_after": after_area,
+        },
+        "observer_only": true,
+        "production_state_mutated": false,
+        "polarity_feedback": false,
+    }))
+}
+
+fn r11_ideal_susceptibility_record(seed: &R7BoundarySeed) -> Result<Value, String> {
+    let r10_record = r10_normal_remap_record(seed)?;
+    if r10_record["status"] != "VALID" {
+        return Err("R11_R10_REFERENCE_INVALID".to_string());
+    }
+    let activity_audit = r11_activity_spectral_audit(seed)?;
+    let dominant = activity_audit["final_r4_activity"]["dominant_non_dc_harmonic"]
+        .as_u64()
+        .ok_or_else(|| "R11_DOMINANT_HARMONIC_MISSING".to_string())? as usize;
+    if dominant == 0 {
+        return Err("R11_NO_NONDC_ACTIVITY_HARMONIC".to_string());
+    }
+    let (incremental_forces, incremental_rms) = r11_force_vectors_from_r10(&r10_record)?;
+    let mut probes = Vec::new();
+    for (phase_name, phase) in [
+        ("cosine", 0.0_f64),
+        ("sine", std::f64::consts::FRAC_PI_2),
+    ] {
+        for normalized_scale in [1.0_f64, 0.5_f64] {
+            for sign in [1.0_f64, -1.0_f64] {
+                probes.push(r11_probe(
+                    seed,
+                    dominant,
+                    phase_name,
+                    phase,
+                    normalized_scale,
+                    incremental_rms,
+                    sign,
+                )?);
+            }
+        }
+    }
+    let pre_vertices = seed.cohort.mesh.vertices.clone();
+    let local_normals = (0..seed.cohort.mesh.n())
+        .map(|vertex| r10_closure::local_inward_normal_and_tangent(&seed.cohort.mesh, vertex).0)
+        .collect::<Vec<_>>();
+    let old_r8 = &r10_record["r8_route_off_reference"];
+    let old_r8_fraction = r11_record_fraction(old_r8, dominant);
+    let old_r10_fraction = r11_record_fraction(&r10_record, dominant);
+    Ok(json!({
+        "status": if probes.iter().all(|probe| probe["status"] == "VALID") { "VALID" } else { "NONSMOOTH" },
+        "dominant_activity_harmonic": dominant,
+        "activity_spectral_audit": activity_audit,
+        "r8_old_corresponding_mode_fraction": old_r8_fraction,
+        "r10_old_corresponding_mode_fraction": old_r10_fraction,
+        "r8_old_normal_modal_projections": old_r8["normal_modal_delta"].clone(),
+        "r10_old_normal_modal_projections": r10_record["normal_modal_delta"].clone(),
+        "r8_old_activity_harmonics": old_r8["polarity_activity_harmonics"].clone(),
+        "r10_old_activity_harmonics": r10_record["polarity_activity_harmonics"].clone(),
+        "r10_incremental_force_vectors": incremental_forces,
+        "r10_incremental_force_rms": incremental_rms,
+        "pre_vertices": pre_vertices,
+        "local_inward_normals": local_normals,
+        "probe_contract": {
+            "harmonic_source": "dominant_nonzero_final_R4_activity_harmonic_from_same_snapshot",
+            "local_normal": true,
+            "primary_rms": incremental_rms,
+            "secondary_rms": incremental_rms * 0.5,
+            "normalized_scales": [1.0, 0.5],
+            "phases": ["cosine", "sine"],
+            "signs": [1.0, -1.0],
+            "alignment_threshold": R11_ALIGNMENT_THRESHOLD,
+            "sign_symmetry_tolerance": R11_SIGN_SYMMETRY_TOLERANCE,
+            "mechanics": "frozen mechanics plus local self-contact and conservative remesh; no polarity feedback or production ledger debit",
+        },
+        "probes": probes,
+        "observer_only": true,
+        "production_state_mutated": false,
+    }))
+}
+
+/// R11 reuses the exact thirty R8/R10 post-polarity/pre-mechanics snapshots
+/// and applies only discarded ideal local-normal mode probes to frozen
+/// mechanics. No probe is connected to polarity, production or fission.
+pub fn run_r11_p_to_m_qualification_arm(index: usize) -> Value {
+    env::set_var("DCFINAL001_R8_CAPTURE_ONLY", "1");
+    let r7 = run_r7_full_cycle_arm(index, true);
+    let snapshots = r7["full_cycle_snapshots"]
+        .as_array()
+        .cloned()
+        .unwrap_or_default();
+    let records = snapshots
+        .iter()
+        .map(|snapshot| {
+            let record = r8_seed_from_snapshot(snapshot).and_then(|seed| {
+                let r11 = r11_ideal_susceptibility_record(&seed)?;
+                Ok(json!({
+                    "checkpoint_step": snapshot["checkpoint_step"],
+                    "expected_next_step": snapshot["expected_next_step"],
+                    "input_boundary_digest": deterministic_state_digest(&snapshot["input_boundary"]),
+                    "r7_replay_identity": snapshot["identity"].clone(),
+                    "r11": r11,
+                    "observer_only": true,
+                }))
+            });
+            match record {
+                Ok(value) => value,
+                Err(reason) => json!({
+                    "checkpoint_step": snapshot["checkpoint_step"],
+                    "status": "ERROR",
+                    "error": reason,
+                    "observer_only": true,
+                }),
+            }
+        })
+        .collect::<Vec<_>>();
+    json!({
+        "directive": "DC-M4-R11-P-TO-M-QUALIFICATION-VALIDITY-AND-MECHANICAL-SUSCEPTIBILITY-GATE-001",
+        "arm": r7["arm"].clone(),
+        "connected": true,
+        "r7_snapshot_count": records.len(),
+        "snapshots": records,
+        "horizon": R10R2_PHASE_STEPS,
+        "checkpoints": R7_FULL_CYCLE_CHECKPOINTS,
+        "old_alignment_threshold": R11_ALIGNMENT_THRESHOLD,
+        "production_biology_modified": false,
+        "morphogenesis": "NOT_REACHED",
+        "reproduction": "NOT_REACHED",
+        "population_selection": "NOT_REACHED",
+        "reversal": "NOT_REACHED",
+        "final_integration": "NOT_REACHED",
+        "observer_only": true,
+    })
 }
 
 fn r7_probe_transition(

@@ -493,7 +493,7 @@ fn patch_dynamics_row(
     })
 }
 
-fn local_inward_normal_and_tangent(mesh: &MaterialMesh, vertex: usize) -> ([f64; 2], [f64; 2]) {
+pub fn local_inward_normal_and_tangent(mesh: &MaterialMesh, vertex: usize) -> ([f64; 2], [f64; 2]) {
     let n = mesh.n();
     let prev = mesh.vertices[(vertex + n - 1) % n];
     let here = mesh.vertices[vertex];
