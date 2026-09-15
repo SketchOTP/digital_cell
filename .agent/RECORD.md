@@ -2072,3 +2072,10 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Authorized from R9 final governance head `00a7a26f1c5e23b8b9895de7ba1c71c51b2dbbc4` as one opt-in signal-routing candidate. The candidate uses `d_i_R10 = min(1, d_i_legacy + p_i)` in the existing inward-normal actuator and disables R4 polarity edge tension on that route.
 - Existing local normal geometry, force cap, static-traction budget, force-length-time A→W price, passive mechanics, R3/R9 polarity chemistry, ecology, apposition and lawful scission remain frozen. Route-OFF must preserve accepted R4 behavior.
 - Fixed thirty-snapshot E2 P_TO_M correction precedes any conditional morphogenesis or reproduction. No downstream stage is authorized automatically; PR #44 remains untouched.
+
+## DEC-DC-M4-R10-POLARITY-TO-EXISTING-INWARD-NORMAL-ACTUATOR-REMAP-001 — fixed E2 bounded negative
+
+- Date: `2026-09-15`.
+- Implementation/result head `b44559f939d84e2c4a81395f93452869aebbaf9a` passed exact-head workflow `34946804997`; independently downloaded artifact ZIP SHA-256 is `sha256:c6d17611082bc5b34f99a3443b060ed09f1e2637108737ad9dbffe58c4caa3b2`, with `13/13` manifest entries verified and release binary SHA-256 `025ea9bbcfd2d9b19b1470a589a4526231a631b96e4b2ae34af2f6ef8d2d4ca6`.
+- R10's clone-local signal-routing implementation preserves R4 route-off, disables candidate polarity edge tension, reuses the existing inward-normal geometry/cap/work price, and closes polarity/mechanical material and A/W ledgers. The fixed E2 comparison is `30/30` valid, `0/30` aligned and `30/30` misaligned for R10; preserved R8 route-off is `30/30` valid and `30/30` misaligned.
+- Decision: `POLARITY_NORMAL_REMAP_FAILS_TO_CORRECT_P_TO_M_ALIGNMENT`. This is a bounded scientific negative and implementation acceptance in scope. E3–E5, reproduction, population selection/evolution, reversal and final integration were not executed. Final governance-head rerun and Notion readback are required; PR #44 remains open/draft/unmerged/untouched.

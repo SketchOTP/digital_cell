@@ -1455,3 +1455,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Authorized from R9 final governance head `00a7a26f1c5e23b8b9895de7ba1c71c51b2dbbc4` as one opt-in signal-routing candidate. Use `d_i_R10 = min(1, d_i_legacy + p_i)` in the existing local inward-normal actuator and disable the R4 polarity edge-tension input on the candidate route.
 - Preserve the existing actuator's local geometry, `MAX_EXTERNAL_FORCE_PER_VERTEX`, `FROZEN_STATIC_TRACTION_LIMIT`, force-length-time A→W cost, passive mechanics, R3/R9 polarity semantics, Resource ecology, apposition and lawful scission. Route-OFF remains the accepted R4 path.
 - Execute source audit, route implementation/preservation and fixed thirty-snapshot P_TO_M correction first. Held-out morphogenesis, reproduction, daughters and birth-to-birth are conditional; no gain, force, ecology, fission or population tuning is authorized.
+
+## DC-M4-R10 final fixed P_TO_M disposition — bounded negative
+
+- The exact-head implementation run `34946804997` on `b44559f939d84e2c4a81395f93452869aebbaf9a` passed and its downloaded artifact ZIP is `sha256:c6d17611082bc5b34f99a3443b060ed09f1e2637108737ad9dbffe58c4caa3b2`; `13/13` manifest entries and binary `025ea9bbcfd2d9b19b1470a589a4526231a631b96e4b2ae34af2f6ef8d2d4ca6` verify.
+- The independent E2 predicate found `30/30` valid records, `0/30` R10 normal-remap modal-alignment cases and `30/30` R10 misaligned cases. The preserved R8 route-off comparator is `30/30` valid and `30/30` misaligned. Route contract, branch equality, force cap, full funding, polarity conservation, and separate A/W ledgers pass.
+- The authorized stop is `POLARITY_NORMAL_REMAP_FAILS_TO_CORRECT_P_TO_M_ALIGNMENT`. Do not run E3–E5, reproduction, population, selection, reversal or final integration from this result; no tuning or successor is authorized automatically. Final governance-head rerun and external SOT readback remain required.

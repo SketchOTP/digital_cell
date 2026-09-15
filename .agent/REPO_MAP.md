@@ -354,3 +354,5 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `digital-protocell/examples/dcm4_r10_polarity_to_existing_inward_normal_actuator_remap.rs` — R10 seal, fixed E2 runner and conditional morphogenesis harness.
 - `digital-protocell/experiments/dcm4_r10_polarity_to_existing_inward_normal_actuator_remap_verify.py` — independent actuator-contract, route, cap/cost, modal-alignment, conservation and terminal-predicate verifier.
 - `.github/workflows/dc-m4-r10-polarity-to-existing-inward-normal-actuator-remap.yml` — exact-head hosted R10 validation and artifact upload.
+
+- R10 implementation/result authority: `b44559f939d84e2c4a81395f93452869aebbaf9a`, workflow `34946804997`, artifact ZIP `sha256:c6d17611082bc5b34f99a3443b060ed09f1e2637108737ad9dbffe58c4caa3b2`, manifest `13/13`, binary `025ea9bbcfd2d9b19b1470a589a4526231a631b96e4b2ae34af2f6ef8d2d4ca6`, terminal classification `POLARITY_NORMAL_REMAP_FAILS_TO_CORRECT_P_TO_M_ALIGNMENT`. Final governance-head rerun and Notion readback follow this append-only result seal; E3–E5 and downstream science are not reached.

@@ -1402,3 +1402,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - A verified local signal can be tested through an existing actuator without adding force physics: preserve the actuator geometry, cap and work price and change only the local input route on discarded clones.
 - R10 must distinguish the accepted R4 edge-tension route from the candidate inward-normal route and prove the candidate disables the former rather than duplicating actuation. Independent evidence must recompute `d_i_R10 = min(1, d_i_legacy + p_i)` and keep polarity-chemistry A→W separate from mechanical A→W.
 - E2 is the stop gate. A route that improves geometry without correcting the sealed modal-alignment criterion remains a bounded negative; no force-gain, ecology or fission tuning follows.
+
+## DC-M4 R10 fixed normal-remap result
+
+- Reusing a paid actuator's geometry and cost does not establish that a different local signal route projects onto the required body mode. The sealed normal remap was valid and fully funded, but its direct polarity contribution remained modal-misaligned in all `30/30` fixed snapshots.
+- Candidate route correctness is separate from scientific efficacy: R4 route-off parity, candidate edge-tension disablement, force caps, branch equality, polarity conservation and separate mechanical/polarity A/W closure all passed, while E2 failed its `24/30` alignment threshold.
+- The correct stop is `POLARITY_NORMAL_REMAP_FAILS_TO_CORRECT_P_TO_M_ALIGNMENT`; do not increase force, tune a gain, alter ecology, or infer anything about reproduction. E3–E5 and downstream science remain unreached.
