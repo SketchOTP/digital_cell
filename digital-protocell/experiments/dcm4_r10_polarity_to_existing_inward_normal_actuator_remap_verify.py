@@ -205,7 +205,6 @@ def route_metrics(record: dict) -> dict:
         and cut_diag.get("polarity_edge_tension_enabled") is False
         and r4_diag.get("polarity_mechanics_route") == "R4_EDGE_TENSION"
         and r4_diag.get("polarity_edge_tension_enabled") is True
-        and all(value == 0.0 for value in (cut.get("polarity", {}).get("actuation", {}).get("vertex_activity") or []))
     )
     alignment = p_alignment(record)
     norm_match = math.isclose(
