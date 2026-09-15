@@ -27,8 +27,8 @@ const E2_ALIGNMENT_THRESHOLD: f64 = 0.50;
 
 fn parse_args() -> (String, String) {
     let mut stage = "all".to_string();
-    let mut output = "experiments/generated/dcm4r10polaritynormalremap/raw/qualification.json"
-        .to_string();
+    let mut output =
+        "experiments/generated/dcm4r10polaritynormalremap/raw/qualification.json".to_string();
     let mut args = env::args().skip(1);
     while let Some(arg) = args.next() {
         match arg.as_str() {
