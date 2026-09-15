@@ -83,6 +83,18 @@ def points(value) -> list[float]:
     return result
 
 
+def force_vectors(value) -> list[tuple[float, float]]:
+    """Decode serde_json's Vec<[f64; 2]> force-vector representation."""
+    assert isinstance(value, list), "force-vector evidence is missing"
+    result = []
+    for force in value:
+        assert isinstance(force, list) and len(force) == 2
+        pair = (float(force[0]), float(force[1]))
+        assert all(math.isfinite(component) for component in pair)
+        result.append(pair)
+    return result
+
+
 def norm(values: list[float]) -> float:
     return math.sqrt(sum(value * value for value in values))
 
@@ -146,11 +158,9 @@ def route_metrics(record: dict) -> dict:
     force_valid = True
     funding_valid = True
     for diagnostic in (normal_diag, cut_diag):
-        requested = vector(diagnostic.get("requested_inward_normal_forces", []))
-        funded = vector(diagnostic.get("funded_inward_normal_forces", []))
-        assert len(requested) == len(funded) == len(normal_drive) * 2
-        requested_pairs = list(zip(requested[::2], requested[1::2]))
-        funded_pairs = list(zip(funded[::2], funded[1::2]))
+        requested_pairs = force_vectors(diagnostic.get("requested_inward_normal_forces", []))
+        funded_pairs = force_vectors(diagnostic.get("funded_inward_normal_forces", []))
+        assert len(requested_pairs) == len(funded_pairs) == len(normal_drive)
         requested_norms = [math.hypot(x, y) for x, y in requested_pairs]
         funded_norms = [math.hypot(x, y) for x, y in funded_pairs]
         force_values.extend(requested_norms + funded_norms)
