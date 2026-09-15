@@ -1390,3 +1390,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Polarity chemistry A→W remains a separate transaction from any future mechanical A→W transaction. R9's fixed causal-edge qualification is pattern/feedback evidence only and must not be interpreted as mechanical or reproductive qualification.
 - The fixed R8 G_TO_P result remains the preserved route-OFF control. If the sealed mechanosensitive path fails the `24/30` correction gate, stop without tuning; if it passes, downstream gates remain conditional and must use new preregistered histories.
 - Independent evidence code must validate nested raw records at the same structural level used by the producer. The first R9 verifier attempt exposed this as a fail-closed indexing error after raw execution; it did not weaken the scientific stop rule or produce a classification.
+
+## DC-M4 R9 fixed causal-edge result
+
+- The coefficient-free local tensile activation path is a lawful implementation of the authorized hypothesis but does not reverse the accepted R8 damping indicator in the fixed thirty-snapshot assay. The result is `30/30` damping for both route-OFF and R9, not evidence that concentration/current-edge-length physics is defective.
+- A modest candidate response change can remain entirely within the same damping regime: the independent raw summary gives mean sign shift of approximately `5.76e-10` toward less negative, with no non-damping records. This supports stopping without gain tuning, actuator changes, ecology changes or downstream reproduction.
+- Because E2 failed, the R9 directive correctly stops before held-out morphogenesis, reproduction, birth-to-birth recurrence, selection, reversal and final integration. Autonomous polarity and paid deformation remain bounded prior capabilities; a new successor requires Architect direction.

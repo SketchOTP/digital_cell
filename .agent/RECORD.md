@@ -2058,3 +2058,10 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - R9 is authorized from R8 final governance head `18cd5daff29267469db838acbba9bf9691e94ba6` to test one parameter-free local tensile activation multiplier using `MaterialMesh::load_bearing_strain(i)`. The accepted R3 amount semantics, reaction parameters, source provenance and A→W chemistry ledger remain frozen.
 - The staged source preserves the default R3/R4 path and adds only opt-in strain-aware polarity advancement plus clone-local fixed-R8 diagnostic records. Hosted Rust validation and E2 outcomes are pending; no production reproduction, population, selection, reversal or final integration is authorized.
 - Hosted run `34913740548` is preserved as an unsuccessful verification attempt: implementation checks, contract seal and raw diagnostic execution passed, but the independent verifier failed closed with `KeyError: 'scales'` while reading a nested mode record. No terminal scientific classification was emitted.
+
+## DEC-DC-M4-R9-FINAL-FIXED-CAUSAL-EDGE-QUALIFICATION
+
+- Date: `2026-09-15`.
+- Corrected R9 result head `82418f65e2cf6bb5eb6314f8766f5670850d7f4` passed exact-head workflow `34914129625`; artifact ZIP `sha256:22db51a4a8ed261faabc8826844655a6cea73f5f04e22eb83e940ab2bb068f13`; manifest `12/12`; binary `b73b9e02d1cbceb926d13104d9f69ebf898a9845438fab7bbc9a29396b15a1d7`.
+- Fixed R8 route-OFF baseline and R9 route-ON each record `30/30` damping indicators. All thirty records are usable, sign-symmetric, polarity-conservative and strain-provenance-valid. Implementation acceptance is `PASS`; scientific terminal decision is `MECHANOSENSITIVE_ACTIVATION_FAILS_TO_CORRECT_G_TO_P_DAMPING`.
+- This is a bounded negative for the sealed local mechanosensitive activation path, not a reversal of amount/current-edge-length concentration physics. No E3–E5, reproduction, population selection/evolution, reversal or final integration ran; PR #44 remains open/draft/unmerged/untouched and no successor started.

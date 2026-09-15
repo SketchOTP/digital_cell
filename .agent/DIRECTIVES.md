@@ -1444,3 +1444,8 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Authorized from R8 final governance head `18cd5daff29267469db838acbba9bf9691e94ba6` as one opt-in local tensile mechanosensitive activation path. Preserve amount/current-edge-length concentration physics, R3 parameters, R4 paid actuation and all mechanics/ecology/fission contracts.
 - `s_i = max(0, load_bearing_strain_i)` multiplies only the existing R3 inactive-to-active activation term by `(1 + s_i)`. The source is local `MaterialMesh::load_bearing_strain`; no new coefficient, polarity pool, mechanical output or observer input is authorized.
 - Required sequence is E0 source/energy audit, E1 preservation and ledger tests, fixed thirty-snapshot R8 G_TO_P correction, then conditional held-out morphogenesis/reproduction/birth-to-birth only if each prerequisite passes. No successor or downstream stage is started automatically.
+
+## DC-M4-R9 final bounded disposition
+
+- The corrected fixed R8 causal-edge run on `82418f65e2cf6bb5eb6314f8766f5670850d7f4` passed workflow `34914129625`; artifact `sha256:22db51a4a8ed261faabc8826844655a6cea73f5f04e22eb83e940ab2bb068f13`; manifest `12/12`; binary `b73b9e02d1cbceb926d13104d9f69ebf898a9845438fab7bbc9a29396b15a1d7`.
+- E2 failed its preregistered correction criterion: the accepted R4 baseline and R9 candidate both produced `30/30` damping indicators, while all thirty records remained valid and conservative. Terminal classification is `MECHANOSENSITIVE_ACTIVATION_FAILS_TO_CORRECT_G_TO_P_DAMPING`; the directive stops before E3–E5 and before any reproduction or selection.
