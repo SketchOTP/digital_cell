@@ -1461,3 +1461,15 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - The exact-head implementation run `34946804997` on `b44559f939d84e2c4a81395f93452869aebbaf9a` passed and its downloaded artifact ZIP is `sha256:c6d17611082bc5b34f99a3443b060ed09f1e2637108737ad9dbffe58c4caa3b2`; `13/13` manifest entries and binary `025ea9bbcfd2d9b19b1470a589a4526231a631b96e4b2ae34af2f6ef8d2d4ca6` verify.
 - The independent E2 predicate found `30/30` valid records, `0/30` R10 normal-remap modal-alignment cases and `30/30` R10 misaligned cases. The preserved R8 route-off comparator is `30/30` valid and `30/30` misaligned. Route contract, branch equality, force cap, full funding, polarity conservation, and separate A/W ledgers pass.
 - The authorized stop is `POLARITY_NORMAL_REMAP_FAILS_TO_CORRECT_P_TO_M_ALIGNMENT`. Do not run E3–E5, reproduction, population, selection, reversal or final integration from this result; no tuning or successor is authorized automatically. Final governance-head rerun and external SOT readback remain required.
+
+## DC-M4-R11-P-TO-M-QUALIFICATION-VALIDITY-AND-MECHANICAL-SUSCEPTIBILITY-GATE-001
+
+- Authorized from R10 governance head `8bdcadf4b03c503d0871d02c600849fb2ebfe915` as a diagnostic-only qualification-validity test. Keep R10, mechanics, polarity, ecology, apposition, scission and all downstream stages frozen; no production biology is allowed.
+- R11's sealed contract derives each snapshot's dominant nonzero final-R4 activity harmonic, audits edge/preclip/final spectra, and applies discarded pure sine/cosine local-normal probes at the actual R10 polarity-increment RMS and exactly half that RMS, with both signs. The old `0.50` single-harmonic predicate is not revised during execution.
+- The only allowed terminal outcomes are the four R11 E3 classifications. If the ideal susceptibility fails the old threshold in at least 24 usable states at both scales, the gate is invalid for these heterogeneous bodies and only a later state-normalized metric gate may be proposed. No biology, morphogenesis, reproduction, selection or reversal is authorized automatically.
+
+## DC-M4-R11 final bounded disposition
+
+- R11 implementation/result head `372ef86d1d62955a0ae8c905048c7e1b4988b57e` passed exact-head workflow `35033913849`; artifact ZIP `sha256:ff32c88443fec0dc18178fb26506aa227343b537921f0258ebd4d3c7f378cade`; manifest `12/12`; binary `332c97a7e73dd3b3abd5da211ad47fea64722411e825b9081d074e1b7eab5a8f`.
+- All `30/30` fixed snapshots were valid and usable. Old R8 and R10 fractions were independently below `0.50` in `30/30`; ideal pure-mode susceptibility was below `0.50` at both scales in `30/30`. Terminal classification: `P_TO_M_ALIGNMENT_GATE_INVALID_FOR_CURRENT_BODY_STATES`.
+- This is a metric-validity correction, not a biological success or R10 implementation failure. No production biology, morphogenesis, reproduction, population, selection, reversal or final integration ran. Preserve R1–R10, do not tune the actuator, and do not start a successor automatically; PR #44 remains untouched.

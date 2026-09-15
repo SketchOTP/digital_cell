@@ -356,3 +356,11 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `.github/workflows/dc-m4-r10-polarity-to-existing-inward-normal-actuator-remap.yml` — exact-head hosted R10 validation and artifact upload.
 
 - R10 implementation/result authority: `b44559f939d84e2c4a81395f93452869aebbaf9a`, workflow `34946804997`, artifact ZIP `sha256:c6d17611082bc5b34f99a3443b060ed09f1e2637108737ad9dbffe58c4caa3b2`, manifest `13/13`, binary `025ea9bbcfd2d9b19b1470a589a4526231a631b96e4b2ae34af2f6ef8d2d4ca6`, terminal classification `POLARITY_NORMAL_REMAP_FAILS_TO_CORRECT_P_TO_M_ALIGNMENT`. Final governance-head rerun and Notion readback follow this append-only result seal; E3–E5 and downstream science are not reached.
+
+## DC-M4-R11 P_TO_M qualification validity
+
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — R11 reuses exact R7/R10 snapshot reconstruction, audits edge/preclip/final activity spectra, and applies discarded pure local-normal harmonic probes to frozen mechanics only; no production route or ledger is changed.
+- `digital-protocell/examples/dcm4_r11_p_to_m_qualification_validity.rs` — R11 authority seal and fixed thirty-snapshot runner; morphogenesis, reproduction, population, selection, reversal and final integration are explicitly not reached.
+- `digital-protocell/experiments/dcm4_r11_p_to_m_qualification_validity_verify.py` — independent recomputation of scalar spectra, R8 modal basis, old R8/R10 fractions, pure-mode force construction, cap/branch/conservation checks and the state-specific metric-validity predicate.
+- `.github/workflows/dc-m4-r11-p-to-m-qualification-validity.yml` — exact-head authority, focused checks, pre-outcome contract seal, fixed snapshot execution, independent verification, downstream-stop assertion and artifact upload.
+- R11 result authority: implementation head `372ef86d1d62955a0ae8c905048c7e1b4988b57e`, workflow `35033913849`, artifact ZIP `sha256:ff32c88443fec0dc18178fb26506aa227343b537921f0258ebd4d3c7f378cade`, manifest `12/12`, binary `332c97a7e73dd3b3abd5da211ad47fea64722411e825b9081d074e1b7eab5a8f`, terminal classification `P_TO_M_ALIGNMENT_GATE_INVALID_FOR_CURRENT_BODY_STATES`. A state-normalized qualification is only a future bounded diagnostic; no successor or downstream biology started.

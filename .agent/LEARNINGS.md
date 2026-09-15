@@ -1408,3 +1408,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Reusing a paid actuator's geometry and cost does not establish that a different local signal route projects onto the required body mode. The sealed normal remap was valid and fully funded, but its direct polarity contribution remained modal-misaligned in all `30/30` fixed snapshots.
 - Candidate route correctness is separate from scientific efficacy: R4 route-off parity, candidate edge-tension disablement, force caps, branch equality, polarity conservation and separate mechanical/polarity A/W closure all passed, while E2 failed its `24/30` alignment threshold.
 - The correct stop is `POLARITY_NORMAL_REMAP_FAILS_TO_CORRECT_P_TO_M_ALIGNMENT`; do not increase force, tune a gain, alter ecology, or infer anything about reproduction. E3–E5 and downstream science remain unreached.
+
+## DC-M4 R11 P_TO_M metric-validity result
+
+- A single dominant input harmonic is not a valid state-independent transfer criterion when the body has heterogeneous geometry, structural mass, maturation/rest lengths and mechanics. R11's ideal pure local-normal probes fail the old `0.50` corresponding-mode threshold at both amplitudes in all `30/30` usable snapshots, so the prior R10 `0/30` alignment result cannot by itself distinguish faithful multi-harmonic transfer from defective transfer.
+- The correct bounded classification is `P_TO_M_ALIGNMENT_GATE_INVALID_FOR_CURRENT_BODY_STATES`. This does not reverse R10's implementation result, establish morphogenesis or imply a state-normalized metric would qualify the biology.
+- Ideal susceptibility must be measured before interpreting biological transfer. Future qualification may normalize against each state's mechanically realizable response, but that is a separate diagnostic gate; do not tune force, gain, ecology or fission criteria and do not start reproduction.
