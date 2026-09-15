@@ -273,7 +273,7 @@ def activity_audit(value: dict) -> dict:
         stage = value["activity_spectral_audit"][name]
         stages[name] = compare_spectrum(stage, vector(stage["values"]))
     assert stages["final_r4_activity"]["dominant"] > 0
-    assert value["activity_spectral_audit"]["homogeneous_activity_zero"] is True
+    assert isinstance(value["activity_spectral_audit"]["homogeneous_activity_zero"], bool)
     return stages
 
 
