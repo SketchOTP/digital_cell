@@ -1449,3 +1449,9 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 
 - The corrected fixed R8 causal-edge run on `82418f65e2cf6bb5eb6314f8766f5670850d7f4` passed workflow `34914129625`; artifact `sha256:22db51a4a8ed261faabc8826844655a6cea73f5f04e22eb83e940ab2bb068f13`; manifest `12/12`; binary `b73b9e02d1cbceb926d13104d9f69ebf898a9845438fab7bbc9a29396b15a1d7`.
 - E2 failed its preregistered correction criterion: the accepted R4 baseline and R9 candidate both produced `30/30` damping indicators, while all thirty records remained valid and conservative. Terminal classification is `MECHANOSENSITIVE_ACTIVATION_FAILS_TO_CORRECT_G_TO_P_DAMPING`; the directive stops before E3–E5 and before any reproduction or selection.
+
+## DC-M4-R10-POLARITY-TO-EXISTING-INWARD-NORMAL-ACTUATOR-REMAP-001
+
+- Authorized from R9 final governance head `00a7a26f1c5e23b8b9895de7ba1c71c51b2dbbc4` as one opt-in signal-routing candidate. Use `d_i_R10 = min(1, d_i_legacy + p_i)` in the existing local inward-normal actuator and disable the R4 polarity edge-tension input on the candidate route.
+- Preserve the existing actuator's local geometry, `MAX_EXTERNAL_FORCE_PER_VERTEX`, `FROZEN_STATIC_TRACTION_LIMIT`, force-length-time A→W cost, passive mechanics, R3/R9 polarity semantics, Resource ecology, apposition and lawful scission. Route-OFF remains the accepted R4 path.
+- Execute source audit, route implementation/preservation and fixed thirty-snapshot P_TO_M correction first. Held-out morphogenesis, reproduction, daughters and birth-to-birth are conditional; no gain, force, ecology, fission or population tuning is authorized.

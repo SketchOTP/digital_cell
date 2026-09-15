@@ -346,3 +346,11 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `experiments/generated/dcm4r9localmechanosensitivepolarityactivation/` — reserved hosted R9 contract, raw diagnostic, verifier and manifest evidence root. E2 and downstream statuses remain pending; PR #44 is untouched.
 
 - R9 result authority: corrected implementation/result head `82418f65e2cf6bb5eb6314f8766f5670850d7f4`, exact-head workflow `34914129625`, artifact ZIP `sha256:22db51a4a8ed261faabc8826844655a6cea73f5f04e22eb83e940ab2bb068f13`, hosted manifest `12/12`, binary `b73b9e02d1cbceb926d13104d9f69ebf898a9845438fab7bbc9a29396b15a1d7`, terminal classification `MECHANOSENSITIVE_ACTIVATION_FAILS_TO_CORRECT_G_TO_P_DAMPING`. E3–E5 and downstream biology remain not reached; the next governance-head validation is the final exact-head seal for this bounded result.
+
+## DC-M4 R10 polarity-to-existing-inward-normal actuator remap
+
+- `digital-protocell/examples/dcfinal001_r5_v4_neck.rs` — authoritative existing local normal geometry, inward-normal request, force cap and paid contractility path; R10 adds only a diagnostic route selector while preserving the R4 wrapper.
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` — shared R7 snapshot reconstruction, R8 route-OFF reference and clone-local R10 normal-remap records; optional candidate production routing remains disabled by default.
+- `digital-protocell/examples/dcm4_r10_polarity_to_existing_inward_normal_actuator_remap.rs` — R10 seal, fixed E2 runner and conditional morphogenesis harness.
+- `digital-protocell/experiments/dcm4_r10_polarity_to_existing_inward_normal_actuator_remap_verify.py` — independent actuator-contract, route, cap/cost, modal-alignment, conservation and terminal-predicate verifier.
+- `.github/workflows/dc-m4-r10-polarity-to-existing-inward-normal-actuator-remap.yml` — exact-head hosted R10 validation and artifact upload.

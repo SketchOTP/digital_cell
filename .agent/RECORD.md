@@ -2065,3 +2065,10 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Corrected R9 result head `82418f65e2cf6bb5eb6314f8766f5670850d7f4` passed exact-head workflow `34914129625`; artifact ZIP `sha256:22db51a4a8ed261faabc8826844655a6cea73f5f04e22eb83e940ab2bb068f13`; manifest `12/12`; binary `b73b9e02d1cbceb926d13104d9f69ebf898a9845438fab7bbc9a29396b15a1d7`.
 - Fixed R8 route-OFF baseline and R9 route-ON each record `30/30` damping indicators. All thirty records are usable, sign-symmetric, polarity-conservative and strain-provenance-valid. Implementation acceptance is `PASS`; scientific terminal decision is `MECHANOSENSITIVE_ACTIVATION_FAILS_TO_CORRECT_G_TO_P_DAMPING`.
 - This is a bounded negative for the sealed local mechanosensitive activation path, not a reversal of amount/current-edge-length concentration physics. No E3–E5, reproduction, population selection/evolution, reversal or final integration ran; PR #44 remains open/draft/unmerged/untouched and no successor started.
+
+## DEC-DC-M4-R10-POLARITY-TO-EXISTING-INWARD-NORMAL-ACTUATOR-REMAP-001 — staged implementation
+
+- Date: `2026-09-15`.
+- Authorized from R9 final governance head `00a7a26f1c5e23b8b9895de7ba1c71c51b2dbbc4` as one opt-in signal-routing candidate. The candidate uses `d_i_R10 = min(1, d_i_legacy + p_i)` in the existing inward-normal actuator and disables R4 polarity edge tension on that route.
+- Existing local normal geometry, force cap, static-traction budget, force-length-time A→W price, passive mechanics, R3/R9 polarity chemistry, ecology, apposition and lawful scission remain frozen. Route-OFF must preserve accepted R4 behavior.
+- Fixed thirty-snapshot E2 P_TO_M correction precedes any conditional morphogenesis or reproduction. No downstream stage is authorized automatically; PR #44 remains untouched.

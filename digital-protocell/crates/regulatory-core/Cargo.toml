@@ -459,3 +459,7 @@ path = "../../examples/dcm4_r8_nonlinear_mechanochemical_causal_edge.rs"
 [[example]]
 name = "dcm4_r9_local_mechanosensitive_polarity_activation"
 path = "../../examples/dcm4_r9_local_mechanosensitive_polarity_activation.rs"
+
+[[example]]
+name = "dcm4_r10_polarity_to_existing_inward_normal_actuator_remap"
+path = "../../examples/dcm4_r10_polarity_to_existing_inward_normal_actuator_remap.rs"

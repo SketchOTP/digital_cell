@@ -2460,6 +2460,15 @@ pub fn r10_refractory_mechanics_step_with_diagnostics(
     )
 }
 
+/// Diagnostic-only routing choice for the accepted R4 actuator and the
+/// R10 candidate.  The force geometry, cap, and A->W price remain owned by
+/// the existing inward-normal/contractility implementation in both routes.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum PolarityMechanicsRoute {
+    R4EdgeTension,
+    R10InwardNormal,
+}
+
 /// Apply the exact R9/R10 transition while optionally feeding a local
 /// polarity-derived activity vector into the existing paid actuator.  The
 /// optional vector is an input adapter only; mechanics, force limits and
@@ -2471,6 +2480,31 @@ pub fn r10_refractory_mechanics_step_with_polarity_diagnostics(
     motor_enabled: bool,
     adaptation_enabled: bool,
     polarity_activity: Option<&[f64]>,
+) -> Option<(f64, f64, usize, Value)> {
+    r10_refractory_mechanics_step_with_polarity_route(
+        mesh,
+        plasticity,
+        topology_tick,
+        motor_enabled,
+        adaptation_enabled,
+        polarity_activity,
+        PolarityMechanicsRoute::R4EdgeTension,
+    )
+}
+
+/// Apply one local paid mechanics operation using either the frozen R4
+/// polarity edge-tension route or the R10 diagnostic remap.  In the R10
+/// route, the accepted local polarity activity is added to the already
+/// adapted curvature-normal drive and the polarity edge-tension input is
+/// explicitly zeroed.  No new force law or energy price is introduced.
+pub fn r10_refractory_mechanics_step_with_polarity_route(
+    mesh: &mut MaterialMesh,
+    plasticity: &mut PlasticityStateV1,
+    topology_tick: bool,
+    motor_enabled: bool,
+    adaptation_enabled: bool,
+    polarity_activity: Option<&[f64]>,
+    route: PolarityMechanicsRoute,
 ) -> Option<(f64, f64, usize, Value)> {
     if plasticity.adaptation.len() != mesh.n() || !mesh.can_advance_physics() {
         return None;
@@ -2500,8 +2534,19 @@ pub fn r10_refractory_mechanics_step_with_polarity_diagnostics(
             }
         })
         .collect::<Vec<_>>();
+    let normal_drive = match route {
+        PolarityMechanicsRoute::R4EdgeTension => effective_drive.clone(),
+        PolarityMechanicsRoute::R10InwardNormal => effective_drive
+            .iter()
+            .enumerate()
+            .map(|(index, legacy)| {
+                (legacy + polarity_activity.map(|activity| activity[index]).unwrap_or(0.0))
+                    .min(1.0)
+            })
+            .collect::<Vec<_>>(),
+    };
     let (requested_forces, requested) =
-        inward_normal_request(mesh, &effective_drive, mechanics.dt);
+        inward_normal_request(mesh, &normal_drive, mechanics.dt);
     let forces = if motor_enabled {
         requested_forces.clone()
     } else {
@@ -2526,9 +2571,13 @@ pub fn r10_refractory_mechanics_step_with_polarity_diagnostics(
     let polarity_activity_values = polarity_activity
         .map(ToOwned::to_owned)
         .unwrap_or_else(|| vec![0.0; mesh.n()]);
+    let contractility_activity = match route {
+        PolarityMechanicsRoute::R4EdgeTension => polarity_activity_values.clone(),
+        PolarityMechanicsRoute::R10InwardNormal => vec![0.0; mesh.n()],
+    };
     let ledger = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
         mesh,
-        &polarity_activity_values,
+        &contractility_activity,
         &mechanics,
         &contractility,
         &forces,
@@ -2594,6 +2643,7 @@ pub fn r10_refractory_mechanics_step_with_polarity_diagnostics(
         "adaptation_variance_before": adaptation_variance,
         "adaptation_maximum_before": adaptation_before.iter().copied().fold(0.0_f64, f64::max),
         "effective_drive": effective_drive,
+        "normal_drive": normal_drive,
         "effective_drive_mean": effective_drive_mean,
         "effective_drive_variance": effective_drive_variance,
         "effective_drive_maximum": effective_drive.iter().copied().fold(0.0_f64, f64::max),
@@ -2614,6 +2664,12 @@ pub fn r10_refractory_mechanics_step_with_polarity_diagnostics(
         "adaptation_after": adaptation_after,
         "polarity_activity": polarity_activity_values,
         "polarity_connected": polarity_activity.is_some(),
+        "polarity_mechanics_route": match route {
+            PolarityMechanicsRoute::R4EdgeTension => "R4_EDGE_TENSION",
+            PolarityMechanicsRoute::R10InwardNormal => "R10_INWARD_NORMAL",
+        },
+        "polarity_edge_tension_enabled":
+            matches!(route, PolarityMechanicsRoute::R4EdgeTension),
         "topology_ruptures": topology.tension_ruptures,
         "topology_rebonds": topology.local_rebonds,
         "remesh_mappings": remesh_mappings,

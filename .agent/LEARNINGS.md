@@ -1396,3 +1396,9 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - The coefficient-free local tensile activation path is a lawful implementation of the authorized hypothesis but does not reverse the accepted R8 damping indicator in the fixed thirty-snapshot assay. The result is `30/30` damping for both route-OFF and R9, not evidence that concentration/current-edge-length physics is defective.
 - A modest candidate response change can remain entirely within the same damping regime: the independent raw summary gives mean sign shift of approximately `5.76e-10` toward less negative, with no non-damping records. This supports stopping without gain tuning, actuator changes, ecology changes or downstream reproduction.
 - Because E2 failed, the R9 directive correctly stops before held-out morphogenesis, reproduction, birth-to-birth recurrence, selection, reversal and final integration. Autonomous polarity and paid deformation remain bounded prior capabilities; a new successor requires Architect direction.
+
+## DC-M4-R10 implementation learning — pending qualification
+
+- A verified local signal can be tested through an existing actuator without adding force physics: preserve the actuator geometry, cap and work price and change only the local input route on discarded clones.
+- R10 must distinguish the accepted R4 edge-tension route from the candidate inward-normal route and prove the candidate disables the former rather than duplicating actuation. Independent evidence must recompute `d_i_R10 = min(1, d_i_legacy + p_i)` and keep polarity-chemistry A→W separate from mechanical A→W.
+- E2 is the stop gate. A route that improves geometry without correcting the sealed modal-alignment criterion remains a bounded negative; no force-gain, ecology or fission tuning follows.

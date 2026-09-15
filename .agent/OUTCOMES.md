@@ -2777,3 +2777,9 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Corrected result commit `82418f65e2cf6bb5eb6314f8766f5670850d7f4` passed exact-head CI `34914129625`. Independent artifact ZIP SHA-256 is `22db51a4a8ed261faabc8826844655a6cea73f5f04e22eb83e940ab2bb068f13`; the hosted manifest has `12/12` matching entries and the release binary is `b73b9e02d1cbceb926d13104d9f69ebf898a9845438fab7bbc9a29396b15a1d7`.
 - Implementation acceptance is `PASS`. The fixed R8 comparator is `30/30` damping and R9 is also `30/30` damping; all `30/30` snapshots are usable, sign-symmetric, conservative and strain-provenance-valid. The parameter-free local tensile activation path therefore fails the sealed E2 correction criterion.
 - Final scientific classification: `MECHANOSENSITIVE_ACTIVATION_FAILS_TO_CORRECT_G_TO_P_DAMPING`. E3, E4 and E5 are `NOT_REACHED`; no production reproduction, population selection/evolution, reversal or final integration was executed, and no successor is authorized by this result.
+
+## DC-M4-R10 polarity-to-existing-inward-normal actuator remap — pending
+
+- R10 begins from accepted R9 bounded-negative evidence. It tests signal routing only: accepted local polarity activity is added to the existing adapted curvature-normal drive and passed once through the existing paid inward-normal actuator; candidate polarity edge tension is disabled.
+- The fixed comparison is preregistered on the thirty R8 same-phase snapshots, with the R8 route-OFF reference retained independently. The verifier evaluates route identity, modal alignment, force cap, funding, branch equality, polarity conservation and separate mechanical/polarity ledgers from raw clone output.
+- No R10 scientific result exists until hosted exact-head CI and artifact verification complete. E3–E5 and all downstream science are not reached.

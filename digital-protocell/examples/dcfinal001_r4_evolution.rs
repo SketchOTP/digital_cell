@@ -85,6 +85,13 @@ fn r9_mechanosensitive_polarity_enabled() -> bool {
     )
 }
 
+fn r10_normal_remap_enabled() -> bool {
+    matches!(
+        env::var("DCFINAL001_R10_NORMAL_REMAP").ok().as_deref(),
+        Some("1") | Some("on") | Some("ON") | Some("true")
+    )
+}
+
 /// R9 held-out histories use a domain-separated campaign seed.  This is an
 /// assay identity only and is never selected from a morphogenetic outcome.
 fn r9_held_out_history_mode() -> bool {
@@ -4178,7 +4185,7 @@ fn r10_advance_phase(
                 }));
             }
             let Some((active_a, active_w, remesh_mappings, mechanics_diagnostic)) =
-                r10_closure::r10_refractory_mechanics_step_with_polarity_diagnostics(
+                r10_closure::r10_refractory_mechanics_step_with_polarity_route(
                     &mut cohort.mesh,
                     cohort.plasticity.as_mut().expect("R10 plasticity"),
                     topology_tick,
@@ -4188,6 +4195,11 @@ fn r10_advance_phase(
                         polarity_activity.as_deref()
                     } else {
                         None
+                    },
+                    if r10_normal_remap_enabled() {
+                        r10_closure::PolarityMechanicsRoute::R10InwardNormal
+                    } else {
+                        r10_closure::PolarityMechanicsRoute::R4EdgeTension
                     },
                 )
             else {
@@ -5574,6 +5586,26 @@ fn r7_replay_polarity_and_mechanics(
     connected: bool,
     step: usize,
 ) -> Result<Value, String> {
+    r7_replay_polarity_and_mechanics_with_route(
+        cohort,
+        world,
+        ledger,
+        polarity_states,
+        connected,
+        step,
+        r10_closure::PolarityMechanicsRoute::R4EdgeTension,
+    )
+}
+
+fn r7_replay_polarity_and_mechanics_with_route(
+    cohort: &mut Cohort,
+    world: &mut OpenMedium,
+    ledger: &mut CampaignLedger,
+    polarity_states: &mut PolarityStateMap,
+    connected: bool,
+    step: usize,
+    polarity_mechanics_route: r10_closure::PolarityMechanicsRoute,
+) -> Result<Value, String> {
     let count = cohort.count as f64;
     let measures = (0..cohort.mesh.n())
         .map(|index| cohort.mesh.edge_length(index))
@@ -5608,7 +5640,7 @@ fn r7_replay_polarity_and_mechanics(
     let topology_tick = step % 10 == 0;
     let structural_before = cohort.mesh.total_structural_mass();
     let (active_a, active_w, remesh_mappings, mechanics_diagnostic) =
-        r10_closure::r10_refractory_mechanics_step_with_polarity_diagnostics(
+        r10_closure::r10_refractory_mechanics_step_with_polarity_route(
             &mut cohort.mesh,
             cohort
                 .plasticity
@@ -5622,6 +5654,7 @@ fn r7_replay_polarity_and_mechanics(
             } else {
                 None
             },
+            polarity_mechanics_route,
         )
         .ok_or_else(|| "MECHANICS_OR_REMAP_REJECTED".to_string())?;
     if remesh_mappings > 0 {
@@ -5817,6 +5850,167 @@ fn r7_replay_full_cycle(seed: &R7BoundarySeed) -> Value {
         "transition": mechanics,
         "same_phase": "pre_polarity_advance_to_next_pre_polarity_advance",
     })
+}
+
+/// Execute only the same accepted pre-polarity -> post-mechanics transition
+/// used by R7, with an explicit diagnostic actuator route.  The route runs on
+/// a clone and is never part of the production lifecycle.
+fn r10_replay_mechanics_route(
+    seed: &R7BoundarySeed,
+    route: r10_closure::PolarityMechanicsRoute,
+    connected: bool,
+) -> Value {
+    let mut cohort = seed.cohort.clone();
+    let mut world = seed.world.clone();
+    let mut ledger = seed.ledger.clone();
+    let mut polarity_states = seed.polarity_states.clone();
+    match r7_replay_polarity_and_mechanics_with_route(
+        &mut cohort,
+        &mut world,
+        &mut ledger,
+        &mut polarity_states,
+        connected,
+        seed.step,
+        route,
+    ) {
+        Ok(transition) => json!({
+            "status": "ACCEPTED",
+            "transition": transition,
+            "route": match route {
+                r10_closure::PolarityMechanicsRoute::R4EdgeTension => "R4_EDGE_TENSION",
+                r10_closure::PolarityMechanicsRoute::R10InwardNormal => "R10_INWARD_NORMAL",
+            },
+            "connected": connected,
+            "observer_only": true,
+        }),
+        Err(reason) => json!({
+            "status": "REJECTED",
+            "reason": reason,
+            "route": match route {
+                r10_closure::PolarityMechanicsRoute::R4EdgeTension => "R4_EDGE_TENSION",
+                r10_closure::PolarityMechanicsRoute::R10InwardNormal => "R10_INWARD_NORMAL",
+            },
+            "connected": connected,
+            "observer_only": true,
+        }),
+    }
+}
+
+fn r10_normal_remap_record(seed: &R7BoundarySeed) -> Result<Value, String> {
+    let r4 = r7_replay_full_cycle(seed);
+    let r8_reference = r8_p_to_m_record(seed)?;
+    let normal = r10_replay_mechanics_route(
+        seed,
+        r10_closure::PolarityMechanicsRoute::R10InwardNormal,
+        true,
+    );
+    let cut = r10_replay_mechanics_route(
+        seed,
+        r10_closure::PolarityMechanicsRoute::R10InwardNormal,
+        false,
+    );
+    if r4["status"] != "ACCEPTED"
+        || normal["status"] != "ACCEPTED"
+        || cut["status"] != "ACCEPTED"
+    {
+        return Ok(json!({
+            "status": "P_TO_M_NONSMOOTH",
+            "reason": "one or more matched route transitions were not accepted",
+            "r4_edge_tension": r4,
+            "normal_remap": normal,
+            "polarity_cut": cut,
+        }));
+    }
+    let normal_cohort = r8_mesh_from_transition(&normal)?;
+    let cut_cohort = r8_mesh_from_transition(&cut)?;
+    let pre_vertices = &seed.cohort.mesh.vertices;
+    let normal_vertices = &normal_cohort.mesh.vertices;
+    let cut_vertices = &cut_cohort.mesh.vertices;
+    if normal_vertices.len() != cut_vertices.len() || normal_vertices.len() != pre_vertices.len() {
+        return Ok(json!({
+            "status": "P_TO_M_NONSMOOTH",
+            "reason": "matched normal-remap clones changed topology",
+            "r4_edge_tension": r4,
+            "normal_remap": normal,
+            "polarity_cut": cut,
+        }));
+    }
+    let delta = normal_vertices
+        .iter()
+        .zip(cut_vertices)
+        .map(|(normal, cut)| [normal[0] - cut[0], normal[1] - cut[1]])
+        .collect::<Vec<_>>();
+    let normal_displacement = normal_vertices
+        .iter()
+        .zip(pre_vertices)
+        .map(|(after, before)| [after[0] - before[0], after[1] - before[1]])
+        .collect::<Vec<_>>();
+    let modes = r8_normal_harmonic_basis(&seed.cohort.mesh);
+    let activity = normal["transition"]["polarity"]["actuation"]["vertex_activity"]
+        .as_array()
+        .ok_or_else(|| "R10_POLARITY_ACTIVITY_MISSING".to_string())?
+        .iter()
+        .map(|value| value.as_f64().unwrap_or(f64::NAN))
+        .collect::<Vec<_>>();
+    let normal_polarity = &normal["transition"]["polarity"];
+    let cut_polarity = &cut["transition"]["polarity"];
+    let normal_mechanics = &normal["transition"]["mechanics"];
+    let cut_mechanics = &cut["transition"]["mechanics"];
+    let branch_equal = normal_mechanics["remesh_mappings"] == cut_mechanics["remesh_mappings"]
+        && normal_mechanics["diagnostic"]["topology_ruptures"]
+            == cut_mechanics["diagnostic"]["topology_ruptures"]
+        && normal_mechanics["diagnostic"]["topology_rebonds"]
+            == cut_mechanics["diagnostic"]["topology_rebonds"];
+    let mechanical_a_delta = normal_mechanics["active_a"].as_f64().unwrap_or(0.0)
+        - cut_mechanics["active_a"].as_f64().unwrap_or(0.0);
+    let mechanical_w_delta = normal_mechanics["active_w"].as_f64().unwrap_or(0.0)
+        - cut_mechanics["active_w"].as_f64().unwrap_or(0.0);
+    let polarity_a_delta = normal_polarity["a_consumed"].as_f64().unwrap_or(0.0)
+        - cut_polarity["a_consumed"].as_f64().unwrap_or(0.0);
+    Ok(json!({
+        "status": if branch_equal { "VALID" } else { "P_TO_M_NONSMOOTH" },
+        "input_digest": deterministic_state_digest(&r7_boundary_state_value(
+            &seed.cohort,
+            &seed.world,
+            &seed.ledger,
+            &seed.polarity_states,
+            seed.next_id,
+            seed.step,
+            seed.campaign_seed,
+            true,
+        )),
+        "clone_equality_before_intervention": true,
+        "r4_edge_tension": r4["transition"].clone(),
+        "r8_route_off_reference": r8_reference,
+        "normal_remap": normal["transition"].clone(),
+        "polarity_cut": cut["transition"].clone(),
+        "post_polarity_active_equal": normal_polarity["active_amount_after"]
+            == cut_polarity["active_amount_after"],
+        "post_polarity_inactive_equal": normal_polarity["inactive_amount_after"]
+            == cut_polarity["inactive_amount_after"],
+        "branch_equal": branch_equal,
+        "polarity_activity": activity.clone(),
+        "polarity_activity_harmonics": r8_scalar_harmonics(&activity),
+        "mechanical_delta_vertices": delta.clone(),
+        "mechanical_delta_norm": r8_point_vector_norm(&delta),
+        "normal_displacement_norm": r8_point_vector_norm(&normal_displacement),
+        "normal_modal_delta": r8_normal_modal_projections(&delta, &modes),
+        "normal_full_modal": r8_normal_modal_projections(&normal_displacement, &modes),
+        "mechanical_a_delta": mechanical_a_delta,
+        "mechanical_w_delta": mechanical_w_delta,
+        "polarity_chemistry_a_delta": polarity_a_delta,
+        "normal_route": normal_mechanics["diagnostic"].clone(),
+        "cut_route": cut_mechanics["diagnostic"].clone(),
+        "candidate_contract": {
+            "equation": "d_i_R10 = min(1, d_i_legacy + p_i)",
+            "polarity_edge_tension": "DISABLED",
+            "actuator": "inward_normal_request(mesh, drive, dt)",
+            "new_force_law": false,
+            "new_energy_price": false,
+        },
+        "observer_only": true,
+        "production_transition_modified": false,
+    }))
 }
 
 fn r7_probe_transition(
@@ -6944,6 +7138,64 @@ pub fn run_r9_mechanosensitive_edge_arm(index: usize) -> Value {
         "reproduction": "NOT_REACHED",
         "population_selection": "NOT_REACHED",
         "reversal": "NOT_REACHED",
+        "observer_only": true,
+    })
+}
+
+/// R10 reuses the exact thirty R8 same-phase snapshots and applies the
+/// polarity-to-inward-normal remap only to discarded clone transitions.  The
+/// accepted R4 edge-tension transition is retained as the route-OFF reference;
+/// no R10 route is connected to the production lifecycle.
+pub fn run_r10_polarity_normal_remap_arm(index: usize) -> Value {
+    env::remove_var("DCFINAL001_R9_MECHANOSENSITIVE");
+    env::set_var("DCFINAL001_R8_CAPTURE_ONLY", "1");
+    let r7 = run_r7_full_cycle_arm(index, true);
+    let snapshots = r7["full_cycle_snapshots"]
+        .as_array()
+        .cloned()
+        .unwrap_or_default();
+    let records = snapshots
+        .iter()
+        .map(|snapshot| {
+            let record = r8_seed_from_snapshot(snapshot).and_then(|seed| {
+                let r10 = r10_normal_remap_record(&seed)?;
+                Ok(json!({
+                    "checkpoint_step": snapshot["checkpoint_step"],
+                    "expected_next_step": snapshot["expected_next_step"],
+                    "input_boundary_digest": deterministic_state_digest(&snapshot["input_boundary"]),
+                    "r7_replay_identity": snapshot["identity"].clone(),
+                    "r10": r10,
+                    "same_snapshot_for_conditions": true,
+                    "observer_only": true,
+                }))
+            });
+            match record {
+                Ok(value) => value,
+                Err(reason) => json!({
+                    "checkpoint_step": snapshot["checkpoint_step"],
+                    "status": "ERROR",
+                    "error": reason,
+                    "observer_only": true,
+                }),
+            }
+        })
+        .collect::<Vec<_>>();
+    json!({
+        "arm": r7["arm"].clone(),
+        "connected": true,
+        "accepted": r7["accepted"].clone(),
+        "accepted_steps": r7["accepted_steps"].clone(),
+        "physical_fissions": r7["physical_fissions"].clone(),
+        "r7_snapshot_count": records.len(),
+        "snapshots": records,
+        "candidate_equation": "d_i_R10 = min(1, d_i_legacy + p_i)",
+        "candidate_route": "R10_INWARD_NORMAL",
+        "polarity_edge_tension": "DISABLED_ON_CANDIDATE",
+        "production_transition_modified": false,
+        "reproduction": "NOT_REACHED",
+        "population_selection": "NOT_REACHED",
+        "reversal": "NOT_REACHED",
+        "final_integration": "NOT_REACHED",
         "observer_only": true,
     })
 }
