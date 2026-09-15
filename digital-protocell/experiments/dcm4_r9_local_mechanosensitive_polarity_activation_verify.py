@@ -221,8 +221,8 @@ def seal_stage(repo: Path, root: Path, raw: dict) -> None:
     })
 
 
-def response(record: dict, scale_index: int, sign_index: int) -> list[float]:
-    scale = record["scales"][scale_index]
+def response(mode: dict, scale_index: int, sign_index: int) -> list[float]:
+    scale = mode["scales"][scale_index]
     sign = scale["signs"][sign_index]
     return vector(sign["active_delta"]) + vector(sign["inactive_delta"])
 
@@ -242,8 +242,8 @@ def g_metrics(record: dict, mechanosensitive: bool) -> dict:
         for scale_index, scale in enumerate(scales):
             signs = scale.get("signs") or []
             assert len(signs) == 2
-            plus = response(record, scale_index, 0)
-            minus = response(record, scale_index, 1)
+            plus = response(mode, scale_index, 0)
+            minus = response(mode, scale_index, 1)
             opposite_error = norm([a + b for a, b in zip(plus, minus)]) / max(
                 norm([a - b for a, b in zip(plus, minus)]), 1.0e-300
             )
