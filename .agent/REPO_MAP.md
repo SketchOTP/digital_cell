@@ -373,3 +373,8 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `.github/workflows/dc-m4-r12-state-normalized-p-to-m.yml` — exact-head scope, focused checks, pre-outcome contract seal, fixed-state execution, independent verification, binary/manifest seal and downstream-stop assertion.
 - `experiments/generated/dcm4r12statenormalizedptomforcerequalification/` — R12 authority, force provenance, contract, susceptibility, transfer, evidence, preservation, qualification and manifest records. Accepted terminal result: `P_TO_M_STATE_NORMALIZED_R4_AND_R10_TRANSFER_QUALIFIED`; E3–E5 and downstream biology are not reached.
 - R12 implementation seal: `d8dc5dce970ae5825a9f88bd51be3be7d4f1d97b`, workflow `35058530349`, artifact `sha256:62127f33e57278c547284abf6bc2c814fc0206eedee6cd27981fb9c7ec638370`, manifest `12/12`, binary `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64`. Final governance-head rerun and Notion readback remain the final handoff seal; PR #44 is untouched.
+
+## DC-M4-R12 final governance-head authority and external readback
+
+- Final governance head `d2cfeb3d69f5d28459a663d2295b1b1fc227a505` passed exact-head workflow `35059631812`; final artifact ZIP `sha256:e049c58a0e608bf0fa36ccdf1a9b4f82f77108c31949fabd309f7331ecb55c41`; manifest `12/12`; binary `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64`.
+- The artifact and manifest were independently recomputed and the verifier rerun reproduces `P_TO_M_STATE_NORMALIZED_R4_AND_R10_TRANSFER_QUALIFIED` (`30/30` R4 and `30/30` R10). Notion R12 and the canonical Digital Cell SOT were updated/read back. No successor or downstream biology started; PR #44 remains untouched.

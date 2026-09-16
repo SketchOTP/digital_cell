@@ -1421,3 +1421,8 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - R12 verifies R4 edge-tension and R10 inward-normal force provenance/parity `30/30`, with `30/30` usable and qualified states for each route. This is force-to-response transfer only, not self-amplifying morphogenesis or reproduction.
 - Discarded-clone probes must remove common passive displacement before assessing signed susceptibility symmetry. A zero-force baseline prevents passive drift from being misclassified as force nonlinearity. Any over-cap probe is uniformly, direction-preservingly normalized on the diagnostic clone only; production force and cost are unchanged.
 - R12 does not resolve the accepted R9 geometry-to-polarity damping result or establish a closed-loop morphogenetic mode. Do not increase gain, alter mechanics/ecology, or run reproduction/population work; no successor is automatic.
+
+## DC-M4-R12 final handoff
+
+- The complete package is not sealed by the implementation-head artifact alone. The final governance commit `d2cfeb3d69f5d28459a663d2295b1b1fc227a505`, exact-head workflow `35059631812`, independently recomputed ZIP `e049c58a0e608bf0fa36ccdf1a9b4f82f77108c31949fabd309f7331ecb55c41`, `12/12` manifest and binary `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64` are the authoritative final identities.
+- Notion page and SOT readback must carry that final governance identity. The R12 result remains force-response qualification only; accepted R9 G_TO_P damping is not erased, and no morphogenesis/reproduction successor is automatic.
