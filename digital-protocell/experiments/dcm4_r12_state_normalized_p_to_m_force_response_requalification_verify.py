@@ -440,6 +440,11 @@ def qualification_stage(repo: Path, root: Path, raw: dict) -> None:
         for snapshot in snapshots:
             assert snapshot["checkpoint_step"] in CHECKPOINTS
             assert snapshot["observer_only"] is True
+            if snapshot.get("status") == "ERROR":
+                print(
+                    "R12 route reconstruction error: "
+                    + json.dumps(snapshot.get("_r12_error_logged", snapshot), sort_keys=True)
+                )
             assert snapshot["same_snapshot_for_conditions"] is True
             assert snapshot["r7_replay_identity"]["same_phase_boundary_exact"] is True
             route = snapshot.get("route") or {}
