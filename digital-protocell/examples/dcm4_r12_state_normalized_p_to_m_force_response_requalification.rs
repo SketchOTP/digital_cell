@@ -17,14 +17,12 @@ use std::env;
 use std::fs;
 use std::path::Path;
 
-const DIRECTIVE: &str =
-    "DC-M4-R12-STATE-NORMALIZED-P-TO-M-FORCE-RESPONSE-REQUALIFICATION-GATE-001";
+const DIRECTIVE: &str = "DC-M4-R12-STATE-NORMALIZED-P-TO-M-FORCE-RESPONSE-REQUALIFICATION-GATE-001";
 const R11_HEAD: &str = "c5d5342b19e912c004dd87eaf33a1ce1f16d27d7";
 const R11_CI: &str = "35034373866";
 const R11_ARTIFACT: &str =
     "sha256:acade736638f3c607996e246457f5c17744aedb3df0cfb63df573aa4063f28c6";
-const R11_BINARY: &str =
-    "332c97a7e73dd3b3abd5da211ad47fea64722411e825b9081d074e1b7eab5a8f";
+const R11_BINARY: &str = "332c97a7e73dd3b3abd5da211ad47fea64722411e825b9081d074e1b7eab5a8f";
 const HORIZON: usize = 14_778;
 const CHECKPOINTS: [usize; 3] = [3_694, 7_389, 11_083];
 
