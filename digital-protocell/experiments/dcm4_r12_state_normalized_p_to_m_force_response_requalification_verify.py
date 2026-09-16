@@ -500,8 +500,8 @@ def qualification_stage(repo: Path, root: Path, raw: dict) -> None:
         "snapshot_count": len(records),
         "r4_usable": r4_usable,
         "r10_usable": r10_usable,
-        "r4_native_parity": all(record["r4"]["r4_native_parity"]["parity"] for record in records),
-        "r10_native_parity": all(record["r10"]["r10_native_parity"]["parity"] for record in records),
+        "r4_native_parity": all(record["r4_native_parity"]["parity"] for record in records),
+        "r10_native_parity": all(record["r10_native_parity"]["parity"] for record in records),
         "r4_edge_projection_recomputed": True,
         "r10_full_minus_cut_recomputed": True,
     })
