@@ -76,8 +76,10 @@ fn seal() -> Value {
         "susceptibility_contract": {
             "scales": [1.0, 0.5],
             "signs": [1.0, -1.0],
+            "zero_force_baseline": "included for passive-displacement centering; it is not a production transition",
             "r1": "[r(+1)-r(-1)]/2",
             "r05": "[r(+0.5)-r(-0.5)]/2",
+            "probe_force_cap": "preserve exact source direction and uniformly scale only when needed to satisfy MAX_EXTERNAL_FORCE_PER_VERTEX",
             "mechanics": "frozen mechanics plus self-contact and remesh on discarded clones",
             "branch_divergence": "NONSMOOTH",
             "sign_symmetry_tolerance": 0.05,

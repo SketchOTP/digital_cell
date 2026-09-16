@@ -169,8 +169,32 @@ def probe_pair(record: dict, label: str) -> tuple[dict, dict]:
         displacement = points(probe["displacement"])
         assert len(forces) == len(displacement)
         assert all(math.hypot(*force) <= FORCE_CAP + 1.0e-10 for force in forces)
+        source_force_max = float(probe["source_force_max"])
+        expected_scale = min(1.0, FORCE_CAP / source_force_max) if source_force_max > 0.0 else 1.0
+        assert close(probe["force_cap_normalization_scale"], expected_scale)
         assert finite(probe)
     return pair
+
+
+def probe_single(record: dict, label: str) -> dict:
+    probe = record["response"]["probes"][label]
+    assert probe["status"] == "VALID"
+    assert probe["observer_only"] is True
+    assert probe["production_state_mutated"] is False
+    assert probe["polarity_feedback"] is False
+    branch = probe["branch"]
+    assert branch["same_topology"] is True
+    assert branch["splits"] == 0
+    assert branch["merges"] == 0
+    assert branch["fallback"] is False
+    assert branch["simple"] is True
+    assert branch["runtime_valid"] is True
+    assert branch["lifecycle_valid"] is True
+    source_force_max = float(probe["source_force_max"])
+    expected_scale = min(1.0, FORCE_CAP / source_force_max) if source_force_max > 0.0 else 1.0
+    assert close(probe["force_cap_normalization_scale"], expected_scale)
+    assert finite(probe)
+    return probe
 
 
 def response_metrics(record: dict) -> dict:
@@ -179,8 +203,10 @@ def response_metrics(record: dict) -> dict:
     assert response["usable"] is True
     one_plus, one_minus = probe_pair(record, "one")
     half_plus, half_minus = probe_pair(record, "half")
+    zero_probe = probe_single(record, "zero")
     p1, m1 = points(one_plus["displacement"]), points(one_minus["displacement"])
     p05, m05 = points(half_plus["displacement"]), points(half_minus["displacement"])
+    zero = points(zero_probe["displacement"])
     r1 = scale(subtract(p1, m1), 0.5)
     r05 = scale(subtract(p05, m05), 0.5)
     two_r05 = scale(r05, 2.0)
@@ -191,8 +217,20 @@ def response_metrics(record: dict) -> dict:
     bio_norm = norm(bio_flat)
     control_alignment = correlation(r1_flat, two_r05_flat)
     control_disagreement = norm([a - b for a, b in zip(r1_flat, two_r05_flat)]) / max(r1_norm, RESPONSE_TOLERANCE)
-    one_average = scale([(a + c, b + d) for (a, b), (c, d) in zip(p1, m1)], 0.5)
-    half_average = scale([(a + c, b + d) for (a, b), (c, d) in zip(p05, m05)], 0.5)
+    one_average = scale(
+        [
+            (a + c - 2 * z, b + d - 2 * w)
+            for (a, b), (c, d), (z, w) in zip(p1, m1, zero)
+        ],
+        0.5,
+    )
+    half_average = scale(
+        [
+            (a + c - 2 * z, b + d - 2 * w)
+            for (a, b), (c, d), (z, w) in zip(p05, m05, zero)
+        ],
+        0.5,
+    )
     sign_one = point_norm(one_average) / max(r1_norm, RESPONSE_TOLERANCE)
     sign_half = point_norm(half_average) / max(r1_norm, RESPONSE_TOLERANCE)
     gain = dot(bio_flat, r1_flat) / dot(r1_flat, r1_flat) if r1_norm > RESPONSE_TOLERANCE else float("nan")
@@ -229,6 +267,7 @@ def response_metrics(record: dict) -> dict:
     assert close(response["r1_norm"], r1_norm)
     assert close(response["r05_norm"], point_norm(r05))
     assert close(response["biological_response_norm"], bio_norm)
+    assert points(response["baseline_displacement"]) == zero
     assert close(response["control_alignment"], control_alignment)
     assert close(response["control_scale_disagreement"], control_disagreement)
     assert close(response["sign_asymmetry_one"], sign_one)
@@ -404,6 +443,8 @@ def seal_stage(repo: Path, root: Path, raw: dict) -> None:
         "r10_force": "native full-minus-cut funded inward-normal vertex field",
         "probe_scales": [1.0, 0.5],
         "probe_signs": [1.0, -1.0],
+        "zero_force_baseline": "included to remove passive displacement from sign-symmetry assessment",
+        "probe_force_cap": "uniform direction-preserving normalization to MAX_EXTERNAL_FORCE_PER_VERTEX when required",
         "responses": {"r1": "[r(+1)-r(-1)]/2", "r05": "[r(+0.5)-r(-0.5)]/2"},
         "mechanics": "frozen mechanics/self-contact/remesh on discarded clones",
         "branch_divergence": "NONSMOOTH",

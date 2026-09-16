@@ -6709,7 +6709,17 @@ fn r12_force_probe(
     if polarity_force.len() != base_mesh.n() {
         return Err("R12_PROBE_FORCE_LENGTH_MISMATCH".to_string());
     }
-    let signed_force = r12_scale_points(polarity_force, normalized_scale * sign);
+    let source_force_max = polarity_force
+        .iter()
+        .map(|force| force[0].hypot(force[1]))
+        .fold(0.0_f64, f64::max);
+    let force_cap_normalization_scale = if source_force_max > MAX_EXTERNAL_FORCE_PER_VERTEX {
+        MAX_EXTERNAL_FORCE_PER_VERTEX / source_force_max
+    } else {
+        1.0
+    };
+    let probe_direction = r12_scale_points(polarity_force, force_cap_normalization_scale);
+    let signed_force = r12_scale_points(&probe_direction, normalized_scale * sign);
     let edge_tensions = vec![0.0; base_mesh.n()];
     let (probe_mesh, branch) = match r12_native_mechanics_clone(
         base_mesh.clone(),
@@ -6768,7 +6778,9 @@ fn r12_force_probe(
         "sign": sign,
         "normalized_scale": normalized_scale,
         "force_vectors": signed_force,
-        "force_rms": r12_point_norm(&r12_scale_points(polarity_force, normalized_scale)),
+        "source_force_max": source_force_max,
+        "force_cap_normalization_scale": force_cap_normalization_scale,
+        "force_rms": r12_point_norm(&r12_scale_points(&probe_direction, normalized_scale)),
         "branch": branch,
         "displacement": displacement,
         "displacement_norm": r12_point_norm(&displacement),
@@ -6830,6 +6842,8 @@ fn r12_response_metrics(
     biological: &[[f64; 2]],
 ) -> Result<Value, String> {
     let mut probes = BTreeMap::new();
+    let zero = r12_force_probe(base_mesh, polarity_force, 0.0, 1.0)?;
+    probes.insert("zero".to_string(), zero);
     for (label, scale) in [("one", 1.0_f64), ("half", 0.5_f64)] {
         let plus = r12_force_probe(base_mesh, polarity_force, scale, 1.0)?;
         let minus = r12_force_probe(base_mesh, polarity_force, scale, -1.0)?;
@@ -6839,10 +6853,11 @@ fn r12_response_metrics(
     let minus_one = &probes["one"]["minus"];
     let plus_half = &probes["half"]["plus"];
     let minus_half = &probes["half"]["minus"];
+    let zero = &probes["zero"];
     let all_valid = [plus_one, minus_one, plus_half, minus_half]
         .iter()
         .all(|probe| probe["status"] == "VALID");
-    if !all_valid {
+    if !all_valid || zero["status"] != "VALID" {
         return Ok(json!({
             "status": "NONSMOOTH",
             "usable": false,
@@ -6855,6 +6870,7 @@ fn r12_response_metrics(
     let minus_one = r12_points(minus_one.get("displacement").unwrap(), "MINUS_ONE_DISPLACEMENT")?;
     let plus_half = r12_points(plus_half.get("displacement").unwrap(), "PLUS_HALF_DISPLACEMENT")?;
     let minus_half = r12_points(minus_half.get("displacement").unwrap(), "MINUS_HALF_DISPLACEMENT")?;
+    let zero = r12_points(zero.get("displacement").unwrap(), "ZERO_DISPLACEMENT")?;
     let r1 = r12_scale_points(&r12_sub(&plus_one, &minus_one), 0.5);
     let r05 = r12_scale_points(&r12_sub(&plus_half, &minus_half), 0.5);
     let two_r05 = r12_scale_points(&r05, 2.0);
@@ -6872,8 +6888,14 @@ fn r12_response_metrics(
             .map(|(left, right)| left - right)
             .collect::<Vec<_>>(),
     ) / r1_norm.max(R12_MIN_RESPONSE_NORM);
-    let one_average = r12_scale_points(&r12_add_scaled(&plus_one, &minus_one, 1.0), 0.5);
-    let half_average = r12_scale_points(&r12_add_scaled(&plus_half, &minus_half, 1.0), 0.5);
+    let one_average = r12_scale_points(
+        &r12_sub(&r12_add_scaled(&plus_one, &minus_one, 1.0), &r12_scale_points(&zero, 2.0)),
+        0.5,
+    );
+    let half_average = r12_scale_points(
+        &r12_sub(&r12_add_scaled(&plus_half, &minus_half, 1.0), &r12_scale_points(&zero, 2.0)),
+        0.5,
+    );
     let sign_asymmetry_one = r12_point_norm(&one_average) / r1_norm.max(R12_MIN_RESPONSE_NORM);
     let sign_asymmetry_half = r12_point_norm(&half_average) / r1_norm.max(R12_MIN_RESPONSE_NORM);
     let least_squares_gain = if r1_norm > R12_MIN_RESPONSE_NORM {
@@ -6914,6 +6936,7 @@ fn r12_response_metrics(
         "r05": r05,
         "two_r05": two_r05,
         "biological_response": biological,
+        "baseline_displacement": zero,
         "r1_norm": r1_norm,
         "r05_norm": r12_point_norm(&r05),
         "biological_response_norm": biological_norm,
