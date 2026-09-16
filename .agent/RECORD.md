@@ -2087,3 +2087,17 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Implementation/result head `372ef86d1d62955a0ae8c905048c7e1b4988b57e` passed exact-head workflow `35033913849`; artifact ZIP `sha256:ff32c88443fec0dc18178fb26506aa227343b537921f0258ebd4d3c7f378cade`; manifest `12/12`; binary `332c97a7e73dd3b3abd5da211ad47fea64722411e825b9081d074e1b7eab5a8f`.
 - Independent recomputation verifies all thirty fixed snapshots usable, old R8/R10 below threshold in `30/30`, and ideal pure-mode local-normal susceptibility below `0.50` at both amplitudes in `30/30`. Terminal decision: `P_TO_M_ALIGNMENT_GATE_INVALID_FOR_CURRENT_BODY_STATES`.
 - R11 is implementation `PASS` and a bounded metric correction. It does not establish P_TO_M biological failure, morphogenesis or reproduction. No production biology, reproduction, population, selection, reversal or final integration ran; only a future state-normalized P_TO_M metric gate may be proposed, and PR #44 remains open/draft/unmerged/untouched.
+
+## DEC-DC-M4-R12-STATE-NORMALIZED-P-TO-M-FORCE-RESPONSE-REQUALIFICATION-GATE-001
+
+- Date: `2026-09-16`.
+- R12 is authorized from R11 final governance head `c5d5342b19e912c004dd87eaf33a1ce1f16d27d7` as observer/replay-only state-normalized force-response qualification. R4 native edge tension and R10 native inward-normal transfer remain separate and unchanged; no production biology, coefficient, actuator, ecology, fission or reproduction change is authorized.
+- The first `c771883` hosted iteration is preserved as a superseded bounded-inconclusive diagnostic attempt. The corrected `d8dc5dc` path only fixes discarded-probe cap normalization and zero-force passive-drift centering; these do not alter production behavior.
+- The sealed contract uses exact R8/R10 states, native route force provenance, complete non-rigid response vectors, signed two-scale susceptibility probes, branch fail-closed handling and each state's own control envelope. No universal correlation cutoff or reproductive outcome enters qualification.
+
+## DEC-DC-M4-R12-FINAL-STATE-NORMALIZED-TRANSFER-QUALIFICATION
+
+- Date: `2026-09-16`.
+- Implementation head `d8dc5dce970ae5825a9f88bd51be3be7d4f1d97b` passed exact-head workflow `35058530349`; hosted artifact independently hashes to `sha256:62127f33e57278c547284abf6bc2c814fc0206eedee6cd27981fb9c7ec638370`; `12/12` manifest entries verify; binary SHA-256 is `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64`.
+- Independent recomputation verifies R4/R10 native provenance/parity `30/30`, usable/valid/branch-matched states `30/30` per route, signed probes `120/120` per route valid and simple, sign symmetry/two-scale controls passing in all states, and zero accepted non-smooth exclusions.
+- Terminal classification: `P_TO_M_STATE_NORMALIZED_R4_AND_R10_TRANSFER_QUALIFIED`. This qualifies force-to-mechanical-response transfer only. It does not establish morphogenesis, apposition, fission, reproduction, daughter continuation, birth-to-birth recurrence, selection/evolution, reversal or final integration. No successor started; PR #44 remains open/draft/unmerged/untouched. Final governance-head seal and Notion readback are the remaining handoff actions.

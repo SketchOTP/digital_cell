@@ -1473,3 +1473,15 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - R11 implementation/result head `372ef86d1d62955a0ae8c905048c7e1b4988b57e` passed exact-head workflow `35033913849`; artifact ZIP `sha256:ff32c88443fec0dc18178fb26506aa227343b537921f0258ebd4d3c7f378cade`; manifest `12/12`; binary `332c97a7e73dd3b3abd5da211ad47fea64722411e825b9081d074e1b7eab5a8f`.
 - All `30/30` fixed snapshots were valid and usable. Old R8 and R10 fractions were independently below `0.50` in `30/30`; ideal pure-mode susceptibility was below `0.50` at both scales in `30/30`. Terminal classification: `P_TO_M_ALIGNMENT_GATE_INVALID_FOR_CURRENT_BODY_STATES`.
 - This is a metric-validity correction, not a biological success or R10 implementation failure. No production biology, morphogenesis, reproduction, population, selection, reversal or final integration ran. Preserve R1–R10, do not tune the actuator, and do not start a successor automatically; PR #44 remains untouched.
+
+## DC-M4-R12-STATE-NORMALIZED-P-TO-M-FORCE-RESPONSE-REQUALIFICATION-GATE-001
+
+- Authorized from R11 governance head `c5d5342b19e912c004dd87eaf33a1ce1f16d27d7` as observer/replay-only state-normalized qualification. Preserve R4 edge-tension and R10 inward-normal routes separately; no production biology, actuator, gain, ecology, mechanics, fission or reproduction changes are authorized.
+- The initial `c771883` hosted iteration is preserved as superseded bounded-inconclusive diagnostic evidence. The corrected `d8dc5dc` observer path adds only discarded-probe cap normalization and zero-force passive-drift centering; production behavior and route equations remain unchanged.
+- R12 uses the exact thirty R8/R10 states, complete non-rigid response vectors, signed two-scale susceptibility controls, branch fail-closed handling and each state's own pre-outcome control envelope. No universal correlation cutoff or reproductive outcome enters qualification.
+
+## DC-M4-R12 final bounded transfer qualification
+
+- `d8dc5dce970ae5825a9f88bd51be3be7d4f1d97b` passed exact-head workflow `35058530349`; artifact `sha256:62127f33e57278c547284abf6bc2c814fc0206eedee6cd27981fb9c7ec638370`; manifest `12/12`; binary `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64`.
+- Independent recomputation verifies R4/R10 native provenance/parity `30/30`, usable/valid/branch-matched states `30/30` per route, `120/120` signed probes per route valid and simple, sign symmetry/two-scale controls passing in all states, and zero accepted non-smooth exclusions.
+- Terminal classification: `P_TO_M_STATE_NORMALIZED_R4_AND_R10_TRANSFER_QUALIFIED`. This is force-to-response transfer only; E3 morphogenesis, E4 reproduction, E5 birth-to-birth, population selection/evolution, reversal and final integration remain `NOT_REACHED`. No successor is authorized automatically; PR #44 remains untouched. Final governance-head rerun and Notion readback follow this append-only seal.
