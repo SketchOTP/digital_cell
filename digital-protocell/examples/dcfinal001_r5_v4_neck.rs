@@ -574,12 +574,12 @@ fn inward_normal_request(mesh: &MaterialMesh, drive: &[f64], dt: f64) -> (Vec<[f
     (forces, requested)
 }
 
-fn active_edge_tension_forces(
+fn edge_tension_profile(
     mesh: &MaterialMesh,
     activity: &[f64],
     mechanics: &MechParams,
     contractility: &ContractilityParamsV1,
-) -> Vec<[f64; 2]> {
+) -> (Vec<f64>, f64) {
     let mut tensions = vec![0.0; mesh.n()];
     let mut requested = 0.0;
     for edge in 0..mesh.n() {
@@ -594,15 +594,16 @@ fn active_edge_tension_forces(
             * mesh.edge_length(edge)
             * mechanics.dt.max(0.0);
     }
-    let available = mesh.interior.a.max(0.0) * mesh.area().max(1e-300);
-    let scale = if requested <= f64::EPSILON {
-        0.0
-    } else {
-        (available / requested).min(1.0)
-    };
+    (tensions, requested)
+}
+
+fn vertex_forces_from_edge_tensions(mesh: &MaterialMesh, tensions: &[f64]) -> Vec<[f64; 2]> {
+    if tensions.len() != mesh.n() {
+        return Vec::new();
+    }
     let mut forces = vec![[0.0, 0.0]; mesh.n()];
     for edge in 0..mesh.n() {
-        let tension = tensions[edge] * scale;
+        let tension = tensions[edge];
         if tension <= 0.0 {
             continue;
         }
@@ -619,6 +620,26 @@ fn active_edge_tension_forces(
         forces[next][1] -= tension * tangent[1];
     }
     forces
+}
+
+fn active_edge_tension_forces(
+    mesh: &MaterialMesh,
+    activity: &[f64],
+    mechanics: &MechParams,
+    contractility: &ContractilityParamsV1,
+) -> Vec<[f64; 2]> {
+    let (tensions, requested) = edge_tension_profile(mesh, activity, mechanics, contractility);
+    let available = mesh.interior.a.max(0.0) * mesh.area().max(1e-300);
+    let scale = if requested <= f64::EPSILON {
+        0.0
+    } else {
+        (available / requested).min(1.0)
+    };
+    let funded_tensions = tensions
+        .iter()
+        .map(|tension| tension * scale)
+        .collect::<Vec<_>>();
+    vertex_forces_from_edge_tensions(mesh, &funded_tensions)
 }
 
 fn segment_pair_distance(mesh: &MaterialMesh, i: usize, j: usize) -> f64 {
@@ -2575,6 +2596,29 @@ pub fn r10_refractory_mechanics_step_with_polarity_route(
         PolarityMechanicsRoute::R4EdgeTension => polarity_activity_values.clone(),
         PolarityMechanicsRoute::R10InwardNormal => vec![0.0; mesh.n()],
     };
+    // Observer-only provenance for R12.  These are the exact native
+    // polarity-specific inputs constructed before the frozen actuator runs.
+    // The actuator below remains the sole owner of scaling, mechanics, and
+    // the actual A->W transaction; these fields only expose its inputs and
+    // the already-determined combined funding scale.
+    let (unscaled_polarity_edge_tensions, polarity_edge_request) = match route {
+        PolarityMechanicsRoute::R4EdgeTension => {
+            edge_tension_profile(mesh, &contractility_activity, &mechanics, &contractility)
+        }
+        PolarityMechanicsRoute::R10InwardNormal => (vec![0.0; mesh.n()], 0.0),
+    };
+    let combined_requested = polarity_edge_request + if motor_enabled { requested } else { 0.0 };
+    let available_active_amount = mesh.interior.a.max(0.0) * mesh.area().max(1e-300);
+    let combined_funding_scale = if combined_requested <= f64::EPSILON {
+        0.0
+    } else {
+        (available_active_amount / combined_requested).min(1.0)
+    };
+    let polarity_edge_tensions = unscaled_polarity_edge_tensions
+        .iter()
+        .map(|tension| tension * combined_funding_scale)
+        .collect::<Vec<_>>();
+    let polarity_edge_force_vectors = vertex_forces_from_edge_tensions(mesh, &polarity_edge_tensions);
     let ledger = apply_local_activated_energy_contractility_with_funded_extra_and_passive_forces_self_contact(
         mesh,
         &contractility_activity,
@@ -2648,8 +2692,29 @@ pub fn r10_refractory_mechanics_step_with_polarity_route(
         "effective_drive_variance": effective_drive_variance,
         "effective_drive_maximum": effective_drive.iter().copied().fold(0.0_f64, f64::max),
         "requested_force_norm": requested_forces.iter().map(|force| force[0].hypot(force[1])).sum::<f64>(),
-        "requested_inward_normal_forces": requested_forces,
+        "requested_inward_normal_forces": requested_forces.clone(),
         "funded_inward_normal_forces": funded_inward_normal_forces,
+        "funded_inward_normal_forces_exact": requested_forces
+            .iter()
+            .map(|force| [force[0] * combined_funding_scale, force[1] * combined_funding_scale])
+            .collect::<Vec<_>>(),
+        "combined_requested_active_a": combined_requested,
+        "combined_funding_scale": combined_funding_scale,
+        "polarity_edge_tension_requested_active_a": polarity_edge_request,
+        "polarity_edge_tensions_requested": unscaled_polarity_edge_tensions,
+        "polarity_edge_tensions_funded": polarity_edge_tensions.clone(),
+        "polarity_specific_force_vectors": polarity_edge_force_vectors.clone(),
+        "polarity_specific_force_rms": if matches!(route, PolarityMechanicsRoute::R4EdgeTension) {
+            let forces = vertex_forces_from_edge_tensions(mesh, &polarity_edge_tensions);
+            (forces
+                .iter()
+                .map(|force| force[0] * force[0] + force[1] * force[1])
+                .sum::<f64>()
+                / forces.len().max(1) as f64)
+                .sqrt()
+        } else {
+            0.0
+        },
         "requested_active_a": if motor_enabled { requested } else { 0.0 },
         "funded_active_a": ledger.resource_spent,
         "requested_active_a_total": ledger.requested_resource,

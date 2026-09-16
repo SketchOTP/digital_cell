@@ -467,3 +467,7 @@ path = "../../examples/dcm4_r9_local_mechanosensitive_polarity_activation.rs"
 [[example]]
 name = "dcm4_r10_polarity_to_existing_inward_normal_actuator_remap"
 path = "../../examples/dcm4_r10_polarity_to_existing_inward_normal_actuator_remap.rs"
+
+[[example]]
+name = "dcm4_r12_state_normalized_p_to_m_force_response_requalification"
+path = "../../examples/dcm4_r12_state_normalized_p_to_m_force_response_requalification.rs"

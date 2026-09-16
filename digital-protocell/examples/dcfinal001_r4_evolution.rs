@@ -6487,6 +6487,624 @@ pub fn run_r11_p_to_m_qualification_arm(index: usize) -> Value {
     })
 }
 
+// R12 state-normalized force-response diagnostics.  These helpers retain
+// each route's native force provenance, but all susceptibility probes run on
+// discarded clones and never debit a production ledger or feed back into an
+// organism transition.
+const R12_SIGN_SYMMETRY_TOLERANCE: f64 = 0.05;
+const R12_TWO_SCALE_TOLERANCE: f64 = 0.05;
+const R12_ENVELOPE_MARGIN: f64 = 0.05;
+const R12_MIN_RESPONSE_NORM: f64 = 1.0e-12;
+
+fn r12_points(value: &Value, label: &str) -> Result<Vec<[f64; 2]>, String> {
+    serde_json::from_value(value.clone()).map_err(|error| format!("R12_{label}:{error}"))
+}
+
+fn r12_scalars(value: &Value, label: &str) -> Result<Vec<f64>, String> {
+    value
+        .as_array()
+        .ok_or_else(|| format!("R12_{label}_NOT_ARRAY"))?
+        .iter()
+        .map(|item| {
+            item.as_f64()
+                .filter(|number| number.is_finite())
+                .ok_or_else(|| format!("R12_{label}_NONFINITE"))
+        })
+        .collect()
+}
+
+fn r12_flat(points: &[[f64; 2]]) -> Vec<f64> {
+    points.iter().flat_map(|point| [point[0], point[1]]).collect()
+}
+
+fn r12_norm(values: &[f64]) -> f64 {
+    values.iter().map(|value| value * value).sum::<f64>().sqrt()
+}
+
+fn r12_point_norm(points: &[[f64; 2]]) -> f64 {
+    r12_norm(&r12_flat(points))
+}
+
+fn r12_dot(left: &[f64], right: &[f64]) -> f64 {
+    left.iter()
+        .zip(right)
+        .map(|(left, right)| left * right)
+        .sum()
+}
+
+fn r12_correlation(left: &[f64], right: &[f64]) -> f64 {
+    if left.len() != right.len() {
+        return f64::NAN;
+    }
+    let left_norm = r12_norm(left);
+    let right_norm = r12_norm(right);
+    if left_norm <= R12_MIN_RESPONSE_NORM || right_norm <= R12_MIN_RESPONSE_NORM {
+        return f64::NAN;
+    }
+    r12_dot(left, right) / (left_norm * right_norm)
+}
+
+fn r12_sub(left: &[[f64; 2]], right: &[[f64; 2]]) -> Vec<[f64; 2]> {
+    left.iter()
+        .zip(right)
+        .map(|(left, right)| [left[0] - right[0], left[1] - right[1]])
+        .collect()
+}
+
+fn r12_add_scaled(left: &[[f64; 2]], right: &[[f64; 2]], scale: f64) -> Vec<[f64; 2]> {
+    left.iter()
+        .zip(right)
+        .map(|(left, right)| [left[0] + scale * right[0], left[1] + scale * right[1]])
+        .collect()
+}
+
+fn r12_scale_points(points: &[[f64; 2]], scale: f64) -> Vec<[f64; 2]> {
+    points
+        .iter()
+        .map(|point| [scale * point[0], scale * point[1]])
+        .collect()
+}
+
+fn r12_max_abs_points(left: &[[f64; 2]], right: &[[f64; 2]]) -> f64 {
+    left.iter()
+        .zip(right)
+        .map(|(left, right)| {
+            (left[0] - right[0])
+                .abs()
+                .max((left[1] - right[1]).abs())
+        })
+        .fold(0.0, f64::max)
+}
+
+fn r12_post_polarity_mesh(seed: &R7BoundarySeed) -> Result<MaterialMesh, String> {
+    let mut cohort = seed.cohort.clone();
+    let area = cohort.mesh.area();
+    if !area.is_finite() || area <= 0.0 {
+        return Err("R12_POST_POLARITY_INVALID_AREA".to_string());
+    }
+    let measures = (0..cohort.mesh.n())
+        .map(|index| cohort.mesh.edge_length(index))
+        .collect::<Vec<_>>();
+    let mut states = seed.polarity_states.clone();
+    let state = states
+        .get_mut(&cohort.id)
+        .ok_or_else(|| "R12_POST_POLARITY_STATE_MISSING".to_string())?;
+    let available_a = cohort.mesh.interior.a.max(0.0) * area;
+    let step = state
+        .advance(&measures, &PolarityMassParamsV1::candidate(), available_a)
+        .map_err(|error| format!("R12_POST_POLARITY_ADVANCE:{error}"))?;
+    if step.a_consumed > available_a + 1.0e-10 {
+        return Err("R12_POST_POLARITY_A_OVERDRAW".to_string());
+    }
+    let a_before = cohort.mesh.interior.a.max(0.0) * area;
+    let w_before = cohort.mesh.interior.w.max(0.0) * area;
+    cohort.mesh.interior.a = (a_before - step.a_consumed).max(0.0) / area;
+    cohort.mesh.interior.w = (w_before + step.w_produced) / area;
+    Ok(cohort.mesh)
+}
+
+fn r12_native_mechanics_clone(
+    mut mesh: MaterialMesh,
+    edge_tensions: &[f64],
+    external_forces: &[[f64; 2]],
+    topology_tick: bool,
+) -> Result<(MaterialMesh, Value), String> {
+    let before_n = mesh.n();
+    let contact = mechanics_step_with_edge_tensions_external_forces_and_local_self_contact(
+        &mut mesh,
+        &MechParams::default(),
+        edge_tensions,
+        external_forces,
+    )
+    .ok_or_else(|| "R12_MECHANICS_PROBE_REJECTED".to_string())?;
+    let (splits, merges, fallback) = remesh_preserving_simple(&mut mesh);
+    let after_remesh_n = mesh.n();
+    if topology_tick {
+        let _ = topology_step(&mut mesh, &FissionParams::default());
+    }
+    let branch = json!({
+        "contact": contact,
+        "before_vertices": before_n,
+        "after_remesh_vertices": after_remesh_n,
+        "splits": splits,
+        "merges": merges,
+        "fallback": fallback,
+        "topology_tick": topology_tick,
+        "same_topology": before_n == mesh.n() && splits == 0 && merges == 0 && !fallback,
+        "simple": polygon_simple(&mesh.vertices),
+        "runtime_valid": mesh.physical_runtime_valid(),
+        "lifecycle_valid": mesh.lifecycle_invariants_hold(),
+    });
+    Ok((mesh, branch))
+}
+
+fn r12_force_profile(value: &Value, label: &str) -> Result<Vec<[f64; 2]>, String> {
+    r12_points(
+        value
+            .get("polarity_specific_force_vectors")
+            .ok_or_else(|| format!("R12_{label}_POLARITY_FORCE_MISSING"))?,
+        label,
+    )
+}
+
+fn r12_edge_tensions(value: &Value, label: &str) -> Result<Vec<f64>, String> {
+    r12_scalars(
+        value
+            .get("polarity_edge_tensions_funded")
+            .ok_or_else(|| format!("R12_{label}_EDGE_TENSIONS_MISSING"))?,
+        label,
+    )
+}
+
+fn r12_exact_normal_forces(value: &Value, label: &str) -> Result<Vec<[f64; 2]>, String> {
+    r12_points(
+        value
+            .get("funded_inward_normal_forces_exact")
+            .ok_or_else(|| format!("R12_{label}_NORMAL_FORCE_MISSING"))?,
+        label,
+    )
+}
+
+fn r12_force_difference(left: &[[f64; 2]], right: &[[f64; 2]]) -> Result<Vec<[f64; 2]>, String> {
+    if left.len() != right.len() {
+        return Err("R12_FORCE_DIFFERENCE_LENGTH_MISMATCH".to_string());
+    }
+    Ok(r12_sub(left, right))
+}
+
+fn r12_local_components(
+    mesh: &MaterialMesh,
+    displacement: &[[f64; 2]],
+    force: &[[f64; 2]],
+) -> (Vec<f64>, Vec<f64>, f64, f64, f64) {
+    let mut normal = Vec::with_capacity(mesh.n());
+    let mut tangential = Vec::with_capacity(mesh.n());
+    let mut normal_work = 0.0;
+    let mut tangential_work = 0.0;
+    let mut total_work = 0.0;
+    for index in 0..mesh.n() {
+        let (inward, tangent) = r10_closure::local_inward_normal_and_tangent(mesh, index);
+        let normal_displacement = displacement[index][0] * inward[0]
+            + displacement[index][1] * inward[1];
+        let tangential_displacement = displacement[index][0] * tangent[0]
+            + displacement[index][1] * tangent[1];
+        normal.push(normal_displacement);
+        tangential.push(tangential_displacement);
+        let normal_force = force[index][0] * inward[0] + force[index][1] * inward[1];
+        let tangential_force = force[index][0] * tangent[0] + force[index][1] * tangent[1];
+        normal_work += normal_force * normal_displacement;
+        tangential_work += tangential_force * tangential_displacement;
+        total_work += force[index][0] * displacement[index][0]
+            + force[index][1] * displacement[index][1];
+    }
+    (normal, tangential, normal_work, tangential_work, total_work)
+}
+
+fn r12_force_probe(
+    base_mesh: &MaterialMesh,
+    polarity_force: &[[f64; 2]],
+    normalized_scale: f64,
+    sign: f64,
+) -> Result<Value, String> {
+    if polarity_force.len() != base_mesh.n() {
+        return Err("R12_PROBE_FORCE_LENGTH_MISMATCH".to_string());
+    }
+    let signed_force = r12_scale_points(polarity_force, normalized_scale * sign);
+    let edge_tensions = vec![0.0; base_mesh.n()];
+    let (probe_mesh, branch) = r12_native_mechanics_clone(
+        base_mesh.clone(),
+        &edge_tensions,
+        &signed_force,
+        false,
+    )?;
+    let same_topology = branch["same_topology"].as_bool().unwrap_or(false);
+    let simple = branch["simple"].as_bool().unwrap_or(false);
+    let runtime_valid = branch["runtime_valid"].as_bool().unwrap_or(false);
+    let lifecycle_valid = branch["lifecycle_valid"].as_bool().unwrap_or(false);
+    if !same_topology {
+        return Ok(json!({
+            "status": "NONSMOOTH",
+            "reason": "probe remesh/topology branch changed",
+            "sign": sign,
+            "normalized_scale": normalized_scale,
+            "force_vectors": signed_force,
+            "branch": branch,
+            "observer_only": true,
+        }));
+    }
+    let displacement = probe_mesh
+        .vertices
+        .iter()
+        .zip(&base_mesh.vertices)
+        .map(|(after, before)| [after[0] - before[0], after[1] - before[1]])
+        .collect::<Vec<_>>();
+    let (normal_displacement, tangential_displacement, normal_work, tangential_work, total_work) =
+        r12_local_components(base_mesh, &displacement, &signed_force);
+    Ok(json!({
+        "status": if simple && runtime_valid && lifecycle_valid { "VALID" } else { "NONSMOOTH" },
+        "sign": sign,
+        "normalized_scale": normalized_scale,
+        "force_vectors": signed_force,
+        "force_rms": r12_point_norm(&r12_scale_points(polarity_force, normalized_scale)),
+        "branch": branch,
+        "displacement": displacement,
+        "displacement_norm": r12_point_norm(&displacement),
+        "normal_displacement": normal_displacement,
+        "tangential_displacement": tangential_displacement,
+        "normal_work_like_projection": normal_work,
+        "tangential_work_like_projection": tangential_work,
+        "total_force_displacement_projection": total_work,
+        "simple": simple,
+        "runtime_valid": runtime_valid,
+        "lifecycle_valid": lifecycle_valid,
+        "observer_only": true,
+        "production_state_mutated": false,
+        "polarity_feedback": false,
+    }))
+}
+
+fn r12_native_parity(
+    base_mesh: &MaterialMesh,
+    edge_tensions: &[f64],
+    external_forces: &[[f64; 2]],
+    native_transition: &Value,
+    route: &str,
+) -> Result<Value, String> {
+    let (replay, branch) = r12_native_mechanics_clone(
+        base_mesh.clone(),
+        edge_tensions,
+        external_forces,
+        false,
+    )?;
+    let target = r8_mesh_from_transition(native_transition)?;
+    let max_abs_vertex_error = r12_max_abs_points(&replay.vertices, &target.mesh.vertices);
+    Ok(json!({
+        "route": route,
+        "representation": if route == "R4_EDGE_TENSION" { "native_edge_tension_plus_exact_vertex_projection" } else { "native_vertex_normal_force" },
+        "max_abs_vertex_error": max_abs_vertex_error,
+        "same_topology": replay.n() == target.mesh.n(),
+        "branch": branch,
+        "parity": replay.n() == target.mesh.n() && max_abs_vertex_error <= 1.0e-12,
+        "observer_only": true,
+    }))
+}
+
+fn r12_response_metrics(
+    base_mesh: &MaterialMesh,
+    polarity_force: &[[f64; 2]],
+    biological: &[[f64; 2]],
+) -> Result<Value, String> {
+    let mut probes = BTreeMap::new();
+    for (label, scale) in [("one", 1.0_f64), ("half", 0.5_f64)] {
+        let plus = r12_force_probe(base_mesh, polarity_force, scale, 1.0)?;
+        let minus = r12_force_probe(base_mesh, polarity_force, scale, -1.0)?;
+        probes.insert(label.to_string(), json!({"plus": plus, "minus": minus}));
+    }
+    let plus_one = &probes["one"]["plus"];
+    let minus_one = &probes["one"]["minus"];
+    let plus_half = &probes["half"]["plus"];
+    let minus_half = &probes["half"]["minus"];
+    let all_valid = [plus_one, minus_one, plus_half, minus_half]
+        .iter()
+        .all(|probe| probe["status"] == "VALID");
+    if !all_valid {
+        return Ok(json!({
+            "status": "NONSMOOTH",
+            "usable": false,
+            "bio_pass": false,
+            "probes": probes,
+            "observer_only": true,
+        }));
+    }
+    let plus_one = r12_points(plus_one.get("displacement").unwrap(), "PLUS_ONE_DISPLACEMENT")?;
+    let minus_one = r12_points(minus_one.get("displacement").unwrap(), "MINUS_ONE_DISPLACEMENT")?;
+    let plus_half = r12_points(plus_half.get("displacement").unwrap(), "PLUS_HALF_DISPLACEMENT")?;
+    let minus_half = r12_points(minus_half.get("displacement").unwrap(), "MINUS_HALF_DISPLACEMENT")?;
+    let r1 = r12_scale_points(&r12_sub(&plus_one, &minus_one), 0.5);
+    let r05 = r12_scale_points(&r12_sub(&plus_half, &minus_half), 0.5);
+    let two_r05 = r12_scale_points(&r05, 2.0);
+    let r1_flat = r12_flat(&r1);
+    let two_r05_flat = r12_flat(&two_r05);
+    let biological_flat = r12_flat(biological);
+    let r1_norm = r12_norm(&r1_flat);
+    let two_r05_norm = r12_norm(&two_r05_flat);
+    let biological_norm = r12_norm(&biological_flat);
+    let control_alignment = r12_correlation(&r1_flat, &two_r05_flat);
+    let control_scale_disagreement = r12_norm(
+        &r1_flat
+            .iter()
+            .zip(&two_r05_flat)
+            .map(|(left, right)| left - right)
+            .collect::<Vec<_>>(),
+    ) / r1_norm.max(R12_MIN_RESPONSE_NORM);
+    let one_average = r12_scale_points(&r12_add_scaled(&plus_one, &minus_one, 1.0), 0.5);
+    let half_average = r12_scale_points(&r12_add_scaled(&plus_half, &minus_half, 1.0), 0.5);
+    let sign_asymmetry_one = r12_point_norm(&one_average) / r1_norm.max(R12_MIN_RESPONSE_NORM);
+    let sign_asymmetry_half = r12_point_norm(&half_average) / r1_norm.max(R12_MIN_RESPONSE_NORM);
+    let least_squares_gain = if r1_norm > R12_MIN_RESPONSE_NORM {
+        r12_dot(&biological_flat, &r1_flat) / r12_dot(&r1_flat, &r1_flat)
+    } else {
+        f64::NAN
+    };
+    let residual = if biological_norm > R12_MIN_RESPONSE_NORM {
+        let residual_vector = biological_flat
+            .iter()
+            .zip(&r1_flat)
+            .map(|(bio, reference)| bio - least_squares_gain * reference)
+            .collect::<Vec<_>>();
+        r12_norm(&residual_vector) / biological_norm
+    } else {
+        f64::NAN
+    };
+    let biological_alignment = r12_correlation(&biological_flat, &r1_flat);
+    let biological_half_alignment = r12_correlation(&biological_flat, &two_r05_flat);
+    let sign_symmetry_pass = sign_asymmetry_one <= R12_SIGN_SYMMETRY_TOLERANCE
+        && sign_asymmetry_half <= R12_SIGN_SYMMETRY_TOLERANCE;
+    let two_scale_pass = control_scale_disagreement <= R12_TWO_SCALE_TOLERANCE;
+    let envelope_correlation_floor = control_alignment - R12_ENVELOPE_MARGIN;
+    let envelope_residual_ceiling = control_scale_disagreement + R12_ENVELOPE_MARGIN;
+    let bio_pass = r1_norm > R12_MIN_RESPONSE_NORM
+        && two_r05_norm > R12_MIN_RESPONSE_NORM
+        && biological_norm > R12_MIN_RESPONSE_NORM
+        && sign_symmetry_pass
+        && two_scale_pass
+        && biological_alignment >= envelope_correlation_floor
+        && biological_half_alignment >= envelope_correlation_floor
+        && residual <= envelope_residual_ceiling;
+    Ok(json!({
+        "status": "VALID",
+        "usable": true,
+        "bio_pass": bio_pass,
+        "r1": r1,
+        "r05": r05,
+        "two_r05": two_r05,
+        "biological_response": biological,
+        "r1_norm": r1_norm,
+        "r05_norm": r12_point_norm(&r05),
+        "biological_response_norm": biological_norm,
+        "control_alignment": control_alignment,
+        "control_scale_disagreement": control_scale_disagreement,
+        "sign_asymmetry_one": sign_asymmetry_one,
+        "sign_asymmetry_half": sign_asymmetry_half,
+        "sign_symmetry_pass": sign_symmetry_pass,
+        "two_scale_pass": two_scale_pass,
+        "least_squares_gain": least_squares_gain,
+        "normalized_residual": residual,
+        "biological_alignment_to_r1": biological_alignment,
+        "biological_alignment_to_two_r05": biological_half_alignment,
+        "state_control_envelope": {
+            "correlation_floor": envelope_correlation_floor,
+            "residual_ceiling": envelope_residual_ceiling,
+            "construction": "same-state signed two-scale susceptibility controls; no universal biological correlation cutoff",
+            "margin": R12_ENVELOPE_MARGIN,
+        },
+        "probes": probes,
+        "observer_only": true,
+    }))
+}
+
+fn r12_route_record(
+    seed: &R7BoundarySeed,
+    r4_full: &Value,
+    r4_cut: &Value,
+    r10_full: &Value,
+    r10_cut: &Value,
+) -> Result<Value, String> {
+    if [r4_full, r4_cut, r10_full, r10_cut]
+        .iter()
+        .any(|value| value["status"] != "ACCEPTED")
+    {
+        return Ok(json!({
+            "status": "NONSMOOTH",
+            "usable": false,
+            "reason": "one or more native route transitions rejected",
+            "observer_only": true,
+        }));
+    }
+    let r4_full_diag = &r4_full["transition"]["mechanics"]["diagnostic"];
+    let r4_cut_diag = &r4_cut["transition"]["mechanics"]["diagnostic"];
+    let r10_full_diag = &r10_full["transition"]["mechanics"]["diagnostic"];
+    let r10_cut_diag = &r10_cut["transition"]["mechanics"]["diagnostic"];
+    let r4_edge_tensions = r12_edge_tensions(r4_full_diag, "R4")?;
+    let r4_polarity_force = r12_force_profile(r4_full_diag, "R4")?;
+    let r4_legacy_force = r12_exact_normal_forces(r4_full_diag, "R4_LEGACY")?;
+    let r10_full_force = r12_exact_normal_forces(r10_full_diag, "R10_FULL")?;
+    let r10_cut_force = r12_exact_normal_forces(r10_cut_diag, "R10_CUT")?;
+    let r10_polarity_force = r12_force_difference(&r10_full_force, &r10_cut_force)?;
+    let r4_cut_legacy_force = r12_exact_normal_forces(r4_cut_diag, "R4_CUT_LEGACY")?;
+    let base_mesh = r12_post_polarity_mesh(seed)?;
+    let r4_polarity_force_from_edges = vertex_forces_from_edge_tensions(&base_mesh, &r4_edge_tensions);
+    let r4_edge_force_consistency =
+        r12_max_abs_points(&r4_polarity_force, &r4_polarity_force_from_edges);
+    let topology_tick = seed.step % 10 == 0;
+    let r4_branch_equal = r4_full["transition"]["mechanics"]["remesh_mappings"]
+        == r4_cut["transition"]["mechanics"]["remesh_mappings"]
+        && r4_full_diag["topology_ruptures"] == r4_cut_diag["topology_ruptures"]
+        && r4_full_diag["topology_rebonds"] == r4_cut_diag["topology_rebonds"];
+    let r10_branch_equal = r10_full["transition"]["mechanics"]["remesh_mappings"]
+        == r10_cut["transition"]["mechanics"]["remesh_mappings"]
+        && r10_full_diag["topology_ruptures"] == r10_cut_diag["topology_ruptures"]
+        && r10_full_diag["topology_rebonds"] == r10_cut_diag["topology_rebonds"];
+    let r4_native = r12_native_parity(
+        &base_mesh,
+        &r4_edge_tensions,
+        &r4_legacy_force,
+        r4_full,
+        "R4_EDGE_TENSION",
+    )?;
+    let r10_native = r12_native_parity(
+        &base_mesh,
+        &vec![0.0; base_mesh.n()],
+        &r10_full_force,
+        r10_full,
+        "R10_INWARD_NORMAL",
+    )?;
+    let r4_record = r8_p_to_m_record(seed)?;
+    let r10_record = r10_normal_remap_record(seed)?;
+    let r4_biological = r12_points(
+        &r4_record["mechanical_delta_vertices"],
+        "R4_BIOLOGICAL_RESPONSE",
+    )?;
+    let r10_biological = r12_points(
+        &r10_record["mechanical_delta_vertices"],
+        "R10_BIOLOGICAL_RESPONSE",
+    )?;
+    let r4_response = r12_response_metrics(&base_mesh, &r4_polarity_force, &r4_biological)?;
+    let r10_response = r12_response_metrics(&base_mesh, &r10_polarity_force, &r10_biological)?;
+    let r4_pass = r4_response["bio_pass"].as_bool().unwrap_or(false)
+        && r4_native["parity"].as_bool().unwrap_or(false)
+        && r4_branch_equal;
+    let r10_pass = r10_response["bio_pass"].as_bool().unwrap_or(false)
+        && r10_native["parity"].as_bool().unwrap_or(false)
+        && r10_branch_equal;
+    Ok(json!({
+        "status": if r4_pass || r10_pass { "VALID" } else { "VALID_BUT_TRANSFER_FAILURE_OR_CONTROL_OUTCOME" },
+        "usable": true,
+        "topology_tick": topology_tick,
+        "base_vertices": base_mesh.vertices.clone(),
+        "r4_ruptured_edges": base_mesh.edges.iter().map(|edge| edge.ruptured).collect::<Vec<_>>(),
+        "r4": {
+            "native_route": "R4_EDGE_TENSION",
+            "polarity_specific_force_vectors": r4_polarity_force,
+            "polarity_edge_tensions_funded": r4_edge_tensions,
+            "legacy_funded_normal_force_vectors": r4_legacy_force,
+            "cut_legacy_funded_normal_force_vectors": r4_cut_legacy_force,
+            "edge_force_vector_consistency_max_abs": r4_edge_force_consistency,
+            "native_representation_parity": r4_native,
+            "branch_equal": r4_branch_equal,
+            "response": r4_response,
+            "state_normalized_transfer_qualified": r4_pass,
+        },
+        "r10": {
+            "native_route": "R10_INWARD_NORMAL",
+            "polarity_specific_force_vectors": r10_polarity_force,
+            "full_funded_normal_force_vectors": r10_full_force,
+            "cut_funded_normal_force_vectors": r10_cut_force,
+            "native_representation_parity": r10_native,
+            "branch_equal": r10_branch_equal,
+            "response": r10_response,
+            "state_normalized_transfer_qualified": r10_pass,
+        },
+        "force_provenance": {
+            "r4": "funded edge tensions from native polarity activity plus exact legacy normal force field before frozen mechanics",
+            "r10": "exact full-minus-cut funded inward-normal vertex force field before frozen mechanics",
+            "probe": "signed discarded-clone generalized vertex-force susceptibility; R4 positive native edge representation parity is retained separately",
+            "energy_ledger": "no probe debit; native production A->W ledgers remain untouched",
+        },
+        "observer_only": true,
+        "production_state_mutated": false,
+    }))
+}
+
+/// R12 reconstructs the exact thirty R8/R10 states and evaluates each native
+/// polarity force through same-state signed susceptibility controls.  Every
+/// intervention is a discarded clone; no R12 route is connected to production.
+pub fn run_r12_state_normalized_p_to_m_arm(index: usize) -> Value {
+    env::remove_var("DCFINAL001_R9_MECHANOSENSITIVE");
+    env::remove_var("DCFINAL001_R10_NORMAL_REMAP");
+    env::set_var("DCFINAL001_R8_CAPTURE_ONLY", "1");
+    let r7 = run_r7_full_cycle_arm(index, true);
+    let snapshots = r7["full_cycle_snapshots"]
+        .as_array()
+        .cloned()
+        .unwrap_or_default();
+    let records = snapshots
+        .iter()
+        .map(|snapshot| {
+            let record = r8_seed_from_snapshot(snapshot).and_then(|seed| {
+                let r4_full = r7_replay_full_cycle(&seed);
+                let mut r4_cut_seed = seed.clone();
+                r4_cut_seed.connected = false;
+                let r4_cut = r7_replay_full_cycle(&r4_cut_seed);
+                let r10_full = r10_replay_mechanics_route(
+                    &seed,
+                    r10_closure::PolarityMechanicsRoute::R10InwardNormal,
+                    true,
+                );
+                let r10_cut = r10_replay_mechanics_route(
+                    &seed,
+                    r10_closure::PolarityMechanicsRoute::R10InwardNormal,
+                    false,
+                );
+                let route = r12_route_record(&seed, &r4_full, &r4_cut, &r10_full, &r10_cut)?;
+                Ok(json!({
+                    "checkpoint_step": snapshot["checkpoint_step"],
+                    "expected_next_step": snapshot["expected_next_step"],
+                    "input_boundary_digest": deterministic_state_digest(&snapshot["input_boundary"]),
+                    "r7_replay_identity": snapshot["identity"].clone(),
+                    "route": route,
+                    "same_snapshot_for_conditions": true,
+                    "observer_only": true,
+                }))
+            });
+            match record {
+                Ok(value) => value,
+                Err(reason) => json!({
+                    "checkpoint_step": snapshot["checkpoint_step"],
+                    "status": "ERROR",
+                    "error": reason,
+                    "observer_only": true,
+                }),
+            }
+        })
+        .collect::<Vec<_>>();
+    json!({
+        "directive": "DC-M4-R12-STATE-NORMALIZED-P-TO-M-FORCE-RESPONSE-REQUALIFICATION-GATE-001",
+        "arm": r7["arm"].clone(),
+        "connected": true,
+        "accepted": r7["accepted"].clone(),
+        "accepted_steps": r7["accepted_steps"].clone(),
+        "physical_fissions": r7["physical_fissions"].clone(),
+        "r7_snapshot_count": records.len(),
+        "snapshots": records,
+        "horizon": R10R2_PHASE_STEPS,
+        "checkpoints": R7_FULL_CYCLE_CHECKPOINTS,
+        "susceptibility_contract": {
+            "scales": [1.0, 0.5],
+            "signs": [1.0, -1.0],
+            "r1": "[r(+1)-r(-1)]/2",
+            "r05": "[r(+0.5)-r(-0.5)]/2",
+            "mechanics": "frozen mechanics plus self-contact and remesh on discarded clone",
+            "branch_divergence": "NONSMOOTH",
+            "envelope": "state-specific signed/two-scale control envelope; no universal biological correlation cutoff",
+            "envelope_margin": R12_ENVELOPE_MARGIN,
+        },
+        "native_route_contract": {
+            "r4": "funded polarity edge tensions preserved; generalized vertex projection used only for signed susceptibility probes",
+            "r10": "funded polarity-specific inward-normal vertex force field preserved",
+            "force_cap": MAX_EXTERNAL_FORCE_PER_VERTEX,
+            "mechanical_cost": "native actuator cost remains production-owned; diagnostic probes do not debit",
+        },
+        "production_biology_modified": false,
+        "morphogenesis": "NOT_REACHED",
+        "reproduction": "NOT_REACHED",
+        "population_selection": "NOT_REACHED",
+        "reversal": "NOT_REACHED",
+        "final_integration": "NOT_REACHED",
+        "observer_only": true,
+    })
+}
+
 fn r7_probe_transition(
     seed: &R7BoundarySeed,
     channel: R6ResponseChannel,
