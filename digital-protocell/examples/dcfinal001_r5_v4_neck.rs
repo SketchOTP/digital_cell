@@ -597,7 +597,10 @@ fn edge_tension_profile(
     (tensions, requested)
 }
 
-fn vertex_forces_from_edge_tensions(mesh: &MaterialMesh, tensions: &[f64]) -> Vec<[f64; 2]> {
+pub(crate) fn vertex_forces_from_edge_tensions(
+    mesh: &MaterialMesh,
+    tensions: &[f64],
+) -> Vec<[f64; 2]> {
     if tensions.len() != mesh.n() {
         return Vec::new();
     }

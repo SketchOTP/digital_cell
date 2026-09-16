@@ -6933,7 +6933,10 @@ fn r12_route_record(
     let r10_polarity_force = r12_force_difference(&r10_full_force, &r10_cut_force)?;
     let r4_cut_legacy_force = r12_exact_normal_forces(r4_cut_diag, "R4_CUT_LEGACY")?;
     let base_mesh = r12_post_polarity_mesh(seed)?;
-    let r4_polarity_force_from_edges = vertex_forces_from_edge_tensions(&base_mesh, &r4_edge_tensions);
+    let r4_polarity_force_from_edges = r10_closure::vertex_forces_from_edge_tensions(
+        &base_mesh,
+        &r4_edge_tensions,
+    );
     let r4_edge_force_consistency =
         r12_max_abs_points(&r4_polarity_force, &r4_polarity_force_from_edges);
     let topology_tick = seed.step % 10 == 0;
