@@ -7063,9 +7063,21 @@ pub fn run_r12_state_normalized_p_to_m_arm(index: usize) -> Value {
             match record {
                 Ok(value) => value,
                 Err(reason) => json!({
+                    "_r12_error_logged": {
+                        "arm": index,
+                        "checkpoint_step": snapshot["checkpoint_step"],
+                        "reason": reason,
+                    },
                     "checkpoint_step": snapshot["checkpoint_step"],
                     "status": "ERROR",
                     "error": reason,
+                    "same_snapshot_for_conditions": false,
+                    "route": {
+                        "status": "ERROR",
+                        "usable": false,
+                        "error": reason,
+                        "observer_only": true,
+                    },
                     "observer_only": true,
                 }),
             }
