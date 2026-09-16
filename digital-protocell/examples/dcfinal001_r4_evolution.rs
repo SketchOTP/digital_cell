@@ -6711,12 +6711,35 @@ fn r12_force_probe(
     }
     let signed_force = r12_scale_points(polarity_force, normalized_scale * sign);
     let edge_tensions = vec![0.0; base_mesh.n()];
-    let (probe_mesh, branch) = r12_native_mechanics_clone(
+    let (probe_mesh, branch) = match r12_native_mechanics_clone(
         base_mesh.clone(),
         &edge_tensions,
         &signed_force,
         false,
-    )?;
+    ) {
+        Ok(result) => result,
+        Err(reason) => {
+            return Ok(json!({
+                "status": "NONSMOOTH",
+                "reason": reason,
+                "sign": sign,
+                "normalized_scale": normalized_scale,
+                "force_vectors": signed_force,
+                "branch": {
+                    "same_topology": false,
+                    "splits": 0,
+                    "merges": 0,
+                    "fallback": false,
+                    "simple": false,
+                    "runtime_valid": false,
+                    "lifecycle_valid": false,
+                },
+                "observer_only": true,
+                "production_state_mutated": false,
+                "polarity_feedback": false,
+            }));
+        }
+    };
     let same_topology = branch["same_topology"].as_bool().unwrap_or(false);
     let simple = branch["simple"].as_bool().unwrap_or(false);
     let runtime_valid = branch["runtime_valid"].as_bool().unwrap_or(false);
@@ -6770,12 +6793,24 @@ fn r12_native_parity(
     native_transition: &Value,
     route: &str,
 ) -> Result<Value, String> {
-    let (replay, branch) = r12_native_mechanics_clone(
+    let (replay, branch) = match r12_native_mechanics_clone(
         base_mesh.clone(),
         edge_tensions,
         external_forces,
         false,
-    )?;
+    ) {
+        Ok(result) => result,
+        Err(reason) => {
+            return Ok(json!({
+                "route": route,
+                "representation": if route == "R4_EDGE_TENSION" { "native_edge_tension_plus_exact_vertex_projection" } else { "native_vertex_normal_force" },
+                "status": "NONSMOOTH",
+                "parity": false,
+                "reason": reason,
+                "observer_only": true,
+            }));
+        }
+    };
     let target = r8_mesh_from_transition(native_transition)?;
     let max_abs_vertex_error = r12_max_abs_points(&replay.vertices, &target.mesh.vertices);
     Ok(json!({

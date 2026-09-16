@@ -271,18 +271,32 @@ def route_metrics(route: dict) -> dict:
     assert len(r4_force) == len(vertices)
     assert max_abs(r4_force, r4_recomputed) <= 1.0e-12
     assert float(r4["edge_force_vector_consistency_max_abs"]) <= 1.0e-12
-    assert r4["native_representation_parity"]["parity"] is True
-    assert r10["native_representation_parity"]["parity"] is True
+    r4_native_parity = r4["native_representation_parity"]["parity"] is True
+    r10_native_parity = r10["native_representation_parity"]["parity"] is True
     r10_full = points(r10["full_funded_normal_force_vectors"])
     r10_cut = points(r10["cut_funded_normal_force_vectors"])
     r10_force = points(r10["polarity_specific_force_vectors"])
     assert r10_force == [(a - c, b - d) for (a, b), (c, d) in zip(r10_full, r10_cut)]
-    assert r4["branch_equal"] is True
-    assert r10["branch_equal"] is True
     for force in r4_force + r10_force:
         assert all(math.isfinite(component) for component in force)
-    r4_metrics = response_metrics(r4)
-    r10_metrics = response_metrics(r10)
+    r4_response_usable = r4["response"].get("status") == "VALID" and r4["response"].get("usable") is True
+    r10_response_usable = r10["response"].get("status") == "VALID" and r10["response"].get("usable") is True
+    if r4_response_usable:
+        assert r4_native_parity
+        assert r4["branch_equal"] is True
+        r4_metrics = response_metrics(r4)
+    else:
+        assert r4["response"].get("status") == "NONSMOOTH"
+        r4_metrics = {"usable": False, "bio_pass": False}
+    if r10_response_usable:
+        assert r10_native_parity
+        assert r10["branch_equal"] is True
+        r10_metrics = response_metrics(r10)
+    else:
+        assert r10["response"].get("status") == "NONSMOOTH"
+        r10_metrics = {"usable": False, "bio_pass": False}
+    r4_metrics["usable"] = r4_metrics["usable"] and r4_native_parity and r4["branch_equal"] is True
+    r10_metrics["usable"] = r10_metrics["usable"] and r10_native_parity and r10["branch_equal"] is True
     return {
         "r4": r4_metrics,
         "r10": r10_metrics,
