@@ -3,18 +3,29 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-17T18:09:38-04:00`
+- Last updated: `2026-10-17T18:31:48-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261017-dcm4-conversion-work-contract`
-- External directive ID: `DC-M4-CONVERSION-WORK-OWNERSHIP-CONTRACT-001`
-- Objective: Define and independently verify one conversion-work ownership contract, preserving existing work and keeping Notion/project records current.
+- Local directive ID: `D-20261017-dcm4-work-port-feasibility-spec`
+- External directive ID: `DC-M4-PARAMETER-MECHANICAL-WORK-PORT-FEASIBILITY-SPEC-001`
+- Objective: Define and independently verify the prospective parameter and mechanical-work-port feasibility specification, preserving existing work and current records.
 - Current status: `COMPLETE`
-- Acceptance: `MET — conditional parametric contract only; exact arithmetic, source preservation and distinct independent review; final exact-head CI/artifact/Notion receipts retained externally after publication`
-- Current phase: `Conversion-work ownership candidate defined; calibration, mechanical-port realization and runtime efficacy unqualified`
-- Expected or actual touched areas: `Contract/directive/JSON/review, diagnostic verifier/workflow, additive evidence custody and project/Notion records`
-- Immediate next action: `A separately authorized prospective parameter and mechanical-port feasibility specification is needed before implementation; no automatic successor`
+- Acceptance: `MET — specification and mathematical/source witnesses only; calibrated parameters, native port and runtime feasibility remain unestablished; final exact-head receipts follow externally`
+- Current phase: `Prospective protocol defined; calibration anchors missing and naive/direct mechanical adapter rejected`
+- Expected or actual touched areas: `New specification/directive/JSON/review, diagnostic verifier/workflow, additive evidence and project/Notion records`
+- Immediate next action: `Resolve an independently owned mechanical input/receiver architecture and calibration-source evidence before any implementation; no automatic successor`
+
+### Prospective parameter and work-port specification disposition
+
+- Exact entry `a007e7e08acc768f08b83d96139a7cea25f0e04e`; isolated checkout `/home/sketch/Projects/digital_cell-work-port-feasibility-spec`, branch `codex/dc-m4-work-port-feasibility-spec`.
+- Four independent dimensionless groups, an 80-row force design with four joint-training and 76 held-out rows, controlled net-rate inversion and independent work/fuel anchors define a prospective calibration procedure. Production K/lambda/theta/epsilon_A remain null; synthetic examples identify no physical values.
+- Signed complete force/work/storage/bath balance, causal A-pressure/actuator staging, native signed-port/cap constraints and scalar-versus-mesh solver obligations are explicit. All stages have sealed uncertainty/role/provenance rules and missing/failure stops.
+- Exact simultaneous-force and two-spring witnesses reject assigning all coupling release to bath heat or adding physical A work without a named loading channel. Existing edge-tension APIs reject signed negative tensions; the signed external hook uses the existing explicit integrator and does not establish a discrete work port. This rejects naive/current direct adapters, not every realization of the candidate.
+- Independent review is `ACCEPTED_SPECIFICATION_ONLY`, with five-file bindings in `docs/dc-m4-work-port-review.json`. Parent reference checks include 30 exact force-balance cases and 14 control groups; the floating net-rate inverse is synthetic smoke, not a prospective interval certificate. Future contact/solver/staging/rollback gates are specified and not executed.
+- All scientific source and the accepted conditional contract are unchanged. R13 damping remains uncorrected. No calibration, production runtime change, biological campaign or downstream qualification ran. R4 remains production reference, R10 diagnostic-only, prior PR44–47 unchanged.
+- **Notion page:** https://app.notion.com/p/3fc833cb27ff81b09209fb1ea6e74a0a. Local evidence `/home/sketch/Projects/digital_cell-work-port-specification-evidence/`; additive Atlas root `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/work-port-specification/`. Prior scoped archive entry has 206 reaction-feasibility and 167 conversion-contract files, retained alongside local originals.
+- Bridge healthy but only configured for unrelated activation-test; no Digital Cell binding or bridge dispatch/acceptance claimed. Complete local handoff plus separate analyst/reviewer and parent-owned verification are recorded. Final CI/artifact/preservation/Notion readback identities follow outside this commit. Historical sections below remain preserved context.
 
 ### Conversion-work ownership contract disposition
 

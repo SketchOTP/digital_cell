@@ -1550,3 +1550,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261017-dcm4-work-port-feasibility-spec
+
+- Issued: 2026-10-17T18:28:54-04:00
+- Issuer: User
+- External directive: DC-M4-PARAMETER-MECHANICAL-WORK-PORT-FEASIBILITY-SPEC-001
+- Objective: Define the prospective parameter and mechanical-work-port feasibility specification, independently verify it, preserve existing work and synchronize Notion/project records.
+- Scope: Four-parameter identifiability and calibration-input protocol, signed simultaneous-force work/ownership audit, native interface and solver/contact obligations, sealed evidence and stop rules, exact reference counterexamples, bounded checker/workflow and additive records/evidence from a007e7e08acc768f08b83d96139a7cea25f0e04e.
+- Exclusions: Production or prior contract modification, parameter assignment/search, runtime coupling/solver implementation, native thirty-state or biological campaign, mechanics/contact/ecology/fission/checkpoint changes, prior PR44-47 mutation, merge, deployment and automatic successor.
+- Acceptance: Concrete prospective input/decision protocol with independent parameter/work anchors or explicit missing inputs; exact signed power and native-port counterexamples; prospective solver, funding, staging and lifecycle conditions; independent specification review, source/history/record preservation, exact-head CI/artifact and Notion/evidence readback, without claiming unperformed feasibility or biological success.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

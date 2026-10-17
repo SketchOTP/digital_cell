@@ -1481,3 +1481,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Mathematical and ownership consistency of one conditional parametric candidate; no calibration, legacy bath/solver realization, runtime or corrective-feedback claim.
 - Supersedes learning: none
+
+
+## L-DCM4-WORK-PORT-SPEC-20261017
+
+- Learning ID: L-DCM4-WORK-PORT-SPEC-20261017
+- Date: 2026-10-17
+- Fact or lesson: Simultaneous coupling and legacy forces exchange work: coupling release can increase a legacy store, so the entire release is not generally bath heat. A top-up requires the same physically owned loading channel rather than an unmatched second input. Four parameter groups remain independent when the legacy force/length unit is fixed; native effort pricing and A/W amounts do not supply their calibration.
+- Evidence location: docs/dc-m4-work-port-specification.md and .json; docs/dc-m4-work-port-review.json; scripts/verify_work_port_specification.py.
+- Confidence: VERIFIED
+- Scope: Exact reference work/unit/identifiability analysis and source adapter constraints; not physical calibration, native coupled integration or corrective biology.
+- Supersedes learning: none

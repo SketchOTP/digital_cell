@@ -1,0 +1,61 @@
+{
+  "schema": "digital_cell_work_port_specification_independent_review_v1",
+  "decision": "ACCEPTED_SPECIFICATION_ONLY",
+  "review_date": "2026-10-17",
+  "entry_head": "a007e7e08acc768f08b83d96139a7cea25f0e04e",
+  "reviewer": "distinct governance_audit agent; no specification or checker implementation authorship",
+  "method": "independent static review of all five bound files, source interfaces, parameter identifiability, units and exact work counterexamples; no workloads, checker execution, builds or assays by reviewer",
+  "reviewed_files": {
+    "docs/dc-m4-work-port-specification.md": "0a6c11805dca4cd379f4617b46eb44da0a042001f35aaa368a0daaac0ba9a42f",
+    "docs/dc-m4-work-port-specification.json": "c30784a0b1006d6a14afde8eb6cb67879a9c15b2f6eda05596a1c55a0d2214f9",
+    "docs/dc-m4-work-port-directive.md": "65d46cfa30af399355bd89ac2326b8181d55169b4ea29c3bc436eb0fb01134ce",
+    "scripts/verify_work_port_specification.py": "4731e11cf5070b46bbba7fed71ec56a877033012beb405482e1f114357ba3d30",
+    ".github/workflows/dc-m4-work-port-specification.yml": "6cb54c569e91315dab1b0cefe735b81e41a43227736fcf698e9fc39907ba9f5c"
+  },
+  "preflight": {
+    "retained_complete_historical_coverage": true,
+    "new_ledger_additions": "Every .agent addition between b2de15dc0d7a7ee3f25b7993c558099d17a150a0 and entry a007e7e08acc768f08b83d96139a7cea25f0e04e read, including directives and outcomes.",
+    "assigned_complete_coverage": {
+      ".agent/LEARNINGS.md": "through line 1483 at entry",
+      ".agent/RECORD.md": "through line 2198 at entry",
+      ".agent/REPO_MAP.md": "through line 437 at entry"
+    },
+    "other_inputs": "current/profile, AGENTS, COMMANDMENTS, authority-governance, accepted contract/review, native mechanics/self-contact APIs, finite A/W and A-dependent force/funding boundaries",
+    "bridge": "No Digital Cell binding or bridge acceptance inferred from unrelated activation-test configuration."
+  },
+  "accepted_findings": [
+    "The deliverable defines a prospective protocol; missing independent calibration anchors remain missing and all four production parameter values remain null.",
+    "The four dimensionless groups and their inverse distinguish mechanical magnitude, kinetic bias and fuel affordability. Native net-conversion overhead and the inverse effort-duration price do not identify epsilon_A.",
+    "The eighty-row force design has four fixed training rows and seventy-six held-out rows. Joint interval estimation uses all training observations, retains correlations and does not refit or shrink the region after holdouts.",
+    "A sealed deterministic midpoint of the certified lambda projection selects kinetic fixture geometry only; the full joint parameter region and geometry uncertainty remain in g and theta, with sign ambiguity inconclusive.",
+    "The net-rate theta inversion has the stated algebraic sign and requires independently observed unclipped rates, nonzero loads of both signs, refinement bounds and held-out support. It does not infer gross turnover or detailed balance.",
+    "Fuel calibration requires an independently owned work-producing channel and separately observed A/W, excluding circular top-up arithmetic and duplicate mechanical donors.",
+    "Simultaneous force work includes crosswork. Coupling release is not generally terminal drag heat, and positive loading cannot acquire a second unnamed fuel-work input.",
+    "The exact two-spring release witness gives DeltaEc=-19/800, legacy storage gain=11/800 and drag=1/100. The loading witness gives DeltaEc=11/200, legacy release=19/200 and drag=1/25. Their restricted mathematical roles are explicit.",
+    "Signed-tension rejection, the fixed external-force cap, explicit/projection integration and possible negative tangential Hessian are correctly distinguished from a certified native discrete-gradient solver.",
+    "A-dependent pressure and actuator funding require a justified prospective reservation, force-evaluation, debit and commit order; stale-force replay after changing A is not same-state parity.",
+    "Accuracy budgets, tightness bounds, complete uncertainty propagation, input identities, domain and solver policies must be sealed before observations. Zero inclusion alone cannot pass an equality gate.",
+    "Current naive adapters are rejected without claiming universal candidate impossibility. All later calibration, physical port realization, native qualification and implementation require separate evidence and authorization."
+  ],
+  "resolved_review_findings": [
+    "Specified the complete joint training-region intersection instead of leaving favorable pivot selection possible.",
+    "Specified deterministic probe selection from interval-valued lambda and preserved full parameter correlations rather than treating an enclosure as an exact estimate.",
+    "Replaced zero-containing residual intervals as a pass rule with independently sealed accuracy and enclosure-tightness requirements.",
+    "Explicitly classified the checker floating sqrt/log inversion as a synthetic smoke check, not a prospective numerical qualification certificate.",
+    "Bound the specification schema, null values, dimensional groups, fixed design coverage, decision inventory, exact fixtures and scientific claim boundaries in the checker."
+  ],
+  "limitations": [
+    "Acceptance verifies specification consistency and static reference witnesses, not actual calibration, physical loading-device availability or native mechanical feasibility.",
+    "Synthetic inversion, reduced scalar springs, constant-force cases and verdict assertions do not execute a calibration pipeline or the MaterialMesh solver. Some negative controls illustrate required rejection rules rather than implement future evidence ingestion.",
+    "The floating theta smoke comparison uses a fixed local 1e-14 tolerance and supplies no outward-rounded or operation-count qualification certificate. It cannot satisfy the protocol's future floating-evidence gate.",
+    "The current checker does not certify contact/complementarity branches, global root existence and uniqueness, full native staging, lifecycle correspondence, finite-fuel rollback or checkpoint behavior.",
+    "A scalar unique-root proof does not extend to vertex-coordinate dynamics, and a Newton solution is not an exclusion of other admissible roots.",
+    "The accepted conditional energy contract is preserved. Its naive all-release-to-bath/top-up realization is unsupported by simultaneous mechanics; another realization remains unresolved and may require separately authorized architecture work.",
+    "No production parameter, runtime feedback, thirty-state correction result, morphogenesis, reproduction, selection, reversal or final lifeform qualification follows from this review.",
+    "Parent-owned verifier execution, exact-head hosted CI, artifact reconstruction, source/history preservation checks and Notion/evidence synchronization are separate evidence, not actions performed by this reviewer."
+  ],
+  "remaining_acceptance_blockers_for_specification_only": [],
+  "current_naive_adapter": "NO_GO",
+  "whole_candidate_feasibility": "UNRESOLVED",
+  "automatic_successor": false
+}
