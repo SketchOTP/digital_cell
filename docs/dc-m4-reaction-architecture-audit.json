@@ -174,5 +174,12 @@
       "cause": "upload-artifact default excludes hidden .agent and .github paths",
       "correction": "explicit include-hidden-files:true for the bounded known-file artifact directory"
     }
-  ]
+  ],
+  "evidence_storage": {
+    "effective_local_custody": "/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/",
+    "original_archive": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/",
+    "observation": "ATLAS_DATA_MOUNTS_UNAVAILABLE_DURING_FINAL_SYNC",
+    "mount_disk_mutations": false,
+    "historical_archive_availability": "SEPARATE_STORAGE_RECOVERY_REQUIRED"
+  }
 }

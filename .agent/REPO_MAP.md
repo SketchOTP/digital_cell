@@ -413,3 +413,9 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `docs/dc-m4-reaction-architecture-audit.json`: source digests, eight mechanical candidate classes, four other thermodynamic domains and distinct semantic review.
 - `scripts/verify_reaction_architecture_feasibility.py` and `.github/workflows/dc-m4-reaction-architecture-feasibility.yml`: exact symbolic/source/preservation/record checks and hosted audit receipts, without a new scientific executable.
 - `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/`: preservation snapshots and final-head CI/artifact/Notion receipts. No automatic successor.
+
+
+## Reaction-feasibility effective evidence locator — 2026-10-17
+
+- Effective durable local custody: `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/`; `FINAL_HANDOFF.md`, exact-head ZIP/manifest/independent receipts and Notion/PR readback records.
+- `STORAGE_MAP.md` records the Atlas data-mount outage and duplicate local custody. Earlier external archive locators are preserved; their availability needs separate storage recovery. No data relocation, deletion or disk/mount action was attempted.

@@ -103,7 +103,7 @@ def main():
     require(not git("diff", "--name-only", BASE, "--", "digital-protocell"),
             "scientific subtree differs from accepted R13")
     allowed = (".agent/", PREFIX, "scripts/verify_reaction_architecture_feasibility.py",
-               ".github/workflows/dc-m4-reaction-architecture-feasibility.yml")
+               ".github/workflows/dc-m4-reaction-architecture-feasibility.yml", "STORAGE_MAP.md")
     changed = git("diff", "--name-only", BASE).decode().splitlines()
     require(all(p.startswith(allowed) for p in changed), "out-of-scope tracked change")
     for name in ("DIRECTIVES", "OUTCOMES", "LEARNINGS", "RECORD", "REPO_MAP"):
@@ -163,6 +163,7 @@ def main():
     paths = [*repo.glob(f"{PREFIX}*"), repo / "scripts/verify_reaction_architecture_feasibility.py",
              repo / ".github/workflows/dc-m4-reaction-architecture-feasibility.yml"]
     paths += [repo / f".agent/{n}.md" for n in ("CURRENT", "PROJECT_PROFILE", "DIRECTIVES", "OUTCOMES", "LEARNINGS", "RECORD", "REPO_MAP")]
+    paths += [repo / "STORAGE_MAP.md"]
     paths += [repo / path for path in audit["source_bindings"]]
     bound = {str(p.relative_to(repo)): sha(p.read_bytes()) for p in paths}
     for path in paths:

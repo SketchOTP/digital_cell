@@ -53,3 +53,23 @@ current migration, so no scientific evidence references required rewriting.
 Future archives should use a repository-isolated subdirectory beneath the
 secondary storage root and must update this map and their archive manifest
 after copy, checksum verification, and any reference changes.
+
+## Reaction-feasibility local evidence custody — 2026-10-17
+
+During final gate synchronization, the remote `/srv/ATLAS` and
+`/mnt/storage1tb` data mounts became unavailable. Read-only mount inspection
+found the underlying remote root filesystem at those paths. No mount,
+unmount, disk repair, deletion or migration was attempted.
+
+The verified reaction-feasibility artifacts and available cached R13 archives
+have duplicate durable local custody at:
+
+`/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/`
+
+`storage-custody.json` records the observation and
+`FINAL_HANDOFF.md` identifies the accepted audit head and artifact receipts.
+The original gate archive locator remains
+`/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/`;
+its availability requires separate storage recovery. Existing historical
+archive locators above are preserved, not relocated or silently recreated
+on the unmounted root filesystem.

@@ -2163,3 +2163,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Passing source/algebra CI does not establish archive completeness. Missing manifest-bound content must prevent final handoff acceptance; the superseded archive and rejection are preserved in project evidence.
 - Affected areas: Artifact upload setting, audit publication history and this append-only correction. Scientific sources, feasibility conclusion and existing work remain unchanged.
 - Supersedes record: none
+
+
+## DEC-DCM4-REACTION-ARCHITECTURE-LOCAL-CUSTODY-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-REACTION-ARCHITECTURE-LOCAL-CUSTODY-20261017
+- Status: ACTIVE
+- Decision or event: Atlas data mounts became unavailable during final evidence synchronization. Preserve cached verified gate artifacts and R13 ZIPs with duplicate local custody at /home/sketch/Projects/digital_cell-reaction-feasibility-evidence/; update STORAGE_MAP/current receipts, preserve original locators and perform no mount/disk mutation.
+- Rationale: Read-only mount inspection confirms missing data mounts, while the local source checkout and GitHub evidence remain accessible. Do not recreate a misleading archive directory on the remote root filesystem. Final audit acceptance remains bounded to verified source/artifact/local custody; historical storage availability needs separate recovery.
+- Affected areas: Gate evidence locator, local duplicate custody and storage map, audit checker binding and append-only records. Scientific sources and original historical archives unchanged.
+- Supersedes record: none
