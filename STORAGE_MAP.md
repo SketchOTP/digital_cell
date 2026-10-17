@@ -99,3 +99,14 @@ and locally at `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence
 This verifies the scoped Atlas evidence archive, not whole-disk health or
 the unrelated legacy `/mnt/storage1tb` archive. No disk repair or unrelated
 mount action was performed by this reconciliation task.
+
+
+## Conversion-work contract evidence — 2026-10-17
+
+The separately authorized contract-only successor begins at b2de15dc0d7a7ee3f25b7993c558099d17a150a0.
+Durable local evidence: `/home/sketch/Projects/digital_cell-conversion-work-contract-evidence/`.
+Additive Atlas duplicate: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/conversion-work-contract/`.
+Verify expected UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and RPI5Pool bind before writes.
+Before/after scoped hashes preserve all 206 entry reaction-feasibility archive files and original source work;
+new contract, exact-head artifact and Notion/PR readback receipts are copied without overwriting history.
+The prior local/Atlas evidence remains retained. This qualifies custody, not full-disk health or runtime biology.

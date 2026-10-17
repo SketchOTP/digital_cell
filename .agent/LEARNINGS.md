@@ -1470,3 +1470,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Digital Cell Atlas evidence custody on UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d; not whole-disk health or unrelated mount recovery.
 - Supersedes learning: none
+
+
+## L-DCM4-CONVERSION-WORK-CONTRACT-20261017
+
+- Learning ID: L-DCM4-CONVERSION-WORK-CONTRACT-20261017
+- Date: 2026-10-17
+- Fact or lesson: A conversion-dependent edge energy determines both the signed conversion derivative and reciprocal mechanical work. Finite conversion needs its quadratic energy increment, finite vertex motion needs a discrete length gradient, and topology must settle corresponding energy fragments instead of netting unrelated releases. A/W material closure, synthesis material fate and heat/work allocation are distinct.
+- Evidence location: docs/dc-m4-conversion-work-contract.md; docs/dc-m4-conversion-work-contract.json; docs/dc-m4-conversion-work-review.json; scripts/verify_conversion_work_contract.py.
+- Confidence: VERIFIED
+- Scope: Mathematical and ownership consistency of one conditional parametric candidate; no calibration, legacy bath/solver realization, runtime or corrective-feedback claim.
+- Supersedes learning: none

@@ -2185,3 +2185,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: UUID/bind identity, four accepted prior archive packages, canonical final-08494f2 package, 77 copied-file hashes and all 83 prior scoped archive file hashes verify; Atlas-native independent checks agree. The scientific result and source are unchanged.
 - Affected areas: Evidence copy/custody metadata, STORAGE_MAP/current/profile and append-only records; no scientific code, biology, source checkout or PR44/PR45 change.
 - Supersedes record: none
+
+
+## DEC-DCM4-CONVERSION-WORK-CONTRACT-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-CONVERSION-WORK-CONTRACT-20261017
+- Status: ACTIVE
+- Decision or event: Owner authorized defining a new constitutive ownership contract after the completed negative existing-owner audit. Select one conditional edge-local derived elastic sector, finite additional A loading and signed reciprocal work. Independent review accepts contract consistency only; no production implementation, calibrated values or downstream execution.
+- Rationale: R13 identifies reaction-mediated geometry damping but does not supply a physical conversion-work law. Primary research (Maes arXiv2011.09200 and Albaugh/Gingrich arXiv2102.06298) is REFERENCE only to distinguish energetic ownership from a kinetic tilt or microscopic detailed balance; no imported code, parameters or refactoring. New local assumptions are explicit and falsifiable.
+- Affected areas: Isolated contract worktree, diagnostic arithmetic/provenance verifier, scoped CI, additive local/Atlas evidence, project records and Notion page https://app.notion.com/p/3fc833cb27ff81f88950e69138a29fd7. Distinct review, exact-head artifacts and readback bind final evidence; old source/PR/archive work is preserved.
+- Supersedes record: none

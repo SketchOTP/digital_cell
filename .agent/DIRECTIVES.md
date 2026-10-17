@@ -1535,3 +1535,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261017-dcm4-conversion-work-contract
+
+- Issued: 2026-10-17T18:03:00-04:00
+- Issuer: User
+- External directive: DC-M4-CONVERSION-WORK-OWNERSHIP-CONTRACT-001
+- Objective: Define one concrete conversion-work ownership contract closing the reaction-architecture specification gap, independently verify it, preserve existing work and synchronize Notion/project records.
+- Scope: New explicit local constitutive candidate, signed conversion/mechanical work, typed energy/fuel ownership, atomic lifecycle settlement, diagnostic arithmetic/verifier and workflow, independent review, additive evidence and governance/Notion updates from b2de15dc0d7a7ee3f25b7993c558099d17a150a0.
+- Exclusions: Production Rust/example or existing scientific parameter changes, runtime feedback implementation, biological or parameter-search campaigns, mechanics/ecology/fission/checkpoint changes, prior PR44/45/46 mutation, merge, deployment and automatic successor.
+- Acceptance: Complete explicit energy/rate/fuel/reciprocity/lifecycle contract; exact finite arithmetic and discriminating failure controls; distinct independent semantic review; frozen source and prior work/archive preservation; exact-head CI/artifact provenance and verified Notion/project-record synchronization, without claiming damping correction or full legacy thermodynamics.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
