@@ -404,3 +404,12 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `docs/dc-m4-r13-independent-review.json`: machine-readable parent reconstruction and source/artifact/preservation receipt.
 - `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcm4r13/`: preserved initial/final hosted archives, independent recomputation summaries and final-head receipts. Large evidence remains outside Git.
 - PR45 carries the R13 implementation and final-governance head; PR44 remains untouched. Notion root and adopted R13 page are synchronized after final-head verification. No downstream execution started.
+
+
+## Reaction-architecture feasibility — 2026-10-17
+
+- `docs/dc-m4-reaction-architecture-directive.md`: adopted owner authorization, accepted R13 entry, scope and acceptance.
+- `docs/dc-m4-reaction-architecture-feasibility.md`: source/units/candidate audit, exact reaction algebra, other-domain counterexamples, bounded gap and minimum future ownership requirement.
+- `docs/dc-m4-reaction-architecture-audit.json`: source digests, eight mechanical candidate classes, four other thermodynamic domains and distinct semantic review.
+- `scripts/verify_reaction_architecture_feasibility.py` and `.github/workflows/dc-m4-reaction-architecture-feasibility.yml`: exact symbolic/source/preservation/record checks and hosted audit receipts, without a new scientific executable.
+- `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/`: preservation snapshots and final-head CI/artifact/Notion receipts. No automatic successor.

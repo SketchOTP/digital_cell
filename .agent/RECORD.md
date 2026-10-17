@@ -2141,3 +2141,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Thirty exact states reproduce damping and uniquely nominate local reaction under pre-outcome numerical envelopes; transport partly opposes damping. R9's tensile activation multiplier remains falsified. A corrective reaction coupling needs physical source/energy ownership before implementation.
 - Affected areas: Result/independent-review docs, current/profile state and append-only records. R4 production reference, R10 diagnostic scope, R1-R12 evidence and existing checkouts/PR44 preserved.
 - Supersedes record: none
+
+
+## DEC-DCM4-REACTION-ARCHITECTURE-GAP-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-REACTION-ARCHITECTURE-GAP-20261017
+- Status: ACTIVE
+- Decision or event: Complete the user-authorized reaction-architecture feasibility gate with an explicit constitutive/energetic gap, preserving R13 attribution and all production science. Return the conversion-work ownership requirement without choosing or implementing a corrective law.
+- Rationale: Existing local state, funded forces and net A/W charges do not close signed conversion work, common units/fuel ownership and rate response. Other-domain affinity models and structural repair are real but have different material/causal ownership. Distinct read-only analyst and reviewer agree.
+- Affected areas: Gate docs/audit evidence, checker/workflow and bounded project records; existing checkouts and PR44/PR45 preserved. No feedback or successor execution.
+- Supersedes record: none

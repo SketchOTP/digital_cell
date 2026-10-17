@@ -1,0 +1,156 @@
+{
+  "directive": "D-20261017-dcm4-reaction-architecture-feasibility",
+  "external_directive": "DC-M4-REACTION-ARCHITECTURE-FEASIBILITY-GATE-001",
+  "entry_head": "74dfbf9a12fc9cdafcc72c3080150a7b9c04be90",
+  "notion_page": "https://app.notion.com/p/3fc833cb27ff81bdb785cbdb6beafa25",
+  "reviewed_at": "2026-10-17T13:05:47-04:00",
+  "classification": "LOCAL_REACTION_COUPLING_PHYSICAL_OWNERSHIP_OR_ENERGETICS_GAP",
+  "feasibility_audit": "COMPLETE_NEGATIVE",
+  "coupling_established": false,
+  "physical_state_required": "NOT_DETERMINED",
+  "source_bindings": {
+    "digital-protocell/crates/chemistry-core/src/material_mesh.rs": "2ef99d879aa5e6b6a49f295ba344bf0981675ae85bf8f95550cfd16be32a89f1",
+    "digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs": "5e60e013c49bda2a2f04fbb1923f0891c013b21a343ebd41da0ed4fd2d33870c",
+    "digital-protocell/crates/chemistry-core/src/mesh_self_contact.rs": "d564da4035b0078f5eb95c1e3c9917d3099bba80a421a504126335a1150cf170",
+    "digital-protocell/crates/chemistry-core/src/mesh_reactions.rs": "d6411244f71bf13233f251db226ef48ae4d068e10c264acbf9456c206a0be29e",
+    "digital-protocell/crates/chemistry-core/src/phase_field.rs": "fa30f555b972eff6bb07d8461ef0049edaa4040ff1c1148983902b60dd9b5728",
+    "digital-protocell/crates/chemistry-core/src/surface_density.rs": "97a2ffccf8822ff70d64d20d59434c3b54753b36e899b05f448fed7fe96f7b3f",
+    "digital-protocell/crates/chemistry-core/src/d077_analysis.rs": "b69b53b559c5c788796e77c1300446a6b6e313389e3bee0f73b35f260cb13059",
+    "digital-protocell/crates/chemistry-core/src/membrane.rs": "a4728c09ceebc18ac4491388c941c814e932d7f098a89ed153021a1dcdc27ce3",
+    "digital-protocell/crates/regulatory-core/src/lib.rs": "173df1f0d34307da0eed5362aa01bfe6caef1deb63545b58a695ff195f8818b7",
+    "digital-protocell/crates/regulatory-core/src/polarity_mass.rs": "0cb6c6a1bfd81cbed698cfe1b74abd7bbdef1229fa077b7a92b612aa48a39dec",
+    "digital-protocell/crates/regulatory-core/src/polarity_actuation.rs": "7612d64c894bb7e4c469225a6e97ccb88e06f7108d610b1d28e164768cbfcf52",
+    "digital-protocell/crates/regulatory-core/src/contractility.rs": "1beb342f76a150d2adc6f484ea3741fd4d230dca751383586b865c2b8a58c135",
+    "digital-protocell/crates/regulatory-core/src/stick_slip_traction.rs": "093100b63b522fa03b2d43ffc66fa5b9f3e2d97607fe33c28cbd8161a9d35e2a",
+    "digital-protocell/crates/regulatory-core/src/plasticity.rs": "79916aa115e33a19466c45b755e4d262f6a4d081b500b4150f197cffbd482b22",
+    "digital-protocell/examples/dcfinal001_r4_evolution.rs": "10ca0fdd7644724e204ad95c1d92b42e1defae9977c132d1050b9efba81c0bdb",
+    "digital-protocell/examples/dcfinal001_r5_v4_neck.rs": "1f2775dc55511283d3e5bcca618219f6dadcf75bd5daad95cb56e62d8a129eed"
+  },
+  "candidates": [
+    {
+      "id": "material_geometry",
+      "owner": "MaterialMesh vertices/mature mass/rest length/strain",
+      "sources": "material_mesh.rs:232-254,314-356",
+      "gap": "No conversion-associated extension or structural material transfer",
+      "conversion_work_law": false,
+      "unit_fuel_contract": false,
+      "signed_rate_law": false
+    },
+    {
+      "id": "passive_stretch",
+      "owner": "Local load-bearing strain and clamped stretch effort",
+      "sources": "material_mesh.rs:326-329;mesh_mechanics.rs:137-165",
+      "gap": "No conversion-conjugate work or displacement per conversion",
+      "conversion_work_law": false,
+      "unit_fuel_contract": false,
+      "signed_rate_law": false
+    },
+    {
+      "id": "bending",
+      "owner": "Local curvature and hinge force proxy",
+      "sources": "mesh_mechanics.rs:167-193",
+      "gap": "No polarity-specific curvature or bending work",
+      "conversion_work_law": false,
+      "unit_fuel_contract": false,
+      "signed_rate_law": false
+    },
+    {
+      "id": "pressure",
+      "owner": "Interior/exterior chemical contrast",
+      "sources": "mesh_mechanics.rs:87-95,160-165",
+      "gap": "No polarity conversion volume or pressure-work stoichiometry",
+      "conversion_work_law": false,
+      "unit_fuel_contract": false,
+      "signed_rate_law": false
+    },
+    {
+      "id": "active_force",
+      "owner": "R4 tension and R10 diagnostic normal request",
+      "sources": "polarity_actuation.rs:94-108;contractility.rs:603-629;dcfinal001_r5_v4_neck.rs:556-595",
+      "gap": "Effort-duration fuel charge does not fix a reverse conversion potential",
+      "conversion_work_law": false,
+      "unit_fuel_contract": false,
+      "signed_rate_law": false
+    },
+    {
+      "id": "contact_observer_work",
+      "owner": "Substrate/contact and discarded force-displacement projections",
+      "sources": "stick_slip_traction.rs:400-430;dcfinal001_r4_evolution.rs:6675-6700,7069-7076",
+      "gap": "Dissipation/observer quantity is not an owned recoverable conversion reservoir",
+      "conversion_work_law": false,
+      "unit_fuel_contract": false,
+      "signed_rate_law": false
+    },
+    {
+      "id": "regulatory_plasticity",
+      "owner": "Local dimensionless regulatory activity/adaptation",
+      "sources": "regulatory-core/src/lib.rs:427-455;plasticity.rs:1-55",
+      "gap": "Signal persistence does not give material or energy ownership",
+      "conversion_work_law": false,
+      "unit_fuel_contract": false,
+      "signed_rate_law": false
+    },
+    {
+      "id": "structural_membrane_chemistry",
+      "owner": "Strain-sensitive structural repair and membrane binding",
+      "sources": "mesh_reactions.rs:305-308,341-342,674-747",
+      "gap": "Different material reactions cannot supply polarity-conversion stoichiometry unchanged",
+      "conversion_work_law": false,
+      "unit_fuel_contract": false,
+      "signed_rate_law": false
+    }
+  ],
+  "other_domains": [
+    {
+      "id": "phase_field",
+      "source": "phase_field.rs:7-27",
+      "domain": "Cartesian phi free energy and chemical potential"
+    },
+    {
+      "id": "surface_exchange",
+      "source": "surface_density.rs:709-751",
+      "domain": "Precursor/surface-density exchange affinity"
+    },
+    {
+      "id": "cooperative_adsorption",
+      "source": "d077_analysis.rs:197-231",
+      "domain": "Reduced theta/P adsorption in kT=1 units"
+    },
+    {
+      "id": "interface_transport",
+      "source": "membrane.rs:139-163",
+      "domain": "Grid interface-affinity membrane transport"
+    }
+  ],
+  "missing_links": [
+    "Owned mechanical work/free-energy contribution per polarity conversion",
+    "Common signed units and finite fuel/material ownership",
+    "Signed constitutive rate relation with locality and energy consistency"
+  ],
+  "independent_review": {
+    "role": "governance_audit distinct read-only reviewer",
+    "status": "ACCEPTED_BOUNDED_SOURCE_AUDIT",
+    "scope": "Independent source/callgraph/algebra/domain audit including final documentation, audit JSON and governance review completed",
+    "workloads_run": false,
+    "files_modified": false
+  },
+  "architecture_analyst": {
+    "role": "r13_implementation read-only analyst",
+    "conclusion": "No existing-owner mechanical conversion-affinity law established",
+    "workloads_run": false,
+    "files_modified": false
+  },
+  "parent_verification": "Source inspection, exact symbolic/algebraic checker and preservation; semantic review remains required",
+  "feedback_implemented": false,
+  "production_biology_modified": false,
+  "new_simulation_campaign": false,
+  "next_execution_started": false,
+  "scientific_binary": "NOT_APPLICABLE_SOURCE_AUDIT",
+  "broader_goal_complete": false,
+  "bridge_status": {
+    "parent_callable_tools": "NONE_IN_ENABLED_INVENTORY",
+    "reviewer_read_only_attempt": "FAILED_MCP_TOOL_NOT_AVAILABLE",
+    "mutations": false,
+    "acceptance_claimed": false
+  }
+}

@@ -1,0 +1,33 @@
+name: DC-M4 Local Reaction Architecture Feasibility
+on:
+  push:
+    branches:
+      - codex/dc-m4-reaction-architecture-feasibility
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-architecture-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out exact pushed audit head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Verify frozen source, exact algebra and new records
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          python3 scripts/verify_reaction_architecture_feasibility.py --repo . --output "$RUNNER_TEMP/reaction-architecture-evidence"
+          git diff --check
+          test -z "$(git status --porcelain)"
+      - name: Upload exact-head audit receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: dc-m4-reaction-architecture-feasibility-${{ github.sha }}
+          if-no-files-found: error
+          path: ${{ runner.temp }}/reaction-architecture-evidence/

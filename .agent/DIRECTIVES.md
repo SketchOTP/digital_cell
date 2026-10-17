@@ -1505,3 +1505,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261017-dcm4-reaction-architecture-feasibility
+
+- Issued: 2026-10-17T13:05:47-04:00
+- Issuer: User
+- External directive: DC-M4-REACTION-ARCHITECTURE-FEASIBILITY-GATE-001
+- Objective: Complete R13 E4 reaction-architecture feasibility, independently verify, preserve existing work and synchronize Notion/project records.
+- Scope: Source/ownership/unit/callgraph audit, frozen reaction geometry algebra, competing existing energetic models, one supported architecture or explicit gap, independent evidence and bounded records/checker/audit CI.
+- Exclusions: Production biology or examples, feedback implementation, concentration-law or coefficient changes, new physical state/flow/energy law, actuator/mechanics/ecology/fission changes, downstream campaigns, PR44/PR45 modification and automatic successor.
+- Acceptance: Exact accepted R13 authority/source preservation; complete candidate/domain inventory; independent algebra and semantic review; supported owned conversion work/rate/funding contract or honest gap; preservation checks, exact-head audit receipt and Notion readback.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

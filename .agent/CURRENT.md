@@ -3,18 +3,28 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-17T03:53:00-04:00`
+- Last updated: `2026-10-17T13:05:47-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261016-dcm4-r13-internal-causal-decomposition`
-- External directive ID: `DC-M4-R13-GEOMETRY-TO-POLARITY-INTRA-OPERATOR-CAUSAL-DECOMPOSITION-GATE-001`
-- Objective: Attribute the accepted geometry-to-polarity damping response inside the unchanged production polarity operator on the exact thirty fixed states.
+- Local directive ID: `D-20261017-dcm4-reaction-architecture-feasibility`
+- External directive ID: `DC-M4-REACTION-ARCHITECTURE-FEASIBILITY-GATE-001`
+- Objective: Determine whether existing local physical state and laws support an energy-accounted polarity-conversion bias; return a supported architecture or the ownership/energetics gap.
 - Current status: `COMPLETE`
-- Acceptance: `MET — implementation and bounded reaction-mediated attribution accepted; final governance-head CI receipt follows in Notion/PR/durable evidence`
-- Current phase: `R13 attribution complete; reaction architecture decision pending`
-- Expected or actual touched areas: `diagnostic example and shared diagnostic helpers, independent verifier/tests, R13-specific workflow, docs and append-only governance`
-- Immediate next action: `seal final governance-head CI and Notion readback; return the single proposed reaction-affinity feasibility gate without starting a successor`
+- Acceptance: `MET — bounded source-architecture feasibility audit; coupling NOT ESTABLISHED; exact-head CI/artifact and final synchronization receipts retained externally`
+- Current phase: `Reaction-architecture feasibility completed with a constitutive/energetic gap`
+- Expected or actual touched areas: `Gate documentation/audit JSON, independent algebra/source checker, audit-only workflow, bounded governance records`
+- Immediate next action: `Return the conversion-work ownership requirement for a separate architecture decision; no feedback implementation or successor execution`
+
+## Current reaction-architecture feasibility disposition
+
+- User authorization on 2026-10-17 supersedes the prior R13 E4 proposal-only marker for this feasibility audit alone. It does not authorize feedback implementation.
+- Entry head: `74dfbf9a12fc9cdafcc72c3080150a7b9c04be90`; existing R13 final CI `39015335353 PASS`, ZIP `adedc07c15c48b90db9901a68ec6f42afc55d67ac5954f0916ade55f0013b719`, manifest `13/13`. R13's damping attribution remains accepted and uncorrected.
+- Current checkout: `/home/sketch/Projects/digital_cell-reaction-feasibility`; branch `codex/dc-m4-reaction-architecture-feasibility`. Existing checkouts and PR44/PR45 are preserved.
+- Outcome: `LOCAL_REACTION_COUPLING_PHYSICAL_OWNERSHIP_OR_ENERGETICS_GAP`. Existing observables and finite A/W costs do not supply an owned signed mechanical work/rate relation for active-inactive conversion. New persistent state necessity is NOT_DETERMINED.
+- Evidence: `docs/dc-m4-reaction-architecture-feasibility.md`, machine audit JSON and exact algebra/source checker. Distinct read-only analysis and independent source review agree. Final publication/CI/readback receipts live in `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/` after this commit exists.
+- Missing architecture relation: conversion-conjugate work/free-energy or a supported driven cycle, common fuel/energy units, and a signed rate law with locality, finite funding and complete lifecycle ownership. No corrective formula is selected.
+- All scientific source and R13 evidence are preserved; no feedback, new state, parameter change or downstream campaign runs. The broader lifeform goal remains incomplete. Historical sections below are preserved context; this active header supersedes older task-state wording.
 
 ## Current R13 authority and preservation
 

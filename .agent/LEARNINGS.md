@@ -1448,3 +1448,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Bounded R13 operator attribution only; amount/current-length physics and all production sources preserved. Proposed reaction-affinity feasibility is unproven and unimplemented.
 - Supersedes learning: none
+
+
+## L-DCM4-REACTION-ARCHITECTURE-GAP-20261017
+
+- Learning ID: L-DCM4-REACTION-ARCHITECTURE-GAP-20261017
+- Date: 2026-10-17
+- Fact or lesson: Local strain/force, positive A/W expenditure and a kinetic log-ratio do not alone identify conversion-conjugate mechanical work. Native polarity cost is proportional to absolute NET transfer, not separately tracked forward/reverse turnover. Other-domain thermodynamic models cannot be mapped to polarity without a physical ownership and unit contract.
+- Evidence location: docs/dc-m4-reaction-architecture-feasibility.md and docs/dc-m4-reaction-architecture-audit.json; scripts/verify_reaction_architecture_feasibility.py.
+- Confidence: VERIFIED
+- Scope: Existing R3/R4 MaterialMesh source architecture only; no claim that future mechanosensing is impossible or a new persistent state necessary.
+- Supersedes learning: none
