@@ -1437,3 +1437,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: R13 entry authority and source baseline.
 - Supersedes learning: none
+
+
+## L-DCM4-R13-REACTION-ATTRIBUTION-20261017
+
+- Learning ID: L-DCM4-R13-REACTION-ATTRIBUTION-20261017
+- Date: 2026-10-17
+- Fact or lesson: In the exact thirty accepted fixed states, geometry-induced concentration change acts primarily through the existing local reaction to produce damping; transport partly opposes it, and interaction/order differences are below the sealed numerical envelopes. Reaction dominance does not mean exact equality with FULL or qualify a repair.
+- Evidence location: docs/dc-m4-r13-result.md; docs/dc-m4-r13-independent-review.json; exact-head CI 38997922719 and independently recomputed archive.
+- Confidence: VERIFIED
+- Scope: Bounded R13 operator attribution only; amount/current-length physics and all production sources preserved. Proposed reaction-affinity feasibility is unproven and unimplemented.
+- Supersedes learning: none

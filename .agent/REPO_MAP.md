@@ -396,3 +396,11 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `digital-protocell/experiments/test_dcm4_r13_verifier.py` contains nine numerical/coverage/corruption controls; `experiments/fixtures/dcm4r13/r12_input_identities.json` binds the exact30 accepted states.
 - `.github/workflows/dc-m4-r13-intra-operator-causal-decomposition.yml` checks exact baseline/scope, original R12 archive, focused tests, prospective seal, fixed-state execution, verifier and artifact.
 - `docs/dc-m4-r13-adopted-directive.md` preserves the adopted Notion authorization snapshot; `docs/dc-m4-r13-operator-contract.md` records units/order/locality and the prospective estimator. No R13 scientific result is asserted by this map.
+
+
+## R13 accepted evidence and architecture consequence — 2026-10-17
+
+- `docs/dc-m4-r13-result.md`: bounded E0-E5 acceptance, exact implementation/CI/archive/binary identities, metrics, limitations and one proposed local reaction-affinity feasibility gate.
+- `docs/dc-m4-r13-independent-review.json`: machine-readable parent reconstruction and source/artifact/preservation receipt.
+- `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/dcm4r13/`: preserved initial/final hosted archives, independent recomputation summaries and final-head receipts. Large evidence remains outside Git.
+- PR45 carries the R13 implementation and final-governance head; PR44 remains untouched. Notion root and adopted R13 page are synchronized after final-head verification. No downstream execution started.

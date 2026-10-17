@@ -2826,3 +2826,26 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: R13 attribution may remain inconclusive; force transfer does not establish morphogenesis or reproduction.
 - Blockers: Architect bridge unavailable; explicit separate implementation/review path is recorded without a bridge claim.
 - Follow-up directive: none
+
+
+## D-20261016-dcm4-r13-internal-causal-decomposition - COMPLETE
+
+- Outcome ID: O-DCM4-R13-ATTRIBUTION-20261017
+- Supersedes outcome: O-DCM4-R13-BASELINE-20261016
+- Closed: 2026-10-17T03:53:00-04:00
+- Acceptance: MET
+- Summary: R13 implementation and bounded attribution accepted as G_TO_P_DAMPING_LOCAL_REACTION_MEDIATED_BY_GEOMETRIC_CONCENTRATION. All thirty exact states reproduce R8 damping and uniquely nominate reaction, with zero exclusions. Final governance-head CI and Notion receipt follow this commit without changing the scientific result.
+- Changed areas: Diagnostic-only implementation and verifier, R13 workflow, prospective/operator/prior-art/result documentation, isolated baseline and append-only project records.
+- Validation:
+  - Exact-head implementation CI 38997922719 at b0554c77617d2ae17df99f2dbaa7e3043e3f9361 including Rust checks and nine verifier controls - PASSED
+  - ZIP 289e75c809bbd265ab3344299509d0957466a608c2c8dbd34e0dc1254bdc9221, 13/13 manifest, seven source bindings, bundled sources and binary - PASSED
+  - Independent complete raw verifier rerun reproduces seven hosted result files byte for byte - PASSED
+  - Thirty exact boundary identities, original R8 damping, concentration/amount separation, native pools and finite A/W closure, branches and prospective attribution - PASSED
+  - Distinct independent source/evidence review and one concrete E4 proposed architecture gate - PASSED
+  - Original local/Atlas checkout snapshots and PR44 head/base/open/draft/unmerged preservation - PASSED
+  - Initial local verifier invocation without copied prospective seals - FAILED
+  - Full historical governance validator, pre-existing schema drift retained - FAILED
+  - Final governance-head CI and Notion final receipt at record creation - NOT RUN
+- Remaining risks: Operator attribution is bounded to these thirty fixed states and does not qualify a correction, morphogenesis or reproduction. The proposed reaction-affinity feasibility gate requires a separate architecture authorization.
+- Blockers: Architect bridge unavailable; separate implementation and independent verification are recorded without a bridge claim. Historical governance schema drift is outside this diagnostic scope.
+- Follow-up directive: none

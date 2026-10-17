@@ -2130,3 +2130,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Exact production source preservation, native cut staging, original R8 phase predicate, complete serialized boundary hash binding, independent kinetic replay, conservative uncertainty and fail-closed coverage must be established before scientific classification.
 - Affected areas: R13 runner/shared appended helpers, independent verifier and nine corruption/numerical controls, frozen R12 identity fixture and branch-specific workflow; docs/dc-m4-r13-operator-contract.md.
 - Supersedes record: none
+
+
+## DEC-DCM4-R13-BOUNDED-ACCEPTANCE-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-R13-BOUNDED-ACCEPTANCE-20261017
+- Status: ACTIVE
+- Decision or event: Accept D-20261016-dcm4-r13-internal-causal-decomposition for implementation and bounded reaction-mediated attribution after distinct review and parent complete raw recomputation. Propose exactly one local mechanochemical reaction-affinity feasibility gate; no successor execution is authorized.
+- Rationale: Thirty exact states reproduce damping and uniquely nominate local reaction under pre-outcome numerical envelopes; transport partly opposes damping. R9's tensile activation multiplier remains falsified. A corrective reaction coupling needs physical source/energy ownership before implementation.
+- Affected areas: Result/independent-review docs, current/profile state and append-only records. R4 production reference, R10 diagnostic scope, R1-R12 evidence and existing checkouts/PR44 preserved.
+- Supersedes record: none
