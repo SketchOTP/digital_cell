@@ -3,18 +3,27 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-17T13:05:47-04:00`
+- Last updated: `2026-10-17T17:49:33-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261017-dcm4-reaction-architecture-feasibility`
-- External directive ID: `DC-M4-REACTION-ARCHITECTURE-FEASIBILITY-GATE-001`
-- Objective: Determine whether existing local physical state and laws support an energy-accounted polarity-conversion bias; return a supported architecture or the ownership/energetics gap.
+- Local directive ID: `D-20261017-atlas-evidence-reconciliation`
+- External directive ID: `DC-ATLAS-EVIDENCE-RECONCILIATION-001`
+- Objective: Verify the reconnected Atlas evidence archive, synchronize preserved local evidence without replacement, and update project/Notion records.
 - Current status: `COMPLETE`
-- Acceptance: `MET — bounded source-architecture feasibility audit; coupling NOT ESTABLISHED; exact-head CI/artifact and final synchronization receipts retained externally`
-- Current phase: `Reaction-architecture feasibility completed with a constitutive/energetic gap`
-- Expected or actual touched areas: `Gate documentation/audit JSON, independent algebra/source checker, audit-only workflow, bounded governance records`
-- Immediate next action: `Return the conversion-work ownership requirement for a separate architecture decision; no feedback implementation or successor execution`
+- Acceptance: `MET — expected mounted UUID/bind path, accepted ZIP/manifest/binary identities, local-copy hash equality and preservation verified; final governance/readback receipts retained externally`
+- Current phase: `Atlas evidence custody reconciled; reaction feasibility ownership/energetics gap unchanged`
+- Expected or actual touched areas: `Additive archive evidence, storage map, current/profile and append-only records, storage-reconciliation report`
+- Immediate next action: `Return to the unresolved conversion-work architecture decision; no feedback implementation or scientific successor execution`
+
+## Atlas evidence reconciliation
+
+- Reconnected volume: UUID `840ca6b3-5d4f-41fc-9dac-21355e045a6d`, ext4 at `/mnt/atlas2tb`, existing `/RPI5Pool` bind at `/srv/ATLAS`; source identity verified before archive writes. The owner mounted it; this task performs no mount/disk repair.
+- Existing archive preservation: `83` files hash-unchanged; four accepted prior ZIPs with internal manifests and available scientific binaries verified, plus the deliberately rejected upload retained.
+- Preserved local snapshot: `77` files / `309554499` bytes copied and hash-verified at `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/preserved-local-20261017-174351`. Canonical `final-08494f2` package restored with `29/29` manifest bindings and `16/16` source bindings. No overwrites/deletions; local originals remain.
+- Current primary gate archive: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/`; durable local duplicate: `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/`. Reconciliation receipts: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/reconciliation-20261017-174351/` and `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/atlas-reconciliation-20261017-174351/`.
+- Evidence: `docs/dc-m4-reaction-architecture-storage-reconciliation.json`; Atlas-native independent verification and preserved snapshots. Final exact-head audit and Notion/PR readback receipts follow outside this commit.
+- Scope is the Digital Cell R12/R13 and reaction-feasibility evidence archive, not whole-disk filesystem health or unrelated legacy `/mnt/storage1tb` archive qualification.
 
 ## Current reaction-architecture feasibility disposition
 
@@ -23,7 +32,7 @@
 - Current checkout: `/home/sketch/Projects/digital_cell-reaction-feasibility`; branch `codex/dc-m4-reaction-architecture-feasibility`. Existing checkouts and PR44/PR45 are preserved.
 - Outcome: `LOCAL_REACTION_COUPLING_PHYSICAL_OWNERSHIP_OR_ENERGETICS_GAP`. Existing observables and finite A/W costs do not supply an owned signed mechanical work/rate relation for active-inactive conversion. New persistent state necessity is NOT_DETERMINED.
 - Evidence: `docs/dc-m4-reaction-architecture-feasibility.md`, machine audit JSON and exact algebra/source checker. Distinct read-only analysis and independent source review agree. Final publication/CI/readback receipts live in `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/` after this commit exists.
-- Evidence storage: Atlas data mounts became unavailable during final synchronization. Verified artifacts have duplicate durable local custody at `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/`; original archive paths are preserved for separate storage recovery. No mount or disk mutation was attempted. See `STORAGE_MAP.md`.
+- Evidence storage: The owner reconnected/mounted Atlas; the expected UUID and current archive are verified and reconciled at `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/`, with local originals retained at `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/`. This supersedes the earlier active Atlas-availability limitation; historical outage records remain. See `STORAGE_MAP.md`.
 - Missing architecture relation: conversion-conjugate work/free-energy or a supported driven cycle, common fuel/energy units, and a signed rate law with locality, finite funding and complete lifecycle ownership. No corrective formula is selected.
 - All scientific source and R13 evidence are preserved; no feedback, new state, parameter change or downstream campaign runs. The broader lifeform goal remains incomplete. Historical sections below are preserved context; this active header supersedes older task-state wording.
 

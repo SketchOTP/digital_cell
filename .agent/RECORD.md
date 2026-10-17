@@ -2174,3 +2174,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Read-only mount inspection confirms missing data mounts, while the local source checkout and GitHub evidence remain accessible. Do not recreate a misleading archive directory on the remote root filesystem. Final audit acceptance remains bounded to verified source/artifact/local custody; historical storage availability needs separate recovery.
 - Affected areas: Gate evidence locator, local duplicate custody and storage map, audit checker binding and append-only records. Scientific sources and original historical archives unchanged.
 - Supersedes record: none
+
+
+## DEC-ATLAS-EVIDENCE-RECONCILIATION-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-ATLAS-EVIDENCE-RECONCILIATION-20261017
+- Status: ACTIVE
+- Decision or event: Owner-mounted Atlas evidence archive is verified and additively synchronized. Preserve the historical outage/rejected upload and local originals; make the verified canonical archive and reconciliation receipt discoverable in storage/project/Notion records.
+- Rationale: UUID/bind identity, four accepted prior archive packages, canonical final-08494f2 package, 77 copied-file hashes and all 83 prior scoped archive file hashes verify; Atlas-native independent checks agree. The scientific result and source are unchanged.
+- Affected areas: Evidence copy/custody metadata, STORAGE_MAP/current/profile and append-only records; no scientific code, biology, source checkout or PR44/PR45 change.
+- Supersedes record: none

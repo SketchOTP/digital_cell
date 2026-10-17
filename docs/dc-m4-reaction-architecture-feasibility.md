@@ -87,3 +87,7 @@ Historical governance-validator schema drift remains recorded; new structured en
 ## Evidence storage observation
 
 During final synchronization, the Atlas data mounts became unavailable; the remote paths resolved to the underlying root filesystem. No mount/disk repair or replacement directory was attempted. Verified artifacts and cached R13 ZIPs have duplicate durable local custody at `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/`, recorded in `STORAGE_MAP.md`. Original archive locators and data are not deleted or migrated. Final handoff/Notion receipts use the local custody path; historical archive availability needs separate storage recovery.
+
+## Atlas archive reconciled — 2026-10-17
+
+The owner reconnected/mounted Atlas and scoped archive verification/synchronization now passes on expected UUID `840ca6b3-5d4f-41fc-9dac-21355e045a6d`. Four accepted prior packages and canonical `final-08494f2` evidence verify; 77 local files are preserved in an additive hash-verified snapshot and all 83 prior scoped files remain unchanged. Local originals remain. See `dc-m4-reaction-architecture-storage-reconciliation.json` and `STORAGE_MAP.md` for current receipts. This supersedes the active Atlas-archive availability limitation above; it does not qualify disk health or change this scientific feasibility result.

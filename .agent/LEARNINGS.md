@@ -1459,3 +1459,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Existing R3/R4 MaterialMesh source architecture only; no claim that future mechanosensing is impossible or a new persistent state necessary.
 - Supersedes learning: none
+
+
+## L-ATLAS-EVIDENCE-MOUNT-IDENTITY-20261017
+
+- Learning ID: L-ATLAS-EVIDENCE-MOUNT-IDENTITY-20261017
+- Date: 2026-10-17
+- Fact or lesson: An SSHFS connection can remain mounted while the remote data mount is absent and the remote path resolves to root storage. Verify the expected data UUID and bind root before writing, preserve local custody, then compare both archive and copied-file hashes after reconnection without overwriting historical evidence.
+- Evidence location: docs/dc-m4-reaction-architecture-storage-reconciliation.json; Atlas-native independent verification and additive-copy receipt.
+- Confidence: VERIFIED
+- Scope: Digital Cell Atlas evidence custody on UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d; not whole-disk health or unrelated mount recovery.
+- Supersedes learning: none

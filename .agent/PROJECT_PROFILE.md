@@ -3,7 +3,7 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last verified: `2026-10-17T13:05:47-04:00`
+- Last verified: `2026-10-17T17:49:33-04:00`
 
 ## Identity
 
@@ -43,3 +43,5 @@
 - Deployment: No deployment or merge is authorized by DC-DEV-001A; architect review remains required.
 - Historical M2 boundary: The opt-in A-funded actuator, ENTRY-005 raw intrinsic motor coupling, ENTRY-011 uptake/metabolism composition, ENTRY-014 isolated reference transfer, and ENTRY-015 assay-local `u/(u+v)` effector interface were qualified in their original scopes. ENTRY-016 found no physical asymmetry in the regular founder; ENTRY-017 found nonuniform daughters. Subsequent lineage-specific results are retained in the append-only records rather than generalized to whole-lifeform completion.
 - Current boundary: Source/architecture-only reaction feasibility audit from accepted R13; no feedback implementation. R13 clone-local decomposition and all prior science remain preserved. R4 remains production reference and R10 diagnostic-only; production biology, parameters, mechanics, ecology, fission and downstream campaigns are frozen. The canonical reserve-OFF M1 baseline is preserved, and PR #44 remains historical provenance.
+
+- Verified current evidence custody (2026-10-17): reconnected Atlas UUID `840ca6b3-5d4f-41fc-9dac-21355e045a6d`; primary archive `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/`, local duplicate `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/`; scoped hashes/manifests verified without changing science.

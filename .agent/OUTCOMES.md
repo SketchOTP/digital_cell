@@ -2869,3 +2869,24 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: A future corrective mechanism needs a physical conversion-work/fuel/rate contract and separate authorization. Damping remains uncorrected; downstream biology and whole-lifeform completion remain unestablished.
 - Blockers: No supported existing-owner coupling law; this is the completed gate result rather than an incomplete audit. No callable architect bridge status/review tool in parent inventory; no bridge acceptance claimed.
 - Follow-up directive: none
+
+
+## D-20261017-atlas-evidence-reconciliation - COMPLETE
+
+- Outcome ID: O-ATLAS-EVIDENCE-RECONCILIATION-20261017
+- Supersedes outcome: none
+- Closed: 2026-10-17T17:49:33-04:00
+- Acceptance: MET
+- Summary: Expected reconnected Atlas UUID/bind identity verified; four accepted prior archive packages and canonical final-08494f2 audit package validate. 77 local files copied/hash-verified, all 83 pre-existing scoped archive files preserved, and local originals retained. Scientific feasibility result is unchanged.
+- Changed areas: Additive evidence synchronization, storage locator/reconciliation JSON, current/profile and append-only records. Final external readback/CI receipts follow this commit.
+- Validation:
+  - Mounted UUID 840ca6b3-5d4f-41fc-9dac-21355e045a6d, ext4 and RPI5Pool bind identity - PASSED
+  - Existing accepted ZIP digests, internal manifests and scientific release binaries; Atlas-native independent archive verification - PASSED
+  - Local snapshot hash equality, canonical 29-file/16-source audit package, all prior scoped archive byte preservation - PASSED
+  - Five unrelated local checkout identities/status/diffs and Atlas source checkout preservation - PASSED
+  - Scientific production subtree and prior classifications preserved - PASSED
+  - Final documentation-head audit and Notion/PR readback at record creation - NOT RUN
+  - Whole-disk health, unrelated legacy secondary storage, new biology or simulation campaign - NOT APPLICABLE
+- Remaining risks: Copy/hash verification does not qualify disk health or prove a corrective mechanochemical architecture. Existing historical governance schema drift remains documented.
+- Blockers: none for scoped Atlas evidence reconciliation; reaction-conversion physical ownership/energetics remains the separate unresolved scientific architecture issue.
+- Follow-up directive: none

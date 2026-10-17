@@ -419,3 +419,10 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 
 - Effective durable local custody: `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/`; `FINAL_HANDOFF.md`, exact-head ZIP/manifest/independent receipts and Notion/PR readback records.
 - `STORAGE_MAP.md` records the Atlas data-mount outage and duplicate local custody. Earlier external archive locators are preserved; their availability needs separate storage recovery. No data relocation, deletion or disk/mount action was attempted.
+
+
+## Atlas evidence reconciliation — 2026-10-17
+
+- `docs/dc-m4-reaction-architecture-storage-reconciliation.json`: UUID, scoped accepted archive checks, additive-copy counts, independent Atlas verification and custody/preservation receipt locations.
+- Canonical reaction-feasibility archive: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/`; current accepted audit package `final-08494f2/`; preserved local snapshot `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/preserved-local-20261017-174351/`.
+- Reconciliation receipts: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/reconciliation-20261017-174351/` and `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/atlas-reconciliation-20261017-174351/`; the local fallback remains retained. This supersedes the earlier active archive-availability limitation without rewriting outage history or scientific evidence.
