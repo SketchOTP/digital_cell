@@ -2108,3 +2108,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Final governance head `d2cfeb3d69f5d28459a663d2295b1b1fc227a505` passed exact-head workflow `35059631812`. The independently downloaded artifact ZIP hashes to `sha256:e049c58a0e608bf0fa36ccdf1a9b4f82f77108c31949fabd309f7331ecb55c41`; all `12/12` manifest entries match; binary SHA-256 is `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64`.
 - An independent verifier rerun reproduces `P_TO_M_STATE_NORMALIZED_R4_AND_R10_TRANSFER_QUALIFIED`, with R4 `30/30` and R10 `30/30` usable/qualified. The R12 Notion page and canonical Digital Cell SOT were updated and read back with the final governance identity.
 - This is force-to-mechanical-response qualification only. No production biology, morphogenesis, apposition, fission, reproduction, daughter continuation, birth-to-birth recurrence, population selection/evolution, reversal or final integration was executed. No successor started; PR #44 remains open/draft/unmerged/untouched.
+
+
+## DEC-DCM4-R13-BASELINE-AND-OWNER-AUTHORIZATION-20261016
+
+- Date: 2026-10-16
+- Record or decision ID: DEC-DCM4-R13-BASELINE-AND-OWNER-AUTHORIZATION-20261016
+- Status: ACTIVE
+- Decision or event: Under D-20261016-dcm4-r13-internal-causal-decomposition, the owner adopts Notion DC-M4-R13 from final d944d4f R12 authority and authorizes clean isolated implementation, independent verification and records synchronization.
+- Rationale: R12 qualifies force transfer but leaves the accepted R8/R9 geometry-to-polarity damping unexplained. Operator attribution must precede a new biological mechanism.
+- Affected areas: New R13 checkout/branch/baseline tag, observer-only diagnostic code and scoped verification, docs and append-only governance; prior work and PR #44 unchanged.
+- Supersedes record: none

@@ -1,0 +1,56 @@
+{
+  "schema": "digital_cell_r13_clean_baseline_v1",
+  "observed_at": "2026-10-16T23:02:48-04:00",
+  "base_head": "d944d4fabc46333203bfd6e441d600b9717c349d",
+  "base_tree": "b7f24852efff0a4befd098e340def029611c600c",
+  "baseline_tag": "baseline/dc-m4-r12-d944d4f",
+  "branch": "codex/dc-m4-r13-internal-causal-decomposition",
+  "initial_status": "CLEAN",
+  "tracked_paths": 3333,
+  "tracked_path_inventory_sha256": "a78e4f54e83dd6d4dcbd82fa328a89531daac337b3c2203c7addbd42d0f088fc",
+  "polarity_mass_sha256": "0cb6c6a1bfd81cbed698cfe1b74abd7bbdef1229fa077b7a92b612aa48a39dec",
+  "prior_local_checkouts": [
+    {
+      "root": "/home/sketch/Projects/digital_cell-m2-entry001",
+      "head": "845d5c0a6f5778ec7c8dfb5d822aaba89aeddb31",
+      "branch": "m2/dc-dev-021-m2-standalone-lifeform-runtime",
+      "status_hex": "3f3f20736372697074732f5f5f707963616368655f5f2f00",
+      "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "/home/sketch/Projects/digital_cell-m1-baseline",
+      "head": "d76481c785e9eec361df3fa0cd03c512b521639c",
+      "branch": "baseline/m1-v4-closed",
+      "status_hex": "",
+      "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "root": "/home/sketch/Projects/digital_cell-r5r2-work",
+      "head": "6e74892291e46cc55783c39bd26ddbbe3b18b764",
+      "branch": "strategy/dc-dev-020r9-mesh-contract-requalification",
+      "status_hex": "",
+      "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "atlas_checkout": {
+    "head": "456818fffbbbff2640984a8b81a41051bf03be75",
+    "diff_sha256": "01303f1b8b9dd09f9a986e6735377584fdcaf71308813221c0701556d4e4654a",
+    "dirty_state": "PRESERVED"
+  },
+  "r12": {
+    "workflow": "35060451335",
+    "zip_sha256": "5949df1110598142f6c32f3492a06f9d39516e18fa016dead6d4223dd2c3e432",
+    "manifest_verified": 12,
+    "source_binding_verified": 8,
+    "binary_sha256": "cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64",
+    "r4_qualified": 30,
+    "r10_qualified": 30
+  },
+  "pr44": {
+    "state": "open",
+    "draft": true,
+    "head": "fb77f472b1519a9e0f713833efba5b1d403f4723",
+    "changed": false
+  },
+  "bridge": "UNAVAILABLE; separate implementation and independent review; no dispatch claim"
+}

@@ -1490,3 +1490,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 
 - Final governance head `d2cfeb3d69f5d28459a663d2295b1b1fc227a505` passed exact-head workflow `35059631812`. Final hosted artifact ZIP is `sha256:e049c58a0e608bf0fa36ccdf1a9b4f82f77108c31949fabd309f7331ecb55c41`; manifest `12/12`; binary `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64`.
 - Independent artifact/manifest/binary verification and a verifier rerun reproduce the accepted terminal `P_TO_M_STATE_NORMALIZED_R4_AND_R10_TRANSFER_QUALIFIED` (`30/30` R4 and `30/30` R10). The R12 directive page and canonical Digital Cell SOT have been updated and read back. No morphogenesis, reproduction, population, selection, reversal or final integration was executed; no successor started; PR #44 remains untouched.
+
+
+## D-20261016-dcm4-r13-internal-causal-decomposition
+
+- Issued: 2026-10-16T23:03:39-04:00
+- Issuer: User
+- External directive: DC-M4-R13-GEOMETRY-TO-POLARITY-INTRA-OPERATOR-CAUSAL-DECOMPOSITION-GATE-001
+- Objective: Establish the exact clean d944d4f baseline, attribute accepted geometry-to-polarity damping within the unchanged R3 operator, independently verify R13, and synchronize project records and Notion.
+- Scope: Isolated checkout; diagnostic-only clone decomposition on the exact thirty fixed R8/R9/R12 states; E1 concentration observations; E2 reaction/transport/full/interaction cuts; prospective E3 classification; one E4 consequence; E5 exact-head hosted CI and independent source/artifact verification; append-only evidence.
+- Exclusions: Production biology, concentration-law reversal, rate/diffusion/gain tuning, actuator/mechanics/ecology/fission changes, morphogenesis/reproduction/population/selection/reversal/final integration, PR #44 modification and automatic successor.
+- Acceptance: Exact state/authority reconciliation; reproduction of R8 damping; unchanged production operator; clone-local path isolation and interpretable material/A-to-W accounting; sign/two-scale/replay envelopes; at least24 usable states or explicit inconclusive/defect; one exact classification and consequence; independently verified exact-head artifact/manifest/binary and Notion readback.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

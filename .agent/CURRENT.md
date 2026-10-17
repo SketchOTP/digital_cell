@@ -3,18 +3,27 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T15:20:00-04:00`
+- Last updated: `2026-10-16T23:02:48-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260905-dcdev021-goal-post-fission-ecological-reentry-r6`
-- External directive ID: `GOAL-LOOP-DIGITAL-CELL-MATERIAL-FLOW-REALIGNMENT-R2`
-- Objective: Test the largest remaining post-fission Route-A composition, then replan organism/world material flow if finite transfer supports survival but not resource-causal reproduction.
-- Current status: `VALIDATING`
-- Acceptance: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`
-- Current phase: `organism/world material-flow architecture boundary`
-- Expected or actual touched areas: `source-level contract audit, provisional architecture documentation, append-only governance`
-- Immediate next action: `exact-head Linux validation, artifact verification, and independent Architect review before any new material-flow architecture`
+- Local directive ID: `D-20261016-dcm4-r13-internal-causal-decomposition`
+- External directive ID: `DC-M4-R13-GEOMETRY-TO-POLARITY-INTRA-OPERATOR-CAUSAL-DECOMPOSITION-GATE-001`
+- Objective: Attribute the accepted geometry-to-polarity damping response inside the unchanged production polarity operator on the exact thirty fixed states.
+- Current status: `IN_PROGRESS`
+- Acceptance: `R8 reproduction, exact state binding, discarded-clone path isolation, material/energy closure, prospective attribution, exact-head CI and independent artifact/source verification`
+- Current phase: `R13 diagnostic-only internal causal decomposition`
+- Expected or actual touched areas: `diagnostic example and shared diagnostic helpers, independent verifier/tests, R13-specific workflow, docs and append-only governance`
+- Immediate next action: `seal the R13 diagnostic contract before outcomes, execute E0-E5 and independently review the resulting artifact`
+
+## Current R13 authority and preservation
+
+- Owner authorization on 2026-10-16 adopts the verified Notion R13 directive and supersedes the earlier active-state header; historical entries below remain preserved.
+- Clean source baseline: `d944d4fabc46333203bfd6e441d600b9717c349d`; tag `baseline/dc-m4-r12-d944d4f`; branch `codex/dc-m4-r13-internal-causal-decomposition`; checkout `/home/sketch/Projects/digital_cell-r13`.
+- Final accepted R12 authority: CI `35060451335`, artifact `sha256:5949df1110598142f6c32f3492a06f9d39516e18fa016dead6d4223dd2c3e432`, manifest 12/12, binary `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64`; archive, source binding and verifier independently rechecked.
+- R4 production reference and R10 diagnostic-only transfer remain mechanically qualified in bounded scope. Accepted R8/R9 G_TO_P damping is the active limitation.
+- Production biology is frozen; no morphogenesis/reproduction/population/selection/reversal/final integration or successor execution is authorized by R13. Existing checkouts and PR #44 remain untouched.
+- Bridge unavailable; separate implementation and independent review are used, with no bridge dispatch/acceptance claim. See `docs/dc-m4-r13-baseline.md`.
 
 ## Goal-mode existing-carrier audit R3
 

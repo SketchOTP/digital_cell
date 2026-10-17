@@ -2809,3 +2809,20 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 
 - Governance seal `d2cfeb3d69f5d28459a663d2295b1b1fc227a505` passed exact-head workflow `35059631812`. Final artifact ZIP SHA-256 is `e049c58a0e608bf0fa36ccdf1a9b4f82f77108c31949fabd309f7331ecb55c41`; its `12/12` manifest entries independently match; binary SHA-256 is `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64`.
 - Independent verifier rerun reproduces `P_TO_M_STATE_NORMALIZED_R4_AND_R10_TRANSFER_QUALIFIED` with R4 `30/30` and R10 `30/30` usable/qualified. Notion R12 and the canonical Digital Cell SOT were updated and read back. Downstream biology remains `NOT_REACHED`; no successor started; PR #44 remains untouched.
+
+
+## D-20261016-dcm4-r13-internal-causal-decomposition - PARTIAL
+
+- Outcome ID: O-DCM4-R13-BASELINE-20261016
+- Supersedes outcome: none
+- Closed: 2026-10-16T23:03:39-04:00
+- Acceptance: PARTIAL
+- Summary: Isolated source baseline established at d944d4f with clean initial status and immutable baseline tag. R12 archive/source/verifier evidence reconciled with final Notion authority; R13 scientific execution and independent acceptance remain pending.
+- Changed areas: New baseline documentation, current-state header and append-only authorization records only; existing checkouts and PR #44 preserved.
+- Validation:
+  - Exact initial d944d4f revision, clean status and 3333 tracked-path inventory - PASSED
+  - R12 ZIP digest, 12/12 manifest, 8/8 bound source files, binary and verifier recomputation - PASSED
+  - R13 diagnostic assay and exact-head artifact review - NOT RUN
+- Remaining risks: R13 attribution may remain inconclusive; force transfer does not establish morphogenesis or reproduction.
+- Blockers: Architect bridge unavailable; explicit separate implementation/review path is recorded without a bridge claim.
+- Follow-up directive: none
