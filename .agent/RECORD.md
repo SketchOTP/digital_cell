@@ -2119,3 +2119,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: R12 qualifies force transfer but leaves the accepted R8/R9 geometry-to-polarity damping unexplained. Operator attribution must precede a new biological mechanism.
 - Affected areas: New R13 checkout/branch/baseline tag, observer-only diagnostic code and scoped verification, docs and append-only governance; prior work and PR #44 unchanged.
 - Supersedes record: none
+
+
+## DEC-DCM4-R13-PROSPECTIVE-SOURCE-SEAL-20261016
+
+- Date: 2026-10-16
+- Record or decision ID: DEC-DCM4-R13-PROSPECTIVE-SOURCE-SEAL-20261016
+- Status: ACTIVE
+- Decision or event: D-20261016-dcm4-r13-internal-causal-decomposition adopts the diagnostic code and prospective attribution contract before any R13 outcome is observed.
+- Rationale: Exact production source preservation, native cut staging, original R8 phase predicate, complete serialized boundary hash binding, independent kinetic replay, conservative uncertainty and fail-closed coverage must be established before scientific classification.
+- Affected areas: R13 runner/shared appended helpers, independent verifier and nine corruption/numerical controls, frozen R12 identity fixture and branch-specific workflow; docs/dc-m4-r13-operator-contract.md.
+- Supersedes record: none

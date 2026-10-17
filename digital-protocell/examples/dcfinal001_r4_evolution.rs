@@ -9575,3 +9575,205 @@ fn main() {
     });
     fs::write(output, serde_json::to_vec_pretty(&value).unwrap()).unwrap();
 }
+
+/// R13 uses the unchanged R3 kernel on discarded parameter-cut clones only.
+/// The callers never install these parameters in a production transition.
+fn r13_cut_params(path: &str) -> PolarityMassParamsV1 {
+    let mut params = PolarityMassParamsV1::candidate();
+    match path {
+        "REACTION_ONLY" => {
+            params.active_diffusion = 0.0;
+            params.inactive_diffusion = 0.0;
+        }
+        "TRANSPORT_ONLY" => {
+            params.basal_activation_rate = 0.0;
+            params.positive_feedback_rate = 0.0;
+            params.basal_deactivation_rate = 0.0;
+            params.quadratic_deactivation_rate = 0.0;
+        }
+        "FULL" | "REACTION_THEN_TRANSPORT" | "TRANSPORT_THEN_REACTION" => {}
+        _ => panic!("unknown discarded R13 path"),
+    }
+    params
+}
+
+fn r13_update(
+    seed: &R7BoundarySeed,
+    cohort: &Cohort,
+    measures: &[f64],
+    path: &str,
+) -> Result<Value, String> {
+    let mut state = seed
+        .polarity_states
+        .get(&cohort.id)
+        .ok_or_else(|| "R13_POLARITY_MISSING".to_string())?
+        .clone();
+    let input = state.clone();
+    let area = cohort.mesh.area();
+    let a_before = cohort.mesh.interior.a.max(0.0) * area;
+    let w_before = cohort.mesh.interior.w.max(0.0) * area;
+    let mut ledgers = Vec::new();
+    let mut a_consumed = 0.0;
+    if path == "REACTION_THEN_TRANSPORT" || path == "TRANSPORT_THEN_REACTION" {
+        let order = if path == "REACTION_THEN_TRANSPORT" {
+            ["REACTION_ONLY", "TRANSPORT_ONLY"]
+        } else {
+            ["TRANSPORT_ONLY", "REACTION_ONLY"]
+        };
+        for _ in 0..PolarityMassParamsV1::candidate().integration_substeps {
+            for component in order {
+                let mut params = r13_cut_params(component);
+                params.time_step /= params.integration_substeps as f64;
+                params.integration_substeps = 1;
+                let ledger = state
+                    .advance(measures, &params, a_before - a_consumed)
+                    .map_err(|error| format!("R13_ORDER:{error}"))?;
+                a_consumed += ledger.a_consumed;
+                ledgers.push(ledger);
+            }
+        }
+    } else {
+        let ledger = state
+            .advance(measures, &r13_cut_params(path), a_before)
+            .map_err(|error| format!("R13_UPDATE:{error}"))?;
+        a_consumed = ledger.a_consumed;
+        ledgers.push(ledger);
+    }
+    Ok(json!({
+        "active_after": state.active_amount,
+        "inactive_after": state.inactive_amount,
+        "input_state_digest": deterministic_state_digest(&input),
+        "total_before": input.total_amount(),
+        "total_after": state.total_amount(),
+        "a_before": a_before, "a_after": a_before - a_consumed,
+        "w_before": w_before, "w_after": w_before + a_consumed,
+        "a_consumed": a_consumed, "w_produced": a_consumed,
+        "ledgers": ledgers,
+        "path": path, "discarded_clone": true,
+    }))
+}
+
+fn r13_record(seed: &R7BoundarySeed) -> Result<Value, String> {
+    let baseline_measures = (0..seed.cohort.mesh.n())
+        .map(|i| seed.cohort.mesh.edge_length(i))
+        .collect::<Vec<_>>();
+    let mean = baseline_measures.iter().sum::<f64>() / baseline_measures.len() as f64;
+    let state = seed
+        .polarity_states
+        .get(&seed.cohort.id)
+        .ok_or_else(|| "R13_POLARITY_MISSING".to_string())?;
+    let seed_digest = || {
+        deterministic_state_digest(&(
+            &seed.cohort,
+            &seed.world,
+            &seed.ledger,
+            &seed.polarity_states,
+            seed.next_id,
+            seed.step,
+            seed.campaign_seed,
+            seed.connected,
+        ))
+    };
+    let before_digest = seed_digest();
+    let r8 = r8_g_to_p_record(seed)?;
+    let p_to_m = r8_p_to_m_record(seed)?;
+    let mut modes = Vec::new();
+    for (harmonic, phase, basis) in r8_normal_harmonic_basis(&seed.cohort.mesh) {
+        let mut scales = Vec::new();
+        for normalized in [1.0e-3_f64, 5.0e-4_f64] {
+            let amplitude = normalized * mean;
+            let mut signs = Vec::new();
+            for sign in [1.0_f64, -1.0_f64] {
+                let cohort = r8_perturbed_cohort(seed, &basis, amplitude, sign)?;
+                let actual = (0..cohort.mesh.n())
+                    .map(|i| cohort.mesh.edge_length(i))
+                    .collect::<Vec<_>>();
+                let active_concentration_delta = state
+                    .active_amount
+                    .iter()
+                    .zip(actual.iter().zip(&baseline_measures))
+                    .map(|(amount, (current, baseline))| amount / current - amount / baseline)
+                    .collect::<Vec<_>>();
+                let inactive_concentration_delta = state
+                    .inactive_amount
+                    .iter()
+                    .zip(actual.iter().zip(&baseline_measures))
+                    .map(|(amount, (current, baseline))| amount / current - amount / baseline)
+                    .collect::<Vec<_>>();
+                let mut paths = serde_json::Map::new();
+                for path in [
+                    "FULL",
+                    "REACTION_ONLY",
+                    "TRANSPORT_ONLY",
+                    "REACTION_THEN_TRANSPORT",
+                    "TRANSPORT_THEN_REACTION",
+                ] {
+                    let full = r13_update(seed, &cohort, &actual, path)?;
+                    let cut = r13_update(seed, &cohort, &baseline_measures, path)?;
+                    let active_delta = r8_amount_difference(&full, &cut, "active_after");
+                    let inactive_delta = r8_amount_difference(&full, &cut, "inactive_after");
+                    paths.insert(
+                        path.to_string(),
+                        json!({
+                            "full": full, "cut": cut, "active_delta": active_delta,
+                            "inactive_delta": inactive_delta,
+                        }),
+                    );
+                }
+                signs.push(json!({
+                    "sign": sign, "vertices": cohort.mesh.vertices,
+                    "actual_measures": actual,
+                    "active_concentration_delta": active_concentration_delta,
+                    "inactive_concentration_delta": inactive_concentration_delta,
+                    "amounts_unchanged": state == seed.polarity_states.get(&cohort.id).unwrap(),
+                    "paths": paths, "simple": polygon_simple(&cohort.mesh.vertices),
+                    "runtime_valid": cohort.mesh.physical_runtime_valid(),
+                }));
+            }
+            scales.push(
+                json!({"amplitude": amplitude, "normalized_amplitude": normalized, "signs": signs}),
+            );
+        }
+        modes.push(json!({"harmonic": harmonic, "phase": phase, "basis": basis, "scales": scales}));
+    }
+    Ok(json!({
+        "baseline_measures": baseline_measures, "input_polarity": state,
+        "baseline_vertices": seed.cohort.mesh.vertices, "modes": modes,
+        "r8_reference": r8,
+        "r8_activity": p_to_m["polarity_activity"],
+        "r8_activity_harmonics": p_to_m["polarity_activity_harmonics"],
+        "source_state_before": before_digest,
+        "source_state_after": seed_digest(),
+        "no_mechanics_topology_contact_remesh_in_cut": true,
+        "observer_only": true,
+    }))
+}
+
+/// Recreate the exact R8/R9/R12 histories and immediately discard every R13 cut.
+pub fn run_r13_intra_operator_arm(index: usize) -> Value {
+    env::remove_var("DCFINAL001_R9_MECHANOSENSITIVE");
+    env::remove_var("DCFINAL001_R10_NORMAL_REMAP");
+    env::set_var("DCFINAL001_R8_CAPTURE_ONLY", "1");
+    let r7 = run_r7_full_cycle_arm(index, true);
+    let snapshots = r7["full_cycle_snapshots"]
+        .as_array()
+        .cloned()
+        .unwrap_or_default();
+    let records = snapshots.iter().map(|snapshot| {
+        match r8_seed_from_snapshot(snapshot).and_then(|seed| r13_record(&seed)) {
+            Ok(record) => json!({
+                "checkpoint_step": snapshot["checkpoint_step"],
+                "input_boundary_digest": deterministic_state_digest(&snapshot["input_boundary"]),
+                "input_boundary": snapshot["input_boundary"],
+                "input_boundary_serialized": serde_json::to_string(&snapshot["input_boundary"]).expect("R13 boundary JSON"),
+                "r7_replay_identity": snapshot["identity"], "decomposition": record,
+            }),
+            Err(error) => json!({"status": "ERROR", "error": error}),
+        }
+    }).collect::<Vec<_>>();
+    json!({
+        "arm": r7["arm"], "accepted": r7["accepted"],
+        "accepted_steps": r7["accepted_steps"], "physical_fissions": r7["physical_fissions"],
+        "snapshots": records, "observer_only": true,
+    })
+}

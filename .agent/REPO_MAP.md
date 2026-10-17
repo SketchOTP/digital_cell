@@ -386,3 +386,13 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `docs/dc-m4-r13-baseline.md` and `.json` record exact authority, clean tree, preservation and execution ownership.
 - `docs/dc-m4-r13-prior-art.md` records mandatory primary-source classifications and reuse boundaries; no code, equation, parameter or threshold import.
 - R13 implementation and result paths are pending; production R3 operator, R4 route and all downstream biology remain frozen.
+
+
+## DC-M4-R13 diagnostic implementation map
+
+- `digital-protocell/examples/dcm4_r13_intra_operator_causal_decomposition.rs` owns the pre-outcome seal and fixed-state diagnostic entry point.
+- `digital-protocell/examples/dcfinal001_r4_evolution.rs` retains the exact d944d4f byte prefix and appends only discarded-clone R13 helpers.
+- `digital-protocell/experiments/dcm4_r13_intra_operator_causal_decomposition_verify.py` independently reconstructs boundary hashes, geometry/basis/activity, native reaction/diffusion pools and A/W, branch masks and attribution.
+- `digital-protocell/experiments/test_dcm4_r13_verifier.py` contains nine numerical/coverage/corruption controls; `experiments/fixtures/dcm4r13/r12_input_identities.json` binds the exact30 accepted states.
+- `.github/workflows/dc-m4-r13-intra-operator-causal-decomposition.yml` checks exact baseline/scope, original R12 archive, focused tests, prospective seal, fixed-state execution, verifier and artifact.
+- `docs/dc-m4-r13-adopted-directive.md` preserves the adopted Notion authorization snapshot; `docs/dc-m4-r13-operator-contract.md` records units/order/locality and the prospective estimator. No R13 scientific result is asserted by this map.

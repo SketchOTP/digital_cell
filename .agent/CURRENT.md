@@ -10,11 +10,11 @@
 - Local directive ID: `D-20261016-dcm4-r13-internal-causal-decomposition`
 - External directive ID: `DC-M4-R13-GEOMETRY-TO-POLARITY-INTRA-OPERATOR-CAUSAL-DECOMPOSITION-GATE-001`
 - Objective: Attribute the accepted geometry-to-polarity damping response inside the unchanged production polarity operator on the exact thirty fixed states.
-- Current status: `IN_PROGRESS`
+- Current status: `VALIDATING`
 - Acceptance: `R8 reproduction, exact state binding, discarded-clone path isolation, material/energy closure, prospective attribution, exact-head CI and independent artifact/source verification`
 - Current phase: `R13 diagnostic-only internal causal decomposition`
 - Expected or actual touched areas: `diagnostic example and shared diagnostic helpers, independent verifier/tests, R13-specific workflow, docs and append-only governance`
-- Immediate next action: `seal the R13 diagnostic contract before outcomes, execute E0-E5 and independently review the resulting artifact`
+- Immediate next action: `execute the sealed R13 contract in exact-head hosted CI, then independently verify raw evidence, manifest and binary`
 
 ## Current R13 authority and preservation
 
