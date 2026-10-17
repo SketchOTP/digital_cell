@@ -2890,3 +2890,23 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: Copy/hash verification does not qualify disk health or prove a corrective mechanochemical architecture. Existing historical governance schema drift remains documented.
 - Blockers: none for scoped Atlas evidence reconciliation; reaction-conversion physical ownership/energetics remains the separate unresolved scientific architecture issue.
 - Follow-up directive: none
+
+
+## D-20261017-dcm4-conversion-work-contract - COMPLETE
+
+- Outcome ID: O-DCM4-CONVERSION-WORK-CONTRACT-20261017
+- Supersedes outcome: none
+- Closed: 2026-10-17T18:09:38-04:00
+- Acceptance: MET
+- Summary: One concrete parametric conversion-work ownership candidate is defined and independently reviewed as a conditional contract only. Exact energy/rate/reciprocal-work and finite per-fragment ledger identities close the added specification; parameters, mechanical-terminal realization, runtime implementation and damping correction remain unqualified.
+- Changed areas: New contract/directive/JSON/review, diagnostic verifier and scoped workflow, current/profile and append-only records, additive evidence custody and Notion page.
+- Validation:
+  - Distinct contract analyst and independent semantic reviewer inspect actual equations, units, lifecycle and corrected checker - PASSED
+  - Parent arithmetic: 192 exact finite conversion/discrete-work cases and 18 discriminating control groups - PASSED
+  - Frozen scientific source, new structured records and append-only history checked by scoped verifier - PASSED
+  - Existing historical global governance validator schema drift, identical to entry baseline before final records - FAILED
+  - Runtime integration, calibration, full mechanics thermodynamics and biological campaigns - NOT RUN
+  - Final exact-head CI/artifact and Notion readback at record creation, receipts to follow externally - NOT RUN
+- Remaining risks: All new physical parameters remain unassigned; exact work-port/bath allocation and discrete solver/contact compatibility need prospective feasibility evidence. Contract arithmetic is not runtime behavior, damping correction or lifeform qualification.
+- Blockers: No blocker to contract definition; Digital Cell bridge binding absent, historical global governance schema drift retained, implementation and biological qualification outside scope.
+- Follow-up directive: none

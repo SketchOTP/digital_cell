@@ -1,0 +1,134 @@
+{
+  "schema": "digital_cell_conversion_work_ownership_contract_v1",
+  "status": "DEFINED_PARAMETRIC_CONVERSION_WORK_OWNERSHIP_CANDIDATE",
+  "entry_head": "b2de15dc0d7a7ee3f25b7993c558099d17a150a0",
+  "scope": "contract_only_incremental_coupling_energy_sector",
+  "production_runtime_modified": false,
+  "calibrated": false,
+  "implemented": false,
+  "parameters": {
+    "K": {
+      "units": "energy/polarity_amount",
+      "domain": "finite_positive",
+      "value": null
+    },
+    "lambda": {
+      "units": "dimensionless",
+      "domain": "finite_positive",
+      "value": null
+    },
+    "theta": {
+      "units": "energy/polarity_amount",
+      "domain": "finite_positive",
+      "value": null
+    },
+    "epsilon_A": {
+      "units": "energy/A_amount",
+      "domain": "finite_positive",
+      "value": null
+    }
+  },
+  "state_ownership": {
+    "owner": "material_edge_and_its_conservative_material_correspondence",
+    "a_b": "existing_active_inactive_polarity_amounts",
+    "P": "a+b",
+    "L": "physical_edge_length",
+    "L0": "physical_mature_structural_mass/rho_s_without_numerical_floor",
+    "energy_storage": "derived_from_physical_state_plus_immutable_enabled_schema_and_parameter_identity",
+    "additional_persistent_material_species": false,
+    "additional_persisted_provenance_necessity": "NOT_DETERMINED"
+  },
+  "energy_model": {
+    "guard": "finite_valid_state AND nonruptured AND P>0 AND mature_structural_mass>0",
+    "guard_false": "Ec=g=coupling_force=0; settle_every_guard_crossing",
+    "invalid_state": "reject_not_zero_branch",
+    "x": "a/P",
+    "epsilon": "(L-L0)/L0",
+    "Ec": "K*P/2*(epsilon-lambda*x)^2",
+    "assumption": "active_polarity_favors_positive_extension_of_an_additional_elastic_sector",
+    "g": "K*lambda*(lambda*x-epsilon)",
+    "conversion_curvature": "K*lambda^2/P",
+    "finite_conversion_delta_Ec": "g*d+K*lambda^2*d^2/(2*P)",
+    "tension": "K*P/L0*(epsilon-lambda*x)",
+    "endpoint_force": "F_i=tension*tangent; F_j=-F_i",
+    "discrete_tension": "K*P/L0*((Lnew+Lold)/(2*L0)-1-lambda*x)",
+    "discrete_length_gradient": "(edge_vector_new+edge_vector_old)/(Lnew+Lold)",
+    "exact_discrete_geometry_work": "sum_endpoint_force_dot_displacement=-DeltaEc",
+    "force_clip_policy": "reject_if_existing_bounds_incompatible; never_clip_reciprocal_force",
+    "solver": "unique_physically_valid_step_consistent_with_existing_constraints_and_discrete_gradient_or_atomic_reject"
+  },
+  "rates": {
+    "Rplus": "k0*b+kf*a*a*b/(L*L)",
+    "Rminus": "kd*a+kq*a*a*a/(L*L)",
+    "Jc": "Rplus*exp(-g/(2*theta))-Rminus*exp(g/(2*theta))",
+    "proposal": "d=h*Jc then native donor clip into [-a,b]",
+    "unsupported_edge": "g=0; unmodified_kinetic_proposal",
+    "substeps": "existing_four_transport_then_reaction_substeps",
+    "existing_coefficients": "UNCHANGED",
+    "overflow": "atomic_reject_without_favorable_cap",
+    "interpretation": "phenomenological_signed_work_bias_not_full_chemical_affinity_or_local_detailed_balance",
+    "native_overhead_A": "c0*abs(net_d); unchanged_conversion_a_per_amount_not_gross_turnover"
+  },
+  "settlement": {
+    "fuel_owner": "finite_existing_organism_A_after_native_obligations",
+    "work_A_per_fragment": "max(Eafter-Ebefore,0)/epsilon_A",
+    "negative_release_per_fragment": "max(Ebefore-Eafter,0)",
+    "aggregation": "sum_positive_fragment_charges; no_netting_unrelated_downhill_fragments",
+    "W": "spent_A_material_equal_to_conversion_overhead_and_work_A_debits_only; excludes_A_to_polarity_material; not_all_heat_when_Ec_stores_energy",
+    "nongeometry_identity": "epsilon_A*(Aoverhead+Awork)=DeltaEc+Qoverhead+Qstate",
+    "Qoverhead": "epsilon_A*Aoverhead",
+    "Qstate": "negative_nonmechanical_Ec_release_once",
+    "geometry_signed_work_to_mechanics": "Wc=-DeltaEc",
+    "geometry_positive_delta_owner": "additional_finite_A_funded_coupling_loading_port; declared_conservative_policy_not_native_work_derivation",
+    "geometry_negative_delta_owner": "reciprocal_mechanical_output_to_owned_overdamped_bath_once; not_also_Qstate",
+    "geometry_identity": "epsilon_A*Awork=DeltaEc+Qmech",
+    "internal_work_port": "audit_transfer_but_do_not_add_to_terminal_bath_as_second_energy_output",
+    "A_refund": false,
+    "hidden_energy_credit": false,
+    "atomicity": "full_enclosing_candidate_step_all_fields_time_counters_sidecars_rollback_on_any_late_failure",
+    "total_legacy_mesh_thermodynamic_closure": "NOT_ESTABLISHED",
+    "geometry_port_condition": "A_to_loading_port_to_Ec_and_Ec_to_mechanical_terminal_are_the_same_signed_port_audited_by_Wc_not_additional_work; composite_legacy_bath_allocation_unverified"
+  },
+  "lifecycle": {
+    "enable": "pay_complete_initial_Ec_from_additional_A_to_W_or_leave_original_individual_unchanged",
+    "polarity_synthesis": "preserve_distinct_native_A_to_polarity_material_no_W; extra_work_charge_to_W_separate",
+    "reaction": "exact_finite_delta_Ec_plus_separate_native_net_overhead; late_shortfall_rolls_back_all_substeps",
+    "transport": "native_conservative_batch_unchanged; settle_each_edge_Ec_delta_without_netting; insufficient_A_rejects_full_step",
+    "growth_maturation_turnover_damage_rupture_rebond": "unchanged_native_material_proposal_then_settle_all_Ec_and_guard_changes_atomically",
+    "remesh": "old_Ec_partition_by_inherited_P_fragments; new_target_Ec_partition_by_incoming_P_shares; settle_corresponding_fragments_separately",
+    "homogeneous_split": "preserves_epsilon_x_and_sum_Ec_under_proportional_L_L0_P_split",
+    "heterogeneous_merge": "explicit_fragment_Ec_settlement_no_unrelated_energy_subsidy",
+    "fission": "native_correspondence_and_material_partition; each_daughter_pays_own_extra_positive_fragment_charges_from_allocated_A; entire_event_rollback_if_any_shortfall",
+    "closing_edges": "no_inherited_polarity_P0_Ec0_no_energy_copy",
+    "death": "dispose_remaining_Ec_once_no_A_or_survival_credit",
+    "restart": "persist_enabled_schema_parameter_identity_and_paid_physical_AW_state; reconstruct_Ec_no_recharge; corrupt_or_missing_ON_provenance_rejected",
+    "OFF": "never_enabled_path_exact_native_bypass_skips_new_validation",
+    "lambda_zero": "not_OFF_Ec_can_remain_nonzero",
+    "ON_to_OFF": "explicit_single_discharge_before_detaching_sector",
+    "round_trips": "no_A_creation_or_positive_charge_escape"
+  },
+  "hard_issues": [
+    "all_constitutive_parameter_values_unassigned_no_outcome_selection",
+    "new_elastic_sector_and_fuel_loading_policy_are_assumptions_not_existing_physiology",
+    "small_mature_rest_length_or_support_activation_may_be_unfundable",
+    "discrete_gradient_contact_solver_existence_uniqueness_and_force_range_unqualified",
+    "transport_topology_and_fission_funding_may_reject_biological_transitions",
+    "extra_persisted_provenance_requirement_not_yet_determined",
+    "realization_of_the_declared_mechanical_terminal_and_composite_legacy_bath_allocation_unverified"
+  ],
+  "claims": {
+    "symbolic_candidate_defined": true,
+    "incremental_energy_ledger": "EXACT_BY_CONSTRUCTION_SUBJECT_TO_REALIZING_DECLARED_WORK_PORT",
+    "existing_R3_net_charge_is_turnover": false,
+    "actuator_effort_is_signed_mechanical_work": false,
+    "local_detailed_balance": "NOT_CLAIMED",
+    "total_mesh_energy_closure": "NOT_ESTABLISHED",
+    "feedback_correction": "NOT_ESTABLISHED",
+    "morphogenesis": "NOT_REACHED",
+    "reproduction": "NOT_REACHED",
+    "population_selection": "NOT_REACHED",
+    "reversal": "NOT_REACHED",
+    "final_integration": "NOT_REACHED",
+    "automatic_successor": false
+  }
+}

@@ -426,3 +426,12 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `docs/dc-m4-reaction-architecture-storage-reconciliation.json`: UUID, scoped accepted archive checks, additive-copy counts, independent Atlas verification and custody/preservation receipt locations.
 - Canonical reaction-feasibility archive: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/`; current accepted audit package `final-08494f2/`; preserved local snapshot `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/preserved-local-20261017-174351/`.
 - Reconciliation receipts: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/reconciliation-20261017-174351/` and `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/atlas-reconciliation-20261017-174351/`; the local fallback remains retained. This supersedes the earlier active archive-availability limitation without rewriting outage history or scientific evidence.
+
+
+## Interfaces and contracts
+
+- `docs/dc-m4-conversion-work-directive.md` — exact b2de15d entry, owner scope, complete local handoff and acceptance.
+- `docs/dc-m4-conversion-work-contract.md` — paired with `.json`: one explicit parametric energy, signed rate, reciprocal work and finite lifecycle ownership; no production implementation.
+- `docs/dc-m4-conversion-work-review.json` — distinct independent review and five immutable file bindings, with conditional acceptance and runtime limitations.
+- `scripts/verify_conversion_work_contract.py` — paired with `.github/workflows/dc-m4-conversion-work-contract.yml`: exact rational identities, adversarial funding controls, source/history/record checks and hosted artifact provenance. These are diagnostic reference arithmetic, not a scientific runtime.
+- `/home/sketch/Projects/digital_cell-conversion-work-contract-evidence/` — paired with `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/conversion-work-contract/`: before/after preservation, exact-head CI/artifact and Notion/PR readback receipts. Existing archive roots remain unchanged.

@@ -1,0 +1,53 @@
+{
+  "schema": "digital_cell_conversion_work_independent_review_v1",
+  "decision": "ACCEPTED_CONTRACT_ONLY",
+  "review_date": "2026-10-17",
+  "entry_head": "b2de15dc0d7a7ee3f25b7993c558099d17a150a0",
+  "reviewer": "distinct governance_audit agent; no contract or checker implementation authorship",
+  "method": "independent static source, algebra, units, ownership, lifecycle, checker and workflow review; no builds, assays, checker execution or process monitoring by reviewer",
+  "reviewed_files": {
+    "docs/dc-m4-conversion-work-contract.md": "97c6a0372ebc9ce81a97fccfb3d303293f6d39277ff6603827fa32101864f664",
+    "docs/dc-m4-conversion-work-contract.json": "0879cebf2e9d0211c7f8461fec9a848b17b815bf4df70d983bed67671c6f9623",
+    "docs/dc-m4-conversion-work-directive.md": "12e054c84df176995d81e7ffb4768d82d3a6520bf45592fb0f83ad5c52f1e4a7",
+    "scripts/verify_conversion_work_contract.py": "73adbcd5487d082cdf9e8499d578e20fbca1373ded2ab6e03bb4f3644638a478",
+    ".github/workflows/dc-m4-conversion-work-contract.yml": "aec4831fc91133515c990703b0e4344541bd591f01dab840634017cad7e52b3a"
+  },
+  "preflight": {
+    "complete_assigned_coverage": {
+      ".agent/LEARNINGS.md": "lines 1-1472 at entry; full prior reads plus every append-only addition",
+      ".agent/RECORD.md": "lines 1-2187 at entry; full prior reads plus every append-only addition",
+      ".agent/REPO_MAP.md": "lines 1-428 at entry"
+    },
+    "additional_context": "AGENTS, COMMANDMENTS and authority-governance skill; active current/profile; accepted feasibility gap; relevant polarity, activity, material, mechanics, native A/W and lifecycle source",
+    "bridge": "healthy unrelated activation-test configuration is not a Digital Cell binding; no bridge dispatch or acceptance claimed"
+  },
+  "accepted_criteria": [
+    "New guarded edge energy is explicitly a constitutive hypothesis, with positive unassigned K, lambda, theta and epsilon_A and distinct signed units.",
+    "At fixed P, g=-K*lambda*(epsilon-lambda*a/P), curvature=K*lambda^2/P and finite conversion delta includes the quadratic term.",
+    "Reciprocal continuous endpoint forces and the finite edge-vector discrete gradient have the stated signed work identity; no start-tangent or clipped-force shortcut is accepted.",
+    "The rate tilt has the correct opposing load sign: its derivative with respect to g is minus the sum of the positive tilted rates divided by 2*theta. It remains a driven phenomenological assumption, not microscopic detailed balance.",
+    "Positive energy changes are additionally funded per edge or correspondence fragment; unrelated negative changes cannot subsidize them, and negative changes never restore A.",
+    "Native net-conversion overhead, actuator funding and synthesis A-to-polarity material have separate fates; W is spent-fuel material and is not equated with all heat.",
+    "Initialization, guard crossings, transport, material changes, topology, daughter-specific funding, restart, disposal and OFF transitions have explicit ownership and full atomic rejection requirements.",
+    "The checker now rejects cross-edge netting, uses explicit topology energy entitlements, rejects nonfinite fragment funding, and requires exactly the five reviewed artifact bindings.",
+    "The branch workflow checks the exact checkout head, runs the bounded reference checker, requires a clean tree and archives evidence without launching scientific workloads."
+  ],
+  "resolved_review_findings": [
+    "Removed aggregate edge-energy netting and ancestry-group escape; heterogeneous merge charges positive fragment changes even when total energy decreases.",
+    "Required complete independent-review bindings rather than permitting an empty or partial reviewed-files map.",
+    "Added finite fragment-energy, fuel and conversion-scale validation with nonfinite adversarial controls.",
+    "Replaced a tautological force check with coordinate covariance and noncollinear finite discrete-work controls.",
+    "Qualified synthesis material fate and the conditional mechanical terminal allocation to avoid double counting work, heat or waste."
+  ],
+  "limitations": [
+    "Acceptance concerns a defined parametric contract and its reference arithmetic/provenance witness. Parameter calibration, physical efficacy and runtime implementation are not accepted.",
+    "The reference checker does not exercise production rollback, native transport, remesh/fission correspondence, checkpoint authentication or an actual coupled mechanics solver. Several controls illustrate reference transactions rather than certify runtime behavior.",
+    "Exact rational identities and finite fixtures are not a general numerical stability proof. Runtime tolerances, overflow policy and solver contracts require prospective implementation verification.",
+    "A-to-loading-port-to-Ec and Ec-to-mechanical-terminal are the same signed port, not additional work beside reciprocal force work. Realization of this port and allocation within simultaneous legacy mechanics remain unverified; energy stored in another sector cannot be relabeled as terminal heat.",
+    "Solver existence, uniqueness, contact compatibility, admissible force range, small mature-rest-length behavior and finite resource feasibility remain open.",
+    "This does not close total legacy mesh thermodynamics or establish microscopic affinity, gross turnover, corrected R13 damping, morphogenesis, reproduction, selection, reversal or final integration.",
+    "Parent-owned checker execution, exact-head hosted CI, artifact hash/manifest reconstruction, additive custody and Notion readback remain separate evidence and are not claimed as performed by this reviewer."
+  ],
+  "remaining_acceptance_blockers_for_contract_only": [],
+  "automatic_successor": false
+}

@@ -3,18 +3,30 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-17T17:49:33-04:00`
+- Last updated: `2026-10-17T18:09:38-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261017-atlas-evidence-reconciliation`
-- External directive ID: `DC-ATLAS-EVIDENCE-RECONCILIATION-001`
-- Objective: Verify the reconnected Atlas evidence archive, synchronize preserved local evidence without replacement, and update project/Notion records.
+- Local directive ID: `D-20261017-dcm4-conversion-work-contract`
+- External directive ID: `DC-M4-CONVERSION-WORK-OWNERSHIP-CONTRACT-001`
+- Objective: Define and independently verify one conversion-work ownership contract, preserving existing work and keeping Notion/project records current.
 - Current status: `COMPLETE`
-- Acceptance: `MET — expected mounted UUID/bind path, accepted ZIP/manifest/binary identities, local-copy hash equality and preservation verified; final governance/readback receipts retained externally`
-- Current phase: `Atlas evidence custody reconciled; reaction feasibility ownership/energetics gap unchanged`
-- Expected or actual touched areas: `Additive archive evidence, storage map, current/profile and append-only records, storage-reconciliation report`
-- Immediate next action: `Return to the unresolved conversion-work architecture decision; no feedback implementation or scientific successor execution`
+- Acceptance: `MET — conditional parametric contract only; exact arithmetic, source preservation and distinct independent review; final exact-head CI/artifact/Notion receipts retained externally after publication`
+- Current phase: `Conversion-work ownership candidate defined; calibration, mechanical-port realization and runtime efficacy unqualified`
+- Expected or actual touched areas: `Contract/directive/JSON/review, diagnostic verifier/workflow, additive evidence custody and project/Notion records`
+- Immediate next action: `A separately authorized prospective parameter and mechanical-port feasibility specification is needed before implementation; no automatic successor`
+
+### Conversion-work ownership contract disposition
+
+- **Entry head:** `b2de15dc0d7a7ee3f25b7993c558099d17a150a0`; isolated checkout `/home/sketch/Projects/digital_cell-conversion-work-contract`, branch `codex/dc-m4-conversion-work-contract`.
+- **Defined candidate:** `Ec=K*P/2*(epsilon-lambda*a/P)^2` on mature, nonruptured supported edges; signed conversion derivative, bidirectional kinetic tilt and exact reciprocal discrete geometry work. This is a new explicit constitutive assumption, not a law recovered from frozen R3/R4.
+- **Incremental coupling-sector funding:** positive per-owned-fragment energy changes require extra existing finite A; conversion/work A enters W while synthesis A enters polarity material. Energy release never replenishes A. Initialization, transport, topology, guard crossings, fission, restart and OFF ownership are explicit and atomic.
+- Parameters `K`, `lambda`, `theta`, `epsilon_A` remain UNASSIGNED. The exact signed work port, composite mechanics/bath allocation, solver feasibility, calibration and runtime integration are NOT_ESTABLISHED. Arithmetic does not verify production rollback, topology, restart or biology.
+- Independent review accepts the mathematical and ownership specification conditionally as `ACCEPTED_CONTRACT_ONLY`; see `docs/dc-m4-conversion-work-review.json`. Parent-owned diagnostic verifier checks 192 exact finite conversion/discrete-work cases plus adversarial funding/lifecycle arithmetic, typed units, source identity and new record structure.
+- Scientific subtree is unchanged. R13 damping remains accepted and uncorrected; R9's tensile multiplier remains falsified, R4 production reference and R10 diagnostic-only. PR44/45/46, unrelated checkouts and all 206 entry scoped Atlas archive files remain preserved.
+- **Contract page:** https://app.notion.com/p/3fc833cb27ff81f88950e69138a29fd7. Local evidence `/home/sketch/Projects/digital_cell-conversion-work-contract-evidence/`; Atlas evidence `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/conversion-work-contract/`. Exact-head CI/artifact/preservation/Notion readback receipts follow outside this commit to avoid self-referential hashes.
+- Bridge currently healthy but only configured for an unrelated `activation-test` repository; Digital Cell has no observed bridge binding. Complete local directive plus distinct analyst/reviewer and parent verification are recorded without a bridge dispatch/acceptance claim. Historical bridge/outage statements below remain historical.
+- **Historical feasibility audit remains correct about the pre-contract source:** no existing-owner law was found. The present task closes the proposed specification gap, not implementation or measured corrective-feedback feasibility. Earlier state headers below are preserved context.
 
 ## Atlas evidence reconciliation
 
