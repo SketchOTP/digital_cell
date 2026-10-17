@@ -1,0 +1,321 @@
+{
+  "schema": "digital_cell_prospective_parameter_work_port_protocol_v1",
+  "entry_head": "a007e7e08acc768f08b83d96139a7cea25f0e04e",
+  "status": "PROSPECTIVE_PROTOCOL_DEFINED",
+  "scope": "specification_and_mathematical_reference_controls_only",
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "production_modified": false,
+  "future_execution_authorized": false,
+  "calibration": {
+    "reference_units": {
+      "Fref": "sealed_legacy_force_unit_anchor",
+      "Lref": "sealed_positive_fixture_length",
+      "Pref": "sealed_positive_fixture_polarity_amount",
+      "Aref": "c0*Pref",
+      "energy_unit": "Fref*Lref"
+    },
+    "dimensionless_groups": {
+      "lambda": "lambda",
+      "kappa": "K*Pref/(Fref*Lref)",
+      "beta": "K/theta",
+      "eta": "K/(epsilon_A*c0)"
+    },
+    "independent_group_count": 4,
+    "energy_gauge": "does_not_remove_kappa_when_legacy_force_length_units_fixed",
+    "inverse": {
+      "K": "kappa*Fref*Lref/Pref",
+      "theta": "K/beta",
+      "epsilon_A": "K/(eta*c0)"
+    },
+    "force": {
+      "observable": "independent_signed_additional_tension_after_matched_legacy_subtraction",
+      "equation": "T_c*L0/P=K*epsilon-(K*lambda)*x",
+      "design_x": [
+        "0",
+        "1/4",
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "design_epsilon": [
+        "-1/4",
+        "0",
+        "1/4",
+        "1/2"
+      ],
+      "design_relative_P_L0": [
+        [
+          1,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          1
+        ],
+        [
+          2,
+          2
+        ]
+      ],
+      "rows": 80,
+      "train": "x_in{0,1},epsilon_in{0,1/4},P=Pref,L0=Lref_exactly4rows",
+      "holdout": "all_other76rows",
+      "rank": "certified_rank2_of_[epsilon,-x]",
+      "estimator": "joint_intersection_of_all_four_training_observation_strips_in_positive_s_r; retain_correlations; no_post_response_pivot_selection_or_holdout_refit",
+      "identification": "bounded_positive_joint_K_lambda_region_with_sealed_precision_budget; exact_noiseless_data_unique_pair",
+      "holdout_rule": "robust_prediction_over_entire_sealed_training_region; partial_compatibility_INCONCLUSIVE_no_region_shrink"
+    },
+    "kinetic": {
+      "consume": "sealed_independent_force_estimate_only",
+      "design_x": [
+        "1/4",
+        "1/2",
+        "3/4"
+      ],
+      "design_epsilon": "lambda_star*x+sigma*d_epsilon; sigma={-1,+1}",
+      "train_d_epsilon": [
+        "1/4"
+      ],
+      "holdout_d_epsilon": [
+        "1/8",
+        "3/8"
+      ],
+      "observable": "independent_unclipped_net_J_with_Rplus_Rminus_positive",
+      "inversion_y": "(-J+sqrt(J^2+4*Rplus*Rminus))/(2*Rminus)",
+      "theta": "g/(2*log(y))",
+      "required": "opposed_nonzero_g_consistent_positive_theta_intervals_and_all_holdouts",
+      "unsupported_domain": "DOMAIN_UNCOVERED_no_post_response_probe_changes",
+      "gross_turnover_inferred": false,
+      "observation_time_refinement": "native_polarity_h,h/2,h/4_sealed_before_response; independent_source_truncation_and_measurement_uncertainty_certificate_required",
+      "selector": "lambda_star=(certified_lambda_low+certified_lambda_high)/2_sealed_before_responses_probe_geometry_only",
+      "parameter_uncertainty": "retain_full_joint_K_lambda_region_for_g_and_theta; require_entire_g_enclosure_strict_prescribed_nonzero_sign; ambiguity_INCONCLUSIVE_no_selector_or_probe_adjustment"
+    },
+    "fuel": {
+      "anchor": "physically_named_work_producing_channel_measured_force_displacement_Wload_and_independent_AW_material",
+      "train_work_ratio": [
+        "1",
+        "2"
+      ],
+      "holdout_work_ratio": [
+        "3/2"
+      ],
+      "absolute_magnitude": "sealed_inside_independent_apparatus_domain_before_response",
+      "estimator": "epsilon_A=Wload/Awork_after_separating_native_obligations_and_synthesis",
+      "controls": [
+        "zero_motion",
+        "zero_work",
+        "negative_release_no_A_recovery",
+        "material_synthesis_not_W"
+      ],
+      "forbidden_anchor": "assume_epsilonA_charge_DeltaEc/epsilonA_then_recover_same_value"
+    },
+    "anchors_currently_available": false,
+    "current_anchor_decision": "CALIBRATION_ANCHOR_MISSING",
+    "forbidden_inputs": [
+      "thirty_R13_response_signs",
+      "fission_growing_mode_labels",
+      "known_correction_target",
+      "synthetic_candidate_outputs_as_physical_measurements",
+      "actuator_effort_price_as_signed_work_conversion"
+    ]
+  },
+  "manifest": {
+    "required": [
+      "exact_source_base",
+      "accepted_contract_md_json_review_hashes",
+      "protocol_md_json_hashes",
+      "fixture_expected_identities_hashes",
+      "calibration_file_ids_hashes",
+      "train_holdout_roles",
+      "independent_source_provenance",
+      "estimator_version",
+      "measurement_uncertainty_certificates",
+      "arithmetic_precision_and_operation_counts",
+      "solver_domain_and_caps",
+      "null_production_values",
+      "forbidden_outcome_exclusion",
+      "native_force_pressure_funding_reservation_debit_commit_staging_with_justification",
+      "independent_pre_response_absolute_accuracy_budgets",
+      "independent_pre_response_maximum_enclosure_widths",
+      "identification_precision_and_decision_resolution_justification"
+    ],
+    "stage_consumption": "deterministic_prespecified_recipes_only; reseal_each_stage_before_its_measurements",
+    "exact_fixture_tolerance": "zero_exact_rational_residual",
+    "floating_tolerance": "outward_rounded_intervals_or_gamma_n=n*u/(1-n*u)_with_actual_n_and_bound_before_outcomes",
+    "measurement_tolerance": "independent_certified_uncertainty_propagated_no_favorable_universal_cutoff",
+    "boundary_overlap": "INCONCLUSIVE",
+    "missing_files": "MISSING_EVIDENCE",
+    "contradictory_bindings": "EVIDENCE_DEFECT",
+    "zero_inclusion": "compatibility_only_never_sufficient_for_PASS",
+    "equality_pass": "full_certified_enclosure_inside_pre_response_accuracy_budget_AND_width_within_separate_sealed_tightness_bound",
+    "budget_origin": "independent_arithmetic_instrument_capabilities_and_declared_physical_decision_resolution_not_observed_residuals",
+    "wide_or_missing_budget": "INCONCLUSIVE_no_post_result_widening",
+    "robust_inequalities": "must_hold_over_entire_certified_parameter_and_data_enclosure"
+  },
+  "port": {
+    "mu": "dt/gamma",
+    "force_balance": "dq=mu*(Flegacy+Fc_DG+Rcontact)",
+    "Dgamma": "dot(dq,dq)/mu",
+    "Wlegacy": "dot(Flegacy,dq)",
+    "Wc": "dot(Fc_DG,dq)=-DeltaEc",
+    "Wcontact": "dot(Rcontact,dq)",
+    "balance": "Dgamma=Wlegacy+Wc+Wcontact",
+    "passive_contact_balance": "DeltaEc+Dgamma+Qcontact=Wlegacy; Qcontact=-Wcontact>=0",
+    "source_channels": [
+      "legacy_elastic_stores_if_independently_owned",
+      "pressure_source_if_owned",
+      "native_paid_actuator_work_not_effort_price",
+      "explicit_boundary_work_donor",
+      "coupling_store",
+      "contact_and_drag_sinks"
+    ],
+    "projection": "derive_actual_residual_force_and_prove_passivity; simple_polygon_alone_insufficient",
+    "positive_loading": "physical_input_already_equals_minus_Wc; A_topup_requires_same_named_work_channel_not_additional_unmatched_input",
+    "negative_release": "may_enter_other_legacy_stores; never_assume_all_bath",
+    "new_compensator_or_operator_split": "NEW_ARCHITECTURE_NOT_AUTHORIZED",
+    "global_legacy_potential_assumed": false,
+    "native_A_dependence": "A_changes_pressure_and_actuator_funding; fixed_Flegacy_only_restricted_reference_fixture",
+    "staging": "future_realization_must_seal_justified_reservation_force_evaluation_debit_commit_order; post_debit_forces_require_recomputation_or_coupled_fixed_point; absent_policy_WORK_PORT_STAGING_UNSPECIFIED"
+  },
+  "benchmarks": {
+    "numbers_are": "illustrative_dimensionless_mathematical_controls_not_production_parameters",
+    "release": {
+      "mu": "1",
+      "Fc": "1",
+      "Flegacy": "-1/2",
+      "dq": "1/2",
+      "Wc": "1/2",
+      "Wlegacy": "-1/4",
+      "Dgamma": "1/4",
+      "expected": "reject_all_release_as_heat"
+    },
+    "cap_respecting_release": {
+      "mu": "1",
+      "Fc": "1/4",
+      "Flegacy": "-1/8",
+      "dq": "1/8",
+      "Wc": "1/32",
+      "Wlegacy": "-1/64",
+      "Dgamma": "1/64",
+      "expected": "same_rejection_with_force_below_native_cap"
+    },
+    "positive_loading": {
+      "mu": "1",
+      "Fc": "-1",
+      "Flegacy": "3/2",
+      "dq": "1/2",
+      "Wlegacy": "3/4",
+      "DeltaEc": "1/2",
+      "Dgamma": "1/4",
+      "expected": "reject_duplicate_A_work_input_without_channel"
+    },
+    "zero_total_force": "opposite_legacy_coupling_forces_zero_dq_zero_work",
+    "noncollinear": "exact_discrete_edge_gradient_reject_start_or_normalized_midpoint_tangent",
+    "coupled_reference": {
+      "legacy_energy": "k0*(L-Lr)^2/2",
+      "coupling": "accepted_Ec",
+      "boundary": "prescribed_constant_force_with_explicit_external_work_owner",
+      "drag": "positive_gamma_fixed_dt",
+      "scalar_unique_denominator": "gamma/dt+(k0+K*P/L0^2)/2>0",
+      "balance": "DeltaUlegacy+DeltaEc+Dgamma=Wexternal",
+      "contact_variants": [
+        "none",
+        "owned_ideal_unilateral",
+        "owned_dissipative_friction"
+      ]
+    },
+    "native_mesh_solver": "scalar_proof_does_not_extend_radial_tangential_hessian_Tc/L_can_be_negative",
+    "solver_certificate": "sealed_compact_domain_existence_unique_root_and_exclusion_other_admissible_roots_or_reject",
+    "late_failure": "whole_state_bit_equivalent_rollback_in_reference_controls_not_production_certification",
+    "two_spring_release": {
+      "kc": "1/4",
+      "kl": "1/4",
+      "q_c": "1",
+      "q_l": "-1/2",
+      "mu": "1",
+      "qold": "0",
+      "qnew": "1/10",
+      "DeltaEc": "-19/800",
+      "DeltaUlegacy": "11/800",
+      "Dgamma": "1/100",
+      "Fc": "19/80",
+      "Flegacy": "-11/80",
+      "role": "quadratic_accounting_witness_not_production_calibration"
+    },
+    "two_spring_loading": {
+      "kc": "1/4",
+      "kl": "1/4",
+      "q_c": "-1",
+      "q_l": "2",
+      "mu": "1",
+      "qold": "0",
+      "qnew": "1/5",
+      "DeltaEc": "11/200",
+      "DeltaUlegacy": "-19/200",
+      "Dgamma": "1/25",
+      "Fc": "-11/40",
+      "Flegacy": "19/40",
+      "role": "quadratic_accounting_witness_not_claim_all_centers_realize_positive_lambda_material_domain"
+    }
+  },
+  "current_adapter": {
+    "negative_tension": "ADAPTER_NO_GO_SIGNED_FORCE_existing_edge_tension_APIs_reject_Tnegative",
+    "explicit_external_hook": "ADAPTER_NO_GO_DISCRETE_WORK_without_separate_proof; cap_remains_fixed",
+    "naive_bath_topup": "NAIVE_PORT_REALIZATION_REJECTED",
+    "whole_candidate_impossible": false
+  },
+  "decisions": [
+    {
+      "stage": "S0",
+      "gate": "authority_and_seal",
+      "failure": "EVIDENCE_DEFECT_or_MISSING_EVIDENCE"
+    },
+    {
+      "stage": "S1",
+      "gate": "four_groups_inverse_rank_covariance_reference_controls",
+      "pass_scope": "mathematical_identifiability_only"
+    },
+    {
+      "stage": "S2",
+      "gate": "independent_force_kinetic_work_fuel_anchors_and_holdouts",
+      "missing": "CALIBRATION_ANCHOR_MISSING",
+      "failure": "CONSTITUTIVE_CANDIDATE_REJECTED",
+      "uncertain": "PARAMETERS_UNIDENTIFIED_or_DOMAIN_UNCOVERED_or_INCONCLUSIVE"
+    },
+    {
+      "stage": "S3",
+      "gate": "current_adapter_and_mandatory_counterexamples",
+      "current": "CURRENT_ADAPTER_NOT_REALIZABLE"
+    },
+    {
+      "stage": "S4",
+      "gate": "future_separately_authorized_coupled_reference_and_native_work_port_evidence",
+      "requires": "complete_source_storage_fuel_bath_balance_solver_contact_cap_finite_funding_and_no_double_count"
+    },
+    {
+      "stage": "S5",
+      "gate": "all_previous_pass_with_calibration_and_separately_approved_realization",
+      "result": "eligible_to_propose_bounded_implementation_directive_not_permission_to_execute"
+    }
+  ],
+  "claims": {
+    "specification_complete": true,
+    "physical_calibration": "NOT_PERFORMED",
+    "native_port_realization": "NOT_ESTABLISHED",
+    "coupled_native_solver": "NOT_IMPLEMENTED",
+    "accepted_contract_modified": false,
+    "R13_correction": "NOT_ESTABLISHED",
+    "biological_campaign": "NOT_RUN",
+    "automatic_successor": false,
+    "future_contact_solver_staging_rollback_evidence": "MANDATORY_FUTURE_NOT_CERTIFIED_BY_CURRENT_ARITHMETIC_CHECKER"
+  }
+}

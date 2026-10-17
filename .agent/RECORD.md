@@ -2196,3 +2196,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: R13 identifies reaction-mediated geometry damping but does not supply a physical conversion-work law. Primary research (Maes arXiv2011.09200 and Albaugh/Gingrich arXiv2102.06298) is REFERENCE only to distinguish energetic ownership from a kinetic tilt or microscopic detailed balance; no imported code, parameters or refactoring. New local assumptions are explicit and falsifiable.
 - Affected areas: Isolated contract worktree, diagnostic arithmetic/provenance verifier, scoped CI, additive local/Atlas evidence, project records and Notion page https://app.notion.com/p/3fc833cb27ff81f88950e69138a29fd7. Distinct review, exact-head artifacts and readback bind final evidence; old source/PR/archive work is preserved.
 - Supersedes record: none
+
+
+## DEC-DCM4-WORK-PORT-SPEC-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-WORK-PORT-SPEC-20261017
+- Status: ACTIVE
+- Decision or event: Owner-authorized prospective parameter and work-port specification completes with independent specification-only review. Preserve the prior contract, leave all production parameters unassigned, reject naive all-release-to-bath/unmatched-A-input and direct signed-tension adapters, and require an independently owned source/receiver architecture plus calibration evidence before implementation.
+- Rationale: Exact signed-work counterexamples and native API/source constraints make the distinction decision-changing. Sealed joint calibration regions, deterministic probe selection, held-out roles, uncertainty tightness and causal A-pressure/funding staging prevent outcome fitting and unjustified feasibility claims. Gonzalez1996 and Kinon/Morandin/Schulze2026 are REFERENCE only for discrete energy/power and constraints, with no adopted code, parameters, integrator or framework.
+- Affected areas: Isolated specification/checker/workflow, local/Atlas evidence and current/append-only records; Notion https://app.notion.com/p/3fc833cb27ff81b09209fb1ea6e74a0a. Existing scientific source, contract, archives, original checkouts and PR44–47 remain preserved; no automatic successor.
+- Supersedes record: none

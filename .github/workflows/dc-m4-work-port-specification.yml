@@ -1,0 +1,32 @@
+name: DC-M4 Prospective Parameter and Work Port Specification
+on:
+  push:
+    branches:
+      - codex/dc-m4-work-port-feasibility-spec
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-specification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Verify specification witnesses and frozen inputs
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          python3 scripts/verify_work_port_specification.py --repo . --output "$RUNNER_TEMP/work-port-specification"
+          git diff --check
+          test -z "$(git status --porcelain)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dc-m4-work-port-specification-${{ github.sha }}
+          include-hidden-files: true
+          if-no-files-found: error
+          path: ${{ runner.temp }}/work-port-specification/

@@ -435,3 +435,12 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `docs/dc-m4-conversion-work-review.json` — distinct independent review and five immutable file bindings, with conditional acceptance and runtime limitations.
 - `scripts/verify_conversion_work_contract.py` — paired with `.github/workflows/dc-m4-conversion-work-contract.yml`: exact rational identities, adversarial funding controls, source/history/record checks and hosted artifact provenance. These are diagnostic reference arithmetic, not a scientific runtime.
 - `/home/sketch/Projects/digital_cell-conversion-work-contract-evidence/` — paired with `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/conversion-work-contract/`: before/after preservation, exact-head CI/artifact and Notion/PR readback receipts. Existing archive roots remain unchanged.
+
+
+## Interfaces and contracts
+
+- `docs/dc-m4-work-port-directive.md` — owner-authorized specification scope and exact a007e7e entry; complete local handoff.
+- `docs/dc-m4-work-port-specification.md` — paired JSON defines four-group calibration inputs/roles, exact work-port counterexamples, native source constraints, numerical/causal staging and prospective decision gates.
+- `docs/dc-m4-work-port-review.json` — independent five-file hash-bound specification-only review, with missing calibration/native evidence kept explicit.
+- `scripts/verify_work_port_specification.py` — reference algebra, specification schema/role and frozen source/contract checks; scoped hosted workflow in .github/workflows/dc-m4-work-port-specification.yml.
+- `/home/sketch/Projects/digital_cell-work-port-specification-evidence/` — local preservation/CI/artifact/Notion receipts duplicated additively at /srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/work-port-specification/.

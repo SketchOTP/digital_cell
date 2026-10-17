@@ -110,3 +110,15 @@ Verify expected UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and RPI5Pool bind befor
 Before/after scoped hashes preserve all 206 entry reaction-feasibility archive files and original source work;
 new contract, exact-head artifact and Notion/PR readback receipts are copied without overwriting history.
 The prior local/Atlas evidence remains retained. This qualifies custody, not full-disk health or runtime biology.
+
+
+## Prospective work-port specification evidence — 2026-10-17
+
+Entry a007e7e08acc768f08b83d96139a7cea25f0e04e; source checkout
+`/home/sketch/Projects/digital_cell-work-port-feasibility-spec`.
+Local evidence `/home/sketch/Projects/digital_cell-work-port-specification-evidence/`;
+additive Atlas duplicate `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/work-port-specification/`.
+Verify expected UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and RPI5Pool bind before writes.
+Preserve all 206 reaction-feasibility and 167 conversion-contract entry archive files,
+existing checkouts, source work and PR44–47; retain local originals.
+Reference mathematical fixtures are not new native or biological qualification evidence.

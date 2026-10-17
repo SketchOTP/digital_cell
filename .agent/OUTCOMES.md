@@ -2910,3 +2910,23 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: All new physical parameters remain unassigned; exact work-port/bath allocation and discrete solver/contact compatibility need prospective feasibility evidence. Contract arithmetic is not runtime behavior, damping correction or lifeform qualification.
 - Blockers: No blocker to contract definition; Digital Cell bridge binding absent, historical global governance schema drift retained, implementation and biological qualification outside scope.
 - Follow-up directive: none
+
+
+## D-20261017-dcm4-work-port-feasibility-spec - COMPLETE
+
+- Outcome ID: O-DCM4-WORK-PORT-SPEC-20261017
+- Supersedes outcome: none
+- Closed: 2026-10-17T18:31:48-04:00
+- Acceptance: MET
+- Summary: Concrete prospective parameter/work-port protocol defined and independently reviewed as specification only. Four independent parameter groups, fixed independent calibration/holdout recipes, source/work/bath/staging/solver gates and exact naive-adapter counterexamples are sealed. Independent anchors are missing and native port realization remains unqualified.
+- Changed areas: New specification/directive/JSON/review, diagnostic reference verifier/workflow, current/profile and append-only records, additive custody and Notion records.
+- Validation:
+  - Distinct analyst and independent five-file semantic/source review with precision and uncertainty fixes - PASSED
+  - Parent reference witnesses: 30 exact simultaneous-force cases, reduced two-spring/discrete-work identities, 14 control groups and synthetic inverse smoke - PASSED
+  - Specification schema, 80-row design/four training/76 holdout roles, frozen source/contract and new structured governance preservation - PASSED
+  - Existing historical global governance schema drift retained; no clean-global claim - FAILED
+  - Physical calibration, native solver/contact/staging/rollback execution and biological campaigns - NOT RUN
+  - Final exact-head CI/artifact and Notion readback at record creation, external receipts to follow - NOT RUN
+- Remaining risks: Missing independent anchors leave all four production parameters unassigned. Naive direct adapters are rejected, while an owned physical loading/receiver architecture, native causal staging and solver/contact feasibility require separate evidence and authorization. Reference fixtures do not establish runtime or biological success.
+- Blockers: None to the specification deliverable; calibration inputs and a realizable mechanical port remain prerequisites to implementation. Digital Cell bridge binding absent and historical governance drift preserved.
+- Follow-up directive: none
