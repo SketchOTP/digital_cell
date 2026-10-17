@@ -2141,3 +2141,47 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Thirty exact states reproduce damping and uniquely nominate local reaction under pre-outcome numerical envelopes; transport partly opposes damping. R9's tensile activation multiplier remains falsified. A corrective reaction coupling needs physical source/energy ownership before implementation.
 - Affected areas: Result/independent-review docs, current/profile state and append-only records. R4 production reference, R10 diagnostic scope, R1-R12 evidence and existing checkouts/PR44 preserved.
 - Supersedes record: none
+
+
+## DEC-DCM4-REACTION-ARCHITECTURE-GAP-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-REACTION-ARCHITECTURE-GAP-20261017
+- Status: ACTIVE
+- Decision or event: Complete the user-authorized reaction-architecture feasibility gate with an explicit constitutive/energetic gap, preserving R13 attribution and all production science. Return the conversion-work ownership requirement without choosing or implementing a corrective law.
+- Rationale: Existing local state, funded forces and net A/W charges do not close signed conversion work, common units/fuel ownership and rate response. Other-domain affinity models and structural repair are real but have different material/causal ownership. Distinct read-only analyst and reviewer agree.
+- Affected areas: Gate docs/audit evidence, checker/workflow and bounded project records; existing checkouts and PR44/PR45 preserved. No feedback or successor execution.
+- Supersedes record: none
+
+
+## DEC-DCM4-REACTION-ARCHITECTURE-ARTIFACT-CORRECTION-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-REACTION-ARCHITECTURE-ARTIFACT-CORRECTION-20261017
+- Status: ACTIVE
+- Decision or event: Independent verification rejected initial hosted artifact12107839080 at f2f5ff8 because upload-artifact omitted eight hidden .agent/.github files bound in the manifest. Explicitly include hidden files from the bounded evidence directory and rerun exact-head audit publication.
+- Rationale: Passing source/algebra CI does not establish archive completeness. Missing manifest-bound content must prevent final handoff acceptance; the superseded archive and rejection are preserved in project evidence.
+- Affected areas: Artifact upload setting, audit publication history and this append-only correction. Scientific sources, feasibility conclusion and existing work remain unchanged.
+- Supersedes record: none
+
+
+## DEC-DCM4-REACTION-ARCHITECTURE-LOCAL-CUSTODY-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-REACTION-ARCHITECTURE-LOCAL-CUSTODY-20261017
+- Status: ACTIVE
+- Decision or event: Atlas data mounts became unavailable during final evidence synchronization. Preserve cached verified gate artifacts and R13 ZIPs with duplicate local custody at /home/sketch/Projects/digital_cell-reaction-feasibility-evidence/; update STORAGE_MAP/current receipts, preserve original locators and perform no mount/disk mutation.
+- Rationale: Read-only mount inspection confirms missing data mounts, while the local source checkout and GitHub evidence remain accessible. Do not recreate a misleading archive directory on the remote root filesystem. Final audit acceptance remains bounded to verified source/artifact/local custody; historical storage availability needs separate recovery.
+- Affected areas: Gate evidence locator, local duplicate custody and storage map, audit checker binding and append-only records. Scientific sources and original historical archives unchanged.
+- Supersedes record: none
+
+
+## DEC-ATLAS-EVIDENCE-RECONCILIATION-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-ATLAS-EVIDENCE-RECONCILIATION-20261017
+- Status: ACTIVE
+- Decision or event: Owner-mounted Atlas evidence archive is verified and additively synchronized. Preserve the historical outage/rejected upload and local originals; make the verified canonical archive and reconciliation receipt discoverable in storage/project/Notion records.
+- Rationale: UUID/bind identity, four accepted prior archive packages, canonical final-08494f2 package, 77 copied-file hashes and all 83 prior scoped archive file hashes verify; Atlas-native independent checks agree. The scientific result and source are unchanged.
+- Affected areas: Evidence copy/custody metadata, STORAGE_MAP/current/profile and append-only records; no scientific code, biology, source checkout or PR44/PR45 change.
+- Supersedes record: none

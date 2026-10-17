@@ -53,3 +53,49 @@ current migration, so no scientific evidence references required rewriting.
 Future archives should use a repository-isolated subdirectory beneath the
 secondary storage root and must update this map and their archive manifest
 after copy, checksum verification, and any reference changes.
+
+## Reaction-feasibility local evidence custody — 2026-10-17
+
+During final gate synchronization, the remote `/srv/ATLAS` and
+`/mnt/storage1tb` data mounts became unavailable. Read-only mount inspection
+found the underlying remote root filesystem at those paths. No mount,
+unmount, disk repair, deletion or migration was attempted.
+
+The verified reaction-feasibility artifacts and available cached R13 archives
+have duplicate durable local custody at:
+
+`/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/`
+
+`storage-custody.json` records the observation and
+`FINAL_HANDOFF.md` identifies the accepted audit head and artifact receipts.
+The original gate archive locator remains
+`/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/`;
+its availability requires separate storage recovery. Existing historical
+archive locators above are preserved, not relocated or silently recreated
+on the unmounted root filesystem.
+
+## Atlas evidence reconciliation verified — 2026-10-17
+
+The owner reconnected and mounted UUID `840ca6b3-5d4f-41fc-9dac-21355e045a6d`
+(`RPI5_2TB`, ext4) at `/mnt/atlas2tb`, with the configured `RPI5Pool`
+bind at `/srv/ATLAS`. This supersedes the Atlas evidence-availability
+limitation above; the outage observation remains historical evidence.
+
+Digital Cell R12/R13 and reaction-feasibility accepted ZIPs, manifests and
+available scientific binaries verify. All 83 pre-existing scoped files remain
+hash-identical. The preserved local snapshot (77 files,
+309554499 bytes) is verified at:
+
+`/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/preserved-local-20261017-174351/`
+
+The accepted `final-08494f2` audit package is also present at the canonical
+reaction-feasibility archive path with 29 manifest bindings and 16 source
+bindings verified. Local originals remain. No existing archive file was
+overwritten or deleted. Current reconciliation receipts are at:
+
+`/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/reconciliation-20261017-174351/`
+
+and locally at `/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/atlas-reconciliation-20261017-174351/`.
+This verifies the scoped Atlas evidence archive, not whole-disk health or
+the unrelated legacy `/mnt/storage1tb` archive. No disk repair or unrelated
+mount action was performed by this reconciliation task.

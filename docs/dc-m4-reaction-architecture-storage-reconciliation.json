@@ -1,0 +1,99 @@
+{
+  "verified_at": "2026-10-17T17:49:04.023535-04:00",
+  "status": "ATLAS_ARCHIVE_RECONNECTED_VERIFIED_SYNCHRONIZED",
+  "drive_uuid": "840ca6b3-5d4f-41fc-9dac-21355e045a6d",
+  "mount": "840ca6b3-5d4f-41fc-9dac-21355e045a6d ext4 /RPI5Pool /srv/ATLAS",
+  "scope": "Digital Cell R12/R13 and reaction-architecture gate evidence; not whole-disk health or legacy /mnt/storage1tb qualification",
+  "archive_root": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility",
+  "local_custody": "/home/sketch/Projects/digital_cell-reaction-feasibility-evidence",
+  "preserved_local_snapshot": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/preserved-local-20261017-174351",
+  "local_snapshot_files_verified": 77,
+  "local_snapshot_bytes_verified": 309554499,
+  "original_archive_files_preserved": 83,
+  "accepted_prior_archives_verified": [
+    {
+      "path": "dcm4r13/baseline/r12-d944d4f.zip",
+      "zip_sha256": "5949df1110598142f6c32f3492a06f9d39516e18fa016dead6d4223dd2c3e432",
+      "exact_head": "d944d4fabc46333203bfd6e441d600b9717c349d",
+      "manifest_entries_verified": 12,
+      "binary_sha256": "cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64",
+      "status": "PASS"
+    },
+    {
+      "path": "dcm4r13/implementation-b0554c7/hosted-artifact.zip",
+      "zip_sha256": "289e75c809bbd265ab3344299509d0957466a608c2c8dbd34e0dc1254bdc9221",
+      "exact_head": "b0554c77617d2ae17df99f2dbaa7e3043e3f9361",
+      "manifest_entries_verified": 13,
+      "binary_sha256": "45e264183fa2f2b9a9eafd13498addea3cd92fdf0ad7072fa17a254bbd708bb1",
+      "status": "PASS"
+    },
+    {
+      "path": "dcm4r13/final-74dfbf9/hosted-artifact.zip",
+      "zip_sha256": "adedc07c15c48b90db9901a68ec6f42afc55d67ac5954f0916ade55f0013b719",
+      "exact_head": "74dfbf9a12fc9cdafcc72c3080150a7b9c04be90",
+      "manifest_entries_verified": 13,
+      "binary_sha256": "45e264183fa2f2b9a9eafd13498addea3cd92fdf0ad7072fa17a254bbd708bb1",
+      "status": "PASS"
+    },
+    {
+      "path": "reaction-architecture-feasibility/final-f439783/hosted-artifact.zip",
+      "zip_sha256": "8861f07060210d18c6da1770163db8ed6f372b63a124238ca44b915bee25e8f7",
+      "exact_head": "f4397836c4703bcae8b14ebc01c99a8abe4af420",
+      "manifest_entries_verified": 28,
+      "binary_sha256": null,
+      "status": "PASS"
+    }
+  ],
+  "rejected_archive_preserved": true,
+  "canonical_08494f2_files_added": 38,
+  "canonical_08494f2_identical_files_retained": 0,
+  "canonical_08494f2_manifest_verified": 29,
+  "canonical_08494f2_source_bindings_verified": 16,
+  "all_existing_archive_file_bytes_unchanged": true,
+  "local_originals_retained": true,
+  "deletions": 0,
+  "overwrites": 0,
+  "scientific_result_changed": false,
+  "next_execution_started": false,
+  "postcopy_verification_execution_host": "atlas",
+  "redundant_sshfs_reread_stopped_after_native_verification": false,
+  "primary_archive_verifier_exit_code": 0,
+  "primary_archive_verifier_completed_at": "2026-10-17T17:48:37.398635-04:00",
+  "independent_atlas_native_postcopy_check": "PASS",
+  "directive": "D-20261017-atlas-evidence-reconciliation",
+  "repository_base_head": "08494f2c0b368f1837f903f6f08fdb3f6c7c892b",
+  "accepted_scientific_audit_head": "08494f2c0b368f1837f903f6f08fdb3f6c7c892b",
+  "accepted_scientific_audit_zip_sha256": "ec61524bfb4b5ca23c5d976f9821761c8adb7e18d42295e295e0cb2da724f624",
+  "atlas_native_independent_verification": {
+    "execution_host": "atlas",
+    "original_archive_files_verified": 83,
+    "archives": [
+      {
+        "archive": "dcm4r13/baseline/r12-d944d4f.zip",
+        "head": "d944d4fabc46333203bfd6e441d600b9717c349d",
+        "manifest_entries_verified": 12
+      },
+      {
+        "archive": "dcm4r13/implementation-b0554c7/hosted-artifact.zip",
+        "head": "b0554c77617d2ae17df99f2dbaa7e3043e3f9361",
+        "manifest_entries_verified": 13
+      },
+      {
+        "archive": "dcm4r13/final-74dfbf9/hosted-artifact.zip",
+        "head": "74dfbf9a12fc9cdafcc72c3080150a7b9c04be90",
+        "manifest_entries_verified": 13
+      },
+      {
+        "archive": "reaction-architecture-feasibility/final-f439783/hosted-artifact.zip",
+        "head": "f4397836c4703bcae8b14ebc01c99a8abe4af420",
+        "manifest_entries_verified": 28
+      }
+    ],
+    "status": "PASS"
+  },
+  "reconciliation_receipt_root": "/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reaction-architecture-feasibility/reconciliation-20261017-174351",
+  "local_receipt_root": "/home/sketch/Projects/digital_cell-reaction-feasibility-evidence/atlas-reconciliation-20261017-174351",
+  "notion_and_final_governance_receipts": "Recorded externally after this commit exists; no self-referential head claim",
+  "scientific_classification": "LOCAL_REACTION_COUPLING_PHYSICAL_OWNERSHIP_OR_ENERGETICS_GAP",
+  "whole_disk_health_or_legacy_secondary_archives_qualified": false
+}
