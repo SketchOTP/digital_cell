@@ -152,5 +152,27 @@
     "reviewer_read_only_attempt": "FAILED_MCP_TOOL_NOT_AVAILABLE",
     "mutations": false,
     "acceptance_claimed": false
-  }
+  },
+  "publication_history": [
+    {
+      "head": "f2f5ff825f1427f536ddbcbccd1e5a5cb3ec1f92",
+      "run_id": 39052366092,
+      "artifact_id": 12107839080,
+      "zip_sha256": "9b581d45658fdcb62ed7c828ff347b693b00af1e38b0c6019ae2423f1b254ecc",
+      "status": "REJECTED_INCOMPLETE_ARTIFACT",
+      "source_audit_checks": "PASS",
+      "missing_manifest_files": [
+        ".github/workflows/dc-m4-reaction-architecture-feasibility.yml",
+        ".agent/CURRENT.md",
+        ".agent/PROJECT_PROFILE.md",
+        ".agent/DIRECTIVES.md",
+        ".agent/OUTCOMES.md",
+        ".agent/LEARNINGS.md",
+        ".agent/RECORD.md",
+        ".agent/REPO_MAP.md"
+      ],
+      "cause": "upload-artifact default excludes hidden .agent and .github paths",
+      "correction": "explicit include-hidden-files:true for the bounded known-file artifact directory"
+    }
+  ]
 }

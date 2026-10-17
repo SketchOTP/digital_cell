@@ -30,4 +30,5 @@ jobs:
         with:
           name: dc-m4-reaction-architecture-feasibility-${{ github.sha }}
           if-no-files-found: error
+          include-hidden-files: true
           path: ${{ runner.temp }}/reaction-architecture-evidence/

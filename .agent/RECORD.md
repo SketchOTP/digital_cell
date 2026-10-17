@@ -2152,3 +2152,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Existing local state, funded forces and net A/W charges do not close signed conversion work, common units/fuel ownership and rate response. Other-domain affinity models and structural repair are real but have different material/causal ownership. Distinct read-only analyst and reviewer agree.
 - Affected areas: Gate docs/audit evidence, checker/workflow and bounded project records; existing checkouts and PR44/PR45 preserved. No feedback or successor execution.
 - Supersedes record: none
+
+
+## DEC-DCM4-REACTION-ARCHITECTURE-ARTIFACT-CORRECTION-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-REACTION-ARCHITECTURE-ARTIFACT-CORRECTION-20261017
+- Status: ACTIVE
+- Decision or event: Independent verification rejected initial hosted artifact12107839080 at f2f5ff8 because upload-artifact omitted eight hidden .agent/.github files bound in the manifest. Explicitly include hidden files from the bounded evidence directory and rerun exact-head audit publication.
+- Rationale: Passing source/algebra CI does not establish archive completeness. Missing manifest-bound content must prevent final handoff acceptance; the superseded archive and rejection are preserved in project evidence.
+- Affected areas: Artifact upload setting, audit publication history and this append-only correction. Scientific sources, feasibility conclusion and existing work remain unchanged.
+- Supersedes record: none
