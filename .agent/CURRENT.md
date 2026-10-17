@@ -3,18 +3,35 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-09-05T15:20:00-04:00`
+- Last updated: `2026-10-17T03:53:00-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20260905-dcdev021-goal-post-fission-ecological-reentry-r6`
-- External directive ID: `GOAL-LOOP-DIGITAL-CELL-MATERIAL-FLOW-REALIGNMENT-R2`
-- Objective: Test the largest remaining post-fission Route-A composition, then replan organism/world material flow if finite transfer supports survival but not resource-causal reproduction.
-- Current status: `VALIDATING`
-- Acceptance: `GOAL_AGENT_PROVISIONALLY_ACCEPTED_REPLAN`
-- Current phase: `organism/world material-flow architecture boundary`
-- Expected or actual touched areas: `source-level contract audit, provisional architecture documentation, append-only governance`
-- Immediate next action: `exact-head Linux validation, artifact verification, and independent Architect review before any new material-flow architecture`
+- Local directive ID: `D-20261016-dcm4-r13-internal-causal-decomposition`
+- External directive ID: `DC-M4-R13-GEOMETRY-TO-POLARITY-INTRA-OPERATOR-CAUSAL-DECOMPOSITION-GATE-001`
+- Objective: Attribute the accepted geometry-to-polarity damping response inside the unchanged production polarity operator on the exact thirty fixed states.
+- Current status: `COMPLETE`
+- Acceptance: `MET — implementation and bounded reaction-mediated attribution accepted; final governance-head CI receipt follows in Notion/PR/durable evidence`
+- Current phase: `R13 attribution complete; reaction architecture decision pending`
+- Expected or actual touched areas: `diagnostic example and shared diagnostic helpers, independent verifier/tests, R13-specific workflow, docs and append-only governance`
+- Immediate next action: `seal final governance-head CI and Notion readback; return the single proposed reaction-affinity feasibility gate without starting a successor`
+
+## Current R13 authority and preservation
+
+- Owner authorization on 2026-10-16 adopts the verified Notion R13 directive and supersedes the earlier active-state header; historical entries below remain preserved.
+- Clean source baseline: `d944d4fabc46333203bfd6e441d600b9717c349d`; tag `baseline/dc-m4-r12-d944d4f`; branch `codex/dc-m4-r13-internal-causal-decomposition`; checkout `/home/sketch/Projects/digital_cell-r13`.
+- Final accepted R12 authority: CI `35060451335`, artifact `sha256:5949df1110598142f6c32f3492a06f9d39516e18fa016dead6d4223dd2c3e432`, manifest 12/12, binary `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64`; archive, source binding and verifier independently rechecked.
+- R4 production reference and R10 diagnostic-only transfer remain mechanically qualified in bounded scope. Accepted R8/R9 G_TO_P damping is the active limitation.
+- Production biology is frozen; no morphogenesis/reproduction/population/selection/reversal/final integration or successor execution is authorized by R13. Existing checkouts and PR #44 remain untouched.
+- Bridge unavailable; separate implementation and independent review are used, with no bridge dispatch/acceptance claim. See `docs/dc-m4-r13-baseline.md`.
+
+## R13 accepted attribution
+
+- Classification: `G_TO_P_DAMPING_LOCAL_REACTION_MEDIATED_BY_GEOMETRIC_CONCENTRATION`; implementation acceptance and bounded attribution only.
+- Thirty exact states: R8 damping `30/30`, usable `30/30`, reaction nominations `30/30`, zero non-smooth exclusions. Transport partly opposes damping; interaction/order effects are below the sealed envelopes.
+- Tested implementation `b0554c77617d2ae17df99f2dbaa7e3043e3f9361`; CI `38997922719 PASS`; ZIP `289e75c809bbd265ab3344299509d0957466a608c2c8dbd34e0dc1254bdc9221`; manifest `13/13`; binary `45e264183fa2f2b9a9eafd13498addea3cd92fdf0ad7072fa17a254bbd708bb1`. Independent full Python recomputation matches seven result files byte for byte.
+- E4 is exactly one proposed local mechanochemical reaction-affinity feasibility gate; not authorized for execution or implemented. See `docs/dc-m4-r13-result.md` and the machine review receipt.
+- Corrected feedback and downstream biology remain unestablished. No successor started. Final governance-head identity and Notion readback are recorded externally after this commit exists; the implementation result above remains immutable.
 
 ## Goal-mode existing-carrier audit R3
 

@@ -471,3 +471,7 @@ path = "../../examples/dcm4_r10_polarity_to_existing_inward_normal_actuator_rema
 [[example]]
 name = "dcm4_r12_state_normalized_p_to_m_force_response_requalification"
 path = "../../examples/dcm4_r12_state_normalized_p_to_m_force_response_requalification.rs"
+
+[[example]]
+name = "dcm4_r13_intra_operator_causal_decomposition"
+path = "../../examples/dcm4_r13_intra_operator_causal_decomposition.rs"

@@ -1,0 +1,112 @@
+name: DC-M4-R13 Geometry-to-Polarity Internal Decomposition
+on:
+  push:
+    branches:
+      - codex/dc-m4-r13-internal-causal-decomposition
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  r13-internal-decomposition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Check out exact pushed head
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Verify exact baseline and diagnostic source scope
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          git merge-base --is-ancestor d944d4fabc46333203bfd6e441d600b9717c349d HEAD
+          python3 - <<'PY'
+          import subprocess
+          changed=subprocess.check_output(['git','diff','--name-only','d944d4fabc46333203bfd6e441d600b9717c349d..HEAD'],text=True).splitlines()
+          allowed=('.agent/','docs/','.github/workflows/dc-m4-r13-intra-operator-causal-decomposition.yml','digital-protocell/crates/regulatory-core/Cargo.toml','digital-protocell/examples/dcfinal001_r4_evolution.rs','digital-protocell/examples/dcm4_r13_intra_operator_causal_decomposition.rs','digital-protocell/experiments/dcm4_r13_intra_operator_causal_decomposition_verify.py','digital-protocell/experiments/test_dcm4_r13_verifier.py','digital-protocell/experiments/fixtures/dcm4r13/','digital-protocell/experiments/generated/dcm4r13intraoperatorcausaldecomposition/')
+          assert all(any(p.startswith(a) for a in allowed) for p in changed),changed
+          PY
+      - name: Fetch and independently bind accepted R12 artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh api repos/SketchOTP/digital_cell/actions/runs/35060451335/artifacts > /tmp/r12_artifacts.json
+          artifact_id=$(python3 - <<'PY'
+          import json
+          a=json.load(open('/tmp/r12_artifacts.json'))['artifacts']
+          a=[x for x in a if x['name']=='dcm4r12statenormalizedptomforcerequalification-d944d4fabc46333203bfd6e441d600b9717c349d']
+          assert len(a)==1,a
+          print(a[0]['id'])
+          PY
+          )
+          gh api "repos/SketchOTP/digital_cell/actions/artifacts/$artifact_id/zip" > /tmp/r12.zip
+          echo '5949df1110598142f6c32f3492a06f9d39516e18fa016dead6d4223dd2c3e432  /tmp/r12.zip' | sha256sum --check
+          mkdir /tmp/r12
+          unzip -q /tmp/r12.zip -d /tmp/r12
+          python3 - <<'PY'
+          import hashlib,json
+          from pathlib import Path
+          root=Path('/tmp/r12/experiments/generated/dcm4r12statenormalizedptomforcerequalification')
+          manifest=json.loads((root/'artifact_manifest.json').read_text())
+          assert manifest['exact_head']=='d944d4fabc46333203bfd6e441d600b9717c349d'
+          for name,meta in manifest['files'].items():
+              expected=meta['sha256'] if isinstance(meta,dict) else meta
+              assert hashlib.sha256((root/name).read_bytes()).hexdigest()==expected,name
+          PY
+      - name: Install sanctioned Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: 1.89.0
+          components: rustfmt
+      - name: Focused implementation and fail-closed verifier controls
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          rustfmt --edition 2021 --check --config skip_children=true examples/dcm4_r13_intra_operator_causal_decomposition.rs
+          python3 -m py_compile experiments/dcm4_r13_intra_operator_causal_decomposition_verify.py
+          python3 -m unittest discover -s experiments -p test_dcm4_r13_verifier.py
+          cargo test --locked -q -p regulatory-core --lib
+          cargo check --locked -q -p regulatory-core --example dcm4_r13_intra_operator_causal_decomposition
+      - name: Seal all settings and source hashes before outcomes
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          mkdir -p experiments/generated/dcm4r13intraoperatorcausaldecomposition/raw
+          cargo run --locked -q -p regulatory-core --example dcm4_r13_intra_operator_causal_decomposition -- --stage seal --output /tmp/r13_seal.json
+          python3 experiments/dcm4_r13_intra_operator_causal_decomposition_verify.py --repo . --raw /tmp/r13_seal.json --output experiments/generated/dcm4r13intraoperatorcausaldecomposition --stage seal
+      - name: Execute only fixed-state discarded-clone R13 decomposition
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          cargo run --locked --release -q -p regulatory-core --example dcm4_r13_intra_operator_causal_decomposition -- --stage qualification --output experiments/generated/dcm4r13intraoperatorcausaldecomposition/raw/qualification.json
+      - name: Independently reconstruct result and seal binary and manifest
+        working-directory: digital-protocell
+        run: |
+          set -euo pipefail
+          sha256sum target/release/examples/dcm4_r13_intra_operator_causal_decomposition > experiments/generated/dcm4r13intraoperatorcausaldecomposition/binary_sha256.txt
+          python3 experiments/dcm4_r13_intra_operator_causal_decomposition_verify.py --repo . --raw experiments/generated/dcm4r13intraoperatorcausaldecomposition/raw/qualification.json --output experiments/generated/dcm4r13intraoperatorcausaldecomposition --stage qualification --r12-raw /tmp/r12/experiments/generated/dcm4r12statenormalizedptomforcerequalification/raw/qualification.json
+          git diff --check
+      - name: Confirm no downstream stages started
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          q=json.loads(Path('digital-protocell/experiments/generated/dcm4r13intraoperatorcausaldecomposition/qualification.json').read_text())
+          assert q['implementation']=='PASS' and q['next_execution_started'] is False
+          for key in ('morphogenesis','reproduction','population_selection','reversal','final_integration'): assert q[key]=='NOT_REACHED'
+          PY
+      - name: Upload exact-head R13 evidence and executable
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dcm4r13intraoperatorcausaldecomposition-${{ github.sha }}
+          if-no-files-found: error
+          path: |
+            digital-protocell/experiments/generated/dcm4r13intraoperatorcausaldecomposition/
+            digital-protocell/experiments/dcm4_r13_intra_operator_causal_decomposition_verify.py
+            digital-protocell/experiments/test_dcm4_r13_verifier.py
+            digital-protocell/examples/dcm4_r13_intra_operator_causal_decomposition.rs
+            digital-protocell/target/release/examples/dcm4_r13_intra_operator_causal_decomposition

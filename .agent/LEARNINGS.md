@@ -1426,3 +1426,25 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 
 - The complete package is not sealed by the implementation-head artifact alone. The final governance commit `d2cfeb3d69f5d28459a663d2295b1b1fc227a505`, exact-head workflow `35059631812`, independently recomputed ZIP `e049c58a0e608bf0fa36ccdf1a9b4f82f77108c31949fabd309f7331ecb55c41`, `12/12` manifest and binary `cec057e369ce03bff0720b35245372d53e86e59d0af9fadf7b3c57f1f45fda64` are the authoritative final identities.
 - Notion page and SOT readback must carry that final governance identity. The R12 result remains force-response qualification only; accepted R9 G_TO_P damping is not erased, and no morphogenesis/reproduction successor is automatic.
+
+
+## L-DCM4-R13-BASELINE-20261016
+
+- Learning ID: L-DCM4-R13-BASELINE-20261016
+- Date: 2026-10-16
+- Fact or lesson: Final R12 authority d944d4f/35060451335/5949df1110598142f6c32f3492a06f9d39516e18fa016dead6d4223dd2c3e432 supersedes older handoff identities without rewriting historical evidence. R4 and R10 each qualify in30/30 fixed states only for bounded force response; G_TO_P damping and downstream biology remain unresolved.
+- Evidence location: docs/dc-m4-r13-baseline.md and docs/dc-m4-r13-baseline.json; independently recomputed R12 artifact.
+- Confidence: VERIFIED
+- Scope: R13 entry authority and source baseline.
+- Supersedes learning: none
+
+
+## L-DCM4-R13-REACTION-ATTRIBUTION-20261017
+
+- Learning ID: L-DCM4-R13-REACTION-ATTRIBUTION-20261017
+- Date: 2026-10-17
+- Fact or lesson: In the exact thirty accepted fixed states, geometry-induced concentration change acts primarily through the existing local reaction to produce damping; transport partly opposes it, and interaction/order differences are below the sealed numerical envelopes. Reaction dominance does not mean exact equality with FULL or qualify a repair.
+- Evidence location: docs/dc-m4-r13-result.md; docs/dc-m4-r13-independent-review.json; exact-head CI 38997922719 and independently recomputed archive.
+- Confidence: VERIFIED
+- Scope: Bounded R13 operator attribution only; amount/current-length physics and all production sources preserved. Proposed reaction-affinity feasibility is unproven and unimplemented.
+- Supersedes learning: none

@@ -1,0 +1,152 @@
+[
+  {
+    "arm": 1,
+    "checkpoint_step": 3694,
+    "input_boundary_digest": "fnv1a64:0afe9978955247cf"
+  },
+  {
+    "arm": 1,
+    "checkpoint_step": 7389,
+    "input_boundary_digest": "fnv1a64:84649bc3c3bc6d5a"
+  },
+  {
+    "arm": 1,
+    "checkpoint_step": 11083,
+    "input_boundary_digest": "fnv1a64:111ac46fca72b243"
+  },
+  {
+    "arm": 2,
+    "checkpoint_step": 3694,
+    "input_boundary_digest": "fnv1a64:902bb82fe59284b2"
+  },
+  {
+    "arm": 2,
+    "checkpoint_step": 7389,
+    "input_boundary_digest": "fnv1a64:edec0043a1fefdb4"
+  },
+  {
+    "arm": 2,
+    "checkpoint_step": 11083,
+    "input_boundary_digest": "fnv1a64:5b624111d4ad5942"
+  },
+  {
+    "arm": 3,
+    "checkpoint_step": 3694,
+    "input_boundary_digest": "fnv1a64:bd755d358cf2480d"
+  },
+  {
+    "arm": 3,
+    "checkpoint_step": 7389,
+    "input_boundary_digest": "fnv1a64:a80bd56822905826"
+  },
+  {
+    "arm": 3,
+    "checkpoint_step": 11083,
+    "input_boundary_digest": "fnv1a64:9922003ce797d7e6"
+  },
+  {
+    "arm": 4,
+    "checkpoint_step": 3694,
+    "input_boundary_digest": "fnv1a64:74f0b338a4972dd5"
+  },
+  {
+    "arm": 4,
+    "checkpoint_step": 7389,
+    "input_boundary_digest": "fnv1a64:79e39a574e635dca"
+  },
+  {
+    "arm": 4,
+    "checkpoint_step": 11083,
+    "input_boundary_digest": "fnv1a64:6315e286d951a058"
+  },
+  {
+    "arm": 5,
+    "checkpoint_step": 3694,
+    "input_boundary_digest": "fnv1a64:820ef14635b27b21"
+  },
+  {
+    "arm": 5,
+    "checkpoint_step": 7389,
+    "input_boundary_digest": "fnv1a64:5f9f2221a464c34a"
+  },
+  {
+    "arm": 5,
+    "checkpoint_step": 11083,
+    "input_boundary_digest": "fnv1a64:6d5e3cd51960e1c6"
+  },
+  {
+    "arm": 6,
+    "checkpoint_step": 3694,
+    "input_boundary_digest": "fnv1a64:feacf93123ac1e14"
+  },
+  {
+    "arm": 6,
+    "checkpoint_step": 7389,
+    "input_boundary_digest": "fnv1a64:f939bb6f55117423"
+  },
+  {
+    "arm": 6,
+    "checkpoint_step": 11083,
+    "input_boundary_digest": "fnv1a64:61ef96616b23fcd1"
+  },
+  {
+    "arm": 7,
+    "checkpoint_step": 3694,
+    "input_boundary_digest": "fnv1a64:d73b9c46d54fde53"
+  },
+  {
+    "arm": 7,
+    "checkpoint_step": 7389,
+    "input_boundary_digest": "fnv1a64:7985bca970295134"
+  },
+  {
+    "arm": 7,
+    "checkpoint_step": 11083,
+    "input_boundary_digest": "fnv1a64:9bb1c7911c631673"
+  },
+  {
+    "arm": 8,
+    "checkpoint_step": 3694,
+    "input_boundary_digest": "fnv1a64:9704211c3e565b8d"
+  },
+  {
+    "arm": 8,
+    "checkpoint_step": 7389,
+    "input_boundary_digest": "fnv1a64:64c5b12da6de1e88"
+  },
+  {
+    "arm": 8,
+    "checkpoint_step": 11083,
+    "input_boundary_digest": "fnv1a64:e16f82b1a9255045"
+  },
+  {
+    "arm": 9,
+    "checkpoint_step": 3694,
+    "input_boundary_digest": "fnv1a64:de8edf27e70f681d"
+  },
+  {
+    "arm": 9,
+    "checkpoint_step": 7389,
+    "input_boundary_digest": "fnv1a64:c7247541259da4cf"
+  },
+  {
+    "arm": 9,
+    "checkpoint_step": 11083,
+    "input_boundary_digest": "fnv1a64:567ddcdc544b5bf1"
+  },
+  {
+    "arm": 10,
+    "checkpoint_step": 3694,
+    "input_boundary_digest": "fnv1a64:95c4bf1cc63a76f9"
+  },
+  {
+    "arm": 10,
+    "checkpoint_step": 7389,
+    "input_boundary_digest": "fnv1a64:cc9112907b965172"
+  },
+  {
+    "arm": 10,
+    "checkpoint_step": 11083,
+    "input_boundary_digest": "fnv1a64:14c39995443ff8f4"
+  }
+]

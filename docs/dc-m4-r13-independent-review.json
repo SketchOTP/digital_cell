@@ -1,0 +1,69 @@
+{
+  "reviewed_at": "2026-10-17T03:51:47.751061-04:00",
+  "baseline": "d944d4fabc46333203bfd6e441d600b9717c349d",
+  "implementation_head": "b0554c77617d2ae17df99f2dbaa7e3043e3f9361",
+  "run_id": 38997922719,
+  "artifact_id": 12087808766,
+  "zip_sha256": "289e75c809bbd265ab3344299509d0957466a608c2c8dbd34e0dc1254bdc9221",
+  "manifest_verified": 13,
+  "source_bindings_verified": 7,
+  "bundled_sources_verified": 3,
+  "binary_sha256": "45e264183fa2f2b9a9eafd13498addea3cd92fdf0ad7072fa17a254bbd708bb1",
+  "independent_recomputed_files_identical": [
+    "qualification.json",
+    "internal_causal_attribution.json",
+    "instantaneous_concentration.json",
+    "r8_reproduction.json",
+    "preservation.json",
+    "architecture_consequence.json",
+    "evidence_table.json"
+  ],
+  "qualification": {
+    "coverage_gate": "PASS",
+    "directive": "DC-M4-R13-GEOMETRY-TO-POLARITY-INTRA-OPERATOR-CAUSAL-DECOMPOSITION-GATE-001",
+    "dominant_route_counts": {
+      "INTERACTION": 0,
+      "REACTION_ONLY": 30,
+      "TRANSPORT_ONLY": 0
+    },
+    "final_integration": "NOT_REACHED",
+    "implementation": "PASS",
+    "morphogenesis": "NOT_REACHED",
+    "next_execution_started": false,
+    "non_smooth_exclusions": 0,
+    "population_selection": "NOT_REACHED",
+    "r8_damping_states": 30,
+    "reproduction": "NOT_REACHED",
+    "reversal": "NOT_REACHED",
+    "scientific_acceptance": "ATTRIBUTION_ONLY",
+    "terminal_classification": "G_TO_P_DAMPING_LOCAL_REACTION_MEDIATED_BY_GEOMETRIC_CONCENTRATION",
+    "usable_states": 30
+  },
+  "aggregate_crosscheck": {
+    "reaction_full_correlation": [
+      0.9286418107712072,
+      0.989673711109668
+    ],
+    "reaction_gain": [
+      1.1100216854285563,
+      1.18564567963395
+    ],
+    "reaction_residual": [
+      0.19481135655377518,
+      0.4987017472113763
+    ],
+    "reaction_dominance_margin": [
+      1.2771810748649534e-06,
+      1.5721251649603168e-06
+    ],
+    "e1_amount_roundtrip_max_error": 4.440892098500626e-16
+  },
+  "preservation_local_roots": 3,
+  "preservation_atlas_snapshot": "IDENTICAL",
+  "pr44": "OPEN_DRAFT_UNMERGED_SAME_HEAD_BASE",
+  "limitations": [
+    "Initial local verifier invocation omitted copied prospective seals and failed before computation; after copying the archived seals, complete rerun passed.",
+    "Global governance validator retains pre-existing historical schema errors; R13 entries are checked separately.",
+    "Architect bridge unavailable; no bridge acceptance claimed."
+  ]
+}
