@@ -2207,3 +2207,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Exact signed-work counterexamples and native API/source constraints make the distinction decision-changing. Sealed joint calibration regions, deterministic probe selection, held-out roles, uncertainty tightness and causal A-pressure/funding staging prevent outcome fitting and unjustified feasibility claims. Gonzalez1996 and Kinon/Morandin/Schulze2026 are REFERENCE only for discrete energy/power and constraints, with no adopted code, parameters, integrator or framework.
 - Affected areas: Isolated specification/checker/workflow, local/Atlas evidence and current/append-only records; Notion https://app.notion.com/p/3fc833cb27ff81b09209fb1ea6e74a0a. Existing scientific source, contract, archives, original checkouts and PR44–47 remain preserved; no automatic successor.
 - Supersedes record: none
+
+
+## DEC-DCM4-SOURCE-RECEIVER-ARCHITECTURE-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-SOURCE-RECEIVER-ARCHITECTURE-20261017
+- Status: ACTIVE
+- Decision or event: Define v2 only as a proposed bounded source/coupling/native-stretch-receiver module. Explicitly revise geometric top-up and finite-stroke funding policies in new documents while preserving prior accepted files. Identify native receiver law anchors, external primary measurement precedents and missing numerical parameter mappings separately.
+- Rationale: The prior simultaneous-force counterexample requires a real receiver rather than bath relabeling. The bounded native stretch derivative supplies that receiver; finite A drives the physical conversion coordinate. Exact source/store/heat accounting, cold entry and path-resolved irreversible work close the proposed domain without a hidden tank. Toyabe2010 and Toyabe/Muneyuki2015 are independently observed METHOD/REFERENCE evidence; no values, ATP identity, efficiency, code or A-regeneration policy are imported.
+- Affected areas: Isolated architecture/checker/workflow, current and append-only governance, additive local/Atlas receipts and Notion https://app.notion.com/p/3fc833cb27ff812ebeb8e562c64462b8. No production scientific source, prior contract/spec, original checkout, PR44–48 or historical archive change; no automatic successor.
+- Supersedes record: none

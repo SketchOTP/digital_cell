@@ -1492,3 +1492,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Exact reference work/unit/identifiability analysis and source adapter constraints; not physical calibration, native coupled integration or corrective biology.
 - Supersedes learning: none
+
+
+## L-DCM4-SOURCE-RECEIVER-20261017
+
+- Learning ID: L-DCM4-SOURCE-RECEIVER-20261017
+- Date: 2026-10-17
+- Fact or lesson: A finite chemical source can load coupling energy through the conversion coordinate while geometry exchanges energy with a force-backed receiver, eliminating duplicate geometric funding. The bounded native V4 stretch force integrates to a C1 piecewise receiver potential. Irreversible finite conversion strokes crossing an energy minimum need total uphill work funding and downhill dissipation, even when endpoint energies match.
+- Evidence location: docs/dc-m4-source-receiver-architecture.md and .json; docs/dc-m4-source-receiver-review.json; scripts/verify_source_receiver_architecture.py.
+- Confidence: VERIFIED
+- Scope: Bounded fixed-material mathematical/source architecture with explicit assumptions and anchor inventory; no numerical parameter calibration, native integration or biological efficacy.
+- Supersedes learning: none
