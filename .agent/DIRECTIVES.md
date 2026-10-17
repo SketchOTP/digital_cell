@@ -1565,3 +1565,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261017-dcm4-source-receiver-architecture
+
+- Issued: 2026-10-17T18:58:49-04:00
+- Issuer: User
+- External directive: DC-M4-PHYSICALLY-OWNED-SOURCE-RECEIVER-ARCHITECTURE-001
+- Objective: Define a physically owned mechanical source/receiver architecture, identify independent calibration anchors, independently verify and preserve existing work with current Notion/project records.
+- Scope: Versioned bounded chemical-source/coupling/native-stretch-receiver architecture, explicit proposed funding revision, path-resolved source work, exact force/energy/capacity and cold-entry/cycle witnesses, categorized native/external/missing anchors, scoped verifier/workflow and additive evidence/records from 101e635d6498b9cfe451b2d702d64a4440939963.
+- Exclusions: Production Rust/example or prior contract/specification/evidence edits, numerical production calibration, native runtime integration, unowned pressure/bending/active/contact/material/topology extensions, biological campaigns, PR44-48 mutation, merge/deploy and automatic successor.
+- Acceptance: Concrete finite source and force-backed receiver with reciprocal work and whole bounded energy balance; cold initialization and finite capacity, atomic/failure/lifecycle boundaries; independent source/anchor provenance without invented numerical mappings; independent bounded-architecture review; scientific/history/work/archive preservation, exact-head CI/artifact and Notion/evidence readback, with explicit missing calibration/full-native limitations.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

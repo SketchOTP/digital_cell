@@ -1,0 +1,74 @@
+{
+  "schema": "digital_cell_source_receiver_independent_review_v2",
+  "decision": "ACCEPTED_BOUNDED_ARCHITECTURE_ONLY",
+  "review_date": "2026-10-17",
+  "entry_head": "101e635d6498b9cfe451b2d702d64a4440939963",
+  "reviewer": "distinct governance_audit agent; no architecture or checker implementation authorship",
+  "method": "independent static review of all five bound files, native constitutive source, units, finite-path and mechanical energy identities, capacity and scalar uniqueness proofs; primary research opened read-only; no checker execution, builds, assays or process monitoring",
+  "reviewed_files": {
+    "docs/dc-m4-source-receiver-architecture.md": "e21c3a687a54f590dcbf2d762fd636d390425e074e44870b2b593d54563340cb",
+    "docs/dc-m4-source-receiver-architecture.json": "11b406c8fe98e688732a7c55b2df4abc396cd011d94d8e5f22b5a3650c8f7614",
+    "docs/dc-m4-source-receiver-directive.md": "7deccef1975dc6509d3d9a441324f9eaf10929b9740d009dcc3854e44fa82cbf",
+    "scripts/verify_source_receiver_architecture.py": "85345e9cb03c72c28c3945ab360b785ff801e34894f9c0cf70a595c2071ce993",
+    ".github/workflows/dc-m4-source-receiver-architecture.yml": "97930ad8b37da5dcdc7a8cba9ba75748dd81b730ad4ee592ab9e0699fc57867a"
+  },
+  "preflight": {
+    "retained_complete_historical_coverage": true,
+    "new_ledger_additions": "Every .agent append between a007e7e08acc768f08b83d96139a7cea25f0e04e and entry 101e635d6498b9cfe451b2d702d64a4440939963 read, including directives and outcomes.",
+    "complete_assigned_coverage": {
+      ".agent/LEARNINGS.md": "through line 1494 at entry",
+      ".agent/RECORD.md": "through line 2209 at entry",
+      ".agent/REPO_MAP.md": "through line 446 at entry"
+    },
+    "additional_inputs": "latest current/profile, governance, prior accepted contract/specification/reviews, native stretch/material/reaction/force-port and A/W source boundaries",
+    "bridge": "No Digital Cell dispatch or acceptance inferred from unrelated activation-test configuration."
+  },
+  "accepted_criteria": [
+    "The v2 model explicitly changes both geometry funding and monotone chemical-stroke settlement while preserving prior contract/specification history. It does not claim the prior naive adapter became realizable.",
+    "The finite source is an explicitly assumed ideal coarse-grained A-to-W battery. Its work enters through the owned conversion coordinate xi=a and the reciprocal Ec, rather than an observer energy bucket or independently initialized tank.",
+    "Cold entry has L=L0,a=0,b=P and zero Ec/Us. Prepared inactive polarity and scaffold are declared initial material conditions, not simulated synthesis or unexplained elastic preload.",
+    "On the fixed-material domain L0>=1e-3 and 0<L<=4L0, the receiver derivative exactly matches native stretch: compression stiffness ks/L0 and tension stiffness phi*ks/L0, with no active clamp. The piecewise energy is C1 and convex.",
+    "At fixed geometry the monotone conversion path has its unique possible minimum at P*epsilon/lambda. Funding all uphill variation Vplus and dissipating downhill variation Vminus prevents cross-minimum within-stroke recycling even when endpoint energies are equal.",
+    "Complete pre-stroke finite-A reservation, distinct overhead, A/W and active/inactive material closure give DeltaEA+DeltaEc+Qchem=0 without A regeneration or counting W again as heat.",
+    "Fixed-pool mechanics uses both Ec and Us in one discrete-gradient force balance. It satisfies DeltaEc+DeltaUs+Qdrag=0 and never charges geometry A top-up. Coupling release can enter the receiver rather than all being assigned to heat.",
+    "The true receiver secant handles crossing L0. Convexity makes that secant nondecreasing and the scalar residual strictly increasing; a certified in-domain bracket establishes existence of at most one admissible scalar root.",
+    "Finite capacity bounds follow from the sealed domain, and the combined initial battery/store/heat invariant excludes a hidden unbounded energy source.",
+    "The reference cycle wrapper publishes only after reaction and mechanics succeed; a deliberate late mechanical failure retains the original state and cumulative sinks. Unsupported material/topology/other-force ports are explicitly rejected rather than claimed integrated.",
+    "The anchor inventory separates native constitutive facts, explicit new design assumptions, external observed measurement methods, unit conventions and missing independent project parameter data. Production values remain null.",
+    "The scoped workflow and checker bind exact-head source/history, prior contracts and all five independently reviewed artifacts without launching a native or biological workload."
+  ],
+  "resolved_review_findings": [
+    "Removed debit-only preload by requiring cold material entry and physically funded reaction-coordinate preparation.",
+    "Aligned the positive lambda domain between prose, JSON, calibration protocol and reference arithmetic.",
+    "Added a whole-cycle reference wrapper and late mechanical failure after a successfully funded reaction.",
+    "Added finite parameter guards and nonfinite rejection controls rather than admitting infinite coefficients or time.",
+    "Refined chemical funding from endpoint-positive work to total uphill path variation, with equal-endpoint cross-minimum controls and complete advance reservation.",
+    "Explicitly recorded both v2 policy changes and retained the old accepted files as historical inputs."
+  ],
+  "external_sources_checked": [
+    {
+      "url": "https://arxiv.org/html/1002.1867v1",
+      "finding": "Primary paper supports independently observed load work and probe heat compared with chemical free energy, and an elastic-linker work-storage interpretation. It supplies no Digital Cell constants or A-to-ATP mapping."
+    },
+    {
+      "url": "https://arxiv.org/abs/1210.4017",
+      "finding": "Primary abstract supports measured reverse mechanical-to-chemical transduction under imposed rotations. This is a measurement-method precedent and does not authorize A regeneration in this model."
+    }
+  ],
+  "limitations": [
+    "Acceptance is for a closed bounded proposed mathematical architecture and source-based receiver derivation, not a measured physical mechanism or production implementation.",
+    "The ideal battery, coupling energy and signed kinetic bias are explicit new constitutive assumptions. First-law closure does not establish local detailed balance, gross turnover, ATP identity or empirical calibration.",
+    "Reference reaction extents are prescribed finite strokes. The checker does not execute the native biased-J trajectory or identify theta; its illustrative numbers are not selected production parameters.",
+    "The positive-geometry Ec-from-Us fixture proves a local signed work identity with a declared owned preload. It is not proof that this preloaded state was reached from the sole cold entry.",
+    "The pinned scalar prototype is distinct from a free endpoint pair, a rotating edge or a whole mesh. It excludes pressure, bending, native active forces, contact projection, external work, diffusion, synthesis and topology/material changes.",
+    "The mathematical scalar uniqueness argument does not certify floating solver accuracy, general mesh roots, contact compatibility, native Euler parity or full A-dependent causal staging.",
+    "Reference immutable-state rollback and exact rational arithmetic do not certify production transactions, persistent checkpoints, runtime overflow handling or lifecycle partitioning.",
+    "The native ks/gamma and scaffold law anchor their own model components. Independent K/lambda/theta/epsilon_A data and species/unit mappings remain missing; cited experiments supply methods rather than project numerical values.",
+    "No corrected R13 damping, morphogenesis, reproduction, selection, reversal or lifeform completion follows from this review. Implementation and calibration require separate authorization.",
+    "Parent-owned checker execution, hosted exact-head CI, archive reconstruction, preservation and Notion synchronization remain separate evidence and were not performed by this reviewer."
+  ],
+  "remaining_acceptance_blockers_for_bounded_architecture_only": [],
+  "independent_parameter_calibration": "NOT_ESTABLISHED",
+  "full_native_integration": "NOT_ESTABLISHED",
+  "automatic_successor": false
+}

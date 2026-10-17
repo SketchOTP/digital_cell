@@ -122,3 +122,15 @@ Verify expected UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and RPI5Pool bind befor
 Preserve all 206 reaction-feasibility and 167 conversion-contract entry archive files,
 existing checkouts, source work and PR44–47; retain local originals.
 Reference mathematical fixtures are not new native or biological qualification evidence.
+
+
+## Source/receiver architecture evidence — 2026-10-17
+
+Entry101e635d6498b9cfe451b2d702d64a4440939963; isolated source
+`/home/sketch/Projects/digital_cell-source-receiver-architecture`.
+Local evidence `/home/sketch/Projects/digital_cell-source-receiver-evidence/`;
+additive Atlas duplicate `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/source-receiver-architecture/`.
+Verify expected UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and RPI5Pool bind before writes.
+Retain all entry archive bytes:206 reaction-feasibility,167 conversion-contract and151 work-port files.
+Original local/Atlas source work and PR44–48 are preserved; local originals remain.
+These mathematical architecture and anchor receipts do not qualify production implementation or biological efficacy.

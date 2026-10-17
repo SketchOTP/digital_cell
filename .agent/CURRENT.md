@@ -3,18 +3,30 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-17T18:31:48-04:00`
+- Last updated: `2026-10-17T18:58:49-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261017-dcm4-work-port-feasibility-spec`
-- External directive ID: `DC-M4-PARAMETER-MECHANICAL-WORK-PORT-FEASIBILITY-SPEC-001`
-- Objective: Define and independently verify the prospective parameter and mechanical-work-port feasibility specification, preserving existing work and current records.
+- Local directive ID: `D-20261017-dcm4-source-receiver-architecture`
+- External directive ID: `DC-M4-PHYSICALLY-OWNED-SOURCE-RECEIVER-ARCHITECTURE-001`
+- Objective: Define and independently verify a physically owned bounded mechanical source/receiver architecture and identify calibration anchors while preserving all work and records.
 - Current status: `COMPLETE`
-- Acceptance: `MET — specification and mathematical/source witnesses only; calibrated parameters, native port and runtime feasibility remain unestablished; final exact-head receipts follow externally`
-- Current phase: `Prospective protocol defined; calibration anchors missing and naive/direct mechanical adapter rejected`
-- Expected or actual touched areas: `New specification/directive/JSON/review, diagnostic verifier/workflow, additive evidence and project/Notion records`
-- Immediate next action: `Resolve an independently owned mechanical input/receiver architecture and calibration-source evidence before any implementation; no automatic successor`
+- Acceptance: `MET — bounded mathematical architecture and anchor inventory only; physical calibration, runtime implementation and full native integration remain unestablished; final exact-head receipts follow externally`
+- Current phase: `V2 finite chemical source and native stretch receiver defined; new coupling/fuel parameter data missing`
+- Expected or actual touched areas: `New architecture/directive/JSON/review, reference verifier/workflow, append-only project records and additive evidence/Notion custody`
+- Immediate next action: `Select the independent calibration basis and separately authorize a bounded prototype if desired; no automatic implementation or successor`
+
+### Bounded source and receiver architecture v2
+
+- **Entry:** `101e635d6498b9cfe451b2d702d64a4440939963`; isolated checkout `/home/sketch/Projects/digital_cell-source-receiver-architecture`, branch `codex/dc-m4-source-receiver-architecture`.
+- **Closed bounded model:** finite ideal A-to-W chemical battery loads the conversion-dependent spring through the existing polarity conversion coordinate. Mechanics exchanges energy between that spring, an exactly derived native fixed-material stretch receiver and drag. Complete battery/store/heat balance closes without an independent energy tank.
+- **Explicit v2 revision:** replace the earlier proposed geometry A top-up/all-release disposal policy with reciprocal spring/receiver mechanics; resolve conversion funding by the entire monotone stroke's uphill variation and dissipate downhill variation. Prior accepted contract/specification files remain byte-preserved; production does not execute this revision.
+- **Entry and domain:** cold inactive polarity at rest with zero elastic preload, finite prepared fixed material and A; one fixed endpoint, collinear motion, positive mature support, bounded length and fixed coefficients. Unsupported material/topology, pressure/bending/active/contact/external ports and live store-erasing toggles reject. This is not full native integration.
+- **Independent anchors:** native stretch/rest-length/maturity and drag supply constitutive receiver/boundary anchors. Two primary F1-ATPase studies identify independent measurement methods for separating work, heat and fuel; no ATP/model-A unit mapping, imported value or four-parameter calibration is established. K/lambda/theta/epsilon_A remain unassigned.
+- **Verification:** distinct review is `ACCEPTED_BOUNDED_ARCHITECTURE_ONLY`, with five-file bindings. Parent reference arithmetic checks 54 native receiver/force/capacity cases, 24 signed source cases and 12 control groups, including cross-minimum path funding, cross-rest true secant and late reference-cycle rollback. Prescribed strokes and local stored-energy witnesses are not native kinetic trajectories or cold-entry reachability proofs.
+- **Preservation:** production scientific source, prior contracts/specifications and PR44–48 unchanged; R13 damping remains uncorrected, R4 production reference and R10 diagnostic-only. Eight prior local checkouts and entry archives (206 reaction-feasibility, 167 conversion-contract, 151 work-port files) are retained alongside local originals.
+- **Notion and custody:** https://app.notion.com/p/3fc833cb27ff812ebeb8e562c64462b8; local `/home/sketch/Projects/digital_cell-source-receiver-evidence/`; additive Atlas `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/source-receiver-architecture/`. Final exact-head CI/artifact/preservation/readback receipts follow outside this commit.
+- **Bridge:** healthy only for unrelated activation-test; no Digital Cell binding or bridge dispatch/acceptance claimed. Complete local handoff uses distinct analysis, independent static review and parent-owned verification. Historical states below remain preserved context.
 
 ### Prospective parameter and work-port specification disposition
 

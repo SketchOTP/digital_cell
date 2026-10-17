@@ -444,3 +444,12 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `docs/dc-m4-work-port-review.json` — independent five-file hash-bound specification-only review, with missing calibration/native evidence kept explicit.
 - `scripts/verify_work_port_specification.py` — reference algebra, specification schema/role and frozen source/contract checks; scoped hosted workflow in .github/workflows/dc-m4-work-port-specification.yml.
 - `/home/sketch/Projects/digital_cell-work-port-specification-evidence/` — local preservation/CI/artifact/Notion receipts duplicated additively at /srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/work-port-specification/.
+
+
+## Interfaces and contracts
+
+- `docs/dc-m4-source-receiver-directive.md` — owner-authorized bounded architecture and anchor-identification scope, exact101e635 entry and complete local handoff.
+- `docs/dc-m4-source-receiver-architecture.md` — paired JSON defines finite chemical source, native stretch receiver, v2 work/funding revision, cold domain, capacities, atomic cycle and categorized calibration anchors.
+- `docs/dc-m4-source-receiver-review.json` — independent five-file hash-bound bounded-architecture review and explicit numerical/native limitations.
+- `scripts/verify_source_receiver_architecture.py` — exact source/receiver/cycle/path/capacity witnesses and frozen source/contract/history checks; scoped hosted workflow in .github/workflows/dc-m4-source-receiver-architecture.yml.
+- `/home/sketch/Projects/digital_cell-source-receiver-evidence/` — preservation and final CI/artifact/Notion receipts duplicated additively at /srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/source-receiver-architecture/.

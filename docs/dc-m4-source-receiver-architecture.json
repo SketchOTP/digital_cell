@@ -1,0 +1,334 @@
+{
+  "schema": "digital_cell_physically_owned_source_receiver_architecture_v2",
+  "architecture_id": "BOUNDED_REACTION_STRETCH_SOURCE_RECEIVER_V2",
+  "entry_head": "101e635d6498b9cfe451b2d702d64a4440939963",
+  "status": [
+    "BOUNDED_MATHEMATICAL_SOURCE_RECEIVER_DEFINED",
+    "INDEPENDENT_PARAMETER_DATA_MISSING",
+    "FULL_NATIVE_REALIZATION_UNRESOLVED"
+  ],
+  "scope": "proposed_fixed_material_single_collinear_edge_mathematical_architecture_only",
+  "production_modified": false,
+  "runtime_implementation_authorized": false,
+  "calibration_execution_authorized": false,
+  "automatic_successor_authorized": false,
+  "revision": {
+    "prior_contracts": "preserve_bytes_and_historical_acceptance",
+    "proposed_future_v2_change": "replace_v1_geometry_topup_and_all_coupling_release_disposal_with_reciprocal_Ec_plus_native_stretch_potential_mechanics;resolve_reaction_work_by_monotone_path_positive_negative_variation_not_endpoint_positive_change",
+    "geometry_A_topup": false,
+    "new_persistent_energy_tank": false
+  },
+  "units": {
+    "length": "L",
+    "force": "F",
+    "energy": "E=F*L",
+    "polarity": "P",
+    "fuel": "A",
+    "time": "t",
+    "K": "E/P",
+    "theta": "E/P",
+    "epsilon_A": "E/A",
+    "lambda": "dimensionless",
+    "k_s": "F",
+    "gamma": "F*t/L",
+    "c0": "A/P",
+    "rho_s": "structural_material/L"
+  },
+  "production_parameter_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "parameter_domain": {
+    "K": ">0",
+    "lambda": ">0",
+    "theta": ">0",
+    "epsilon_A": ">0",
+    "k_s": "native_fixed_positive",
+    "gamma": "native_fixed_positive",
+    "c0": "native_fixed_net_conversion_overhead"
+  },
+  "owned_state": {
+    "fixed": [
+      "P=a+b>0",
+      "M>0",
+      "rho_s>=1e-15",
+      "L0=M/rho_s>=1e-3",
+      "0<phi<=1",
+      "k_s",
+      "gamma",
+      "K",
+      "lambda",
+      "theta",
+      "epsilon_A",
+      "c0"
+    ],
+    "finite_nonnegative_material": [
+      "a",
+      "b",
+      "A",
+      "W"
+    ],
+    "geometry_domain": "0<L<=4*L0",
+    "V4_mapping": "M=m-m_young;phi=M/m",
+    "historical_mapping": "M=m;phi=1",
+    "all_state_finite": true,
+    "numeric_floor_as_physical_scaffold": false,
+    "chemical_owner": "ideal_coarse_grained_A_to_W_battery",
+    "E_A": "epsilon_A*A",
+    "W_energy_reference": "0",
+    "W_semantics": "spent_fuel_material_not_heat",
+    "new_chemical_assumption": true,
+    "ATP_mapping_established": false,
+    "local_detailed_balance_claimed": false,
+    "sinks": [
+      "Q_chem_cumulative",
+      "Q_drag_cumulative"
+    ]
+  },
+  "entry": {
+    "cold_state": {
+      "L": "L0",
+      "a": "0",
+      "b": "P",
+      "E_c": "0",
+      "U_s": "0",
+      "A": "finite_A_initial",
+      "W": "finite_W_initial"
+    },
+    "material_formation_boundary": "inactive_P_and_scaffold_are_explicit_initial_conditions;no_synthesis_or_creation_energy_claim",
+    "active_preparation": "recorded_funded_reaction_coordinate_transactions_at_fixed_L=L0_only",
+    "arbitrary_active_snapshot_import": "REJECT",
+    "arbitrary_nonzero_stretch_preload": "REJECT",
+    "debit_only_preload": "REJECT",
+    "initial_available_modeled_energy": "epsilon_A*A_initial",
+    "regeneration_or_external_work": "REJECT"
+  },
+  "stores": {
+    "x": "a/P",
+    "epsilon": "(L-L0)/L0",
+    "E_c": "K*P/2*(epsilon-lambda*x)^2",
+    "U_s_compression": "k_s*(L-L0)^2/(2*L0),L<=L0",
+    "U_s_tension": "phi*k_s*(L-L0)^2/(2*L0),L>=L0",
+    "regularity": "U_s_C1_convex;E_c_quadratic_convex_in_L",
+    "E_c_capacity": "K*P/2*max(9,(1+lambda)^2)",
+    "U_s_capacity": "k_s*L0/2*max(1,9*phi)",
+    "actual_total_store_bound": "E_A+E_c+U_s=epsilon_A*A_initial-Q_chem_cumulative-Q_drag_cumulative"
+  },
+  "reaction": {
+    "physical_source_coordinate": "xi=a;fixed_L_no_vertex_work",
+    "proposal": "J=Rplus*exp(-g/(2*theta))-Rminus*exp(g/(2*theta))",
+    "proposal_classification": "explicit_phenomenological_design_hypothesis_not_LDB",
+    "Rplus": "k0*b+kf*a^2*b/L^2",
+    "Rminus": "kd*a+kq*a^3/L^2",
+    "d_domain": "-a<=d<=b",
+    "g": "K*lambda*(lambda*a/P-epsilon)",
+    "Delta_E_c": "g*d+K*lambda^2*d^2/(2*P)",
+    "stroke": "physical_monotone_xi_path_from_a_to_a+d_at_fixed_L",
+    "xi_star": "P*epsilon/lambda",
+    "E_min": "0_if_xi_star_in_closed_stroke_interval_else_min(E_start,E_end)",
+    "Vplus": "E_end-E_min",
+    "Vminus": "E_start-E_min",
+    "path_identity": "Vplus-Vminus=Delta_E_c",
+    "z": "c0*abs(d)+Vplus/epsilon_A",
+    "updates": {
+      "a_new": "a+d",
+      "b_new": "b-d",
+      "A_new": "A-z",
+      "W_new": "W+z"
+    },
+    "Q_chem": "epsilon_A*c0*abs(d)+Vminus",
+    "within_stroke_recovery": false,
+    "equal_energy_cross_minimum": "Vplus=Vminus>0_still_extra_A_spending_and_heat",
+    "energy_identity": "Delta_E_A+Delta_E_c+Q_chem=0",
+    "material_identities": [
+      "Delta_a+Delta_b=0",
+      "Delta_A+Delta_W=0"
+    ],
+    "native_overhead_kind": "absolute_net_transfer_not_gross_turnover",
+    "insufficient_A_policy": "atomic_reject_no_partial_commit",
+    "negative_energy_refund": false,
+    "W_as_additional_heat": false,
+    "finite_change_not_linearized_cost": true,
+    "reservation": "complete_z_from_pre_stroke_finite_A_before_any_path_segment; no_downhill_or_future_fuel_credit"
+  },
+  "mechanics": {
+    "fixed_pools_and_coefficients": true,
+    "boundary": "collinear_one_endpoint_fixed_one_endpoint_free_no_external_load_no_moving_support",
+    "potential": "U=E_c+U_s",
+    "equation": "gamma*(L_new-L)/h=-(Tbar_c+Tbar_s)",
+    "Tbar_c": "K*P/L0*((L_new+L)/(2*L0)-1-lambda*a/P)",
+    "T_s_compression": "k_s*(L-L0)/L0",
+    "T_s_tension": "phi*k_s*(L-L0)/L0",
+    "T_s_at_rest": "0",
+    "Tbar_s": "(U_s(L_new)-U_s(L))/(L_new-L);equal_length_limit=T_s(L)",
+    "cross_L0_rule": "true_piecewise_potential_secant_never_single_branch_shortcut",
+    "numerical_secant": "cancellation_safe_piecewise_algebra_with_certified_roundoff_enclosure",
+    "signed_internal_work": {
+      "W_c": "-Delta_E_c",
+      "W_s": "-Delta_U_s",
+      "sum": "W_c+W_s=Q_drag"
+    },
+    "Q_drag": "gamma*(L_new-L)^2/h",
+    "identity": "Delta_E_c+Delta_U_s+Q_drag=0",
+    "A_change": "0",
+    "positive_Delta_E_c_source": "reciprocal_stretch_store_exchange_in_same_force_balance_not_A_topup",
+    "negative_Delta_E_c_disposition": "signed_mechanical_transfer_can_load_U_s;not_all_chemical_heat",
+    "fixed_support_work": "0",
+    "free_pair_variant": "two_equal_gamma_free_endpoints_effective_length_drag=gamma/2;must_be_declared_separately",
+    "vector_extension_unproved": "DG_direction=(r_new+r)/(L_new+L);equal_opposite_endpoint_force;requires_new_gate",
+    "scalar_uniqueness": "residual_derivative>=gamma/h+K*P/(2*L0^2)>0_by_convex_stretch_secant",
+    "existence": "certified_root_bracket_inside_0<L_new<=4L0_required",
+    "whole_mesh_uniqueness_claimed": false,
+    "native_Euler_equivalence_claimed": false,
+    "cap_mismatch_solver_or_domain_failure": "atomic_reject_no_clamp_or_energy_repair"
+  },
+  "cycle": {
+    "order": [
+      "cold_entry",
+      "optional_recorded_reaction_preparation",
+      "reaction_then_fixed_pool_mechanics"
+    ],
+    "atomicity": "complete_cycle_scratch_then_commit;late_mechanics_failure_rolls_back_paid_reaction_and_all_ledgers",
+    "stage_checks": [
+      "finite_input_and_output",
+      "donor_bounds",
+      "finite_A_and_W",
+      "owned_domain",
+      "energy_identity",
+      "independently_sealed_tight_accuracy_budget"
+    ],
+    "whole_identity": "Delta(E_A+E_c+U_s)+Q_chem+Q_drag=0",
+    "interval_contains_zero_alone_sufficient": false,
+    "error_budget": "certified_tight_enclosure_within_independently_prespecified_accuracy_budget;missing_or_wide_INCONCLUSIVE",
+    "round_trip": "A_never_increases;heat_never_erased",
+    "OFF": "explicit_bypass_for_absent_module;live_state_toggle_that_erases_store_REJECT"
+  },
+  "unsupported_operations": {
+    "policy": "atomic_reject_before_mutation",
+    "operations": [
+      "diffusion",
+      "A_to_P_synthesis",
+      "maturation",
+      "rupture",
+      "remesh",
+      "edge_creation_or_deletion",
+      "fusion_or_fission",
+      "material_transfer",
+      "coefficient_or_parameter_change",
+      "external_reservoir",
+      "sink_or_material_overflow"
+    ],
+    "future_obligation": "explicit_ancestry_owned_material_energy_partition_and_exactly_once_transfer_release_before_any_extension"
+  },
+  "legacy_ports": {
+    "native_stretch": "ADMITTED_only_exact_bounded_derivative_domain",
+    "pressure": "NONZERO_OUT_OF_DOMAIN_A_dependent",
+    "bending": "NONZERO_OUT_OF_DOMAIN",
+    "active_tension_and_normal_actuator": "NONZERO_OUT_OF_DOMAIN",
+    "contact_projection_and_external_hooks": "NONZERO_OUT_OF_DOMAIN",
+    "current_nonnegative_tension_API": "cannot_accept_general_signed_Tc_unchanged",
+    "production_disabling_authorized": false,
+    "full_A_staging": "UNRESOLVED_requires_causal_force_evaluation_reservation_commit_order;bounded_A_fixed_mechanics_does_not_solve_full_native_order"
+  },
+  "anchor_inventory": [
+    {
+      "id": "native_stretch",
+      "category": "NATIVE_CONSTITUTIVE_ANCHOR",
+      "source": "digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs:137-156",
+      "binding": "l_ref=L0_and_8ks_clamp_inactive_when_L0>=1e-3_and_0<L<=4L0;compression_native_ks;tension_phi_ks",
+      "supports": "U_s_derivative_exact_native_force_and_endpoint_sign",
+      "does_not_support": "measured_biological_modulus_or_K_lambda_theta_epsilon_A"
+    },
+    {
+      "id": "native_scaffold",
+      "category": "NATIVE_CONSTITUTIVE_ANCHOR",
+      "source": "digital-protocell/crates/chemistry-core/src/material_mesh.rs:305-356",
+      "supports": "mature_mass_fraction_and_physical_L0_with_explicit_rho_s_and_L0_guards"
+    },
+    {
+      "id": "native_reaction",
+      "category": "NATIVE_CONSTITUTIVE_KINETIC_INPUT",
+      "source": "digital-protocell/crates/regulatory-core/src/polarity_mass.rs:50-59,325-391",
+      "supports": "frozen_rates_amount_concentration_and_finite_net_conversion_funding",
+      "does_not_support": "gross_turnover_or_chemical_free_energy"
+    },
+    {
+      "id": "native_boundary",
+      "category": "NATIVE_BOUNDARY_AUDIT",
+      "source": "digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs:89-92,167-191,226-255,341-369",
+      "supports": "legacy_ports_and_integrator_limits_exclude_full_native_energy_claim"
+    },
+    {
+      "id": "reference_units",
+      "category": "UNIT_NORMALIZATION",
+      "groups": [
+        "lambda",
+        "K*Pref/(Fref*Lref)",
+        "K/theta",
+        "K/(epsilon_A*c0)"
+      ],
+      "supports": "dimensionless_identifiability_bookkeeping_only",
+      "independent_observation": false
+    },
+    {
+      "id": "battery_and_coupling",
+      "category": "EXPLICIT_NEW_DESIGN_HYPOTHESIS",
+      "items": [
+        "E_A=epsilon_A*A_W_reference_zero",
+        "E_c",
+        "signed_rate_bias",
+        "irreversible_chemical_sink",
+        "cold_entry_fixed_material",
+        "fixed_endpoint_drag_boundary"
+      ],
+      "native_recovered_biology": false
+    },
+    {
+      "id": "toyabe_2010",
+      "category": "EXTERNAL_INDEPENDENTLY_OBSERVED_METHOD_REFERENCE",
+      "title": "Nonequilibrium energetics of a single F1-ATPase molecule",
+      "url": "https://arxiv.org/abs/1002.1867",
+      "observed_method": "load_work_and_probe_heat_compared_with_chemical_free_energy",
+      "adoption": "REFERENCE_ADAPTABLE_MEASUREMENT_METHOD_ONLY",
+      "imported_values_or_code": false,
+      "native_mapping_available": false
+    },
+    {
+      "id": "toyabe_muneyuki_2015",
+      "category": "EXTERNAL_INDEPENDENTLY_OBSERVED_METHOD_REFERENCE",
+      "title": "Single molecule thermodynamics of ATP synthesis by F1-ATPase",
+      "url": "https://arxiv.org/abs/1210.4017",
+      "observed_method": "mechanical_work_under_imposed_rotations_for_reverse_transduction",
+      "adoption": "REFERENCE_ADAPTABLE_MEASUREMENT_METHOD_ONLY",
+      "regeneration_here_authorized": false,
+      "imported_values_or_code": false
+    },
+    {
+      "id": "native_parameter_data",
+      "category": "INDEPENDENT_DIGITAL_CELL_DATA_MISSING",
+      "K_lambda": "independent_signed_additional_tension_vs_geometry_active_fraction",
+      "theta": "independent_unclipped_net_J_with_known_Rplus_Rminus_and_nonzero_g",
+      "epsilon_A": "independent_fuel_free_energy_material_mapping_or_load_work_plus_dissipative_loss_measurement",
+      "current_values": {
+        "K": null,
+        "lambda": null,
+        "theta": null,
+        "epsilon_A": null
+      },
+      "A_species_and_force_length_mapping": "MISSING"
+    }
+  ],
+  "calibration_relation": {
+    "prior_protocol": "docs/dc-m4-work-port-specification.json",
+    "force_identification": "T_c*L0/P=K*epsilon-K*lambda*x",
+    "theta_net_flux_inversion": "y=(-J+sqrt(J^2+4*Rplus*Rminus))/(2*Rminus);theta=g/(2*log(y))",
+    "gross_turnover_inferred": false,
+    "epsilon_A_circular_inference_forbidden": true,
+    "joint_uncertainty_fixed_holdouts_and_tight_independent_budgets": true,
+    "R13_thirty_state_sign_fit_forbidden": true,
+    "model_closure_is_calibration": false
+  },
+  "verification_claim_limit": "arithmetic_and_source_checks_can_verify_bounded_architecture_only;no_calibrated_efficacy_full_mesh_solver_biology_or_runtime_claim"
+}
