@@ -1,0 +1,52 @@
+name: DC-M4 Calibration and Native Mechanics Qualification
+on:
+  push:
+    branches:
+      - codex/dc-m4-calibration-native-qualification
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - uses: dtolnay/rust-toolchain@1.89.0
+      - name: Compile test and measure the opt-in actual native port
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/native-evidence"
+          rustc --version --verbose > "$RUNNER_TEMP/native-evidence/rust-version.txt"
+          cargo --version >> "$RUNNER_TEMP/native-evidence/rust-version.txt"
+          python3 -m unittest discover -s scripts -p test_calibration_native_checks.py -v 2>&1 | tee "$RUNNER_TEMP/native-evidence/python-tests.log"
+          cd digital-protocell
+          cargo test --locked -p chemistry-core --test chemical_reference_port 2>&1 | tee "$RUNNER_TEMP/native-evidence/default-off-tests.log"
+          cargo test --locked -p chemistry-core --features chemical-reference-port --test chemical_reference_port 2>&1 | tee "$RUNNER_TEMP/native-evidence/native-tests.log"
+          cargo build --locked -p chemistry-core --features chemical-reference-port --example chemical_reference_port 2>&1 | tee "$RUNNER_TEMP/native-evidence/build.log"
+          cp target/debug/examples/chemical_reference_port "$RUNNER_TEMP/native-evidence/native-port"
+          "$RUNNER_TEMP/native-evidence/native-port" --dt 0.002 --horizon 2 > "$RUNNER_TEMP/native-evidence/native-observations.json"
+          cd ..
+          python3 scripts/qualify_calibration_native.py --input "$RUNNER_TEMP/native-evidence/native-observations.json" --binary "$RUNNER_TEMP/native-evidence/native-port" --output "$RUNNER_TEMP/native-evidence" | tee "$RUNNER_TEMP/native-evidence/qualification.log"
+          python3 scripts/verify_calibration_native_scope.py --require-review --output "$RUNNER_TEMP/native-evidence"
+          git diff --check bc44dbac88b0754ae53f030d0852f462468ce3af
+          test -z "$(git status --porcelain)"
+          python3 - "$RUNNER_TEMP/native-evidence" <<'PY'
+          import hashlib,json,pathlib,subprocess,sys
+          root=pathlib.Path('.');out=pathlib.Path(sys.argv[1])
+          files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          manifest={'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'files':{p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in files if p and (root/p).is_file()},'evidence':{str(p.relative_to(out)):hashlib.sha256(p.read_bytes()).hexdigest() for p in out.rglob('*') if p.is_file()}}
+          (out/'bindings.json').write_text(json.dumps(manifest,indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dc-m4-calibration-native-${{ github.sha }}
+          include-hidden-files: true
+          if-no-files-found: error
+          path: ${{ runner.temp }}/native-evidence/

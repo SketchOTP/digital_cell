@@ -240,3 +240,7 @@ pub use reactions::*;
 pub use reservoir::*;
 
 pub const SIM_VERSION: &str = env!("CARGO_PKG_VERSION");
+
+/// Opt-in fixed-volume reference chamber coupled to actual native mesh mechanics.
+#[cfg(feature = "chemical-reference-port")]
+pub mod chemical_reference_port;

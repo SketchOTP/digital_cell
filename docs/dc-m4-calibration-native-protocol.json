@@ -1,0 +1,108 @@
+{
+  "schema": "digital_cell_calibration_native_qualification_protocol_v1",
+  "entry_head": "bc44dbac88b0754ae53f030d0852f462468ce3af",
+  "scope": "designed-reference parameter recovery and actual bounded native mesh mechanics adapter; not whole organism or empirical four-parameter calibration",
+  "source_truth": "Avanzini2020 full closed chemical specification; coupling values remain reference design truth",
+  "training": {
+    "strain": [
+      -0.15,
+      -0.05,
+      0.1,
+      0.2
+    ],
+    "occupancy_offset": [
+      -0.04,
+      0.04
+    ],
+    "rows": 8
+  },
+  "heldout": {
+    "strain": [
+      -0.11,
+      0.04,
+      0.17
+    ],
+    "occupancy_offset": [
+      -0.025,
+      0.025
+    ],
+    "rows": 6
+  },
+  "feature": "chemical-reference-port",
+  "native_fixture": "intact all-mature six-edge V4 ring; all-edge receiver; selected-edge coupling; fixed-volume full-state source",
+  "native_runs": {
+    "dt": [
+      0.002,
+      0.001
+    ],
+    "horizon": 2,
+    "controls": [
+      "zero_lambda",
+      "zero_chemistry"
+    ],
+    "independent_reference_dt": 0.0001
+  },
+  "reference_truth": {
+    "K": 2,
+    "lambda": 0.75,
+    "theta": 1,
+    "epsilon_A": null,
+    "P": 0.2,
+    "a0": 0.1,
+    "k_s": 1,
+    "gamma": 1
+  },
+  "calibration_claim": "blind numerical recovery/heldout qualification of designed computational fixture only; no independent empirical parameter identification",
+  "thresholds": {
+    "max_parameter_recovery_error": 1e-09,
+    "max_force_holdout_error": 1e-09,
+    "max_logratio_holdout_error": 1e-09,
+    "max_native_force_gradient_error": 1e-07,
+    "max_material_moiety_drift": 1e-10,
+    "max_instantaneous_identity_error": 1e-10,
+    "max_native_signed_balance_defect": 0.01,
+    "max_native_endpoint_reference_error_coarse": 0.005,
+    "max_native_endpoint_reference_error_fine": 0.0025,
+    "min_receiver_loading": 1e-09,
+    "max_zero_control_receiver_loading": 1e-20,
+    "native_force_cap": 0.5
+  },
+  "full_original_four_parameter_calibration": "NOT_ADMISSIBLE_EXACT_FULL_DOMAIN",
+  "exact_state_closure_counterexample": {
+    "z1": [
+      0.1,
+      0.05,
+      0.05,
+      0.01,
+      1,
+      0.1
+    ],
+    "z2": [
+      0.1,
+      0.05,
+      0.05,
+      0.01,
+      0.55,
+      0.55
+    ],
+    "shared": [
+      "a",
+      "b",
+      "P",
+      "A_src",
+      "W_src",
+      "L"
+    ],
+    "L": 1,
+    "g": 0,
+    "excludes": "exact closed native-coarse kinetic/state-energy mapping over a domain including both states; not every locally bounded approximation"
+  },
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "whole_organism_native_integration_qualified": false,
+  "automatic_successor": false
+}

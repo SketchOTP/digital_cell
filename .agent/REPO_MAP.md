@@ -496,3 +496,17 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `scripts/verify_chemical_kinetic_reference.py` — scoped replay/review/source/history/record verification and artifact; workflow .github/workflows/dc-m4-chemical-kinetic-reference.yml.
 - `docs/dc-m4-chemical-kinetic-review.json` — distinct acceptance boundary and exact core hashes.
 - `/home/sketch/Projects/digital_cell-chemical-kinetic-evidence/` — local primary originals, trajectories and final publication/readback receipts; additive Atlas evidence/chemical-kinetic-reference/.
+
+
+## Interfaces and contracts
+
+- `docs/dc-m4-calibration-native-directive.md` — owner-authorized bounded calibration/native handoff from bc44dba.
+- `docs/dc-m4-calibration-native-protocol.json` — pre-execution sealed grids, native fixture and numerical budgets.
+- `docs/dc-m4-calibration-native-qualification.md` — unit dictionary, exact coarse-closure obstruction, architecture and acceptance limits.
+- `docs/dc-m4-calibration-native-measurements.json` — measured native fixture/recovery summary, not empirical target data.
+- `digital-protocell/crates/chemistry-core/src/chemical_reference_port.rs` — default-off full-state chamber and atomic adapter to actual native forces/vertex integration; focused tests and JSON example share its filename.
+- `scripts/calibration_native_checks.py` — blind recovery and separately written all-store/full-vector model and RK4 oracle; tests in scripts/test_calibration_native_checks.py.
+- `scripts/qualify_calibration_native.py` — raw native measurements independently reconstructed and checked against sealed budgets.
+- `scripts/verify_calibration_native_scope.py` — prior science/ledger/default freeze, review/record/measurement and bundled-source enforcement.
+- `docs/dc-m4-calibration-native-review.json` — distinct semantic review with exact core bindings.
+- `/home/sketch/Projects/digital_cell-calibration-native-evidence/` — actual compiled binary, raw campaigns, failed attempt, exact-head artifacts, custody and Notion readbacks.

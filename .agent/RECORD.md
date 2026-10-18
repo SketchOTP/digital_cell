@@ -2262,3 +2262,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: This reference provides independently specified chemical equations/rates/units/initial data, finite material conservation and thermodynamic rate-ratio constraints. It permits an actual computational source/receiver test, whereas open motors lacked finite source maps. Existing native stretch/spring mathematics is reused. ATP speciation data, F1/Toyabe and TACOS open Schlögl code remain narrower REFERENCE candidates. Full text stays external; no external implementation is executed. Measured new coupling coefficients are design inputs, not independently calibrated outputs.
 - Affected areas: New computational reference package and project records; Notion https://app.notion.com/p/3fd833cb27ff8116b36afb4e6451f014; local /home/sketch/Projects/digital_cell-chemical-kinetic-evidence/; additive Atlas evidence/chemical-kinetic-reference/. Twelve previous checkouts, PR44–52,1733 prior scoped files and dirty original source protected. Null production values and no automatic successor.
 - Supersedes record: none
+
+
+## DEC-DCM4-CALIBRATION-NATIVE-20261018
+
+- Date: 2026-10-18
+- Record or decision ID: DEC-DCM4-CALIBRATION-NATIVE-20261018
+- Status: ACTIVE
+- Decision or event: Owner authorizes calibration/native-integration qualification. Retain all six chemical species in a separate fixed-volume source and connect a new default-off port to actual native six-vertex mechanics. Qualify designed recovery and bounded native behavior separately from empirical four-parameter and full-organism acceptance.
+- Rationale: Exact identical-coarse-state/different-rate/free-energy witnesses prevent an exact broad native cubic/constant-epsilon_A mapping. The limited new native source/receiver adapter is authorized by the current request; it does not replace established native reaction/transport/growth/topology owners. All six native stretch stores and vertex drag belong to joint accounting, with atomic failure and trusted-config restart checks.
+- Affected areas: New optional port/tests/example, minimal feature/export additions, sealed protocol and independent numerical checker/report/review/workflow; Notion https://app.notion.com/p/3fd833cb27ff810dafd6e2c8053fb1a0; local /home/sketch/Projects/digital_cell-calibration-native-evidence/; additive Atlas evidence/calibration-native-qualification/. Thirteen prior checkouts, PR44–53,2208 prior archive files and original dirty source protected. Four production values remain null.
+- Supersedes record: none
