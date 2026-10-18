@@ -482,3 +482,17 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `docs/dc-m4-reference-mapping-review.json` — distinct hash-bound semantic/static acceptance boundary.
 - `.github/workflows/dc-m4-reference-mapping.yml` — exact-head offline verification package.
 - `/home/sketch/Projects/digital_cell-reference-mapping-evidence/` — local publication/readback/custody evidence; additive Atlas evidence/calibration-reference-mapping/.
+
+
+## Interfaces and contracts
+
+- `docs/dc-m4-chemical-kinetic-directive.md` — owner-authorized computational build/measurement handoff from524fb8c.
+- `docs/dc-m4-chemical-kinetic-reference.md` — independent source choice, operational/thermal mappings, new extension and observed limits.
+- `docs/dc-m4-chemical-kinetic-sources.json` — original primary hashes/identity and limited computational-reference admission; full text external only.
+- `docs/dc-m4-chemical-kinetic-protocol.json` — sealed six-case/two-step design and numerical acceptance budgets.
+- `docs/dc-m4-chemical-kinetic-measurements.json` — observed simulated summary; not empirical or target calibration rows.
+- `scripts/chemical_kinetic_reference.py` — published source equations plus explicitly new reciprocal scalar extension; tests in scripts/test_chemical_kinetic_reference.py.
+- `scripts/measure_chemical_kinetic_reference.py` — sealed execution and independently written midpoint/analytic oracles.
+- `scripts/verify_chemical_kinetic_reference.py` — scoped replay/review/source/history/record verification and artifact; workflow .github/workflows/dc-m4-chemical-kinetic-reference.yml.
+- `docs/dc-m4-chemical-kinetic-review.json` — distinct acceptance boundary and exact core hashes.
+- `/home/sketch/Projects/digital_cell-chemical-kinetic-evidence/` — local primary originals, trajectories and final publication/readback receipts; additive Atlas evidence/chemical-kinetic-reference/.

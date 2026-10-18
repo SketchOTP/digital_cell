@@ -2251,3 +2251,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Both work ports must map, not just force. Exact unit covariance supplies a complete conditional dictionary but cannot determine dimensionless groups. Binary-mixture variance and finite-fuel depletion prohibit the proposed naive identifications. An independently characterized fixture/source could change the result; its designed equation alone is not external evidence.
 - Affected areas: New reference package and records; Notion https://app.notion.com/p/3fd833cb27ff814da4b8d2a7e51e43ed; local /home/sketch/Projects/digital_cell-reference-mapping-evidence/; additive Atlas evidence/calibration-reference-mapping/. Eleven prior checkouts, PR44–51, 1347 archive files and original dirty source protected. Four values null, no source admission or automatic successor.
 - Supersedes record: none
+
+
+## DEC-DCM4-CHEMICAL-KINETIC-20261018
+
+- Date: 2026-10-18
+- Record or decision ID: DEC-DCM4-CHEMICAL-KINETIC-20261018
+- Status: ACTIVE
+- Decision or event: Owner selects computational reference first. Reproduce independently published Avanzini/Falasco/Esposito2020 full closed chemistry and build/measure a new explicitly declared reciprocal mechanical extension. Retain complete six-species source ownership, fixed prepared anchor and separate material/free-energy/dissipation ledgers. Preserve every earlier artifact; do not silently replace the old constant battery/native cubic law or identify biological parameters.
+- Rationale: This reference provides independently specified chemical equations/rates/units/initial data, finite material conservation and thermodynamic rate-ratio constraints. It permits an actual computational source/receiver test, whereas open motors lacked finite source maps. Existing native stretch/spring mathematics is reused. ATP speciation data, F1/Toyabe and TACOS open Schlögl code remain narrower REFERENCE candidates. Full text stays external; no external implementation is executed. Measured new coupling coefficients are design inputs, not independently calibrated outputs.
+- Affected areas: New computational reference package and project records; Notion https://app.notion.com/p/3fd833cb27ff8116b36afb4e6451f014; local /home/sketch/Projects/digital_cell-chemical-kinetic-evidence/; additive Atlas evidence/chemical-kinetic-reference/. Twelve previous checkouts, PR44–52,1733 prior scoped files and dirty original source protected. Null production values and no automatic successor.
+- Supersedes record: none

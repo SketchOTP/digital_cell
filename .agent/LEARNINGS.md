@@ -1536,3 +1536,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Conditional exact mappings and limited primary-source semantics; no empirical calibration or general impossibility claim.
 - Supersedes learning: none
+
+
+## L-DCM4-CHEMICAL-KINETIC-20261018
+
+- Learning ID: L-DCM4-CHEMICAL-KINETIC-20261018
+- Date: 2026-10-18
+- Fact or lesson: Independently specified closed chemical equations and computational fixture values support a reproducible reference build without empirical ATP identification. Full-state chemical free energy and reaction affinities can power an explicitly new reciprocal mechanical extension; substrate-equivalent conservation does not imply constant-energy fuel or closed two-variable kinetics. Free-energy dissipation is distinct from chemical heat. Conditional thermal kinetic scales require explicit energy/amount units and individual reaction owners.
+- Evidence location: docs/dc-m4-chemical-kinetic-reference.md; docs/dc-m4-chemical-kinetic-sources.json; docs/dc-m4-chemical-kinetic-protocol.json; docs/dc-m4-chemical-kinetic-measurements.json; scripts/chemical_kinetic_reference.py; scripts/measure_chemical_kinetic_reference.py.
+- Confidence: VERIFIED
+- Scope: Published closed computational chemical reference and new fixed-volume scalar reciprocal extension; no physical calibration or native kinetics/integration claim.
+- Supersedes learning: none

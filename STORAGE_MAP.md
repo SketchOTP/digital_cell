@@ -159,3 +159,8 @@ These mathematical architecture and anchor receipts do not qualify production im
 ## Calibration reference/mapping evidence — 2026-10-17
 
 Local originals: `/home/sketch/Projects/digital_cell-reference-mapping-evidence/`. Additive Atlas group: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/calibration-reference-mapping/`, after expected UUID/FSROOT verification. Preserve all 1347 entry scoped archive files, prior original acquisitions and dirty original source. Exact-head hosted artifact, hashes, preservation and Notion readbacks are external receipts after commit creation; no archive success is inferred merely from this path declaration.
+
+
+## Chemical/kinetic computational reference evidence — 2026-10-18
+
+Local originals: `/home/sketch/Projects/digital_cell-chemical-kinetic-evidence/`. Additive Atlas group `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/chemical-kinetic-reference/` requires expected UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and/RPI5Pool identity. Original primary full text retained externally without Git redistribution; own simulated trajectories, sealed protocol, exact-head hosted artifact and final Notion/preservation receipts accompany the reference. Preserve1733 entry scoped archive files, prior local originals and dirty original source. Final native write/readback receipts follow externally after commit creation.

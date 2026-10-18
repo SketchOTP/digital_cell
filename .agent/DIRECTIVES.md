@@ -1625,3 +1625,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261018-dcm4-chemical-kinetic-reference
+
+- Issued: 2026-10-18T08:21:57-04:00
+- Issuer: User
+- External directive: DC-M4-CHEMICAL-KINETIC-REFERENCE-001
+- Objective: Research independent chemical-source and kinetic evidence, then build and measure a computational reference as explicitly selected by the owner.
+- Scope: Named published closed elementary CRN reproduction; finite-source and conditional kinetic/variable/units mapping; new explicitly declared reciprocal mechanical extension; sealed controls, actual simulated measurements and independent verification; additive records/custody/Notion from524fb8c85b35923fd4fd8e0d1b91abbff629f460.
+- Exclusions: Physical apparatus/biological/native campaign, production parameter fitting or assignment, prior artifact/source mutation, hidden clipping/projection/free-energy-to-heat relabeling, external code execution, unauthorized full-text redistribution, PR44–52 modification, merge/deploy and automatic successor.
+- Acceptance: Primary source/units/fixture identity, full material and thermodynamic source ownership, sealed measured source/receiver and negative/rescaling/equilibrium controls, independent analytic and numerical checks, honest design-versus-calibration limits, distinct review, frozen prior work, exact-head hosted/custody artifact and Notion readback.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
