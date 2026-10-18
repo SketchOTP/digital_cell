@@ -1,0 +1,94 @@
+{
+  "schema": "digital_cell_chemical_kinetic_reference_independent_review_v1",
+  "decision": "ACCEPTED_BUILT_MEASURED_COMPUTATIONAL_REFERENCE_ONLY",
+  "entry_head": "524fb8c85b35923fd4fd8e0d1b91abbff629f460",
+  "review_date": "2026-10-18",
+  "reviewer": "distinct governance_audit agent; no program, test, measurement harness, report, protocol or verifier implementation authorship",
+  "method": "Independent primary-source inspection and analytic derivation, complete static reading of the ten final bound files, and semantic inspection of the parent-produced measured summary and new records. Reviewer ran no workloads, tests, builds, assays, downloads, source programs or process monitoring. Hashing files and writing this review are bookkeeping only.",
+  "reviewed_files": {
+    "docs/dc-m4-chemical-kinetic-directive.md": "f32bd00dbb56ac35166ec06a9f83a9bcde20fb6029301e6867607c0e3700f1de",
+    "docs/dc-m4-chemical-kinetic-reference.md": "310d8fecf7d6436aa2b6d910e836034721bec78fc1a82c7cd7c1438c8f51fe99",
+    "docs/dc-m4-chemical-kinetic-sources.json": "932755abb3d255df9d0b5022907dc91eb0c939f5c5118e49abefd17010bd599e",
+    "docs/dc-m4-chemical-kinetic-protocol.json": "d82cbabff2dd56e1bb4e39aff0099cfc3b31de3d63c65f516dd2a70ac5e2649c",
+    "docs/dc-m4-chemical-kinetic-measurements.json": "0b445c935437222d6d5f47de04a00e719b26a6664cf57f2ac51310cbd7bb319c",
+    "scripts/chemical_kinetic_reference.py": "dad9b7e59f8590705b56846c22ebf051f70c59129f088624af8edb212b025c39",
+    "scripts/test_chemical_kinetic_reference.py": "1a8cd10ac41e536b9ad0572472703a51156824b708daca6948b1a1e925282a99",
+    "scripts/measure_chemical_kinetic_reference.py": "4023682ecaf9df9829c1c42bf44d7068dc598e071c212dbe44cfd935aa59486e",
+    "scripts/verify_chemical_kinetic_reference.py": "0f67cb40373895effc57245e4ecd1245330156332cac4cb732957eeb803efff7",
+    ".github/workflows/dc-m4-chemical-kinetic-reference.yml": "7a67aab3a612304654e10b6cac90d0fec5ba54d7885d6a3d2a0bcd01f48548b9"
+  },
+  "preflight": {
+    "historical_full_coverage_retained": true,
+    "refresh": "Read all .agent changes from 004d7f6c775b5adf2a092cde33d42c349b8f4cee to entry, and all new current/profile/directive/outcome/learning/record/repo-map/storage changes. Prior governing AGENTS, COMMANDMENTS, authority-governance and complete historical ledger coverage retained.",
+    "authority_scope": "Owner explicitly selected computational reference first. Bridge dispatch/acceptance is not inferred."
+  },
+  "accepted_criteria": [
+    "Avanzini/Falasco/Esposito2020 equations5\u20137 and Figure1 independently establish the full four-channel six-species chemical specification, published initial state, unit directional rates and normalized time/concentration conventions. Pr disambiguates publication product from operational total enzyme P.",
+    "Own source-equation implementation reproduces that elementary network; no quasi-steady elimination, acquired executable or unsupported full-text redistribution is used. Source admission is explicitly limited to a published computational specification, not empirical target calibration data.",
+    "Both enzyme LE=E+ES+ESS and substrate LS=S+Sm+ES+2ESS+2Pr are conserved. A_src and W_src are substrate equivalents with reversible net conversion, not constant-energy fuel packets or a closed two-variable kinetic source.",
+    "The ideal-mixture chemical free energy is consistent with unit rate ratios and the chosen standard-potential gauge. Isolated chemical availability is measured relative to its constrained equilibrium, not absolute Gchem or an invented epsilon_A times remaining substrate.",
+    "Fixed normalized chemical volume and the energy/concentration normalization are explicit. The amount/concentration/molecular-packet charts give conditional thermal conjugate scales without assigning target species, SI constants, packet size or production theta.",
+    "The new operational polarity chart a=ES+ESS,b=E,P=LE gives nu_a=(0,1,0,-1) and da/dt=j2-j4. It does not identify the native cubic/autocatalytic kinetics.",
+    "A sealed immutable prepared a0 centers the new coupling store. L starts at L0 with zero Ec and Us while finite chemical preparation remains owned. a0 is not reset during chemistry; the reference is a distinct declared extension of the published chemistry and preserves prior accepted source policies.",
+    "All changing-a reaction channels use the correct opposite exponential factors. With one theta, log directional-current ratio equals the negative full chemical-plus-coupling reaction gradient. Reciprocal mechanical gradient flow yields d(Gchem+Ec+Us)/dt=-Dchem-Ddrag.",
+    "Dissipation and available free energy remain distinct from calorimetric heat. No free-energy residual, negative source decrement or numerical defect is silently credited to fuel, elastic storage or heat.",
+    "RK4 stages/candidates reject nonpositive species, invalid geometry, nonfinite rates and excessive free-energy increase through bounded halvings. Inputs/configuration are not mutated; unsuccessful simulations publish no completed result. Accepted dissipation quadratures retain an explicit unrepaired signed balance defect.",
+    "The presealed protocol fixes six cases at two steps, numerical budgets and design values. Initial derivative, conserved moieties and equilibrium have separate analytic/rational oracles; a separately written midpoint derivative/integrator supplies an endpoint comparison.",
+    "The parent-produced measured summary records contraction and positive receiver loading in the coupled reference, zero loading in causal controls, time-rescaling agreement, small material and instantaneous-gradient residuals, and nonzero integration defects. These observations support the bounded computational claim only.",
+    "Verifier and exact-head workflow bind the ten core files and immutable protocol hash, replay the sealed measurements, run focused tests, enforce cumulative diff/source/scope freezes and append-only history, and manifest raw measured outputs separately from repository bindings. Parent execution and external readbacks remain separate evidence."
+  ],
+  "resolved_findings": [
+    "Measurement harness initially used the nonexistent maximum_conservation_error acceptance key. It now uses the already sealed max_moiety_drift key; numerical budget and protocol hash are unchanged. The failed first attempt is recorded rather than hidden.",
+    "Fixed chemical V is explicitly separated from mechanical L, and chemical preparation is explicitly separated from zero elastic preload.",
+    "Observed finite-time source distance is reported without claiming completed relaxation or using the bare-source equilibrium as coupled equilibrium."
+  ],
+  "observed_summary_inspection": {
+    "origin": "Parent-produced Git summary read statically; reviewer did not rerun measurements or claim independent execution.",
+    "protocol_sha256": "d82cbabff2dd56e1bb4e39aff0099cfc3b31de3d63c65f516dd2a70ac5e2649c",
+    "case_count": 6,
+    "coupled_fine_final_length": 0.976380491162728,
+    "coupled_fine_receiver_peak": 0.0003034324611710708,
+    "coupled_fine_maximum_unrepaired_balance_defect": 1.753549221371895e-08,
+    "coupled_fine_maximum_material_drift": 3.3306690738754696e-15,
+    "coupled_independent_midpoint_endpoint_difference": 8.925526984171483e-12,
+    "interpretation": "Numerical evidence agrees with the prospective reaction-sign and free-energy identities; it is not an empirical constant or rigorous interval certificate."
+  },
+  "independent_primary_sources": [
+    {
+      "url": "https://arxiv.org/pdf/2008.10495",
+      "role": "Verified full reaction ordering, stoichiometry, conserved moieties, Figure1 rates/initial state and normalized units."
+    },
+    {
+      "url": "https://arxiv.org/html/1602.07257",
+      "role": "Independent chemical-potential, affinity, local-detailed-balance and enthalpy/entropy framework."
+    },
+    {
+      "url": "https://arxiv.org/html/1307.3998v4",
+      "role": "Paired chemical-state transition and load-sharing comparison; no imported ATP or native-polarity identity."
+    },
+    {
+      "url": "https://github.com/Shiling42/TACOS",
+      "role": "Researched published open-CRN comparator; not executed or adopted as finite source."
+    }
+  ],
+  "limitations": [
+    "Acceptance is for a reproduced independently specified chemical reference and a newly designed, computationally measured source/receiver extension. It does not identify physical ATP/A/W, native species or all four target parameters.",
+    "Coupling coefficients, mechanical reference values and occupancy anchor are declared design assumptions. Measuring this newly designed extension does not independently calibrate those assumptions or establish biological efficacy.",
+    "The chemical compartment has fixed volume while the mechanical length changes. Native edge dilution, full geometry/material dependence, transport, synthesis, topology, fission, force caps and total legacy energetics are not reproduced or qualified.",
+    "Operational enzyme occupancy is not substrate mass or an autonomous two-state chemical coordinate. Full six-species state and channel ownership remain necessary; no coarse A/W constant-energy closure follows.",
+    "The deterministic reference theta is a normalized chemical conjugate scale. A finite-copy stochastic mapping requires its own packet/combinatorial conventions and matched state-to-state rates; the native cubic law remains unidentified.",
+    "The RK4 balance defect is measured and bounded by the sealed numerical protocol, not exactly zero. Endpoint refinement and midpoint agreement at this fixture and horizon do not bound every continuum trajectory or parameter domain.",
+    "The bare-source equilibrium oracle does not certify the coupled equilibrium. The source has not fully relaxed at time60; the observed finite-time distance is retained.",
+    "Gibbs/free-energy dissipation is not a first-law calorimetric measurement. Enthalpic/internal-energy and entropy owners remain necessary for chemical heat claims.",
+    "Local protocol hashing and selection lineage are not externally timestamped preregistration. Original full text is held externally; CI binds documentary receipts rather than the full originals.",
+    "Reviewer read the complete measured summary and inspected the generator, but did not independently replay every raw trajectory. Parent owns full replay, exact-head hosted CI, downloaded artifact verification, old-work preservation, external custody and Notion readbacks; no future pass is asserted here.",
+    "The bounded computational-first milestone may complete without closing the separate full target-calibration or native-integration objective. Prior negative admissions remain historically valid and no automatic successor is authorized."
+  ],
+  "acceptance_blockers": [],
+  "full_target_calibration_established": false,
+  "production_parameters_identified": false,
+  "physical_apparatus_built": false,
+  "native_integration_qualified": false,
+  "chemical_heat_measured": false,
+  "automatic_successor": false
+}

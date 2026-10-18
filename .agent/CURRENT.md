@@ -3,18 +3,29 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-17T22:14:27-04:00`
+- Last updated: `2026-10-18T08:21:57-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261017-dcm4-calibration-reference-mapping`
-- External directive ID: `DC-M4-CALIBRATION-REFERENCE-MAPPING-001`
-- Objective: Establish justified calibration reference roles and variable/unit mappings, independently verify and preserve all work with current records.
-- Current status: `BLOCKED`
-- Acceptance: `PARTIAL — exact conditional reference/unit/work contracts established; full independent calibration remains unestablished`
-- Current phase: `Selected experimental work/affinity comparator and proposed fixed-material two-port mechanical reference; no full source/kinetic map or observations`
-- Expected or actual touched areas: `New reference/mapping report/helper/tests/checker/workflow, additive custody and project/Notion records`
-- Immediate next action: `Obtain independently characterized two-port mechanical and finite-source/kinetic evidence, or an explicit constitutive-strategy decision; no automatic successor`
+- Local directive ID: `D-20261018-dcm4-chemical-kinetic-reference`
+- External directive ID: `DC-M4-CHEMICAL-KINETIC-REFERENCE-001`
+- Objective: Research independent chemical/kinetic evidence, then build and measure a computational reference; preserve all work and current project/Notion records.
+- Current status: `COMPLETE`
+- Acceptance: `COMPLETE — computational reference build/measurement only; full target calibration and native integration remain unqualified`
+- Current phase: `Published closed chemical model reproduced; new reciprocal source/receiver extension built and measured under a sealed six-case protocol`
+- Expected or actual touched areas: `New chemical/kinetic source/protocol/report/results/program/tests/checker/workflow/review; additive records and evidence`
+- Immediate next action: `Awaiting reset after bounded computational acceptance and final external readbacks; no automatic successor. Target physical identity/calibration and production integration require separate evidence.`
+
+### Independent chemical/kinetic computational reference
+
+- **Authority:** owner requests online evidence then build/measure and explicitly selects computational reference first. Entry524fb8c85b35923fd4fd8e0d1b91abbff629f460; isolated checkout `/home/sketch/Projects/digital_cell-chemical-kinetic-reference`. No physical apparatus claim.
+- **Independent source:** Avanzini/Falasco/Esposito2020 full six-species/four-reversible-channel closed enzyme network, equations5–7/Figure1, published unit rates and initial state. Original PDF and Rao/Esposito2016 theory retained externally with hashes; own equation implementation only, no acquired code execution/full-text Git redistribution.
+- **Positive mappings:** finite full-state ideal chemical free energy/affinities and conserved substrate-equivalent A_src+W_src; operational bound-enzyme a/b/P chart with da/dt=j2−j4. Reference theta1 is an explicit energy/amount normalization; thermal target map is conditional on independently established energy/amount/packet scales. This is not native cubic-law or ATP identification.
+- **Built extension:** sealed prepared a0 and fixed-volume chemistry, reciprocal shifted spring/native scalar receiver, reaction-specific thermodynamic bias and drag. Starts with zero elastic preload and owned nonzero chemical preparation. New explicit computational reference variant; prior v2 battery/source/native science unchanged.
+- **Observed:** six cases/two steps pass unchanged budgets;11 focused tests. Coupled length1→.976380491163, minimum.975365371480; receiver peak.000303432461171 normalized energy. No-coupling/no-chemistry/equilibrium controls stay unloaded. Independent source derivative/equilibrium and separately written midpoint solver agree; material drift3.34e−15, maximum coupled fine-step unrepaired balance defect1.76e−8. No free-energy loss is called chemical heat.
+- **Boundary:** computational build measured; physical fixture remains unbuilt. Full target K/lambda/theta/epsilon_A remain null, native kinetics/material/geometry mapping and production integration unqualified; R13 uncorrected. No automatic successor.
+- **Preservation:**12 earlier checkouts, PR44–52,1733 prior Atlas files and dirty original source protected; all prior science/contracts/reference evidence frozen. Local `/home/sketch/Projects/digital_cell-chemical-kinetic-evidence/`; additive Atlas `evidence/chemical-kinetic-reference/`; Notion https://app.notion.com/p/3fd833cb27ff8116b36afb4e6451f014; final exact-head/CI/Notion/custody readbacks retained externally.
+- **Review:** distinct semantic/static reviewer; parent owns all executions. Bridge tools unavailable, complete local handoff saved without dispatch/acceptance claim.
 
 ### Calibration reference and unit/work mappings
 

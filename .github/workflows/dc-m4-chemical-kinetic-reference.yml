@@ -1,0 +1,32 @@
+name: DC-M4 Independent Chemical Kinetic Reference Build and Measurement
+on:
+  push:
+    branches:
+      - codex/dc-m4-chemical-kinetic-reference
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-measure-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Build measure and independently check sealed reference
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          python3 scripts/verify_chemical_kinetic_reference.py --repo . --output "$RUNNER_TEMP/chemical-kinetic-evidence"
+          git diff --check 524fb8c85b35923fd4fd8e0d1b91abbff629f460
+          test -z "$(git status --porcelain)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dc-m4-chemical-kinetic-reference-${{ github.sha }}
+          include-hidden-files: true
+          if-no-files-found: error
+          path: ${{ runner.temp }}/chemical-kinetic-evidence/

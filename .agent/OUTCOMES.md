@@ -3014,3 +3014,25 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: Algebraic realization is not independent calibration. Fixture is unbuilt/unmeasured at fixed P,L0 only. Source identity, amount/SI scales, finite-source affinity, theta and uncertainty/holdout evidence remain missing. No global impossibility or production correction follows.
 - Blockers: No independently established complete reference or admitted target-specific mechanical/source/kinetic observations. No automatic successor.
 - Follow-up directive: none
+
+
+## D-20261018-dcm4-chemical-kinetic-reference - COMPLETE
+
+- Outcome ID: O-DCM4-CHEMICAL-KINETIC-20261018
+- Supersedes outcome: none
+- Closed: 2026-10-18T08:21:57-04:00
+- Acceptance: MET
+- Summary: Built and measured the owner-selected computational reference only. Independently published closed six-species chemistry supplies actual source equations, rates/units/initial data and thermodynamic affinity evidence. A separately declared new reciprocal mechanical extension loads its receiver from owned finite chemical preparation. Six presealed cases/two step sizes pass; full target physical/calibration/native mapping is not established and four production parameters stay null.
+- Changed areas: New source/protocol/report/measured summary/program/tests/measurement harness/verifier/workflow/review, additive current/profile/storage/history and local/Atlas/Notion records.
+- Validation:
+  - Primary equations5–7/Figure1 unit-rate/initial-state facts, local full-text hashes and source identity - PASSED
+  - Parent11 focused tests, six computational cases at two steps, independent derivative/root and separate midpoint solver - PASSED
+  - Initial measurement harness budget-field lookup before result publication; corrected without protocol/budget changes - FAILED
+  - Corrected harness and unchanged sealed numerical budgets; actual free-energy/material/receiver controls - PASSED
+  - Distinct ten-file semantic/static review and full scoped replay with99 frozen inputs /119 bundled files - PASSED
+  - Whole native or physical/ATP mapping, production parameters/integration and calorimetric heat - NOT RUN
+  - Historical global governance drift retained without clean-global claim - FAILED
+  - Final exact-head hosted artifact, preservation and Notion/custody readbacks; external receipts follow - NOT RUN
+- Remaining risks: New designed coupling is not an independently observed biological law. Chemical V fixed while mechanical L changes, different from native dilution. Full chemical state is needed; coarse A/W is not constant-energy source closure. Reference thermal units do not identify target theta. Numeric refinement/independent solver observations are not rigorous interval guarantees. Physical fixture and complete native calibration remain unqualified.
+- Blockers: None to the bounded computational build/measurement deliverable after scoped verification. Full target physical identity/calibration remains unresolved; bridge tools unavailable and historical governance drift preserved.
+- Follow-up directive: none

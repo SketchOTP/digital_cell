@@ -1,0 +1,42 @@
+{
+  "documents": [
+    {
+      "name": "avanzini-2020.pdf",
+      "url": "https://arxiv.org/pdf/2008.10495",
+      "final_url": "https://arxiv.org/pdf/2008.10495",
+      "bytes": 1967105,
+      "sha256": "fadc9f37a18565c244e6b73853914b04a008fe8a0ce440d52adf8f5afc7b009d",
+      "content_type": "application/pdf",
+      "acquired_utc": "2026-10-18T12:13:19.714062+00:00"
+    },
+    {
+      "name": "rao-esposito-2016.html",
+      "url": "https://arxiv.org/html/1602.07257v2",
+      "final_url": "https://arxiv.org/html/1602.07257v2",
+      "bytes": 546881,
+      "sha256": "6664420e9c4f53ec56945e2a23cd140a8231e4753b3d8bf13694a487e7916a9b",
+      "content_type": "text/html; charset=utf-8",
+      "acquired_utc": "2026-10-18T12:13:19.990808+00:00"
+    }
+  ],
+  "external_code_executed": false,
+  "Git_redistribution": "No original fulltext imported; model facts transcribed with attribution",
+  "admitted_role": "PUBLISHED_COMPUTATIONAL_CHEMICAL_REFERENCE_SPECIFICATION_ONLY",
+  "target_calibration_data_admitted": false,
+  "original_fulltext": "local/Atlas custody only; no fulltext imported in Git",
+  "license_note": "arXiv nonexclusive distribution; no assumed CC-BY permission",
+  "references": [
+    {
+      "id": "Avanzini2020",
+      "url": "https://arxiv.org/pdf/2008.10495",
+      "doi": "10.1088/1367-2630/abafea",
+      "evidence": "eq5-7 and Figure1 caption verified; independent full elementary chemical model fixture"
+    },
+    {
+      "id": "RaoEsposito2016",
+      "url": "https://arxiv.org/html/1602.07257v2",
+      "doi": "10.1103/PhysRevX.6.041064",
+      "evidence": "chemical potentials/affinities/local detailed balance/free-energy balance; enthalpy and entropy required for heat"
+    }
+  ]
+}

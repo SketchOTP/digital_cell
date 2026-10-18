@@ -1,0 +1,132 @@
+{
+  "schema": "digital_cell_chemical_kinetic_measurement_protocol_v1",
+  "entry_head": "524fb8c85b35923fd4fd8e0d1b91abbff629f460",
+  "sealed_before_reference_execution": true,
+  "reference": "Avanzini2020_full_elementary_eq5_7_Fig1",
+  "normalized_volume": 1,
+  "theta": 1,
+  "species_order": [
+    "E",
+    "ES",
+    "ESS",
+    "Pr",
+    "S",
+    "Sm"
+  ],
+  "published_initial": [
+    0.1,
+    0.05,
+    0.05,
+    0.01,
+    1,
+    0.1
+  ],
+  "published_directional_rate_constants": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+  ],
+  "time_unit": "1/k_plus_1",
+  "concentration_unit": "k_plus_1/k_plus_2",
+  "source_scope": "independent published computational specification; no empirical ATP constants",
+  "steps": [
+    0.02,
+    0.01
+  ],
+  "horizon": 60,
+  "sample_every": 10,
+  "cases": [
+    {
+      "id": "published_unloaded",
+      "K": 0,
+      "lam": 0,
+      "k_s": 1,
+      "L0": 1,
+      "gamma": 1,
+      "phi": 0.7,
+      "rate_scale": 1
+    },
+    {
+      "id": "coupled_reference",
+      "K": 2,
+      "lam": 0.75,
+      "k_s": 1,
+      "L0": 1,
+      "gamma": 1,
+      "phi": 0.7,
+      "rate_scale": 1
+    },
+    {
+      "id": "zero_lambda",
+      "K": 2,
+      "lam": 0,
+      "k_s": 1,
+      "L0": 1,
+      "gamma": 1,
+      "phi": 0.7,
+      "rate_scale": 1
+    },
+    {
+      "id": "zero_chemistry",
+      "K": 2,
+      "lam": 0.75,
+      "k_s": 1,
+      "L0": 1,
+      "gamma": 1,
+      "phi": 0.7,
+      "rate_scale": 0
+    },
+    {
+      "id": "time_rescale",
+      "K": 2,
+      "lam": 0.75,
+      "k_s": 1,
+      "L0": 1,
+      "gamma": 0.5,
+      "phi": 0.7,
+      "rate_scale": 2,
+      "horizon": 30,
+      "steps": [
+        0.01,
+        0.005
+      ]
+    },
+    {
+      "id": "equilibrium_unloaded",
+      "K": 0,
+      "lam": 0,
+      "k_s": 1,
+      "L0": 1,
+      "gamma": 1,
+      "phi": 0.7,
+      "rate_scale": 1,
+      "initial": "independent_equilibrium_oracle"
+    }
+  ],
+  "acceptance": {
+    "max_moiety_drift": 1e-10,
+    "max_total_G_increase_per_step": 1e-12,
+    "max_abs_total_balance_defect": 1e-05,
+    "max_step_refinement_endpoint_difference": 1e-06,
+    "max_independent_solver_endpoint_difference": 1e-06,
+    "max_instantaneous_thermodynamic_identity_residual": 1e-10,
+    "min_coupled_receiver_peak_energy": 1e-08,
+    "max_zero_lambda_and_zero_chemistry_receiver_energy": 1e-20,
+    "max_equilibrium_state_drift": 1e-10,
+    "max_time_rescale_endpoint_difference": 1e-09
+  },
+  "measurements": "new simulated reference responses; not independent target calibration observations",
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "physical_apparatus_built": false,
+  "automatic_successor": false
+}

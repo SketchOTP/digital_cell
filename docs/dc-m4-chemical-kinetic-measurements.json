@@ -1,0 +1,325 @@
+{
+  "classification": "BUILT_AND_MEASURED_COMPUTATIONAL_CHEMICAL_MECHANICAL_REFERENCE_ONLY",
+  "protocol_sha256": "d82cbabff2dd56e1bb4e39aff0099cfc3b31de3d63c65f516dd2a70ac5e2649c",
+  "source_oracles": {
+    "initial_currents": [
+      0.9,
+      -0.04,
+      -0.045,
+      0.049
+    ],
+    "initial_derivative": [
+      0.089,
+      0.005,
+      -0.094,
+      0.049,
+      -0.9,
+      0.985
+    ],
+    "equilibrium": [
+      0.12601151437094507,
+      0.052290064762440414,
+      0.02169842086661454,
+      0.17219395366315526,
+      0.41496259308900996,
+      0.41496259308900996
+    ],
+    "positive_root_enclosure": [
+      "263013790100773011293835570431/633825300114114700748351602688",
+      "526027580201546022587671140863/1267650600228229401496703205376"
+    ],
+    "method": "exact Fraction initial oracle and monotone positive-root bracket independent of ODE"
+  },
+  "independent_solver": {
+    "published_unloaded": {
+      "method": "independent explicit midpoint; independently written derivative",
+      "step": 0.001,
+      "endpoint": [
+        0.12601305284352388,
+        0.05230729781515873,
+        0.021679649341320394,
+        0.17162055426013487,
+        0.4155745463800015,
+        0.415517748601932,
+        1.0
+      ],
+      "max_endpoint_difference": 7.54224460663977e-12
+    },
+    "coupled_reference": {
+      "method": "independent explicit midpoint; independently written derivative",
+      "step": 0.001,
+      "endpoint": [
+        0.12204478854306507,
+        0.05516322393518431,
+        0.022791987521749393,
+        0.17055650995856425,
+        0.41409476070466916,
+        0.41404502039951147,
+        0.976380491162705
+      ],
+      "max_endpoint_difference": 8.925526984171483e-12
+    }
+  },
+  "cases": {
+    "published_unloaded": {
+      "refinement_endpoint_difference": 1.454392162258955e-13,
+      "summary": {
+        "accepted_steps": 6001,
+        "rejected_attempts": 0,
+        "time": 60.0,
+        "G_initial": -2.1161419478140893,
+        "G_final": -2.733443712308301,
+        "integrated_Dchem": 0.6173017817793721,
+        "integrated_Dmech": 0.0,
+        "final_energy_dissipation_defect": 1.7285160303082137e-08,
+        "maximum_absolute_energy_dissipation_defect": 1.728516896282173e-08,
+        "maximum_gradient_identity_error": 4.440892098500626e-16,
+        "maximum_G_increase": 0.0,
+        "peak_Us": 0.0,
+        "maximum_conservation_error": 2.886579864025407e-15,
+        "minimum_species": 0.01,
+        "length_range": [
+          1,
+          1
+        ],
+        "Ec_final": 0.0,
+        "Us_final": 0.0,
+        "source_equilibrium_distance": 0.000611953283449318,
+        "remaining_substrate_equivalents": 0.9267588914655982,
+        "product_equivalents": 0.34324110853440326,
+        "substrate_total": 1.2700000000000002,
+        "equilibrium_distance_scope": "bare_source_oracle_not_general_coupled_equilibrium",
+        "energy_defect_repaired": false,
+        "free_energy_drop_called_heat": false
+      },
+      "final_state": [
+        0.12601305284350384,
+        0.05230729781494597,
+        0.021679649341551515,
+        0.17162055426720163,
+        0.4155745463724593,
+        0.4155177485950899,
+        1.0
+      ]
+    },
+    "coupled_reference": {
+      "refinement_endpoint_difference": 3.398947789889917e-13,
+      "summary": {
+        "accepted_steps": 6001,
+        "rejected_attempts": 0,
+        "time": 60.0,
+        "G_initial": -2.1161419478140893,
+        "G_final": -2.7322917498972203,
+        "integrated_Dchem": 0.615746990411946,
+        "integrated_Dmech": 0.0004028292066746488,
+        "final_energy_dissipation_defect": 1.753548959390703e-08,
+        "maximum_absolute_energy_dissipation_defect": 1.753549221371895e-08,
+        "maximum_gradient_identity_error": 3.439631392210263e-16,
+        "maximum_G_increase": 0.0,
+        "peak_Us": 0.0003034324611710708,
+        "maximum_conservation_error": 3.3306690738754696e-15,
+        "minimum_species": 0.01,
+        "length_range": [
+          0.9753653714795181,
+          1
+        ],
+        "Ec_final": 0.0006973438469455072,
+        "Us_final": 0.000278940598856986,
+        "source_equilibrium_distance": 0.003966725827899684,
+        "remaining_substrate_equivalents": 0.9288869800661609,
+        "product_equivalents": 0.3411130199338405,
+        "substrate_total": 1.2700000000000002,
+        "equilibrium_distance_scope": "bare_source_oracle_not_general_coupled_equilibrium",
+        "energy_defect_repaired": false,
+        "free_energy_drop_called_heat": false
+      },
+      "final_state": [
+        0.12204478854304539,
+        0.055163223934930866,
+        0.02279198752202364,
+        0.17055650996692026,
+        0.41409476069574364,
+        0.4140450203914391,
+        0.976380491162728
+      ]
+    },
+    "zero_lambda": {
+      "refinement_endpoint_difference": 1.454392162258955e-13,
+      "summary": {
+        "accepted_steps": 6001,
+        "rejected_attempts": 0,
+        "time": 60.0,
+        "G_initial": -2.1161419478140893,
+        "G_final": -2.733443712308301,
+        "integrated_Dchem": 0.6173017817793721,
+        "integrated_Dmech": 0.0,
+        "final_energy_dissipation_defect": 1.7285160303082137e-08,
+        "maximum_absolute_energy_dissipation_defect": 1.728516896282173e-08,
+        "maximum_gradient_identity_error": 4.440892098500626e-16,
+        "maximum_G_increase": 0.0,
+        "peak_Us": 0.0,
+        "maximum_conservation_error": 2.886579864025407e-15,
+        "minimum_species": 0.01,
+        "length_range": [
+          1,
+          1
+        ],
+        "Ec_final": 0.0,
+        "Us_final": 0.0,
+        "source_equilibrium_distance": 0.000611953283449318,
+        "remaining_substrate_equivalents": 0.9267588914655982,
+        "product_equivalents": 0.34324110853440326,
+        "substrate_total": 1.2700000000000002,
+        "equilibrium_distance_scope": "bare_source_oracle_not_general_coupled_equilibrium",
+        "energy_defect_repaired": false,
+        "free_energy_drop_called_heat": false
+      },
+      "final_state": [
+        0.12601305284350384,
+        0.05230729781494597,
+        0.021679649341551515,
+        0.17162055426720163,
+        0.4155745463724593,
+        0.4155177485950899,
+        1.0
+      ]
+    },
+    "zero_chemistry": {
+      "refinement_endpoint_difference": 0.0,
+      "summary": {
+        "accepted_steps": 6001,
+        "rejected_attempts": 0,
+        "time": 60.0,
+        "G_initial": -2.1161419478140893,
+        "G_final": -2.1161419478140893,
+        "integrated_Dchem": 0.0,
+        "integrated_Dmech": 0.0,
+        "final_energy_dissipation_defect": 0.0,
+        "maximum_absolute_energy_dissipation_defect": 0.0,
+        "maximum_gradient_identity_error": 0.0,
+        "maximum_G_increase": 0.0,
+        "peak_Us": 0.0,
+        "maximum_conservation_error": 0.0,
+        "minimum_species": 0.01,
+        "length_range": [
+          1,
+          1
+        ],
+        "Ec_final": 0.0,
+        "Us_final": 0.0,
+        "source_equilibrium_distance": 0.58503740691099,
+        "remaining_substrate_equivalents": 1.2500000000000002,
+        "product_equivalents": 0.02,
+        "substrate_total": 1.2700000000000002,
+        "equilibrium_distance_scope": "bare_source_oracle_not_general_coupled_equilibrium",
+        "energy_defect_repaired": false,
+        "free_energy_drop_called_heat": false
+      },
+      "final_state": [
+        0.1,
+        0.05,
+        0.05,
+        0.01,
+        1.0,
+        0.1,
+        1.0
+      ]
+    },
+    "time_rescale": {
+      "refinement_endpoint_difference": 3.398947789889917e-13,
+      "summary": {
+        "accepted_steps": 6001,
+        "rejected_attempts": 0,
+        "time": 30.0,
+        "G_initial": -2.1161419478140893,
+        "G_final": -2.7322917498972203,
+        "integrated_Dchem": 0.615746990411946,
+        "integrated_Dmech": 0.0004028292066746488,
+        "final_energy_dissipation_defect": 1.753548959390703e-08,
+        "maximum_absolute_energy_dissipation_defect": 1.753549221371895e-08,
+        "maximum_gradient_identity_error": 6.879262784420526e-16,
+        "maximum_G_increase": 0.0,
+        "peak_Us": 0.0003034324611710708,
+        "maximum_conservation_error": 3.3306690738754696e-15,
+        "minimum_species": 0.01,
+        "length_range": [
+          0.9753653714795181,
+          1
+        ],
+        "Ec_final": 0.0006973438469455072,
+        "Us_final": 0.000278940598856986,
+        "source_equilibrium_distance": 0.003966725827899684,
+        "remaining_substrate_equivalents": 0.9288869800661609,
+        "product_equivalents": 0.3411130199338405,
+        "substrate_total": 1.2700000000000002,
+        "equilibrium_distance_scope": "bare_source_oracle_not_general_coupled_equilibrium",
+        "energy_defect_repaired": false,
+        "free_energy_drop_called_heat": false
+      },
+      "final_state": [
+        0.12204478854304539,
+        0.055163223934930866,
+        0.02279198752202364,
+        0.17055650996692026,
+        0.41409476069574364,
+        0.4140450203914391,
+        0.976380491162728
+      ]
+    },
+    "equilibrium_unloaded": {
+      "refinement_endpoint_difference": 0.0,
+      "summary": {
+        "accepted_steps": 6001,
+        "rejected_attempts": 0,
+        "time": 60.0,
+        "G_initial": -2.7334455012382466,
+        "G_final": -2.7334455012382466,
+        "integrated_Dchem": 0.0,
+        "integrated_Dmech": 0.0,
+        "final_energy_dissipation_defect": 0.0,
+        "maximum_absolute_energy_dissipation_defect": 0.0,
+        "maximum_gradient_identity_error": 0.0,
+        "maximum_G_increase": 0.0,
+        "peak_Us": 0.0,
+        "maximum_conservation_error": 0.0,
+        "minimum_species": 0.02169842086661454,
+        "length_range": [
+          1,
+          1
+        ],
+        "Ec_final": 0.0,
+        "Us_final": 0.0,
+        "source_equilibrium_distance": 0.0,
+        "remaining_substrate_equivalents": 0.9256120926736895,
+        "product_equivalents": 0.3443879073263105,
+        "substrate_total": 1.27,
+        "equilibrium_distance_scope": "bare_source_oracle_not_general_coupled_equilibrium",
+        "energy_defect_repaired": false,
+        "free_energy_drop_called_heat": false
+      },
+      "final_state": [
+        0.12601151437094507,
+        0.052290064762440414,
+        0.02169842086661454,
+        0.17219395366315526,
+        0.41496259308900996,
+        0.41496259308900996,
+        1.0
+      ]
+    }
+  },
+  "time_rescale_max_endpoint_difference": 0.0,
+  "protocol_acceptance": "PASS",
+  "physical_apparatus_built": false,
+  "target_calibration_parameters_identified": false,
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "source_affinity_model": "independent published full-state ideal closed CRN",
+  "kinetic_map": "reference channel affinities and reciprocal-work bias only; not native cubic-law identification",
+  "chemical_heat_measured": false,
+  "automatic_successor": false
+}
