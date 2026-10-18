@@ -1,0 +1,31 @@
+name: DC-M4 Independent Mechanochemical Observation Acquisition
+on:
+  push:
+    branches: [codex/dc-m4-mechanochemical-work-ownership]
+    paths:
+      - scripts/acquire_mechanochemical_observations.py
+      - docs/dc-m4-mechanochemical-observation-protocol.json
+      - .github/workflows/dc-m4-mechanochemical-acquisition.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - name: Verify complete publisher archive and preserve selected originals
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 scripts/acquire_mechanochemical_observations.py --output "$RUNNER_TEMP/mechanochemical-acquisition"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dc-m4-mechanochemical-acquisition-${{ github.sha }}
+          if-no-files-found: error
+          include-hidden-files: true
+          path: ${{ runner.temp }}/mechanochemical-acquisition/

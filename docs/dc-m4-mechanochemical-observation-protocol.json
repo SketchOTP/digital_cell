@@ -1,0 +1,169 @@
+{
+  "schema": "digital_cell_mechanochemical_observation_protocol_v1",
+  "source": {
+    "doi": "10.6084/m9.figshare.28211567",
+    "version": 1,
+    "file_id": 51695939,
+    "url": "https://ndownloader.figshare.com/files/51695939",
+    "bytes": 820104841,
+    "md5": "0a23bffa7ae665def8e73a5360e54080",
+    "license": "CC-BY-4.0",
+    "authors": [
+      "Paolo Rissone",
+      "Marc Rico-Pasto",
+      "Steve B. Smith",
+      "Felix Ritort"
+    ]
+  },
+  "selection": {
+    "measurement_files": [
+      "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol1aA.txt",
+      "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aA.txt"
+    ],
+    "selected_files": [
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol1aA.txt",
+        "method": 8,
+        "crc32": 3120712329,
+        "compressed_bytes": 3907683,
+        "bytes": 16121903,
+        "local_header_offset": 698586534
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes2COM.txt",
+        "method": 8,
+        "crc32": 1757163772,
+        "compressed_bytes": 1178,
+        "bytes": 3496,
+        "local_header_offset": 697646328
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes1A.txt",
+        "method": 8,
+        "crc32": 1658396872,
+        "compressed_bytes": 925855,
+        "bytes": 3922643,
+        "local_header_offset": 697648152
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes1COM.txt",
+        "method": 8,
+        "crc32": 2766649529,
+        "compressed_bytes": 2397,
+        "bytes": 9229,
+        "local_header_offset": 698574143
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes2A.txt",
+        "method": 8,
+        "crc32": 4227367668,
+        "compressed_bytes": 822483,
+        "bytes": 3487605,
+        "local_header_offset": 702494351
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol1aCOM.txt",
+        "method": 8,
+        "crc32": 1802485950,
+        "compressed_bytes": 22768,
+        "bytes": 108248,
+        "local_header_offset": 703316970
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aA.txt",
+        "method": 8,
+        "crc32": 1708688971,
+        "compressed_bytes": 11741110,
+        "bytes": 50000194,
+        "local_header_offset": 33533
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes2COM.txt",
+        "method": 8,
+        "crc32": 3583998592,
+        "compressed_bytes": 1061,
+        "bytes": 3028,
+        "local_header_offset": 19692136
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes1A.txt",
+        "method": 8,
+        "crc32": 3652854102,
+        "compressed_bytes": 737625,
+        "bytes": 2979091,
+        "local_header_offset": 49658527
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes1COM.txt",
+        "method": 8,
+        "crc32": 169690820,
+        "compressed_bytes": 1093,
+        "bytes": 3137,
+        "local_header_offset": 66409090
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes3A.txt",
+        "method": 8,
+        "crc32": 3166290112,
+        "compressed_bytes": 771004,
+        "bytes": 3315231,
+        "local_header_offset": 85721916
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes2A.txt",
+        "method": 8,
+        "crc32": 3635736038,
+        "compressed_bytes": 554757,
+        "bytes": 2363364,
+        "local_header_offset": 90206085
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aCOM.txt",
+        "method": 8,
+        "crc32": 2637980818,
+        "compressed_bytes": 3504,
+        "bytes": 13606,
+        "local_header_offset": 93307165
+      },
+      {
+        "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes3COM.txt",
+        "method": 8,
+        "crc32": 692268540,
+        "compressed_bytes": 1090,
+        "bytes": 3138,
+        "local_header_offset": 93310803
+      }
+    ]
+  },
+  "selection_rule": "Per HighT/LowT choose lexicographically first rawdata/mol*A.txt in a session with stokes*A.txt; retain corresponding COM and all session stokes files. Chosen from ZIP directory metadata before numerical waveform access. Lexicographic mol10 precedes mol1a; no outcome-based substitution.",
+  "observations": {
+    "first_adjacent_complete_unzip_rezip_pairs_per_file": 3,
+    "minimum_samples_per_leg": 200,
+    "status_min": 1000,
+    "status_direction": "ones digit 0 unzipping,1 rezipping; require same higher status digits",
+    "position": "(A_dist-Y+B_dist-Y)/2",
+    "force": "-Y_force",
+    "units": "Admit physical pN/nm/s only with independent source/header verification; otherwise retain source units and mark physical scale blocked.",
+    "integration": "signed trapezoidal force-position path integral per retained leg; no smoothing, force-fit, discarded hysteresis sign or drift repair; common-position-window branch integrals separate",
+    "uncertainty": "report complete segment counts, endpoint mismatch, signed work and branch difference, sampling coarsening sensitivity; no population confidence from six pairs",
+    "temperature": "retain associated Stokes and COM observations; no absolute temperature without independently justified bead/viscosity/calibration map",
+    "not_claimed": [
+      "equilibrium chemical free energy",
+      "calorimetric heat",
+      "full hairpin NN parameters",
+      "reversible molecular channel rates",
+      "Digital Cell K/lambda/theta/epsilon_A"
+    ]
+  },
+  "numerical_budgets": {
+    "independent_integral_relative": 1e-10,
+    "independent_integral_absolute": 1e-08
+  },
+  "empirical_full_target_qualified": false,
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  }
+}

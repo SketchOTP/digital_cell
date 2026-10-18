@@ -1,0 +1,9 @@
+# DC-M4-MECHANOCHEMICAL-WORK-OWNERSHIP-001
+
+Owner request: proceed with independent mechanochemical observations and chemical-work ownership for transport, growth, maturation and fission. Entry a800279a355dc49060d81f805800f0a6def7b7a8; isolated branch codex/dc-m4-mechanochemical-work-ownership.
+
+Build and independently verify a new explicitly hypothetical finite-event material/work reference covering all four operators, alongside actual native operator/force probes. Admit licensed independent raw DNA unzipping observations in their physical force-position/work role. Protocols seal selection, preparations, fixed stoichiometry, complete storage owners, kinetics convention and budgets before measurement. Record source/native incompatibilities and limitations explicitly.
+
+Preserve all prior source/defaults/parameters,15 live checkouts,PR44–55,2538 scoped Atlas files and original dirty source including32 untracked files. No merge/deploy, physical apparatus, author outreach, external source-code execution, native biology replacement, target parameter assignment or automatic successor. Full biochemical identity and whole-organism qualification remain open unless actual evidence establishes them.
+
+Distinct implementation coder and semantic reviewer; parent owns all acquisition/execution/measurement and independently reconstructs raw observations and event energy/material/rate/ancestry. Require source identity/license/integrity, all4 event and negative/control results, actual native probe interpretation, complete exact-head hosted artifact/independent review, scoped records and preservation/Notion/native Atlas readbacks. Bridge unavailable; complete local handoff retained without invented dispatch identity. The bounded reference is not certification of original native operator composition.
