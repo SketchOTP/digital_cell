@@ -1,0 +1,1350 @@
+{
+  "created": "2019-07-16T15:42:16.865878+00:00",
+  "modified": "2020-01-24T19:22:44.263327+00:00",
+  "id": 3333905,
+  "conceptrecid": "3333904",
+  "doi": "10.5281/zenodo.3333905",
+  "conceptdoi": "10.5281/zenodo.3333904",
+  "doi_url": "https://doi.org/10.5281/zenodo.3333905",
+  "metadata": {
+    "title": "Data collection that describes the calibration of the temporal and displacement characteristics of an optical tweezers in buffered saline at room temperature.",
+    "doi": "10.5281/zenodo.3333905",
+    "publication_date": "2019-07-16",
+    "description": "<p><strong>Introduction</strong>. This data provides the calibration of an optical tweezers within the linear Hookian region. Once the laser was aligned, the power at the objective measured and a bead trapped the instrument was calibrated. <strong>Data Collection</strong>. Calibration was performed by moving a trapped bead by supplying a periodic square wave train input (amplitude: &minus;800 to +800 nm, period: 80 ms) to an acousto-optical device, AOD and monitoring the trajectory of the bead in the \ud835\udc4b\ud835\udc4c plane with a quadrant photo diode, QPD for ~ one minute. Data was collected at 200 kHz from three (3) QPD channels: displacement in the \ud835\udc4b (\u2206\ud835\udc4b<sub>\ud835\udc40</sub>) (i) and \ud835\udc4c directions (\u2206\ud835\udc4c<sub>\ud835\udc40</sub>) (ii) and the sum of the fluorescent intensity (&sum;<sub>\ud835\udc3f</sub>) (iii). Typically, each bead was stimulated with a train of square waves of constant amplitude in the \ud835\udc4b direction. This stimulation was performed four (4) times at each of the different amplitudes i.e., &minus;800, +800, &minus;500, and +500 nm. The QPD signal in the dark, \u2206\ud835\udc4b<sub>\ud835\udc37</sub>, \u2206\ud835\udc4c<sub>\ud835\udc37</sub>, &sum;<sub>\ud835\udc37</sub> was recorded and subtracted in real time, and the gain, \ud835\udc3a of the QPD noted. The Stokes-Faxen coefficient, \ud835\udefd was calculated having recorded the height of the bead above the Petri dish, \u210e and the viscosity, \ud835\udf02 of the saline solution. The detected fluorescent bead was excited either with a Xenon lamp or TLED transmitted light source. Some calibrations were performed with a TLED light that was borrowed from the manufacturer for testing, and the signal to noise of these measurements was significantly decreased.<strong> Data Transformation</strong>. For each of the two (2) channels the measured signal was normalized by the sum, and the ~750 waves were averaged for each pulse train stimulus. The reciprocal of the time constant (s<sup>-1</sup>) was determined from the exponential rise or decay of the back-ground subtracted averaged response. Spring constant (pN/nm) was determined from the product of this reciprocal time constant and the Stokes-Faxen coefficient (pNs/nm). The net displacement of the bead (nm) was calculated by determining the resultant vector of the \ud835\udc4b and \ud835\udc4c components of the QPD (V/V). For the four (4) stimuli determined for each bead the normalized displacement (V/V) was plotted as a function of net bead displacement and the slope (V/V/nm) calculated from best linear fit. For each calibration the mean spring constant, reciprocal time constant, and mean slope are provided. <strong>Data Format</strong>. The data was saved in LabView with the proprietary TDMS format (National Instruments, NI, Austin, TX). It was transformed to a text file and imported into MATLAB (The Mathworks, Natick, MA) and stored as struct and analyzed with a Python script. The collection contains raw and transformed results from 69 days for a total 153 beads. The data is provided with annotated descriptions in HDF5, a standard non-proprietary container storage format. Each file is about 1.1 GBs (HDF5).</p>\n\n<p>&nbsp;</p>\n\n<p>The package contains:</p>\n\n<p>1. Standard Container HDF5 with custom organization format of data with annotations.</p>\n\n<p>2. Python Script (calibrateopticaltweezers.py file) that describes how data is analyzed and written to HDF5 and .MAT formats. (1 file)<br>\n&nbsp;</p>",
+    "access_right": "open",
+    "creators": [
+      {
+        "name": "Skidmore, Benjamin",
+        "affiliation": "Baylor College of Medicine",
+        "orcid": "0000-0002-4637-1830"
+      },
+      {
+        "name": "Rajasekharan, Vivek",
+        "affiliation": "Baylor College of Medicine"
+      },
+      {
+        "name": "Farrell, Brenda",
+        "affiliation": "Baylor College of Medicine",
+        "orcid": "0000-0003-0847-6401"
+      }
+    ],
+    "keywords": [
+      "laser tweezers",
+      "optical trap",
+      "optical tweezers",
+      "spring constant",
+      "Hookian spring",
+      "force, displacement",
+      "nm",
+      "pN",
+      "QPD",
+      "quadrant photo diode",
+      "time constant",
+      "trapped bead",
+      "Stokes-Faxen coefficient",
+      "fluorescent trapped bead",
+      "acoustical optical device",
+      "AOD",
+      "data transformation",
+      "MATLAB",
+      "HDF5",
+      "Python 3.6"
+    ],
+    "language": "eng",
+    "resource_type": {
+      "title": "Dataset",
+      "type": "dataset"
+    },
+    "imprint": {
+      "isbn": "ISBN 978-1-4939-6644-8, ISBN 978-1-4939-6646-2 (eBook)"
+    },
+    "license": {
+      "id": "cc-zero"
+    },
+    "relations": {
+      "version": [
+        {
+          "index": 0,
+          "is_last": true,
+          "parent": {
+            "pid_type": "recid",
+            "pid_value": "3333904"
+          }
+        }
+      ]
+    },
+    "notes": "Funding: NIH NCI R21CA152779 and NIH NIDCD RO1DC00354"
+  },
+  "title": "Data collection that describes the calibration of the temporal and displacement characteristics of an optical tweezers in buffered saline at room temperature.",
+  "links": {
+    "self": "https://zenodo.org/api/records/3333905",
+    "self_html": "https://zenodo.org/records/3333905",
+    "preview_html": "https://zenodo.org/records/3333905?preview=1",
+    "doi": "https://doi.org/10.5281/zenodo.3333905",
+    "self_doi": "https://doi.org/10.5281/zenodo.3333905",
+    "self_doi_html": "https://zenodo.org/doi/10.5281/zenodo.3333905",
+    "reserve_doi": "https://zenodo.org/api/records/3333905/draft/pids/doi",
+    "parent": "https://zenodo.org/api/records/3333904",
+    "parent_html": "https://zenodo.org/records/3333904",
+    "parent_doi": "https://doi.org/10.5281/zenodo.3333904",
+    "parent_doi_html": "https://zenodo.org/doi/10.5281/zenodo.3333904",
+    "self_iiif_manifest": "https://zenodo.org/api/iiif/record:3333905/manifest",
+    "self_iiif_sequence": "https://zenodo.org/api/iiif/record:3333905/sequence/default",
+    "files": "https://zenodo.org/api/records/3333905/files",
+    "media_files": "https://zenodo.org/api/records/3333905/media-files",
+    "latest": "https://zenodo.org/api/records/3333905/versions/latest",
+    "latest_html": "https://zenodo.org/records/3333905/latest",
+    "versions": "https://zenodo.org/api/records/3333905/versions",
+    "draft": "https://zenodo.org/api/records/3333905/draft",
+    "access_links": "https://zenodo.org/api/records/3333905/access/links",
+    "access_grants": "https://zenodo.org/api/records/3333905/access/grants",
+    "access_users": "https://zenodo.org/api/records/3333905/access/users",
+    "access_request": "https://zenodo.org/api/records/3333905/access/request",
+    "access": "https://zenodo.org/api/records/3333905/access",
+    "communities": "https://zenodo.org/api/records/3333905/communities",
+    "communities-suggestions": "https://zenodo.org/api/records/3333905/communities-suggestions",
+    "request_deletion": "https://zenodo.org/api/records/3333905/request-deletion",
+    "file_modification": "https://zenodo.org/api/records/3333905/file-modification",
+    "quota_increase": "https://zenodo.org/api/records/3333905/quota-increase",
+    "requests": "https://zenodo.org/api/records/3333905/requests"
+  },
+  "updated": "2020-01-24T19:22:44.263327+00:00",
+  "recid": "3333905",
+  "revision": 4,
+  "files": [
+    {
+      "id": "2e3f3732-fb76-481d-9a88-cf0506768899",
+      "key": "calibration_optical_tweezers_07-23-2013_bead_1.zip",
+      "size": 372998376,
+      "checksum": "md5:c26cdab258fadaee104f29345095aaf1",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-23-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "73c2aafa-0a42-4db8-91fa-466b116aad6f",
+      "key": "calibration_optical_tweezers_04-23-2015_bead_2.zip",
+      "size": 320133931,
+      "checksum": "md5:e1c134693109612d752701fcdd542afc",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-23-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "ce66df81-587e-4595-bb5c-f2d96116e09e",
+      "key": "calibration_optical_tweezers_06-28-2013_bead_1.zip",
+      "size": 324254759,
+      "checksum": "md5:5f1cdb06c09973189b48b6b0a299e174",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-28-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "57d7af56-ba21-4e74-bb1b-6b976c7467d7",
+      "key": "calibration_optical_tweezers_06-27-2013_bead_1.zip",
+      "size": 340692509,
+      "checksum": "md5:39134651f7cb5ffede3fd71b78275fd4",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-27-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "7566d188-c833-49ee-9de8-894e4cdaf170",
+      "key": "calibration_optical_tweezers_04-23-2015_bead_1.zip",
+      "size": 399045447,
+      "checksum": "md5:4ae387675b969bf84c451d3a0f7cf3a4",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-23-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "ff87639f-0bc4-4add-a027-d3d1fc8e1419",
+      "key": "calibration_optical_tweezers_07-02-2013_bead_1.zip",
+      "size": 296323677,
+      "checksum": "md5:01401c64dd1188a37b4f071fdbfd6e31",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-02-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "eb00e998-2c14-407a-9221-1b5397dc4a69",
+      "key": "calibration_optical_tweezers_01-27-2015_bead_1.zip",
+      "size": 346119167,
+      "checksum": "md5:f33c09fbec59991f8610b686e948600d",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_01-27-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "633734d4-a216-4795-b1c2-79ed46c8a31d",
+      "key": "calibration_optical_tweezers_11-13-2015_bead_2.zip",
+      "size": 320582560,
+      "checksum": "md5:99e8ab8c273fddc3503f5e3ea88452d7",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_11-13-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "3c78c59c-aa5f-4663-a6fb-04079461e8e1",
+      "key": "calibration_optical_tweezers_07-02-2013_bead_2.zip",
+      "size": 306139167,
+      "checksum": "md5:f5f1f831c725f7b2c056f50cc6d05202",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-02-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "77ab6900-6c72-4a48-83bd-1c4a27ccebe0",
+      "key": "calibration_optical_tweezers_11-13-2015_bead_1.zip",
+      "size": 358125283,
+      "checksum": "md5:2e3cd33b2df128142d07197c6254ddc2",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_11-13-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "be962a7c-e88c-4dea-9ac3-d0bd5c573e30",
+      "key": "calibration_optical_tweezers_11-10-2015_bead_2.zip",
+      "size": 312636873,
+      "checksum": "md5:7abff4e16a1b9c20de9bcfd2404fa0ad",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_11-10-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "9290b0b1-141e-45df-9a95-8512e3b3e0d4",
+      "key": "calibration_optical_tweezers_03-11-2019_bead_3.zip",
+      "size": 338818848,
+      "checksum": "md5:ac4632dc025ad3979991aa64b40b2657",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-11-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "cc6134cf-b229-440f-ba83-6caa1ec45a58",
+      "key": "calibration_optical_tweezers_11-10-2015_bead_1.zip",
+      "size": 309102204,
+      "checksum": "md5:52c6f1b8b0d380e91a33c1b3aa4edc13",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_11-10-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "552b6ddb-871f-40b0-b96f-b88f465cb318",
+      "key": "calibration_optical_tweezers_11-05-2015_bead_1.zip",
+      "size": 336923606,
+      "checksum": "md5:db0fc026977f49e3714427f140d17f8c",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_11-05-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "2db3ef3e-9b42-49d1-b1ed-eeee33e602d5",
+      "key": "calibration_optical_tweezers_11-03-2015_bead_2.zip",
+      "size": 319427915,
+      "checksum": "md5:344294ad835dec456bfcffb4ea0c9d85",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_11-03-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "32993a3b-45f9-4def-91bb-36441f3667c0",
+      "key": "calibration_optical_tweezers_11-03-2015_bead_1.zip",
+      "size": 310912144,
+      "checksum": "md5:ccc279bdbfa4fbca529d2a478b3a0245",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_11-03-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "a14660b4-4093-4c7c-8c44-b2a9ee98cca4",
+      "key": "calibration_optical_tweezers_04-24-2019_bead_1.zip",
+      "size": 340842963,
+      "checksum": "md5:dc593400d558814efbc471a882bd6604",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-24-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "300d1527-97e7-4bac-8e82-741bcfb7c4d2",
+      "key": "calibration_optical_tweezers_10-23-2013_bead_3.zip",
+      "size": 340458120,
+      "checksum": "md5:9014c6e2992f94c14107932ad7024b59",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-23-2013_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "93ac87a2-b054-4087-8fd5-b911c95b21a2",
+      "key": "calibration_optical_tweezers_10-23-2013_bead_2.zip",
+      "size": 332918179,
+      "checksum": "md5:5688a3c702bc9a9bb2fff4f53fab0233",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-23-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "5819d3ae-7685-40f8-87c0-5c25c165cad5",
+      "key": "calibration_optical_tweezers_04-24-2019_bead_2.zip",
+      "size": 337988725,
+      "checksum": "md5:24acd1247aad832c58be36356996ef1a",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-24-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "1adbdaba-a46e-4533-aced-00d204653760",
+      "key": "calibration_optical_tweezers_01-23-2015_bead_1.zip",
+      "size": 361108564,
+      "checksum": "md5:12fbc6a379a73a21e57a78ea16f93c4d",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_01-23-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "3ced80c3-3dab-4892-be61-dbbf536b80c3",
+      "key": "calibration_optical_tweezers_02-18-2015_bead_2.zip",
+      "size": 363053951,
+      "checksum": "md5:17bc515ea399e585b9ce734f2b5243ba",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-18-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "b5b0bc75-3a3f-4dc7-ae64-2ece3a0b755c",
+      "key": "calibration_optical_tweezers_10-23-2013_bead_1.zip",
+      "size": 344891888,
+      "checksum": "md5:ee6788e6d0eb3e2725864251676af56b",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-23-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "1f09c980-0601-4246-9bcb-d656779b7621",
+      "key": "calibration_optical_tweezers_04-24-2019_bead_3.zip",
+      "size": 346830104,
+      "checksum": "md5:3eaf10aebf5d2d5ec995a209ee5747b2",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-24-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "b34e2775-bf41-4ef3-ac7b-bdf6006dbc48",
+      "key": "calibration_optical_tweezers_04-25-2019_bead_1.zip",
+      "size": 342148723,
+      "checksum": "md5:0f87bb5950c1fcd882b10f56574d579e",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-25-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "c4b2783e-958f-4022-ada4-5fc5833ac8bd",
+      "key": "calibration_optical_tweezers_02-18-2015_bead_1.zip",
+      "size": 369094934,
+      "checksum": "md5:220bf562a656117010657daf64befff9",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-18-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "9211ed92-a416-4fbd-86ef-3ca6d4c1b0e8",
+      "key": "calibration_optical_tweezers_01-05-2015_bead_1.zip",
+      "size": 336923610,
+      "checksum": "md5:8d2cd9f526021f8aaafd7d3a858a7945",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_01-05-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "9e2e86ae-b1ba-4481-9ab7-706d3d01745d",
+      "key": "calibration_optical_tweezers_10-21-2013_bead_3.zip",
+      "size": 334138823,
+      "checksum": "md5:72910ab0e16d4a5f0f2a3bad0383472f",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-21-2013_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "b41fb299-b0fe-401e-a97e-aaca797488aa",
+      "key": "calibration_optical_tweezers_04-25-2019_bead_2.zip",
+      "size": 347183458,
+      "checksum": "md5:1fd92f32234cdf881dc24f055a818fdd",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-25-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "d37c3f2c-b19f-4bce-9e33-65d67d074b6d",
+      "key": "calibration_optical_tweezers_10-21-2013_bead_2.zip",
+      "size": 368098705,
+      "checksum": "md5:dbb290183af935e430ebc27df50b1de0",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-21-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "7b23aa4d-7fa3-4d0a-b786-5c8d477a4098",
+      "key": "calibration_optical_tweezers_10-21-2013_bead_1.zip",
+      "size": 335154837,
+      "checksum": "md5:fce36c5a1146c9c9d6e7edd4738d2e5e",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-21-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "bd80ddb7-acc1-4419-842f-ebf8774c7501",
+      "key": "calibration_optical_tweezers_10-10-2013_bead_1.zip",
+      "size": 328208536,
+      "checksum": "md5:84e4a24aa14d94b827ca510bd23663f3",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-10-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "9868a401-bc26-4d15-871a-13b5b9c7d770",
+      "key": "calibration_optical_tweezers_10-09-2013_bead_3.zip",
+      "size": 332526146,
+      "checksum": "md5:1b4cd94f390fd858f0f4118cbf6d0988",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-09-2013_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "3e58e7d7-c6a8-41d7-a4b7-38bfda4f1a4a",
+      "key": "calibration_optical_tweezers_10-09-2013_bead_2.zip",
+      "size": 336949825,
+      "checksum": "md5:2499f3c6c9a99b9a2e3263f7527ca3a9",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-09-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "67d70c94-2813-465c-a3cb-67bb3b041d33",
+      "key": "calibration_optical_tweezers_01-27-2015_bead_2.zip",
+      "size": 367025838,
+      "checksum": "md5:bc52acb195df86f667f86133a9758f3f",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_01-27-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "94e9384c-07d7-4708-b407-c26a0ce76d17",
+      "key": "calibration_optical_tweezers_10-09-2013_bead_1.zip",
+      "size": 334589015,
+      "checksum": "md5:a843bbe59048e6a4d30ef204004e052e",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-09-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "85fe1d74-3655-4f02-a911-32f73dd9f4f5",
+      "key": "calibration_optical_tweezers_04-22-2019_bead_3.zip",
+      "size": 342005777,
+      "checksum": "md5:4ed72de0fc57cb82bfb09315cf3c600a",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-22-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "8de96197-5a72-4dc1-a62e-22a9cd8302ac",
+      "key": "calibration_optical_tweezers_04-25-2019_bead_3.zip",
+      "size": 337484890,
+      "checksum": "md5:15ae3bf39cf089e2b4c4d6c55922c6fc",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-25-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "7b940ba0-28ee-4ff5-bd7b-2089e40d1bcb",
+      "key": "calibration_optical_tweezers_04-22-2019_bead_2.zip",
+      "size": 343280238,
+      "checksum": "md5:b96109b5a5f30c034c8ea70338cb52da",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-22-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "e3dd044d-eee1-462e-b85a-40cbbb3912c6",
+      "key": "calibration_optical_tweezers_04-22-2019_bead_1.zip",
+      "size": 349400164,
+      "checksum": "md5:7cc1c50f1533acc9ed61f5f245cae34c",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-22-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "341f6e35-8601-450e-b0b9-a66e67b65447",
+      "key": "calibration_optical_tweezers_04-18-2019_bead_3.zip",
+      "size": 340592152,
+      "checksum": "md5:d8e194d781a31546b889c11d447aa9bb",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-18-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "9f8e6edb-d98b-4ecb-80e1-5c83b83150e9",
+      "key": "calibration_optical_tweezers_04-18-2019_bead_2.zip",
+      "size": 335389933,
+      "checksum": "md5:bb65afc8d510b9629fa7c2684701b4ca",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-18-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "11a0bdc7-ae71-44f1-9472-d5f3e352f177",
+      "key": "calibration_optical_tweezers_04-30-2019_bead_1.zip",
+      "size": 344078597,
+      "checksum": "md5:b244443c3297ba78d4618c2650fffe3d",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-30-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "17771610-4876-4c45-b7bb-231ae235113b",
+      "key": "calibration_optical_tweezers_04-30-2019_bead_2.zip",
+      "size": 339533797,
+      "checksum": "md5:971975ff808ecefb6ede98fca16c75ed",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-30-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "ceb46822-8994-4b9d-a792-76ff31bedb72",
+      "key": "calibration_optical_tweezers_10-07-2013_bead_3.zip",
+      "size": 332526295,
+      "checksum": "md5:cf10e81be62351f63bd28f897e288e28",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-07-2013_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "628fc0ca-0092-4730-9c84-b44ecb510e80",
+      "key": "calibration_optical_tweezers_01-30-2015_bead_1.zip",
+      "size": 332920464,
+      "checksum": "md5:46b869b9c368fce6ede15a64b6d738e6",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_01-30-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "2f8ac760-3944-4b27-aea8-93fae1abb395",
+      "key": "calibration_optical_tweezers_02-08-2015_bead_2.zip",
+      "size": 368098621,
+      "checksum": "md5:ffee7c1bcbba925db38b4658568e487a",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-08-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "f792d821-7b3c-4a52-8c0c-db78f34af210",
+      "key": "calibration_optical_tweezers_07-10-2013_bead_1.zip",
+      "size": 317743766,
+      "checksum": "md5:ce52faa4175ffc79155917d8f502b869",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-10-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "310f8116-9c20-4e41-ac2f-f8939329e631",
+      "key": "calibration_optical_tweezers_05-09-2019_bead_3.zip",
+      "size": 336933809,
+      "checksum": "md5:d8b801cf61361675e1957cc3285e72d3",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_05-09-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "c2b5b478-1d51-40d7-82da-e3c3433416af",
+      "key": "calibration_optical_tweezers_02-08-2015_bead_1.zip",
+      "size": 319103985,
+      "checksum": "md5:ccbe4da85e5df8621055035f93aea9ea",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-08-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "70e9778b-bd63-4115-9494-2acb14c3a864",
+      "key": "calibration_optical_tweezers_02-06-2015_bead_4.zip",
+      "size": 368098669,
+      "checksum": "md5:728c7eef8af4b8f131335760feae8d1a",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-06-2015_bead_4.zip/content"
+      }
+    },
+    {
+      "id": "6072b7bc-65ab-4a88-9f0c-0822366b2375",
+      "key": "calibration_optical_tweezers_07-10-2013_bead_2.zip",
+      "size": 376355746,
+      "checksum": "md5:2755a91d9bd0792831b4a8855bb1aee2",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-10-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "81b836ec-b494-4124-8349-b9613f1fb22f",
+      "key": "calibration_optical_tweezers_03-12-2019_bead_2.zip",
+      "size": 342289420,
+      "checksum": "md5:1954c458b9daaf0d01a003b51393f269",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-12-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "06ca0bab-caa5-4900-ab86-c994c152d215",
+      "key": "calibration_optical_tweezers_05-09-2019_bead_2.zip",
+      "size": 342948565,
+      "checksum": "md5:45d27993e1cccf265cc331369988c4ee",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_05-09-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "ba0d51a2-c87b-428d-8cc8-0d745608666f",
+      "key": "calibration_optical_tweezers_03-12-2019_bead_3.zip",
+      "size": 345201470,
+      "checksum": "md5:c978470c1b3b2e0e5b1ae0eabd06d458",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-12-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "4c572e89-f57b-4461-8d08-81661a71356b",
+      "key": "calibration_optical_tweezers_09-18-2013_bead_1.zip",
+      "size": 297184647,
+      "checksum": "md5:5c2d2e936071aa4d1ed7a3939eefe2e0",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_09-18-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "baee1141-0eef-4f94-8540-cab33cf0a56a",
+      "key": "calibration_optical_tweezers_03-11-2019_bead_2.zip",
+      "size": 344609551,
+      "checksum": "md5:62510740c5b9fc47a3ef7b9cac30356b",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-11-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "edced8c9-e94d-4dc9-8c93-1868599e89c8",
+      "key": "calibration_optical_tweezers_08-16-2013_bead_3.zip",
+      "size": 302757610,
+      "checksum": "md5:068d06f25cb5abd27c1d9ffa32dcc63d",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-16-2013_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "bde9de2c-39b6-4d97-8973-c0293e9f615b",
+      "key": "calibration_optical_tweezers_05-08-2019_bead_3.zip",
+      "size": 343396350,
+      "checksum": "md5:09d8cda1e6cb5fde9e2c1294f6c82797",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_05-08-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "d9a9d13d-164d-4144-9a66-e254c685f63d",
+      "key": "calibration_optical_tweezers_02-18-2015_bead_3.zip",
+      "size": 416966245,
+      "checksum": "md5:0b656a7162060d076d8fcf7360556f38",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-18-2015_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "72a8e033-1a5d-45cf-84e7-713eaef1ee38",
+      "key": "calibration_optical_tweezers_03-11-2019_bead_1.zip",
+      "size": 340315017,
+      "checksum": "md5:d13b22e740b0a9c05e3c9bdc7bc555e7",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-11-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "5ea2318c-0b85-4230-9b77-2eb902314b6e",
+      "key": "calibration_optical_tweezers_03-08-2019_bead_1.zip",
+      "size": 345258587,
+      "checksum": "md5:23227b25de69fe998e984eb8c269a9c6",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-08-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "1680b13a-e030-475c-8325-d7b63774360d",
+      "key": "calibration_optical_tweezers_04-18-2019_bead_1.zip",
+      "size": 333248301,
+      "checksum": "md5:8150852ba6359905a3cbc45dffbc715d",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-18-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "8118d1d8-1b8f-4f49-abe7-470bda9f48c1",
+      "key": "calibration_optical_tweezers_07-16-2013_bead_1.zip",
+      "size": 303347953,
+      "checksum": "md5:cb23a248ddd255322f494fad76b034d2",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-16-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "db64e276-cd28-4f93-b6f1-deb838d9e4fb",
+      "key": "calibration_optical_tweezers_08-16-2013_bead_2.zip",
+      "size": 298490410,
+      "checksum": "md5:24df7d9c987004a13f7d9226df7b0fd1",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-16-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "fbf83f42-acc4-4269-a9e5-5b12ac283b05",
+      "key": "calibration_optical_tweezers_03-06-2019_bead_3.zip",
+      "size": 342048095,
+      "checksum": "md5:dbbd6dff7877f4afe1b6e1bdcfc4f0e1",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-06-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "c1c8339e-98bf-4153-9785-3160537429dd",
+      "key": "calibration_optical_tweezers_04-16-2019_bead_3.zip",
+      "size": 338501491,
+      "checksum": "md5:8178df2d9caaf7310316c9c9b6fae337",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-16-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "de88f924-fe4a-4372-8559-ef76a2c0f344",
+      "key": "calibration_optical_tweezers_03-12-2019_bead_4.zip",
+      "size": 338450655,
+      "checksum": "md5:28279259e5a41e73c29052c90e68a46a",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-12-2019_bead_4.zip/content"
+      }
+    },
+    {
+      "id": "48b05c88-6d42-4f93-bc7f-a1fcdf6787a1",
+      "key": "calibration_optical_tweezers_03-06-2019_bead_2.zip",
+      "size": 344716760,
+      "checksum": "md5:8fd7b57ae53258656336769ff450718b",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-06-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "701cb800-9fb4-4f2d-9a22-72eb5ee4aeb7",
+      "key": "calibration_optical_tweezers_08-16-2013_bead_1.zip",
+      "size": 308243024,
+      "checksum": "md5:7e883d64f5138e18a761539d6277ba88",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-16-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "c723f48c-ffe6-42c9-9c37-f1d46fdf76f0",
+      "key": "calibration_optical_tweezers_08-14-2013_bead_3.zip",
+      "size": 306088186,
+      "checksum": "md5:86a538d28417be6ec4ee7b7f4e79b742",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-14-2013_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "5b8feac9-aeb9-4ce2-b1f9-835bf53f2148",
+      "key": "calibration_optical_tweezers_03-14-2019_bead_1.zip",
+      "size": 348094250,
+      "checksum": "md5:487d1c3f1e533365976a913ec51aa588",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-14-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "4da6f6bc-13b9-4cbb-8aac-b6291591f79f",
+      "key": "calibration_optical_tweezers_08-14-2013_bead_2.zip",
+      "size": 303799347,
+      "checksum": "md5:42b2e1cfbb8b20192305cad076be521f",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-14-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "e9cd85da-8664-4773-869f-15e35c3796f8",
+      "key": "calibration_optical_tweezers_03-14-2019_bead_2.zip",
+      "size": 340783350,
+      "checksum": "md5:a4997b0346f93af522fdadcb61b0ad2f",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-14-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "db0530e1-41a2-43a7-a0ff-5438ea6f5dfc",
+      "key": "calibration_optical_tweezers_03-06-2019_bead_1.zip",
+      "size": 340981917,
+      "checksum": "md5:6755542406241ad51179ea1ac6183e90",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-06-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "7efe0665-862d-41d3-8558-d080c54ab80e",
+      "key": "calibration_optical_tweezers_04-30-2019_bead_3.zip",
+      "size": 339140268,
+      "checksum": "md5:38ebf899588456354b313f6cef1ba06d",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-30-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "6fb8a1ed-a86e-4618-9063-ae347290c37a",
+      "key": "calibration_optical_tweezers_06-18-2013_bead_2.zip",
+      "size": 396733795,
+      "checksum": "md5:9a9a08aa4bcc3d2679f949e6e2169bc8",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-18-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "5cedeca8-0a91-4267-95a8-c2bd98478e87",
+      "key": "calibration_optical_tweezers_04-16-2019_bead_2.zip",
+      "size": 337095019,
+      "checksum": "md5:1dc8a2201c6482114e2214ef971455f3",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-16-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "2346d61d-3fed-4ade-b3c6-a37e6d5c64e1",
+      "key": "calibration_optical_tweezers_08-14-2013_bead_1.zip",
+      "size": 324969929,
+      "checksum": "md5:e1b3f51b3c6dcecdb5ffe13c78935597",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-14-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "f5f852df-5a88-480f-b304-6d6dd8310875",
+      "key": "calibration_optical_tweezers_06-18-2013_bead_1.zip",
+      "size": 310221461,
+      "checksum": "md5:a51183de01c66c040303f12d4850af1b",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-18-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "3ca2cd5c-3ec9-4407-b771-a56861a2cc08",
+      "key": "calibration_optical_tweezers_03-05-2019_bead_1.zip",
+      "size": 338984595,
+      "checksum": "md5:38d0a191c511ee98895fd4111f4fbb4a",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-05-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "995f6f10-c089-46fa-83c7-5f1b5692ae5e",
+      "key": "calibration_optical_tweezers_03-14-2019_bead_3.zip",
+      "size": 343411325,
+      "checksum": "md5:4e809a0dd7968841cb86a0d620481b05",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-14-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "73cdd9bc-f9f9-4236-8031-fc6677b31bf1",
+      "key": "calibration_optical_tweezers_02-20-2015_bead_3.zip",
+      "size": 416966241,
+      "checksum": "md5:0600c01c00a9c7d752ee86e55ecba3b6",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-20-2015_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "1e757282-489d-492f-a99e-da0cde365f09",
+      "key": "calibration_optical_tweezers_03-21-2019_bead_1.zip",
+      "size": 334658294,
+      "checksum": "md5:7e85d9dbfe974b3164049f8ffc1e91c5",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-21-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "b907cc86-dd7c-4aa4-ac56-74f5cee12548",
+      "key": "calibration_optical_tweezers_02-06-2015_bead_3.zip",
+      "size": 319104240,
+      "checksum": "md5:4d83aa6316be044c64ecb2f29d6040d3",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-06-2015_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "604c7647-d984-47f4-b317-366b3f9c68d4",
+      "key": "calibration_optical_tweezers_07-23-2013_bead_2.zip",
+      "size": 347991289,
+      "checksum": "md5:b3e47505a8928a0b61c54a88c1a2202b",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-23-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "9354a4f1-dbdf-4675-9124-d69dff403c7d",
+      "key": "calibration_optical_tweezers_06-13-2013_bead_2.zip",
+      "size": 304526102,
+      "checksum": "md5:f2fae5d59fc8983cf26c59a26b0ce020",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-13-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "aa121167-45b3-4b0b-8d04-cf597a58ac99",
+      "key": "calibration_optical_tweezers_02-06-2015_bead_2.zip",
+      "size": 368098622,
+      "checksum": "md5:5bcf04d5c9e27934c19510674c2f35f3",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-06-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "0c70c958-102b-4b65-a164-bf7aff67ea4e",
+      "key": "calibration_optical_tweezers_07-23-2013_bead_3.zip",
+      "size": 317799412,
+      "checksum": "md5:a92aa5c3332958a6da5983e2f0c8939c",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-23-2013_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "2dc2b07f-ae2c-46e1-9a60-d0be3a658a02",
+      "key": "calibration_optical_tweezers_07-26-2013_bead_1.zip",
+      "size": 298521040,
+      "checksum": "md5:e3c7d115d6aa0f964de9bcaefba24f17",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-26-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "b12edc8a-f13d-4574-bd55-d633f34c93b0",
+      "key": "calibration_optical_tweezers_07-26-2013_bead_2.zip",
+      "size": 356395974,
+      "checksum": "md5:8ce61c4d88306f251546aca873b5ffde",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-26-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "ccf31436-ecbe-4bb9-b493-e0dc154a5d9f",
+      "key": "calibration_optical_tweezers_05-08-2019_bead_2.zip",
+      "size": 343566896,
+      "checksum": "md5:e16bb9a27bddd1043e92d8784e4325e6",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_05-08-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "2a018b3c-bca9-4c1c-a65d-337aa67f9983",
+      "key": "calibrateopticaltweezers.zip",
+      "size": 10060,
+      "checksum": "md5:2ca04009a3c303071e46f7226e33faf4",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibrateopticaltweezers.zip/content"
+      }
+    },
+    {
+      "id": "280dd706-373a-4025-ab8a-736dd0c978fd",
+      "key": "calibration_optical_tweezers_02-06-2015_bead_1.zip",
+      "size": 319103983,
+      "checksum": "md5:b7ee911bd0f81171f956820cbd2746ff",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-06-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "e2c43a32-bfe7-4f2d-b43b-700fe99ba826",
+      "key": "calibration_optical_tweezers_07-30-2013_bead_1.zip",
+      "size": 434049528,
+      "checksum": "md5:aed773483fabc1020cd14729ef4e50a8",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_07-30-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "478325ad-288c-496d-8239-0e3c7d9982f5",
+      "key": "calibration_optical_tweezers_06-09-2015_bead_2.zip",
+      "size": 346846996,
+      "checksum": "md5:dbbaed71f9159c27d693568c7349cd70",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-09-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "f5b0d235-9cb6-42f5-a880-00fc5d5843f8",
+      "key": "calibration_optical_tweezers_06-05-2015_bead_2.zip",
+      "size": 369820917,
+      "checksum": "md5:cb03e35a20409ede8adc3898eec883c0",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-05-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "355b9591-6c16-4fc4-bc1b-21437451c9dc",
+      "key": "calibration_optical_tweezers_03-21-2019_bead_2.zip",
+      "size": 333671319,
+      "checksum": "md5:ab610f625aebbfa2a061e011adf6640a",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-21-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "e9feaf4b-1169-4919-ae54-7a3fbeed99ce",
+      "key": "calibration_optical_tweezers_05-01-2019_bead_1.zip",
+      "size": 339271103,
+      "checksum": "md5:b518d5213b3f5ce29e66c62bca531d4c",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_05-01-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "804a94f3-b2c0-45c6-ba22-0e8f209f04ef",
+      "key": "calibration_optical_tweezers_04-16-2019_bead_1.zip",
+      "size": 341467887,
+      "checksum": "md5:048f6a36cd5533b55d6974ae878d297d",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-16-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "37ba50e0-0333-484d-83d6-3966a0b2b0cc",
+      "key": "calibration_optical_tweezers_08-12-2013_bead_3.zip",
+      "size": 333036276,
+      "checksum": "md5:6d2a0c59192b0548ab70ec6f79ce106f",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-12-2013_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "e15ca88c-778b-4df2-89b6-84d55c6fa608",
+      "key": "calibration_optical_tweezers_05-01-2019_bead_2.zip",
+      "size": 339925212,
+      "checksum": "md5:750615f9c8abfa7f8e1da74f846d8ffe",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_05-01-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "c534989d-f4bb-465c-93a3-e3458e748f4e",
+      "key": "calibration_optical_tweezers_03-21-2019_bead_3.zip",
+      "size": 336873234,
+      "checksum": "md5:b45806b754ce12394c638b27c73c38be",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-21-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "48096d01-74e0-4163-8a37-75a4b98dd21a",
+      "key": "calibration_optical_tweezers_08-05-2013_bead_1.zip",
+      "size": 307553652,
+      "checksum": "md5:68b53d04c7ddb0d30ae174709f5714d5",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-05-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "50d3f12d-aa6c-493a-8f57-fa86f261f721",
+      "key": "calibration_optical_tweezers_08-05-2013_bead_2.zip",
+      "size": 297053872,
+      "checksum": "md5:c4d0727c07b82590ce3750b242370547",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-05-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "2e89907d-f0f7-4f21-8165-5bd085885d0f",
+      "key": "calibration_optical_tweezers_06-05-2015_bead_3.zip",
+      "size": 377731360,
+      "checksum": "md5:3c4a0af9acc0aa6aef9a37143e695834",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-05-2015_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "c616f827-6711-441a-bd14-1175e5a1501e",
+      "key": "calibration_optical_tweezers_05-01-2019_bead_3.zip",
+      "size": 343501365,
+      "checksum": "md5:2a4004293466b141f4703d64f52bc095",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_05-01-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "a736e273-3624-4217-aeaa-568b686c7e47",
+      "key": "calibration_optical_tweezers_03-22-2019_bead_1.zip",
+      "size": 344390363,
+      "checksum": "md5:e3f96e24e817eea431dcfa901c4ea378",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-22-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "35a80d98-88b8-4406-8243-4c0e7e806eff",
+      "key": "calibration_optical_tweezers_03-22-2019_bead_2.zip",
+      "size": 346275521,
+      "checksum": "md5:58eb0c446c64b9d6b076394a36614a2c",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-22-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "ac8c6def-1ed0-400c-9997-e92a2c5007bf",
+      "key": "calibration_optical_tweezers_06-09-2015_bead_1.zip",
+      "size": 307735197,
+      "checksum": "md5:6b2e32d5fe808df75dbd7f50cfa73953",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-09-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "b532fdf8-a8f7-462f-aae1-23cc2c6286d0",
+      "key": "calibration_optical_tweezers_06-13-2013_bead_1.zip",
+      "size": 298833185,
+      "checksum": "md5:338a7bca3420f72e6f72bb1307633b3d",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-13-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "821dbe02-62df-4f81-a179-c9ac51439599",
+      "key": "calibration_optical_tweezers_08-12-2013_bead_2.zip",
+      "size": 313875631,
+      "checksum": "md5:252e855b02d437c2d71e2951c099e830",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-12-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "28774f65-5377-4963-aaae-2b954cee4e1e",
+      "key": "calibration_optical_tweezers_05-05-2015_bead_1.zip",
+      "size": 355431842,
+      "checksum": "md5:c5e510701bdcbd74ac246eb9c64ea5f3",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_05-05-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "fd2686a1-e938-419c-9f3a-67b8b063da2c",
+      "key": "calibration_optical_tweezers_04-15-2019_bead_3.zip",
+      "size": 340525247,
+      "checksum": "md5:11172ae4c0508a2017ebb865a43e61c9",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-15-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "10b2d0ab-6e77-4ad8-9f38-0ae9e790f260",
+      "key": "calibration_optical_tweezers_04-15-2019_bead_2.zip",
+      "size": 347756826,
+      "checksum": "md5:e3851d26e7fc2449527fd5aad99d8604",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-15-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "80d5768c-f90c-4e07-97d8-ddc3eb29cfe5",
+      "key": "calibration_optical_tweezers_08-12-2013_bead_1.zip",
+      "size": 299804654,
+      "checksum": "md5:dffc311d524a00438a53c7370a0c926b",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-12-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "aaac9aab-1589-4523-bc1d-d8ff1a4cd08e",
+      "key": "calibration_optical_tweezers_02-20-2015_bead_1.zip",
+      "size": 369104601,
+      "checksum": "md5:076edd929343b6493bda055b2352e1d1",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-20-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "901c7de4-ad5b-453e-8375-98159f5bcdc2",
+      "key": "calibration_optical_tweezers_08-06-2013_bead_3.zip",
+      "size": 290681850,
+      "checksum": "md5:a5c42ce7120bf2124e08074b3e3f4db8",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-06-2013_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "478020ab-3ada-458c-a464-7ee5b0340c8a",
+      "key": "calibration_optical_tweezers_04-15-2019_bead_1.zip",
+      "size": 341001074,
+      "checksum": "md5:32243fa6ef567b352637a51a42a3d7ad",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_04-15-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "408f9a31-3754-4031-86dc-7fd571ff66cd",
+      "key": "calibration_optical_tweezers_03-28-2019_bead_3.zip",
+      "size": 340767106,
+      "checksum": "md5:37f19c0611e5739d84cf89ea1bffbfed",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-28-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "66e24083-b82c-476e-9511-0d07dd0c34ec",
+      "key": "calibration_optical_tweezers_03-28-2019_bead_2.zip",
+      "size": 345026921,
+      "checksum": "md5:b094bf1ba12ea00cdb23fb8f699d3d9f",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-28-2019_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "ae1595a7-0625-477f-9fcb-17b9233de147",
+      "key": "calibration_optical_tweezers_03-28-2019_bead_1.zip",
+      "size": 335963569,
+      "checksum": "md5:d354e41f122c48e7c30341c1250dc28f",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-28-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "7fd53c02-eb90-4482-9b0e-f6617c3a142d",
+      "key": "calibration_optical_tweezers_05-08-2019_bead_1.zip",
+      "size": 336489727,
+      "checksum": "md5:125dbd2f369de565018039df64b8af76",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_05-08-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "11de23df-3d9f-4043-81e0-29705eb73c2a",
+      "key": "calibration_optical_tweezers_08-06-2013_bead_2.zip",
+      "size": 316166418,
+      "checksum": "md5:d781e3cfebaca60c20d8a79ff6fb47f8",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-06-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "7e5cff56-46eb-441c-a843-0bb417e92b88",
+      "key": "calibration_optical_tweezers_03-22-2019_bead_3.zip",
+      "size": 342553585,
+      "checksum": "md5:0ff0e41de38a821c40b57525a54d5c67",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-22-2019_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "0563152a-4800-46cd-8845-9a5f3344960d",
+      "key": "calibration_optical_tweezers_08-06-2013_bead_1.zip",
+      "size": 293234171,
+      "checksum": "md5:813f947fb2ad2a3baf6d11c47078a86f",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-06-2013_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "3a838352-fc92-4c26-94dc-fc45565d4e6c",
+      "key": "calibration_optical_tweezers_08-05-2013_bead_3.zip",
+      "size": 291801787,
+      "checksum": "md5:e5bb0e6511a00d56c14cb9ac54036a8e",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_08-05-2013_bead_3.zip/content"
+      }
+    },
+    {
+      "id": "4718d657-abc5-46fa-a30b-77dbaa202a6c",
+      "key": "calibration_optical_tweezers_02-20-2015_bead_2.zip",
+      "size": 363054089,
+      "checksum": "md5:bedba0a76842e40b6283ae59dacf0910",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-20-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "5a23c24d-93a7-4620-919b-3b2dc2fa4b0b",
+      "key": "calibration_optical_tweezers_02-05-2015_bead_1.zip",
+      "size": 428054845,
+      "checksum": "md5:5f36e43fb8ca99615fce2757e17ebf28",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-05-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "684c9185-e001-4f32-b1f3-38f14b3c2b4c",
+      "key": "calibration_optical_tweezers_01-30-2015_bead_2.zip",
+      "size": 388788929,
+      "checksum": "md5:cf035b9c9c13c287bde9617bc4b4705f",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_01-30-2015_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "d58bfa95-ba56-4052-963b-b5c17c5ca466",
+      "key": "calibration_optical_tweezers_02-03-2015_bead_1.zip",
+      "size": 428054739,
+      "checksum": "md5:81f9b0ef79a7cf2bef31075ca44b1b60",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_02-03-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "d2db6cb3-4e7c-4180-8cba-459f319d1106",
+      "key": "calibration_optical_tweezers_03-12-2019_bead_1.zip",
+      "size": 334254852,
+      "checksum": "md5:d523a09d6fa283861dd9bff484fc4e44",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_03-12-2019_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "b7a4af7c-7f6c-4e91-ac44-2e7013bcc48e",
+      "key": "calibration_optical_tweezers_06-05-2015_bead_1.zip",
+      "size": 397535558,
+      "checksum": "md5:6b420a5045e7c3492dfc4e318969e657",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_06-05-2015_bead_1.zip/content"
+      }
+    },
+    {
+      "id": "62a9b5f2-ffbd-44c8-9c9c-23dd922b68e5",
+      "key": "calibration_optical_tweezers_10-07-2013_bead_2.zip",
+      "size": 336949824,
+      "checksum": "md5:5a2f6b63b75f8654a78afd210a3c15aa",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-07-2013_bead_2.zip/content"
+      }
+    },
+    {
+      "id": "1b61a20c-05e3-4667-aee4-16e85a97e7e8",
+      "key": "calibration_optical_tweezers_10-07-2013_bead_1.zip",
+      "size": 334589015,
+      "checksum": "md5:6c52eedcdf54190b93ed438b1ee89603",
+      "links": {
+        "self": "https://zenodo.org/api/records/3333905/files/calibration_optical_tweezers_10-07-2013_bead_1.zip/content"
+      }
+    }
+  ],
+  "swh": {},
+  "owners": [
+    {
+      "id": "70024"
+    }
+  ],
+  "status": "published",
+  "stats": {
+    "downloads": 3934,
+    "unique_downloads": 2989,
+    "views": 431,
+    "unique_views": 414,
+    "version_downloads": 3934,
+    "version_unique_downloads": 2989,
+    "version_unique_views": 414,
+    "version_views": 431
+  },
+  "state": "done",
+  "submitted": true
+}

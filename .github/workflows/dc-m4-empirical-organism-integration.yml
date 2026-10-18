@@ -26,11 +26,17 @@ jobs:
           mkdir -p "$RUNNER_TEMP/body-evidence"
           rustc --version --verbose > "$RUNNER_TEMP/body-evidence/rust-version.txt"
           python3 -m unittest discover -s scripts -p test_empirical_constituent.py -v 2>&1 | tee "$RUNNER_TEMP/body-evidence/empirical-tests.log"
+          python3 -m unittest discover -s scripts -p test_chemical_body_reference.py -v 2>&1 | tee "$RUNNER_TEMP/body-evidence/body-tests.log"
           cd digital-protocell
           cargo test --locked -p chemistry-core --features chemical-reference-port --test chemical_body_port --test chemical_reference_port 2>&1 | tee "$RUNNER_TEMP/body-evidence/native-tests.log"
           cargo build --locked -p chemistry-core --features chemical-reference-port --example chemical_body_port 2>&1 | tee "$RUNNER_TEMP/body-evidence/build.log"
           cp target/debug/examples/chemical_body_port "$RUNNER_TEMP/body-evidence/native-body"
           "$RUNNER_TEMP/body-evidence/native-body" > "$RUNNER_TEMP/body-evidence/native-body-observations.json"
+          cd ..
+          python3 scripts/qualify_chemical_body.py --input "$RUNNER_TEMP/body-evidence/native-body-observations.json" --binary "$RUNNER_TEMP/body-evidence/native-body" --output "$RUNNER_TEMP/body-evidence" > "$RUNNER_TEMP/body-evidence/body-qualification.log"
+          python3 -m zipfile -e docs/dc-m4-empirical-constituent-evidence/raw-selected.zip "$RUNNER_TEMP/body-evidence/empirical-input"
+          python3 scripts/measure_empirical_constituent.py --source "$RUNNER_TEMP/body-evidence/empirical-input" --output "$RUNNER_TEMP/body-evidence/empirical-measurements.json" > "$RUNNER_TEMP/body-evidence/empirical-measurements.log"
+          test -z "$(git status --porcelain)"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

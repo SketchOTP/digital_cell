@@ -1,0 +1,50 @@
+{
+  "schema": "digital_cell_empirical_constituent_source_registry_v1",
+  "independent_role": "EXPERIMENTAL_OPTICAL_TRAP_RELAXATION_ONLY",
+  "publisher_url": "https://zenodo.org/records/3333905",
+  "license": "CC0-1.0 (publisher API cc-zero)",
+  "selected_source_zip": {
+    "name": "calibration_optical_tweezers_01-05-2015_bead_1.zip",
+    "bytes": 336923610,
+    "md5": "8d2cd9f526021f8aaafd7d3a858a7945",
+    "sha256": "3d3fe389843abf4ef957665dd4a8710caa70e6e4c3126252fc1ba2f5239f13d4"
+  },
+  "acquisition": {
+    "run": 39139093674,
+    "artifact": 12140906864,
+    "whole_zip_verified_in_hosted_runner": true,
+    "whole_original_bundled": false,
+    "external_source_code_executed": false
+  },
+  "curated_files": {
+    "docs/dc-m4-empirical-constituent-evidence/publisher-metadata.json": {
+      "bytes": 57183,
+      "sha256": "9e10acd7758eb29ef89e68a484eae14a9831a17e49a687191329a065abacae31"
+    },
+    "docs/dc-m4-empirical-constituent-evidence/README.md": {
+      "bytes": 1254,
+      "sha256": "a6a1a6c81cfb5e361c658e96c9df575777850b55e3006de04b0c06f2d98453d1"
+    },
+    "docs/dc-m4-empirical-constituent-evidence/raw-selected.zip": {
+      "bytes": 7743153,
+      "sha256": "b6c32f062ed98c51d6fe16fd9e807c8c6fd948b65a03998bab909340625cf32e"
+    }
+  },
+  "other_references": [
+    {
+      "url": "https://www.nature.com/articles/ncomms10848",
+      "role": "enzyme binding/conformation comparator; raw numerical traces not verified; not fitted"
+    },
+    {
+      "url": "https://springernature.figshare.com/articles/dataset/DNA_Calorimetric_Force_Spectroscopy_at_Single_Base_Pair_Resolution/28211567",
+      "role": "licensed raw DNA reference identified, not acquired or fitted in this phase"
+    }
+  ],
+  "empirical_full_target_qualified": false,
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  }
+}
