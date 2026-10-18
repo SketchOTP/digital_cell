@@ -453,3 +453,13 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `docs/dc-m4-source-receiver-review.json` — independent five-file hash-bound bounded-architecture review and explicit numerical/native limitations.
 - `scripts/verify_source_receiver_architecture.py` — exact source/receiver/cycle/path/capacity witnesses and frozen source/contract/history checks; scoped hosted workflow in .github/workflows/dc-m4-source-receiver-architecture.yml.
 - `/home/sketch/Projects/digital_cell-source-receiver-evidence/` — preservation and final CI/artifact/Notion receipts duplicated additively at /srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/source-receiver-architecture/.
+
+
+## Interfaces and contracts
+
+- `scripts/dc_m4_reference_prototype.py` — standalone immutable cold-entry prescribed-stroke reference, exact rational scalar solver, source/store/heat and numerical defect certificates; no production integration.
+- `scripts/test_dc_m4_reference_prototype.py` — focused executable root/funding/transaction/domain/CLI controls, with cold-reachable and local preload claims distinguished.
+- `docs/dc-m4-reference-prototype.md` — interface, numerical-error and qualification boundaries; directive and hash-bound independent review alongside.
+- `docs/dc-m4-calibration-acquisition-plan.md` — paired JSON and 80-row empty force template define source admission, mapping, uncertainty, holdout and missing-data gates; no data acquired.
+- `scripts/verify_reference_prototype.py` — 108 independent root/capacity/error fixtures, seven plan mutants, source/history/record/review bindings and artifact generation; scoped .github/workflows/dc-m4-reference-prototype.yml.
+- `/home/sketch/Projects/digital_cell-reference-prototype-evidence/` — exact-head hosted/reference/preservation/Notion receipts mirrored additively to /srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reference-prototype/.

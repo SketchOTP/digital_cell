@@ -1,0 +1,149 @@
+{
+  "schema": "digital_cell_independent_calibration_acquisition_plan_v1",
+  "entry_head": "fb3366995de9a8dbc5bceb6d3ae24ed653972dca",
+  "status": "PLAN_DEFINED_DATA_MISSING",
+  "readiness": "MISSING_EVIDENCE",
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "source_registry": [],
+  "raw_dataset_registry": [],
+  "observed_response_count": 0,
+  "campaign_executed": false,
+  "fitting_performed": false,
+  "automatic_successor": false,
+  "acquisition_or_fitting_authorized": false,
+  "prototype_is_independent_calibration": false,
+  "preregistration": {
+    "source_admission": "MISSING",
+    "source_identity_and_hash": "MISSING",
+    "noncircular_dependency_audit": "MISSING",
+    "A_W_P_species_stoichiometry_mapping": "MISSING",
+    "force_length_time_amount_units": "MISSING",
+    "uncertainty_certificates": "MISSING",
+    "physical_decision_resolution": "MISSING",
+    "absolute_accuracy_budgets": null,
+    "maximum_enclosure_widths": null,
+    "replicate_and_sampling_policy": "MISSING",
+    "estimator_version": "MISSING",
+    "holdout_custodian": "MISSING",
+    "pre_response_manifest": "MISSING"
+  },
+  "forbidden_inputs": [
+    "R13_thirty_response_signs",
+    "growing_fission_labels",
+    "correction_target",
+    "candidate_or_prototype_generated_observations",
+    "literature_values_without_source_species_unit_mapping",
+    "native_ks_as_K_or_actuator_effort_price_as_epsilon_A"
+  ],
+  "source_admission": {
+    "physical": "raw_apparatus_channels_species_stoichiometry_environment_units_calibration_certificates",
+    "independent_computational": "version_license_equations_input_dependency_audit_and_non_candidate_outputs_with_declared_model_mapping",
+    "review": "independent_raw_hash_mapping_and_holdout_custody_review",
+    "biological_identity_assumed": false
+  },
+  "force": {
+    "template": "docs/dc-m4-calibration-force-template.csv",
+    "planned_rows": 80,
+    "training_rows": 4,
+    "heldout_rows": 76,
+    "response_status": "NOT_ACQUIRED",
+    "response_and_provenance_fields_blank": true,
+    "equation": "T_c*L0/P=K*epsilon-K*lambda*x",
+    "training_rule": "x_in{0,1};epsilon_in{0,1/4};P_over_Pref=L0_over_Lref=1",
+    "estimator": "joint_all_four_training_strips_in_positive_K_Klambda_region_rank2",
+    "preserve_correlations": true,
+    "heldout_rule": "entire_sealed_training_region_must_predict_all_76_no_holdout_refit"
+  },
+  "kinetic": {
+    "x": [
+      "1/4",
+      "1/2",
+      "3/4"
+    ],
+    "selector": "midpoint_of_independently_sealed_lambda_projection_geometry_only",
+    "epsilon": "lambda_star*x+sigma*d_epsilon",
+    "sigma": [
+      -1,
+      1
+    ],
+    "train_d_epsilon": [
+      "1/4"
+    ],
+    "holdout_d_epsilon": [
+      "1/8",
+      "3/8"
+    ],
+    "train_design_points": 6,
+    "holdout_design_points": 12,
+    "observation_windows": [
+      "h",
+      "h/2",
+      "h/4"
+    ],
+    "requires": [
+      "strict_nonzero_g_sign_over_entire_joint_region",
+      "independent_unclipped_net_J",
+      "positive_Rplus_Rminus",
+      "source_refinement_uncertainty",
+      "all_heldouts"
+    ],
+    "zero_g_control": "only_independently_certified_true_g_zero_not_midpoint_selector",
+    "gross_turnover_inferred": false,
+    "prototype_executes_native_J": false
+  },
+  "fuel": {
+    "primary": "independent_source_free_energy_loss_per_A_source_with_species_and_units",
+    "alternative": "epsilon_A=(W_out+Q_loss+DeltaU_independent)/A_source",
+    "v2_clarification": "include_all_independent_loss_and_storage_terms;work_only_requires_omitted_terms_certified_zero",
+    "candidate_Ec_or_debit_as_anchor_forbidden": true,
+    "overhead": "subtract_matching_independent_energy_and_material_terms_or_keep_total_source_boundary",
+    "train_work_ratios": [
+      "1",
+      "2"
+    ],
+    "holdout_work_ratios": [
+      "3/2"
+    ],
+    "absolute_scale": "MISSING_seal_inside_independent_source_domain_before_responses",
+    "controls": [
+      "zero_motion",
+      "zero_work",
+      "negative_release_no_A_recovery",
+      "synthesis_not_W"
+    ],
+    "W_is_heat": false,
+    "regeneration_authorized": false
+  },
+  "uncertainty": {
+    "retain_joint_correlations": true,
+    "zero_inclusion_is_pass": false,
+    "acceptance": "full_residual_enclosure_inside_pre_response_absolute_budget_and_width_limit;inequalities_over_entire_joint_region",
+    "floating_method": "outward_intervals_or_justified_counted_operation_bound",
+    "budget_widening_or_probe_movement_after_responses": false
+  },
+  "decisions": {
+    "missing": "MISSING_EVIDENCE",
+    "defective_provenance_or_mapping": "EVIDENCE_DEFECT",
+    "ill_conditioned_wide_or_boundary_overlap": "INCONCLUSIVE",
+    "unsupported_domain": "DOMAIN_UNCOVERED",
+    "valid_contradiction": "CONSTITUTIVE_CANDIDATE_REJECTED",
+    "success": "independently_identified_parameter_region_only_no_automatic_implementation"
+  },
+  "method_references": [
+    {
+      "url": "https://arxiv.org/html/1002.1867v1",
+      "adoption": "REFERENCE_METHOD_ONLY",
+      "imported_values": false
+    },
+    {
+      "url": "https://arxiv.org/abs/1210.4017",
+      "adoption": "REFERENCE_METHOD_ONLY",
+      "imported_values": false
+    }
+  ]
+}

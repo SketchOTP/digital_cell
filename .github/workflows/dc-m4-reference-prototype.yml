@@ -1,0 +1,32 @@
+name: DC-M4 Bounded Reference Prototype and Acquisition Plan
+on:
+  push:
+    branches:
+      - codex/dc-m4-bounded-reference-prototype
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Verify reference transactions and acquisition boundaries
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          python3 scripts/verify_reference_prototype.py --repo . --output "$RUNNER_TEMP/reference-prototype-evidence"
+          git diff --check
+          test -z "$(git status --porcelain)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dc-m4-reference-prototype-${{ github.sha }}
+          include-hidden-files: true
+          if-no-files-found: error
+          path: ${{ runner.temp }}/reference-prototype-evidence/

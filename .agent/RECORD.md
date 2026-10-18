@@ -2218,3 +2218,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: The prior simultaneous-force counterexample requires a real receiver rather than bath relabeling. The bounded native stretch derivative supplies that receiver; finite A drives the physical conversion coordinate. Exact source/store/heat accounting, cold entry and path-resolved irreversible work close the proposed domain without a hidden tank. Toyabe2010 and Toyabe/Muneyuki2015 are independently observed METHOD/REFERENCE evidence; no values, ATP identity, efficiency, code or A-regeneration policy are imported.
 - Affected areas: Isolated architecture/checker/workflow, current and append-only governance, additive local/Atlas receipts and Notion https://app.notion.com/p/3fc833cb27ff812ebeb8e562c64462b8. No production scientific source, prior contract/spec, original checkout, PR44–48 or historical archive change; no automatic successor.
 - Supersedes record: none
+
+
+## DEC-DCM4-REFERENCE-PROTOTYPE-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-REFERENCE-PROTOTYPE-20261017
+- Status: ACTIVE
+- Decision or event: Owner authorized bounded reference execution and independent calibration-evidence acquisition planning. Implement a separate dependency-free prescribed-stroke scalar program with fixed cold entry, actual certified roots, unrepaired numerical defects and immutable rollback; keep every production and prior architecture/specification source unchanged. Accept the reference implementation and empty-data plan only.
+- Rationale: Executable reference cycles resolve the prior implementation gap without inventing empirical constants or a native adapter. Reuse accepted v2 equations and standard-library Fraction/bisection rather than external code. Primary Toyabe2010 and Toyabe/Muneyuki2015 papers are REFERENCE measurement methods only; no values, ATP identity, efficiency, apparatus or regeneration are imported. Independent source provenance, species/units and complete loss/storage accounting must precede calibration.
+- Affected areas: New reference program/tests/docs/plan/template/verifier/workflow and project records; Notion https://app.notion.com/p/3fd833cb27ff817798eccbee4cc547aa; local /home/sketch/Projects/digital_cell-reference-prototype-evidence/ and additive Atlas evidence/reference-prototype/. Nine previous checkouts, PR44-49, 696 entry archive files and original dirty Atlas source remain preserved; no automatic successor.
+- Supersedes record: none

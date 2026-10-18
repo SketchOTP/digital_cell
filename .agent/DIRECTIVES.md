@@ -1580,3 +1580,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261017-dcm4-reference-prototype
+
+- Issued: 2026-10-17T21:23:33-04:00
+- Issuer: User
+- External directive: DC-M4-BOUNDED-REFERENCE-PROTOTYPE-CALIBRATION-PLAN-001
+- Objective: Implement the bounded reference prototype, define an independent calibration-evidence acquisition plan, independently verify both and preserve existing work with current Notion/project records.
+- Scope: Standalone exact-rational cold-entry scalar reference program, prescribed path-funded conversion, certified reciprocal mechanics root solve and numerical defect budgets, immutable cycle rollback, meaningful tests, empty independent-evidence acquisition plan/template, scoped verifier/workflow and additive local/Atlas/Notion records from fb3366995de9a8dbc5bceb6d3ae24ed653972dca.
+- Exclusions: Production Rust or prior contract/spec/architecture edits, native-J trajectory, parameter calibration/fitting or actual data/apparatus campaign, pressure/bending/contact/material/topology integration, R13 biological reruns, PR44-49 mutation, merge/deploy and automatic successor.
+- Acceptance: Cold-reachable execution with full finite path funding and signed two-store work; sign-certified scalar roots and honest unrepaired energy-defect bounds; whole-cycle rollback on late failure; independent source/species/unit/uncertainty/holdout acquisition plan with empty observations and null production values; distinct hash-bound review, parent tests and independent root controls, frozen science/history/work/archive preservation, exact-head hosted artifact and Notion readback.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

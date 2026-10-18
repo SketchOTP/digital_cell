@@ -1,0 +1,69 @@
+{
+  "schema": "digital_cell_bounded_reference_prototype_independent_review_v1",
+  "decision": "ACCEPTED_BOUNDED_REFERENCE_AND_ACQUISITION_PLAN_ONLY",
+  "review_date": "2026-10-17",
+  "entry_head": "fb3366995de9a8dbc5bceb6d3ae24ed653972dca",
+  "reviewer": "distinct governance_audit agent; no prototype, tests, plan or verifier implementation authorship",
+  "method": "independent static reading of all nine bound files and all 80 template rows, mathematical review of source work, solver certificates, error budgets and calibration independence; no workload execution or monitoring by reviewer",
+  "reviewed_files": {
+    "scripts/dc_m4_reference_prototype.py": "5d349db13266e0eb006e7712475ed1125c288b75a1b27f13eefa08dff7ad3cce",
+    "scripts/test_dc_m4_reference_prototype.py": "f0f7e61b54f83397f5eee35261c2202465a3bb566fe8596d806a984dcd4ec449",
+    "scripts/verify_reference_prototype.py": "29cc0a10fa5d0cf5a34a305d4494fbc847929a8275e0e6b3337954e00fd00f83",
+    "docs/dc-m4-reference-prototype.md": "b15381e6ca45a13378fc9843f2814c449dd615a47837fcbbc398c590a0197328",
+    "docs/dc-m4-reference-prototype-directive.md": "40b75a6f3f86db020fa6692621dd1dc8ef0c162221398296c6f7df426329fe22",
+    "docs/dc-m4-calibration-acquisition-plan.md": "7bb38d315fa7c2f1a6b69057c41abd9c5e417c9cb01cb80dddd9383362c4f164",
+    "docs/dc-m4-calibration-acquisition-plan.json": "35d157436376a1038f0ac71c9c9ec7ef6a57d624c7b0d2bfa665a30efc7553c5",
+    "docs/dc-m4-calibration-force-template.csv": "d21652e2b91e49b408b9a1fbc0b6898af42d8dee5af202faaf378135c24c365f",
+    ".github/workflows/dc-m4-reference-prototype.yml": "b3829d2cee52e96bcd5b014dffa75d7837560fa3a585e27940ab776c049030c8"
+  },
+  "preflight": {
+    "retained_complete_historical_coverage": true,
+    "new_additions": "All .agent append additions between 101e635d6498b9cfe451b2d702d64a4440939963 and entry fb3366995de9a8dbc5bceb6d3ae24ed653972dca read, including directives and outcomes.",
+    "complete_assigned_coverage": {
+      ".agent/LEARNINGS.md": "through line 1505 at entry",
+      ".agent/RECORD.md": "through line 2220 at entry",
+      ".agent/REPO_MAP.md": "through line 455 at entry"
+    },
+    "additional_context": "current/profile, AGENTS, COMMANDMENTS and authority-governance; accepted v2 architecture, prior reviews and native source boundary retained",
+    "bridge": "No Digital Cell binding or bridge acceptance inferred from unrelated activation-test configuration."
+  },
+  "accepted_implementation_criteria": [
+    "Public Run entry is cold only and fixes immutable Params, Material, Accuracy and certificate history. Exact Fraction inputs and finite iteration counts are guarded; imported states and ordinary parameter mutation are unsupported.",
+    "Prescribed monotone conversion strokes reserve the complete c0*abs(d)+Vplus/epsilon_A cost before mechanics. Vplus and Vminus resolve crossing the coupling minimum; downhill release never finances subsequent uphill work or regenerates A.",
+    "The implemented receiver secant is the true piecewise potential difference, including rest-length crossings, with its derivative limit for equal lengths.",
+    "The actual mechanical solver evaluates the combined discrete-gradient residual and maintains exact in-domain bracket signs. Convexity and positive drag imply its unique scalar root; accepted certificates require simultaneous width, force-residual and step-energy budgets within the fixed iteration cap.",
+    "At the accepted approximate rational root, the independently recomputed energy defect equals displacement times force residual. The defect remains diagnostic; it is not added to heat, stores or fuel.",
+    "Whole-run signed energy imbalance equals accumulated signed defects, while the separately sealed cumulative sum of absolute defects limits drift without cancellation. Material A/W and polarity conservation remain exact.",
+    "Complete cycles publish only after all source, root, accuracy, cumulative-budget and conservation checks pass. Tests retain prior nonzero sinks, error totals and certificates after late mechanical failures.",
+    "Cold-reachable multi-cycle histories and local preloaded algebra witnesses have distinct claims. The independent tensile-branch oracle and the verifier's 108 varied analytic cases have the correct closed-form root and certificate identities.",
+    "No additional energy tank, geometry A top-up, sink repair, native-J trajectory, production integration or automatic successor is introduced. Internal scalar forces do not claim native external-hook or cap compatibility."
+  ],
+  "accepted_acquisition_plan_criteria": [
+    "The plan is explicitly not an acquisition campaign: source and raw dataset registries are empty, observed response count is zero, production values and measurement budgets are null, and source/species/unit/uncertainty prerequisites remain missing.",
+    "All 80 force-template rows are NOT_ACQUIRED with blank response/provenance fields, four prescribed TRAIN rows and 76 HOLDOUT rows. They are planned coordinates rather than fabricated observations.",
+    "Source eligibility requires independent provenance and a noncircular dependency audit, physical species/stoichiometry and force/length/time/amount mappings, raw hashes and separate reviewer custody. Prototype-generated outputs cannot self-attest independence.",
+    "The prior joint force-region, deterministic kinetic probe, correlated uncertainty, all-response custody and fixed holdout rules remain explicit. R13 signs and desired correction outcomes are forbidden calibration inputs.",
+    "The v2 epsilon_A recipe includes independently measured work, heat and storage with consistent boundaries. Work-only division requires a certificate that omitted terms vanish; prototype Ec, assumed efficiency or its own debit cannot provide the anchor.",
+    "Missing or wide uncertainty budgets remain inconclusive or missing evidence. Exact reference arithmetic supplies no instrument uncertainty or empirical parameter identification."
+  ],
+  "verifier_and_workflow_review": {
+    "scope": "Exact reviewed artifact set, tracked/untracked drift, unchanged scientific subtree, 34 prior source/document/workflow inputs, append-only prefixes and new structured records are checked.",
+    "substantive_controls": "The verifier executes the focused tests, an independent 108-case tensile oracle, actual bounded demo and seven plan semantic mutants. This statement describes inspected code; reviewer did not execute it.",
+    "evidence": "Exact-head clean-tree hosted workflow archives verification, deterministic demo, test log and hash-bound repository files. Parent execution and downloaded artifact verification remain separate evidence."
+  },
+  "limitations": [
+    "Acceptance is for the standalone bounded scalar reference implementation and an acquisition plan. It does not accept calibrated parameters, independent observations, native kinetics or biological efficacy.",
+    "Illustrative coefficients and prescribed reaction strokes are not measured or selected production parameters. The prototype owns theta but does not execute its exponential kinetic law.",
+    "Nonzero rational root defects are explicitly bounded approximations, not exact mechanical energy conservation. Exact Fraction arithmetic does not certify floating-point implementations or physical measurement errors.",
+    "The scalar pinned module admits internal signed forces. It does not use native tension/external-force APIs, certify their caps, or reproduce native explicit integration, contact, pressure or A-dependent actuator staging.",
+    "Local rest-crossing and equal-energy path tests do not establish cold reachability of their constructed preloaded states. Reachability claims are limited to histories produced from Run.cold through committed cycles.",
+    "Immutable Python interfaces are not protection against reflection or private object construction. Checkpoint import, native lifecycle transactions, topology/material changes and production persistence remain unsupported.",
+    "Current calibration source eligibility, species/unit mapping, raw observations, uncertainty certificates and fitted values remain missing. The plan authorizes no actual acquisition, apparatus operation, import or fitting campaign.",
+    "No R13 damping correction, full native integration, morphogenesis, reproduction, selection, reversal or lifeform completion is established.",
+    "Reviewer executed no tests, demos, verifier, builds or assays. Parent-owned test results, hosted CI, artifact reconstruction, preservation and Notion readback are distinct evidence."
+  ],
+  "remaining_acceptance_blockers_for_bounded_reference_and_plan_only": [],
+  "independent_calibration_readiness": "MISSING_EVIDENCE",
+  "native_J_trajectory": false,
+  "automatic_successor": false
+}
