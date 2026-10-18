@@ -1,0 +1,39 @@
+name: DC-M4 Full-State Body Integration and Empirical Measurement
+on:
+  push:
+    branches:
+      - codex/dc-m4-empirical-organism-integration
+    paths-ignore:
+      - .github/workflows/dc-m4-empirical-acquisition.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - uses: dtolnay/rust-toolchain@1.89.0
+      - name: Compile and measure the full-state native body
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/body-evidence"
+          rustc --version --verbose > "$RUNNER_TEMP/body-evidence/rust-version.txt"
+          python3 -m unittest discover -s scripts -p test_empirical_constituent.py -v 2>&1 | tee "$RUNNER_TEMP/body-evidence/empirical-tests.log"
+          cd digital-protocell
+          cargo test --locked -p chemistry-core --features chemical-reference-port --test chemical_body_port --test chemical_reference_port 2>&1 | tee "$RUNNER_TEMP/body-evidence/native-tests.log"
+          cargo build --locked -p chemistry-core --features chemical-reference-port --example chemical_body_port 2>&1 | tee "$RUNNER_TEMP/body-evidence/build.log"
+          cp target/debug/examples/chemical_body_port "$RUNNER_TEMP/body-evidence/native-body"
+          "$RUNNER_TEMP/body-evidence/native-body" > "$RUNNER_TEMP/body-evidence/native-body-observations.json"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dc-m4-full-state-body-${{ github.sha }}
+          if-no-files-found: error
+          path: ${{ runner.temp }}/body-evidence/

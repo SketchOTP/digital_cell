@@ -1,0 +1,10 @@
+{
+  "schema": "digital_cell_body_geometry_domain_amendment_v2",
+  "prior_protocol_sha256": "5d3df634aff00b443f7f3b8a4c7d253b526f2b49c5fc2435272f8fb4f9bae09a",
+  "issued_utc": "2026-10-18T15:09:13.486389+00:00",
+  "execution_observed_before_amendment": false,
+  "geometry_domain": "simple nondegenerate positively oriented polygon, collinear adjacent midpoint edges admitted; no nonadjacent crossing/touch, zero edge or repeated vertex",
+  "reason": "Native remesh adds independent per-vertex drag and no bending. Physical compression or normal midpoint forces may create a simple concavity; convexity is not required by area/storage/force derivation. Reject actual geometric degeneracy/contact rather than harmless concavity. No equation/force/parameter/budget change.",
+  "frozen_budgets_unchanged": true,
+  "prior_protocol_retained": true
+}
