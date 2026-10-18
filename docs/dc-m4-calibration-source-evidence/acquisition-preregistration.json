@@ -1,0 +1,239 @@
+{
+  "schema": "digital_cell_source_acquisition_preregistration_v1",
+  "sealed_at": "2026-10-18T01:48:09.790630+00:00",
+  "source": "10.5281/zenodo.4481182",
+  "source_license": "CC-BY-4.0 per repository record",
+  "selection_rule": "all18 source_code files, root/data readmes and complete motorI+II summary tables for figures3+4; chosen from directory filenames before member content",
+  "selected_members": [
+    {
+      "name": "zenodo/0README.txt",
+      "method": 8,
+      "crc32": 1384406502,
+      "compressed_size": 485,
+      "size": 912,
+      "flags": 8,
+      "offset": 273
+    },
+    {
+      "name": "zenodo/data_and_figures/0README.txt",
+      "method": 8,
+      "crc32": 849048030,
+      "compressed_size": 368,
+      "size": 700,
+      "flags": 8,
+      "offset": 4141
+    },
+    {
+      "name": "zenodo/source_code/particle.cpp",
+      "method": 8,
+      "crc32": 1259553179,
+      "compressed_size": 1018,
+      "size": 2904,
+      "flags": 8,
+      "offset": 6427
+    },
+    {
+      "name": "zenodo/source_code/MotorSimulator.cpp",
+      "method": 8,
+      "crc32": 2233988256,
+      "compressed_size": 9947,
+      "size": 61958,
+      "flags": 8,
+      "offset": 7955
+    },
+    {
+      "name": "zenodo/source_code/archive.h",
+      "method": 8,
+      "crc32": 3361807718,
+      "compressed_size": 412,
+      "size": 1095,
+      "flags": 8,
+      "offset": 18279
+    },
+    {
+      "name": "zenodo/source_code/ring.h",
+      "method": 8,
+      "crc32": 2420705073,
+      "compressed_size": 829,
+      "size": 2359,
+      "flags": 8,
+      "offset": 19006
+    },
+    {
+      "name": "zenodo/source_code/motor_settings.h",
+      "method": 8,
+      "crc32": 3896918505,
+      "compressed_size": 881,
+      "size": 2716,
+      "flags": 8,
+      "offset": 20144
+    },
+    {
+      "name": "zenodo/source_code/makefile",
+      "method": 8,
+      "crc32": 3120079982,
+      "compressed_size": 350,
+      "size": 967,
+      "flags": 8,
+      "offset": 21542
+    },
+    {
+      "name": "zenodo/source_code/ring.cpp",
+      "method": 8,
+      "crc32": 1256488112,
+      "compressed_size": 4443,
+      "size": 24548,
+      "flags": 8,
+      "offset": 22314
+    },
+    {
+      "name": "zenodo/source_code/0README.txt",
+      "method": 8,
+      "crc32": 1109809848,
+      "compressed_size": 1076,
+      "size": 2637,
+      "flags": 8,
+      "offset": 27112
+    },
+    {
+      "name": "zenodo/source_code/fuel.h",
+      "method": 8,
+      "crc32": 321681482,
+      "compressed_size": 782,
+      "size": 2219,
+      "flags": 8,
+      "offset": 28736
+    },
+    {
+      "name": "zenodo/source_code/tetrahedron.cpp",
+      "method": 8,
+      "crc32": 3544850426,
+      "compressed_size": 2826,
+      "size": 13870,
+      "flags": 8,
+      "offset": 29981
+    },
+    {
+      "name": "zenodo/source_code/fuel.cpp",
+      "method": 8,
+      "crc32": 2308099575,
+      "compressed_size": 3530,
+      "size": 20412,
+      "flags": 8,
+      "offset": 33323
+    },
+    {
+      "name": "zenodo/source_code/forcefield.h",
+      "method": 8,
+      "crc32": 3704693836,
+      "compressed_size": 858,
+      "size": 3417,
+      "flags": 8,
+      "offset": 37319
+    },
+    {
+      "name": "zenodo/source_code/system.cpp",
+      "method": 8,
+      "crc32": 1871539485,
+      "compressed_size": 11828,
+      "size": 70630,
+      "flags": 8,
+      "offset": 38533
+    },
+    {
+      "name": "zenodo/source_code/particle.h",
+      "method": 8,
+      "crc32": 4210301534,
+      "compressed_size": 567,
+      "size": 1277,
+      "flags": 8,
+      "offset": 50749
+    },
+    {
+      "name": "zenodo/source_code/forcefield.cpp",
+      "method": 8,
+      "crc32": 2286235789,
+      "compressed_size": 9175,
+      "size": 82563,
+      "flags": 8,
+      "offset": 51822
+    },
+    {
+      "name": "zenodo/source_code/system.h",
+      "method": 8,
+      "crc32": 2815688536,
+      "compressed_size": 1965,
+      "size": 7978,
+      "flags": 8,
+      "offset": 61400
+    },
+    {
+      "name": "zenodo/source_code/archive.cpp",
+      "method": 8,
+      "crc32": 960491151,
+      "compressed_size": 877,
+      "size": 3762,
+      "flags": 8,
+      "offset": 63720
+    },
+    {
+      "name": "zenodo/source_code/tetrahedron.h",
+      "method": 8,
+      "crc32": 3239781676,
+      "compressed_size": 604,
+      "size": 1651,
+      "flags": 8,
+      "offset": 64916
+    },
+    {
+      "name": "zenodo/data_and_figures/fig3/motorI_analyzed.txt",
+      "method": 8,
+      "crc32": 3698199249,
+      "compressed_size": 1687,
+      "size": 3494,
+      "flags": 8,
+      "offset": 90791
+    },
+    {
+      "name": "zenodo/data_and_figures/fig3/motorII_analyzed.txt",
+      "method": 8,
+      "crc32": 3742242299,
+      "compressed_size": 1697,
+      "size": 3461,
+      "flags": 8,
+      "offset": 92833
+    },
+    {
+      "name": "zenodo/data_and_figures/fig4/motorI_analyzed.txt",
+      "method": 8,
+      "crc32": 254195183,
+      "compressed_size": 2080,
+      "size": 4395,
+      "flags": 8,
+      "offset": 96308
+    },
+    {
+      "name": "zenodo/data_and_figures/fig4/motorII_analyzed.txt",
+      "method": 8,
+      "crc32": 2962123004,
+      "compressed_size": 2104,
+      "size": 4360,
+      "flags": 8,
+      "offset": 98514
+    }
+  ],
+  "purpose": "source independence and mapping audit; quarantined external computational evidence, not Digital Cell calibration",
+  "calibration_admission_before_acquisition": "NOT_ADMITTED",
+  "calibration_training_or_fitting": false,
+  "production_parameters": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "whole_archive_MD5_status": "NOT_VERIFIED_sparsely_acquired",
+  "archive_md5_advertised": "75c151155bd3187cb1e56e07539887f4",
+  "range_start": 0,
+  "range_end": 199999,
+  "range_size": 200000
+}

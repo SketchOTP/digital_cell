@@ -1,0 +1,32 @@
+[
+  {
+    "file": "toyabe-2010.html",
+    "url": "https://arxiv.org/html/1002.1867v1",
+    "final_url": "https://arxiv.org/html/1002.1867v1",
+    "sha256": "8aed572b19341e54dc3406f5e9b7827ce69a92cd21968e3450bfae9fa24dbd14",
+    "bytes": 102194,
+    "acquired_at": "2026-10-18T01:49:43.544763+00:00",
+    "classification": "PRIMARY_DOCUMENTARY_REFERENCE_NOT_RAW_MEASUREMENT",
+    "redistribution": "not copied into Git; retained in local/additive archive evidence"
+  },
+  {
+    "file": "toyabe-2015.html",
+    "url": "https://arxiv.org/html/1210.4017v4",
+    "final_url": "https://arxiv.org/html/1210.4017v4",
+    "sha256": "155e36814ecc7c45263667f2a4813d90439545d5d06f64819e792cc6b185da97",
+    "bytes": 133830,
+    "acquired_at": "2026-10-18T01:49:43.680720+00:00",
+    "classification": "PRIMARY_DOCUMENTARY_REFERENCE_NOT_RAW_MEASUREMENT",
+    "redistribution": "not copied into Git; retained in local/additive archive evidence"
+  },
+  {
+    "file": "albaugh-2021v2.html",
+    "url": "https://arxiv.org/html/2102.06298v2",
+    "final_url": "https://arxiv.org/html/2102.06298v2",
+    "sha256": "defcf36f62ab62bb72d44442cbe2ee0664b0f441aeaee0ea81c0a6d3dae75366",
+    "bytes": 368605,
+    "acquired_at": "2026-10-18T01:49:43.843509+00:00",
+    "classification": "PRIMARY_DOCUMENTARY_REFERENCE_NOT_RAW_MEASUREMENT",
+    "redistribution": "not copied into Git; retained in local/additive archive evidence"
+  }
+]

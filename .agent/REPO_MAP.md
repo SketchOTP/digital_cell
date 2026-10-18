@@ -463,3 +463,12 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `docs/dc-m4-calibration-acquisition-plan.md` — paired JSON and 80-row empty force template define source admission, mapping, uncertainty, holdout and missing-data gates; no data acquired.
 - `scripts/verify_reference_prototype.py` — 108 independent root/capacity/error fixtures, seven plan mutants, source/history/record/review bindings and artifact generation; scoped .github/workflows/dc-m4-reference-prototype.yml.
 - `/home/sketch/Projects/digital_cell-reference-prototype-evidence/` — exact-head hosted/reference/preservation/Notion receipts mirrored additively to /srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reference-prototype/.
+
+
+## Interfaces and contracts
+
+- `docs/dc-m4-calibration-source-admission.md` — paired JSON source-family audit, acquired-versus-admitted distinction, owner-confirmed missing referent and blocked target acquisition; directive and independent review alongside.
+- `docs/dc-m4-calibration-source-evidence/` — licensed quarantined sparse archive ranges, original metadata and selection/member receipts, table inventory and attribution; no external code execution or whole-archive MD5 claim.
+- `scripts/calibration_source_admission.py` — pure strict metadata eligibility evaluator; never self-admits or calibrates; focused synthetic controls in scripts/test_calibration_source_admission.py.
+- `scripts/verify_calibration_source_admission.py` — offline 26-member reconstruction, 44x23 table checks, four integrity mutants, eight source decisions, review/source/history/new-record bindings and artifact; scoped .github/workflows/dc-m4-calibration-source-admission.yml.
+- `/home/sketch/Projects/digital_cell-calibration-source-evidence/` — original acquired source members/primary documents and publication/preservation/readback receipts; additive Atlas evidence/calibration-source-admission/.

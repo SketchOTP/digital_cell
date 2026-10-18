@@ -2972,3 +2972,25 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: Rational approximate roots have explicit nonzero numerical defects within sealed bounds; they do not establish exact physical conservation for approximate updates. Illustrative coefficients are not calibration. Missing independent source/species/unit/data/uncertainty/budget mappings leave all production parameters null. No native cap/API, pressure/contact/lifecycle or R13 correction claim follows.
 - Blockers: None to the bounded reference implementation and acquisition-plan deliverables. Independent calibration evidence and full native integration remain separate unestablished boundaries; Digital Cell bridge binding is absent and historical governance drift preserved.
 - Follow-up directive: none
+
+
+## D-20261017-dcm4-calibration-source-admission - PARTIAL
+
+- Outcome ID: O-DCM4-CALIBRATION-SOURCE-20261017
+- Supersedes outcome: none
+- Closed: 2026-10-17T21:54:19-04:00
+- Acceptance: PARTIAL
+- Summary: Independent documentary and computational evidence acquired from primary sources, with eight source families audited. A sparse licensed archive package reconstructs 26 original members and four published processed tables containing 44x23 finite values. No source passes target calibration admission; no raw replicate traces or Digital Cell calibration rows are admitted. Owner confirms no specific independent reference is established. The acquisition objective remains active/blocked, all production values null.
+- Changed areas: New source directive/report/registry/review and quarantined licensed evidence, eligibility evaluator/tests, offline checker/workflow, current/profile/storage and append-only records, additive local/Atlas evidence and Notion.
+- Validation:
+  - Parent strict source eligibility controls including circular data, proof/schema defects and eligibility-versus-admission separation - PASSED
+  - Parent independent reconstruction of 26 selected ZIP members and all 44x23 processed numeric cells, with four corrupted/overclaimed evidence controls - PASSED
+  - Distinct static source/mapping/evaluator/evidence review of the bounded negative admission - PASSED
+  - Frozen prior scientific/prototype/protocol/template inputs, append-only prefixes and new structured records - PASSED
+  - Admissible independent target observations, species/unit/referent mappings and calibration uncertainty/design proof - BLOCKED
+  - Advertised whole-archive MD5, complete raw replicates and actual parameter fitting - NOT RUN
+  - Historical global governance schema drift preserved without clean-global claim - FAILED
+  - Final exact-head CI/artifact and Notion readback at record creation; external receipts to follow - NOT RUN
+- Remaining risks: Source transport/member integrity does not establish calibration validity, raw experiment uncertainty or external preregistration attestation. Independent model/data coordinates and chemistry lack target mappings. Literature raw data availability is unconfirmed in inspected surfaces, not proven absent. No global source absence, native integration or R13 correction claim follows.
+- Blockers: No established independent physical/computational referent and no admissible target-specific mapping/observations/uncertainty/design package in the eight inspected source families. Owner explicitly confirmed no specific reference is established. Acquisition objective stays active/blocked; no automatic successor.
+- Follow-up directive: none

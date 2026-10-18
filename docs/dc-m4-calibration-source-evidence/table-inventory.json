@@ -1,0 +1,60 @@
+{
+  "schema": "digital_cell_quarantined_external_table_inventory_v1",
+  "source": "10.5281/zenodo.4481182",
+  "source_kind": "EXTERNAL_COMPUTATIONAL",
+  "tables": [
+    {
+      "member": "zenodo/data_and_figures/fig3/motorII_analyzed.txt",
+      "rows": 10,
+      "columns": 23,
+      "header": false,
+      "kind": "PUBLISHED_PROCESSED_COMPUTATIONAL_SUMMARY_NOT_RAW_REPLICATE",
+      "sha256": "ccba0ef0c835299d79beee2f64c660ec80256620b59eb311f86a5b31fa5b5d50",
+      "digital_cell_calibration_rows": 0
+    },
+    {
+      "member": "zenodo/data_and_figures/fig3/motorI_analyzed.txt",
+      "rows": 10,
+      "columns": 23,
+      "header": false,
+      "kind": "PUBLISHED_PROCESSED_COMPUTATIONAL_SUMMARY_NOT_RAW_REPLICATE",
+      "sha256": "8263672e867f4ed0c16f28f0d7997f5dd5f2b523efe27b6bf0792cb8cc28580e",
+      "digital_cell_calibration_rows": 0
+    },
+    {
+      "member": "zenodo/data_and_figures/fig4/motorII_analyzed.txt",
+      "rows": 12,
+      "columns": 23,
+      "header": false,
+      "kind": "PUBLISHED_PROCESSED_COMPUTATIONAL_SUMMARY_NOT_RAW_REPLICATE",
+      "sha256": "d58451ba046f085c1420c18b25d6988e48baaf46d28b727565a048803a8522a5",
+      "digital_cell_calibration_rows": 0
+    },
+    {
+      "member": "zenodo/data_and_figures/fig4/motorI_analyzed.txt",
+      "rows": 12,
+      "columns": 23,
+      "header": false,
+      "kind": "PUBLISHED_PROCESSED_COMPUTATIONAL_SUMMARY_NOT_RAW_REPLICATE",
+      "sha256": "4fefd60f0727f73bed298b76303a816db05cb9b4e8d99bdaa47089149ee0c24a",
+      "digital_cell_calibration_rows": 0
+    }
+  ],
+  "external_summary_rows": 44,
+  "external_numeric_cells": 1012,
+  "raw_replicate_trajectories_acquired": false,
+  "digital_cell_calibration_rows_admitted": 0,
+  "source_code_executed": false,
+  "columns_used_for_calibration": [],
+  "column_context": {
+    "fig3_col0": "mu_FTC_prime",
+    "fig4_col0": "friction_gamma",
+    "col1": "mean_FTC_count",
+    "col11": "mean_directional_accuracy",
+    "col13": "mean_current",
+    "col19": "effcat; plotted as Net Cycles per Reaction",
+    "col21": "efftot; loaded by scripts, not plotted"
+  },
+  "column_numbers": "zero_based_as_in_unexecuted_published_plot_scripts",
+  "uncertainty_notes": "script-specific SD/SE normalization; not Digital Cell measurement certificates; no values fitted"
+}

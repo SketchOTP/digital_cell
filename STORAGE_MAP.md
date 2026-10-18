@@ -144,3 +144,13 @@ These mathematical architecture and anchor receipts do not qualify production im
 - Required physical mount: UUID `840ca6b3-5d4f-41fc-9dac-21355e045a6d` and `/srv/ATLAS` FSROOT `/RPI5Pool`, independently checked via atlas-laptop before writes and native hash verification.
 - Preserve all entry evidence: 206 reaction-feasibility +167 conversion-contract +151 work-port +172 source/receiver files =696 scoped files. No archive overwrite/delete, PR44–49 mutation or previous-checkout cleanup.
 - Artifacts: standalone reference program/tests, empty acquisition templates and explicit missing-data plan; numerical reference constants and trajectories are not calibration observations. Final hosted hashes and custody counts are in the external exact-head receipt package.
+
+
+## Independent calibration-source evidence — 2026-10-17
+
+- Checkout: `/home/sketch/Projects/digital_cell-calibration-source-admission`; source scientific/prototype/plan history remains frozen.
+- Local originals: `/home/sketch/Projects/digital_cell-calibration-source-evidence/`; acquired/ retains original primary HTML, extracted external source/readmes/tables and sparse range/selection/integrity evidence. External code is never executed.
+- Git/hosted evidence: docs/dc-m4-calibration-source-evidence/ contains licensed original sparse archive bytes, metadata/receipts/table inventory and attribution, not unlicensed article text or a claimed complete archive. Forty-four processed rows are not target calibration data.
+- Atlas: fresh publication/completion folders under `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/calibration-source-admission/`; verify UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and FSROOT/RPI5Pool directly before writes. Retain local originals; no overwrite or cleanup.
+- Prior archive preservation: 206 reaction-feasibility +167 conversion-contract +151 work-port +172 source/receiver +332 reference-prototype =1028 scoped files. Preserve ten previous checkouts, PR44–50 and original dirty Atlas source.
+- Exact-head CI/artifact/member reconstruction, partial calibration outcome, independent review, final Notion and custody receipts live in the external package; do not confuse artifact checks with scientific admission.

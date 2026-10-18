@@ -1,0 +1,27 @@
+{
+  "members": [
+    {
+      "name": "zenodo/data_and_figures/fig3/fig3.py",
+      "method": 8,
+      "crc32": 3045655417,
+      "compressed_size": 1120,
+      "size": 3200,
+      "flags": 8,
+      "offset": 94657,
+      "sha256": "dff89821589e616f9d894e725f6452c31e7447476bffd3bf02142780190a1ad6"
+    },
+    {
+      "name": "zenodo/data_and_figures/fig4/fig4.py",
+      "method": 8,
+      "crc32": 2010592614,
+      "compressed_size": 1159,
+      "size": 3309,
+      "flags": 8,
+      "offset": 100745,
+      "sha256": "c5ea5aa7d66f14cdafcb7d72e5e5b07f1b6a0793ef5f063a12f127c8d42f9822"
+    }
+  ],
+  "member_count": 2,
+  "purpose": "inspection only, not executed",
+  "preregistration_sha256": "192a8d728dc984f0eea9dd5c4326d71afe1ac4284c5658c9feafafbd5f35d035"
+}
