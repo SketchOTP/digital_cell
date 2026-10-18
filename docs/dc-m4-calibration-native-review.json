@@ -1,0 +1,97 @@
+{
+  "schema": "digital_cell_calibration_native_independent_review_v1",
+  "reviewed_at_utc": "2026-10-18T14:18:33.563469+00:00",
+  "entry_head": "bc44dbac88b0754ae53f030d0852f462468ce3af",
+  "implementation_measurement_head": "62f2642ae04fa93e23881245f5cf691669b63395",
+  "decision": "ACCEPTED_BOUNDED_DESIGNED_RECOVERY_AND_NATIVE_MECHANICS_ONLY",
+  "reviewer": "governance_audit",
+  "reviewer_independent_of_implementation_and_checker_authors": true,
+  "reviewer_executed_builds_tests_assays_or_campaigns": false,
+  "reviewed_files": {
+    ".github/workflows/dc-m4-calibration-native-qualification.yml": "062dea2d2527cf7127f9f7689b8fe131367fef868aa66e4ac4f05525e6d600b4",
+    "digital-protocell/crates/chemistry-core/Cargo.toml": "4098929f1de06b2238151f3db261bf8a944a7cb413edcf0295942f6aa6dddf09",
+    "digital-protocell/crates/chemistry-core/examples/chemical_reference_port.rs": "25d4de5cff5e688268c29b20c28062b811de98bc77f6ea465a46ad4f297d09d3",
+    "digital-protocell/crates/chemistry-core/src/chemical_reference_port.rs": "00a45977b41d30a824b4a889d24588eb9dde90302b14a41607f0e966da240ea7",
+    "digital-protocell/crates/chemistry-core/src/lib.rs": "d1755af0978468f684b91e29424f6ee6f5e32204a1be9805a891399dd800cd84",
+    "digital-protocell/crates/chemistry-core/tests/chemical_reference_port.rs": "09add5d23d2ce67b3b02e27293772922c6fe2503ff0d6e6499f335df59943a28",
+    "docs/dc-m4-calibration-native-directive.md": "49823d2222f213a9d80a43022762584297a35f8504e7e97086437e4ce76df0f4",
+    "docs/dc-m4-calibration-native-measurements.json": "92e9d320d6212620bfcdd9c2c58ad5792f25906352a160e1bda27a3413b0edcf",
+    "docs/dc-m4-calibration-native-protocol.json": "4a12e5510736e0d5abe427a42beb67d78b4335f8319dd0da22459f6aa32707c8",
+    "docs/dc-m4-calibration-native-qualification.md": "e965afd61296eeca11664c47f607b6ca52e59b659180ffad5a85356b11a56353",
+    "scripts/calibration_native_checks.py": "3d2e25448ee3cdb79b0f61fe7c482f6b4982e26564afe0ac1fcb446eedace9b5",
+    "scripts/qualify_calibration_native.py": "210d323a7371aa158bc70fcd594310823ac7248aceeeeaefff5ae69b83167e17",
+    "scripts/test_calibration_native_checks.py": "7cf52f75cdda17da3ecd8de76adf67ad94d816912fb95a8b31b56fc20dd5f0dc",
+    "scripts/verify_calibration_native_scope.py": "2ff435fc232ed50677fee467a0d1fe54d04e68ef7f7d8cf572dc01d2229f359f"
+  },
+  "original_full_target_status": "PARTIAL_BLOCKED",
+  "full_physical_four_parameter_calibration_established": false,
+  "whole_organism_native_integration_qualified": false,
+  "production_parameters": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "scope": "Technical semantic acceptance of the hash-bound designed-reference recovery, measured bounded full-state chemical/native-mesh adapter and qualification package. Publication/final exact-head CI/custody are separate pending checks.",
+  "read_coverage": [
+    "Complete new directive, sealed protocol, native module, Rust integration tests/example, independent estimator/oracle/certifier/tests, scope verifier, workflow, measured summary and final report. Earlier complete reads retained; all subsequent deltas refreshed before hashing.",
+    "Complete current-task append-only additions to DIRECTIVES, OUTCOMES, LEARNINGS, RECORD and REPO_MAP; new CURRENT header and current PROJECT_PROFILE/STORAGE_MAP changes. Historical full assigned governance coverage retained.",
+    "Actual downloaded raw-evidence structure, initial geometry/source, 8 training and 6 held-out probe counts, all four trajectory counts, first/final timings, run summaries and final source/stores inspected. Native/Python test-result logs read. Stored summary bytes match the downloaded independent qualification summary.",
+    "No new workload or independent execution by this reviewer; parent owns actual native compilation/campaign and numerical reconstruction."
+  ],
+  "acceptance_findings": [
+    "The force design independently varies occupancy and strain and has nonzero Gram determinant. Blind estimation does not read design_truth or supplied g; nondefault synthetic controls and six held-out probes distinguish recovery from constant return. This is model numerical recovery, not empirical calibration.",
+    "The exact two-state obstruction preserves a,b,P,A_src,W_src,L while differing in active derivative and chemical free energy. Its conclusion is restricted to exact autonomous closure on a domain containing both states; it does not exclude budgeted local approximations.",
+    "The optional adapter retains all six chemical species, fixed V, immutable P/a0/material/configuration and all six native receiver stores. Chemical affinities, reciprocal selected-edge force, all-vertex drag and instantaneous gradient identity are consistent. Full free-energy dissipation is not labelled calorimetric heat.",
+    "Actual compute_forces and mechanics_step_with_external_forces own native forces and movement. Unsupported physics/material/topology and inactive-clamp-domain conditions reject. Trial cloning preserves old source/geometry/nonzero ledgers on early or post-native rejection.",
+    "Trusted-configuration restart, strict float-preserving round-trip schema/material/ledger checks and next-step replay are appropriate within the declared caller-owned archive-authenticity boundary.",
+    "The independently authored certifier reconstructs prepared probes and all emitted source, store, rate, force and dissipation fields from raw state; verifies source and geometry Euler updates, force-displacement work and cumulative unrepaired ledgers; rejects nonfinite and malformed vectors and exact control-set mismatch.",
+    "The sealed 5000-step campaign, positive receiver loading, unloaded controls, independent RK4 endpoint/refinement and signed-defect thresholds support bounded numerical qualification. Cumulative absolute defect is reported separately; no rigorous absolute-error/global continuum certificate is claimed.",
+    "Final workflow requires the exact 14-file independent receipt, scoped PARTIAL governance and stored/regenerated measurement comparison; it also checks cumulative baseline whitespace, clean checkout and recursive artifact bindings. Previous science is frozen except exact optional Cargo feature and cfg-gated export additions."
+  ],
+  "resolved_findings": [
+    "Previously raised nonfinite/short-vector and self-attested storage/source-update certifier blockers were corrected and adversarial controls added.",
+    "Optional serde_json float_roundtrip fixes exact restart parsing without changing the default feature or scientific runtime guards. Zero-control roundoff and late-failure test preparations were corrected without changing sealed campaign budgets.",
+    "Final report now unambiguously identifies coarse/fine signed defects and their corresponding equal absolute sums for this campaign."
+  ],
+  "unresolved_acceptance_blockers_within_bounded_scope": [],
+  "limitations": [
+    "K=2, lambda=.75 and theta=1 are designed computational truth recovered from ideal computational probes. No independent target measurement, physical amount/energy/time/length assignment or empirical uncertainty is supplied.",
+    "Constant epsilon_A and exact original coarse cubic/state-energy mapping are not identified. Full-state fixed-volume source ownership is a new explicit reference architecture, separate from native dilution and biological reaction owners.",
+    "The exercised domain is one mature fixed-material six-vertex ring, selected edge 0, small finite horizon and sealed coefficients/steps; transport, growth, remesh, fission, contact and whole-organism biology remain unqualified.",
+    "Signed balance and endpoint refinement do not certify a rigorous cumulative absolute or continuum error bound. Numerical defects are retained without heat/fuel repair.",
+    "Restart validation is not cryptographic provenance or proof that an arbitrary snapshot is historically reachable; trusted expected configuration and caller-owned archive hashes remain necessary.",
+    "The reviewer inspected execution evidence and source semantics but ran no compilation, tests, numerical campaign or independent qualifier. Parent-reported downloaded-binary byte replay and full Python rerun are not represented as reviewer execution.",
+    "Final exact-head CI, final artifact/hash/source readback, Notion readback and additive Atlas/preservation receipts remain parent-owned publication gates; this receipt does not assert those future actions succeeded.",
+    "Historical global governance diagnostic drift is retained; only the new bounded records and receipt are accepted. No architect bridge dispatch/acceptance is claimed and no successor is authorized."
+  ],
+  "evidence_observed": {
+    "hosted_run_reported_by_parent": "39134962997",
+    "artifact_id_reported_by_parent": "12139602227",
+    "raw_observations_sha256": "fb78719de1693a6262413fa6d7dff8497cf3c17e8fefc218e95ff8343ecb0aae",
+    "actual_native_binary_sha256": "0fed6cee1e308e0395e07f2f543efb5d95b874d55e0fd5293a6a92d859cfd77c",
+    "qualification_summary_sha256": "92e9d320d6212620bfcdd9c2c58ad5792f25906352a160e1bda27a3413b0edcf",
+    "logged_native_tests_passed": 13,
+    "logged_python_tests_passed": 11,
+    "run_step_counts": {
+      "coarse": 1000,
+      "fine": 2000,
+      "zero_lambda": 1000,
+      "zero_chemistry": 1000
+    },
+    "coarse_fine_endpoint_rk4_errors": [
+      6.190144781526019e-05,
+      3.096983338535253e-05
+    ],
+    "coarse_fine_signed_defects": [
+      0.0014035398984554085,
+      0.0007005879778739945
+    ]
+  },
+  "pending_before_final_publication": [
+    "Final exact-head hosted verification enforcing this receipt",
+    "Final source/artifact identity and custody verification",
+    "Notion and preservation readback receipts"
+  ],
+  "automatic_successor_authorized": false
+}

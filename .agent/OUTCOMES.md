@@ -3036,3 +3036,27 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: New designed coupling is not an independently observed biological law. Chemical V fixed while mechanical L changes, different from native dilution. Full chemical state is needed; coarse A/W is not constant-energy source closure. Reference thermal units do not identify target theta. Numeric refinement/independent solver observations are not rigorous interval guarantees. Physical fixture and complete native calibration remain unqualified.
 - Blockers: None to the bounded computational build/measurement deliverable after scoped verification. Full target physical identity/calibration remains unresolved; bridge tools unavailable and historical governance drift preserved.
 - Follow-up directive: none
+
+
+## D-20261018-dcm4-calibration-native - PARTIAL
+
+- Outcome ID: O-DCM4-CALIBRATION-NATIVE-20261018
+- Supersedes outcome: none
+- Closed: 2026-10-18T10:16:21-04:00
+- Acceptance: PARTIAL
+- Summary: Designed-reference K/lambda/theta recovery and actual bounded native mesh mechanics port qualified. Eight training/six held-out probes recover the design to floating precision; four native runs at two coupled steps and controls conserve owned material and load the receiver with convergent endpoint/signed-defect measurements. Original empirical four-parameter calibration and full native organism target remain unqualified, with exact broad coarse-state closure obstructed.
+- Changed areas: New optional full-state source/native port/tests/example; minimal default-off feature/export; sealed protocol, measured summary/report, blind recovery/independent vector checker/scope gate/workflow/review and additive records.
+- Validation:
+  - First hosted attempt39134579699, nine of thirteen native tests; failed logs/artifact preserved - FAILED
+  - Corrected exact float restart support and test preparations without changing protocol/equations/runtime guards - PASSED
+  - Hosted39134962997, thirteen native and eleven Python tests,5000 accepted native steps, fourteen probes - PASSED
+  - Parent downloaded-binary rerun byte-identical observations and independent raw-state/RK4/work/material/ledger reconstruction - PASSED
+  - Original exact coarse-state closure/constant-epsilon_A and empirical physical parameter qualification - BLOCKED
+  - Whole-organism transport/reaction/growth/remesh/fission integration and biological qualification - NOT RUN
+  - Thirteen prior local checkouts,PR44–53,2208 Atlas files and original dirty source preservation - PASSED
+  - Distinct independent fourteen-file bound semantic review, scoped records/review/preservation enforcement - PASSED
+  - Final exact-head hosted artifact/Notion/native Atlas readbacks; external receipts follow commit - NOT RUN
+  - Historical global governance drift retained without clean-global claim - FAILED
+- Remaining risks: Ideal designed recovery supplies no empirical uncertainty or target data. Fixed-volume reference source is separate from native dilution/chemical owners. Signed-defect and endpoint convergence do not establish rigorous cumulative absolute or continuum bounds. Caller owns restart archive authenticity.
+- Blockers: Original coarse chart loses source state; exact broad cubic-law/constant-energy mapping cannot represent the witness states. Physical scales/independent target observations and whole-organism integration are absent. Bridge tools unavailable; no automatic successor.
+- Follow-up directive: none

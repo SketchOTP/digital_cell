@@ -1547,3 +1547,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Published closed computational chemical reference and new fixed-volume scalar reciprocal extension; no physical calibration or native kinetics/integration claim.
 - Supersedes learning: none
+
+
+## L-DCM4-CALIBRATION-NATIVE-20261018
+
+- Learning ID: L-DCM4-CALIBRATION-NATIVE-20261018
+- Date: 2026-10-18
+- Fact or lesson: Full-rank prepared force/occupancy and directional-rate observations can recover designed reference K/lambda/theta without empirically calibrating a target. Two positive source states share the same native a/b/A/W/P/length yet have different reaction rates and free energy, obstructing exact coarse-state closure over that domain. Retaining the full chemical source permits an opt-in native mechanics port but does not identify constant epsilon_A or qualify whole-organism biology. Exact float parsing is part of deterministic restart ownership.
+- Evidence location: docs/dc-m4-calibration-native-qualification.md; docs/dc-m4-calibration-native-protocol.json; scripts/calibration_native_checks.py; scripts/test_calibration_native_checks.py; digital-protocell/crates/chemistry-core/src/chemical_reference_port.rs.
+- Confidence: VERIFIED
+- Scope: Designed computational recovery, exact two-state obstruction and bounded full-state native mechanics; no empirical identification or general impossibility of a budgeted local approximation.
+- Supersedes learning: none

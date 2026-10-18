@@ -3,18 +3,26 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-18T08:21:57-04:00`
+- Last updated: `2026-10-18T10:16:21-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20261018-dcm4-calibration-native`
 - External directive ID: `DC-M4-CALIBRATION-NATIVE-QUALIFICATION-001`
-- Objective: Research independent chemical/kinetic evidence, then build and measure a computational reference; preserve all work and current project/Notion records.
-- Current status: `IN_PROGRESS`
-- Acceptance: `PENDING — designed-reference recovery and bounded native mechanics; original four-parameter/whole-organism target remains blocked`
-- Current phase: `Published closed chemical model reproduced; new reciprocal source/receiver extension built and measured under a sealed six-case protocol`
-- Expected or actual touched areas: `New chemical/kinetic source/protocol/report/results/program/tests/checker/workflow/review; additive records and evidence`
-- Immediate next action: `Hosted exact-head native build/measurement, independent semantic/numerical review, preservation and Notion/custody readbacks; no automatic successor.`
+- Objective: Qualify parameter calibration and native integration; preserve all work and current project/Notion records.
+- Current status: `BLOCKED`
+- Acceptance: `PARTIAL — designed-reference recovery and bounded native mechanics qualified; original four-parameter/whole-organism target remains unqualified`
+- Current phase: `Designed K/lambda/theta recovery and actual native full-state reference port measured and independently checked; exact coarse closure obstructed`
+- Expected or actual touched areas: `New optional native source/receiver module/tests/example, exact feature/export additions, protocol/measurements/report/checkers/workflow/review and additive records`
+- Immediate next action: `Complete final exact-head external readbacks, then await owner direction: retain full-state native source ownership or define a separately budgeted local coarse approximation. Independent physical calibration scales/data remain absent; no automatic successor.`
+
+### Calibration and actual native mechanics qualification
+
+- **Authority:** latest owner requests calibration/native qualification; entry bc44dbac88b0754ae53f030d0852f462468ce3af; isolated checkout `/home/sketch/Projects/digital_cell-calibration-native-qualification`.
+- **Qualified scope:** designed K2/lambda.75/theta1 recovery from8 full-rank training probes and6 held-out probes; default-off full-six-species fixed-volume source feeding actual native mesh forces/integrator. All6 native stretch stores/vertices remain owned.
+- **Observed:**13 Rust and11 Python tests;5000 native joint steps across coarse/fine and2 controls. Held-out force/log-ratio errors below1e-15; coarse/fine independent RK4 endpoint errors6.20e-5/3.10e-5, unrepaired signed/absolute defects.001404/.000701. Fine receiver peak.000339318, source drift below2.23e-15; controls unloaded, exact restart replay and late-failure rollback verified.
+- **Original gap:** identical coarse a/b/A/W/P/length can have different source rates and free energy. Exact coarse closure/constant epsilon_A remains inadmissible on that domain. No empirical calibration or whole native organism integration; all four production values null.
+- **Evidence/preservation:** local `/home/sketch/Projects/digital_cell-calibration-native-evidence/`; additive Atlas evidence/calibration-native-qualification/. Thirteen earlier checkouts,PR44–53,2208 prior archive files and original dirty source unchanged. Draft PR54; Notion https://app.notion.com/p/3fd833cb27ff810dafd6e2c8053fb1a0. Complete local handoff and distinct review; bridge unavailable. Final exact-head/custody/readback receipts retained externally.
 
 ### Independent chemical/kinetic computational reference
 

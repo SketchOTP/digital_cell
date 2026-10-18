@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Enforce additive bounded scope and separate independent review bindings."""
-import argparse,hashlib,json,pathlib,subprocess
+import argparse,hashlib,json,pathlib,subprocess,importlib.util
 BASE='bc44dbac88b0754ae53f030d0852f462468ce3af'
 RECORDS={'.agent/'+n+'.md' for n in ('CURRENT','PROJECT_PROFILE','DIRECTIVES','OUTCOMES','LEARNINGS','RECORD','REPO_MAP')}|{'STORAGE_MAP.md'}
 MODIFIED={'digital-protocell/crates/chemistry-core/Cargo.toml','digital-protocell/crates/chemistry-core/src/lib.rs'}
@@ -29,6 +29,21 @@ def main():
     if a.require_review:
         review=json.loads((r/REVIEW).read_text());require(review['entry_head']==BASE and review['decision']=='ACCEPTED_BOUNDED_DESIGNED_RECOVERY_AND_NATIVE_MECHANICS_ONLY','review disposition')
         require(set(review['reviewed_files'])==CORE,'review coverage')
+        spec=importlib.util.spec_from_file_location('governance',r/'scripts/validate_governance.py');gov=importlib.util.module_from_spec(spec);spec.loader.exec_module(gov)
+        def section(file,title):
+            for name,body in gov.iter_sections((r/file).read_text()):
+                if name==title:return '## '+name+'\n'+body
+            raise ValueError('missing structured record '+title)
+        errors=[];directive='D-20261018-dcm4-calibration-native'
+        ids=gov.validate_directives(section('.agent/DIRECTIVES.md',directive),errors)
+        gov.validate_outcomes(section('.agent/OUTCOMES.md',directive+' - PARTIAL'),ids,errors)
+        gov.validate_learnings(section('.agent/LEARNINGS.md','L-DCM4-CALIBRATION-NATIVE-20261018'),errors)
+        require(not errors,str(errors))
+        from verify_chemical_kinetic_reference import compare_numbers
+        actual=json.loads((out/'qualification.json').read_text());stored=json.loads((r/'docs/dc-m4-calibration-native-measurements.json').read_text())
+        for field in ('head','input_sha256','binary_sha256'):actual.pop(field);stored.pop(field)
+        compare_numbers(actual,stored)
+
         for f,h in review['reviewed_files'].items():require(hashlib.sha256((r/f).read_bytes()).hexdigest()==h,'stale review '+f)
     bindings={}
     for f in sorted(CORE|MODIFIED|RECORDS|{REVIEW,'digital-protocell/Cargo.lock','digital-protocell/Cargo.toml','digital-protocell/crates/chemistry-core/src/material_mesh.rs','digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs'}):

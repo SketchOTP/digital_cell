@@ -164,3 +164,8 @@ Local originals: `/home/sketch/Projects/digital_cell-reference-mapping-evidence/
 ## Chemical/kinetic computational reference evidence — 2026-10-18
 
 Local originals: `/home/sketch/Projects/digital_cell-chemical-kinetic-evidence/`. Additive Atlas group `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/chemical-kinetic-reference/` requires expected UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and/RPI5Pool identity. Original primary full text retained externally without Git redistribution; own simulated trajectories, sealed protocol, exact-head hosted artifact and final Notion/preservation receipts accompany the reference. Preserve1733 entry scoped archive files, prior local originals and dirty original source. Final native write/readback receipts follow externally after commit creation.
+
+
+## Calibration/native qualification evidence — 2026-10-18
+
+Local originals: `/home/sketch/Projects/digital_cell-calibration-native-evidence/`. Additive Atlas group `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/calibration-native-qualification/` requires direct expected UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and FSROOT/RPI5Pool verification before writes. Preserve the prior2208 scoped archive files,13 earlier checkouts,PR44–53 and original dirty source. Retain failed hosted attempt, compiled native executable/toolchain/build logs, all raw source/mesh trajectories and probe observations, exact-head bindings, independent reconstruction/review and final Notion/preservation/custody receipts. Final write/readback receipts follow externally after commit creation; no success is inferred from this path declaration.
