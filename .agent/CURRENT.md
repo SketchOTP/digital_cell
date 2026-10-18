@@ -7,10 +7,10 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261018-dcm4-calibration-native`
-- External directive ID: `DC-M4-CALIBRATION-NATIVE-QUALIFICATION-001`
-- Objective: Qualify parameter calibration and native integration; preserve all work and current project/Notion records.
-- Current status: `BLOCKED`
+- Local directive ID: `D-20261018-dcm4-empirical-organism`
+- External directive ID: `DC-M4-EMPIRICAL-ORGANISM-INTEGRATION-001`
+- Objective: Advance empirical constituents and full-state native body integration; preserve all work and current records.
+- Current status: `IN_PROGRESS`
 - Acceptance: `PARTIAL — designed-reference recovery and bounded native mechanics qualified; original four-parameter/whole-organism target remains unqualified`
 - Current phase: `Designed K/lambda/theta recovery and actual native full-state reference port measured and independently checked; exact coarse closure obstructed`
 - Expected or actual touched areas: `New optional native source/receiver module/tests/example, exact feature/export additions, protocol/measurements/report/checkers/workflow/review and additive records`

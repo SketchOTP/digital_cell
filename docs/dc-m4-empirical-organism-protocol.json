@@ -1,0 +1,75 @@
+{
+  "schema": "digital_cell_empirical_organism_protocol_v1",
+  "entry_head": "59edb9ca2b1730d870f7a7f238f05718b97347ac",
+  "native_fixture": {
+    "birth_vertices": 24,
+    "radius": 1,
+    "inside_volume_birth": 1,
+    "total_volume": 10,
+    "outside_amount": "9 * sum(birth six species)",
+    "source": "published six species amounts; full state",
+    "coupling_arc_birth_edge": 0,
+    "split_threshold": 0.2,
+    "merge_threshold": 0.05,
+    "gamma_per_native_vertex": 1,
+    "pressure_and_bending_native": 0,
+    "native_generic_chemistry": 0
+  },
+  "design_values": {
+    "K": 2,
+    "lambda": 0.75,
+    "theta": 1,
+    "k_s": 1,
+    "rate_scale": 1
+  },
+  "runs": {
+    "horizon": 2,
+    "dt": [
+      0.002,
+      0.001
+    ],
+    "remesh_at_time": 0.2,
+    "cases": [
+      "coupled",
+      "zero_lambda",
+      "zero_chemistry",
+      "closed_equilibrium"
+    ],
+    "remesh": "actual native remesh_split then continue",
+    "independent_reference_step": 0.0001
+  },
+  "thresholds": {
+    "max_material_moiety_drift": 1e-10,
+    "max_remesh_storage_change": 1e-10,
+    "max_remesh_area_change": 1e-12,
+    "max_force_gradient_error": 1e-07,
+    "max_force_pullback_error": 1e-10,
+    "max_instantaneous_identity_error": 1e-10,
+    "max_signed_step_balance_defect": 0.01,
+    "max_independent_rhs_error": 1e-11,
+    "max_native_vertex_euler_error": 1e-12,
+    "max_endpoint_reference_error_coarse": 0.005,
+    "max_endpoint_reference_error_fine": 0.0025,
+    "max_static_control_receiver_energy": 1e-20,
+    "min_coupled_receiver_loading": 1e-10,
+    "native_external_force_cap": 0.5
+  },
+  "negative_checks": [
+    "omit osmotic force violates instantaneous energy identity on positive moving-area state",
+    "unowned native curved merge can increase passive storage",
+    "unowned maturation changes storage",
+    "unsupported biological operators not accepted as full organism"
+  ],
+  "claims": {
+    "computational_full_state_body_remesh_only": true,
+    "empirical_full_target_qualified": false,
+    "whole_organism_qualified": false,
+    "production_values": {
+      "K": null,
+      "lambda": null,
+      "theta": null,
+      "epsilon_A": null
+    },
+    "automatic_successor": false
+  }
+}

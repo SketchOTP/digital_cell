@@ -1,0 +1,39 @@
+name: DC-M4 Independent Empirical Constituent Acquisition
+on:
+  push:
+    branches:
+      - codex/dc-m4-empirical-organism-integration
+    paths:
+      - scripts/acquire_empirical_constituent.py
+      - docs/dc-m4-empirical-constituent-protocol.json
+      - .github/workflows/dc-m4-empirical-acquisition.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  acquire:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Acquire checksum-verified independent physical measurements
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          python3 -m pip install numpy==2.2.6 h5py==3.14.0
+          mkdir -p "$RUNNER_TEMP/empirical-evidence"
+          python3 scripts/acquire_empirical_constituent.py --output "$RUNNER_TEMP/empirical-evidence" 2>&1 | tee "$RUNNER_TEMP/empirical-evidence/acquisition.log"
+          sha256sum scripts/acquire_empirical_constituent.py docs/dc-m4-empirical-constituent-protocol.json > "$RUNNER_TEMP/empirical-evidence/source-bindings.sha256"
+          test -z "$(git status --porcelain)"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dc-m4-empirical-constituent-${{ github.sha }}
+          if-no-files-found: error
+          path: ${{ runner.temp }}/empirical-evidence/

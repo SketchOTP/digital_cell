@@ -1,0 +1,68 @@
+{
+  "schema": "digital_cell_empirical_constituent_protocol_v1",
+  "role": "optical trap linear relaxation instrument constituent only, not native chemical or whole-organism calibration",
+  "source": {
+    "record": "https://zenodo.org/records/3333905",
+    "license": "CC0-1.0 metadata id cc-zero",
+    "file": "calibration_optical_tweezers_01-05-2015_bead_1.zip",
+    "url": "https://zenodo.org/records/3333905/files/calibration_optical_tweezers_01-05-2015_bead_1.zip?download=1",
+    "bytes": 336923610,
+    "md5": "8d2cd9f526021f8aaafd7d3a858a7945"
+  },
+  "selection": {
+    "first_complete_periods_per_displacement": 16,
+    "displacements_nm": [
+      -800,
+      -500,
+      500,
+      800
+    ],
+    "training_nm": [
+      -500,
+      500
+    ],
+    "heldout_nm": [
+      -800,
+      800
+    ],
+    "samples_per_period": 16000,
+    "sample_rate_hz": 200000,
+    "step_sample": 4000,
+    "baseline_slice": [
+      1000,
+      3000
+    ],
+    "plateau_slice": [
+      6000,
+      10000
+    ],
+    "fit_slice": [
+      4010,
+      4800
+    ],
+    "relaxation_tau_seconds_range": [
+      1e-05,
+      0.01
+    ],
+    "waveform": "period mean raw x,y,sum then normalized QPD ratio and projected on baseline-to-plateau vector",
+    "fit": "one shared positive tau, no heldout refit; native-free reference overdamped Hooke response 1-exp(-t/tau)"
+  },
+  "budgets": {
+    "max_heldout_normalized_rmse": 0.1,
+    "max_heldout_relative_tau_difference": 0.2
+  },
+  "uncertainty": {
+    "within_bead": "delete-one-period jackknife; not independent beads or systematic bounds",
+    "provided_Stokes_Faxen_beta": "conditional source input, do not invent radius/height/viscosity/temperature uncertainty",
+    "no_external_script_execution": true,
+    "no_digital_cell_parameter_assignment": true
+  },
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "empirical_full_target_qualified": false,
+  "automatic_successor": false
+}
