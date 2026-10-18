@@ -7,14 +7,14 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261018-dcm4-chemical-kinetic-reference`
-- External directive ID: `DC-M4-CHEMICAL-KINETIC-REFERENCE-001`
+- Local directive ID: `D-20261018-dcm4-calibration-native`
+- External directive ID: `DC-M4-CALIBRATION-NATIVE-QUALIFICATION-001`
 - Objective: Research independent chemical/kinetic evidence, then build and measure a computational reference; preserve all work and current project/Notion records.
-- Current status: `COMPLETE`
-- Acceptance: `COMPLETE — computational reference build/measurement only; full target calibration and native integration remain unqualified`
+- Current status: `IN_PROGRESS`
+- Acceptance: `PENDING — designed-reference recovery and bounded native mechanics; original four-parameter/whole-organism target remains blocked`
 - Current phase: `Published closed chemical model reproduced; new reciprocal source/receiver extension built and measured under a sealed six-case protocol`
 - Expected or actual touched areas: `New chemical/kinetic source/protocol/report/results/program/tests/checker/workflow/review; additive records and evidence`
-- Immediate next action: `Awaiting reset after bounded computational acceptance and final external readbacks; no automatic successor. Target physical identity/calibration and production integration require separate evidence.`
+- Immediate next action: `Hosted exact-head native build/measurement, independent semantic/numerical review, preservation and Notion/custody readbacks; no automatic successor.`
 
 ### Independent chemical/kinetic computational reference
 

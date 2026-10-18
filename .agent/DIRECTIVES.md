@@ -1640,3 +1640,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261018-dcm4-calibration-native
+
+- Issued: 2026-10-18T10:00:00-04:00
+- Issuer: User
+- External directive: DC-M4-CALIBRATION-NATIVE-QUALIFICATION-001
+- Objective: Qualify parameter calibration and native integration while preserving all prior work and current project/Notion records.
+- Scope: Blind designed-reference K/lambda/theta recovery with held-out probes; exact coarse-state closure obstruction; opt-in full-state fixed-volume chemical chamber calling actual six-vertex native mechanics; sealed independent vector numerical and ledger checks. Complete local handoff in docs/dc-m4-calibration-native-directive.md; entry bc44dbac88b0754ae53f030d0852f462468ce3af.
+- Exclusions: Invented empirical calibration, constant epsilon_A, replacement of native cubic biology, full organism transport/growth/remesh/fission campaign, prior scientific code/evidence mutation except minimal opt-in export/feature additions, PR44–53 changes, merge/deploy and automatic successor.
+- Acceptance: Recover designed values with full-rank probes/holdouts, actual native motion and all receiver stores/material/energy ownership, independent verification and exact-head evidence; separate bounded success from unqualified original four-parameter and whole-organism targets; preserve13 checkouts/10PRs/2208 prior archive files and update Notion/records.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
