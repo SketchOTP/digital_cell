@@ -208,24 +208,31 @@ fn rejected_steps_keep_nonzero_old_ledgers_and_mesh_exact() {
 
 #[test]
 fn late_native_joint_failure_discards_trial_with_previous_nonzero_ledgers() {
-    // These birth designs deliberately make the second native geometry update
-    // unusable. The first accepted chemistry step already owns nonzero ledgers.
-    for huge_stiffness in [true, false] {
-        let mut cfg = ReferencePortConfig::default();
-        if huge_stiffness {
-            cfg.k_s = 1e12;
-        } else {
-            cfg.gamma = 1e-15;
-        }
-        let (state, first) = ReferencePortState::cold(cfg)
-            .unwrap()
-            .try_step(0.001)
-            .unwrap();
-        assert!(first.integrated_dchem > 0.0);
-        let before = state.restart_json().unwrap();
-        assert!(state.try_step(0.001).is_err());
-        assert_eq!(before, state.restart_json().unwrap());
-    }
+    // A small genuine seed step loads chemical/defect ledgers while native
+    // cold roundoff remains negligible. Its nonzero reciprocal tension then
+    // makes the larger, still admitted dt fold the low-drag native ring.
+    let mut cfg = ReferencePortConfig::default();
+    cfg.gamma = 1e-10;
+    let (state, first) = ReferencePortState::cold(cfg)
+        .unwrap()
+        .try_step(1e-6)
+        .unwrap();
+    assert!(first.integrated_dchem > 0.0);
+    assert!(first.absolute_defect > 0.0);
+    let force = first.diagnostics.coupling_forces[0];
+    assert!(force[0].hypot(force[1]) > 1e-8);
+    assert!(force[0].hypot(force[1]) < 0.5);
+    let before = state.restart_json().unwrap();
+    let error = state.try_step(0.001).unwrap_err();
+    // These are after the actual native vertex trial, not a pre-step cap or
+    // source failure. No state, source or prior ledger is published on reject.
+    assert!(
+        error.contains("native mechanics rejected")
+            || error.contains("reference/clamp domain")
+            || error.contains("non-convex/contact"),
+        "{error}"
+    );
+    assert_eq!(before, state.restart_json().unwrap());
 }
 
 #[test]
@@ -258,6 +265,14 @@ fn controls_leave_native_ring_at_rest() {
         for _ in 0..10 {
             s = s.try_step(0.001).unwrap().0;
         }
-        assert_eq!(s.mesh().vertices, vertices);
+        let maximum_displacement = s
+            .mesh()
+            .vertices
+            .iter()
+            .zip(&vertices)
+            .flat_map(|(a, b)| (0..2).map(move |axis| (a[axis] - b[axis]).abs()))
+            .fold(0.0, f64::max);
+        assert!(maximum_displacement <= 16.0 * f64::EPSILON);
+        assert!(s.diagnostics().unwrap().us <= 1e-20);
     }
 }

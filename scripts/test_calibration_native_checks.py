@@ -41,4 +41,29 @@ class RecoveryTests(unittest.TestCase):
         v=coarse_state_obstruction();self.assertFalse(v['exact_four_parameter_native_coarse_mapping_admissible'])
         self.assertGreater(v['minimax_energy_error_lower_bound'],.2)
         self.assertAlmostEqual(v['active_rate_gap_same_mapped_state'],.045,places=13)
+class IndependentModelTests(unittest.TestCase):
+    def test_self_consistent_diagnostic_mutant_rejected(self):
+        from calibration_native_checks import independent_diagnostics
+        from qualify_calibration_native import compare_tree
+        import copy,math
+        v=[[math.cos(i*math.pi/3),math.sin(i*math.pi/3)] for i in range(6)]
+        ref=independent_diagnostics([.1,.05,.05,.01,1.,.1],v,[1.]*6)
+        bad=copy.deepcopy(ref);bad['total_g']+=.2;bad['gchem']+=.2
+        self.assertGreater(compare_tree(bad,ref),.19)
+
+class ArtifactGuardTests(unittest.TestCase):
+    def test_nonfinite_and_short_vectors_rejected(self):
+        from qualify_calibration_native import maximum,finite_tree
+        for a,b in [([float('nan')],[0.]),([1.],[1.,2.]),([],[])]:
+            with self.assertRaises(ValueError):maximum(a,b)
+        with self.assertRaises(ValueError):finite_tree({'x':[float('inf')]})
+    def test_nan_holdout_rejected(self):
+        import copy
+        # Reuse valid independently prepared fixture, then corrupt one observation.
+        row={'strain':.1,'da':.01,'P':.2,'L0':1.,'coupling_tension':float('nan'),
+             'forward':[1.]*4,'reverse':[1.]*4,'bare_forward':[1.]*4,'bare_reverse':[1.]*4}
+        with self.assertRaises(ValueError):holdout_errors([row],{'K':2.,'lambda':.75,'theta':1.})
+        row['coupling_tension']=0.;row['forward'][1]=float('nan')
+        with self.assertRaises(ValueError):holdout_errors([row],{'K':2.,'lambda':.75,'theta':1.})
+
 if __name__=='__main__':unittest.main()

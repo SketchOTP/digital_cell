@@ -33,13 +33,14 @@ jobs:
           "$RUNNER_TEMP/native-evidence/native-port" --dt 0.002 --horizon 2 > "$RUNNER_TEMP/native-evidence/native-observations.json"
           cd ..
           python3 scripts/qualify_calibration_native.py --input "$RUNNER_TEMP/native-evidence/native-observations.json" --binary "$RUNNER_TEMP/native-evidence/native-port" --output "$RUNNER_TEMP/native-evidence" | tee "$RUNNER_TEMP/native-evidence/qualification.log"
+          python3 scripts/verify_calibration_native_scope.py --output "$RUNNER_TEMP/native-evidence"
           git diff --check bc44dbac88b0754ae53f030d0852f462468ce3af
           test -z "$(git status --porcelain)"
           python3 - "$RUNNER_TEMP/native-evidence" <<'PY'
           import hashlib,json,pathlib,subprocess,sys
           root=pathlib.Path('.');out=pathlib.Path(sys.argv[1])
           files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
-          manifest={'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'files':{p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in files if p and (root/p).is_file()},'evidence':{p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in out.iterdir() if p.is_file()}}
+          manifest={'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'files':{p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in files if p and (root/p).is_file()},'evidence':{str(p.relative_to(out)):hashlib.sha256(p.read_bytes()).hexdigest() for p in out.rglob('*') if p.is_file()}}
           (out/'bindings.json').write_text(json.dumps(manifest,indent=2)+'\n')
           PY
       - uses: actions/upload-artifact@v4

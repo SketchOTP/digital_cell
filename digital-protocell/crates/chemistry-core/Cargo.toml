@@ -6,7 +6,7 @@ edition.workspace = true
 [features]
 default = []
 long-experiments = []
-chemical-reference-port = []
+chemical-reference-port = ["serde_json/float_roundtrip"]
 
 [dependencies]
 serde = { workspace = true }

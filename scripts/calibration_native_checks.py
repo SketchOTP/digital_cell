@@ -16,6 +16,7 @@ def recover(training):
     require(len(training)>=3,'insufficient calibration observations')
     data=[]
     for r in training:
+        require(all(len(r[k])==4 and all(finite(v) and v>0 for v in r[k]) for k in ('forward','reverse','bare_forward','bare_reverse')),'invalid training directional rates')
         require(all(finite(r[k]) for k in ('strain','da','P','L0','coupling_tension')),'invalid observation')
         require(r['P']>0 and r['L0']>0,'invalid amount/length units')
         data.append((r['P']*r['strain']/r['L0'],-r['da']/r['L0'],r['coupling_tension']))
@@ -38,8 +39,11 @@ def recover(training):
 
 
 def holdout_errors(rows,fit):
+    require(len(rows)>0,'missing holdout observations')
     fe=le=0.
     for r in rows:
+        require(all(finite(r[k]) for k in ('strain','da','P','L0','coupling_tension')) and r['P']>0 and r['L0']>0,'invalid holdout observation')
+        require(all(len(r[k])==4 and all(finite(v) and v>0 for v in r[k]) for k in ('forward','reverse','bare_forward','bare_reverse')),'invalid holdout directional rates')
         T=fit['K']*(r['P']*r['strain']-fit['lambda']*r['da'])/r['L0']
         g=-fit['K']*fit['lambda']*(r['strain']-fit['lambda']*r['da']/r['P'])
         fe=max(fe,abs(T-r['coupling_tension']))
@@ -91,3 +95,29 @@ def native_fixture_oracle(initial_source,initial_vertices,rest,horizon,step=.000
         k3=rhs([a+h*b/2 for a,b in zip(y,k2)],rest,2.,.75,1.,1.);k4=rhs([a+h*b for a,b in zip(y,k3)],rest,2.,.75,1.,1.)
         y=[a+h*(b+2*c+2*d+e)/6 for a,b,c,d,e in zip(y,k1,k2,k3,k4)]
     return y
+
+
+def independent_diagnostics(z,v,rest,lam=.75,rate_scale=1.):
+    """Owned storage/rates/forces from raw source+geometry, independently of Rust diagnostics."""
+    K=2.;theta=1.;ks=1.;gamma=1.;P=.2;a0=.1
+    lengths=[math.hypot(v[(i+1)%6][0]-v[i][0],v[(i+1)%6][1]-v[i][1]) for i in range(6)]
+    ex=(lengths[0]-rest[0])/rest[0]-lam*(z[1]+z[2]-a0)/P
+    g=-K*lam*ex;tc=K*P*ex/rest[0];nu=(0,1,0,-1)
+    bp=[z[4],z[5]*z[0],z[5]*z[1],z[2]];bm=[z[5],z[1],z[2],z[0]*z[3]]
+    fp=[rate_scale*bp[i]*math.exp(-nu[i]*g/2) for i in range(4)]
+    fm=[rate_scale*bm[i]*math.exp(nu[i]*g/2) for i in range(4)]
+    af=[math.log(bp[i])-math.log(bm[i])-nu[i]*g for i in range(4)]
+    j=[fp[i]-fm[i] for i in range(4)]
+    dz=[-j[1]+j[3],j[1]-j[2],j[2]-j[3],j[3],-j[0],j[0]-j[1]-j[2]]
+    nf=[[0.,0.] for _ in range(6)];cf=[[0.,0.] for _ in range(6)]
+    for i in range(6):
+        n=(i+1)%6;t=ks*(lengths[i]-rest[i])/rest[i]
+        for a in range(2):
+            unit=(v[n][a]-v[i][a])/lengths[i]
+            nf[i][a]+=t*unit;nf[n][a]-=t*unit
+            if i==0:cf[i][a]+=tc*unit;cf[n][a]-=tc*unit
+    force=[[nf[i][a]+cf[i][a] for a in range(2)] for i in range(6)]
+    gc=math.fsum(x*(math.log(x)-1) for x in z);ec=K*P*ex*ex/2
+    us=math.fsum(ks*(l-r)**2/(2*r) for l,r in zip(lengths,rest));dc=math.fsum(x*y for x,y in zip(j,af));dm=math.fsum(x*x/gamma for p in force for x in p)
+    gd=math.fsum(dz[i]*(math.log(z[i])+(g if i in (1,2) else 0.)) for i in range(6))-dm
+    return {'lengths':lengths,'p':P,'a0':a0,'gchem':gc,'ec':ec,'us':us,'total_g':gc+ec+us,'coupling_tension':tc,'g':g,'bare_forward':bp,'bare_reverse':bm,'forward':fp,'reverse':fm,'affinities':af,'currents':j,'species_derivative':dz,'native_forces':nf,'coupling_forces':cf,'combined_forces':force,'velocities':force,'dchem':dc,'dmech':dm,'gradient_dot_ode':gd,'gradient_identity_error':gd+dc+dm}
