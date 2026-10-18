@@ -174,3 +174,9 @@ Local originals: `/home/sketch/Projects/digital_cell-calibration-native-evidence
 ## Empirical constituent/full-state body evidence — 2026-10-18
 
 Local originals: `/home/sketch/Projects/digital_cell-empirical-organism-evidence/`. Additive Atlas group `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/empirical-organism-integration/` requires direct UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and FSROOT/RPI5Pool verification before writes. Preserve2439priorarchivefiles,14priorlivecheckouts,PR44–54 and original dirty source. Preexisting absent worktree registrations are recorded without pruning. Retain source/checksum/selection seals, licensed lossless raw subset/annotations, quarantined unexecuted source, empirical analysis/corrections, native executable/raw trajectories, failed attempt, exact-head hosted source/observation/review bindings and final Notion/preservation/native custody receipts. Full336MB source ZIP/HDF5 were checksum-verified on hosted acquisition and remain at the publisher; only declared lossless selected observations are bundled. Publish compressed originals rather than recursively duplicating extracted raw campaigns. Final native receipts follow externally after commit; no success is inferred from this declaration.
+
+
+## Mechanochemical observations and four-operator ownership evidence
+
+- Local originals: `/home/sketch/Projects/digital_cell-mechanochemical-ownership-evidence/`; licensed raw selected members and source-role record in docs/dc-m4-mechanochemical-evidence/.
+- Additive Atlas archive: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/mechanochemical-work-ownership/`; verify UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d,FSROOT/RPI5Pool,ext4 before writes. Preserve2538 previous scoped files and original dirty source; compressed originals plus native verification/completion receipts after final commit, all local originals retained.

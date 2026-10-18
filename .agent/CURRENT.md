@@ -3,18 +3,27 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-18T11:27:54-04:00`
+- Last updated: `2026-10-18T12:45:29-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261018-dcm4-empirical-organism`
-- External directive ID: `DC-M4-EMPIRICAL-ORGANISM-INTEGRATION-001`
-- Objective: Advance empirical constituents and full-state native body integration; preserve all work and current records.
+- Local directive ID: `D-20261018-dcm4-mechanochemical-owners`
+- External directive ID: `DC-M4-MECHANOCHEMICAL-WORK-OWNERSHIP-001`
+- Objective: Acquire independent mechanochemical observations and define/test work owners for transport/growth/maturation/fission; preserve existing work and current records.
 - Current status: `BLOCKED`
-- Acceptance: `PARTIAL — conditional empirical instrument relaxation and bounded full-state body/remesh qualified; empirical native chemical parameters and full organism unqualified`
-- Current phase: `Independent physical raw-data constituent measured; actual moving-volume source/finite-bath/native remesh body independently reconstructed`
-- Expected or actual touched areas: `New feature-gated body module/tests/example/export, licensed raw empirical subset and source/analysis/protocol/report/verification/workflow/review plus additive records`
-- Immediate next action: `Complete exact-head external readbacks, then require explicit paid finite transport/growth/maturation/closure owners and a raw experimentally identified chemical target before full-organism or empirical-target qualification; no automatic successor.`
+- Acceptance: `PARTIAL — new hypothetical finite-event owner reference independently reconstructed; physical conjugate work/chemical identity and continuous native whole-organism integration unqualified`
+- Current phase: `Four independent prepared transition pairs and native audits measured; licensed raw DNA observations acquired with unmet six-pair/continuous-work coverage`
+- Expected or actual touched areas: `New Python reference/oracles/tests, standalone native audit example, original licensed subset/provenance, sealed protocols/amendment/source/report/measurements/workflow/review and additive records`
+- Immediate next action: `Finish exact-head/source/Notion/native Atlas readbacks, then identify a justified conjugate physical work/chemical target and integrate the proposed owners into a complete native generator; no automatic successor.`
+
+### Mechanochemical observations and four-operator work owners
+
+- **Authority/base:** owner authorizes observations and chemical-work owners for transport, growth, maturation and fission from a800279a355dc49060d81f805800f0a6def7b7a8; isolated `/home/sketch/Projects/digital_cell-mechanochemical-work-ownership`, draft PR56.
+- **Reference:** explicitly new Sm⇄.9Y+.1S/Y⇄M solid-phase chemistry, finite S/Sm+inert material bath, exact regularized native stretch potential through newborn closure and new whole-perimeter coupling. Fixed paired Glauber kinetics with a separate thermostat; chemical/mechanical changes and equal-occupation pair entropy remain distinct. All4 events are independent prepared pairs, not one lifecycle/native fusion. Parent quadrature/material/tag/rate reconstruction passes.
+- **Observed reference:** transport/growth/maturation/fission DeltaG .443445182177/−.503304870468/−.009229658120/−9.956923869249; maturation stores .000770341880 total mechanics while releasing .01 chemical free energy. Prescribed fission creates4 young material from fixed4/.9 Sm debit; global bath/root area/anchors preserved. Loaded neutral split passes only outside the absolute floor; small-mature counterexample loses .00153125 storage.
+- **Native audit:** hosted39145917043 at82a738e passes24 Rust regressions/14 owner+8 observation tests; separate6 oracle tests pass.24 native force probes agree within4.45e-16; actual native transport/growth/full-reaction maturation/fission observed. Native partition.ok true and .8 pureyoungclosuremass. Parent reruns downloaded hash-bound audit executable with byte-identical observations. Native paths do not implement the new owners.
+- **Empirical boundary:** full820104841byte publisher DNAZIP MD5/CRC verified;14 original CC-BY4 members retained. First parser stops on #Skipped; explicit amendment excludes known gaps and enforces terminal marker.2+3 selected pairs/10 legs have6448 gaps; six-pair coverage unmet and force-conjugate work/absolute fluid temperature/chemical free energy unqualified. Independent decimal reader agrees within1.82e-10pNnm. No outcome-based substitution/sign repair.
+- **Custody/preservation:** Notion https://app.notion.com/p/3fd833cb27ff81d1bb04d4db9318028b. Local `/home/sketch/Projects/digital_cell-mechanochemical-ownership-evidence/`; additive Atlas evidence/mechanochemical-work-ownership/.15 prior live checkouts,PR44–55,2538 prior files and original dirty source including32 untracked hashes protected. Bridge unavailable; complete local handoff/distinct review. Final exact-head/readbacks external. All production values null, no whole-organism acceptance.
 
 ### Empirical constituent and full-state moving-body integration
 

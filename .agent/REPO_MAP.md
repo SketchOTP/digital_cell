@@ -530,3 +530,25 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `scripts/verify_empirical_organism.py` — scoped history/default/source/record/review/result enforcement and bundled inputs.
 - `docs/dc-m4-empirical-organism-review.json` — distinct semantic acceptance and exact core bindings.
 - `/home/sketch/Projects/digital_cell-empirical-organism-evidence/` — local source/raw/native/hosted/preservation/Notion/custody originals; additive Atlas evidence/empirical-organism-integration/.
+
+
+## Interfaces and contracts
+
+- `docs/dc-m4-mechanochemical-ownership-directive.md` — owner handoff and scope from a800279.
+- `docs/dc-m4-chemical-work-owner-protocol.json` — sealed new finite-event chemical/material/mechanical/thermal law and controls.
+- `docs/dc-m4-mechanochemical-observation-protocol.json` — sealed source/first-file/first-pair selection; source-format amendment handles recorded gaps/terminal marker.
+- `docs/dc-m4-mechanochemical-evidence/README.md` — licensed exact original subset, source metadata/inventory/acquisition hashes and attribution.
+- `docs/dc-m4-mechanochemical-sources.json` — source roles, license, hashes and negative work/chemical admission.
+- `docs/dc-m4-mechanochemical-unit-evidence.json` — documented instrument output units and unqualified conjugacy/fluid-temperature boundaries.
+- `docs/dc-m4-mechanochemical-work-ownership.md` — derived native storage, four hypothetical operators, observed independent results and remaining gates.
+- `docs/dc-m4-chemical-work-owner-measurements.json` — independent event/native audit summary; not whole-organism acceptance.
+- `docs/dc-m4-mechanochemical-observations.json` — actual five paired raw observations/gap-aware diagnostic integrals.
+- `docs/dc-m4-mechanochemical-observation-check.json` — independently parsed decimal source reconstruction and negative coverage admission.
+- `scripts/chemical_work_ownership.py` — immutable new finite-event owner reference and raw campaign; tests share stem.
+- `scripts/qualify_chemical_work_owners.py` — independent quadrature/preparation/exact-state/tag/rate/native-force oracle; tests in test_chemical_work_oracle.py.
+- `scripts/mechanochemical_observations.py` — sealed raw-source grouping/gap-aware integrals; focused source tests share stem.
+- `scripts/qualify_mechanochemical_observations.py` — separate raw TSV/decimal source/selection/integral reconstruction.
+- `scripts/acquire_mechanochemical_observations.py` — full publisher checksum/CRC and selected original acquisition without acquired code execution.
+- `digital-protocell/crates/chemistry-core/examples/chemical_work_owners.rs` — standalone actual native force/transport/growth/full-reaction/fission audits only.
+- `scripts/verify_mechanochemical_owners.py` — scoped prior-source/ledger/protocol/input/result/review enforcement and source bundle.
+- `/home/sketch/Projects/digital_cell-mechanochemical-ownership-evidence/` — original acquisition, raw native/reference observations, parent replay, failed parse, independent results and final custody/readbacks.

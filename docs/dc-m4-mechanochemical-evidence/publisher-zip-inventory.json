@@ -1,0 +1,3140 @@
+[
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/.DS_Store",
+    "bytes": 10244,
+    "crc32": 803596707,
+    "compressed_bytes": 1373
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/.DS_Store",
+    "bytes": 10244,
+    "crc32": 3246958340,
+    "compressed_bytes": 1623
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118_T4/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/.DS_Store",
+    "bytes": 18436,
+    "crc32": 2264359264,
+    "compressed_bytes": 2518
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/16102019/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/261118/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/020419/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/010419/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121118/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/241018/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231018/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221018/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118_T4/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/050819/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/.DS_Store",
+    "bytes": 8196,
+    "crc32": 906932488,
+    "compressed_bytes": 1281
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/.DS_Store",
+    "bytes": 6148,
+    "crc32": 3565452730,
+    "compressed_bytes": 256
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/061020/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/.DS_Store",
+    "bytes": 6148,
+    "crc32": 93684862,
+    "compressed_bytes": 255
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118_T4/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1837629546,
+    "compressed_bytes": 178
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/221118_T4/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118_T4/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/.DS_Store",
+    "bytes": 6148,
+    "crc32": 3572700789,
+    "compressed_bytes": 215
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/09102019/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1837629546,
+    "compressed_bytes": 178
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/10102019/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1837629546,
+    "compressed_bytes": 178
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/14102019/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/16102019/.DS_Store",
+    "bytes": 6148,
+    "crc32": 567091289,
+    "compressed_bytes": 380
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/16102019/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/16102019/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/261118/.DS_Store",
+    "bytes": 6148,
+    "crc32": 2478983842,
+    "compressed_bytes": 258
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/261118/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/261118/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/020419/.DS_Store",
+    "bytes": 6148,
+    "crc32": 3572700789,
+    "compressed_bytes": 215
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/020419/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/020419/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/010419/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1593256432,
+    "compressed_bytes": 440
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/010419/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/010419/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1837629546,
+    "compressed_bytes": 178
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/201118/._.DS_Store",
+    "bytes": 120,
+    "crc32": 17328983,
+    "compressed_bytes": 50
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/.DS_Store",
+    "bytes": 6148,
+    "crc32": 3757845643,
+    "compressed_bytes": 364
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/211118/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1220695519,
+    "compressed_bytes": 198
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/231118/._.DS_Store",
+    "bytes": 120,
+    "crc32": 17328983,
+    "compressed_bytes": 50
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/.DS_Store",
+    "bytes": 6148,
+    "crc32": 2430710762,
+    "compressed_bytes": 372
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/171018/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/.DS_Store",
+    "bytes": 6148,
+    "crc32": 630422120,
+    "compressed_bytes": 345
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/221118/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121118/.DS_Store",
+    "bytes": 6148,
+    "crc32": 2150481042,
+    "compressed_bytes": 257
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/121118/._.DS_Store",
+    "bytes": 120,
+    "crc32": 17328983,
+    "compressed_bytes": 50
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121118/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/.DS_Store",
+    "bytes": 8196,
+    "crc32": 3692460791,
+    "compressed_bytes": 1129
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/24102019/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1837629546,
+    "compressed_bytes": 178
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/181018/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/241018/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1837629546,
+    "compressed_bytes": 178
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/241018/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/241018/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/.DS_Store",
+    "bytes": 6148,
+    "crc32": 148830927,
+    "compressed_bytes": 368
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/02102019/._.DS_Store",
+    "bytes": 120,
+    "crc32": 17328983,
+    "compressed_bytes": 50
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1837629546,
+    "compressed_bytes": 178
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/141118/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231018/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221018/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118_T4/.DS_Store",
+    "bytes": 6148,
+    "crc32": 2452458358,
+    "compressed_bytes": 490
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/211118_T4/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118_T4/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/.DS_Store",
+    "bytes": 6148,
+    "crc32": 2896834706,
+    "compressed_bytes": 382
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/121218/._.DS_Store",
+    "bytes": 120,
+    "crc32": 17328983,
+    "compressed_bytes": 50
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1837629546,
+    "compressed_bytes": 178
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/03102019/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1837629546,
+    "compressed_bytes": 178
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/270319/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/.DS_Store",
+    "bytes": 6148,
+    "crc32": 2917769142,
+    "compressed_bytes": 268
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/031218/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/050819/.DS_Store",
+    "bytes": 6148,
+    "crc32": 397476735,
+    "compressed_bytes": 257
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/050819/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/050819/rawdata/",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol5aCOM.txt",
+    "bytes": 9143,
+    "crc32": 1507115215,
+    "compressed_bytes": 2561
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aA.txt",
+    "bytes": 50000194,
+    "crc32": 1708688971,
+    "compressed_bytes": 11741110
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol10aA.txt",
+    "bytes": 176,
+    "crc32": 1804274107,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aB.txt",
+    "bytes": 7888173,
+    "crc32": 3622626347,
+    "compressed_bytes": 1836164
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol12aA.txt",
+    "bytes": 26080041,
+    "crc32": 643131929,
+    "compressed_bytes": 6080099
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol12aA.txt",
+    "bytes": 176,
+    "crc32": 1610788335,
+    "compressed_bytes": 93
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol6a.log",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol6a.log",
+    "bytes": 220,
+    "crc32": 97917491,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes2COM.txt",
+    "bytes": 3028,
+    "crc32": 3583998592,
+    "compressed_bytes": 1061
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/.DS_Store",
+    "bytes": 8196,
+    "crc32": 69217811,
+    "compressed_bytes": 376
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol14aB.txt",
+    "bytes": 16983915,
+    "crc32": 2283466443,
+    "compressed_bytes": 3961595
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol4aCOM.txt",
+    "bytes": 103340,
+    "crc32": 284938396,
+    "compressed_bytes": 21019
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol8aA.txt",
+    "bytes": 13156748,
+    "crc32": 1940650187,
+    "compressed_bytes": 3126125
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol8aA.txt",
+    "bytes": 176,
+    "crc32": 4012846406,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol14aA.txt",
+    "bytes": 50000880,
+    "crc32": 259097369,
+    "compressed_bytes": 11724682
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol14aA.txt",
+    "bytes": 176,
+    "crc32": 1957653294,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol7aRef.dat",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol13aA.txt",
+    "bytes": 2734538,
+    "crc32": 1522696806,
+    "compressed_bytes": 655466
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol7aUnf.dat",
+    "bytes": 0,
+    "crc32": 0,
+    "compressed_bytes": 0
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol15aCOM.txt",
+    "bytes": 3575,
+    "crc32": 1240286252,
+    "compressed_bytes": 1223
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol11aA.txt",
+    "bytes": 44378300,
+    "crc32": 2991228260,
+    "compressed_bytes": 10469635
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol11aA.txt",
+    "bytes": 176,
+    "crc32": 3297779627,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol6aCOM.txt",
+    "bytes": 9920,
+    "crc32": 2378885171,
+    "compressed_bytes": 2721
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes1A.txt",
+    "bytes": 2979091,
+    "crc32": 3652854102,
+    "compressed_bytes": 737625
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol7aCOM.txt",
+    "bytes": 4723,
+    "crc32": 3949775852,
+    "compressed_bytes": 1510
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol15aA.txt",
+    "bytes": 15712282,
+    "crc32": 3571308710,
+    "compressed_bytes": 3734171
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol15aA.txt",
+    "bytes": 176,
+    "crc32": 290832105,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol9aA.txt",
+    "bytes": 4375528,
+    "crc32": 823718255,
+    "compressed_bytes": 1051176
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol14aCOM.txt",
+    "bytes": 13714,
+    "crc32": 2162727821,
+    "compressed_bytes": 3498
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol5aB.txt",
+    "bytes": 48080635,
+    "crc32": 3496258485,
+    "compressed_bytes": 11219635
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol11aCOM.txt",
+    "bytes": 5800,
+    "crc32": 3166672381,
+    "compressed_bytes": 1785
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes1COM.txt",
+    "bytes": 3137,
+    "crc32": 169690820,
+    "compressed_bytes": 1093
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol7aA.txt",
+    "bytes": 31941929,
+    "crc32": 2140389109,
+    "compressed_bytes": 7534535
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol7aA.txt",
+    "bytes": 176,
+    "crc32": 883588153,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol5aA.txt",
+    "bytes": 50000657,
+    "crc32": 3029149734,
+    "compressed_bytes": 11776333
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol5aA.txt",
+    "bytes": 176,
+    "crc32": 680901828,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes3A.txt",
+    "bytes": 3315231,
+    "crc32": 3166290112,
+    "compressed_bytes": 771004
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol2aCOM.txt",
+    "bytes": 4922,
+    "crc32": 4114940264,
+    "compressed_bytes": 1600
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol1aA.txt",
+    "bytes": 14826404,
+    "crc32": 2230651606,
+    "compressed_bytes": 3710933
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol1aA.txt",
+    "bytes": 176,
+    "crc32": 1909069487,
+    "compressed_bytes": 93
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes2A.txt",
+    "bytes": 2363364,
+    "crc32": 3635736038,
+    "compressed_bytes": 554757
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol3aCOM.txt",
+    "bytes": 37726,
+    "crc32": 1084983306,
+    "compressed_bytes": 8186
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol3aA.txt",
+    "bytes": 10075341,
+    "crc32": 3715920430,
+    "compressed_bytes": 2537740
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aCOM.txt",
+    "bytes": 13606,
+    "crc32": 2637980818,
+    "compressed_bytes": 3504
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes3COM.txt",
+    "bytes": 3138,
+    "crc32": 692268540,
+    "compressed_bytes": 1090
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol4aA.txt",
+    "bytes": 50000161,
+    "crc32": 2146454096,
+    "compressed_bytes": 11823844
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol4aA.txt",
+    "bytes": 176,
+    "crc32": 1645801868,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol6aB.txt",
+    "bytes": 49694996,
+    "crc32": 3842278979,
+    "compressed_bytes": 11534835
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol1aCOM.txt",
+    "bytes": 56163,
+    "crc32": 3485783867,
+    "compressed_bytes": 12536
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol12aCOM.txt",
+    "bytes": 5363,
+    "crc32": 2074775707,
+    "compressed_bytes": 1639
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol4aB.txt",
+    "bytes": 40884443,
+    "crc32": 1699561687,
+    "compressed_bytes": 9518380
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol6aA.txt",
+    "bytes": 50000826,
+    "crc32": 3988780720,
+    "compressed_bytes": 11798956
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/._mol6aA.txt",
+    "bytes": 176,
+    "crc32": 492780159,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol8aCOM.txt",
+    "bytes": 16850,
+    "crc32": 1641851024,
+    "compressed_bytes": 4035
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol13aCOM.txt",
+    "bytes": 4756,
+    "crc32": 1790936771,
+    "compressed_bytes": 1533
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol2aA.txt",
+    "bytes": 9064845,
+    "crc32": 3862018012,
+    "compressed_bytes": 2227769
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol9aCOM.txt",
+    "bytes": 8365,
+    "crc32": 2567946837,
+    "compressed_bytes": 2274
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol5aCOM.txt",
+    "bytes": 44703,
+    "crc32": 2590782286,
+    "compressed_bytes": 9624
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol4aCOM.txt",
+    "bytes": 12296,
+    "crc32": 2485720173,
+    "compressed_bytes": 3158
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol6aCOM.txt",
+    "bytes": 71748,
+    "crc32": 3157181945,
+    "compressed_bytes": 14757
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol5aB.txt",
+    "bytes": 48763777,
+    "crc32": 708155608,
+    "compressed_bytes": 11167756
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol5aA.txt",
+    "bytes": 50000466,
+    "crc32": 3992068572,
+    "compressed_bytes": 11862899
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/._mol5aA.txt",
+    "bytes": 176,
+    "crc32": 16302539,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol2aCOM.txt",
+    "bytes": 8934,
+    "crc32": 1207365594,
+    "compressed_bytes": 2404
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol1AA.txt",
+    "bytes": 20692888,
+    "crc32": 310633036,
+    "compressed_bytes": 5183363
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol3aCOM.txt",
+    "bytes": 51315,
+    "crc32": 2727778147,
+    "compressed_bytes": 10857
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol3aA.txt",
+    "bytes": 21749704,
+    "crc32": 1663363891,
+    "compressed_bytes": 5364042
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol4aA.txt",
+    "bytes": 43968384,
+    "crc32": 307962660,
+    "compressed_bytes": 10595975
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/._mol4aA.txt",
+    "bytes": 176,
+    "crc32": 1100521079,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol1ACOM.txt",
+    "bytes": 44298,
+    "crc32": 1346176932,
+    "compressed_bytes": 9323
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/._mol1ACOM.txt",
+    "bytes": 176,
+    "crc32": 4082223505,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol1COM.txt",
+    "bytes": 35539,
+    "crc32": 3980543969,
+    "compressed_bytes": 7931
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol6aA.txt",
+    "bytes": 9612875,
+    "crc32": 1861637866,
+    "compressed_bytes": 2403792
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol2aA.txt",
+    "bytes": 15570014,
+    "crc32": 2718664019,
+    "compressed_bytes": 3850456
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/mol1A.txt",
+    "bytes": 3032090,
+    "crc32": 2945744282,
+    "compressed_bytes": 777357
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/061020/rawdata/._mol1A.txt",
+    "bytes": 176,
+    "crc32": 4100308386,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol5aCOM.txt",
+    "bytes": 10241,
+    "crc32": 791317689,
+    "compressed_bytes": 2702
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol10aA.txt",
+    "bytes": 6551267,
+    "crc32": 2274213316,
+    "compressed_bytes": 1642408
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/.DS_Store",
+    "bytes": 6148,
+    "crc32": 2874869490,
+    "compressed_bytes": 297
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol4aCOM.txt",
+    "bytes": 11501,
+    "crc32": 232108134,
+    "compressed_bytes": 2907
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/._mol4aCOM.txt",
+    "bytes": 176,
+    "crc32": 149796348,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol8aA.txt",
+    "bytes": 30342378,
+    "crc32": 4185318258,
+    "compressed_bytes": 7155607
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol6aCOM.txt",
+    "bytes": 25838,
+    "crc32": 3393918751,
+    "compressed_bytes": 5621
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/stokes1A.txt",
+    "bytes": 1337210,
+    "crc32": 2143419743,
+    "compressed_bytes": 329956
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol7aCOM.txt",
+    "bytes": 12627,
+    "crc32": 193664198,
+    "compressed_bytes": 3051
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol9aA.txt",
+    "bytes": 19030901,
+    "crc32": 656525166,
+    "compressed_bytes": 4493305
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol5aB.txt",
+    "bytes": 8946481,
+    "crc32": 1711195051,
+    "compressed_bytes": 2084543
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/stokes1COM.txt",
+    "bytes": 3513,
+    "crc32": 3672418386,
+    "compressed_bytes": 1172
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol7aA.txt",
+    "bytes": 6192443,
+    "crc32": 342639980,
+    "compressed_bytes": 1464353
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/._mol7aA.txt",
+    "bytes": 176,
+    "crc32": 4151569242,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol5aA.txt",
+    "bytes": 50001205,
+    "crc32": 619890172,
+    "compressed_bytes": 11772017
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/._mol5aA.txt",
+    "bytes": 176,
+    "crc32": 1161710832,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol2aCOM.txt",
+    "bytes": 8252,
+    "crc32": 213401041,
+    "compressed_bytes": 2243
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol3aB.txt",
+    "bytes": 4549875,
+    "crc32": 2564593566,
+    "compressed_bytes": 1099905
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol1aA.txt",
+    "bytes": 12363061,
+    "crc32": 533586649,
+    "compressed_bytes": 3053669
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/._mol1aA.txt",
+    "bytes": 176,
+    "crc32": 835055345,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol3aCOM.txt",
+    "bytes": 11670,
+    "crc32": 1626972432,
+    "compressed_bytes": 3032
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol3aA.txt",
+    "bytes": 50001063,
+    "crc32": 3911147509,
+    "compressed_bytes": 12169199
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/._mol3aA.txt",
+    "bytes": 176,
+    "crc32": 823204103,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol10aCOM.txt",
+    "bytes": 40346,
+    "crc32": 2818317746,
+    "compressed_bytes": 8522
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol4aA.txt",
+    "bytes": 13707780,
+    "crc32": 4232011875,
+    "compressed_bytes": 3324356
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/._mol4aA.txt",
+    "bytes": 176,
+    "crc32": 3904042360,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol1aCOM.txt",
+    "bytes": 19628,
+    "crc32": 623021311,
+    "compressed_bytes": 4753
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/._mol1aCOM.txt",
+    "bytes": 176,
+    "crc32": 133225680,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol6aA.txt",
+    "bytes": 8983805,
+    "crc32": 2264734646,
+    "compressed_bytes": 2140256
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/._mol6aA.txt",
+    "bytes": 176,
+    "crc32": 3582192286,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol8aCOM.txt",
+    "bytes": 7481,
+    "crc32": 2673320174,
+    "compressed_bytes": 2112
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol2aA.txt",
+    "bytes": 21080904,
+    "crc32": 1496150420,
+    "compressed_bytes": 5132798
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/._mol2aA.txt",
+    "bytes": 176,
+    "crc32": 1477815740,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/LowT/081020/rawdata/mol9aCOM.txt",
+    "bytes": 35616,
+    "crc32": 2919832608,
+    "compressed_bytes": 7633
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118_T4/rawdata/1a100A.txt",
+    "bytes": 9812599,
+    "crc32": 994397316,
+    "compressed_bytes": 2296130
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118_T4/rawdata/1a100COM.txt",
+    "bytes": 41698,
+    "crc32": 346167765,
+    "compressed_bytes": 9139
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118_T4/rawdata/2a100A.txt",
+    "bytes": 30946006,
+    "crc32": 394737076,
+    "compressed_bytes": 7254873
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118_T4/rawdata/2a100COM.txt",
+    "bytes": 12988,
+    "crc32": 2693035033,
+    "compressed_bytes": 3332
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol5aCOM.txt",
+    "bytes": 21483,
+    "crc32": 3542674217,
+    "compressed_bytes": 4902
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stokes2COM.txt",
+    "bytes": 3225,
+    "crc32": 1609741997,
+    "compressed_bytes": 1117
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol4aCOM.txt",
+    "bytes": 20971,
+    "crc32": 3058042248,
+    "compressed_bytes": 4847
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stiffnessNOAUTOCOM.txt",
+    "bytes": 2507,
+    "crc32": 1147403642,
+    "compressed_bytes": 913
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stiffnessAUTOCOM.txt",
+    "bytes": 2630,
+    "crc32": 40882038,
+    "compressed_bytes": 962
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stiffnessNOAUTOCOM.t\u0007lZ%C6c'%AD%C7",
+    "bytes": 491,
+    "crc32": 702886238,
+    "compressed_bytes": 192
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol6aCOM.txt",
+    "bytes": 40475,
+    "crc32": 4068685745,
+    "compressed_bytes": 9091
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stokes1A.txt",
+    "bytes": 4410194,
+    "crc32": 1813459499,
+    "compressed_bytes": 1060876
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/._stokes1A.txt",
+    "bytes": 176,
+    "crc32": 4067352573,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/keff1A.txt",
+    "bytes": 1330195,
+    "crc32": 1441364378,
+    "compressed_bytes": 271168
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/._keff1A.txt",
+    "bytes": 176,
+    "crc32": 67615023,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stiffnessNOAUTOA.txt",
+    "bytes": 1902092,
+    "crc32": 2407846782,
+    "compressed_bytes": 385065
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stokes1COM.txt",
+    "bytes": 3330,
+    "crc32": 3670970386,
+    "compressed_bytes": 1146
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol5aA.txt",
+    "bytes": 12317939,
+    "crc32": 1784287243,
+    "compressed_bytes": 2749608
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stokes3A.txt",
+    "bytes": 4459798,
+    "crc32": 312872212,
+    "compressed_bytes": 1009412
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol2aCOM.txt",
+    "bytes": 117774,
+    "crc32": 2782076354,
+    "compressed_bytes": 24624
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol1aA.txt",
+    "bytes": 8361941,
+    "crc32": 2597663568,
+    "compressed_bytes": 2009532
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stokes2A.txt",
+    "bytes": 4534842,
+    "crc32": 2954196062,
+    "compressed_bytes": 1044202
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol3aCOM.txt",
+    "bytes": 7567,
+    "crc32": 4100590244,
+    "compressed_bytes": 2216
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol3aA.txt",
+    "bytes": 3531492,
+    "crc32": 4105740967,
+    "compressed_bytes": 801892
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stiffnessAUTOA.txt",
+    "bytes": 2220888,
+    "crc32": 163996865,
+    "compressed_bytes": 445772
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/stokes3COM.txt",
+    "bytes": 3149,
+    "crc32": 2351105468,
+    "compressed_bytes": 1098
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/keff1COM.txt",
+    "bytes": 2594,
+    "crc32": 4046556477,
+    "compressed_bytes": 956
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol4aA.txt",
+    "bytes": 5799568,
+    "crc32": 3386952480,
+    "compressed_bytes": 1342518
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol1aCOM.txt",
+    "bytes": 49729,
+    "crc32": 3119448569,
+    "compressed_bytes": 10625
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol6aA.txt",
+    "bytes": 46957430,
+    "crc32": 3934496622,
+    "compressed_bytes": 10365888
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/09102019/rawdata/mol2aA.txt",
+    "bytes": 21426697,
+    "crc32": 3151686533,
+    "compressed_bytes": 4896191
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/rawdata/stokes1A.txt",
+    "bytes": 4737767,
+    "crc32": 965040707,
+    "compressed_bytes": 1077037
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/rawdata/stokes1COM.txt",
+    "bytes": 3184,
+    "crc32": 1431912392,
+    "compressed_bytes": 1102
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/rawdata/mol2aCOM.txt",
+    "bytes": 28089,
+    "crc32": 2778685241,
+    "compressed_bytes": 6400
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/rawdata/mol1aA.txt",
+    "bytes": 21635273,
+    "crc32": 1925867571,
+    "compressed_bytes": 4920225
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/rawdata/mol3aCOM.txt",
+    "bytes": 33830,
+    "crc32": 3536017608,
+    "compressed_bytes": 7277
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/rawdata/mol3aA.txt",
+    "bytes": 2836244,
+    "crc32": 1700767421,
+    "compressed_bytes": 706102
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/rawdata/mol1aCOM.txt",
+    "bytes": 3921,
+    "crc32": 515066073,
+    "compressed_bytes": 1333
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/10102019/rawdata/mol2aA.txt",
+    "bytes": 1989281,
+    "crc32": 3366409007,
+    "compressed_bytes": 513432
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/stokes2COM.txt",
+    "bytes": 3114,
+    "crc32": 1897222930,
+    "compressed_bytes": 1093
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/stokes1A.txt",
+    "bytes": 4164597,
+    "crc32": 3994168431,
+    "compressed_bytes": 981889
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/stokes1COM.txt",
+    "bytes": 4955,
+    "crc32": 1081491610,
+    "compressed_bytes": 1562
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/mol2aCOM.txt",
+    "bytes": 6090,
+    "crc32": 3329021222,
+    "compressed_bytes": 1885
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/mol1aA.txt",
+    "bytes": 50000789,
+    "crc32": 1239299017,
+    "compressed_bytes": 11277107
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/stokes2A.txt",
+    "bytes": 3175929,
+    "crc32": 4006791267,
+    "compressed_bytes": 733923
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/mol3aCOM.txt",
+    "bytes": 72431,
+    "crc32": 4196371725,
+    "compressed_bytes": 15571
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/mol3aA.txt",
+    "bytes": 26148651,
+    "crc32": 3139418992,
+    "compressed_bytes": 5865557
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/mol1aB.txt",
+    "bytes": 23466232,
+    "crc32": 543971371,
+    "compressed_bytes": 5226252
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/mol1aCOM.txt",
+    "bytes": 22829,
+    "crc32": 2395521094,
+    "compressed_bytes": 5530
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/14102019/rawdata/mol2aA.txt",
+    "bytes": 11098566,
+    "crc32": 575903248,
+    "compressed_bytes": 2470523
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/16102019/rawdata/stokes1A.txt",
+    "bytes": 4126153,
+    "crc32": 935144685,
+    "compressed_bytes": 951046
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/16102019/rawdata/stokes1COM.txt",
+    "bytes": 4468,
+    "crc32": 2303011250,
+    "compressed_bytes": 1466
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/16102019/rawdata/mol2aCOM.txt",
+    "bytes": 27875,
+    "crc32": 1424085283,
+    "compressed_bytes": 6659
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/16102019/rawdata/mol1aA.txt",
+    "bytes": 49571988,
+    "crc32": 988151565,
+    "compressed_bytes": 11168681
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/16102019/rawdata/mol1aCOM.txt",
+    "bytes": 17152,
+    "crc32": 1559102015,
+    "compressed_bytes": 4277
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/16102019/rawdata/mol2aA.txt",
+    "bytes": 4587040,
+    "crc32": 3806503975,
+    "compressed_bytes": 1035978
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/261118/rawdata/1a100A.txt",
+    "bytes": 19763231,
+    "crc32": 1067799644,
+    "compressed_bytes": 4890559
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/261118/rawdata/stokes1A.txt",
+    "bytes": 3874913,
+    "crc32": 3569248754,
+    "compressed_bytes": 902143
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/261118/rawdata/1a100COM.txt",
+    "bytes": 276075,
+    "crc32": 3356300461,
+    "compressed_bytes": 56081
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/261118/rawdata/stokes1COM.txt",
+    "bytes": 3297,
+    "crc32": 2317677062,
+    "compressed_bytes": 1133
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/020419/rawdata/mol2aCOM.txt",
+    "bytes": 15834,
+    "crc32": 1886567724,
+    "compressed_bytes": 3856
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/020419/rawdata/mol1aA.txt",
+    "bytes": 9641660,
+    "crc32": 156674171,
+    "compressed_bytes": 2179447
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/020419/rawdata/mol3aCOM.txt",
+    "bytes": 50117,
+    "crc32": 645327341,
+    "compressed_bytes": 11282
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/020419/rawdata/mol3aA.txt",
+    "bytes": 4756690,
+    "crc32": 2487551181,
+    "compressed_bytes": 1199017
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/020419/rawdata/mol1aCOM.txt",
+    "bytes": 64129,
+    "crc32": 2633472942,
+    "compressed_bytes": 14040
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/020419/rawdata/mol2aA.txt",
+    "bytes": 1939068,
+    "crc32": 2151511656,
+    "compressed_bytes": 480514
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/010419/rawdata/mol2aCOM.txt",
+    "bytes": 7894,
+    "crc32": 3916762888,
+    "compressed_bytes": 2170
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/010419/rawdata/mol1aA.txt",
+    "bytes": 12834667,
+    "crc32": 3772277196,
+    "compressed_bytes": 3150187
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/010419/rawdata/mol3aCOM.txt",
+    "bytes": 111954,
+    "crc32": 1648732931,
+    "compressed_bytes": 24543
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/010419/rawdata/mol3aA.txt",
+    "bytes": 9049668,
+    "crc32": 2182544884,
+    "compressed_bytes": 2348630
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/010419/rawdata/mol1aCOM.txt",
+    "bytes": 106060,
+    "crc32": 3168888561,
+    "compressed_bytes": 22702
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/010419/rawdata/mol2aA.txt",
+    "bytes": 5788008,
+    "crc32": 3977091122,
+    "compressed_bytes": 1301375
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/6a100COM.txt",
+    "bytes": 9669,
+    "crc32": 312457150,
+    "compressed_bytes": 2513
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/1aBEAD100A.txt",
+    "bytes": 1660299,
+    "crc32": 2619051609,
+    "compressed_bytes": 332697
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/1a008COM.txt",
+    "bytes": 6404,
+    "crc32": 2940271304,
+    "compressed_bytes": 1910
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/1a100A.txt",
+    "bytes": 50000445,
+    "crc32": 2334143173,
+    "compressed_bytes": 11231079
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/1aBEAD100COM.txt",
+    "bytes": 2779,
+    "crc32": 1211980719,
+    "compressed_bytes": 1028
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/3a100COM.txt",
+    "bytes": 29157,
+    "crc32": 1828680272,
+    "compressed_bytes": 6527
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/1a100B.txt",
+    "bytes": 5726080,
+    "crc32": 4276743240,
+    "compressed_bytes": 1287555
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/1a008A.txt",
+    "bytes": 47156873,
+    "crc32": 3921559146,
+    "compressed_bytes": 10676357
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/4a100COM.txt",
+    "bytes": 21160,
+    "crc32": 1611767452,
+    "compressed_bytes": 4880
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/7a100A.txt",
+    "bytes": 50000839,
+    "crc32": 3106001484,
+    "compressed_bytes": 11240177
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/6a100A.txt",
+    "bytes": 3481329,
+    "crc32": 979834157,
+    "compressed_bytes": 799340
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/7a100B.txt",
+    "bytes": 29572632,
+    "crc32": 805504123,
+    "compressed_bytes": 6608156
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/stokes1A.txt",
+    "bytes": 1331793,
+    "crc32": 951235113,
+    "compressed_bytes": 297634
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/1a100COM.txt",
+    "bytes": 13202,
+    "crc32": 1474343142,
+    "compressed_bytes": 3290
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/6a100ACOM.txt",
+    "bytes": 17063,
+    "crc32": 490861335,
+    "compressed_bytes": 4146
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/stokes1COM.txt",
+    "bytes": 2941,
+    "crc32": 1995778933,
+    "compressed_bytes": 1064
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/3a100B.txt",
+    "bytes": 5300629,
+    "crc32": 3025411417,
+    "compressed_bytes": 1212398
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/3a100A.txt",
+    "bytes": 50000492,
+    "crc32": 588588328,
+    "compressed_bytes": 11571014
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/2a100A.txt",
+    "bytes": 4010799,
+    "crc32": 2464740487,
+    "compressed_bytes": 944764
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/2a100COM.txt",
+    "bytes": 16495,
+    "crc32": 3483593824,
+    "compressed_bytes": 3696
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/7a100COM.txt",
+    "bytes": 15357,
+    "crc32": 833129809,
+    "compressed_bytes": 3795
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/5a100COM.txt",
+    "bytes": 30568,
+    "crc32": 3483744812,
+    "compressed_bytes": 6507
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/6a100AA.txt",
+    "bytes": 50001196,
+    "crc32": 3027869920,
+    "compressed_bytes": 11446613
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/4a100A.txt",
+    "bytes": 25824086,
+    "crc32": 330852666,
+    "compressed_bytes": 5923584
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/5a100A.txt",
+    "bytes": 5068204,
+    "crc32": 1301377218,
+    "compressed_bytes": 1214450
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/201118/rawdata/6a100AB.txt",
+    "bytes": 42171631,
+    "crc32": 2438452052,
+    "compressed_bytes": 9562477
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/1a100A.txt",
+    "bytes": 50001141,
+    "crc32": 2104007280,
+    "compressed_bytes": 11358426
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/3a100COM.txt",
+    "bytes": 16886,
+    "crc32": 4220797168,
+    "compressed_bytes": 4330
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/1a100B.txt",
+    "bytes": 2565437,
+    "crc32": 906670635,
+    "compressed_bytes": 588032
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/4a100COM.txt",
+    "bytes": 8942,
+    "crc32": 2572355730,
+    "compressed_bytes": 2570
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/stokes1A.txt",
+    "bytes": 1195920,
+    "crc32": 97132694,
+    "compressed_bytes": 273804
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/1a100COM.txt",
+    "bytes": 63723,
+    "crc32": 3781411355,
+    "compressed_bytes": 13977
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/3a100C.txt",
+    "bytes": 50000079,
+    "crc32": 4070001386,
+    "compressed_bytes": 11207106
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/stokes1COM.txt",
+    "bytes": 2737,
+    "crc32": 1738634870,
+    "compressed_bytes": 991
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/3a100B.txt",
+    "bytes": 50000877,
+    "crc32": 921539221,
+    "compressed_bytes": 11286976
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/3a100A.txt",
+    "bytes": 50000448,
+    "crc32": 3944610711,
+    "compressed_bytes": 11227442
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/2a100A.txt",
+    "bytes": 16855904,
+    "crc32": 2234493533,
+    "compressed_bytes": 3823803
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/2a100COM.txt",
+    "bytes": 23572,
+    "crc32": 1493855963,
+    "compressed_bytes": 4802
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/3a100D.txt",
+    "bytes": 12342311,
+    "crc32": 3246062348,
+    "compressed_bytes": 2762406
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/5a100COM.txt",
+    "bytes": 25414,
+    "crc32": 3487455729,
+    "compressed_bytes": 6042
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/4a100B.txt",
+    "bytes": 45873553,
+    "crc32": 3840425349,
+    "compressed_bytes": 10329292
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/4a100A.txt",
+    "bytes": 50000771,
+    "crc32": 3523501625,
+    "compressed_bytes": 11292861
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118/rawdata/5a100A.txt",
+    "bytes": 5730348,
+    "crc32": 2094291754,
+    "compressed_bytes": 1312640
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/6a100COM.txt",
+    "bytes": 133203,
+    "crc32": 702531029,
+    "compressed_bytes": 26111
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/1a100A.txt",
+    "bytes": 50001431,
+    "crc32": 3481355519,
+    "compressed_bytes": 11533671
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/3a100COM.txt",
+    "bytes": 190826,
+    "crc32": 440982938,
+    "compressed_bytes": 37317
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/1a100B.txt",
+    "bytes": 5254935,
+    "crc32": 1623329338,
+    "compressed_bytes": 1212389
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/4a100COM.txt",
+    "bytes": 20931,
+    "crc32": 3317061134,
+    "compressed_bytes": 4981
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/6a100A.txt",
+    "bytes": 5205728,
+    "crc32": 1071407599,
+    "compressed_bytes": 1296772
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/1a100COM.txt",
+    "bytes": 20289,
+    "crc32": 3857398122,
+    "compressed_bytes": 4877
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/3a100A.txt",
+    "bytes": 18014161,
+    "crc32": 3090495666,
+    "compressed_bytes": 4254020
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/2a100A.txt",
+    "bytes": 32704765,
+    "crc32": 134559602,
+    "compressed_bytes": 7627909
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/2a100COM.txt",
+    "bytes": 9028,
+    "crc32": 1631107754,
+    "compressed_bytes": 2515
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/5a100COM.txt",
+    "bytes": 10248,
+    "crc32": 26994820,
+    "compressed_bytes": 2633
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/4a100A.txt",
+    "bytes": 22290863,
+    "crc32": 2254074237,
+    "compressed_bytes": 4922915
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231118/rawdata/5a100A.txt",
+    "bytes": 5661416,
+    "crc32": 2864317451,
+    "compressed_bytes": 1260947
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/6a100COM.txt",
+    "bytes": 11598,
+    "crc32": 1602360219,
+    "compressed_bytes": 3074
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/bead1A.txt",
+    "bytes": 2494069,
+    "crc32": 1493195520,
+    "compressed_bytes": 517863
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/1a100A.txt",
+    "bytes": 50000325,
+    "crc32": 2263418045,
+    "compressed_bytes": 11353308
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/._1a100A.txt",
+    "bytes": 176,
+    "crc32": 2287815397,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/3a100COM.txt",
+    "bytes": 14641,
+    "crc32": 3484463414,
+    "compressed_bytes": 3656
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/1a100B.txt",
+    "bytes": 5745404,
+    "crc32": 3116008095,
+    "compressed_bytes": 1292167
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/4a100COM.txt",
+    "bytes": 6391,
+    "crc32": 1073856302,
+    "compressed_bytes": 1924
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/bead1COM.txt",
+    "bytes": 2628,
+    "crc32": 24762562,
+    "compressed_bytes": 960
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/7a100A.txt",
+    "bytes": 44857029,
+    "crc32": 3761996268,
+    "compressed_bytes": 9488215
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/6a100A.txt",
+    "bytes": 31591074,
+    "crc32": 4198849689,
+    "compressed_bytes": 6861038
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/1a100COM.txt",
+    "bytes": 44969,
+    "crc32": 1032190971,
+    "compressed_bytes": 10666
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/8a100A.txt",
+    "bytes": 3640105,
+    "crc32": 1838871276,
+    "compressed_bytes": 814336
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/3a100A.txt",
+    "bytes": 10030752,
+    "crc32": 2333978746,
+    "compressed_bytes": 2202901
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/2a100A.txt",
+    "bytes": 19696097,
+    "crc32": 3170162512,
+    "compressed_bytes": 4543069
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/2a100COM.txt",
+    "bytes": 6396,
+    "crc32": 639008464,
+    "compressed_bytes": 1848
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/7a100COM.txt",
+    "bytes": 12696,
+    "crc32": 2658625702,
+    "compressed_bytes": 3436
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/5a100COM.txt",
+    "bytes": 20727,
+    "crc32": 762191141,
+    "compressed_bytes": 5098
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/8a100COM.txt",
+    "bytes": 9761,
+    "crc32": 2960854930,
+    "compressed_bytes": 2609
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/4a100A.txt",
+    "bytes": 3579125,
+    "crc32": 64928453,
+    "compressed_bytes": 758052
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/171018/rawdata/5a100A.txt",
+    "bytes": 16552766,
+    "crc32": 1982066104,
+    "compressed_bytes": 3682588
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/rawdata/1a100A.txt",
+    "bytes": 3409927,
+    "crc32": 479345552,
+    "compressed_bytes": 813836
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/rawdata/3a100COM.txt",
+    "bytes": 8940,
+    "crc32": 736599877,
+    "compressed_bytes": 2385
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/rawdata/4a100COM.txt",
+    "bytes": 50555,
+    "crc32": 2514251048,
+    "compressed_bytes": 10196
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/rawdata/1a100COM.txt",
+    "bytes": 17335,
+    "crc32": 479845054,
+    "compressed_bytes": 4139
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/rawdata/2a100B.txt",
+    "bytes": 40500275,
+    "crc32": 3190410274,
+    "compressed_bytes": 9149146
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/rawdata/3a100A.txt",
+    "bytes": 2106271,
+    "crc32": 3796705604,
+    "compressed_bytes": 496636
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/rawdata/2a100A.txt",
+    "bytes": 50000528,
+    "crc32": 3377017120,
+    "compressed_bytes": 11288024
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/rawdata/2a100COM.txt",
+    "bytes": 33731,
+    "crc32": 444960057,
+    "compressed_bytes": 7369
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221118/rawdata/4a100A.txt",
+    "bytes": 6645999,
+    "crc32": 136519959,
+    "compressed_bytes": 1542339
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121118/rawdata/1a100A.txt",
+    "bytes": 14468006,
+    "crc32": 1230479393,
+    "compressed_bytes": 3154792
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121118/rawdata/1a100COM.txt",
+    "bytes": 81799,
+    "crc32": 4013033628,
+    "compressed_bytes": 18415
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121118/rawdata/2a100A.txt",
+    "bytes": 7357472,
+    "crc32": 895275936,
+    "compressed_bytes": 1893197
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121118/rawdata/2a100COM.txt",
+    "bytes": 43288,
+    "crc32": 2097527672,
+    "compressed_bytes": 9383
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol3bCOM.txt",
+    "bytes": 8121,
+    "crc32": 1682058226,
+    "compressed_bytes": 2306
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/stokes2COM.txt",
+    "bytes": 3570,
+    "crc32": 2865729981,
+    "compressed_bytes": 1224
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol4aCOM.txt",
+    "bytes": 8689,
+    "crc32": 740788481,
+    "compressed_bytes": 2446
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol3bA.txt",
+    "bytes": 34455639,
+    "crc32": 1020859978,
+    "compressed_bytes": 7644499
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/stokes1A.txt",
+    "bytes": 4607838,
+    "crc32": 1812688348,
+    "compressed_bytes": 1083669
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/stokes1COM.txt",
+    "bytes": 3467,
+    "crc32": 1525661892,
+    "compressed_bytes": 1168
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/stokes3A.txt",
+    "bytes": 5339307,
+    "crc32": 4092671719,
+    "compressed_bytes": 1185099
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol2aCOM.txt",
+    "bytes": 6953,
+    "crc32": 2173383760,
+    "compressed_bytes": 2041
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol3aB.txt",
+    "bytes": 1051064,
+    "crc32": 2365084464,
+    "compressed_bytes": 233729
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol1aA.txt",
+    "bytes": 50000463,
+    "crc32": 2142288585,
+    "compressed_bytes": 11469990
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/stokes2A.txt",
+    "bytes": 4543177,
+    "crc32": 1923781042,
+    "compressed_bytes": 1049370
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol3aCOM.txt",
+    "bytes": 5816,
+    "crc32": 1146459965,
+    "compressed_bytes": 1761
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol3aA.txt",
+    "bytes": 50000353,
+    "crc32": 3206977934,
+    "compressed_bytes": 11104923
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol1aB.txt",
+    "bytes": 19602579,
+    "crc32": 1427562366,
+    "compressed_bytes": 4456053
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/stokes3COM.txt",
+    "bytes": 3359,
+    "crc32": 1111296188,
+    "compressed_bytes": 1159
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol4aA.txt",
+    "bytes": 50000493,
+    "crc32": 2396228350,
+    "compressed_bytes": 11117103
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol1aCOM.txt",
+    "bytes": 14402,
+    "crc32": 720354128,
+    "compressed_bytes": 3715
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/._mol1aCOM.txt",
+    "bytes": 176,
+    "crc32": 2620254720,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol4aB.txt",
+    "bytes": 14658414,
+    "crc32": 4126451237,
+    "compressed_bytes": 3238482
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol2aA.txt",
+    "bytes": 50000290,
+    "crc32": 919124563,
+    "compressed_bytes": 11002618
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/24102019/rawdata/mol2aB.txt",
+    "bytes": 7317620,
+    "crc32": 722166968,
+    "compressed_bytes": 1611360
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/stokes2COM.txt",
+    "bytes": 3342,
+    "crc32": 2862841311,
+    "compressed_bytes": 1143
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/1a100A.txt",
+    "bytes": 49254090,
+    "crc32": 1497857402,
+    "compressed_bytes": 11202412
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/3a100COM.txt",
+    "bytes": 23149,
+    "crc32": 1065779306,
+    "compressed_bytes": 5396
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/stokes1A.txt",
+    "bytes": 4140341,
+    "crc32": 734070973,
+    "compressed_bytes": 963535
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/1a100COM.txt",
+    "bytes": 16303,
+    "crc32": 1475283947,
+    "compressed_bytes": 4124
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/stokes1COM.txt",
+    "bytes": 3604,
+    "crc32": 2290814689,
+    "compressed_bytes": 1208
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/3a100A.txt",
+    "bytes": 13695477,
+    "crc32": 1383772296,
+    "compressed_bytes": 3086271
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/2a100A.txt",
+    "bytes": 14002146,
+    "crc32": 268864843,
+    "compressed_bytes": 3292030
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/2a100COM.txt",
+    "bytes": 27092,
+    "crc32": 3404209529,
+    "compressed_bytes": 6467
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/181018/rawdata/stokes2A.txt",
+    "bytes": 3535643,
+    "crc32": 3319206917,
+    "compressed_bytes": 805121
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/241018/rawdata/1a100A.txt",
+    "bytes": 17110757,
+    "crc32": 2227383314,
+    "compressed_bytes": 4031307
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/241018/rawdata/1a100COM.txt",
+    "bytes": 20393,
+    "crc32": 3084651640,
+    "compressed_bytes": 5118
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes2COM.txt",
+    "bytes": 3496,
+    "crc32": 1757163772,
+    "compressed_bytes": 1178
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/.DS_Store",
+    "bytes": 6148,
+    "crc32": 1837629546,
+    "compressed_bytes": 178
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/._.DS_Store",
+    "bytes": 120,
+    "crc32": 952141835,
+    "compressed_bytes": 53
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes1A.txt",
+    "bytes": 3922643,
+    "crc32": 1658396872,
+    "compressed_bytes": 925855
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes1COM.txt",
+    "bytes": 9229,
+    "crc32": 2766649529,
+    "compressed_bytes": 2397
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol2aCOM.txt",
+    "bytes": 43629,
+    "crc32": 1671984943,
+    "compressed_bytes": 9720
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol1aA.txt",
+    "bytes": 16121903,
+    "crc32": 3120712329,
+    "compressed_bytes": 3907683
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes2A.txt",
+    "bytes": 3487605,
+    "crc32": 4227367668,
+    "compressed_bytes": 822483
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol1aCOM.txt",
+    "bytes": 108248,
+    "crc32": 1802485950,
+    "compressed_bytes": 22768
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol2aA.txt",
+    "bytes": 50000696,
+    "crc32": 2804579355,
+    "compressed_bytes": 11243809
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol2aB.txt",
+    "bytes": 24373707,
+    "crc32": 768601283,
+    "compressed_bytes": 5468980
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/1a100A.txt",
+    "bytes": 20947068,
+    "crc32": 1025143950,
+    "compressed_bytes": 5036893
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/3a100COM.txt",
+    "bytes": 4617,
+    "crc32": 3908538093,
+    "compressed_bytes": 1533
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/4a100COM.txt",
+    "bytes": 56015,
+    "crc32": 2444147887,
+    "compressed_bytes": 12799
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/stokes1A.txt",
+    "bytes": 1706477,
+    "crc32": 2902150887,
+    "compressed_bytes": 370653
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/1a100COM.txt",
+    "bytes": 60438,
+    "crc32": 4249375957,
+    "compressed_bytes": 13714
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/stokes1COM.txt",
+    "bytes": 2886,
+    "crc32": 3761941215,
+    "compressed_bytes": 1023
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/3a100A.txt",
+    "bytes": 3304012,
+    "crc32": 860969346,
+    "compressed_bytes": 751140
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/2a100A.txt",
+    "bytes": 16028971,
+    "crc32": 1608393702,
+    "compressed_bytes": 3593167
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/2a100COM.txt",
+    "bytes": 16440,
+    "crc32": 2700999026,
+    "compressed_bytes": 4200
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/5a100COM.txt",
+    "bytes": 20233,
+    "crc32": 1966925303,
+    "compressed_bytes": 4858
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/4a100A.txt",
+    "bytes": 8246699,
+    "crc32": 2836590737,
+    "compressed_bytes": 2005218
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/141118/rawdata/5a100A.txt",
+    "bytes": 3355185,
+    "crc32": 1736502320,
+    "compressed_bytes": 824458
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231018/rawdata/1a100A.txt",
+    "bytes": 12272794,
+    "crc32": 3457644181,
+    "compressed_bytes": 2972274
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231018/rawdata/1a100COM.txt",
+    "bytes": 59657,
+    "crc32": 2083347471,
+    "compressed_bytes": 13239
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231018/rawdata/2a100A.txt",
+    "bytes": 23414081,
+    "crc32": 55899408,
+    "compressed_bytes": 5671525
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/231018/rawdata/2a100COM.txt",
+    "bytes": 126071,
+    "crc32": 61689185,
+    "compressed_bytes": 28579
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221018/rawdata/1a100A.txt",
+    "bytes": 14752185,
+    "crc32": 3321696602,
+    "compressed_bytes": 3457786
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221018/rawdata/stokes1A.txt",
+    "bytes": 1447954,
+    "crc32": 2436542614,
+    "compressed_bytes": 323356
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221018/rawdata/1a100COM.txt",
+    "bytes": 46165,
+    "crc32": 2685925709,
+    "compressed_bytes": 10279
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221018/rawdata/stokes1COM.txt",
+    "bytes": 2865,
+    "crc32": 3577151625,
+    "compressed_bytes": 1047
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221018/rawdata/2a100A.txt",
+    "bytes": 7120389,
+    "crc32": 1332214413,
+    "compressed_bytes": 1877840
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/221018/rawdata/2a100COM.txt",
+    "bytes": 70321,
+    "crc32": 3993900153,
+    "compressed_bytes": 15183
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118_T4/rawdata/1a100A.txt",
+    "bytes": 24317540,
+    "crc32": 4032659630,
+    "compressed_bytes": 5615623
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118_T4/rawdata/stokes1A.txt",
+    "bytes": 1614538,
+    "crc32": 1203119115,
+    "compressed_bytes": 352836
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118_T4/rawdata/1a100COM.txt",
+    "bytes": 7662,
+    "crc32": 4293786816,
+    "compressed_bytes": 2145
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118_T4/rawdata/stokes1COM.txt",
+    "bytes": 2871,
+    "crc32": 310041134,
+    "compressed_bytes": 996
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118_T4/rawdata/2a100A.txt",
+    "bytes": 4894767,
+    "crc32": 838063350,
+    "compressed_bytes": 1187994
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/211118_T4/rawdata/2a100COM.txt",
+    "bytes": 31154,
+    "crc32": 2373723872,
+    "compressed_bytes": 6756
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/stokes2COM.txt",
+    "bytes": 2778,
+    "crc32": 1542892611,
+    "compressed_bytes": 998
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/1a100A.txt",
+    "bytes": 9634391,
+    "crc32": 1084577174,
+    "compressed_bytes": 2434138
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/._1a100A.txt",
+    "bytes": 176,
+    "crc32": 1112252768,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/stokes1A.txt",
+    "bytes": 7511361,
+    "crc32": 215694931,
+    "compressed_bytes": 1858483
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/1a100COM.txt",
+    "bytes": 147104,
+    "crc32": 3965296898,
+    "compressed_bytes": 30157
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/1b100A.txt",
+    "bytes": 16690713,
+    "crc32": 3846307975,
+    "compressed_bytes": 3935427
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/1a100ACOM.txt",
+    "bytes": 8015,
+    "crc32": 1494404609,
+    "compressed_bytes": 2128
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/stokes1COM.txt",
+    "bytes": 4693,
+    "crc32": 2040094260,
+    "compressed_bytes": 1485
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/2a100A.txt",
+    "bytes": 4286589,
+    "crc32": 331812929,
+    "compressed_bytes": 1079342
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/2a100COM.txt",
+    "bytes": 55870,
+    "crc32": 3023642940,
+    "compressed_bytes": 12001
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/121218/rawdata/stokes2A.txt",
+    "bytes": 1557945,
+    "crc32": 177272677,
+    "compressed_bytes": 354665
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/stiffness1AUTOALIGNCOM.txt",
+    "bytes": 2703,
+    "crc32": 959061686,
+    "compressed_bytes": 998
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/stokes2COM.txt",
+    "bytes": 3133,
+    "crc32": 4082381933,
+    "compressed_bytes": 1095
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/mol4aCOM.txt",
+    "bytes": 62751,
+    "crc32": 3829053,
+    "compressed_bytes": 13266
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/stiffness1NOAUTOA.txt",
+    "bytes": 1207143,
+    "crc32": 3147779123,
+    "compressed_bytes": 262018
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/stokes1A.txt",
+    "bytes": 3485258,
+    "crc32": 3896610512,
+    "compressed_bytes": 824119
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/stiffness1AUTOALIGNA.txt",
+    "bytes": 1553548,
+    "crc32": 1196304605,
+    "compressed_bytes": 340485
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/stokes1COM.txt",
+    "bytes": 3108,
+    "crc32": 1128468181,
+    "compressed_bytes": 1085
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/stiffness1NOAUTOCOM.txt",
+    "bytes": 2625,
+    "crc32": 3429479077,
+    "compressed_bytes": 962
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/mol2aCOM.txt",
+    "bytes": 78525,
+    "crc32": 113970229,
+    "compressed_bytes": 15873
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/mol1aA.txt",
+    "bytes": 50000871,
+    "crc32": 4184764699,
+    "compressed_bytes": 11210475
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/stokes2A.txt",
+    "bytes": 3225780,
+    "crc32": 1906184806,
+    "compressed_bytes": 732328
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/mol3aCOM.txt",
+    "bytes": 46727,
+    "crc32": 4208974620,
+    "compressed_bytes": 9951
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/mol3aA.txt",
+    "bytes": 9926168,
+    "crc32": 3224693767,
+    "compressed_bytes": 2266031
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/mol1aB.txt",
+    "bytes": 25675163,
+    "crc32": 3586266366,
+    "compressed_bytes": 5706491
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/mol4aA.txt",
+    "bytes": 5949246,
+    "crc32": 4031699770,
+    "compressed_bytes": 1482881
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/mol1aCOM.txt",
+    "bytes": 105971,
+    "crc32": 3080591693,
+    "compressed_bytes": 22358
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/03102019/rawdata/mol2aA.txt",
+    "bytes": 8153949,
+    "crc32": 1227866288,
+    "compressed_bytes": 1978387
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/rawdata/stokes1A.txt",
+    "bytes": 4466166,
+    "crc32": 3409543415,
+    "compressed_bytes": 1017271
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/rawdata/stokes1COM.txt",
+    "bytes": 7287,
+    "crc32": 1135419339,
+    "compressed_bytes": 2029
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/rawdata/mol2aCOM.txt",
+    "bytes": 7213,
+    "crc32": 3437908537,
+    "compressed_bytes": 2011
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/rawdata/mol3aCOM.txt",
+    "bytes": 68213,
+    "crc32": 268820027,
+    "compressed_bytes": 14648
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/rawdata/mol3aA.txt",
+    "bytes": 7085884,
+    "crc32": 2395507704,
+    "compressed_bytes": 1697721
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/rawdata/mol1COM.txt",
+    "bytes": 6893,
+    "crc32": 40549178,
+    "compressed_bytes": 2015
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/rawdata/mol2aA.txt",
+    "bytes": 11447260,
+    "crc32": 82941289,
+    "compressed_bytes": 2555609
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/270319/rawdata/mol1A.txt",
+    "bytes": 24801951,
+    "crc32": 3113157240,
+    "compressed_bytes": 5411299
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/1a100A.txt",
+    "bytes": 31078808,
+    "crc32": 3889877899,
+    "compressed_bytes": 6851552
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/3a100COM.txt",
+    "bytes": 17445,
+    "crc32": 3334662146,
+    "compressed_bytes": 3951
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/4a100COM.txt",
+    "bytes": 47738,
+    "crc32": 2898801494,
+    "compressed_bytes": 9885
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/stokes1A.txt",
+    "bytes": 5974083,
+    "crc32": 2213952160,
+    "compressed_bytes": 1341163
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/1a100COM.txt",
+    "bytes": 28793,
+    "crc32": 1590504829,
+    "compressed_bytes": 6351
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/stokes1COM.txt",
+    "bytes": 56950,
+    "crc32": 768526595,
+    "compressed_bytes": 8551
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/3a100A.txt",
+    "bytes": 7037078,
+    "crc32": 1258058400,
+    "compressed_bytes": 1571473
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/2a100A.txt",
+    "bytes": 6756058,
+    "crc32": 3836318191,
+    "compressed_bytes": 1542249
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/2a100COM.txt",
+    "bytes": 50448,
+    "crc32": 2589161931,
+    "compressed_bytes": 10304
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/5a100COM.txt",
+    "bytes": 102737,
+    "crc32": 3011032315,
+    "compressed_bytes": 20165
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/4a100A.txt",
+    "bytes": 9332163,
+    "crc32": 3321993285,
+    "compressed_bytes": 2138467
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/031218/rawdata/5a100A.txt",
+    "bytes": 6645935,
+    "crc32": 633581923,
+    "compressed_bytes": 1596169
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/050819/rawdata/stokes1A.txt",
+    "bytes": 3769742,
+    "crc32": 3918310613,
+    "compressed_bytes": 899502
+  },
+  {
+    "name": "__MACOSX/RISRICSMIRIT2025NCOMMS/HighT/050819/rawdata/._stokes1A.txt",
+    "bytes": 176,
+    "crc32": 916034618,
+    "compressed_bytes": 92
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/050819/rawdata/stokes1COM.txt",
+    "bytes": 5272,
+    "crc32": 2087158212,
+    "compressed_bytes": 1548
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/050819/rawdata/mol1aA.txt",
+    "bytes": 18552324,
+    "crc32": 2201246522,
+    "compressed_bytes": 4500671
+  },
+  {
+    "name": "RISRICSMIRIT2025NCOMMS/HighT/050819/rawdata/mol1aCOM.txt",
+    "bytes": 153897,
+    "crc32": 861525580,
+    "compressed_bytes": 32421
+  }
+]

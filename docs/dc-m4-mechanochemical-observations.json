@@ -1,0 +1,587 @@
+{
+  "scope": "independent physical DNA instrument-coordinate work observations only",
+  "publisher_doi": "10.6084/m9.figshare.28211567",
+  "source_full_md5": "0a23bffa7ae665def8e73a5360e54080",
+  "records": [
+    {
+      "original_member": "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol1aA.txt",
+      "rows": 206919,
+      "status_groups": 19,
+      "eligible_complete_recorded_status_pairs": 2,
+      "selected_pairs": [
+        {
+          "group_index": 14,
+          "laser_power_code": 4,
+          "legs": [
+            {
+              "status": 1040,
+              "start_row": 135672,
+              "samples": 31906,
+              "duration_seconds": 33.01900000000023,
+              "start": [
+                3028.05,
+                24.83,
+                11084.446,
+                false
+              ],
+              "end": [
+                -159.96,
+                9.58,
+                11117.465,
+                false
+              ],
+              "coordinate_range_nm": [
+                -159.96,
+                3029.205
+              ],
+              "force_range_pN": [
+                9.4,
+                24.95
+              ],
+              "signed_instrument_coordinate_work_pN_nm": -41421.62052500012,
+              "work_role": "sum over observed contiguous chunks; missing intervals excluded",
+              "continuous_path_qualified": false,
+              "gap_boundaries": 1198,
+              "linearly_bridged_sensitivity_work_pN_nm": -46188.151675,
+              "independent_work_pN_nm": -41421.6205250001,
+              "independent_absolute_error": 2.1827872842550278e-11,
+              "coarsened_work_pN_nm": {
+                "2": -41422.99260000012,
+                "4": -41413.38797500013
+              },
+              "sample_time_median_seconds": 0.0010000000002037268
+            },
+            {
+              "status": 1041,
+              "start_row": 168777,
+              "samples": 32209,
+              "duration_seconds": 33.14599999999882,
+              "start": [
+                -159.54500000000002,
+                9.46,
+                11117.466,
+                false
+              ],
+              "end": [
+                3051.91,
+                24.8,
+                11150.612,
+                false
+              ],
+              "coordinate_range_nm": [
+                -160.81,
+                3052.315
+              ],
+              "force_range_pN": [
+                8.47,
+                25.08
+              ],
+              "signed_instrument_coordinate_work_pN_nm": 44915.92802499993,
+              "work_role": "sum over observed contiguous chunks; missing intervals excluded",
+              "continuous_path_qualified": false,
+              "gap_boundaries": 1021,
+              "linearly_bridged_sensitivity_work_pN_nm": 49421.29085,
+              "independent_work_pN_nm": 44915.92802499984,
+              "independent_absolute_error": 8.731149137020111e-11,
+              "coarsened_work_pN_nm": {
+                "2": 44860.313449999936,
+                "4": 44873.12094999993
+              },
+              "sample_time_median_seconds": 0.0010000000002037268
+            }
+          ],
+          "signed_leg_work_sum_pN_nm": 3494.307499999806,
+          "endpoint_coordinate_mismatch_nm": 23.859999999999673,
+          "endpoint_force_mismatch_pN": -0.029999999999997584,
+          "common_coordinate_window": {
+            "range_nm": [
+              -159.96,
+              3029.205
+            ],
+            "unzip_signed_work_pN_nm": -41421.62052500012,
+            "rezip_signed_work_pN_nm": 44459.07797145363,
+            "signed_branch_sum_pN_nm": 3037.457446453511,
+            "meaning": "clipped instrument-coordinate path work; not calorimetric dissipation or equilibrium chemical free energy"
+          }
+        },
+        {
+          "group_index": 16,
+          "laser_power_code": 4,
+          "legs": [
+            {
+              "status": 1040,
+              "start_row": 202008,
+              "samples": 1009,
+              "duration_seconds": 1.059000000001106,
+              "start": [
+                3051.2650000000003,
+                24.72,
+                11150.613,
+                false
+              ],
+              "end": [
+                2997.51,
+                -0.58,
+                11151.672,
+                false
+              ],
+              "coordinate_range_nm": [
+                2988.37,
+                3055.62
+              ],
+              "force_range_pN": [
+                -1.46,
+                25.09
+              ],
+              "signed_instrument_coordinate_work_pN_nm": -1015.3003999999281,
+              "work_role": "sum over observed contiguous chunks; missing intervals excluded",
+              "continuous_path_qualified": false,
+              "gap_boundaries": 50,
+              "linearly_bridged_sensitivity_work_pN_nm": -1474.7777500000084,
+              "independent_work_pN_nm": -1015.3003999999248,
+              "independent_absolute_error": 3.296918293926865e-12,
+              "coarsened_work_pN_nm": {
+                "2": -1016.4852749999305,
+                "4": -1019.6429999999276
+              },
+              "sample_time_median_seconds": 0.0010000000002037268
+            },
+            {
+              "status": 1041,
+              "start_row": 203067,
+              "samples": 2333,
+              "duration_seconds": 2.4399999999986903,
+              "start": [
+                2996.465,
+                -0.78,
+                11151.672,
+                false
+              ],
+              "end": [
+                3253.775,
+                -0.35,
+                11154.112,
+                false
+              ],
+              "coordinate_range_nm": [
+                2996.465,
+                3253.775
+              ],
+              "force_range_pN": [
+                -1.71,
+                1.31
+              ],
+              "signed_instrument_coordinate_work_pN_nm": -101.1511000000024,
+              "work_role": "sum over observed contiguous chunks; missing intervals excluded",
+              "continuous_path_qualified": false,
+              "gap_boundaries": 106,
+              "linearly_bridged_sensitivity_work_pN_nm": -114.66432499999935,
+              "independent_work_pN_nm": -101.15110000001556,
+              "independent_absolute_error": 1.3159251466277055e-11,
+              "coarsened_work_pN_nm": {
+                "2": -92.15500000000446,
+                "4": -91.46945000000377
+              },
+              "sample_time_median_seconds": 0.0010000000002037268
+            }
+          ],
+          "signed_leg_work_sum_pN_nm": -1116.4514999999305,
+          "endpoint_coordinate_mismatch_nm": 202.50999999999976,
+          "endpoint_force_mismatch_pN": -25.07,
+          "common_coordinate_window": {
+            "range_nm": [
+              2996.465,
+              3055.62
+            ],
+            "unzip_signed_work_pN_nm": -895.9512253197543,
+            "rezip_signed_work_pN_nm": -29.714780427234068,
+            "signed_branch_sum_pN_nm": -925.6660057469883,
+            "meaning": "clipped instrument-coordinate path work; not calorimetric dissipation or equilibrium chemical free energy"
+          }
+        }
+      ],
+      "nonincreasing_timestamps": 21508,
+      "instrument_markers": {
+        "skipped": 3439,
+        "end_write": 1,
+        "equal_timestamps": 21360,
+        "reversed_timestamps": 148
+      },
+      "header": [
+        "CycleCount/n",
+        "A_Temperature",
+        "B_Temperature",
+        "X_force",
+        "Y_force",
+        "Z_force",
+        "A_dist-Y",
+        "B_dist-Y",
+        "MotorVel_X",
+        "MotorVel_Y",
+        "time(sec)",
+        "Status"
+      ]
+    },
+    {
+      "original_member": "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aA.txt",
+      "rows": 703592,
+      "status_groups": 35,
+      "eligible_complete_recorded_status_pairs": 10,
+      "selected_pairs": [
+        {
+          "group_index": 8,
+          "laser_power_code": 4,
+          "legs": [
+            {
+              "status": 1040,
+              "start_row": 26557,
+              "samples": 396,
+              "duration_seconds": 0.41600000000107684,
+              "start": [
+                1662.3,
+                27.34,
+                26684.404,
+                false
+              ],
+              "end": [
+                1657.56,
+                -0.46,
+                26684.82,
+                false
+              ],
+              "coordinate_range_nm": [
+                1648.395,
+                1663.69
+              ],
+              "force_range_pN": [
+                -1.09,
+                27.71
+              ],
+              "signed_instrument_coordinate_work_pN_nm": -287.12352500001134,
+              "work_role": "sum over observed contiguous chunks; missing intervals excluded",
+              "continuous_path_qualified": false,
+              "gap_boundaries": 20,
+              "linearly_bridged_sensitivity_work_pN_nm": -347.3896249999993,
+              "independent_work_pN_nm": -287.1235249999989,
+              "independent_absolute_error": 1.2448708730516955e-11,
+              "coarsened_work_pN_nm": {
+                "2": -275.3129750000129,
+                "4": -279.52625000001024
+              },
+              "sample_time_median_seconds": 0.0010000000002037268
+            },
+            {
+              "status": 1041,
+              "start_row": 26973,
+              "samples": 924,
+              "duration_seconds": 0.9160000000010768,
+              "start": [
+                1658.2949999999998,
+                0.01,
+                26684.82,
+                false
+              ],
+              "end": [
+                1748.02,
+                0.23,
+                26685.736,
+                false
+              ],
+              "coordinate_range_nm": [
+                1657.7849999999999,
+                1748.7150000000001
+              ],
+              "force_range_pN": [
+                -1.78,
+                1.73
+              ],
+              "signed_instrument_coordinate_work_pN_nm": -6.277824999997979,
+              "work_role": "sum over observed contiguous chunks; missing intervals excluded",
+              "continuous_path_qualified": false,
+              "gap_boundaries": 35,
+              "linearly_bridged_sensitivity_work_pN_nm": -8.648774999998174,
+              "independent_work_pN_nm": -6.277824999998842,
+              "independent_absolute_error": 8.624212455288216e-13,
+              "coarsened_work_pN_nm": {
+                "2": -8.082275000000307,
+                "4": -1.8720249999998089
+              },
+              "sample_time_median_seconds": 0.0
+            }
+          ],
+          "signed_leg_work_sum_pN_nm": -293.4013500000093,
+          "endpoint_coordinate_mismatch_nm": 85.72000000000003,
+          "endpoint_force_mismatch_pN": -27.11,
+          "common_coordinate_window": {
+            "range_nm": [
+              1657.7849999999999,
+              1663.69
+            ],
+            "unzip_signed_work_pN_nm": 22.926833296189614,
+            "rezip_signed_work_pN_nm": 0.8841463950244678,
+            "signed_branch_sum_pN_nm": 23.810979691214083,
+            "meaning": "clipped instrument-coordinate path work; not calorimetric dissipation or equilibrium chemical free energy"
+          }
+        },
+        {
+          "group_index": 16,
+          "laser_power_code": 4,
+          "legs": [
+            {
+              "status": 1040,
+              "start_row": 57580,
+              "samples": 747,
+              "duration_seconds": 0.7219999999979336,
+              "start": [
+                -212.57000000000002,
+                15.18,
+                27093.809,
+                false
+              ],
+              "end": [
+                -259.905,
+                13.28,
+                27094.531,
+                false
+              ],
+              "coordinate_range_nm": [
+                -260.90500000000003,
+                -212.12
+              ],
+              "force_range_pN": [
+                12.93,
+                15.87
+              ],
+              "signed_instrument_coordinate_work_pN_nm": -548.0452500000005,
+              "work_role": "sum over observed contiguous chunks; missing intervals excluded",
+              "continuous_path_qualified": false,
+              "gap_boundaries": 22,
+              "linearly_bridged_sensitivity_work_pN_nm": -671.3934749999994,
+              "independent_work_pN_nm": -548.0452500000015,
+              "independent_absolute_error": 1.0231815394945443e-12,
+              "coarsened_work_pN_nm": {
+                "2": -548.5923250000003,
+                "4": -547.1704750000002
+              },
+              "sample_time_median_seconds": 0.0
+            },
+            {
+              "status": 1041,
+              "start_row": 58349,
+              "samples": 35653,
+              "duration_seconds": 36.870999999999185,
+              "start": [
+                -261.505,
+                13.26,
+                27094.533,
+                false
+              ],
+              "end": [
+                3582.0,
+                27.52,
+                27131.404,
+                false
+              ],
+              "coordinate_range_nm": [
+                -261.505,
+                3582.0
+              ],
+              "force_range_pN": [
+                12.24,
+                27.92
+              ],
+              "signed_instrument_coordinate_work_pN_nm": 62937.30375,
+              "work_role": "sum over observed contiguous chunks; missing intervals excluded",
+              "continuous_path_qualified": false,
+              "gap_boundaries": 1302,
+              "linearly_bridged_sensitivity_work_pN_nm": 70277.65592500001,
+              "independent_work_pN_nm": 62937.303750000036,
+              "independent_absolute_error": 3.637978807091713e-11,
+              "coarsened_work_pN_nm": {
+                "2": 62957.171175,
+                "4": 62946.52275
+              },
+              "sample_time_median_seconds": 0.0010000000002037268
+            }
+          ],
+          "signed_leg_work_sum_pN_nm": 62389.258499999996,
+          "endpoint_coordinate_mismatch_nm": 3794.57,
+          "endpoint_force_mismatch_pN": 12.34,
+          "common_coordinate_window": {
+            "range_nm": [
+              -260.90500000000003,
+              -212.12
+            ],
+            "unzip_signed_work_pN_nm": -548.0452500000005,
+            "rezip_signed_work_pN_nm": 595.9432639167844,
+            "signed_branch_sum_pN_nm": 47.89801391678395,
+            "meaning": "clipped instrument-coordinate path work; not calorimetric dissipation or equilibrium chemical free energy"
+          }
+        },
+        {
+          "group_index": 18,
+          "laser_power_code": 4,
+          "legs": [
+            {
+              "status": 1040,
+              "start_row": 95304,
+              "samples": 37886,
+              "duration_seconds": 39.15700000000288,
+              "start": [
+                3581.725,
+                27.36,
+                27131.404,
+                false
+              ],
+              "end": [
+                -263.18499999999995,
+                12.85,
+                27170.561,
+                false
+              ],
+              "coordinate_range_nm": [
+                -263.83,
+                3583.135
+              ],
+              "force_range_pN": [
+                12.3,
+                28.03
+              ],
+              "signed_instrument_coordinate_work_pN_nm": -61564.21447499982,
+              "work_role": "sum over observed contiguous chunks; missing intervals excluded",
+              "continuous_path_qualified": false,
+              "gap_boundaries": 1355,
+              "linearly_bridged_sensitivity_work_pN_nm": -69292.04757499999,
+              "independent_work_pN_nm": -61564.2144749997,
+              "independent_absolute_error": 1.1641532182693481e-10,
+              "coarsened_work_pN_nm": {
+                "2": -61580.793799999825,
+                "4": -61576.415349999836
+              },
+              "sample_time_median_seconds": 0.0010000000002037268
+            },
+            {
+              "status": 1041,
+              "start_row": 134545,
+              "samples": 37741,
+              "duration_seconds": 38.95099999999729,
+              "start": [
+                -261.96500000000003,
+                12.92,
+                27170.561,
+                false
+              ],
+              "end": [
+                3575.205,
+                26.93,
+                27209.512,
+                false
+              ],
+              "coordinate_range_nm": [
+                -265.96999999999997,
+                3575.76
+              ],
+              "force_range_pN": [
+                12.19,
+                27.8
+              ],
+              "signed_instrument_coordinate_work_pN_nm": 64227.72817500006,
+              "work_role": "sum over observed contiguous chunks; missing intervals excluded",
+              "continuous_path_qualified": false,
+              "gap_boundaries": 1339,
+              "linearly_bridged_sensitivity_work_pN_nm": 69936.89839999999,
+              "independent_work_pN_nm": 64227.728174999975,
+              "independent_absolute_error": 8.731149137020111e-11,
+              "coarsened_work_pN_nm": {
+                "2": 64203.88245000006,
+                "4": 64246.26137500006
+              },
+              "sample_time_median_seconds": 0.0010000000002037268
+            }
+          ],
+          "signed_leg_work_sum_pN_nm": 2663.5137000002433,
+          "endpoint_coordinate_mismatch_nm": -6.519999999999982,
+          "endpoint_force_mismatch_pN": -0.4299999999999997,
+          "common_coordinate_window": {
+            "range_nm": [
+              -263.83,
+              3575.76
+            ],
+            "unzip_signed_work_pN_nm": -61434.49458416184,
+            "rezip_signed_work_pN_nm": 64230.747266999926,
+            "signed_branch_sum_pN_nm": 2796.252682838087,
+            "meaning": "clipped instrument-coordinate path work; not calorimetric dissipation or equilibrium chemical free energy"
+          }
+        }
+      ],
+      "nonincreasing_timestamps": 347022,
+      "instrument_markers": {
+        "skipped": 24786,
+        "end_write": 0,
+        "equal_timestamps": 336842,
+        "reversed_timestamps": 10180
+      },
+      "header": [
+        "CycleCount/n",
+        "A_Temperature",
+        "B_Temperature",
+        "X_force",
+        "Y_force",
+        "Z_force",
+        "A_dist-Y",
+        "B_dist-Y",
+        "MotorVel_X",
+        "time(sec)",
+        "Status"
+      ]
+    }
+  ],
+  "six_prospective_pairs_observed": false,
+  "all_selected_leg_paths_continuous": false,
+  "independent_integral_max_absolute_error": 1.1641532182693481e-10,
+  "physical_units": {
+    "force": "pN",
+    "position": "nm",
+    "time": "s",
+    "work": "pN nm = 1e-21 J"
+  },
+  "unit_proof": {
+    "physical_output_units_supported": true,
+    "role": "instrument channel definitions; no independent instrument recalibration",
+    "manual": "https://timothyspringer.org/file_url/906",
+    "manual_title": "Mini Tweezers Basic User Guide",
+    "manual_page_one_based": 2,
+    "channel_units": {
+      "Y_force": "pN",
+      "A_dist-Y": "nm",
+      "B_dist-Y": "nm",
+      "time(sec)": "s",
+      "MotorVel_X": "um/s"
+    },
+    "source_transformation": "Dataset instructions prescribe mean of A_dist-Y and B_dist-Y, and force minus Y_force. COM records independently label force offsets in pN. Position units are documented by the instrument manual.",
+    "access": "Manual channel list read via browser PDF text; direct local PDF downloads returned403, so no local original PDF/hash is claimed.",
+    "coordinate_limit": "Publisher-defined average instrument trap coordinate, not corrected molecular extension. Apparatus/handle energy has not been subtracted. Its orientation relative to a force-conjugate external displacement has not been independently established; the signed integral is an instrument-coordinate diagnostic, not qualified physical conversion work.",
+    "fluid_temperature_limit": "A_Temperature/B_Temperature are instrument sensors; retained Stokes/COM records do not by themselves establish local fluid T or uncertainty."
+  },
+  "force_conjugate_external_work_qualified": false,
+  "absolute_fluid_temperature_qualified": false,
+  "molecular_or_equilibrium_chemical_free_energy_qualified": false,
+  "calorimetric_heat_qualified": false,
+  "chemical_kinetic_mapping_qualified": false,
+  "empirical_full_target_qualified": false,
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "limits": [
+    "Two preselected molecular files only; same-session cycles are correlated",
+    "Known #Skipped markers split integration into observed chunks; missing work is unmeasured, bridged sensitivity is not primary",
+    "Recorded force/position scales are not independently recalibrated here",
+    "Instrument coordinate includes apparatus/handles; no molecular-only work or free-energy subtraction",
+    "Temperature sensor channels are not an independently established local fluid temperature",
+    "Signed branch work is preserved without forcing positive hysteresis",
+    "Publisher metadata says3653bp while article says3593bp; no sequence-length thermodynamic inference"
+  ]
+}

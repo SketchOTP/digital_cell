@@ -1,0 +1,123 @@
+{
+  "scope": "independently reconstructed new finite-event work owners only",
+  "event_results": [
+    {
+      "operator": "transport",
+      "delta_g": 0.44344518217657836,
+      "chemical_free_energy_release": -0.4434451821765819,
+      "mechanical_storage_change": 0.0,
+      "maximum_store_error": 3.552713678800501e-15,
+      "invariant_max_error": 0.0,
+      "forward_rate": 0.39092035818225335,
+      "reverse_rate": 0.6090796418177467
+    },
+    {
+      "operator": "growth",
+      "delta_g": -0.5033048704683978,
+      "chemical_free_energy_release": 0.5033048704683978,
+      "mechanical_storage_change": 0.0,
+      "maximum_store_error": 0.0,
+      "invariant_max_error": 0.0,
+      "forward_rate": 0.6232356731285918,
+      "reverse_rate": 0.37676432687140815
+    },
+    {
+      "operator": "maturation",
+      "delta_g": -0.009229658119657813,
+      "chemical_free_energy_release": 0.009999999999999787,
+      "mechanical_storage_change": 0.0007703418803418776,
+      "maximum_store_error": 4.440892098500626e-16,
+      "invariant_max_error": 0.0,
+      "forward_rate": 0.5023073981499896,
+      "reverse_rate": 0.49769260185001046
+    },
+    {
+      "operator": "fission",
+      "delta_g": -9.956923869248744,
+      "chemical_free_energy_release": 9.968034980359855,
+      "mechanical_storage_change": 0.011111111111111101,
+      "maximum_store_error": 1.734723475976807e-18,
+      "invariant_max_error": 0.0,
+      "forward_rate": 0.9999526039310593,
+      "reverse_rate": 4.739606894079632e-05
+    },
+    {
+      "operator": "remesh",
+      "delta_g": 0.0,
+      "chemical_free_energy_release": -0.0,
+      "mechanical_storage_change": 2.8013526463814346e-33,
+      "maximum_store_error": 1.8675684309209567e-33,
+      "invariant_max_error": 0.0,
+      "forward_rate": 0.5,
+      "reverse_rate": 0.5
+    }
+  ],
+  "loaded_remesh": {
+    "operator": "remesh",
+    "delta_g": 0.0,
+    "chemical_free_energy_release": -0.0,
+    "mechanical_storage_change": -2.168404344971009e-18,
+    "maximum_store_error": 5.421010862427522e-19,
+    "invariant_max_error": 0.0,
+    "forward_rate": 0.5,
+    "reverse_rate": 0.5
+  },
+  "chemical_drive_controls": [
+    {
+      "operator": "maturation",
+      "delta_g": -1.9892296581197115,
+      "chemical_free_energy_release": 1.990000000000009,
+      "mechanical_storage_change": 0.0007703418803418776,
+      "maximum_store_error": 6.505213034913027e-19,
+      "invariant_max_error": 0.0,
+      "forward_rate": 0.8796616152540131,
+      "reverse_rate": 0.12033838474598699
+    },
+    {
+      "operator": "maturation",
+      "delta_g": 2.0107703418802885,
+      "chemical_free_energy_release": -2.009999999999991,
+      "mechanical_storage_change": 0.0007703418803418776,
+      "maximum_store_error": 6.505213034913027e-19,
+      "invariant_max_error": 0.0,
+      "forward_rate": 0.11807673494619174,
+      "reverse_rate": 0.8819232650538082
+    },
+    {
+      "operator": "maturation",
+      "delta_g": 0.0,
+      "chemical_free_energy_release": 0.0007703418803417517,
+      "mechanical_storage_change": 0.0007703418803418776,
+      "maximum_store_error": 6.505213034913027e-19,
+      "invariant_max_error": 0.0,
+      "forward_rate": 0.5,
+      "reverse_rate": 0.5
+    }
+  ],
+  "force_grid_samples": 24,
+  "floor_remesh_storage_change": -0.00153125,
+  "atomic_rejection_fixtures": 5,
+  "native_audit": {
+    "force_samples": 24,
+    "maximum_force_error": 4.440892098500626e-16,
+    "fixed_native_exterior_confirmed": true,
+    "native_growth_mass": 0.0468653696961068,
+    "native_matured_mass": 0.0002182409973434071,
+    "native_fission_observed": true,
+    "native_integration_qualified": false,
+    "native_partition_ok": true,
+    "pure_young_closure_mass": 0.8
+  },
+  "native_full_integration_qualified": false,
+  "identified_biological_mechanism": false,
+  "whole_organism_qualified": false,
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "head": "82a738e10d8b7e709f69478f7b58ff90ee8a169c",
+  "input_sha256": "6105e39fa27cd39eb036f7a450f47b33e553b7af7e4777e8d78293957df9c2d5",
+  "native_sha256": "b35ff398551f25722a2b1fb996936c745c88b8382c53fb79f0cc4abc0626e2df"
+}

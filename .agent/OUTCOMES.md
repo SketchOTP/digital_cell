@@ -3086,3 +3086,31 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: One bead/date only; normalized shape tests do not calibrate amplitude. Supplied beta and unknown instrument/temperature/radius/height/viscosity systematics leave stiffness conditional. New finite-bath body coupling is a computational design, not observed biochemistry. Signed-defect/refinement observations are not rigorous universal bounds or continuum mesh convergence.
 - Blockers: No experimentally identified full chemical target/units/raw reversible-channel observations. Remaining native material-changing and open-transport operators lack chemical work ownership and exact full-source inheritance; bridge unavailable. Four production values null.
 - Follow-up directive: none
+
+
+## D-20261018-dcm4-mechanochemical-owners - PARTIAL
+
+- Outcome ID: O-DCM4-MECHANOCHEMICAL-OWNERS-20261018
+- Supersedes outcome: none
+- Closed: 2026-10-18T12:45:29-04:00
+- Acceptance: PARTIAL
+- Summary: Four separate hypothetical finite-event chemical/material/mechanical owners are executed and independently reconstructed, with actual native force/operator audits. Independent DNA source admission acquires raw force-position observations but misses six-pair coverage and does not qualify conjugate work, fluid temperature or chemical calibration. Full native generator/whole organism remain unqualified.
+- Changed areas: New reference/native audit example, source protocols/amendment/licensed subset/unit evidence/analysis and independent oracle/checker/tests/workflows/report/review/measurements, additive records and custody.
+- Validation:
+  - Complete publisher820104841byte ZIP MD5 and all CRCs;14 original member lossless identity - PASSED
+  - First strict parser on unrecognized source #Skipped format before completed summary - FAILED
+  - Exact known-marker amendment, no gap bridging and terminal #End Write guard, fixed first-pair selection - PASSED
+  - Prospective three pairs per file, complete continuous paths or identified conjugate external work - FAILED
+  - Independent raw decimal selection/gap/integral reconstruction, five observed pairs and6448 selected gaps - PASSED
+  - Hosted39145917043 at82a738e:24 Rust regressions,14 owner/8 observation tests,24 actual native force/operator audit probes - PASSED
+  - Parent separate6 oracle tests, all prepared event storage/stoichiometry/tag/rate/inverse reconstruction and native executable byte-identical replay - PASSED
+  - Original physical chemical identity/parameters and continuous native transport/growth/maturation/fission work-owner integration - BLOCKED
+  - Whole organism/life/physical fusion/apparatus or calorimetric heat qualification - NOT RUN
+  - Initial adversarial remesh test used tuple instead of raw JSON array; corrected fixture normalization without acceptance-budget change - FAILED
+  - Exact sealed action/control/grid binding and full forward remesh tag/identity oracle controls - PASSED
+  - Distinct independent review binds all27 frozen core files and accepts only bounded owners/limited observations - PASSED
+  - Final exact-head complete artifact and preservation/Notion/native Atlas custody readbacks; external receipts follow final commit - NOT RUN
+  - Historical global governance drift retained without global-clean claim - FAILED
+- Remaining risks: New standard potentials/rate convention/perimeter coupling are designed inputs. Event pairs are not composed biology; thermal uphill events are not chemical-only funding. Source paths are gapped, some aborted/repositioned and not established force conjugates. Source clock quantization and local temperature/systematics remain unqualified. Public state hashes do not authenticate arbitrary history.
+- Blockers: No experimentally established native/source species and conjugate chemical-work map; no complete continuous native event generator/daughter preparation. Pressure, membrane/template/reserve owners and all-domain remesh extensivity unresolved. Four production values null; bridge unavailable.
+- Follow-up directive: none

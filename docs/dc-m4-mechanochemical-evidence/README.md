@@ -1,0 +1,7 @@
+# Independent mechanochemical raw observations
+
+Paolo Rissone, Marc Rico-Pasto, Steve B. Smith and Felix Ritort, DNA Calorimetric Force Spectroscopy at Single Base Pair Resolution, Figshare v1, https://doi.org/10.6084/m9.figshare.28211567. Dataset licensed CC BY4.0: https://creativecommons.org/licenses/by/4.0/ . Attribution retained; this lossless selected container is an extraction/repackaging, not the entire original collection. No source code was executed.
+
+Full publisher ZIP820104841bytes and MD5 0a23bffa7ae665def8e73a5360e54080 were verified in acquisition39144641592; all publisher ZIP CRCs verified. Fourteen selected original members retain exact original bytes/CRC/SHA256 plus publisher metadata/inventory/acquisition receipt. Full original archive retained on acquisition runner temporarily and available from publisher.
+
+Selection, estimator and numerical budgets sealed in dc-m4-mechanochemical-observation-protocol.json before numerical processing. Known instrument drop markers are handled by an explicit source-format amendment; no gap is bridged in primary analysis. Source force/position observations and signed instrument-coordinate integral do not establish force conjugacy, continuous whole-cycle work, molecular chemical free energy, calorimetry, local fluid temperature or any Digital Cell parameter/species identity. Publisher metadata3653bp and article3593bp discrepancy remains unresolved; no length-dependent thermodynamic fit.

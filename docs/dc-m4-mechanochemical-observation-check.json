@@ -1,0 +1,23 @@
+{
+  "scope": "independent decimal raw-observation reconstruction only",
+  "selected_pairs_by_file": [
+    2,
+    3
+  ],
+  "selected_pairs": 5,
+  "selected_legs": 10,
+  "known_gap_boundaries_in_selected_legs": 6448,
+  "maximum_work_error_vs_decimal": 1.8189894035458565e-10,
+  "six_pair_prospective_coverage": false,
+  "all_selected_paths_continuous": false,
+  "force_conjugate_external_work_qualified": false,
+  "chemical_kinetic_mapping_qualified": false,
+  "empirical_full_target_qualified": false,
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "observations_sha256": "eb5a9a8818f52f7b4510e7ca3ff3a61deae6f49d5e3ebaadf5e2d8b28cef5a6f"
+}

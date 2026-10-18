@@ -1,0 +1,167 @@
+{
+  "schema": "digital_cell_work_owner_protocol_v1",
+  "entry_head": "a800279a355dc49060d81f805800f0a6def7b7a8",
+  "role": "NEW_HYPOTHETICAL_FINITE_EVENT_REFERENCE_NOT_NATIVE_BIOLOGY",
+  "config": {
+    "theta": 1,
+    "k_s": 1,
+    "rho": 1,
+    "K": 0.25,
+    "lambda": 0.1,
+    "mu_young": -0.25,
+    "mu_mature": -0.5,
+    "growth_yield": 0.9,
+    "kappa": 1,
+    "total_volume": 10
+  },
+  "preparation": {
+    "vertices": "regular CCW6 unit-radius",
+    "edge_mature": "rho*initial geometric length",
+    "edge_young": 0.1,
+    "source_n6": [
+      0.1,
+      0.05,
+      0.05,
+      0.01,
+      1,
+      10
+    ],
+    "outside_S": 10,
+    "outside_Sm": 10,
+    "outside_inert": 10,
+    "outside_role": "new preparation, replaces old inert-only bath; count these three pools once, no old Nout copied",
+    "root_area": "initial polygon area, immutable across daughter volumes",
+    "P": 0.2,
+    "a0": 0.1,
+    "R_ref": "initial sum mature rest lengths"
+  },
+  "events": [
+    {
+      "kind": "transport",
+      "cell": 0,
+      "species": "Sm",
+      "direction": "in",
+      "extent": 0.2
+    },
+    {
+      "kind": "growth",
+      "cell": 0,
+      "edge": 0,
+      "extent": 0.2
+    },
+    {
+      "kind": "maturation",
+      "cell": 0,
+      "edge": 0,
+      "extent": 0.04
+    },
+    {
+      "kind": "fission",
+      "cell": 0,
+      "vertices": [
+        0,
+        3
+      ],
+      "closure": "two wholly young edges, each rho*cutlength; sourceSm cost=totalclosuremass/.9"
+    }
+  ],
+  "chemistry": {
+    "substrate_weights": [
+      0,
+      1,
+      2,
+      2,
+      1,
+      1
+    ],
+    "enzyme_weights": [
+      1,
+      1,
+      1,
+      0,
+      0,
+      0
+    ],
+    "growth": "Sm <-> .9Y + .1S",
+    "maturation": "Y <-> M",
+    "solid_free_energy": "muY0*Y+muM0*M; solid-phase model, no artificial per-edge mixing entropy",
+    "native_pool_identity": "No empirical/native genericA identity; reference Sm is explicit hypothetical monomer donor."
+  },
+  "mechanics": {
+    "primitive": "integral of actual native V4 regularized stretch force from rest to L; r=max(M/max(rho,1e-15),1e-15), R=max(r,.001), denominator max(R,L/4), tension phi=M/(M+Y), compression unscaled",
+    "coupling": "NEW whole-perimeter Ec=K*P/2*[((sum L-sum r)/R_ref)-lambda*(ES+ESS-a0)/P]^2; not accepted single-arc port",
+    "newborn": "M=0 admitted through exact native floors and phi0; no mature-only singular energy formula",
+    "fission": "partition n6/P/a0/R_ref by actual daughterarea fractions; retain rootarea and one global bath; charge complete coupling graph and closure chemistry changes; exact inherited edges/material tags and new closure tags",
+    "remesh": "neutral fixture only where daughter rest>=.001; explicit small-nonzero-mature floor counterexample, no all-domain mesh convergence"
+  },
+  "kinetics": {
+    "pair": "same symmetric kappa; kxy=kappa/(1+exp(DeltaG/theta)),kyx=kappa/(1+exp(-DeltaG/theta))",
+    "thermostat": "isothermal thermal reservoir distinct from finite material bath; no first-law closed-energy or heat inference",
+    "scope": "fixed finite transition pairs/inverse receipts only, not continuous mass-action turnover, native fusion or a normalized complete biological generator",
+    "uphill": "allowed with paired thermal propensity; no monotonicG rejection or retrospective fuel debit",
+    "record": "Delta bulk/solid/elastic/coupling separately; totalDeltaG, log-rate ratio and ensemble pair entropy; no per-event chemical-only funding assertion"
+  },
+  "controls": {
+    "maturation_mu_mature": [
+      -50,
+      50
+    ],
+    "zero_drive": "muM0 constructed from exact nonstandard finiteDeltaG/extent; designed control, not empirical fit",
+    "neutral_remesh": "edge0 midpoint",
+    "floor_counterexample": {
+      "L": 0.004,
+      "M": 0.0005,
+      "Y": 0.0005
+    },
+    "force_grid": {
+      "material_pairs": [
+        [
+          0,
+          1
+        ],
+        [
+          0.0005,
+          0.001
+        ],
+        [
+          0.01,
+          0.002
+        ],
+        [
+          1,
+          0.2
+        ]
+      ],
+      "lengths": [
+        0.00025,
+        0.002,
+        0.01,
+        0.5,
+        2,
+        8
+      ]
+    }
+  },
+  "budgets": {
+    "material_absolute": 1e-10,
+    "inheritance_absolute": 1e-10,
+    "independent_energy_absolute": 1e-10,
+    "independent_force_absolute": 1e-07,
+    "log_rate_ratio_absolute": 1e-10,
+    "pair_entropy_min": -1e-12,
+    "neutral_remesh_energy_absolute": 1e-10,
+    "zero_drive_absolute": 1e-10
+  },
+  "scope_limits": [
+    "No calibrated physical chemical identity or parameters",
+    "No replacement/default integration of native chemistry",
+    "No whole-organism qualification",
+    "No physical fusion or apparatus action"
+  ],
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  }
+}

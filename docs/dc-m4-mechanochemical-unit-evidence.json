@@ -1,0 +1,12 @@
+{
+  "physical_output_units_supported": true,
+  "role": "instrument channel definitions; no independent instrument recalibration",
+  "manual": "https://timothyspringer.org/file_url/906",
+  "manual_title": "Mini Tweezers Basic User Guide",
+  "manual_page_one_based": 2,
+  "channel_units": {"Y_force": "pN", "A_dist-Y": "nm", "B_dist-Y": "nm", "time(sec)": "s", "MotorVel_X": "um/s"},
+  "source_transformation": "Dataset instructions prescribe mean of A_dist-Y and B_dist-Y, and force minus Y_force. COM records independently label force offsets in pN. Position units are documented by the instrument manual.",
+  "access": "Manual channel list read via browser PDF text; direct local PDF downloads returned403, so no local original PDF/hash is claimed.",
+  "coordinate_limit": "Publisher-defined average instrument trap coordinate, not corrected molecular extension. Apparatus/handle energy has not been subtracted. Its orientation relative to a force-conjugate external displacement has not been independently established; the signed integral is an instrument-coordinate diagnostic, not qualified physical conversion work.",
+  "fluid_temperature_limit": "A_Temperature/B_Temperature are instrument sensors; retained Stokes/COM records do not by themselves establish local fluid T or uncertainty."
+}

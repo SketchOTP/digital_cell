@@ -1670,3 +1670,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261018-dcm4-mechanochemical-owners
+
+- Issued: 2026-10-18T12:21:00-04:00
+- Issuer: User
+- External directive: DC-M4-MECHANOCHEMICAL-WORK-OWNERSHIP-001
+- Objective: Acquire independent mechanochemical observations and define/test chemical-work owners for transport, growth, maturation and fission; independently verify and preserve all work/current records.
+- Scope: New hypothetical finite-event owner reference, actual native operator/regularized-force audit, sealed raw DNA observation acquisition/work analysis, independent numerical/provenance/record/scope verification, new workflow/report/review and additive records from a800279a355dc49060d81f805800f0a6def7b7a8.
+- Exclusions: Invented physical target/parameter mapping, native biology/default/source replacement, whole-organism relabeling, physical apparatus/author outreach/acquired code execution, prior evidence/source/PR44–55 mutation, merge/deploy and automatic successor.
+- Acceptance: Complete fixed stoichiometry/material/volume/chemical and mechanical storage ownership and finite-pair rate/inheritance controls for all4 reference events; licensed independent raw observation identity/work outcome/limits; distinct review, exact-head full artifact, preservation15checkouts/12PRs/2538priorfiles and current Notion/native Atlas receipts.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
