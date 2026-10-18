@@ -160,14 +160,20 @@ fn simple_concavity_is_allowed_but_crossings_and_duplicate_vertices_are_not() {
     let base: serde_json::Value = serde_json::from_str(&evolved.restart_json().unwrap()).unwrap();
     let mut duplicate = base.clone();
     duplicate["data"]["mesh"]["vertices"][3] = duplicate["data"]["mesh"]["vertices"][0].clone();
+    let duplicate_error =
+        ChemicalBodyState::from_restart_json(&duplicate.to_string(), evolved.config()).unwrap_err();
+    // Reusing vertex0 also makes an earlier nonadjacent edge touch vertex0;
+    // either geometry guard correctly rejects the same invalid boundary.
     assert!(
-        ChemicalBodyState::from_restart_json(&duplicate.to_string(), evolved.config())
-            .unwrap_err()
-            .contains("duplicate")
+        duplicate_error == "duplicate/contact vertices"
+            || duplicate_error == "nonadjacent boundary crossing/touch",
+        "{duplicate_error}"
     );
     let mut crossing = base;
     let vertices = crossing["data"]["mesh"]["vertices"].as_array_mut().unwrap();
-    vertices.swap(2, 10);
+    // Nearby swapped vertices create crossing diagonals without first
+    // exceeding the independent native length/reference domain.
+    vertices.swap(2, 3);
     let error =
         ChemicalBodyState::from_restart_json(&crossing.to_string(), evolved.config()).unwrap_err();
     assert!(error.contains("crossing/touch"), "{error}");
