@@ -265,7 +265,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `CLOSURE-009 exact-head authority 28c78043ebf7f99be4146600dc7ef2427199c46b / CI 33951490446 / artifact sha256:0d6f113a0edd1945ab1d6bea7e74c95c952d5ad0a1e105ddcdae281c75ff1dd9`
+- Command or check: `DC-M4 calibration/native: hosted39134962997 thirteen native/eleven Python tests, parent byte-identical native rerun and independent raw-state/RK4 qualification, fourteen-file bound review and scoped history/record preservation; final exact-head receipts external`
 - Result: `PASSED`
 
 ## Risks
