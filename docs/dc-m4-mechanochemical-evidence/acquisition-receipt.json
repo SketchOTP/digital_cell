@@ -1,0 +1,112 @@
+{
+  "source": {
+    "doi": "10.6084/m9.figshare.28211567",
+    "version": 1,
+    "file_id": 51695939,
+    "url": "https://ndownloader.figshare.com/files/51695939",
+    "bytes": 820104841,
+    "md5": "0a23bffa7ae665def8e73a5360e54080",
+    "license": "CC-BY-4.0",
+    "authors": [
+      "Paolo Rissone",
+      "Marc Rico-Pasto",
+      "Steve B. Smith",
+      "Felix Ritort"
+    ]
+  },
+  "source_full_bytes": 820104841,
+  "source_full_md5_verified": "0a23bffa7ae665def8e73a5360e54080",
+  "source_full_sha256": "414a7c17599dfc9033a73adab8dc3037007c9f96e1c60b8dc0272dfeda4f96ce",
+  "whole_publisher_zip_crc_verified": true,
+  "selected_original_members": {
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol1aA.txt": {
+      "bytes": 16121903,
+      "sha256": "d080d73d75b8387bcbea53d2cd4d7ce3c95265b9b5fa499135154627a4994b1f",
+      "original_zip_crc32": 3120712329
+    },
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes2COM.txt": {
+      "bytes": 3496,
+      "sha256": "25bc2d369a576a868fdcb140f0b959a622232c4fbff202f03d4ac5a8bb09665b",
+      "original_zip_crc32": 1757163772
+    },
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes1A.txt": {
+      "bytes": 3922643,
+      "sha256": "b157b648c7e0226068c4744fb1ee9e52f2907332c58974377e0e84c40b600e1d",
+      "original_zip_crc32": 1658396872
+    },
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes1COM.txt": {
+      "bytes": 9229,
+      "sha256": "0c6fcde046475fabdd86bfe054bb55eb3cffa3bc3771d21b5ba363fe8e22b50e",
+      "original_zip_crc32": 2766649529
+    },
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes2A.txt": {
+      "bytes": 3487605,
+      "sha256": "e74273929e0d9ab57e908a92ba3689e5e5e02c1fc4282c9a5199abd6b0f6c2eb",
+      "original_zip_crc32": 4227367668
+    },
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol1aCOM.txt": {
+      "bytes": 108248,
+      "sha256": "d50f7cf6cf6fd9a2ff1f66ca65bfdb3dccb7caef8be05286deb62346549b1898",
+      "original_zip_crc32": 1802485950
+    },
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aA.txt": {
+      "bytes": 50000194,
+      "sha256": "ae67c355afb0f85bb54c72f99ed885f72e6d4b79bcee5dd57048a8b9d311413c",
+      "original_zip_crc32": 1708688971
+    },
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes2COM.txt": {
+      "bytes": 3028,
+      "sha256": "f1c9dbb281840f0cbdde72de47523de0d5bc8e39ab3fab7d9d33d64b32e1022b",
+      "original_zip_crc32": 3583998592
+    },
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes1A.txt": {
+      "bytes": 2979091,
+      "sha256": "dc33e3776a5642cefc6d34813f2ba2da05bc21e3918155a7de3a0fb3f7fbf1c4",
+      "original_zip_crc32": 3652854102
+    },
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes1COM.txt": {
+      "bytes": 3137,
+      "sha256": "cefc9f81b7a0c2915d79004872d86c0f9f9ed31ed7bcfb5d40c46b3170f9e27a",
+      "original_zip_crc32": 169690820
+    },
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes3A.txt": {
+      "bytes": 3315231,
+      "sha256": "7c8a31086c011898f9bc813e9c7a77bba2e01af4fa9c33fb55c27f47ebd47034",
+      "original_zip_crc32": 3166290112
+    },
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes2A.txt": {
+      "bytes": 2363364,
+      "sha256": "0b29a5370a4fed0c83d9891bbf9e03837a4f7b8b68bc49be8e7792e4847a6c28",
+      "original_zip_crc32": 3635736038
+    },
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aCOM.txt": {
+      "bytes": 13606,
+      "sha256": "273284f1fcdb013a78cc3daa8253f9d8a3b457c5394a93dc478c1bdb62e8ba46",
+      "original_zip_crc32": 2637980818
+    },
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes3COM.txt": {
+      "bytes": 3138,
+      "sha256": "8ff3640afc5fc9dc8ae85b5dc47df2aec7a35dca1081fbc494f6ee05b0842523",
+      "original_zip_crc32": 692268540
+    }
+  },
+  "headers_only": {
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol1aA.txt": "CycleCount/n\tA_Temperature\tB_Temperature\tX_force\tY_force\tZ_force\tA_dist-Y\tB_dist-Y\tMotorVel_X\tMotorVel_Y\ttime(sec)\tStatus",
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes2COM.txt": "Instrument name = Sara's Butterfly",
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes1A.txt": "CycleCount/n\tA_Temperature\tB_Temperature\tX_force\tY_force\tZ_force\tA_dist-Y\tB_dist-Y\tMotorVel_X\tMotorVel_Y\ttime(sec)\tStatus",
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes1COM.txt": "Instrument name = Sara's Butterfly",
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/stokes2A.txt": "CycleCount/n\tA_Temperature\tB_Temperature\tX_force\tY_force\tZ_force\tA_dist-Y\tB_dist-Y\tMotorVel_X\tMotorVel_Y\ttime(sec)\tStatus",
+    "RISRICSMIRIT2025NCOMMS/HighT/02102019/rawdata/mol1aCOM.txt": "Instrument name = Sara's Butterfly",
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aA.txt": "CycleCount/n\tA_Temperature\tB_Temperature\tX_force\tY_force\tZ_force\tA_dist-Y\tB_dist-Y\tMotorVel_X\ttime(sec)\tStatus",
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes2COM.txt": "Instrument name = Sara's Butterfly",
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes1A.txt": "CycleCount/n\tA_Temperature\tB_Temperature\tX_force\tY_force\tZ_force\tA_dist-Y\tB_dist-Y\tMotorVel_X\ttime(sec)\tStatus",
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes1COM.txt": "Instrument name = Sara's Butterfly",
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes3A.txt": "CycleCount/n\tA_Temperature\tB_Temperature\tX_force\tY_force\tZ_force\tA_dist-Y\tB_dist-Y\tMotorVel_X\ttime(sec)\tStatus",
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes2A.txt": "CycleCount/n\tA_Temperature\tB_Temperature\tX_force\tY_force\tZ_force\tA_dist-Y\tB_dist-Y\tMotorVel_X\ttime(sec)\tStatus",
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/mol10aCOM.txt": "Instrument name = Sara's Butterfly",
+    "RISRICSMIRIT2025NCOMMS/LowT/071020/rawdata/stokes3COM.txt": "Instrument name = Sara's Butterfly"
+  },
+  "external_source_software_executed": false,
+  "full_publisher_zip_retained": "runner temporary only; publisher remains original source",
+  "scope": "DNA force-position observations only; no Digital Cell chemical/parameter identity"
+}

@@ -1,0 +1,10 @@
+{
+  "schema": "digital_cell_source_format_amendment_v1",
+  "original_protocol_sha256": "d39788c379e9b669c88543f48e42b3ad7c890ff9613ab18aa7846454cde08ab0",
+  "discovery": "Strict first parser stopped on #Skipped at source row90707 before completing any work summary. Publisher originals contain #Skipped drop markers and #End Write termination; source MD5 and selected CRC/hashes match.",
+  "interpretation": "Handle only those two exact instrument markers; preserve/count every marker. #Skipped breaks the integration path: do not integrate across missing intervals. Primary work sums observed contiguous chunks; report separate linearly bridged sensitivity and continuous-path qualification flag. Missing work is not bounded or inferred. Unknown malformed rows remain fatal.",
+  "selection_budgets_unchanged": true,
+  "no_first_three_pair_substitution": true,
+  "not_claimed": "Complete continuous work or molecular dissipation from gapped trajectories",
+  "recorded_before_completed_work_observation": true
+}
