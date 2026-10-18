@@ -1,0 +1,32 @@
+name: DC-M4 Conditional Calibration Reference and Unit Mapping
+on:
+  push:
+    branches:
+      - codex/dc-m4-calibration-reference-mapping
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-reference:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Verify conditional maps and preservation
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          python3 scripts/verify_reference_mapping.py --repo . --output "$RUNNER_TEMP/reference-mapping-evidence"
+          git diff --check 004d7f6c775b5adf2a092cde33d42c349b8f4cee
+          test -z "$(git status --porcelain)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dc-m4-reference-mapping-${{ github.sha }}
+          include-hidden-files: true
+          if-no-files-found: error
+          path: ${{ runner.temp }}/reference-mapping-evidence/

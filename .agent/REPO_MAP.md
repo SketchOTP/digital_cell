@@ -472,3 +472,13 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `scripts/calibration_source_admission.py` — pure strict metadata eligibility evaluator; never self-admits or calibrates; focused synthetic controls in scripts/test_calibration_source_admission.py.
 - `scripts/verify_calibration_source_admission.py` — offline 26-member reconstruction, 44x23 table checks, four integrity mutants, eight source decisions, review/source/history/new-record bindings and artifact; scoped .github/workflows/dc-m4-calibration-source-admission.yml.
 - `/home/sketch/Projects/digital_cell-calibration-source-evidence/` — original acquired source members/primary documents and publication/preservation/readback receipts; additive Atlas evidence/calibration-source-admission/.
+
+
+## Interfaces and contracts
+
+- `docs/dc-m4-reference-mapping-directive.md` — complete local bounded handoff.
+- `docs/dc-m4-reference-mapping.md` — selected limited reference roles, exact conditional unit/work dictionary, mechanical fixture specification and unresolved full calibration; structured registry in docs/dc-m4-reference-mapping.json.
+- `scripts/reference_mapping.py` — exact standalone algebra and independent-obstruction controls; tests in scripts/test_reference_mapping.py; scoped package verifier scripts/verify_reference_mapping.py.
+- `docs/dc-m4-reference-mapping-review.json` — distinct hash-bound semantic/static acceptance boundary.
+- `.github/workflows/dc-m4-reference-mapping.yml` — exact-head offline verification package.
+- `/home/sketch/Projects/digital_cell-reference-mapping-evidence/` — local publication/readback/custody evidence; additive Atlas evidence/calibration-reference-mapping/.

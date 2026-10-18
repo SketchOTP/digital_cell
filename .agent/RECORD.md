@@ -2240,3 +2240,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Native coefficients/internal targets and candidate output cannot independently identify the new coupling sector. Toyabe2010/2015 are rotary ATP references with missing target mappings and unconfirmed raw-response availability. Albaugh/Gingrich Zenodo4481182 is independently authored CC-BY-4.0 code/data, acquired as sparse original bytes and 26 members for nonexecuted reference inspection only. Forty-four processed rows do not become target observations; partial archive integrity does not verify its whole MD5. Source code remains quarantined, not ADOPT/WRAP/COMPOSE. The bounded source search cannot prove global absence.
 - Affected areas: New source gate/evidence/report/workflow and records; Notion https://app.notion.com/p/3fd833cb27ff8194be1de9792789b3e0; local /home/sketch/Projects/digital_cell-calibration-source-evidence/ and additive Atlas evidence/calibration-source-admission/. Ten previous checkouts, PR44-50, 1028 prior scoped archive files and dirty original Atlas source remain preserved. Independent data acquisition stays unresolved.
 - Supersedes record: none
+
+
+## DEC-DCM4-REFERENCE-MAPPING-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-REFERENCE-MAPPING-20261017
+- Status: ACTIVE
+- Decision or event: Owner authorizes establishing a reference. Select Toyabe2010 as limited work/heat/affinity comparator and explicitly define a proposed fixed-material two-port Hookean mechanical reference contract. These supersede the prior instruction not to silently choose a reference only within these named roles; no numerical values or full physical identity is inferred. Full calibration stays blocked.
+- Rationale: Both work ports must map, not just force. Exact unit covariance supplies a complete conditional dictionary but cannot determine dimensionless groups. Binary-mixture variance and finite-fuel depletion prohibit the proposed naive identifications. An independently characterized fixture/source could change the result; its designed equation alone is not external evidence.
+- Affected areas: New reference package and records; Notion https://app.notion.com/p/3fd833cb27ff814da4b8d2a7e51e43ed; local /home/sketch/Projects/digital_cell-reference-mapping-evidence/; additive Atlas evidence/calibration-reference-mapping/. Eleven prior checkouts, PR44–51, 1347 archive files and original dirty source protected. Four values null, no source admission or automatic successor.
+- Supersedes record: none

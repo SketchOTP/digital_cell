@@ -1,0 +1,81 @@
+{
+  "schema": "digital_cell_reference_mapping_v1",
+  "entry_head": "004d7f6c775b5adf2a092cde33d42c349b8f4cee",
+  "directive": "D-20261017-dcm4-calibration-reference-mapping",
+  "status": "PARTIAL_BLOCKED_FULL_CALIBRATION",
+  "reference_roles": {
+    "toyabe_2010": "SELECTED_EXPERIMENTAL_WORK_HEAT_AFFINITY_COMPARATOR_ONLY",
+    "two_port_hookean_fixture": "SELECTED_PROPOSED_FIXED_MATERIAL_MECHANICAL_REFERENCE_CONTRACT",
+    "albaugh_2022": "CONTRASTING_INDEPENDENT_COMPUTATIONAL_SOURCE_ONLY"
+  },
+  "fixture": {
+    "built": false,
+    "measured": false,
+    "fixed_P_L0_only": true,
+    "kref": null,
+    "sL": null,
+    "sa": null,
+    "independent_calibration_evidence": false,
+    "energy_scale": null,
+    "energy_identity": "Uref=e*Ec"
+  },
+  "scales": {
+    "ell": null,
+    "tau": null,
+    "p": null,
+    "f": null,
+    "e": null
+  },
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "admitted_target_observations": 0,
+  "full_calibration_established": false,
+  "source_species_mapping_established": false,
+  "kinetic_mapping_established": false,
+  "source_affinity_mapping_established": false,
+  "fitting_performed": false,
+  "native_runtime_modified": false,
+  "automatic_successor": false,
+  "units": {
+    "L": "L",
+    "a": "P",
+    "A": "A",
+    "K": "E/P",
+    "lambda": "1",
+    "theta": "E/P",
+    "epsilon_A": "E/A",
+    "ks": "E/L",
+    "gamma": "E*T/L^2",
+    "c0": "A/P"
+  },
+  "mapping_factors": {
+    "L": "ell",
+    "t": "tau",
+    "a": "p",
+    "A": "f",
+    "energy": "e",
+    "force": "e/ell",
+    "K": "e/p",
+    "theta": "e/p",
+    "epsilon_A": "e/f",
+    "lambda": "1",
+    "gamma": "e*tau/ell^2",
+    "c0": "f/p",
+    "kf": "ell^2/(tau*p^2)"
+  },
+  "required_independent_evidence": [
+    "geometry and polarity amount definitions with calibrated metrology",
+    "fixed-material two-port force/storage/work data with independent uncertainty and holdout custody",
+    "independently owned finite fuel affinity and all loss/storage terms",
+    "local net-rate data and kinetic theta map",
+    "separate affirmative target-specific source admission"
+  ],
+  "owner_context": {
+    "prior_reply": "No specific reference is established",
+    "latest_authorizes_explicit_reference_selection": true
+  }
+}

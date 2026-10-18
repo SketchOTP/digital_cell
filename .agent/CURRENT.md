@@ -3,18 +3,27 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-17T21:54:19-04:00`
+- Last updated: `2026-10-17T22:14:27-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261017-dcm4-calibration-source-admission`
-- External directive ID: `DC-M4-INDEPENDENT-CALIBRATION-SOURCE-ADMISSION-001`
-- Objective: Admit independent calibration sources and acquire evidence, independently verify and preserve all work with current records.
+- Local directive ID: `D-20261017-dcm4-calibration-reference-mapping`
+- External directive ID: `DC-M4-CALIBRATION-REFERENCE-MAPPING-001`
+- Objective: Establish justified calibration reference roles and variable/unit mappings, independently verify and preserve all work with current records.
 - Current status: `BLOCKED`
-- Acceptance: `PARTIAL — independent documentary/computational evidence acquired and negative admission verified; admissible target calibration acquisition remains unresolved`
-- Current phase: `No established independent referent or target variable/species/unit mappings; zero admitted calibration observations`
-- Expected or actual touched areas: `New quarantined primary/source evidence, report/registry/eligibility gate/tests/checker/workflow, additive custody and project/Notion records`
-- Immediate next action: `Resolve an intended independent calibration referent and justified mapping or explicitly revise the modeling strategy; no assumed mapping, calibration fit or automatic successor`
+- Acceptance: `PARTIAL — exact conditional reference/unit/work contracts established; full independent calibration remains unestablished`
+- Current phase: `Selected experimental work/affinity comparator and proposed fixed-material two-port mechanical reference; no full source/kinetic map or observations`
+- Expected or actual touched areas: `New reference/mapping report/helper/tests/checker/workflow, additive custody and project/Notion records`
+- Immediate next action: `Obtain independently characterized two-port mechanical and finite-source/kinetic evidence, or an explicit constitutive-strategy decision; no automatic successor`
+
+### Calibration reference and unit/work mappings
+
+- Entry `004d7f6c775b5adf2a092cde33d42c349b8f4cee`; isolated checkout `/home/sketch/Projects/digital_cell-calibration-reference-mapping`. Latest owner instruction authorizes explicit reference selection beyond the earlier no-established-reference reply.
+- Select Toyabe2010 for experimental work/heat/affinity comparison only; define a proposed controllable two-port Hookean fixture as a fixed-P,L0 mechanical reference contract. Fixture unbuilt/unmeasured; no stiffness/gearing or SI/amount scales assigned. Albaugh remains an independent contrasting open motor, not admitted target data.
+- Exact conditional positive scale dictionary preserves both work ports, finite-sector material/energy balances, rates and dimensionless groups. The fixture inverse gives mechanical K/lambda only if independent metrology/data later exist; force matching cannot supply chemical affinity. Binary-mixture variance and finite-fuel depletion provide explicit obstructions and a bounded local-source approximation criterion.
+- Full calibration remains PARTIAL/BLOCKED: no physical A/W/polarity identity, source-affinity or kinetic-theta map, target measurements or uncertainty/holdout admission. All four production values stay null; no fit/native integration/R13 correction. Previous prototype/source admission unchanged.
+- **Preservation entry:** 11 prior local checkouts, PR44–51, 1347 prior scoped Atlas files and dirty original source. Local originals retained; additive archive `evidence/calibration-reference-mapping/`; local `/home/sketch/Projects/digital_cell-reference-mapping-evidence/`. Notion https://app.notion.com/p/3fd833cb27ff814da4b8d2a7e51e43ed. Final exact-head hosted/Notion/custody receipts follow externally.
+- Independent review is distinct from authors; parent owns execution and final identity checks. Bridge remains unrelated activation-test only, no Digital Cell dispatch/acceptance claim.
 
 ### Independent source admission and evidence acquisition
 
