@@ -3,7 +3,7 @@
 
 Does not import the implementation's energy, invariants or proposal functions.
 """
-import argparse,hashlib,json,math,pathlib,subprocess
+import argparse,copy,hashlib,json,math,pathlib,subprocess
 
 def require(v,m):
     if not v:raise ValueError(m)
@@ -89,6 +89,7 @@ def event(r,recover=True):
         i,j=action['i'],action['j'];indices=(list(range(i,j+1)),list(range(j,len(bc['edges'])))+list(range(i+1)));mass=p['rho']*math.dist(bc['vertices'][i],bc['vertices'][j]);q=2*mass/p['yield_y'];n=bc['n'].copy();n[5]-=q;n[4]+=(1-p['yield_y'])*q
         near(sum(wa['volumes']),sum(wb['volumes']))
         for c,ix in zip(a['cells'],indices):
+            number=list(a['cells']).index(c);require(c['id']==f"{bc['id']}/{b['revision']+1}:{number}",'daughter identity')
             require(c['vertices']==[bc['vertices'][k] for k in ix],'daughter geometry');require(c['edges'][:-1]==[bc['edges'][k] for k in ix[:-1]],'exact inherited edges');frac=area(c['vertices'])/area(bc['vertices'])
             for k in ('P','a0','R_ref'):near(c[k],bc[k]*frac)
             for av,nv in zip(c['n'],n):near(av,nv*frac)
@@ -96,6 +97,8 @@ def event(r,recover=True):
             number=list(a['cells']).index(c);label=f"{b['owner']}:{b['revision']+1}:fission:closure:{number}";same(c['edges'][-1],{'id':label,'tags':[{'root':label,'fraction':1.,'young':mass,'mature':0.}]})
     else:
         require(len(a['cells'])==1,'unexpected cell count');ac=a['cells'][0]
+        require(ac['id']==bc['id'],'cell identity changed')
+        if kind!='remesh':require(ac['vertices']==bc['vertices'],'non-geometric event moved geometry')
         for k in ('P','a0','R_ref'):near(ac[k],bc[k])
         n=bc['n'].copy();s,sm=b['outside_s'],b['outside_sm']
         if kind=='transport':
@@ -117,19 +120,18 @@ def event(r,recover=True):
         elif kind=='remesh':
             i=action['edge'];va,vb=bc['vertices'][i],bc['vertices'][(i+1)%len(bc['vertices'])];require(ac['vertices']==bc['vertices'][:i+1]+[[(va[0]+vb[0])/2,(va[1]+vb[1])/2]]+bc['vertices'][i+1:],'midpoint geometry')
             require(len(ac['edges'])==len(bc['edges'])+1,'split dimension')
-            for e in ac['edges'][i:i+2]:
-                for t,old in zip(e['tags'],bc['edges'][i]['tags']):
-                    require(t['root']==old['root'],'split ancestry')
-                    for k in ('fraction','young','mature'):near(t[k],old[k]/2)
+            children=[{'id':bc['edges'][i]['id']+'.'+str(n),'tags':[{'root':t['root'],'fraction':t['fraction']/2,'young':t['young']/2,'mature':t['mature']/2} for t in bc['edges'][i]['tags']]} for n in (0,1)]
+            same(ac['edges'],bc['edges'][:i]+children+bc['edges'][i+1:])
         else:raise ValueError('unknown raw event')
         for x,y in zip(ac['n'],n):near(x,y)
         near(a['outside_s'],s);near(a['outside_sm'],sm);near(a['outside_inert'],b['outside_inert'])
     return {'operator':kind,'delta_g':dg,'chemical_free_energy_release':r['chemical_free_energy_release'],'mechanical_storage_change':r['mechanical_storage_change'],'maximum_store_error':max(errors),'invariant_max_error':max(abs(wb['invariants'][k]-wa['invariants'][k]) for k in wb['invariants']),'forward_rate':r['pair']['forward'],'reverse_rate':r['pair']['reverse']}
 
-def native_check(n):
+def native_check(n,grid):
     require(n['new_owner_integrated_biology'] is False and n['physical_fusion'] is False,'native overclaim');errs=[]
     require(len(n['force_samples'])==24,'native force grid')
-    for v in n['force_samples']:
+    for v,(h,y,L) in zip(n['force_samples'],grid):
+        near(v['requested_length'],L,1e-14);near(v['L'],L,1e-12);near(v['mature'],h,1e-12);near(v['young'],y,1e-12);near(v['rho'],1.);near(v['k_s'],1.)
         expected=force(v['L'],v['mature'],v['young'],v['rho'],v['k_s']);near(v['measured_tension'],expected,1e-7);errs.append(abs(v['measured_tension']-expected))
     op=n['operators'];t=op['native_transport'];require(t['before']['exterior']==t['after']['exterior'],'native boundary behavior changed');require(t['before']['interior']!=t['after']['interior'],'transport probe inactive')
     g=op['native_growth'];A=area(g['before']['vertices']);near((g['before']['interior']['a']-g['after']['interior']['a'])*A,g['ledger']['a_consumed_growth']);near(sum(e['m'] for e in g['after']['edges'])-sum(e['m'] for e in g['before']['edges']),g['ledger']['m_grown']);near(sum(e['m_young'] for e in g['after']['edges'])-sum(e['m_young'] for e in g['before']['edges']),g['ledger']['m_grown']);require(g['ledger']['m_grown']>0,'growth probe inactive')
@@ -146,7 +148,23 @@ def native_check(n):
 def qualify(v,native=None):
     root=pathlib.Path(__file__).resolve().parents[1];protocol=json.loads((root/'docs/dc-m4-chemical-work-owner-protocol.json').read_text());p=v['params'];mapping={'theta':'theta','k_s':'k_s','rho':'rho','K':'K','lambda':'lam','mu_young':'mu_y','mu_mature':'mu_m','growth_yield':'yield_y','kappa':'kappa','total_volume':'total_volume'}
     for k,m in mapping.items():near(protocol['config'][k],p[m])
-    require(v['identified_biological_mechanism'] is False and v['native_full_integration'] is False and v['physical_fusion'] is False,'owner overclaim');require([r['action']['kind'] for r in v['events']]==['transport','growth','maturation','fission','remesh'],'event campaign')
+    require(v['identified_biological_mechanism'] is False and v['native_full_integration'] is False and v['physical_fusion'] is False,'owner overclaim')
+    expected=[]
+    for e in protocol['events']:
+        a={'kind':e['kind'],'cell':'cell:'+str(e['cell'])}
+        if e['kind']=='transport':a.update(species=e['species'],direction=e['direction'],amount=e['extent'])
+        elif e['kind']=='fission':a.update(i=e['vertices'][0],j=e['vertices'][1])
+        else:a.update(edge=e['edge'],extent=e['extent'])
+        expected.append(a)
+    remesh={'kind':'remesh','cell':'cell:0','edge':0};expected.append(remesh);require([r['action'] for r in v['events']]==expected,'sealed exact event inventory');require(v['loaded_neutral_remesh']['action']==remesh,'sealed loaded-remesh action')
+    require(len(v['drive_controls'])==3 and all(r['action']==expected[2] for r in v['drive_controls']),'sealed drive actions')
+    require([r['before']['params']['mu_m'] for r in v['drive_controls'][:2]]==protocol['controls']['maturation_mu_mature'],'sealed chemical drive parameters')
+    cp=dict(p);cp['mu_m']=0.;wb=prepared(cp);wa=copy.deepcopy(wb);edge=wa['cells'][0]['edges'][0];q=expected[2]['extent'];donor=sum(t['young'] for t in edge['tags'])
+    for t in edge['tags']:dy=q*t['young']/donor;t['young']-=dy;t['mature']+=dy
+    expected_zero_mu=-(world(wa)['total']-world(wb)['total'])/q;near(v['drive_controls'][2]['before']['params']['mu_m'],expected_zero_mu,1e-9)
+    grid=[(h,y,L) for h,y in protocol['controls']['force_grid']['material_pairs'] for L in protocol['controls']['force_grid']['lengths']]
+    require([(x['mature'],x['young'],x['L']) for x in v['force_grid']]==grid,'sealed reference force inventory')
+    same({k:v['floor_remesh_counterexample'][m] for k,m in [('L','L'),('M','mature'),('Y','young')]},protocol['controls']['floor_counterexample'])
     for r in v['events']:same(r['before'],prepared(p))
     same(v['loaded_neutral_remesh']['before'],v['events'][2]['after'])
     for r in v['drive_controls']:
@@ -157,7 +175,7 @@ def qualify(v,native=None):
     for x in v['force_grid']:near(x['energy'],elastic(x['L'],x['mature'],x['young']));near(x['force'],force(x['L'],x['mature'],x['young']),1e-7)
     x=v['floor_remesh_counterexample'];near(x['before'],elastic(x['L'],x['mature'],x['young']));near(x['after'],2*elastic(x['L']/2,x['mature']/2,x['young']/2));near(x['delta'],x['after']-x['before']);require(abs(x['delta'])>1e-4,'floor counterexample lost')
     require(len(v['rejections'])==5 and all(x['unchanged'] is True for x in v['rejections']),'atomic negative fixtures')
-    return {'scope':'independently reconstructed new finite-event work owners only','event_results':rows,'loaded_remesh':loaded,'chemical_drive_controls':controls,'force_grid_samples':24,'floor_remesh_storage_change':x['delta'],'atomic_rejection_fixtures':5,'native_audit':native_check(native) if native else None,'native_full_integration_qualified':False,'identified_biological_mechanism':False,'whole_organism_qualified':False,'production_values':dict.fromkeys(('K','lambda','theta','epsilon_A'))}
+    return {'scope':'independently reconstructed new finite-event work owners only','event_results':rows,'loaded_remesh':loaded,'chemical_drive_controls':controls,'force_grid_samples':24,'floor_remesh_storage_change':x['delta'],'atomic_rejection_fixtures':5,'native_audit':native_check(native,grid) if native else None,'native_full_integration_qualified':False,'identified_biological_mechanism':False,'whole_organism_qualified':False,'production_values':dict.fromkeys(('K','lambda','theta','epsilon_A'))}
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--input',required=True);p.add_argument('--native');p.add_argument('--output',required=True);a=p.parse_args();v=qualify(json.loads(pathlib.Path(a.input).read_text()),json.loads(pathlib.Path(a.native).read_text()) if a.native else None);v['head']=subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip();v['input_sha256']=hashlib.sha256(pathlib.Path(a.input).read_bytes()).hexdigest();v['native_sha256']=hashlib.sha256(pathlib.Path(a.native).read_bytes()).hexdigest() if a.native else None;pathlib.Path(a.output).write_text(json.dumps(v,indent=2)+'\n');print(json.dumps(v))

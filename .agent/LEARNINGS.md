@@ -1569,3 +1569,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Selected one-bead instrument response and bounded full-state body/native split; no empirical Digital Cell parameter assignment, physical chemical equivalence, whole-organism or continuum guarantee.
 - Supersedes learning: none
+
+
+## L-DCM4-MECHANOCHEMICAL-OWNERS-20261018
+
+- Date: 2026-10-18
+- Learning ID: L-DCM4-MECHANOCHEMICAL-OWNERS-20261018
+- Fact or lesson: A regularized stretch primitive through zero mature mass is necessary for newborn closure; the absolute reference floor destroys all-domain remesh extensivity. Fixed stoichiometric finite-event free-energy owners can close prepared transport/growth/maturation/fission pairs without identifying native biology. Raw-source checksum success and correct units do not establish complete paths, conjugacy or chemical work.
+- Evidence location: docs/dc-m4-mechanochemical-work-ownership.md; measured owner/observation summaries and independent check; native24-force grid plus actual native fission; floor split storage loss.00153125; five selected pairs/6448 gaps and separate decimal integral reconstruction.
+- Confidence: VERIFIED
+- Scope: Explicit hypothetical pair-reference and acquired source-role admission only; native continuous organism/physical parameters unqualified.
+- Supersedes learning: none

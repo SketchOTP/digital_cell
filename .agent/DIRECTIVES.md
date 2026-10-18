@@ -1674,7 +1674,7 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 
 ## D-20261018-dcm4-mechanochemical-owners
 
-- Issued: 2026-10-18
+- Issued: 2026-10-18T12:21:00-04:00
 - Issuer: User
 - External directive: DC-M4-MECHANOCHEMICAL-WORK-OWNERSHIP-001
 - Objective: Acquire independent mechanochemical observations and define/test chemical-work owners for transport, growth, maturation and fission; independently verify and preserve all work/current records.

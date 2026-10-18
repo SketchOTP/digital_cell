@@ -1,0 +1,117 @@
+{
+  "acceptance_blockers": [],
+  "automatic_successor_authorized": false,
+  "decision": "ACCEPTED_BOUNDED_FINITE_EVENT_OWNERS_AND_LIMITED_RAW_OBSERVATIONS",
+  "entry_head": "a800279a355dc49060d81f805800f0a6def7b7a8",
+  "independent_of_implementation_and_report_authors": true,
+  "limitations": [
+    "The finite constant-temperature thermostat is distinct from the finite material bath. Uphill transitions are allowed: pairwise detailed balance does not certify pathwise downhill chemical funding, calorimetric heat, arbitrary population entropy production or an implemented global Markov generator.",
+    "The native regularization floor prevents universal remesh extensivity. Neutrality is restricted to the documented inactive-floor fixture; small newborn material and floor-count changes remain explicitly unqualified.",
+    "Public immutable state and consistency hashes do not authenticate arbitrary historical origins. Acceptance relies on independent reconstruction of the sealed prepared worlds and complete event targets, not on hash authenticity.",
+    "The prescribed diameter cut differs from the native compressed-neck event. Actual native transport/growth/full-reaction maturation/fission probes do not implement the new reference owners.",
+    "All ten selected physical legs contain gaps. Primary integrals sum observed chunks only; bridged sensitivity is separate. Coordinate orientation, force conjugacy, apparatus/handle corrections and local fluid temperature are unqualified; diagnostics are not molecular free energies, calorimetry, reaction rates or Digital Cell parameter calibration.",
+    "Publisher base-pair identity discrepancy remains unresolved; no physical A/W/polarity or native reaction-channel mapping is inferred.",
+    "Final source/evidence publication and exact-head workflow are later parent gates; this receipt does not claim their completion or authorize a successor."
+  ],
+  "measurement_head": "82a738e10d8b7e709f69478f7b58ff90ee8a169c",
+  "original_full_target_status": "PARTIAL_BLOCKED",
+  "pending_parent_final_gates": [
+    "Review-enforced local package replay after copying this unchanged receipt into the governed review path.",
+    "Final committed exact-head hosted CI and complete artifact/source/hidden-record readback.",
+    "Final preservation and external custody verification.",
+    "Notion and Atlas updates with readback of final evidence identities."
+  ],
+  "production_values": {
+    "K": null,
+    "epsilon_A": null,
+    "lambda": null,
+    "theta": null
+  },
+  "read_coverage": [
+    "All 27 core artifacts: owner implementation/tests, Rust audit example, both independent qualifiers and oracle controls, observation acquisition/analysis/tests, prospective sealed protocols and source-format amendment, source/unit metadata, measured summaries, final report and both workflows. Curated ZIP reviewed through original-member metadata, inventory and byte identity rather than reviewer waveform processing.",
+    "New scoped CURRENT/PROJECT_PROFILE and append-only DIRECTIVES/OUTCOMES/LEARNINGS/RECORD/REPO_MAP entries plus STORAGE_MAP; retained historical governance preflight. Final report/current counts reflect six additional oracle controls.",
+    "Parent-generated evidence logs, measured summaries and custody/replay claims were inspected as evidence. Their execution is attributed to the parent/hosted runner, never to this reviewer."
+  ],
+  "resolved_review_findings": [
+    "Independent oracle now requires the sealed exact action inventory, extents, indices, directions and cell identities instead of merely matching event kinds.",
+    "Independent oracle now binds the sealed chemical-drive controls, independently constructed zero-drive case, native/reference material-force grids and floor counterexample.",
+    "Independent oracle now reconstructs complete remesh child tags/shape, inherited and unaffected edge identities, daughter identifiers and geometry; a coherent energy/material-preserving tag split is rejected.",
+    "Actual finite rate products are checked against underflow before logarithmic rate-ratio claims.",
+    "Terminal EndWrite handling and force-conjugacy false labels retain the observation boundaries; recorded gaps are excluded from primary integration rather than silently bridged.",
+    "Final six-test oracle log is distinguished from the retained earlier adversarial-test failure caused by tuple/list normalization; no failed run is relabeled successful."
+  ],
+  "review_method": "Read-only source, protocol, evidence, report and governance inspection; file-byte SHA256 binding. No reviewer build, test, fit, assay, acquisition or replay execution.",
+  "reviewed_at_utc": "2026-10-18T16:56:16.916992+00:00",
+  "reviewed_files": {
+    ".github/workflows/dc-m4-mechanochemical-acquisition.yml": "4d26ec435eb4585e27e484762a4a0bcd5e428f81a2e30d63abc61e74367cabbd",
+    ".github/workflows/dc-m4-mechanochemical-owners.yml": "e1b597af4472bf8f046e8af3b7f96032382802ee2bbeabe4c40d1ce2eb6d5851",
+    "digital-protocell/crates/chemistry-core/examples/chemical_work_owners.rs": "26acd0c39725b2b9358cf10e180405bdb7f18ac37f0a499f656a54ace8a7a8fd",
+    "docs/dc-m4-chemical-work-owner-measurements.json": "ba0bab7b204fae764126d0958ef92e012c388e2e687961bbf3fb8e3e596ba5d3",
+    "docs/dc-m4-chemical-work-owner-protocol.json": "5bb179d4c6ede6ad70ba95c7432d9cdce450a07b2b6fdc1cfa07c8aa0fbe37f2",
+    "docs/dc-m4-mechanochemical-evidence/README.md": "99f1c4f8f30c561d08e7e21b63b79a41f406453d2f966d2d82fece26f0ee739a",
+    "docs/dc-m4-mechanochemical-evidence/acquisition-receipt.json": "4133449a1b0f6d1996368869a177853505235051573da8095901e1052f9336ac",
+    "docs/dc-m4-mechanochemical-evidence/publisher-metadata.json": "8cb1534c16911a5bd429d85753e2b9e85a8400d8ad4b43c3a59956c2a032ce7b",
+    "docs/dc-m4-mechanochemical-evidence/publisher-zip-inventory.json": "ebd6982372a8fa0227c4ed200bdc03b3c4f43af7b5327d95b760afdc4149e42e",
+    "docs/dc-m4-mechanochemical-evidence/raw-selected.zip": "7886f6047f8ef75e226df7054a3ce58c5d1e4c25e17a5bc26dc6757a06a70e3f",
+    "docs/dc-m4-mechanochemical-observation-check.json": "d932d43cc4249e5f19c8479c89d270bae0d646d73f4f69c6f84eb500fddc6823",
+    "docs/dc-m4-mechanochemical-observation-protocol.json": "d39788c379e9b669c88543f48e42b3ad7c890ff9613ab18aa7846454cde08ab0",
+    "docs/dc-m4-mechanochemical-observations.json": "eb5a9a8818f52f7b4510e7ca3ff3a61deae6f49d5e3ebaadf5e2d8b28cef5a6f",
+    "docs/dc-m4-mechanochemical-ownership-directive.md": "67d519f2d668c01da9c32149ed68dad48724a289d9de69213797f38e13c35f69",
+    "docs/dc-m4-mechanochemical-source-format-amendment.json": "8d7fb62c132a33bade406075783020472f57e10899f54eff99b0bd5576da8928",
+    "docs/dc-m4-mechanochemical-sources.json": "f01ed438ba439ed91db1979e62d3c48844ea4a7d5475273c02b03d81901fcd65",
+    "docs/dc-m4-mechanochemical-unit-evidence.json": "76c42aa60d90ad27a40392a57dc34facd127947e41f60082a400553b05b1f110",
+    "docs/dc-m4-mechanochemical-work-ownership.md": "cece5e951037dc7ab1601d29a05fd169f83bde008a585aace358c7117b0d16dc",
+    "scripts/acquire_mechanochemical_observations.py": "ae802f9e92c2ab80badedab0d6d85d45096c4d2ea156965aeb54149ff1bcecb1",
+    "scripts/chemical_work_ownership.py": "5b434eb7eb3f760a0b61eb963f455aa44a946e9a86a02fa1d69ecd199f595fbf",
+    "scripts/mechanochemical_observations.py": "476744776dc000406a7c7f0557e0aa95ab7b25444c83bdb732361e596e41cf53",
+    "scripts/qualify_chemical_work_owners.py": "886d45949b5e5267f5592da5ebfabd70e679bb74abc6b89779c6f1db4bc274fc",
+    "scripts/qualify_mechanochemical_observations.py": "fd2df2b612ffddcbc7ae66aa4b2db8190027e14d7ea30e503369b376f6348284",
+    "scripts/test_chemical_work_oracle.py": "6508e3fc2d9e2ce19a62f9d8e07f7b703c9a5ea0a2e7da88db385b9165fd42da",
+    "scripts/test_chemical_work_ownership.py": "3e7112babb2ac8ac53db26e1dfab48ea76c5aa5fa68a025454c949dc5ae3f5b4",
+    "scripts/test_mechanochemical_observations.py": "f68243dd96268623641457f586af710ec2d710d395d6f914a555485abd299a11",
+    "scripts/verify_mechanochemical_owners.py": "3fa7ffcbcbc803c1f16b93d5438133c160f779bb89c8e34509ed4b8d0d6016fa"
+  },
+  "reviewed_observations": {
+    "all_selected_legs_gapped": true,
+    "independent_decimal_max_difference_pN_nm": 1.8189894035458565e-10,
+    "known_gap_boundaries": 6448,
+    "measured_owner_summary_sha256": "ba0bab7b204fae764126d0958ef92e012c388e2e687961bbf3fb8e3e596ba5d3",
+    "measured_physical_independent_check_sha256": "d932d43cc4249e5f19c8479c89d270bae0d646d73f4f69c6f84eb500fddc6823",
+    "measured_physical_summary_sha256": "eb5a9a8818f52f7b4510e7ca3ff3a61deae6f49d5e3ebaadf5e2d8b28cef5a6f",
+    "native_first_hosted_run": "39145917043",
+    "parent_native_executable_replay": "Reported and receipt-observed byte-identical replay; not executed by reviewer.",
+    "parent_reported_and_log_observed_counts": {
+      "additional_oracle_tests": 6,
+      "observation_tests": 8,
+      "owner_tests": 14,
+      "rust_regressions": 24
+    },
+    "selected_physical_legs": 10,
+    "selected_physical_pairs": 5,
+    "selected_physical_pairs_by_file": [
+      2,
+      3
+    ]
+  },
+  "reviewer": "governance_audit",
+  "reviewer_executed_project_workloads": false,
+  "schema": "digital-cell-independent-review/v1",
+  "scientific_criteria": {
+    "bounded_reference_pool_stoichiometry_and_event_energy_accounting": "ACCEPTED_WITHIN_SEALED_PREPARED_PAIRS",
+    "continuous_native_owner_integration": "NOT_QUALIFIED",
+    "continuous_physical_trace_paths": "NOT_MET",
+    "empirical_full_target_calibration": "NOT_QUALIFIED",
+    "force_conjugate_external_work": "NOT_MET",
+    "native_force_and_operator_audit": "ACCEPTED_AS_SEPARATE_BOUNDED_OBSERVATIONS",
+    "physical_source_and_reaction_identity": "NOT_ESTABLISHED",
+    "prospective_six_pair_physical_coverage": "NOT_MET",
+    "reference_rate_ratio_and_equal_occupation_entropy_witness": "ACCEPTED_WITHIN_FIXED_PAIR_CONVENTION",
+    "whole_organism_lifecycle": "NOT_QUALIFIED"
+  },
+  "scope": [
+    "A new hypothetical immutable finite-event reference defines finite chemical/material pools, fixed stoichiometry and complete ideal/solid/native-primitive/perimeter free-energy accounting for independently prepared transport, growth, maturation and prescribed fission transition pairs.",
+    "The new whole-perimeter coupling, finite outside pools, monomer-rich preparation, standard-state solid potentials and paired Glauber kinetics are explicit reference assumptions; they are not an identified biological mechanism or an integration of these owners into the native simulator.",
+    "Actual unchanged native force and operator observations are separate bounded audits. Mathematical cached inverse transitions do not constitute native fusion; prepared pairs are not a composed lifecycle or continuous kinetic simulation.",
+    "Publisher-licensed original DNA instrument observations are acquired and independently parsed for limited force-position diagnostics. Prospective six-pair coverage, continuous traces and qualified conjugate external work are not established."
+  ]
+}

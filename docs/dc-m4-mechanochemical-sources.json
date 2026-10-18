@@ -1,0 +1,56 @@
+{
+  "schema": "digital_cell_mechanochemical_source_admission_v1",
+  "empirical_role": "INDEPENDENT_RAW_DNA_FORCE_POSITION_OBSERVATIONS_ONLY",
+  "dataset_doi": "10.6084/m9.figshare.28211567",
+  "article_doi": "10.1038/s41467-025-57340-5",
+  "license": "CC-BY-4.0",
+  "full_original_size": 820104841,
+  "full_original_md5": "0a23bffa7ae665def8e73a5360e54080",
+  "full_original_sha256": "414a7c17599dfc9033a73adab8dc3037007c9f96e1c60b8dc0272dfeda4f96ce",
+  "full_original_zip_crc_verified": true,
+  "selected_original_files": 14,
+  "source_software_executed": false,
+  "selection_metadata_only_before_sealing": true,
+  "selected_pairs": [
+    2,
+    3
+  ],
+  "six_pair_target_met": false,
+  "selected_paths_all_gapped": true,
+  "force_conjugate_work_qualified": false,
+  "physical_chemical_identity": "DNA unzipping/rezipping in publisher study; not Digital Cell six-species/native A/Y/M identity",
+  "absolute_fluid_temperature_qualified": false,
+  "empirical_full_target_qualified": false,
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "other_source_disposition": {
+    "Pelz2016AdK_AP5A": "REFERENCE_ONLY; raw trace availability still not verified; inhibitor-induced conformation is not identified six-species source",
+    "Zenodo19133448_MarkovianF1": "REFERENCE_ONLY software/model repository; not admitted empirical Digital Cell calibration data"
+  },
+  "curated_files": {
+    "docs/dc-m4-mechanochemical-evidence/README.md": {
+      "bytes": 1460,
+      "sha256": "99f1c4f8f30c561d08e7e21b63b79a41f406453d2f966d2d82fece26f0ee739a"
+    },
+    "docs/dc-m4-mechanochemical-evidence/acquisition-receipt.json": {
+      "bytes": 6069,
+      "sha256": "4133449a1b0f6d1996368869a177853505235051573da8095901e1052f9336ac"
+    },
+    "docs/dc-m4-mechanochemical-evidence/publisher-metadata.json": {
+      "bytes": 6392,
+      "sha256": "8cb1534c16911a5bd429d85753e2b9e85a8400d8ad4b43c3a59956c2a032ce7b"
+    },
+    "docs/dc-m4-mechanochemical-evidence/publisher-zip-inventory.json": {
+      "bytes": 79476,
+      "sha256": "ebd6982372a8fa0227c4ed200bdc03b3c4f43af7b5327d95b760afdc4149e42e"
+    },
+    "docs/dc-m4-mechanochemical-evidence/raw-selected.zip": {
+      "bytes": 19496286,
+      "sha256": "7886f6047f8ef75e226df7054a3ce58c5d1e4c25e17a5bc26dc6757a06a70e3f"
+    }
+  }
+}
