@@ -186,6 +186,7 @@ def main():
     require(not out.exists(), 'fresh evidence directory required')
     sys.dont_write_bytecode = True
     def git(*a): return subprocess.check_output(['git',*a],cwd=repo)
+    git('diff','--check',BASE)
     allowed = REVIEWED | {REVIEW, 'STORAGE_MAP.md', *AGENT}
     changed = set(git('diff','--name-only',BASE).decode().splitlines())
     untracked = set(git('ls-files','--others','--exclude-standard').decode().splitlines())

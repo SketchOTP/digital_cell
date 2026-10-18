@@ -8,13 +8,26 @@
   "reviewed_files": {
     "scripts/dc_m4_reference_prototype.py": "5d349db13266e0eb006e7712475ed1125c288b75a1b27f13eefa08dff7ad3cce",
     "scripts/test_dc_m4_reference_prototype.py": "f0f7e61b54f83397f5eee35261c2202465a3bb566fe8596d806a984dcd4ec449",
-    "scripts/verify_reference_prototype.py": "29cc0a10fa5d0cf5a34a305d4494fbc847929a8275e0e6b3337954e00fd00f83",
+    "scripts/verify_reference_prototype.py": "3ef0fa7d6500270187b65bf5195a35ce8bbb0cfa9ce961c0cc2d4913be52aabc",
     "docs/dc-m4-reference-prototype.md": "b15381e6ca45a13378fc9843f2814c449dd615a47837fcbbc398c590a0197328",
     "docs/dc-m4-reference-prototype-directive.md": "40b75a6f3f86db020fa6692621dd1dc8ef0c162221398296c6f7df426329fe22",
     "docs/dc-m4-calibration-acquisition-plan.md": "7bb38d315fa7c2f1a6b69057c41abd9c5e417c9cb01cb80dddd9383362c4f164",
     "docs/dc-m4-calibration-acquisition-plan.json": "35d157436376a1038f0ac71c9c9ec7ef6a57d624c7b0d2bfa665a30efc7553c5",
-    "docs/dc-m4-calibration-force-template.csv": "d21652e2b91e49b408b9a1fbc0b6898af42d8dee5af202faaf378135c24c365f",
-    ".github/workflows/dc-m4-reference-prototype.yml": "b3829d2cee52e96bcd5b014dffa75d7837560fa3a585e27940ab776c049030c8"
+    "docs/dc-m4-calibration-force-template.csv": "59e9d3e33f4c5f6ee3b784bce5ab81d8c9606402c1b802ecfcd3da616990a528",
+    ".github/workflows/dc-m4-reference-prototype.yml": "3c58f0fd45b9acd77d3c198ae265b2e0b1169a8f23cbfa597cfa8785576fa543"
+  },
+  "format_correction_review": {
+    "initial_commit": "970b54837542fa8df6c9f899cebb9021202a8ce3",
+    "initial_csv_sha256": "d21652e2b91e49b408b9a1fbc0b6898af42d8dee5af202faaf378135c24c365f",
+    "corrected_csv_sha256": "59e9d3e33f4c5f6ee3b784bce5ab81d8c9606402c1b802ecfcd3da616990a528",
+    "inspection": "All 80 corrected response rows reread. The initial committed CSV normalized by removing carriage returns hashes identically to the corrected 81-line LF file. Git's end-of-line-insensitive diff is empty.",
+    "other_reviewed_targets": "After the CSV-only renewal, verifier and workflow gained one cumulative-baseline whitespace check each. All nine current target hashes were rechecked; the other six targets remain unchanged and CSV retains its normalized binding.",
+    "resolved_finding": "The local staged whitespace gate identified CSV CRLF line endings; corrected to LF without changing coordinates, roles, blank observation/provenance fields or NOT_ACQUIRED status.",
+    "initial_hosted_ci": "Parent reports run 39086411464 SUCCESS. Its prior git diff --check inspected a clean working tree and therefore did not detect whitespace in committed cumulative changes; no initial hosted-CI failure is claimed.",
+    "strengthened_gate": "Statically inspected verifier git('diff','--check',BASE) and workflow git diff --check fb3366995de9a8dbc5bceb6d3ae24ed653972dca. Both now inspect the full tracked change relative to the authorized entry baseline before acceptance/publication.",
+    "acceptance_scope_changed": false,
+    "history_policy": "Retain initial commit and review evidence; publish correction in a follow-up commit without amendment.",
+    "validation_boundary": "Renewed static binding only; parent owns the full final verifier, diff gate, hosted CI and artifact readback."
   },
   "preflight": {
     "retained_complete_historical_coverage": true,
