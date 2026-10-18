@@ -1,6 +1,6 @@
 {
   "schema": "digital_cell_empirical_organism_independent_review_v1",
-  "reviewed_at_utc": "2026-10-18T15:30:06.992798+00:00",
+  "reviewed_at_utc": "2026-10-18T15:39:38.190030+00:00",
   "entry_head": "59edb9ca2b1730d870f7a7f238f05718b97347ac",
   "body_measurement_head": "ac557affb30c37b0cdfc2e30b55a52b3d04bf60d",
   "decision": "ACCEPTED_EMPIRICAL_CONSTITUENT_AND_BOUNDED_BODY_REMESH_ONLY",
@@ -9,7 +9,7 @@
   "reviewer_executed_workloads": false,
   "reviewed_files": {
     ".github/workflows/dc-m4-empirical-acquisition.yml": "7aedd1e98053786a375723fc05eb0b6dca57d8ec04877fd6c2c81d9a433db321",
-    ".github/workflows/dc-m4-empirical-organism-integration.yml": "6db5f8da9ec4243e53ac370a5eff101ab195b46bb867d0a8ca4aa6b3b5aa8f66",
+    ".github/workflows/dc-m4-empirical-organism-integration.yml": "499e681591c91c85f72cfd29b4da190f097a50e85c02557814ebdead2bb77049",
     "digital-protocell/crates/chemistry-core/examples/chemical_body_port.rs": "69a1605087bbaa5d4c3085d7aa4e08fe2d12e093af111e535f7a2b689691995d",
     "digital-protocell/crates/chemistry-core/src/chemical_body_port.rs": "e370e00682be508f7b69a72449a0c338bbb4802154e11b0f1575e4d872d224ae",
     "digital-protocell/crates/chemistry-core/src/lib.rs": "8807e04f898482164495ed2f986d70818d8f6245324d2efc42ce7ac0ca7d23bb",
@@ -51,7 +51,8 @@
     "Complete empirical acquisition/analyzer/measurement/tests, source registry and curated README; publisher metadata license/source identity, curated ZIP entry inventory, selected-data metadata, sanitized acquisition receipt and protocol binding inspected without executing publisher code.",
     "Complete body reference/qualifier/tests, final scope verifier, both workflows, directive, both sealed protocols and pre-outcome background/domain amendments, final report and both measured summary documents.",
     "Complete current-task additions to DIRECTIVES/OUTCOMES/LEARNINGS/RECORD/REPO_MAP, CURRENT active header and PROJECT_PROFILE/STORAGE_MAP changes; complete earlier assigned governance history retained.",
-    "Actual hosted test-result logs inspected: 11 new native and 13 accepted-port regression tests, 6 empirical and 6 body Python tests passed. Downloaded body qualification summary is byte-identical to the stored measured document. The 231MB raw body file was hash-bound rather than loaded into reviewer memory or replayed."
+    "Actual hosted test-result logs inspected: 11 new native and 13 accepted-port regression tests, 6 empirical and 6 body Python tests passed. Downloaded body qualification summary is byte-identical to the stored measured document. The 231MB raw body file was hash-bound rather than loaded into reviewer memory or replayed.",
+    "Packaging-only correction independently inspected: the sole changed CORE byte content is one include-hidden-files:true upload option; all25 other CORE hashes match the preserved initial26-file review. Current OUTCOMES correction distinguishes candidate archive rejection and pending replay."
   ],
   "acceptance_findings": [
     "Publisher metadata verifies open CC0 source identity. The selected original ZIP is336923610bytes with MD5 8d2cd9f526021f8aaafd7d3a858a7945 and separately recorded SHA256. The curated lossless subset transparently contains3072000 scalar values from one bead/date; full originals were verified on acquisition runner and remain at publisher, not bundled.",
@@ -69,7 +70,8 @@
     "Initial assumption that raw labels required a second dark subtraction was corrected after reading publisher collection description and disabled source-code correction: real-time LabView correction makes primary second subtraction inappropriate. Explicit sealed amendment and sensitivity preserve the distinction.",
     "The pooled32-replicate jackknife was corrected to sum separately centered16-period stimulus-stratum variances. The conditional within-record scope and unknown correlation/systematic uncertainty remain explicit.",
     "The final workflow now calls --require-review, checks cumulative baseline whitespace and creates recursive source/evidence bindings. The positive empirical heldout gate requires literal True rather than treating successful measurement CLI exit as a scientific pass.",
-    "First native fixture error-reason assertion was corrected without changing runtime guards, equations or sealed budgets. The prior failed attempt is retained as failure."
+    "First native fixture error-reason assertion was corrected without changing runtime guards, equations or sealed budgets. The prior failed attempt is retained as failure.",
+    "Candidate CI39141073881 passed numerical/review checks, but its downloaded archive omitted hidden repository/.agent records that the manifest listed. That archive failed custody acceptance. The upload now explicitly includes hidden files; original CI/API/ZIP/review evidence is preserved and final exact-head execution plus archive-member readback must be repeated."
   ],
   "unresolved_acceptance_blockers_within_bounded_scope": [],
   "limitations": [
@@ -107,10 +109,28 @@
     ]
   },
   "pending_before_final_publication": [
-    "Final exact-head hosted verification enforcing this receipt",
-    "Final source/artifact identity readback",
+    "Fresh final exact-head hosted campaign enforcing renewed26-file receipt",
+    "Complete downloaded archive-member/manifest/source hash readback including repository/.agent and repository/.github entries",
     "Preservation and additive Atlas custody verification",
     "Notion readback"
   ],
-  "automatic_successor_authorized": false
+  "automatic_successor_authorized": false,
+  "packaging_correction": {
+    "prior_review_path": "/home/sketch/Projects/digital_cell-empirical-organism-evidence/independent-review-before-packaging-correction.json",
+    "prior_review_sha256": "cb195d2c77b98a4b6a6b67775f768584b5c3194f62be375ffbd06a3a2c88d248",
+    "candidate_head": "136ebe0059458878272eec2b456931e02ddc56e7",
+    "candidate_hosted_run": 39141073881,
+    "candidate_ci_status": "SUCCESS_NUMERICAL_AND_REVIEW_CHECKS",
+    "candidate_artifact_acceptance": "FAILED_MISSING_HIDDEN_GOVERNANCE_RECORDS",
+    "changed_core_files": {
+      ".github/workflows/dc-m4-empirical-organism-integration.yml": {
+        "before": "6db5f8da9ec4243e53ac370a5eff101ab195b46bb867d0a8ca4aa6b3b5aa8f66",
+        "after": "499e681591c91c85f72cfd29b4da190f097a50e85c02557814ebdead2bb77049"
+      }
+    },
+    "correction": "Only add include-hidden-files:true to actions/upload-artifact governed output upload.",
+    "other_core_files_hash_identical": 25,
+    "scientific_equations_runtime_protocol_budgets_measurements_unchanged": true,
+    "corrected_exact_head_hosted_execution_and_full_archive_readback": "PENDING_PARENT_VERIFICATION"
+  }
 }

@@ -3078,7 +3078,9 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
   - Independent raw-response analysis, fixed holdouts, stratified conditional jackknife and second optimizer - PASSED
   - Original empirical chemical/parameter target identification, native transport/growth/maturation/fission energy closure - BLOCKED
   - Whole-organism persistent individuality, biological qualification or physical bench apparatus - NOT RUN
-  - Independent reviewer acceptance bound to exact26 core-file hashes, constituent and bounded body/remesh scope only - PASSED
+  - Independent reviewer acceptance bound to exact26 core-file hashes, constituent and bounded body/remesh scope only; packaging-only rebind follows - PASSED
+  - Candidate39141073881 numerical/review checks; archive upload omitted hidden .agent source records from manifested payload - FAILED
+  - Upload configuration includes hidden governed records without equation/runtime/budget changes; final rebind and exact-head replay follow - NOT RUN
   - Final exact-head hosted artifact and preservation/Notion/native Atlas readbacks; external receipts follow final commit - NOT RUN
   - Historical global governance drift retained without global-clean claim - FAILED
 - Remaining risks: One bead/date only; normalized shape tests do not calibrate amplitude. Supplied beta and unknown instrument/temperature/radius/height/viscosity systematics leave stiffness conditional. New finite-bath body coupling is a computational design, not observed biochemistry. Signed-defect/refinement observations are not rigorous universal bounds or continuum mesh convergence.

@@ -50,4 +50,5 @@ jobs:
         with:
           name: dc-m4-full-state-body-${{ github.sha }}
           if-no-files-found: error
+          include-hidden-files: true
           path: ${{ runner.temp }}/body-evidence/
