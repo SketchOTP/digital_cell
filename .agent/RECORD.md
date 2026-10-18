@@ -2273,3 +2273,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Exact identical-coarse-state/different-rate/free-energy witnesses prevent an exact broad native cubic/constant-epsilon_A mapping. The limited new native source/receiver adapter is authorized by the current request; it does not replace established native reaction/transport/growth/topology owners. All six native stretch stores and vertex drag belong to joint accounting, with atomic failure and trusted-config restart checks.
 - Affected areas: New optional port/tests/example, minimal feature/export additions, sealed protocol and independent numerical checker/report/review/workflow; Notion https://app.notion.com/p/3fd833cb27ff810dafd6e2c8053fb1a0; local /home/sketch/Projects/digital_cell-calibration-native-evidence/; additive Atlas evidence/calibration-native-qualification/. Thirteen prior checkouts, PR44–53,2208 prior archive files and original dirty source protected. Four production values remain null.
 - Supersedes record: none
+
+
+## DEC-DCM4-EMPIRICAL-ORGANISM-20261018
+
+- Date: 2026-10-18
+- Record or decision ID: DEC-DCM4-EMPIRICAL-ORGANISM-20261018
+- Status: ACTIVE
+- Decision or event: Owner authorizes next empirical/native steps. Select an independently authored CC0 optical-trap constituent record for sealed raw-response calibration, and implement a new default-off full-state moving-volume body/finite-bath/material-arc/native-remesh reference. Preserve the qualified chamber port and all earlier biology/evidence.
+- Rationale: The physical dataset supplies genuine measured relaxation observations with source identity and holdouts, without identifying native K/lambda/theta/epsilon_A or enzyme fuel chemistry. Full source amounts and finite bath own pressure/dilution work. Actual native midpoint remeshing can preserve storage through exact ancestry/pullback, while existing growth/maturation/merge/fission requires additional reaction-level energy owners. Prior exact coarse closure obstruction is not removed.
+- Affected areas: New body module/tests/example/export, licensed lossless raw subset/source registry, protocols/pre-outcome amendments/empirical and body checkers/reports/workflows/review; Notion https://app.notion.com/p/3fd833cb27ff81a2a1b3daa05710f3f4; local /home/sketch/Projects/digital_cell-empirical-organism-evidence/ and additive Atlas evidence/empirical-organism-integration/. Preserve14priorlivecheckouts,PR44–54,2439priorfiles andoriginaldirtysource. No physical apparatus, external source-code execution, production parameter assignment or automatic successor.
+- Supersedes record: none

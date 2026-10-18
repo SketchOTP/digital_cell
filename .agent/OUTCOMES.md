@@ -3060,3 +3060,27 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: Ideal designed recovery supplies no empirical uncertainty or target data. Fixed-volume reference source is separate from native dilution/chemical owners. Signed-defect and endpoint convergence do not establish rigorous cumulative absolute or continuum bounds. Caller owns restart archive authenticity.
 - Blockers: Original coarse chart loses source state; exact broad cubic-law/constant-energy mapping cannot represent the witness states. Physical scales/independent target observations and whole-organism integration are absent. Bridge tools unavailable; no automatic successor.
 - Follow-up directive: none
+
+
+## D-20261018-dcm4-empirical-organism - PARTIAL
+
+- Outcome ID: O-DCM4-EMPIRICAL-ORGANISM-20261018
+- Supersedes outcome: none
+- Closed: 2026-10-18T11:27:54-04:00
+- Acceptance: PARTIAL
+- Summary: Independently measured optical-trap constituent relaxation passes sealed shape holdouts with conditional drag-derived stiffness, and a new full-state moving-volume finite-bath body executes actual native24→48 remesh with source/material/energy ownership. Original empirical Digital Cell chemistry/parameters and whole-organism integration remain unqualified; native growth/maturation/transport/closure/fission require explicit paid owners.
+- Changed areas: New opt-in body module/tests/example/exact export, licensed raw subset and source registry, sealed protocols/pre-outcome amendments, empirical analysis/body oracle/measurement/scope verification/workflow/review and additive records.
+- Validation:
+  - Hosted independent physical source acquisition39139093674,336923610-byte source MD5 and lossless3072000 selected scalar observations - PASSED
+  - Initial flat-fit synthetic guard and first native duplicate-error test fixture - FAILED
+  - Corrected fit-identifiability guard and geometry-test fixtures without protocol/budget/runtime-guard relaxation - PASSED
+  - Hosted39139865440 at ac557af,24 Rust/12 Python tests,12000 native steps/eight remesh operations/independent vector and RK4 checks - PASSED
+  - Independent raw-response analysis, fixed holdouts, stratified conditional jackknife and second optimizer - PASSED
+  - Original empirical chemical/parameter target identification, native transport/growth/maturation/fission energy closure - BLOCKED
+  - Whole-organism persistent individuality, biological qualification or physical bench apparatus - NOT RUN
+  - Independent reviewer acceptance bound to exact26 core-file hashes, constituent and bounded body/remesh scope only - PASSED
+  - Final exact-head hosted artifact and preservation/Notion/native Atlas readbacks; external receipts follow final commit - NOT RUN
+  - Historical global governance drift retained without global-clean claim - FAILED
+- Remaining risks: One bead/date only; normalized shape tests do not calibrate amplitude. Supplied beta and unknown instrument/temperature/radius/height/viscosity systematics leave stiffness conditional. New finite-bath body coupling is a computational design, not observed biochemistry. Signed-defect/refinement observations are not rigorous universal bounds or continuum mesh convergence.
+- Blockers: No experimentally identified full chemical target/units/raw reversible-channel observations. Remaining native material-changing and open-transport operators lack chemical work ownership and exact full-source inheritance; bridge unavailable. Four production values null.
+- Follow-up directive: none

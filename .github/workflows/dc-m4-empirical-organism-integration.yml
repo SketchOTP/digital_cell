@@ -36,7 +36,15 @@ jobs:
           python3 scripts/qualify_chemical_body.py --input "$RUNNER_TEMP/body-evidence/native-body-observations.json" --binary "$RUNNER_TEMP/body-evidence/native-body" --output "$RUNNER_TEMP/body-evidence" > "$RUNNER_TEMP/body-evidence/body-qualification.log"
           python3 -m zipfile -e docs/dc-m4-empirical-constituent-evidence/raw-selected.zip "$RUNNER_TEMP/body-evidence/empirical-input"
           python3 scripts/measure_empirical_constituent.py --source "$RUNNER_TEMP/body-evidence/empirical-input" --output "$RUNNER_TEMP/body-evidence/empirical-measurements.json" > "$RUNNER_TEMP/body-evidence/empirical-measurements.log"
+          python3 scripts/verify_empirical_organism.py --require-review --output "$RUNNER_TEMP/body-evidence" > "$RUNNER_TEMP/body-evidence/scope.log"
+          git diff --check 59edb9ca2b1730d870f7a7f238f05718b97347ac
           test -z "$(git status --porcelain)"
+          python3 - "$RUNNER_TEMP/body-evidence" <<'PYCODE'
+          import pathlib,json,hashlib,subprocess,sys
+          root=pathlib.Path('.');out=pathlib.Path(sys.argv[1]);files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          b={'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'files':{p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in files if p and (root/p).is_file()},'evidence':{str(p.relative_to(out)):hashlib.sha256(p.read_bytes()).hexdigest() for p in out.rglob('*') if p.is_file()}}
+          (out/'bindings.json').write_text(json.dumps(b,indent=2)+'\n')
+          PYCODE
       - uses: actions/upload-artifact@v4
         if: always()
         with:

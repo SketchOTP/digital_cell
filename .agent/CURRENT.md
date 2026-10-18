@@ -3,18 +3,26 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-18T10:16:21-04:00`
+- Last updated: `2026-10-18T11:27:54-04:00`
 
 ## Active state after adoption
 
 - Local directive ID: `D-20261018-dcm4-empirical-organism`
 - External directive ID: `DC-M4-EMPIRICAL-ORGANISM-INTEGRATION-001`
 - Objective: Advance empirical constituents and full-state native body integration; preserve all work and current records.
-- Current status: `IN_PROGRESS`
-- Acceptance: `PARTIAL — designed-reference recovery and bounded native mechanics qualified; original four-parameter/whole-organism target remains unqualified`
-- Current phase: `Designed K/lambda/theta recovery and actual native full-state reference port measured and independently checked; exact coarse closure obstructed`
-- Expected or actual touched areas: `New optional native source/receiver module/tests/example, exact feature/export additions, protocol/measurements/report/checkers/workflow/review and additive records`
-- Immediate next action: `Complete final exact-head external readbacks, then await owner direction: retain full-state native source ownership or define a separately budgeted local coarse approximation. Independent physical calibration scales/data remain absent; no automatic successor.`
+- Current status: `BLOCKED`
+- Acceptance: `PARTIAL — conditional empirical instrument relaxation and bounded full-state body/remesh qualified; empirical native chemical parameters and full organism unqualified`
+- Current phase: `Independent physical raw-data constituent measured; actual moving-volume source/finite-bath/native remesh body independently reconstructed`
+- Expected or actual touched areas: `New feature-gated body module/tests/example/export, licensed raw empirical subset and source/analysis/protocol/report/verification/workflow/review plus additive records`
+- Immediate next action: `Complete exact-head external readbacks, then require explicit paid finite transport/growth/maturation/closure owners and a raw experimentally identified chemical target before full-organism or empirical-target qualification; no automatic successor.`
+
+### Empirical constituent and full-state moving-body integration
+
+- **Authority and base:** owner authorizes next steps toward empirical calibration and whole organism;59edb9ca2b1730d870f7a7f238f05718b97347ac; new isolated `/home/sketch/Projects/digital_cell-empirical-organism-integration`.
+- **Empirical advance:** one independent CC0 optical-tweezers bead record admitted only for instrument relaxation/conditional stiffness. Full source ZIP336923610bytes/MD5 verified;3072000 lossless selected raw scalar observations, first16periods/stimulus,±500training/±800heldout sealed before processing. Tau386.959microseconds; conditional within-record stratified jackknifeSE6.831microseconds; kappa.101044pN/nm conditional on suppliedbeta. Heldout shapeRMSE.06637/.08289; amplitude transfer and systematic/chemical/native parameter identification unqualified.
+- **Native advance:** new full-six-species amount compartment follows actual native mesh area with a finite outsidebath and conjugate osmoticwork. Native24→48 remesh preserves source andmaterialarc/area/storage; native mechanics continues.24 Rust/12 Python tests and12000steps/eight remeshoperations pass; coupled independentRK4 endpoint errors6.13e-5/3.07e-5 decrease with time refinement. Native per-vertex drag means no continuum mesh-convergence claim.
+- **Original gap retained:** existing native transport/growth/maturation/curvedmerge/fission lacks identified paid chemical/storage owners. Actual curvedmerge adds.0857864 passiveenergy; localmaturation witness adds.00454545. No full-organism qualification; no empirical six-species source identity; allproductionK/lambda/theta/epsilon_A null.
+- **Records/custody:** draftPR55; Notion https://app.notion.com/p/3fd833cb27ff81a2a1b3daa05710f3f4. Local `/home/sketch/Projects/digital_cell-empirical-organism-evidence/`; additive Atlas evidence/empirical-organism-integration/.14priorlivecheckouts,PR44–54,2439priorarchivefiles andoriginaldirtysource preserved. Preexistingmissingworktreeregistrations recorded withoutpruning. Distinctreview/localhandoff; bridge unavailable. Final exact-head/source/Notion/nativecustody receipts external.
 
 ### Calibration and actual native mechanics qualification
 
@@ -265,7 +273,7 @@
 
 ## Last validation after adoption
 
-- Command or check: `DC-M4 calibration/native: hosted39134962997 thirteen native/eleven Python tests, parent byte-identical native rerun and independent raw-state/RK4 qualification, fourteen-file bound review and scoped history/record preservation; final exact-head receipts external`
+- Command or check: `Hosted39139865440:24 Rust/12 Python tests,12000 native steps/eight remesh operations plus independent all-state/RK4 checks; empirical source39139093674 and sealed heldout raw-response analysis; final exact-head/review receipts external`
 - Result: `PASSED`
 
 ## Risks

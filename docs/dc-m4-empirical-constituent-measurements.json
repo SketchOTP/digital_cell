@@ -1,0 +1,133 @@
+{
+  "schema": "digital_cell_empirical_constituent_measurement_v1",
+  "source_role": "INDEPENDENT_EXPERIMENTAL_INSTRUMENT_CONSTITUENT_ONLY",
+  "source_md5": "8d2cd9f526021f8aaafd7d3a858a7945",
+  "raw_binary_sha256": "689df81cc8454d97a1f9280148f9424df4a79c9b16ec07a0dfa2f9e3215b5a99",
+  "periods_per_stimulus": 16,
+  "stimuli_nm": [
+    -800,
+    -500,
+    500,
+    800
+  ],
+  "train_stimuli_nm": [
+    -500,
+    500
+  ],
+  "heldout_stimuli_nm": [
+    -800,
+    800
+  ],
+  "training_fit": {
+    "tau_seconds": 0.00038695919167086644,
+    "train_normalized_rmse": 0.09727513531572382,
+    "objective": 0.00946245195069238,
+    "low_boundary_objective": 0.05090420453865926,
+    "high_boundary_objective": 0.5749155516119415
+  },
+  "independent_optimizer_check": {
+    "analytic_gradient_bisection_tau_seconds": 0.00038695918775924693,
+    "relative_optimizer_difference": 1.0108609838077598e-08,
+    "grid_points": 257,
+    "minimum_grid_objective": 0.009466748678523653,
+    "primary_objective": 0.00946245195069239,
+    "rigorous_global_minimum_proof": false
+  },
+  "tau_jackknife_standard_error_seconds_conditional_within_record": 6.8314129469175295e-06,
+  "jackknife_method": "sum stratum-specific (n_h-1)/n_h centered delete-one-period variances; assumes exchangeable periods within each of two fixed-stimulus strata",
+  "conditional_kappa_pN_per_nm": 0.10104424663274843,
+  "provided_beta_pNs_per_nm": 3.91e-05,
+  "provided_beta_is_independently_calibrated_here": false,
+  "heldout_shape_test": {
+    "-800": {
+      "prediction_normalized_rmse": 0.06636542523068054,
+      "diagnostic_only_fitted_tau_seconds": 0.00039352579307626166,
+      "diagnostic_relative_tau_difference": 0.016969751712166303
+    },
+    "800": {
+      "prediction_normalized_rmse": 0.082886869381437,
+      "diagnostic_only_fitted_tau_seconds": 0.0003767955844238689,
+      "diagnostic_relative_tau_difference": 0.02626532064818432
+    }
+  },
+  "linear_relaxation_shape_transfer_within_sealed_budgets": true,
+  "normalizations": {
+    "-800": {
+      "baseline_qpd": [
+        -0.05021483361331484,
+        -0.19044567855232394
+      ],
+      "plateau_qpd": [
+        -0.03149421377610038,
+        -0.002543990075405208
+      ],
+      "amplitude_qpd": 0.18883195211501289,
+      "amplitude_transfer_qualified": false
+    },
+    "-500": {
+      "baseline_qpd": [
+        -0.025340229670360367,
+        -0.12153755153803547
+      ],
+      "plateau_qpd": [
+        -0.014386627853994846,
+        -0.002737979125181751
+      ],
+      "amplitude_qpd": 0.11930347772897637,
+      "amplitude_transfer_qualified": false
+    },
+    "500": {
+      "baseline_qpd": [
+        0.005532343511456559,
+        0.12103047426505513
+      ],
+      "plateau_qpd": [
+        -0.005216518278623865,
+        -0.004515791952275017
+      ],
+      "amplitude_qpd": 0.12600556730119103,
+      "amplitude_transfer_qualified": false
+    },
+    "800": {
+      "baseline_qpd": [
+        -0.009130135886994037,
+        0.1915347030730845
+      ],
+      "plateau_qpd": [
+        -0.02676163072924532,
+        -0.004693748156612502
+      ],
+      "amplitude_qpd": 0.19701897036168348,
+      "amplitude_transfer_qualified": false
+    }
+  },
+  "background": {
+    "primary_no_second_subtraction": true,
+    "stored_dark_scalars": [
+      -0.0001724,
+      -0.000755,
+      0.0002018
+    ],
+    "sensitivity": {
+      "convention": "alternative plain stored offset subtraction x-dark_x,y-dark_y,(sum-dark_sum)*gain; not asserted uniquely correct",
+      "second_dark_subtraction_tau_seconds": 0.00038695702081373854,
+      "relative_difference_from_primary": 5.610041509895858e-06,
+      "used_for_primary_estimation_or_acceptance": false
+    }
+  },
+  "uncertainty_limits": [
+    "one bead/one date only; sequential periods not independently certified",
+    "jackknife does not bound between-bead drift or instrumental/systematic error",
+    "provided drag beta/temperature/viscosity/height/radius uncertainty not independently established",
+    "per-heldout amplitude/baseline normalization tests relaxation shape, not amplitude or displacement transfer"
+  ],
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "empirical_full_target_qualified": false,
+  "chemical_kinetic_mapping_qualified": false,
+  "automatic_successor": false
+}

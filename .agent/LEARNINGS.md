@@ -1558,3 +1558,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Designed computational recovery, exact two-state obstruction and bounded full-state native mechanics; no empirical identification or general impossibility of a budgeted local approximation.
 - Supersedes learning: none
+
+
+## L-DCM4-EMPIRICAL-ORGANISM-20261018
+
+- Learning ID: L-DCM4-EMPIRICAL-ORGANISM-20261018
+- Date: 2026-10-18
+- Fact or lesson: Independent physical raw instrument data can qualify normalized relaxation shape while leaving conditional drag-derived stiffness, amplitude transfer and native chemical identity unresolved. Fixed-stimulus delete-one-period uncertainty requires separately centered stratum variances and does not establish independent-bead/systematic bounds. A moving-area full chemical source requires conjugate osmotic work with a finite bath. Native midpoint remesh preserves stored energy and material-arc source ownership through gradient pullback, while added per-vertex drag changes the dynamics. Material-conservative curved merge or maturation can still add unpaid storage.
+- Evidence location: docs/dc-m4-empirical-organism-integration.md; docs/dc-m4-empirical-constituent-measurements.json; docs/dc-m4-chemical-body-measurements.json; scripts/empirical_constituent.py; scripts/chemical_body_reference.py; scripts/qualify_chemical_body.py.
+- Confidence: VERIFIED
+- Scope: Selected one-bead instrument response and bounded full-state body/native split; no empirical Digital Cell parameter assignment, physical chemical equivalence, whole-organism or continuum guarantee.
+- Supersedes learning: none

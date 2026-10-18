@@ -1,10 +1,10 @@
 import copy,math,unittest
-from empirical_constituent import fit_tau,normalized_wave,prediction_rmse
+from empirical_constituent import fit_tau,normalized_wave,prediction_rmse,independent_minimum_check
 SEL={'samples_per_period':16000,'sample_rate_hz':200000,'step_sample':4000,'baseline_slice':[1000,3000],'plateau_slice':[6000,10000],'fit_slice':[4010,4800],'relaxation_tau_seconds_range':[1e-5,.01]}
 class EmpiricalTests(unittest.TestCase):
     def wave(self,tau):return [0. if i<4000 else 1-math.exp(-(i-4000)/200000/tau) for i in range(16000)]
     def test_recovers_nondefault_physical_relaxation(self):
-        w=self.wave(.000731);f=fit_tau([w,w],SEL);self.assertAlmostEqual(f['tau_seconds'],.000731,places=10);self.assertLess(prediction_rmse(w,f['tau_seconds'],SEL),1e-8)
+        w=self.wave(.000731);f=fit_tau([w,w],SEL);self.assertAlmostEqual(f['tau_seconds'],.000731,places=10);self.assertLess(prediction_rmse(w,f['tau_seconds'],SEL),1e-8);self.assertLess(independent_minimum_check([w,w],SEL,f['tau_seconds'])['relative_optimizer_difference'],1e-6)
     def test_fixed_prediction_detects_heldout_different_rate(self):
         f=fit_tau([self.wave(.0004)],SEL);self.assertGreater(prediction_rmse(self.wave(.002),f['tau_seconds'],SEL),.1)
     def test_flat_and_boundary_rejected(self):

@@ -40,6 +40,26 @@ def fit_tau(waves,selection):
     require(min(lo_obj,hi_obj)-best>1e-8,'flat/nonidentified relaxation fit')
     return {'tau_seconds':tau,'train_normalized_rmse':math.sqrt(best),'objective':best,'low_boundary_objective':lo_obj,'high_boundary_objective':hi_obj}
 
+def independent_minimum_check(waves,selection,tau):
+    start,end=selection['fit_slice'];fs=selection['sample_rate_hz'];step=selection['step_sample']
+    times=[(i-step)/fs for i in range(start,end)];low,high=map(math.log,selection['relaxation_tau_seconds_range'])
+    def stats(logtau):
+        value=math.exp(logtau);obj=0.;gradient=0.
+        for i,t in enumerate(times):
+            q=t/value;e=math.exp(-q);pred=1-e
+            for wave in waves:
+                residual=pred-wave[start+i];obj+=residual*residual;gradient+=-2*residual*q*e
+        return obj/(len(times)*len(waves)),gradient/(len(times)*len(waves))
+    require(stats(low)[1]<0<stats(high)[1],'analytic fit gradient not bracketed')
+    a,b=low,high
+    for _ in range(75):
+        m=(a+b)/2
+        if stats(m)[1]>0:b=m
+        else:a=m
+    independent=math.exp((a+b)/2);best=stats(math.log(tau))[0];grid=min(stats(low+(high-low)*i/256)[0] for i in range(257))
+    require(abs(independent/tau-1)<1e-6 and best<=grid+1e-12,'independent optimizer disagreement')
+    return {'analytic_gradient_bisection_tau_seconds':independent,'relative_optimizer_difference':abs(independent/tau-1),'grid_points':257,'minimum_grid_objective':grid,'primary_objective':best,'rigorous_global_minimum_proof':False}
+
 def prediction_rmse(wave,tau,selection):
     start,end=selection['fit_slice'];fs=selection['sample_rate_hz'];edge=selection['step_sample']
     return math.sqrt(mean([(wave[i]-(1-math.exp(-(i-edge)/fs/tau)))**2 for i in range(start,end)]))
@@ -71,7 +91,7 @@ def analyze(source,protocol):
         s=[[math.fsum(ch[j+period*i] for i in range(n)) for j in range(period)] for ch in channels];sums[displacement]=s
         avg=[[v/n for v in ch] for ch in s];averages[displacement]=avg
         waves[displacement],normalization[displacement]=normalized_wave(avg,sel,gain)
-    train=sel['training_nm'];held=sel['heldout_nm'];fit=fit_tau([waves[x] for x in train],sel);tau=fit['tau_seconds']
+    train=sel['training_nm'];held=sel['heldout_nm'];fit=fit_tau([waves[x] for x in train],sel);tau=fit['tau_seconds'];optimizer_check=independent_minimum_check([waves[x] for x in train],sel,tau)
     heldout={str(x):{'prediction_normalized_rmse':prediction_rmse(waves[x],tau,sel),'diagnostic_only_fitted_tau_seconds':fit_tau([waves[x]],sel)['tau_seconds']} for x in held}
     for x,v in heldout.items():v['diagnostic_relative_tau_difference']=abs(v['diagnostic_only_fitted_tau_seconds']/tau-1)
     jack=[];jack_strata=[]
@@ -90,4 +110,4 @@ def analyze(source,protocol):
         sensitivity={'convention':'alternative plain stored offset subtraction x-dark_x,y-dark_y,(sum-dark_sum)*gain; not asserted uniquely correct', 'second_dark_subtraction_tau_seconds':altfit['tau_seconds'],'relative_difference_from_primary':abs(altfit['tau_seconds']/tau-1),'used_for_primary_estimation_or_acceptance':False}
     except ValueError as e:sensitivity={'alternative_rejected':str(e),'used_for_primary_estimation_or_acceptance':False}
     qualified=all(v['prediction_normalized_rmse']<=protocol['budgets']['max_heldout_normalized_rmse'] and v['diagnostic_relative_tau_difference']<=protocol['budgets']['max_heldout_relative_tau_difference'] for v in heldout.values())
-    return {'schema':'digital_cell_empirical_constituent_measurement_v1','source_role':'INDEPENDENT_EXPERIMENTAL_INSTRUMENT_CONSTITUENT_ONLY','source_md5':receipt['md5_verified'],'raw_binary_sha256':meta['binary_sha256'],'periods_per_stimulus':n,'stimuli_nm':sel['displacements_nm'],'train_stimuli_nm':train,'heldout_stimuli_nm':held,'training_fit':fit,'tau_jackknife_standard_error_seconds_conditional_within_record':jack_se,'jackknife_method':'sum stratum-specific (n_h-1)/n_h centered delete-one-period variances; assumes exchangeable periods within each of two fixed-stimulus strata','conditional_kappa_pN_per_nm':beta/tau,'provided_beta_pNs_per_nm':beta,'provided_beta_is_independently_calibrated_here':False,'heldout_shape_test':heldout,'linear_relaxation_shape_transfer_within_sealed_budgets':qualified,'normalizations':{str(k):v for k,v in normalization.items()},'background':{'primary_no_second_subtraction':True,'stored_dark_scalars':dark,'sensitivity':sensitivity},'uncertainty_limits':['one bead/one date only; sequential periods not independently certified','jackknife does not bound between-bead drift or instrumental/systematic error','provided drag beta/temperature/viscosity/height/radius uncertainty not independently established','per-heldout amplitude/baseline normalization tests relaxation shape, not amplitude or displacement transfer'],'production_values':dict.fromkeys(('K','lambda','theta','epsilon_A')),'empirical_full_target_qualified':False,'chemical_kinetic_mapping_qualified':False,'automatic_successor':False}
+    return {'schema':'digital_cell_empirical_constituent_measurement_v1','source_role':'INDEPENDENT_EXPERIMENTAL_INSTRUMENT_CONSTITUENT_ONLY','source_md5':receipt['md5_verified'],'raw_binary_sha256':meta['binary_sha256'],'periods_per_stimulus':n,'stimuli_nm':sel['displacements_nm'],'train_stimuli_nm':train,'heldout_stimuli_nm':held,'training_fit':fit,'independent_optimizer_check':optimizer_check,'tau_jackknife_standard_error_seconds_conditional_within_record':jack_se,'jackknife_method':'sum stratum-specific (n_h-1)/n_h centered delete-one-period variances; assumes exchangeable periods within each of two fixed-stimulus strata','conditional_kappa_pN_per_nm':beta/tau,'provided_beta_pNs_per_nm':beta,'provided_beta_is_independently_calibrated_here':False,'heldout_shape_test':heldout,'linear_relaxation_shape_transfer_within_sealed_budgets':qualified,'normalizations':{str(k):v for k,v in normalization.items()},'background':{'primary_no_second_subtraction':True,'stored_dark_scalars':dark,'sensitivity':sensitivity},'uncertainty_limits':['one bead/one date only; sequential periods not independently certified','jackknife does not bound between-bead drift or instrumental/systematic error','provided drag beta/temperature/viscosity/height/radius uncertainty not independently established','per-heldout amplitude/baseline normalization tests relaxation shape, not amplitude or displacement transfer'],'production_values':dict.fromkeys(('K','lambda','theta','epsilon_A')),'empirical_full_target_qualified':False,'chemical_kinetic_mapping_qualified':False,'automatic_successor':False}

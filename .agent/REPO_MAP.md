@@ -510,3 +510,23 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `scripts/verify_calibration_native_scope.py` — prior science/ledger/default freeze, review/record/measurement and bundled-source enforcement.
 - `docs/dc-m4-calibration-native-review.json` — distinct semantic review with exact core bindings.
 - `/home/sketch/Projects/digital_cell-calibration-native-evidence/` — actual compiled binary, raw campaigns, failed attempt, exact-head artifacts, custody and Notion readbacks.
+
+
+## Interfaces and contracts
+
+- `docs/dc-m4-empirical-organism-directive.md` — owner-authorized empirical constituent/full-state body continuation from59edb9c.
+- `docs/dc-m4-empirical-organism-protocol.json` — sealed8run native body design; domain amendment JSON retains pre-outcome simple-polygon clarification.
+- `docs/dc-m4-empirical-constituent-protocol.json` — sealed physical record/period/training/holdout/estimator choices; background amendment JSON specifies primary correction and sensitivity.
+- `docs/dc-m4-empirical-sources.json` — independent constituent-only admission, source identity/license and curated-file hashes.
+- `docs/dc-m4-empirical-constituent-evidence/README.md` — CC0 attribution, lossless selected raw binary container and original publisher/measurement provenance.
+- `docs/dc-m4-empirical-organism-integration.md` — physical calibration limits, osmotic/material-arc architecture, observed results and remaining integration owners.
+- `docs/dc-m4-empirical-constituent-measurements.json` — actual physical instrument response/conditional stiffness; no Digital Cell parameter assignment.
+- `docs/dc-m4-chemical-body-measurements.json` — actual native reference measurements and independent reconstruction.
+- `digital-protocell/crates/chemistry-core/src/chemical_body_port.rs` — new full-state moving-area finite-bath body/native split adapter; same-named tests/example.
+- `scripts/acquire_empirical_constituent.py` — parent-owned complete-source checksum verification and lossless selected dataset acquisition; no acquired code execution.
+- `scripts/empirical_constituent.py` — independent response fit, heldout prediction and conditional uncertainty; measurement/test scripts share stem.
+- `scripts/chemical_body_reference.py` — independently written full-vector amount/bath/force/RK4 model; tests in test_chemical_body_reference.py.
+- `scripts/qualify_chemical_body.py` — all-state/all-event native measurements reconstructed against sealed budgets.
+- `scripts/verify_empirical_organism.py` — scoped history/default/source/record/review/result enforcement and bundled inputs.
+- `docs/dc-m4-empirical-organism-review.json` — distinct semantic acceptance and exact core bindings.
+- `/home/sketch/Projects/digital_cell-empirical-organism-evidence/` — local source/raw/native/hosted/preservation/Notion/custody originals; additive Atlas evidence/empirical-organism-integration/.
