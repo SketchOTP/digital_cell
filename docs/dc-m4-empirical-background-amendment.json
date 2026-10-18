@@ -1,0 +1,14 @@
+{
+  "schema": "digital_cell_empirical_background_interpretation_v2",
+  "prior_protocol_sha256": "ad866b55d5c9bcfaa5e0139d9aefbc861ff0517a7e84b074e222709bc3cab0a5",
+  "issued_utc": "2026-10-18T15:10:03.790457+00:00",
+  "waveform_processing_observed": false,
+  "primary_handling": "No second dark subtraction: source landing describes real-time LabView dark correction; independently form period means of selected measurement_datum channels, apply suppliedgain to sum and ratio. Gain cancels in normalized relaxation shape.",
+  "source_evidence": [
+    "https://zenodo.org/records/3333905 description: QPD dark recorded and subtracted in real time",
+    "quarantined calibrateopticaltweezers.py June28,2019 note and commented correction lines; source code not executed"
+  ],
+  "sensitivity": "Independently repeat with stored dark_x,dark_y removed and dark_sum removed before gain. Report differences and denominator positivity as source-processing systematic sensitivity; do not replace primary estimator or choose a mode based on a better fit.",
+  "claims": "Conditional instrument response only. Unknown source acquisition background/systematic corrections preclude metrologically complete spring/drag calibration; no target assignment.",
+  "budgets_and_selection_unchanged": true
+}

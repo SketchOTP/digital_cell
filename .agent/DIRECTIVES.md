@@ -1655,3 +1655,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261018-dcm4-empirical-organism
+
+- Issued: 2026-10-18T11:03:45-04:00
+- Issuer: User
+- External directive: DC-M4-EMPIRICAL-ORGANISM-INTEGRATION-001
+- Objective: Advance empirical calibration and whole-organism integration while preserving prior work and current records.
+- Scope: Independently acquired licensed physical metrology constituent observations, sealed selection/holdouts and conditional relaxation/spring analysis; new opt-in full-state moving-area native body/finite bath/ancestral arc/native remesh reference with independent verification. Complete handoff in docs/dc-m4-empirical-organism-directive.md; base59edb9ca2b1730d870f7a7f238f05718b97347ac.
+- Exclusions: Invented empirical DigitalCell chemical/parameter identity; apparatus/author outreach or external code execution; replacing certified native biology or accepting unpaid growth/maturation/curved merge/fission; prior source/evidence/PR44–54 mutation, merge/deploy and automatic successor.
+- Acceptance: Exact source/data role/units/limits and measured heldout outcome; actual native full-state/body/remesh events with osmotic and elastic work, material/energy/atomic/restart evidence; separate bounded advancement from unresolved empirical whole target; distinct review, exact-head hosted artifact, preservation14checkouts/11PRs/2439priorfiles and current Notion/native Atlas receipts.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED
