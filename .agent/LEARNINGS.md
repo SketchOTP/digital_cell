@@ -1503,3 +1503,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Bounded fixed-material mathematical/source architecture with explicit assumptions and anchor inventory; no numerical parameter calibration, native integration or biological efficacy.
 - Supersedes learning: none
+
+
+## L-DCM4-REFERENCE-PROTOTYPE-20261017
+
+- Learning ID: L-DCM4-REFERENCE-PROTOTYPE-20261017
+- Date: 2026-10-17
+- Fact or lesson: A rational scalar root bracket certifies the unique mechanical root while the selected approximate rational displacement has exact numerical energy defect delta=R*DeltaL. Keeping both signed cumulative defect and sum(abs(delta)) exposes drift without repairing heat; immutable whole-cycle publication preserves previous sinks on late solver/budget failure. V2 fuel identification must independently include heat/storage or certify omitted terms vanish.
+- Evidence location: scripts/dc_m4_reference_prototype.py; scripts/test_dc_m4_reference_prototype.py; scripts/verify_reference_prototype.py; docs/dc-m4-calibration-acquisition-plan.md; docs/dc-m4-reference-prototype-review.json.
+- Confidence: VERIFIED
+- Scope: Exact rational bounded reference implementation, error/transaction semantics and independent acquisition-plan design; no physical parameter calibration, native-J trajectory, native mesh integration or biological efficacy.
+- Supersedes learning: none

@@ -134,3 +134,13 @@ Verify expected UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d and RPI5Pool bind befor
 Retain all entry archive bytes:206 reaction-feasibility,167 conversion-contract and151 work-port files.
 Original local/Atlas source work and PR44–48 are preserved; local originals remain.
 These mathematical architecture and anchor receipts do not qualify production implementation or biological efficacy.
+
+
+## Bounded reference prototype and acquisition plan — 2026-10-17
+
+- Checkout: `/home/sketch/Projects/digital_cell-bounded-reference-prototype`, isolated from preserved prior worktrees and original Atlas source.
+- Local evidence: `/home/sketch/Projects/digital_cell-reference-prototype-evidence/` retains original snapshots, reference reports and final exact-head CI/artifact/Notion/preservation receipts.
+- Atlas destination: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reference-prototype/`; fresh publication/completion directories only, local originals retained.
+- Required physical mount: UUID `840ca6b3-5d4f-41fc-9dac-21355e045a6d` and `/srv/ATLAS` FSROOT `/RPI5Pool`, independently checked via atlas-laptop before writes and native hash verification.
+- Preserve all entry evidence: 206 reaction-feasibility +167 conversion-contract +151 work-port +172 source/receiver files =696 scoped files. No archive overwrite/delete, PR44–49 mutation or previous-checkout cleanup.
+- Artifacts: standalone reference program/tests, empty acquisition templates and explicit missing-data plan; numerical reference constants and trajectories are not calibration observations. Final hosted hashes and custody counts are in the external exact-head receipt package.

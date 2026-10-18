@@ -2950,3 +2950,25 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: The ideal battery/coupling/rate and scalar boundary are explicit model assumptions. Four new parameters remain unassigned; literature supplies measurement methods rather than a Digital Cell chemical/species/unit mapping. Unsupported legacy ports and material/topology operations prevent a full-native claim. Reference prescribed strokes and preloaded local witnesses do not prove native kinetics or preparation reachability.
 - Blockers: None to bounded architecture definition and anchor identification; calibration basis and full native ownership/solver integration remain prerequisites to later execution. Digital Cell bridge binding absent and historical governance drift preserved.
 - Follow-up directive: none
+
+
+## D-20261017-dcm4-reference-prototype - COMPLETE
+
+- Outcome ID: O-DCM4-REFERENCE-PROTOTYPE-20261017
+- Supersedes outcome: none
+- Closed: 2026-10-17T21:23:33-04:00
+- Acceptance: MET
+- Summary: Standalone bounded v2 reference executes cold-entry funded prescribed conversion and an actual certified rational scalar root solve. Immutable cycles conserve material and retain explicit bounded signed/absolute numerical defects without heat repair. Independent acquisition plan has empty source/raw registries, 80 blank force-response rows and all four production parameters null. Distinct source review accepts bounded reference implementation and plan only.
+- Changed areas: New standalone module/tests/docs, acquisition plan JSON/MD/template, directive/review/verifier/workflow, current/profile/storage and append-only project records, additive local/Atlas evidence and Notion.
+- Validation:
+  - Parent focused reference tests including exclusive output, finite funding, actual root solve, local path/secant identities and late rollback with prior nonzero sinks/errors - PASSED
+  - Parent independent analytic root, source-capacity and unrepaired energy-certificate controls across 108 fixtures - PASSED
+  - Empty-data readiness, 4/76 role split and seven rejected calibration-plan mutants - PASSED
+  - Distinct nine-file independent static review of implementation, tests, plan, directive and verification workflow - PASSED
+  - Frozen 34 inputs including 16 scientific source files, append-only prefixes and new structured records - PASSED
+  - Historical global governance schema drift retained without clean-global claim - FAILED
+  - Native-J, production mesh integration, parameter fitting/acquisition and biological campaigns - NOT RUN
+  - Final exact-head hosted CI/artifact and Notion readback at record creation; external receipts to follow - NOT RUN
+- Remaining risks: Rational approximate roots have explicit nonzero numerical defects within sealed bounds; they do not establish exact physical conservation for approximate updates. Illustrative coefficients are not calibration. Missing independent source/species/unit/data/uncertainty/budget mappings leave all production parameters null. No native cap/API, pressure/contact/lifecycle or R13 correction claim follows.
+- Blockers: None to the bounded reference implementation and acquisition-plan deliverables. Independent calibration evidence and full native integration remain separate unestablished boundaries; Digital Cell bridge binding is absent and historical governance drift preserved.
+- Follow-up directive: none

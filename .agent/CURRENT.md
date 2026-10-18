@@ -3,18 +3,29 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-17T18:58:49-04:00`
+- Last updated: `2026-10-17T21:23:33-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261017-dcm4-source-receiver-architecture`
-- External directive ID: `DC-M4-PHYSICALLY-OWNED-SOURCE-RECEIVER-ARCHITECTURE-001`
-- Objective: Define and independently verify a physically owned bounded mechanical source/receiver architecture and identify calibration anchors while preserving all work and records.
+- Local directive ID: `D-20261017-dcm4-reference-prototype`
+- External directive ID: `DC-M4-BOUNDED-REFERENCE-PROTOTYPE-CALIBRATION-PLAN-001`
+- Objective: Implement and independently verify a bounded reference prototype and independent calibration-evidence acquisition plan, preserving work and records.
 - Current status: `COMPLETE`
-- Acceptance: `MET — bounded mathematical architecture and anchor inventory only; physical calibration, runtime implementation and full native integration remain unestablished; final exact-head receipts follow externally`
-- Current phase: `V2 finite chemical source and native stretch receiver defined; new coupling/fuel parameter data missing`
-- Expected or actual touched areas: `New architecture/directive/JSON/review, reference verifier/workflow, append-only project records and additive evidence/Notion custody`
-- Immediate next action: `Select the independent calibration basis and separately authorize a bounded prototype if desired; no automatic implementation or successor`
+- Acceptance: `MET — bounded reference implementation and acquisition plan only; independent calibration and full native integration remain unestablished; exact-head receipts follow externally`
+- Current phase: `Cold-entry scalar reference implemented; calibration source/data missing`
+- Expected or actual touched areas: `New standalone program/tests/docs, acquisition plan and empty template, scoped checker/workflow, additive evidence and project/Notion records`
+- Immediate next action: `Acquire an independently admitted source/mapping and sealed evidence under a separate campaign directive; no automatic fitting, production integration or successor`
+
+### Bounded reference prototype and acquisition plan
+
+- **Entry:** `fb3366995de9a8dbc5bceb6d3ae24ed653972dca`; isolated checkout `/home/sketch/Projects/digital_cell-bounded-reference-prototype`, branch `codex/dc-m4-bounded-reference-prototype`.
+- **Executed reference:** immutable cold-entry runs apply prescribed conversion strokes with full uphill work reservation, downhill dissipation and finite A/W/material closure, then solve the reciprocal coupling/native-stretch scalar equation with exact rational bracket/bisection arithmetic. No passed-in final length or native-J trajectory.
+- **Numerical boundary:** certificates expose root enclosure, force residual and exact energy defect delta=R*DeltaL. Heat is unmodified; global signed imbalance equals cumulative signed defect and a sealed sum(abs(delta)) budget prevents cancellation hiding error. Fixed endpoint, fixed material, no full native API/cap or mesh claim.
+- **Acquisition plan:** zero measured responses, empty independent source/raw registries, four null production values and missing species/unit/uncertainty/budget mappings. The fixed 80-row force template has four TRAIN and 76 HOLDOUT roles, all response/provenance cells blank. Kinetic and fuel stages are prospective only. The v2 fuel recipe requires independently observed heat/storage terms or a certificate that omitted terms vanish.
+- **Validation observed:** thirteen focused tests and 108 independent analytic-root/source-capacity/error cases pass, plus seven rejected plan mutants. Cold-reachable cycles are separate from constructed local preload algebra. Distinct nine-file review accepts bounded reference implementation and plan only; hosted receipts follow externally.
+- **Preservation and custody:** production and all earlier accepted contracts/specifications/checkers remain frozen; five append-only ledger prefixes preserved. Nine prior local checkouts, PR44-49 and all 696 entry archive files (including 172 source/receiver records) are protected alongside original dirty Atlas source and local originals. R13 damping remains uncorrected, R4 production reference and R10 diagnostic-only.
+- **Records:** Notion https://app.notion.com/p/3fd833cb27ff817798eccbee4cc547aa; local `/home/sketch/Projects/digital_cell-reference-prototype-evidence/`; additive Atlas `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/reference-prototype/`. Final commit/CI/artifact/preservation/readback receipts live externally to avoid self-reference.
+- **Bridge:** verified healthy only for unrelated activation-test; no Digital Cell binding or bridge dispatch/acceptance claimed. Distinct implementation and independent local review follow the complete saved directive.
 
 ### Bounded source and receiver architecture v2
 
