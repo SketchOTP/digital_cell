@@ -1,0 +1,98 @@
+{
+  "schema": "digital_cell_calibration_source_independent_review_v1",
+  "decision": "ACCEPTED_NEGATIVE_ADMISSION_AND_QUARANTINED_ACQUISITION_ONLY",
+  "review_date": "2026-10-17",
+  "entry_head": "2b2638047a79fcbf01b279e7d3a796873f0017c5",
+  "reviewer": "distinct governance_audit agent; no admission evaluator, tests, report, acquisition or verifier implementation authorship",
+  "method": "Independent primary-source research and static semantic review; no downloads, tests, builds, assays, acquired code execution or process monitoring by reviewer. Hashing reviewed files and writing this receipt are review bookkeeping only.",
+  "reviewed_files": {
+    ".github/workflows/dc-m4-calibration-source-admission.yml": "eac52961d798a4f4541e9340e46be0aab47d0316b41b18cbdbec341ac4ddd87f",
+    "docs/dc-m4-calibration-source-admission.json": "8a0a9d2220bcb9d99c96bc698b1b87fa08c60eb603caf70493ccc69e5bc10dab",
+    "docs/dc-m4-calibration-source-admission.md": "264ce3e9af9ccbe8764cb84bf2d1bd9ec4b12cb1a52e92a3ed11a3408dc16ead",
+    "docs/dc-m4-calibration-source-directive.md": "618dbeb484b1e4e77ce8195bd62546cfa8544867f265ad13f48b9b8d2b6652f3",
+    "docs/dc-m4-calibration-source-evidence/NOTICE.md": "7836c27b06f85347b3e92ae6d219aee279c1e4d78e8041bb741893e852d550da",
+    "docs/dc-m4-calibration-source-evidence/acquisition-preregistration.json": "b68876b38c8873f6ff1bca2c50c15ee2d43b28e7eab979056a9555f088e6db94",
+    "docs/dc-m4-calibration-source-evidence/acquisition-receipt.json": "d4c4e8dc1da1af4a78d02cf7cc525457de4dafc69a1a67509fcead245b542145",
+    "docs/dc-m4-calibration-source-evidence/plot-context-preregistration.json": "192a8d728dc984f0eea9dd5c4326d71afe1ac4284c5658c9feafafbd5f35d035",
+    "docs/dc-m4-calibration-source-evidence/plot-context-receipt.json": "2fa4c09879a4bb1408f517196aa6dcdc4c233a419af625c942a59b7bdf836e5f",
+    "docs/dc-m4-calibration-source-evidence/primary-document-receipts.json": "2cd629ebaaaa5ad8f8ef88ac73109c8a515fe5001da6cfd589bb88e0357329fa",
+    "docs/dc-m4-calibration-source-evidence/table-inventory.json": "fe15b0b35e31dc2d7eebcb4eb149f58744b040f7581d9be4ab8ccac20bc4ec65",
+    "docs/dc-m4-calibration-source-evidence/zenodo-4481182-central-directory.bin": "04ed6dc63c8c21c06ee91f4e154733634ef8ffe51e026c97d28afa6521f9eb38",
+    "docs/dc-m4-calibration-source-evidence/zenodo-4481182-range-0-199999.bin": "6d44753f5af9044761ace6a751e8653cfb1acb0413b2c82454f533879038406e",
+    "docs/dc-m4-calibration-source-evidence/zenodo-4481182-record.json": "db5b67a33b15a7d00a78f80494d8c40edcd33b08832381b3cad0c1ee452cb4fe",
+    "docs/dc-m4-calibration-source-evidence/zenodo-4481182-zip-tail.bin": "80371ed04c85f27651bc20c0e64060423be3b28f259bebb0535c1f44235458a4",
+    "docs/dc-m4-calibration-source-evidence/zip-directory-request.json": "b1efee34c582eb2ddbc44e54392cd6dda941c887aee49b70053f1a73c4bc119a",
+    "scripts/calibration_source_admission.py": "51f72486cfdf0a4090f2ecf242a9c99b4301edc9d039585fb309a28ddd3abfcd",
+    "scripts/test_calibration_source_admission.py": "379cc6de13178a8901f7ee9641da34212748de8bf5c22ca50ed9ad7d0ac78d42",
+    "scripts/verify_calibration_source_admission.py": "aa2f0cd530bb29246f0eb967b2a4d9fe9ffa0ae8aa166eb8795e50e07f2f2a44"
+  },
+  "preflight": {
+    "retained_complete_historical_coverage": true,
+    "entry_refresh": "Complete assigned LEARNINGS through line 1516, RECORD through 2231 and REPO_MAP through 465 at entry; current/profile and governing/source context refreshed. Prior collective full historical preflight retained.",
+    "bridge": "No Digital Cell acceptance inferred from the unrelated activation-test bridge configuration."
+  },
+  "read_coverage": {
+    "package": "Complete report, registry, directive, evaluator, tests, verifier, workflow and all text evidence metadata; all 19 target byte hashes bind this receipt, including three binary sparse ZIP components.",
+    "external_semantics": "Read complete archive/source/data readmes, all external headers, makefile, archive.cpp and particle.cpp; both complete contextual plotting scripts and all 44 original processed table rows. Focused fuel/ring/tetrahedron and runtime, reaction identity, reservoir, units and integration sections inspected.",
+    "external_source_boundary": "This is not a complete correctness audit of every line in the approximately 7.6k-line external source directory and does not qualify executing that program."
+  },
+  "accepted_criteria": [
+    "Eight inspected candidate families are distinguished from all possible sources. No inspected source is admitted; all four production coefficients remain null, with no fitting, native modification or automatic successor.",
+    "The owner reply that no specific reference is established is preserved. Native generic A/W and polarity amount definitions do not independently establish ATP identity or a measured target species/coordinate/unit map.",
+    "Existing receiver ks, native effort-duration/c0 prices, internal calibration reports, R13 outcomes and prototype controls cannot identify the new coupling/source parameters by symbol substitution or circular fitting.",
+    "Toyabe experimental work and heat methodology is independent external evidence, but no target species/coordinate/unit map or admitted target raw dataset is established. Inaccessible endpoints and unconfirmed raw links are limitations, not proof of dataset absence.",
+    "The Albaugh/Gingrich archive is an independent computational motor with particle/ring coordinates, FTC/ETC/C chemistry, open chemostats and its own nondimensionalization. Acquired current/reaction summaries do not establish fixed-edge target force, local unclipped J or finite A/W source-work observations.",
+    "The initial 24-member selection and later two-script contextual selection retain separate local hash lineage. All selected source, README and table bytes are quarantined without incorporation into runtime or execution imports.",
+    "The four original processed tables contain 44 headerless rows with 23 columns. Both plot scripts support the stated column context and script-specific uncertainty normalization; published efficiency-like values are not assumed to be source free energy or target conversion efficiency.",
+    "The offline checker statically reconstructs 26 selected members with bounds, safe paths, compression method, directory identity, size, CRC and SHA checks; it inspects all table rows without importing acquired source programs.",
+    "The metadata evaluator validates declarations and explicit per-target gates while always returning admitted=false and calibrated=false. Complete synthetic metadata yields eligibility for separate semantic review only; references and prose do not authenticate themselves.",
+    "The workflow binds exact HEAD, enforces cumulative baseline whitespace and clean-tree checks, runs scoped parent-owned verification, and archives its report and hash-bound files. Prior protocols/runtime are frozen and append-only governance prefixes are checked."
+  ],
+  "independent_primary_sources": [
+    {
+      "url": "https://zenodo.org/records/4481182",
+      "supports": "Independent archived motor code/data identity and public availability; advertised whole archive checksum is metadata only here."
+    },
+    {
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9033874/",
+      "supports": "Published particle motor and code/data availability; open reservoir and model-coordinate boundary."
+    },
+    {
+      "url": "https://arxiv.org/html/2102.06298v2",
+      "supports": "Primary computational motor description and thermodynamic/model context."
+    },
+    {
+      "url": "https://arxiv.org/html/1002.1867v1",
+      "supports": "Primary rotary ATP experiment methodology; no Digital Cell mapping supplied."
+    },
+    {
+      "url": "https://arxiv.org/html/1210.4017v4",
+      "supports": "Primary reverse rotary transduction methodology and its measurement boundary."
+    },
+    {
+      "url": "https://harvest.aps.org/v2/journals/articles/10.1103/PhysRevLett.104.198103/fulltext",
+      "supports": "Actual PRL DOI identity, preserving the arXiv related-DOI discrepancy rather than silently substituting."
+    }
+  ],
+  "limitations": [
+    "Accepted output is a bounded negative admission and quarantine evidence acquisition. The requested admissible calibration-source acquisition is PARTIAL/BLOCKED and is not complete.",
+    "No global source-absence or whole-candidate impossibility result follows. A justified future referent and explicit mapping could change admission.",
+    "Only sparse archive ranges were acquired. The 551498479-byte full archive and advertised whole MD5 are unverified. Member CRC and local hashes establish selected-content consistency, not publisher cryptographic attestation.",
+    "Local selection timestamps and hash lineage are not externally timestamped preregistration and do not retroactively preregister the original publication or satisfy the missing prospective Digital Cell design seals.",
+    "Original primary article HTML files are retained externally; the Git/CI package binds their receipts, not their full text. Parent-owned external custody readback must separately verify those files.",
+    "The selected computational summaries are not raw replicate trajectories or admitted Digital Cell observations. Source-specific error bars do not supply the missing target uncertainty, covariance, budgets or holdout custody.",
+    "The checker verifies declared schema, negative disposition and local integrity; it does not independently authenticate scientific independence, map species, or prove the truth of every evidence declaration. This semantic review supplies only the bounded negative conclusion.",
+    "Parent owns all execution results, cumulative diff/source preservation checks, exact-head hosted CI, downloaded artifact verification, external custody and Notion readback. No pass from those future steps is asserted by this static receipt."
+  ],
+  "blockers_to_this_bounded_acceptance": [],
+  "unresolved_scientific_requirements": [
+    "Named independent physical or computational referent and noncircular target variable/species/unit map",
+    "Target-specific force, local net-rate and independently balanced source-energy observations",
+    "Independent uncertainty/accuracy/design and held-out custody certificates",
+    "Separate affirmative source-admission review before any calibration or production assignment"
+  ],
+  "calibration_admitted": false,
+  "requested_calibration_acquisition_complete": false,
+  "production_integration_qualified": false,
+  "automatic_successor": false
+}

@@ -1,0 +1,32 @@
+name: DC-M4 Calibration Source Admission and Quarantined Evidence
+on:
+  push:
+    branches:
+      - codex/dc-m4-calibration-source-admission
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-admission:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.sha }}
+      - name: Offline source integrity and negative admission verification
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.sha }}"
+          python3 scripts/verify_calibration_source_admission.py --repo . --output "$RUNNER_TEMP/calibration-source-evidence"
+          git diff --check 2b2638047a79fcbf01b279e7d3a796873f0017c5
+          test -z "$(git status --porcelain)"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dc-m4-calibration-source-admission-${{ github.sha }}
+          include-hidden-files: true
+          if-no-files-found: error
+          path: ${{ runner.temp }}/calibration-source-evidence/

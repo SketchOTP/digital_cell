@@ -1595,3 +1595,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261017-dcm4-calibration-source-admission
+
+- Issued: 2026-10-17T21:54:19-04:00
+- Issuer: User
+- External directive: DC-M4-INDEPENDENT-CALIBRATION-SOURCE-ADMISSION-001
+- Objective: Admit independent calibration sources and acquire evidence, independently verify the result and preserve existing work with current Notion/project records.
+- Scope: Bounded source discovery and native/mapping audit, primary documentary and licensed independent computational evidence acquisition, target-specific source registry/negative admission, strict metadata gate/tests, offline provenance reconstruction and scoped workflow, additive evidence and records from 2b2638047a79fcbf01b279e7d3a796873f0017c5.
+- Exclusions: Invented source/species/unit mappings, candidate/prototype/R13 relabeling as independent data, fabricated calibration rows/parameter assignment, external source execution or apparatus/author outreach, prior source/prototype/plan/template/history mutation, PR44-50 modification, merge/deploy, production/biological campaigns and automatic successor.
+- Acceptance: Source independence plus target variable/unit/species/raw-observation/uncertainty/design proof before admission; traceable original acquired evidence and independent reconstruction/review; null parameters and explicit partial/blocked acquisition if mandatory proofs are missing; frozen science/history/work/archive preservation, exact-head artifact and Notion/custody readback.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

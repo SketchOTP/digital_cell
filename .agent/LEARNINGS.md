@@ -1514,3 +1514,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Exact rational bounded reference implementation, error/transaction semantics and independent acquisition-plan design; no physical parameter calibration, native-J trajectory, native mesh integration or biological efficacy.
 - Supersedes learning: none
+
+
+## L-DCM4-CALIBRATION-SOURCE-20261017
+
+- Learning ID: L-DCM4-CALIBRATION-SOURCE-20261017
+- Date: 2026-10-17
+- Fact or lesson: A real independent computational motor archive can supply original source and processed data without supplying a map to another model's abstract species, geometry, units or identifying observables. Sparse ZIP member CRC/local SHA integrity is distinct from whole-archive checksum verification and scientific source admission. Metadata completeness is at most eligibility for separate semantic review, never calibration admission.
+- Evidence location: docs/dc-m4-calibration-source-admission.md and .json; docs/dc-m4-calibration-source-evidence/; scripts/calibration_source_admission.py; scripts/verify_calibration_source_admission.py; docs/dc-m4-calibration-source-review.json.
+- Confidence: VERIFIED
+- Scope: Eight inspected source families, quarantined primary/computational evidence and a bounded negative admission; no global impossibility, physical calibration or production integration claim.
+- Supersedes learning: none

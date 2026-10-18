@@ -1,0 +1,1604 @@
+{
+  "schema": "digital_cell_calibration_source_admission_v1",
+  "entry_head": "2b2638047a79fcbf01b279e7d3a796873f0017c5",
+  "status": "PARTIAL_BLOCKED_NO_ADMISSIBLE_CALIBRATION_SOURCE_IN_INSPECTED_SET",
+  "admission_scope": "eight inspected candidate families only; no global absence/impossibility claim",
+  "owner_authorization": "current explicit source-admission/evidence-acquisition request",
+  "acquisition": {
+    "independent_documentary_and_computational_evidence_acquired": true,
+    "external_original_members": 26,
+    "external_processed_tables": 4,
+    "external_processed_rows": 44,
+    "external_numeric_cells": 1012,
+    "raw_replicate_trajectories_acquired": false,
+    "admitted_calibration_rows": 0,
+    "full_archive_MD5_verified": false,
+    "external_code_executed": false
+  },
+  "evidence_catalog": {
+    "E_NATIVE": {
+      "paths": [
+        "digital-protocell/crates/chemistry-core/src/material_mesh.rs",
+        "digital-protocell/crates/chemistry-core/src/mesh_reactions.rs",
+        "digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs",
+        "digital-protocell/crates/regulatory-core/src/polarity_mass.rs",
+        "digital-protocell/crates/regulatory-core/src/contractility.rs"
+      ],
+      "supports": "native constitutive/material/rate/effort pricing definitions; no independently mapped target parameters",
+      "sha256": {
+        "digital-protocell/crates/chemistry-core/src/material_mesh.rs": "2ef99d879aa5e6b6a49f295ba344bf0981675ae85bf8f95550cfd16be32a89f1",
+        "digital-protocell/crates/chemistry-core/src/mesh_reactions.rs": "d6411244f71bf13233f251db226ef48ae4d068e10c264acbf9456c206a0be29e",
+        "digital-protocell/crates/chemistry-core/src/mesh_mechanics.rs": "5e60e013c49bda2a2f04fbb1923f0891c013b21a343ebd41da0ed4fd2d33870c",
+        "digital-protocell/crates/regulatory-core/src/polarity_mass.rs": "0cb6c6a1bfd81cbed698cfe1b74abd7bbdef1229fa077b7a92b612aa48a39dec",
+        "digital-protocell/crates/regulatory-core/src/contractility.rs": "1beb342f76a150d2adc6f484ea3741fd4d230dca751383586b865c2b8a58c135"
+      }
+    },
+    "E_HISTORICAL": {
+      "paths": [
+        "docs/d003_calibration_report.md",
+        "docs/d006_planar_calibration.md",
+        "docs/d016_transport_calibration.md"
+      ],
+      "supports": "internal target/scale-derived calibration domains, not independent target force/kinetic/fuel observations",
+      "sha256": {
+        "docs/d003_calibration_report.md": "a29b584f9eaa36932d033038e608f169b7ca242c74d50636ddf5c662345663ff",
+        "docs/d006_planar_calibration.md": "59a6b994df12b8551ab7c28fce874466cb3c63541b7d279550a504b642658891",
+        "docs/d016_transport_calibration.md": "5ca8dc1420c4c6dbe6c055b71cfef4ec3b7ef03444398fde0cebd4ccc9e74759"
+      }
+    },
+    "E_R13": {
+      "paths": [
+        "docs/dc-m4-reaction-architecture-audit.json",
+        "docs/dc-m4-work-port-specification.json"
+      ],
+      "supports": "R13 outcome-fitting excluded; source/energetic distinction",
+      "sha256": {
+        "docs/dc-m4-reaction-architecture-audit.json": "8d452c3022fbe72db989c252279422eec8f5db90b53fc61e9bd0da3fdecbf3db",
+        "docs/dc-m4-work-port-specification.json": "c30784a0b1006d6a14afde8eb6cb67879a9c15b2f6eda05596a1c55a0d2214f9"
+      }
+    },
+    "E_PROTOTYPE": {
+      "paths": [
+        "scripts/dc_m4_reference_prototype.py",
+        "docs/dc-m4-calibration-acquisition-plan.json"
+      ],
+      "supports": "illustrative candidate-generated prescribed-stroke controls are not independent data",
+      "sha256": {
+        "scripts/dc_m4_reference_prototype.py": "5d349db13266e0eb006e7712475ed1125c288b75a1b27f13eefa08dff7ad3cce",
+        "docs/dc-m4-calibration-acquisition-plan.json": "35d157436376a1038f0ac71c9c9ec7ef6a57d624c7b0d2bfa665a30efc7553c5"
+      }
+    },
+    "E_OTHER_DOMAIN": {
+      "paths": [
+        "digital-protocell/crates/chemistry-core/src/d077_analysis.rs",
+        "digital-protocell/crates/chemistry-core/src/phase_field.rs",
+        "digital-protocell/crates/chemistry-core/src/surface_density.rs"
+      ],
+      "supports": "other surface/phase-field species and kT=1; mapping to R3 polarity and A battery missing",
+      "sha256": {
+        "digital-protocell/crates/chemistry-core/src/d077_analysis.rs": "b69b53b559c5c788796e77c1300446a6b6e313389e3bee0f73b35f260cb13059",
+        "digital-protocell/crates/chemistry-core/src/phase_field.rs": "fa30f555b972eff6bb07d8461ef0049edaa4040ff1c1148983902b60dd9b5728",
+        "digital-protocell/crates/chemistry-core/src/surface_density.rs": "97a2ffccf8822ff70d64d20d59434c3b54753b36e899b05f448fed7fe96f7b3f"
+      }
+    },
+    "E_TOYABE2010": {
+      "paths": [
+        "docs/dc-m4-calibration-source-evidence/primary-document-receipts.json"
+      ],
+      "url": "https://arxiv.org/html/1002.1867v1",
+      "supports": "primary external rotary ATP experiment; original HTML in external archive, native mapping absent",
+      "sha256": {
+        "docs/dc-m4-calibration-source-evidence/primary-document-receipts.json": "2cd629ebaaaa5ad8f8ef88ac73109c8a515fe5001da6cfd589bb88e0357329fa"
+      }
+    },
+    "E_TOYABE2015": {
+      "paths": [
+        "docs/dc-m4-calibration-source-evidence/primary-document-receipts.json"
+      ],
+      "url": "https://arxiv.org/html/1210.4017v4",
+      "supports": "primary external rotary ATP synthesis experiment; raw response link not confirmed in inspected surfaces; no native mapping",
+      "sha256": {
+        "docs/dc-m4-calibration-source-evidence/primary-document-receipts.json": "2cd629ebaaaa5ad8f8ef88ac73109c8a515fe5001da6cfd589bb88e0357329fa"
+      }
+    },
+    "E_ALBAUGH": {
+      "paths": [
+        "docs/dc-m4-calibration-source-evidence/zenodo-4481182-record.json",
+        "docs/dc-m4-calibration-source-evidence/acquisition-receipt.json",
+        "docs/dc-m4-calibration-source-evidence/plot-context-receipt.json",
+        "docs/dc-m4-calibration-source-evidence/table-inventory.json",
+        "docs/dc-m4-calibration-source-evidence/zenodo-4481182-central-directory.bin",
+        "docs/dc-m4-calibration-source-evidence/zenodo-4481182-range-0-199999.bin"
+      ],
+      "url": "https://zenodo.org/records/4481182",
+      "supports": "independent external particle motor, 26 acquired members and 44 processed rows, no target mapping or raw-replicate uncertainty certificate",
+      "sha256": {
+        "docs/dc-m4-calibration-source-evidence/zenodo-4481182-record.json": "db5b67a33b15a7d00a78f80494d8c40edcd33b08832381b3cad0c1ee452cb4fe",
+        "docs/dc-m4-calibration-source-evidence/acquisition-receipt.json": "d4c4e8dc1da1af4a78d02cf7cc525457de4dafc69a1a67509fcead245b542145",
+        "docs/dc-m4-calibration-source-evidence/plot-context-receipt.json": "2fa4c09879a4bb1408f517196aa6dcdc4c233a419af625c942a59b7bdf836e5f",
+        "docs/dc-m4-calibration-source-evidence/table-inventory.json": "fe15b0b35e31dc2d7eebcb4eb149f58744b040f7581d9be4ab8ccac20bc4ec65",
+        "docs/dc-m4-calibration-source-evidence/zenodo-4481182-central-directory.bin": "04ed6dc63c8c21c06ee91f4e154733634ef8ffe51e026c97d28afa6521f9eb38",
+        "docs/dc-m4-calibration-source-evidence/zenodo-4481182-range-0-199999.bin": "6d44753f5af9044761ace6a751e8653cfb1acb0413b2c82454f533879038406e"
+      }
+    }
+  },
+  "candidates": [
+    {
+      "id": "S_NATIVE_CONSTITUTIVE",
+      "kind": "NATIVE_CONSTITUTIVE",
+      "targets": [
+        "K",
+        "lambda",
+        "theta",
+        "epsilon_A"
+      ],
+      "evidence_ids": [
+        "E_NATIVE"
+      ],
+      "independence": "MISSING",
+      "target_gates": {
+        "K": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          }
+        },
+        "lambda": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          }
+        },
+        "theta": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          }
+        },
+        "epsilon_A": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_NATIVE"
+            ],
+            "rationale": "Native ks, c0 and generic material A/W define existing model components; independent target parameter observations and mappings are not established."
+          }
+        }
+      }
+    },
+    {
+      "id": "S_INTERNAL_CALIBRATIONS",
+      "kind": "INTERNAL_GENERATED",
+      "targets": [
+        "K",
+        "lambda",
+        "theta",
+        "epsilon_A"
+      ],
+      "evidence_ids": [
+        "E_HISTORICAL"
+      ],
+      "independence": "REJECTED",
+      "target_gates": {
+        "K": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          }
+        },
+        "lambda": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          }
+        },
+        "theta": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          }
+        },
+        "epsilon_A": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_HISTORICAL"
+            ],
+            "rationale": "Historical reports tune or derive internal simulation targets and scales; they do not provide independent coupling-force, biased-rate or source-free-energy measurements."
+          }
+        }
+      }
+    },
+    {
+      "id": "S_R13_OUTCOMES",
+      "kind": "INTERNAL_GENERATED",
+      "targets": [
+        "K",
+        "lambda",
+        "theta",
+        "epsilon_A"
+      ],
+      "evidence_ids": [
+        "E_R13"
+      ],
+      "independence": "REJECTED",
+      "target_gates": {
+        "K": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          }
+        },
+        "lambda": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          }
+        },
+        "theta": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          }
+        },
+        "epsilon_A": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_R13"
+            ],
+            "rationale": "R13 response signs and desired correction outcomes are expressly forbidden calibration inputs; no independent target observation is admitted."
+          }
+        }
+      }
+    },
+    {
+      "id": "S_REFERENCE_PROTOTYPE",
+      "kind": "PROTOTYPE",
+      "targets": [
+        "K",
+        "lambda",
+        "theta",
+        "epsilon_A"
+      ],
+      "evidence_ids": [
+        "E_PROTOTYPE"
+      ],
+      "independence": "REJECTED",
+      "target_gates": {
+        "K": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          }
+        },
+        "lambda": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          }
+        },
+        "theta": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          }
+        },
+        "epsilon_A": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_PROTOTYPE"
+            ],
+            "rationale": "Prototype data are generated from illustrative target equations and parameters; fitting them back is circular."
+          }
+        }
+      }
+    },
+    {
+      "id": "S_OTHER_THERMODYNAMIC_DOMAIN",
+      "kind": "OTHER_DOMAIN",
+      "targets": [
+        "K",
+        "lambda",
+        "theta",
+        "epsilon_A"
+      ],
+      "evidence_ids": [
+        "E_OTHER_DOMAIN"
+      ],
+      "independence": "MISSING",
+      "target_gates": {
+        "K": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          }
+        },
+        "lambda": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          }
+        },
+        "theta": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          }
+        },
+        "epsilon_A": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_OTHER_DOMAIN"
+            ],
+            "rationale": "Legitimate older surface/phase-field thermodynamics uses different species and geometry; matching symbols or kT=1 do not establish the target mappings."
+          }
+        }
+      }
+    },
+    {
+      "id": "S_TOYABE2010",
+      "kind": "EXTERNAL_EXPERIMENTAL",
+      "targets": [
+        "epsilon_A"
+      ],
+      "evidence_ids": [
+        "E_TOYABE2010"
+      ],
+      "independence": "VERIFIED",
+      "target_gates": {
+        "epsilon_A": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2010"
+            ],
+            "rationale": "Independent rotary ATP work/heat measurements exist in primary figures, but A/W/P, edge geometry and force/length/energy mappings, raw trace provenance and pre-response uncertainty/design certificates are missing."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2010"
+            ],
+            "rationale": "Independent rotary ATP work/heat measurements exist in primary figures, but A/W/P, edge geometry and force/length/energy mappings, raw trace provenance and pre-response uncertainty/design certificates are missing."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2010"
+            ],
+            "rationale": "Independent rotary ATP work/heat measurements exist in primary figures, but A/W/P, edge geometry and force/length/energy mappings, raw trace provenance and pre-response uncertainty/design certificates are missing."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2010"
+            ],
+            "rationale": "Independent rotary ATP work/heat measurements exist in primary figures, but A/W/P, edge geometry and force/length/energy mappings, raw trace provenance and pre-response uncertainty/design certificates are missing."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2010"
+            ],
+            "rationale": "Independent rotary ATP work/heat measurements exist in primary figures, but A/W/P, edge geometry and force/length/energy mappings, raw trace provenance and pre-response uncertainty/design certificates are missing."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2010"
+            ],
+            "rationale": "Independent rotary ATP work/heat measurements exist in primary figures, but A/W/P, edge geometry and force/length/energy mappings, raw trace provenance and pre-response uncertainty/design certificates are missing."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2010"
+            ],
+            "rationale": "Independent rotary ATP work/heat measurements exist in primary figures, but A/W/P, edge geometry and force/length/energy mappings, raw trace provenance and pre-response uncertainty/design certificates are missing."
+          }
+        }
+      }
+    },
+    {
+      "id": "S_TOYABE2015",
+      "kind": "EXTERNAL_EXPERIMENTAL",
+      "targets": [
+        "epsilon_A"
+      ],
+      "evidence_ids": [
+        "E_TOYABE2015"
+      ],
+      "independence": "VERIFIED",
+      "target_gates": {
+        "epsilon_A": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2015"
+            ],
+            "rationale": "Independent rotary ATP synthesis work/probe heat measurements do not map model A to ATP or provide the required target-specific amount/work/heat/uncertainty/design certificates."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2015"
+            ],
+            "rationale": "Independent rotary ATP synthesis work/probe heat measurements do not map model A to ATP or provide the required target-specific amount/work/heat/uncertainty/design certificates."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2015"
+            ],
+            "rationale": "Independent rotary ATP synthesis work/probe heat measurements do not map model A to ATP or provide the required target-specific amount/work/heat/uncertainty/design certificates."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2015"
+            ],
+            "rationale": "Independent rotary ATP synthesis work/probe heat measurements do not map model A to ATP or provide the required target-specific amount/work/heat/uncertainty/design certificates."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2015"
+            ],
+            "rationale": "Independent rotary ATP synthesis work/probe heat measurements do not map model A to ATP or provide the required target-specific amount/work/heat/uncertainty/design certificates."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2015"
+            ],
+            "rationale": "Independent rotary ATP synthesis work/probe heat measurements do not map model A to ATP or provide the required target-specific amount/work/heat/uncertainty/design certificates."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_TOYABE2015"
+            ],
+            "rationale": "Independent rotary ATP synthesis work/probe heat measurements do not map model A to ATP or provide the required target-specific amount/work/heat/uncertainty/design certificates."
+          }
+        }
+      }
+    },
+    {
+      "id": "S_ALBAUGH2022",
+      "kind": "EXTERNAL_COMPUTATIONAL",
+      "targets": [
+        "K",
+        "lambda",
+        "theta",
+        "epsilon_A"
+      ],
+      "evidence_ids": [
+        "E_ALBAUGH"
+      ],
+      "independence": "VERIFIED",
+      "target_gates": {
+        "K": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "FTC/ETC/C counts and shuttling-ring current/eight coarse states do not establish fixed-edge active/inactive polarity, strain or signed coupling-tension mappings."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "Non-dimensional particle energy/length/temperature and open chemostats lack a justified map to finite generic A/W/P and fixed native force/length units."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "44 acquired published processed computational summary rows are not target-specific additional force, unclipped local J or source-free-energy/material observations; raw replicate trajectories were not acquired."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "The selected figures sweep chemical potential or friction; they do not instantiate the sealed 80-row force lattice, kinetic probes or work/fuel holdouts."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "Source scripts distinguish SD/SE by observable; no independently justified target error/correlation/absolute-budget/width certificate is present."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "The source is a historical publication. Sparse selection was sealed before inspection for audit only, not a retroactive target calibration or original experiment preregistration."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "A semantic audit of this negative admission is distinct from an affirmative review of missing target mapping/data/uncertainty proofs."
+          }
+        },
+        "lambda": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "FTC/ETC/C counts and shuttling-ring current/eight coarse states do not establish fixed-edge active/inactive polarity, strain or signed coupling-tension mappings."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "Non-dimensional particle energy/length/temperature and open chemostats lack a justified map to finite generic A/W/P and fixed native force/length units."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "44 acquired published processed computational summary rows are not target-specific additional force, unclipped local J or source-free-energy/material observations; raw replicate trajectories were not acquired."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "The selected figures sweep chemical potential or friction; they do not instantiate the sealed 80-row force lattice, kinetic probes or work/fuel holdouts."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "Source scripts distinguish SD/SE by observable; no independently justified target error/correlation/absolute-budget/width certificate is present."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "The source is a historical publication. Sparse selection was sealed before inspection for audit only, not a retroactive target calibration or original experiment preregistration."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "A semantic audit of this negative admission is distinct from an affirmative review of missing target mapping/data/uncertainty proofs."
+          }
+        },
+        "theta": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "FTC/ETC/C counts and shuttling-ring current/eight coarse states do not establish fixed-edge active/inactive polarity, strain or signed coupling-tension mappings."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "Non-dimensional particle energy/length/temperature and open chemostats lack a justified map to finite generic A/W/P and fixed native force/length units."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "44 acquired published processed computational summary rows are not target-specific additional force, unclipped local J or source-free-energy/material observations; raw replicate trajectories were not acquired."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "The selected figures sweep chemical potential or friction; they do not instantiate the sealed 80-row force lattice, kinetic probes or work/fuel holdouts."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "Source scripts distinguish SD/SE by observable; no independently justified target error/correlation/absolute-budget/width certificate is present."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "The source is a historical publication. Sparse selection was sealed before inspection for audit only, not a retroactive target calibration or original experiment preregistration."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "A semantic audit of this negative admission is distinct from an affirmative review of missing target mapping/data/uncertainty proofs."
+          }
+        },
+        "epsilon_A": {
+          "variable_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "FTC/ETC/C counts and shuttling-ring current/eight coarse states do not establish fixed-edge active/inactive polarity, strain or signed coupling-tension mappings."
+          },
+          "unit_species_mapping": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "Non-dimensional particle energy/length/temperature and open chemostats lack a justified map to finite generic A/W/P and fixed native force/length units."
+          },
+          "observations": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "44 acquired published processed computational summary rows are not target-specific additional force, unclipped local J or source-free-energy/material observations; raw replicate trajectories were not acquired."
+          },
+          "design_coverage": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "The selected figures sweep chemical potential or friction; they do not instantiate the sealed 80-row force lattice, kinetic probes or work/fuel holdouts."
+          },
+          "uncertainty_budget": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "Source scripts distinguish SD/SE by observable; no independently justified target error/correlation/absolute-budget/width certificate is present."
+          },
+          "pre_response_seal": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "The source is a historical publication. Sparse selection was sealed before inspection for audit only, not a retroactive target calibration or original experiment preregistration."
+          },
+          "independent_review": {
+            "status": "MISSING",
+            "evidence_ids": [
+              "E_ALBAUGH"
+            ],
+            "rationale": "A semantic audit of this negative admission is distinct from an affirmative review of missing target mapping/data/uncertainty proofs."
+          }
+        }
+      }
+    }
+  ],
+  "admitted_source_ids": [],
+  "admitted_calibration_datasets": [],
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "fitting_performed": false,
+  "native_runtime_modified": false,
+  "automatic_successor": false,
+  "unblocking_requirements": [
+    "named physical or independent computational calibration referent with justified variable/species/unit mapping",
+    "noncircular target force/net-rate/source-energy observations",
+    "independent uncertainty/accuracy/design seals and held-out custody",
+    "separate affirmative semantic source-admission review"
+  ],
+  "retrieval_limitations": [
+    "publisher Nature redirect and PMC challenge blocked some parent full-text endpoints; accessible primary arXiv and Zenodo used",
+    "Toyabe separately linked raw experimental dataset not confirmed, absence not proven",
+    "551498479-byte archive sparsely acquired; advertised whole MD5 not verified",
+    "Notion project calibration search returned existing plans/contracts and older reviews; DECIMA exact Digital Cell calibration query returned no hits"
+  ],
+  "owner_context": {
+    "specific_reference_established": false,
+    "verbatim_reply": "No specific reference is established",
+    "reply_context": "Asked whether Digital Cell matches a specific independent physical system or computational model",
+    "authorization_to_invent_mapping_or_assign_values": false
+  }
+}

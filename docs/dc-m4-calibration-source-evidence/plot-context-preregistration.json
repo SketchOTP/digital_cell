@@ -1,0 +1,25 @@
+{
+  "sealed_at": "2026-10-18T01:48:32.726827+00:00",
+  "purpose": "read complete published figure scripts to establish column semantics, as instructed by acquired data README; no outcome-dependent row selection or calibration",
+  "members": [
+    {
+      "name": "zenodo/data_and_figures/fig3/fig3.py",
+      "method": 8,
+      "crc32": 3045655417,
+      "compressed_size": 1120,
+      "size": 3200,
+      "flags": 8,
+      "offset": 94657
+    },
+    {
+      "name": "zenodo/data_and_figures/fig4/fig4.py",
+      "method": 8,
+      "crc32": 2010592614,
+      "compressed_size": 1159,
+      "size": 3309,
+      "flags": 8,
+      "offset": 100745
+    }
+  ],
+  "parent_receipt_sha256": "d4c4e8dc1da1af4a78d02cf7cc525457de4dafc69a1a67509fcead245b542145"
+}

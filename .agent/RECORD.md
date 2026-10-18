@@ -2229,3 +2229,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Executable reference cycles resolve the prior implementation gap without inventing empirical constants or a native adapter. Reuse accepted v2 equations and standard-library Fraction/bisection rather than external code. Primary Toyabe2010 and Toyabe/Muneyuki2015 papers are REFERENCE measurement methods only; no values, ATP identity, efficiency, apparatus or regeneration are imported. Independent source provenance, species/units and complete loss/storage accounting must precede calibration.
 - Affected areas: New reference program/tests/docs/plan/template/verifier/workflow and project records; Notion https://app.notion.com/p/3fd833cb27ff817798eccbee4cc547aa; local /home/sketch/Projects/digital_cell-reference-prototype-evidence/ and additive Atlas evidence/reference-prototype/. Nine previous checkouts, PR44-49, 696 entry archive files and original dirty Atlas source remain preserved; no automatic successor.
 - Supersedes record: none
+
+
+## DEC-DCM4-CALIBRATION-SOURCE-20261017
+
+- Date: 2026-10-17
+- Record or decision ID: DEC-DCM4-CALIBRATION-SOURCE-20261017
+- Status: ACTIVE
+- Decision or event: Owner-authorized source admission/acquisition yields acquired independent documentary and processed computational evidence, but no admissible target calibration source. Preserve null parameters and active blocked acquisition. The owner confirms no specific reference is established; do not silently choose a physical referent, species/unit map or numerical design values.
+- Rationale: Native coefficients/internal targets and candidate output cannot independently identify the new coupling sector. Toyabe2010/2015 are rotary ATP references with missing target mappings and unconfirmed raw-response availability. Albaugh/Gingrich Zenodo4481182 is independently authored CC-BY-4.0 code/data, acquired as sparse original bytes and 26 members for nonexecuted reference inspection only. Forty-four processed rows do not become target observations; partial archive integrity does not verify its whole MD5. Source code remains quarantined, not ADOPT/WRAP/COMPOSE. The bounded source search cannot prove global absence.
+- Affected areas: New source gate/evidence/report/workflow and records; Notion https://app.notion.com/p/3fd833cb27ff8194be1de9792789b3e0; local /home/sketch/Projects/digital_cell-calibration-source-evidence/ and additive Atlas evidence/calibration-source-admission/. Ten previous checkouts, PR44-50, 1028 prior scoped archive files and dirty original Atlas source remain preserved. Independent data acquisition stays unresolved.
+- Supersedes record: none

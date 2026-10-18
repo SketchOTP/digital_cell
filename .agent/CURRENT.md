@@ -3,18 +3,29 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-17T21:23:33-04:00`
+- Last updated: `2026-10-17T21:54:19-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261017-dcm4-reference-prototype`
-- External directive ID: `DC-M4-BOUNDED-REFERENCE-PROTOTYPE-CALIBRATION-PLAN-001`
-- Objective: Implement and independently verify a bounded reference prototype and independent calibration-evidence acquisition plan, preserving work and records.
-- Current status: `COMPLETE`
-- Acceptance: `MET — bounded reference implementation and acquisition plan only; independent calibration and full native integration remain unestablished; exact-head receipts follow externally`
-- Current phase: `Cold-entry scalar reference implemented; calibration source/data missing`
-- Expected or actual touched areas: `New standalone program/tests/docs, acquisition plan and empty template, scoped checker/workflow, additive evidence and project/Notion records`
-- Immediate next action: `Acquire an independently admitted source/mapping and sealed evidence under a separate campaign directive; no automatic fitting, production integration or successor`
+- Local directive ID: `D-20261017-dcm4-calibration-source-admission`
+- External directive ID: `DC-M4-INDEPENDENT-CALIBRATION-SOURCE-ADMISSION-001`
+- Objective: Admit independent calibration sources and acquire evidence, independently verify and preserve all work with current records.
+- Current status: `BLOCKED`
+- Acceptance: `PARTIAL — independent documentary/computational evidence acquired and negative admission verified; admissible target calibration acquisition remains unresolved`
+- Current phase: `No established independent referent or target variable/species/unit mappings; zero admitted calibration observations`
+- Expected or actual touched areas: `New quarantined primary/source evidence, report/registry/eligibility gate/tests/checker/workflow, additive custody and project/Notion records`
+- Immediate next action: `Resolve an intended independent calibration referent and justified mapping or explicitly revise the modeling strategy; no assumed mapping, calibration fit or automatic successor`
+
+### Independent source admission and evidence acquisition
+
+- **Entry and scope:** `2b2638047a79fcbf01b279e7d3a796873f0017c5`; isolated checkout `/home/sketch/Projects/digital_cell-calibration-source-admission`. Eight inspected source families; no global source-absence or impossibility claim.
+- **Owner clarification:** no specific independent physical or computational reference is established. This is a missing scientific referent, not merely a missing download; no mapping or parameter design choice is inferred from the reply.
+- **Acquired evidence:** primary documentary HTML and a licensed independent Albaugh/Gingrich archive subset. Twenty-six original members include 18 source-directory files, two readmes, four published processed computational summary tables and two plot scripts. All 44x23 finite numerical cells are retained; no raw replicate traces or Digital Cell calibration observations are admitted. No acquired code runs.
+- **Integrity limits:** sparse prefix/directory/tail, member CRC/local SHA and selection receipts verify. Whole 551498479-byte archive and advertised MD5 are not verified. Internal selection lineage is not externally timestamped preregistration or publisher cryptographic attestation.
+- **Admission:** native ks/c0/internal targets and prototype/R13 outputs do not identify new parameters. External motor chemistry/coordinates have no established A/W/P/edge-strain/native-unit map or target observations/uncertainty/design seals. Strict metadata controls never self-admit; distinct negative semantic review and exact-head package verification remain separate from scientific calibration.
+- **Current result:** PARTIAL/BLOCKED; source/reference acquisition is real, admitted source/data registries are empty and K/lambda/theta/epsilon_A stay null. No fit, native-J/integration, R13 correction or automatic successor. Previous prototype qualification remains intact.
+- **Preservation and custody:** ten prior checkouts, PR44-50, original dirty Atlas source and all1028 earlier scoped archive files protected with local originals retained. New Notion https://app.notion.com/p/3fd833cb27ff8194be1de9792789b3e0; local `/home/sketch/Projects/digital_cell-calibration-source-evidence/`; additive Atlas `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/calibration-source-admission/`. Final exact-head publication and readback receipts live externally.
+- **Bridge and governance:** healthy bridge remains unrelated activation-test only; no Digital Cell dispatch/review identity claimed. Full retained contract refreshed; append-only history and preexisting global schema drift remain preserved.
 
 ### Bounded reference prototype and acquisition plan
 
