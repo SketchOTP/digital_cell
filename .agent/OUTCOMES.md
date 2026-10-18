@@ -2994,3 +2994,23 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: Source transport/member integrity does not establish calibration validity, raw experiment uncertainty or external preregistration attestation. Independent model/data coordinates and chemistry lack target mappings. Literature raw data availability is unconfirmed in inspected surfaces, not proven absent. No global source absence, native integration or R13 correction claim follows.
 - Blockers: No established independent physical/computational referent and no admissible target-specific mapping/observations/uncertainty/design package in the eight inspected source families. Owner explicitly confirmed no specific reference is established. Acquisition objective stays active/blocked; no automatic successor.
 - Follow-up directive: none
+
+
+## D-20261017-dcm4-calibration-reference-mapping - PARTIAL
+
+- Outcome ID: O-DCM4-REFERENCE-MAPPING-20261017
+- Supersedes outcome: none
+- Closed: 2026-10-17T22:14:27-04:00
+- Acceptance: PARTIAL
+- Summary: Selected Toyabe2010 as limited independent experimental work/heat/affinity comparator and defined a proposed fixed-material two-port Hookean reference contract. Established exact conditional unit/work mappings and mechanical inverse relations. Binary-mixture energy and finite-fuel affinity obstructions prevent force-only or name-only full mapping. Full four-parameter calibration remains active/blocked, all values null and no target observations admitted.
+- Changed areas: New reference directive/report/registry/helper/tests/verifier/workflow/review and additive project/Notion/local/Atlas records.
+- Validation:
+  - Parent 11 focused tests, 25 exact helper cases and independent 64 joint-work / 136 direct-mixture / 202 finite-source slope cases - PASSED
+  - Distinct seven-file static hash-bound review and parent 91-frozen-input / 108-bundled-file package/source/history verification - PASSED
+  - Full independent source/kinetic identity, target observations and uncertainty/holdout admission - BLOCKED
+  - Fixture construction/metrology, parameter fitting and native integration - NOT RUN
+  - Historical global governance drift retained without clean-global claim - FAILED
+  - Exact-head hosted artifact, final preservation and Notion readback; external receipts follow - NOT RUN
+- Remaining risks: Algebraic realization is not independent calibration. Fixture is unbuilt/unmeasured at fixed P,L0 only. Source identity, amount/SI scales, finite-source affinity, theta and uncertainty/holdout evidence remain missing. No global impossibility or production correction follows.
+- Blockers: No independently established complete reference or admitted target-specific mechanical/source/kinetic observations. No automatic successor.
+- Follow-up directive: none

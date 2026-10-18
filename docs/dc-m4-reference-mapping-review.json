@@ -1,0 +1,84 @@
+{
+  "schema": "digital_cell_conditional_reference_mapping_independent_review_v1",
+  "decision": "ACCEPTED_CONDITIONAL_REFERENCE_MAPPING_ONLY",
+  "review_date": "2026-10-17",
+  "entry_head": "004d7f6c775b5adf2a092cde33d42c349b8f4cee",
+  "reviewer": "distinct governance_audit agent; no report, helper, test, registry, directive or verifier implementation authorship",
+  "method": "Independent primary-source research, complete static reading of all seven final core files and analytic verification of their equations. No workload, test, download, assay or acquired-source execution or monitoring by reviewer. File hashing and this review receipt are bookkeeping only.",
+  "reviewed_files": {
+    "docs/dc-m4-reference-mapping-directive.md": "05b445ff03d80cb191771763f8a5d5c5b351987c5181dd47a4193aaccfbd0629",
+    "docs/dc-m4-reference-mapping.md": "96819e1d8ec77e38f14c035476231d221a1b07ec39c94ff16d0ea2fc658e9a7f",
+    "docs/dc-m4-reference-mapping.json": "b22e7c31461e05c0a65ce4479fa550688965ad0f5c5ec9be7292bea189a4a95d",
+    "scripts/reference_mapping.py": "033be3988b83a048a91e156f50cb3e76427d1ef976cafb6f0643a42919c7213f",
+    "scripts/test_reference_mapping.py": "de12f9844908c3b18d4cab84171bc1e4473a35cf77ac47a392d319918360d32f",
+    "scripts/verify_reference_mapping.py": "ad4a42b976f928d5782ff687c58cb9b4dca4726d25df28cbef691978215c08c5",
+    ".github/workflows/dc-m4-reference-mapping.yml": "853d043cc91e84ff6197e55851ee440e437e19f88a0ae6cc1f5d2540ec09f5b6"
+  },
+  "preflight": {
+    "historical_complete_coverage_retained": true,
+    "refresh": "Read complete 2b2638047a79fcbf01b279e7d3a796873f0017c5 to entry .agent changes and current/profile updates. Read all new directive/outcome/learning/record/repo-map entries and storage/current updates; retained governing AGENTS, COMMANDMENTS, authority-governance and prior contracts/source preflight.",
+    "bridge": "Unrelated activation-test configuration is not Digital Cell dispatch or acceptance."
+  },
+  "accepted_criteria": [
+    "Toyabe2010 is a named primary experimental work/heat/affinity comparator; the proposed two-port spring is explicitly unbuilt and unmeasured. Albaugh remains contrasting computational evidence, not target calibration identity.",
+    "Native length, time, polarity, fuel and energy dimensions are distinguished. Positive native normalization conventions do not identify SI magnitudes or dimensionless constitutive groups.",
+    "The positive scale dictionary preserves conjugate force/length and affinity/polarity work, chemical tilt, reaction-rate dimensions, drag, fuel overhead and energy scaling within the same constitutive model.",
+    "The fixed-P,L0 fixture matches Uref=e*Ec only with kref*sL^2=e*K*P/L0^2 and sa/sL=lambda*L0/P. The inverse K retains the independently required energy scale e; target efforts divide the reference Jacobian by e.",
+    "Both spring ports contribute to finite work. The endpoint-average gradient closes the quadratic energy difference for simultaneous linear port displacement. Externally commanded conversion-port work is not declared to be fuel or ATP work.",
+    "The fixture is restricted to fixed material. Cross-P stiffness and gearing conditions are explicit and cannot be satisfied as independent evidence by tuning from unknown target coefficients.",
+    "The binary harmonic-state counterexample is exact: force can match while variance energy alters conversion effort. Midpoint contact and symmetric endpoint cancellations do not establish an interval energy/affinity identity; mixing entropy and chemical offsets cannot silently disappear.",
+    "The isolated ideal-mixture affinity derivative is strictly negative on the declared depletion interval. The bound B controls local affinity error and integrated constant-affinity energy error. This conditional obstruction does not prove universal impossibility or import a source dataset.",
+    "Rotary work and drag transformations retain signs, radians and reverse motion. Angle origin shifts are distinguished from torque-zero errors, which change work. A winding coordinate is not globally identified with the bounded edge.",
+    "Exact Fraction helper controls include nonunit energy scaling, both effort Jacobians, rate and finite-path fuel/heat scaling, mixture variance and isolated fuel bounds. Tests include independent finite differences and a Decimal logarithmic antiderivative. These are illustrative algebra controls, not measurements.",
+    "Workflow and verifier statically enforce seven exact review bindings, cumulative baseline diff checks, prior review/source/protocol freezes, append-only prefixes, structured new records and exact-head artifact generation. Parent execution evidence remains separate.",
+    "The registry and records keep PARTIAL/BLOCKED, all four production values and numerical scales null, zero admitted target observations, no fitting/native modification and no automatic successor."
+  ],
+  "resolved_findings": [
+    "Torque-origin ambiguity corrected: only angle-coordinate origin is arbitrary; torque offset requires independent calibration and contributes offset times displacement work.",
+    "Fixture energy-unit ambiguity corrected throughout report, registry, helper and tests: Uref=e*Ec and inverse K includes division by e.",
+    "Positive normalization prerequisites, dimensional-cutoff transformation caveat and symmetric variance-endpoint cancellation are explicit."
+  ],
+  "independent_primary_sources": [
+    {
+      "url": "https://arxiv.org/html/1002.1867v1",
+      "role": "Primary rotary work/heat methodology; no target species or amount identity."
+    },
+    {
+      "url": "https://arxiv.org/html/1210.4017v4",
+      "role": "Reverse-transduction methodological companion; no target finite-A calibration."
+    },
+    {
+      "url": "https://arxiv.org/html/1307.3998v4",
+      "role": "Discrete chemical-state/angular-coordinate and local-detailed-balance comparison, not a global continuous-occupancy spring identity."
+    },
+    {
+      "url": "https://zenodo.org/records/4481182",
+      "role": "Independently authored computational archive with different chemistry/coordinates and open reservoirs."
+    },
+    {
+      "url": "https://www.nist.gov/programs-projects/calibration-force-transducers",
+      "role": "Independent applied-force/deformation calibration method; no NIST certificate or uncertainty imported."
+    },
+    {
+      "url": "https://www.bipm.org/fr/si-brochure-9",
+      "role": "Quantity/unit distinction, including torque versus energy and angular versus cycle frequency."
+    }
+  ],
+  "limitations": [
+    "Acceptance establishes a conditional reference contract and mathematical unit/work maps only. A justified complete independently realized calibration reference, species map and empirical data remain missing; requested full calibration is PARTIAL/BLOCKED.",
+    "A proposed matching spring is a new designed realization specification. Its formula, synthetic fixture values and inverse algebra are not independent calibration evidence. No fixture exists or is measured by this package.",
+    "No mechanical K/lambda is identified until independent geometry, polarity amount, energy scale, stiffness/gearing, uncertainty and holdout evidence exists. The fixed fixture does not complete the previous multi-P design.",
+    "Theta is a phenomenological reaction-work scale here, not identified as kBT. Reversible ATP chemistry and motor local detailed balance do not establish the irreversible finite-A path-variation funding policy.",
+    "Fuel bounds are conditional ideal-mixture/continuous-extent mathematics. Positive-affinity domain, actual composition, activity corrections, stoichiometry, count/molar conventions and total approximation budgets remain independently required.",
+    "Constant-affinity chemostats introduce owned material/energy ports. Collapsing blocker states or identifying total occupancy with a chemical phase need not preserve Markov dynamics, energy or correlations.",
+    "The similarity helper checks algebra on declared fixed-material domains; full native guard, cutoff, transport, remesh, topology, synthesis and persistence semantics are not implemented or qualified. All dimensional cutoffs must transform under an actual unit change.",
+    "Finite-stroke similarity uses illustrative positive/negative variations as algebraic ledger inputs; it is not an independently observed fuel trajectory or a new runtime reachability qualification.",
+    "Parent owns all test/package results, preservation/custody checks, exact-head hosted CI, downloaded artifact verification and Notion readback. This receipt does not claim those checks ran or passed.",
+    "No physical apparatus acquisition, parameter assignment, production dynamics, R13 correction, biological efficacy or automatic successor is accepted."
+  ],
+  "acceptance_blockers": [],
+  "full_calibration_established": false,
+  "independent_target_observations_admitted": 0,
+  "production_parameters_identified": false,
+  "automatic_successor": false
+}

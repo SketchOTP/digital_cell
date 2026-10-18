@@ -1610,3 +1610,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261017-dcm4-calibration-reference-mapping
+
+- Issued: 2026-10-17T22:14:27-04:00
+- Issuer: User
+- External directive: DC-M4-CALIBRATION-REFERENCE-MAPPING-001
+- Objective: Establish a justified calibration reference and variable/unit mappings, independently verify and preserve all existing work with current Notion/project records.
+- Scope: Reference-role selection, fixed-material mechanical realization specification, conditional complete unit/work dictionary, source-grounded obstructions and approximation bounds, exact helper/tests/checker/workflow and additive records/custody from 004d7f6c775b5adf2a092cde33d42c349b8f4cee.
+- Exclusions: Invented empirical equivalence, data or parameters; production/source/prior-protocol mutation; fitting, source execution, apparatus/author outreach, native/biological campaign, PR44–51 modification, merge/deploy and automatic successor.
+- Acceptance: Justified limited references; both conjugate ports, units and domains explicit; distinction between normalization/realization/identification; independent review and parent algebra/tests/artifact verification; honest partial/full disposition; preservation and Notion readback.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

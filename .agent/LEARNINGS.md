@@ -1525,3 +1525,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Eight inspected source families, quarantined primary/computational evidence and a bounded negative admission; no global impossibility, physical calibration or production integration claim.
 - Supersedes learning: none
+
+
+## L-DCM4-REFERENCE-MAPPING-20261017
+
+- Learning ID: L-DCM4-REFERENCE-MAPPING-20261017
+- Date: 2026-10-17
+- Fact or lesson: An exact force/coordinate dictionary and a matching mechanical spring do not establish conversion-work or finite-source equivalence. Independent binary-state springs carry a variance-energy term invisible to mechanical force. An isolated ideal fuel mixture changes affinity with depletion, whereas the candidate ideal battery is constant-affinity. Work-conjugate unit changes preserve these differences rather than fixing them.
+- Evidence location: docs/dc-m4-reference-mapping.md and .json; scripts/reference_mapping.py; scripts/test_reference_mapping.py; scripts/verify_reference_mapping.py; docs/dc-m4-reference-mapping-review.json.
+- Confidence: VERIFIED
+- Scope: Conditional exact mappings and limited primary-source semantics; no empirical calibration or general impossibility claim.
+- Supersedes learning: none

@@ -1,0 +1,12 @@
+# Justified reference and variable/unit mappings
+
+- Directive: D-20261017-dcm4-calibration-reference-mapping; external DC-M4-CALIBRATION-REFERENCE-MAPPING-001.
+- Repository: SketchOTP/digital_cell; observed entry 004d7f6c775b5adf2a092cde33d42c349b8f4cee.
+- Authority: owner requests establishing a justified reference/mapping and independent verification; prior owner clarification is “No specific reference is established”. This authorizes explicit reference selection, not invented empirical equivalence.
+- Objective: select defensible reference roles, derive mechanically and chemically conjugate unit maps, determine which target quantities are identifiable and preserve all work.
+- Scope: reference specification, source-grounded compatibility analysis, exact arithmetic helper/controls, standalone verifier/workflow, distinct static review and additive project/Notion/custody records.
+- Constraints: fixed-material bounded v2 architecture and all prior science/contracts/evidence frozen; four production values remain null unless independent target-specific evidence actually establishes them. No newly invented observations, source execution, parameter fit, production dynamics, biological campaign, merge or automatic successor.
+- Acceptance: source identity and role justified; dimensions and both work ports preserved; explicit domains, assumptions, missing mappings and counterexamples; separate normalization/realization/identification; honest partial disposition if full mapping fails; distinct hash-bound review and parent-owned analytic/tests/exact-head artifact checks; all prior work/archive/PRs preserved and Notion read back.
+- Execution ownership: analyst authors helper/tests only; parent owns all workload execution, documentation/publication and verification; reviewer is distinct from authors. Healthy bridge is configured only for unrelated activation-test; this is a complete local handoff, not a bridge dispatch/acceptance claim.
+- Preservation entry: 11 prior local checkouts, PR44–51, 1347 existing scoped Atlas archive files and original dirty Atlas checkout. UUID must be verified before writes. Retain local originals; append-only ledgers retain full prefixes.
+- Stop boundary: no full four-parameter calibration or source admission without independent semantic mapping, observations and uncertainty/design seals. Produce useful exact conditional maps and identify the remaining scientific decision; no successor automatically starts.
