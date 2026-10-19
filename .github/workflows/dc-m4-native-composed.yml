@@ -1,0 +1,53 @@
+name: DC-M4 Composed Native Hybrid Reference
+on:
+  push:
+    branches: [codex/dc-m4-native-composed-integration]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qualify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: dtolnay/rust-toolchain@1.89.0
+      - name: Native trajectory and independent reconstruction
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/composed-evidence"
+          rustc --version --verbose > "$RUNNER_TEMP/composed-evidence/rust-version.txt"
+          cd digital-protocell
+          cargo test --locked -p chemistry-core --features chemical-reference-port --test chemical_reference_port --test chemical_body_port --test chemical_composed_port 2>&1 | tee "$RUNNER_TEMP/composed-evidence/native-tests.log"
+          cargo build --locked -p chemistry-core --features chemical-reference-port --example chemical_composed_port 2>&1 | tee "$RUNNER_TEMP/composed-evidence/native-build.log"
+          cp target/debug/examples/chemical_composed_port "$RUNNER_TEMP/composed-evidence/native-composed"
+          "$RUNNER_TEMP/composed-evidence/native-composed" --probe > "$RUNNER_TEMP/composed-evidence/native-probe.json"
+          "$RUNNER_TEMP/composed-evidence/native-composed" > "$RUNNER_TEMP/composed-evidence/native-observations.json"
+          cd ..
+          python3 -m unittest discover -s scripts -p test_native_composed_oracle.py -v 2>&1 | tee "$RUNNER_TEMP/composed-evidence/oracle-tests.log"
+          python3 scripts/qualify_native_composed.py --input "$RUNNER_TEMP/composed-evidence/native-observations.json" --binary "$RUNNER_TEMP/composed-evidence/native-composed" --output "$RUNNER_TEMP/composed-evidence" > "$RUNNER_TEMP/composed-evidence/qualification.log"
+          if test -f docs/dc-m4-native-composed-review.json; then
+            python3 scripts/verify_native_composed.py --require-review --output "$RUNNER_TEMP/composed-evidence" > "$RUNNER_TEMP/composed-evidence/scope.log"
+          else
+            python3 scripts/verify_native_composed.py --output "$RUNNER_TEMP/composed-evidence" > "$RUNNER_TEMP/composed-evidence/scope.log"
+          fi
+          git diff --check 552e3795c09961ba56ceef4f8da2503fbb63e0f9
+          test -z "$(git status --porcelain)"
+          python3 - "$RUNNER_TEMP/composed-evidence" <<'PYCODE'
+          import pathlib,json,hashlib,subprocess,sys
+          root=pathlib.Path('.');out=pathlib.Path(sys.argv[1]);files=subprocess.check_output(['git','ls-files','-z']).decode().split('\0')
+          b={'head':subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip(),'files':{p:hashlib.sha256((root/p).read_bytes()).hexdigest() for p in files if p and (root/p).is_file()},'evidence':{str(p.relative_to(out)):hashlib.sha256(p.read_bytes()).hexdigest() for p in out.rglob('*') if p.is_file()}}
+          (out/'bindings.json').write_text(json.dumps(b,indent=2)+'\n')
+          PYCODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dc-m4-native-composed-${{ github.sha }}
+          if-no-files-found: error
+          include-hidden-files: true
+          path: ${{ runner.temp }}/composed-evidence/
