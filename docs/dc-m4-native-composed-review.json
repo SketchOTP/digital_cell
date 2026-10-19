@@ -1,0 +1,149 @@
+{
+  "acceptance_blockers": [],
+  "acceptance_criteria_review": {
+    "actual_evolved_fission_cost_exact_inheritance_and_both_daughter_continuations": "ACCEPTED_WITHIN_PRESCRIBED_CUT",
+    "atomic_rejection_and_trusted_restart_consistency": "ACCEPTED_WITHIN_TESTED_CONTROLS",
+    "chemical_only_funded_newborn_maturation": "NOT_DEMONSTRATED",
+    "complete_biological_membranes_contact_and_autonomous_lifecycle": "NOT_QUALIFIED",
+    "complete_source_stoichiometry_rate_tilt_and_moving_volume_forces": "ACCEPTED_WITHIN_SEALED_REFERENCE",
+    "continuous_defect_budgets_and_time_refinement": "OBSERVED_PASS_WITHOUT_RIGOROUS_GLOBAL_ERROR_CLAIM",
+    "empirical_chemical_target_and_full_parameter_calibration": "NOT_QUALIFIED",
+    "endogenous_event_hazards_or_reversible_generator": "NOT_IMPLEMENTED",
+    "finite_structural_donors_and_full_event_storage_jumps": "ACCEPTED_WITHIN_PRESCRIBED_EVENTS",
+    "native_geometry_mechanics_and_midpoint_kernel_use": "ACCEPTED",
+    "single_source_bath_energy_owner": "ACCEPTED_WITHIN_SEALED_REFERENCE"
+  },
+  "automatic_successor_authorized": false,
+  "decision": "ACCEPTED_BOUNDED_COMPOSED_NATIVE_HYBRID_ONLY",
+  "entry_head": "552e3795c09961ba56ceef4f8da2503fbb63e0f9",
+  "independent_of_implementation_and_oracle_report_authors": true,
+  "material_limitations": [
+    "Event opportunities and branch choices are externally prescribed. Endpoint Glauber reverse rates are formal diagnostics; inverse fission and exact history-tag reversal are not implemented. No autonomous reproduction, complete reversible generator or endogenous multi-event hazard process follows.",
+    "Measured daughter closure maturation has positive DeltaG about.38409/.38405, chemical release only.0025 and mechanical storage increases about.38659/.38655. This is an uphill prescribed transition under the declared thermostat, not demonstrated chemical-only funded maturation.",
+    "The thermostat and free-energy/dissipation model are computational assumptions, not calorimetric heat observations or an experimentally identified chemical reservoir. No physical A/W/ATP/source identity or production parameter values are inferred.",
+    "New operators mutate actual native mesh/source state but do not energetically rehabilitate legacy mesh_transport/growth/reactions/fission biology. Existing production laws/defaults remain frozen; export is feature-gated.",
+    "Prepared bound membrane is passive stock, inherited and split; new closures have zero bound membrane. Membrane synthesis/self-sealing/templates/reserves and complete biological daughter envelopes remain unqualified.",
+    "Daughters are additive ideal compartments without intercell contact/exclusion. The cut is prescribed rather than dynamically generated neck formation or physical fusion.",
+    "Native drag is per vertex;6-to12 remesh changes discrete mobility. Neutral remesh is restricted to the sealed inactive-floor fixture; the absolute-floor counterexample and newborn remesh rejection remain. No continuum convergence is claimed.",
+    "Restart/configuration/material/ledger validation establishes tested consistency, not authenticity of arbitrary coherently altered histories. Public diagnostic helper behavior outside validated world/config paths is not broadly certified.",
+    "Coarse/fine differences and observed defect refinement are empirical numerical checks within the sealed campaign, not a separate RK4 trajectory or rigorous universal integration-error bounds.",
+    "First full campaign used the earlier independent checker. Parent has separately passed the strengthened negative-control histories and11 raw adversarial tests; the final exact-head hosted campaign must execute the final full checker and review-enforced publication path."
+  ],
+  "measurement_head": "870d9517da40a913366caf135d29c9fe717da8b0",
+  "observed_evidence": {
+    "coupled_complete_endpoint_difference": 0.00020693966624385496,
+    "coupled_continuous_absolute_defect": {
+      "coarse": 0.005572121228302702,
+      "fine": 0.002782589808215699
+    },
+    "coupled_daughter_maturation": [
+      {
+        "cell": 1,
+        "chemical_release": 0.002500000000000391,
+        "delta_G": 0.38408788877944033,
+        "kind": "maturation",
+        "mechanical_storage_change": 0.3865878887794434,
+        "time": 0.4
+      },
+      {
+        "cell": 2,
+        "chemical_release": 0.002500000000000391,
+        "delta_G": 0.3840508952870856,
+        "kind": "maturation",
+        "mechanical_storage_change": 0.38655089528708386,
+        "time": 0.4
+      }
+    ],
+    "coupled_parent_maturation": {
+      "cell": 0,
+      "chemical_release": 0.009999999999999787,
+      "delta_G": -0.0037861086086401485,
+      "kind": "maturation",
+      "mechanical_storage_change": 0.006213891391357305,
+      "time": 0.15
+    },
+    "coupled_peak_native_elastic": 0.7789026541563715,
+    "first_hosted_artifact": "12182276935",
+    "first_hosted_oracle_tests": 5,
+    "first_hosted_run": "39243436386",
+    "global_hybrid_steps": 9000,
+    "local_replay_scope": "Parent reports byte-identical downloaded two-step probe and independent source/force/update reconstruction. No local full9000-step campaign replay is claimed.",
+    "measured_summary_sha256": "fa68542a02222e85857291d91fc91598fd9ddf4f2f4ab8f8d334ef8127e3c69c",
+    "native_binary_sha256": "59b0df8b8d5a7a764472710cf6d686d27c432a97116d28ac56efe6b8a602e9ed",
+    "native_six_to_twelve_remesh_events": 8,
+    "parent_final_helper_and_adversarial_tests": 11,
+    "parent_negative_control_reachability_checks": 8,
+    "post_fission_global_steps_per_positive_event_run": {
+      "coarse": 300,
+      "fine": 600
+    },
+    "prepared_cases": 5,
+    "prescribed_finite_and_numerical_events": 56,
+    "prescribed_paid_cuts": 8,
+    "raw_campaign_sha256": "8a8b9bc87959080a9dc7d9adcadae43dabb497b64c58c1edb25f1cc82828ad27",
+    "rust_tests": {
+      "new_composed": 12,
+      "prior_regressions": 24,
+      "total": 36
+    },
+    "step_count_meaning": "A post-fission global step advances both daughter meshes;9000 is not a count of single-mesh kernel calls.",
+    "timestep_resolutions": 2
+  },
+  "original_full_target_status": "PARTIAL_BLOCKED",
+  "pending_parent_final_gates": [
+    "Copy this unchanged receipt to the governed review path and complete review-enforced scope/result checks.",
+    "Commit final sources/records and run the exact-head hosted campaign with all11 oracle controls and final complete checker.",
+    "Verify complete artifact/source/binary/raw hashes and hidden records; retain first-hosted evidence and bounded parent probe receipts.",
+    "Verify preservation of16 earlier checkouts,13 prior PRs,2641 prior scoped Atlas files and original dirty source including32 untracked files.",
+    "Complete Notion and native Atlas publication with exact identity/custody readbacks."
+  ],
+  "production_values": {
+    "K": null,
+    "epsilon_A": null,
+    "lambda": null,
+    "theta": null
+  },
+  "read_coverage": [
+    "All14 core files: complete new1254-line Rust module,12 focused Rust tests, campaign/probe example, library export delta with prior library context retained, sealed protocol/pre-outcome clarification/directive/sources, full parent independent oracle and11 controls, scope verifier, final measured report/summary and unconditional review-enforced workflow.",
+    "Scoped CURRENT/PROJECT_PROFILE and all new DIRECTIVES/OUTCOMES/LEARNINGS/RECORD/REPO_MAP/STORAGE_MAP material, with retained complete historical governance review. Independently confirmed all five append-only ledger byte prefixes against entry552e379.",
+    "First hosted qualification and test logs, parent11-test raw adversarial log, parent eight-control reachability receipt and the measured Git summary. The stored measured summary is structurally identical to the downloaded first-hosted qualification.",
+    "No reviewer processing of the full152MB raw trajectory or execution of the qualification code. Full first-campaign reconstruction is attributed to the hosted runner; parent local verification covers the downloaded two-step probe plus strengthened rejection controls and adversarial fixtures."
+  ],
+  "resolved_review_findings": [
+    "Exact birth material origins and complete native metadata/zero hidden chemistry/passive prepared membrane are bound by a separately sealed pre-outcome clarification; original cases and budgets are unchanged.",
+    "Exact event action fields, extents, chronology, native remesh halves, full old and new edge/tag records, fission mappings and shared owner inheritance are reconstructed independently.",
+    "Continuous work receipts and full native nongeometry persistence are independently checked; event after-states contribute to global storage/material maxima; complete physical endpoint comparison includes source, geometry, structural amounts, anchors and outside bath.",
+    "Negative controls require exact inventory and literal pass booleans, full unchanged before/after state and serialization, trusted complete config and serialized owner-cell counts.",
+    "Standalone newborn-floor and fast-gamma rejection seeds are reconstructed independently from their actual evolved or birth/one-step histories, closing the prior self-consistent-but-unbound-seed gap.",
+    "Independent total-potential geometry probes, including both daughters and shared outside volume, supplement the primary force/rate/state identity checks.",
+    "Six raw-campaign adversarial controls supplement the five helper controls; final workflow supplies the actual raw fixture and unconditionally requires the14-file review.",
+    "Final report correctly distinguishes new owned structural mutations from unchanged legacy biology, formal reverse diagnostics from implemented inverse kernels, and global hybrid steps from single-mesh kernel calls."
+  ],
+  "review_method": "Read-only semantic source, protocol, evidence, report, workflow and governance inspection, with metadata comparison and exact file-byte SHA256 bindings. No reviewer build, test, assay, fit, acquisition, campaign or binary replay.",
+  "reviewed_at_utc": "2026-10-19T11:25:13.875269+00:00",
+  "reviewed_files": {
+    ".github/workflows/dc-m4-native-composed.yml": "26e6b5587b0a833f2064aae562564d9cc5a2ba942808f4d75a6f1ae44b32486e",
+    "digital-protocell/crates/chemistry-core/examples/chemical_composed_port.rs": "fbbb77c0773bcad4e4c67f7a8b477c82e89cd3438216c8b0570285e9ba0a160e",
+    "digital-protocell/crates/chemistry-core/src/chemical_composed_port.rs": "e59bed2e6fe910907478591c2932ef4bedb6d8afa1b42fbf73f7d6f643bb8c73",
+    "digital-protocell/crates/chemistry-core/src/lib.rs": "a2b2535f3a20f3ffd5ea007b4e43359f1949b1963f3d01c67e5034db50dffc01",
+    "digital-protocell/crates/chemistry-core/tests/chemical_composed_port.rs": "859842c4f181881c824fad310dd074a682df542b037f752b5b06d130d91dacee",
+    "docs/dc-m4-native-composed-directive.md": "c1c35ae91c65b4285ce1fafeb5ccc0bb97b474afd0aa400811d8ad776fdc0727",
+    "docs/dc-m4-native-composed-integration.md": "178c51f20dea8e600d99a67083193d5833cfd5b54f0b840149abef9283f08ce8",
+    "docs/dc-m4-native-composed-measurements.json": "fa68542a02222e85857291d91fc91598fd9ddf4f2f4ab8f8d334ef8127e3c69c",
+    "docs/dc-m4-native-composed-preparation-clarification.json": "e6ca2f425cc4205e026424f0d508420a2221cadefac27426578e26f3c109b3ff",
+    "docs/dc-m4-native-composed-protocol.json": "86aff8841f05b3711f20cb3d298689842fc8657d57b9902088d092fd2b43f42c",
+    "docs/dc-m4-native-composed-sources.json": "1751faf79263e627de014bd5e37ecc7905124b5f7cae2e964a5b9f2c5e81b527",
+    "scripts/qualify_native_composed.py": "0fc8676b456b21d298a29aaf649881115990df9ea1a9feeeab531ffe423dba91",
+    "scripts/test_native_composed_oracle.py": "05d30e331bd66a4dce7a18e59c43e0123500ff03e65dd4e2ad632c5142a5585e",
+    "scripts/verify_native_composed.py": "87108c80127c51127d3ad22e67b63844542b7e9b0fa964f6a50ba4c049cc6cdd"
+  },
+  "reviewer": "governance_audit",
+  "reviewer_executed_project_workloads": false,
+  "schema": "digital-cell-independent-review/v1",
+  "scope": [
+    "One opt-in hypothetical hybrid reference composes continuous six-species chemistry and actual native mesh force/integration kernels with newly owned prescribed transport, growth, maturation, native midpoint splitting, a paid loop cut and continuing daughter compartments.",
+    "The complete potential owns inside/outside ideal mixtures, solid standard chemical potentials, the regularized native stretch primitive and the explicitly new whole-perimeter coupling. Moving volumes and the single finite shared bath supply conjugate osmotic forces; prior arc/bath stores are absent.",
+    "Continuous old-state Euler updates and their unrepaired signed/absolute defects are distinguished from complete finite event free-energy jumps. Source/material/anchor/bath/membrane/tag and mapping inheritance follows the evolved actual state, without re-preparation.",
+    "Technical acceptance is limited to the sealed five-case, two-timestep, horizon0.6 prescribed campaign and its independently inspected evidence; final exact-head execution and publication gates remain parent obligations."
+  ]
+}

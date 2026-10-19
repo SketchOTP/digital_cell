@@ -2295,3 +2295,14 @@ Starting head ecf4befc00683301e4ab15f0b5302b4acc33d9be; R10R7 CI 34531048042 PAS
 - Rationale: Native maturation changes both rest length and tension stiffness, and wholly young closure invalidates the old mature-only energy formula. Fission requires full source/material/anchor and graph-work ownership. Fixed paired Glauber rates satisfy reciprocity with a distinct thermostat but do not imply pathwise chemical-only funding or physical fusion. Original licensed DNA data are admitted only as raw force-position observations; fixed six-pair coverage and force-conjugate work remain unqualified after gaps/endpoint issues.
 - Affected areas: New owner model/example, prospective protocols/source-format amendment, physical source subset/provenance/analysis, independent oracles/checkers/tests/workflows/report/measurements/review and records. Notion https://app.notion.com/p/3fd833cb27ff81d1bb04d4db9318028b; local /home/sketch/Projects/digital_cell-mechanochemical-ownership-evidence/; additive Atlas evidence/mechanochemical-work-ownership/. Preserve15 prior checkouts,PR44–55,2538 prior archive files and original dirty source including32 untracked hashes. No physical apparatus, merge/deploy, acquired source execution, production assignments or automatic successor.
 - Supersedes record: none
+
+
+## DEC-DCM4-NATIVE-COMPOSED-20261019
+
+- Date: 2026-10-19
+- Record or decision ID: DEC-DCM4-NATIVE-COMPOSED-20261019
+- Status: ACTIVE
+- Decision or event: Owner authorizes the next measured native integration deliverable from552e379. Compose the full source, finite outside bath, regularized native elastic primitive and one new whole-perimeter coupling in a separate opt-in hybrid module with actual native geometry/remesh, prescribed owned structural changes and continuing daughters. Retain first numerical qualification and pending final bound review/custody.
+- Rationale: Prepared event pairs did not demonstrate state continuity. The9000-step campaign now directly checks it, including actual evolved closure cost and exact shared-bath/source/tag/anchor inheritance. Uphill newborn maturation and externally chosen branch times remain explicit; no legacy biology, autonomous chemical funding or physical calibration is inferred.
+- Affected areas: New chemical_composed_port module/test/example and exact feature export; protocols/clarification, independent raw oracle/tests/workflow/scope/report/measurements/review and additive governance. PR57; Notion https://app.notion.com/p/3fe833cb27ff81af99bbf13f188beefa ; local /home/sketch/Projects/digital_cell-native-composed-evidence ; additive Atlas evidence/native-composed-integration/. Preserve16 checkouts,PR44–56,2641 prior files and original dirty source/32 untracked files. No merge/deploy, apparatus, parameters or automatic successor.
+- Supersedes record: none

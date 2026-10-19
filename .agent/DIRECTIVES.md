@@ -1685,3 +1685,18 @@ R10R8 is sealed as a diagnostic decision gate. It preserves R10R7 and does not a
 - Relationship: new
 - Related directive: none
 - Status at issuance: ISSUED
+
+
+## D-20261019-dcm4-native-composed
+
+- Issued: 2026-10-19T07:03:50-04:00
+- Issuer: User
+- External directive: DC-M4-NATIVE-COMPOSED-INTEGRATION-001
+- Objective: Build and independently verify one bounded native composed chemical/material/mechanical trajectory through prescribed operators and daughter continuation, preserving all existing work/current records.
+- Scope: New opt-in Rust composed module/tests/example and exact library export, sealed protocol, independent oracle/controls, workflow/report/measurements/review and additive records from552e3795c09961ba56ceef4f8da2503fbb63e0f9.
+- Exclusions: Production biology/default changes, old science/source/evidence mutation, empirical species or parameter invention, autonomous event/reproduction or physical contact/fusion claims, calorimetry, apparatus/outreach, prior PR mutation, merge/deploy and automatic successor.
+- Acceptance: One shared state/bath/energy law, actual native movement, full source currents and volume work, lawful finite chemical/material owners, prescribed fission/exact inheritance/continuing daughters, controls/refinement/raw independent reconstruction, distinct review and complete exact-head artifact/preservation/Notion/native Atlas custody.
+- Risk class: NORMAL
+- Relationship: new
+- Related directive: none
+- Status at issuance: ISSUED

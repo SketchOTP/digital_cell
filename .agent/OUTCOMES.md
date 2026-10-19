@@ -3114,3 +3114,28 @@ Historical D096 specialization is reproducible under its reserve-enabled assay. 
 - Remaining risks: New standard potentials/rate convention/perimeter coupling are designed inputs. Event pairs are not composed biology; thermal uphill events are not chemical-only funding. Source paths are gapped, some aborted/repositioned and not established force conjugates. Source clock quantization and local temperature/systematics remain unqualified. Public state hashes do not authenticate arbitrary history.
 - Blockers: No experimentally established native/source species and conjugate chemical-work map; no complete continuous native event generator/daughter preparation. Pressure, membrane/template/reserve owners and all-domain remesh extensivity unresolved. Four production values null; bridge unavailable.
 - Follow-up directive: none
+
+
+## D-20261019-dcm4-native-composed - PARTIAL
+
+- Outcome ID: O-DCM4-NATIVE-COMPOSED-20261019
+- Supersedes outcome: none
+- Closed: 2026-10-19T07:22:46-04:00
+- Acceptance: PARTIAL
+- Summary: New opt-in owned structural operators compose with continuous full-source/native mechanics and a shared finite bath through prescribed transport/growth/maturation/remesh/paid cut and continuing daughters. All sealed numerical cases pass first independent reconstruction. Uphill newborn maturation, prescribed scheduling, passive membrane/no contact and uncalibrated chemistry keep autonomous/empirical/full-organism qualification blocked.
+- Changed areas: New Rust module/test/example/exact gated export, sealed protocol/pre-outcome preparation clarification, source registry, independent oracle/tests/workflow/scope/report/measurements/review and additive records/custody.
+- Validation:
+  - First hosted39243436386 at870d951:36 Rust tests,5 initial oracle controls,9000 global hybrid steps/five cases/two dt and complete independent raw reconstruction - PASSED
+  - Native6-to12 split, prescribed evolved-cut closure debit, full source/material/anchor/bath inheritance and continuing daughters - PASSED
+  - Coupled continuous defect.00557212122830-to.00278258980822, complete physical endpoint difference.00020694 within unchanged sealed budgets - PASSED
+  - Parent byte-identical downloaded two-step native probe and independent raw source/force/update reconstruction - PASSED
+  - Eleven parent oracle controls including coherent tag/hidden-pool/action/mapping/extra-owner/control-law mutations, independently reconstructed standalone rejection seed histories - PASSED
+  - Initial new CURRENT field/status and REPO_MAP formatting caused extra governance diagnostics; corrected without changing inherited history - FAILED
+  - Scoped new records and unchanged2625 historical global diagnostics after correction - PASSED
+  - Endogenous event hazards/chemical-only funded newborn maturation and empirical parameter qualification - BLOCKED
+  - Complete biological membrane/template/reserve/contact owners, autonomous reproduction and physical fusion - NOT RUN
+  - Distinct14-file independent bound semantic review accepts bounded native hybrid scope and preserves uphill maturation/full-target limits - PASSED
+  - Final exact-head complete artifact/preservation/Notion/native Atlas readbacks; external receipts follow final commit - NOT RUN
+- Remaining risks: Prescribed events can jump uphill and formal pair reverse rates are not implemented inverse kernels. Native per-vertex drag changes under remeshing; no continuum convergence. Native daughter compartments lack contact/exclusion and new bound membrane. Restart consistency is not authenticated history; coarse/fine difference is not rigorous global error or separate RK4 comparison.
+- Blockers: No endogenous multi-event generator or physically mapped/calibrated chemical target. Newborn closure maturation stores≈.3866 mechanics while releasing.0025 chemical free energy under the chosen law. All four production values null; bridge unavailable, complete local handoff retained.
+- Follow-up directive: none

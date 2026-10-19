@@ -180,3 +180,8 @@ Local originals: `/home/sketch/Projects/digital_cell-empirical-organism-evidence
 
 - Local originals: `/home/sketch/Projects/digital_cell-mechanochemical-ownership-evidence/`; licensed raw selected members and source-role record in docs/dc-m4-mechanochemical-evidence/.
 - Additive Atlas archive: `/srv/ATLAS/100_ACTIVE/Projects/DIGITAL_CELL/evidence/mechanochemical-work-ownership/`; verify UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d,FSROOT/RPI5Pool,ext4 before writes. Preserve2538 previous scoped files and original dirty source; compressed originals plus native verification/completion receipts after final commit, all local originals retained.
+
+
+## Native composed hybrid integration
+
+Canonical worktree `/home/sketch/Projects/digital_cell-native-composed-integration`, local evidence `/home/sketch/Projects/digital_cell-native-composed-evidence`, additive Atlas `evidence/native-composed-integration/`. Preserve all earlier16 worktrees/13 PRs/2641 scoped Atlas files and original source32 untracked files. Verify mounted UUID840ca6b3-5d4f-41fc-9dac-21355e045a6d /RPI5Pool ext4 before additive publication. Retain compressed raw/full hosted originals and all local extracted originals; no prior archive overwrite or pruning.

@@ -248,3 +248,7 @@ pub mod chemical_reference_port;
 /// Finite-volume full-state body and native midpoint-remesh reference extension.
 #[cfg(feature = "chemical-reference-port")]
 pub mod chemical_body_port;
+
+/// Opt-in composed native chemical and structural hybrid reference.
+#[cfg(feature = "chemical-reference-port")]
+pub mod chemical_composed_port;

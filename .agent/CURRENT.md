@@ -3,18 +3,27 @@
 ## Lifecycle
 
 - Status: `ADOPTED`
-- Last updated: `2026-10-18T12:45:29-04:00`
+- Last updated: `2026-10-19T07:14:40-04:00`
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261018-dcm4-mechanochemical-owners`
-- External directive ID: `DC-M4-MECHANOCHEMICAL-WORK-OWNERSHIP-001`
-- Objective: Acquire independent mechanochemical observations and define/test work owners for transport/growth/maturation/fission; preserve existing work and current records.
+- Local directive ID: `D-20261019-dcm4-native-composed`
+- External directive ID: `DC-M4-NATIVE-COMPOSED-INTEGRATION-001`
+- Objective: `Build and independently verify a bounded native composed source/body/structural-event trajectory and continuing daughters.`
 - Current status: `BLOCKED`
-- Acceptance: `PARTIAL — new hypothetical finite-event owner reference independently reconstructed; physical conjugate work/chemical identity and continuous native whole-organism integration unqualified`
-- Current phase: `Four independent prepared transition pairs and native audits measured; licensed raw DNA observations acquired with unmet six-pair/continuous-work coverage`
-- Expected or actual touched areas: `New Python reference/oracles/tests, standalone native audit example, original licensed subset/provenance, sealed protocols/amendment/source/report/measurements/workflow/review and additive records`
-- Immediate next action: `Finish exact-head/source/Notion/native Atlas readbacks, then identify a justified conjugate physical work/chemical target and integrate the proposed owners into a complete native generator; no automatic successor.`
+- Acceptance: `PARTIAL — first9000-step bounded native composition passes independent reconstruction; distinct14-file review accepted; final exact-head custody pending; endogenous/empirical/full-organism target unqualified`
+- Current phase: `Shared-state source/native mechanics plus prescribed owned operators and daughter continuation measured; uphill newborn maturation remains explicit`
+- Expected or actual touched areas: `New opt-in composed Rust module/test/example/exact export, sealed protocol, independent oracle/tests/workflow/report/review and additive records`
+- Immediate next action: `Complete distinct14-file bound review, exact-head11-oracle replay/artifact and Notion/native Atlas preservation readbacks; no automatic successor.`
+- **Evidence:** `https://app.notion.com/p/3fe833cb27ff81af99bbf13f188beefa ; /home/sketch/Projects/digital_cell-native-composed-evidence/ ; Atlas evidence/native-composed-integration/`
+- **Prior final custody:** `PR56 at552e379, CI39147335097,27-file review, complete artifact and103-file Atlas group verified in external completion receipts;16 prior checkouts/13 PRs/2641 scoped files protected.`
+
+### Composed native source and owned structural operators
+
+- **Observed:** Hosted39243436386 at870d951 passes36 Rust tests and5 initial oracle tests,9000 GLOBAL hybrid steps/five cases/two dt,56 finite/numerical events with8 actual native6→12 remesh and8 prescribed paid cuts; both daughters continue300/600 post-fission global steps. New owned structural operators compose with native force/vertex/remesh kernels; legacy biology unchanged.
+- **Independent evidence:** Full raw source/force/native primitive/quadrature/actual Euler/material/tag/bath/anchor/event/ledger reconstruction passes. Coupled defect.00557212122830→.00278258980822; full physical endpoint difference.000206939666244, peak native storage.778902654156, global ledger error4.45e−15. Parent11 oracle tests and independent negative-fixture reachability checks pass on retained actual raw data; downloaded two-step native probe byte-identical and independently reconstructed. Full local9000-step replay not claimed.
+- **Decision boundary:** Newborn maturation DeltaG+.38409/.38405, eachchemicalrelease.0025 vsmechanicalstorage≈.3866. These externally scheduled uphill transitions do not demonstrate chemically paid endogenous maturation. Formal reverse rates do not implement inverse fission or exact history-tag reversal. Prepared passive membrane is inherited; no new closure membrane synthesis, contact/exclusion or autonomous biological lifecycle. Production values null.
+- **Preservation/custody:** PR57 draft; Notion https://app.notion.com/p/3fe833cb27ff81af99bbf13f188beefa ; local /home/sketch/Projects/digital_cell-native-composed-evidence ; additive Atlas evidence/native-composed-integration/. Protect16 prior checkouts,PR44–56,2641 scoped files and original dirty source/32 untracked hashes. Final bound review/exact-head/source/custody receipts follow final commit.
 
 ### Mechanochemical observations and four-operator work owners
 
