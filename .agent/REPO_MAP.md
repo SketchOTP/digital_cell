@@ -552,3 +552,14 @@ R4 hosted seal: workflow `34801587951` on `c778e2a4fc858354b7c661a091837e6cc1dab
 - `digital-protocell/crates/chemistry-core/examples/chemical_work_owners.rs` — standalone actual native force/transport/growth/full-reaction/fission audits only.
 - `scripts/verify_mechanochemical_owners.py` — scoped prior-source/ledger/protocol/input/result/review enforcement and source bundle.
 - `/home/sketch/Projects/digital_cell-mechanochemical-ownership-evidence/` — original acquisition, raw native/reference observations, parent replay, failed parse, independent results and final custody/readbacks.
+
+
+## Interfaces and contracts
+
+- `digital-protocell/crates/chemistry-core/src/chemical_composed_port.rs` — new opt-in full source/native geometry/finite structural hybrid, shared bath and exact source/material/energy owners; tests/example share stem.
+- `docs/dc-m4-native-composed-directive.md` — owner handoff and boundaries from552e379.
+- `docs/dc-m4-native-composed-protocol.json` — sealed five-case/two-dt/schedule/budget; preparation clarification binds complete passive-membrane/native metadata.
+- `scripts/qualify_native_composed.py` — independent raw source/primitive quadrature/forces/actual Euler/event/tag/mapping/negative-history/ledger reconstruction;11 helper/adversarial controls share test stem.
+- `scripts/verify_native_composed.py` — frozen history/default/source, protocol, scoped records, distinct review and raw-result bindings.
+- `docs/dc-m4-native-composed-integration.md` — exact numerical outcome, uphill newborn limitation, measured summary/review and pending final external custody receipts.
+- `/home/sketch/Projects/digital_cell-native-composed-evidence/` — first/full raw compressed artifact, parent probe, independent control evidence, review and final source/CI/Notion/native Atlas custody originals.

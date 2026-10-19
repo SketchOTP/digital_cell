@@ -1,5 +1,5 @@
-import math,unittest
-from qualify_native_composed import source,NU,near,same
+import copy,json,math,os,pathlib,unittest
+from qualify_native_composed import source,NU,near,same,birth,event_check,rejection_controls
 from qualify_chemical_work_owners import elastic,force
 
 class IndependentOracleControls(unittest.TestCase):
@@ -25,5 +25,37 @@ class IndependentOracleControls(unittest.TestCase):
     def test_nonfinite_numeric_evidence_rejected(self):
         for x in (float('inf'),float('nan')):
             with self.assertRaises(ValueError):near(x,0.)
+
+@unittest.skipUnless(os.environ.get('NATIVE_COMPOSED_INPUT'),'full raw campaign fixture provided by hosted workflow')
+class RawCampaignAdversarialControls(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.raw=json.loads(pathlib.Path(os.environ['NATIVE_COMPOSED_INPUT']).read_text())
+        cls.protocol=json.loads((pathlib.Path(__file__).resolve().parents[1]/'docs/dc-m4-native-composed-protocol.json').read_text())
+    def test_coherent_birth_tag_split_rejected(self):
+        w=copy.deepcopy(self.raw['cases'][0]['coarse']['initial']);old=w['cells'][0]['material_tags'][0][0]
+        half={k:(v if k=='root' else v/2) for k,v in old.items()};w['cells'][0]['material_tags'][0]=[half,dict(half)]
+        with self.assertRaises(ValueError):birth(w,self.raw['cases'][0]['config'])
+    def test_hidden_native_chemistry_rejected(self):
+        w=copy.deepcopy(self.raw['cases'][0]['coarse']['initial']);w['cells'][0]['mesh']['interior']['f']=.1
+        with self.assertRaises(ValueError):birth(w,self.raw['cases'][0]['config'])
+    def test_false_action_extent_and_missing_closure_mapping_rejected(self):
+        run=self.raw['cases'][0]['coarse'];p=self.raw['cases'][0]['config']
+        growth=copy.deepcopy(run['events'][1]);growth['event']['extent']=.21
+        with self.assertRaises(ValueError):event_check(growth,p,self.protocol['schedule'][1])
+        fission=copy.deepcopy(run['events'][4]);fission['mapping'].pop()
+        with self.assertRaises(ValueError):event_check(fission,p,self.protocol['schedule'][4])
+    def test_missing_or_false_negative_evidence_rejected(self):
+        altered=dict(self.raw,controls=self.raw['controls'][:-1])
+        with self.assertRaises(ValueError):rejection_controls(altered)
+        controls=list(self.raw['controls']);controls[0]=dict(controls[0],unchanged=False)
+        with self.assertRaises(ValueError):rejection_controls(dict(self.raw,controls=controls))
+    def test_extra_serialized_owner_cell_rejected(self):
+        controls=list(self.raw['controls']);c=copy.deepcopy(controls[0]);raw=json.loads(c['before_restart']);raw['data']['cells'].append(copy.deepcopy(raw['data']['cells'][0]));c['before_restart']=c['after_restart']=json.dumps(raw);controls[0]=c
+        with self.assertRaises(ValueError):rejection_controls(dict(self.raw,controls=controls))
+    def test_altered_standalone_control_law_rejected(self):
+        for index,key,value in [(4,'k',.5),(7,'gamma',1e-9)]:
+            controls=list(self.raw['controls']);c=copy.deepcopy(controls[index]);c['config'][key]=value;controls[index]=c
+            with self.assertRaises(ValueError):rejection_controls(dict(self.raw,controls=controls))
 
 if __name__=='__main__':unittest.main()

@@ -45,13 +45,42 @@ def endpoint(w):
         out += [t[k] for tags in c['material_tags'] for t in tags for k in ('fraction','young','mature')]
     return out
 
+def physical_owner(w):
+    return {k:copy.deepcopy(w[k]) for k in ('time','steps','revision','root_area','outside','ledger')}|{'cells':[{k:copy.deepcopy(c[k]) for k in ('id','mesh','n','P','a0','R_ref','material_tags')} for c in w['cells']]}
+
+def derived_control_seed(w,p,kind):
+    """Reconstruct standalone negative-fixture reachability without the model."""
+    w=copy.deepcopy(w)
+    if kind=='late':
+        old=reconstruct(w,p,False);dt=1e-13
+        for c,rhs in zip(w['cells'],old['cells']):
+            c['n']=[x+dt*y for x,y in zip(c['n'],rhs['ndot'])];c['mesh']['vertices']=[[x+dt*y for x,y in zip(v,u)] for v,u in zip(c['mesh']['vertices'],rhs['vel'])]
+        w['outside']['V']=p['total_volume']-sum(area(c['mesh']['vertices'])/w['root_area'] for c in w['cells']);after=reconstruct(w,p,False);dc=dt*old['Dchem'];dm=dt*old['Dmech'];defect=after['G']-old['G']+dc+dm
+        w.update(time=dt,steps=1,revision=1);w['ledger'].update(integrated_Dchem=dc,integrated_Dmech=dm,continuous_signed_defect=defect,continuous_abs_defect=abs(defect));return w
+    old=reconstruct(w,p,False);c=w['cells'][0];v=c['mesh']['vertices'];edges=c['mesh']['edges'];tags=c['material_tags'];vv=[];ee=[];tt=[]
+    for i in range(6):
+        vv.extend([v[i],[(x+y)/2 for x,y in zip(v[i],v[(i+1)%6])]])
+        e={k:(z if type(z) is bool else z/2) for k,z in edges[i].items()};t=[{k:(z if k=='root' else z/2) for k,z in q.items()} for q in tags[i]];ee.extend([copy.deepcopy(e),copy.deepcopy(e)]);tt.extend([copy.deepcopy(t),copy.deepcopy(t)])
+    c['mesh'].update(vertices=vv,edges=ee);c['material_tags']=tt;w['revision']+=1;new=reconstruct(w,p,False);w['ledger']['event_delta_G_sum']+=new['G']-old['G'];old=new
+    parent=copy.deepcopy(c);length=math.dist(vv[0],vv[6]);mass=p['rho']*length;debit=2*mass/p['growth_yield'];n=parent['n'].copy();n[5]-=debit;n[4]+=(1-p['growth_yield'])*debit;children=[];rev=w['revision']+1
+    for ident,ix in enumerate([list(range(7)),list(range(6,12))+[0]],1):
+        child=copy.deepcopy(parent);child['id']=ident;child['mesh']['vertices']=[vv[i] for i in ix];child['mesh']['edges']=[copy.deepcopy(ee[i]) for i in ix[:-1]]+[{'m':mass,'m_young':mass,'b':0.,'tracer_m':0.,'tracer_b':0.,'ruptured':False}];child['material_tags']=[copy.deepcopy(tt[i]) for i in ix[:-1]]+[[{'root':f'closure:{rev}:{ident}','fraction':1.,'young':mass,'mature':0.}]]
+        frac=area(child['mesh']['vertices'])/area(vv);child['n']=[x*frac for x in n]
+        for k in ('P','a0','R_ref'):child[k]=parent[k]*frac
+        children.append(child)
+    w['cells']=children;w['revision']=rev;w['ledger']['event_delta_G_sum']+=reconstruct(w,p,False)['G']-old['G'];return w
+
 def rejection_controls(data):
     controls=data['controls'];names=['prepared_growth_donor_infeasibility','prepared_transport_donor_infeasibility','evolved_growth_donor_infeasibility','evolved_transport_donor_infeasibility','newborn_absolute_floor_remesh','restart_config_tamper','restart_ledger_tamper','late_geometry_trial']
     require([c['name'] for c in controls]==names,'exact negative control inventory')
     run=data['cases'][0]['coarse'];evolved=run['steps'][9]['after']
     for i,c in enumerate(controls):
         require(c['rejected'] is True and c['unchanged'] is True and type(c['error']) is str and c['error'],'negative result evidence');same(c['before'],c['after'],0.)
-        require(c['before_restart']==c['after_restart'],'serialized owner and ledger rollback');raw=json.loads(c['before_restart']);d=raw['data'];same(d['config'],c['config']);same(d['ledger'],c['before']['ledger']);near(d['root_area'],c['before']['root_area']);near(d['time'],c['before']['time']);near(d['revision'],c['before']['revision']);near(d['steps'],c['before']['steps'])
+        expectedconfig=dict(data['cases'][0]['config'])
+        if i==7:expectedconfig['gamma']=1e-10
+        same(c['config'],expectedconfig)
+        require(c['before_restart']==c['after_restart'],'serialized owner and ledger rollback');raw=json.loads(c['before_restart']);d=raw['data'];same(d['config'],c['config']);same(d['ledger'],c['before']['ledger']);near(d['root_area'],c['before']['root_area']);near(d['time'],c['before']['time']);near(d['revision'],c['before']['revision']);near(d['steps'],c['before']['steps']);require(len(d['cells'])==len(c['before']['cells']),'complete serialized owner cell inventory')
+        same(d['bath'],{'s':c['before']['outside']['S'],'sm':c['before']['outside']['Sm'],'inert':c['before']['outside']['inert']})
         for x,y in zip(d['cells'],c['before']['cells']):
             for a,b in [('id','id'),('mesh','mesh'),('n','n'),('p','P'),('a0','a0'),('r_ref','R_ref'),('tags','material_tags')]:same(x[a],y[b])
         reconstruct(c['before'],c['config'])
@@ -61,12 +90,14 @@ def rejection_controls(data):
         if i in (1,3):same(c['event'],{'kind':'transport','cell':0,'species':'Sm','direction':'in','amount':1000.});require(c['before']['outside']['Sm']<1000,'bath donor infeasibility')
         if i==4:
             same(c['event'],{'kind':'remesh','cell':1});require([x['id'] for x in c['before']['cells']]==[1,2] and c['before']['cells'][0]['rest_lengths'][-1]/2<.001,'newborn floor rejection witness')
+            same(physical_owner(c['before']),physical_owner(derived_control_seed(evolved,c['config'],'floor')),1e-8)
         if i in (5,6):
             expected=copy.deepcopy(raw)
             if i==5:expected['data']['config']['k']=9.
             else:expected['data']['ledger']['event_delta_G_sum']=9.
             same(json.loads(c['attempted_restart']),expected)
-        if i==7:near(c['config']['gamma'],1e-10);near(c['dt'],.001);near(c['before']['time'],1e-13);require(c['before']['steps']==1,'late geometry after evolved state')
+        if i==7:
+            near(c['config']['gamma'],1e-10);near(c['dt'],.001);near(c['before']['time'],1e-13);require(c['before']['steps']==1,'late geometry after evolved state');same(physical_owner(c['before']),physical_owner(derived_control_seed(run['initial'],c['config'],'late')),1e-8)
     return len(controls)
 
 NU=[[0,-1,0,1],[0,1,-1,0],[0,0,1,-1],[0,0,0,1],[-1,0,0,0],[1,-1,-1,0]]

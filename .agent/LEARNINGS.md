@@ -1580,3 +1580,14 @@ Scaling founder multiplicity and fixed-boundary bath volume together preserves d
 - Confidence: VERIFIED
 - Scope: Explicit hypothetical pair-reference and acquired source-role admission only; native continuous organism/physical parameters unqualified.
 - Supersedes learning: none
+
+
+## L-DCM4-NATIVE-COMPOSED-20261019
+
+- Date: 2026-10-19
+- Learning ID: L-DCM4-NATIVE-COMPOSED-20261019
+- Fact or lesson: One amount/bath/volume/energy owner can carry the full source and new structural mutations through native mechanics/remesh and prescribed daughter continuation without state resets. Newborn maturation is qualitatively different from parent maturation because rest length and tension stiffness change together; full storage can greatly exceed solid chemical release. A prescribed uphill event with formal reverse rates does not establish endogenous chemical funding or a reversible generator.
+- Evidence location: docs/dc-m4-native-composed-integration.md and measured summary; hosted39243436386/raw source and native states; parent two-step probe and independent control-seed reconstruction,11 adversarial oracle tests.
+- Confidence: VERIFIED
+- Scope: Five sealed hypothetical hybrid cases only; all production values null, no empirical chemistry, autonomous life, complete membranes/contact or continuum claim.
+- Supersedes learning: none

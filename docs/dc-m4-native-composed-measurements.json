@@ -1,0 +1,750 @@
+{
+  "status": "BOUNDED_COMPOSED_NATIVE_HYBRID_QUALIFIED",
+  "cases": {
+    "coupled": {
+      "coarse": {
+        "accepted_steps": 600,
+        "finite_events": 7,
+        "event_results": [
+          {
+            "kind": "transport",
+            "cell": 0,
+            "time": 0.05,
+            "delta_G": 0.43293808918823373,
+            "chemical_release": -0.43293808918823373,
+            "mechanical_storage_change": 0.0
+          },
+          {
+            "kind": "growth",
+            "cell": 0,
+            "time": 0.1,
+            "delta_G": -0.4751373810341022,
+            "chemical_release": 0.47513297451254966,
+            "mechanical_storage_change": -4.406521555233583e-06
+          },
+          {
+            "kind": "maturation",
+            "cell": 0,
+            "time": 0.15,
+            "delta_G": -0.0037861681148321225,
+            "chemical_release": 0.009999999999999787,
+            "mechanical_storage_change": 0.00621383188517
+          },
+          {
+            "kind": "remesh",
+            "cell": 0,
+            "time": 0.2,
+            "delta_G": 0.0,
+            "chemical_release": -0.0,
+            "mechanical_storage_change": 3.5561831257524545e-17
+          },
+          {
+            "kind": "fission",
+            "cell": 0,
+            "time": 0.3,
+            "delta_G": -7.951169634056555,
+            "chemical_release": 7.9611756618930976,
+            "mechanical_storage_change": 0.010006027836543125
+          },
+          {
+            "kind": "maturation",
+            "cell": 1,
+            "time": 0.4,
+            "delta_G": 0.3840879018933201,
+            "chemical_release": 0.002500000000000391,
+            "mechanical_storage_change": 0.3865879018933184
+          },
+          {
+            "kind": "maturation",
+            "cell": 2,
+            "time": 0.4,
+            "delta_G": 0.3840509061728845,
+            "chemical_release": 0.002500000000000391,
+            "mechanical_storage_change": 0.38655090617288596
+          }
+        ],
+        "peak_native_elastic": 0.7789026541042435,
+        "integrated_Dchem": 3.791064741725268,
+        "integrated_Dmech": 0.13591367220596148,
+        "continuous_signed_defect": 0.005572121228302702,
+        "continuous_abs_defect": 0.005572121228302702,
+        "event_delta_G_sum": -7.229016285951051,
+        "max_global_ledger_error": 2.6645352591003757e-15,
+        "max_material_drift": 7.105427357601002e-15,
+        "max_independent_geometry_gradient_probe_error": 1.1598710158988723e-08,
+        "work": {
+          "native": 0.0006618144232009348,
+          "coupling": -0.00011155519800425264,
+          "osmotic": 0.1353634129807684,
+          "drag": 0.13591367220596148
+        },
+        "final_G": -29.89963961749341,
+        "final_cell_ids": [
+          1,
+          2
+        ],
+        "daughter_continuation_steps": 300
+      },
+      "fine": {
+        "accepted_steps": 1200,
+        "finite_events": 7,
+        "event_results": [
+          {
+            "kind": "transport",
+            "cell": 0,
+            "time": 0.05,
+            "delta_G": 0.4329442347729717,
+            "chemical_release": -0.4329442347729717,
+            "mechanical_storage_change": 0.0
+          },
+          {
+            "kind": "growth",
+            "cell": 0,
+            "time": 0.1,
+            "delta_G": -0.4751528628903898,
+            "chemical_release": 0.47514845687957186,
+            "mechanical_storage_change": -4.406010819651149e-06
+          },
+          {
+            "kind": "maturation",
+            "cell": 0,
+            "time": 0.15,
+            "delta_G": -0.0037861086086401485,
+            "chemical_release": 0.009999999999999787,
+            "mechanical_storage_change": 0.006213891391357305
+          },
+          {
+            "kind": "remesh",
+            "cell": 0,
+            "time": 0.2,
+            "delta_G": -3.552713678800501e-15,
+            "chemical_release": 3.552713678800501e-15,
+            "mechanical_storage_change": -3.2959746043559335e-17
+          },
+          {
+            "kind": "fission",
+            "cell": 0,
+            "time": 0.3,
+            "delta_G": -7.951985503889752,
+            "chemical_release": 7.9619920528755355,
+            "mechanical_storage_change": 0.010006548985781075
+          },
+          {
+            "kind": "maturation",
+            "cell": 1,
+            "time": 0.4,
+            "delta_G": 0.38408788877944033,
+            "chemical_release": 0.002500000000000391,
+            "mechanical_storage_change": 0.3865878887794434
+          },
+          {
+            "kind": "maturation",
+            "cell": 2,
+            "time": 0.4,
+            "delta_G": 0.3840508952870856,
+            "chemical_release": 0.002500000000000391,
+            "mechanical_storage_change": 0.38655089528708386
+          }
+        ],
+        "peak_native_elastic": 0.7789026541563715,
+        "integrated_Dchem": 3.787413170087396,
+        "integrated_Dmech": 0.13590425403975648,
+        "continuous_signed_defect": 0.002782589808215699,
+        "continuous_abs_defect": 0.002782589808215699,
+        "event_delta_G_sum": -7.229841456549288,
+        "max_global_ledger_error": 4.440892098500626e-15,
+        "max_material_drift": 1.4210854715202004e-14,
+        "max_independent_geometry_gradient_probe_error": 1.1598710158988723e-08,
+        "work": {
+          "native": 0.0006590143177141024,
+          "coupling": -0.00011155435520734319,
+          "osmotic": 0.1353567940772389,
+          "drag": 0.13590425403975648
+        },
+        "final_G": -29.89959332970766,
+        "final_cell_ids": [
+          1,
+          2
+        ],
+        "daughter_continuation_steps": 600
+      },
+      "coarse_fine_endpoint_max_difference": 0.00020693966624385496
+    },
+    "no_events": {
+      "coarse": {
+        "accepted_steps": 600,
+        "finite_events": 0,
+        "event_results": [],
+        "peak_native_elastic": 0.0059652752004685575,
+        "integrated_Dchem": 4.6635756223936555,
+        "integrated_Dmech": 0.21894915458927852,
+        "continuous_signed_defect": 0.006441539432376868,
+        "continuous_abs_defect": 0.006441539432376868,
+        "event_delta_G_sum": 0.0,
+        "max_global_ledger_error": 4.180683577104105e-15,
+        "max_material_drift": 7.105427357601002e-15,
+        "max_independent_geometry_gradient_probe_error": 1.1598710158988723e-08,
+        "work": {
+          "native": -0.005955322966169077,
+          "coupling": 1.8464107514581535e-05,
+          "osmotic": 0.22488601344794243,
+          "drag": 0.21894915458927852
+        },
+        "final_G": -23.62530027638999,
+        "final_cell_ids": [
+          0
+        ],
+        "daughter_continuation_steps": 0
+      },
+      "fine": {
+        "accepted_steps": 1200,
+        "finite_events": 0,
+        "event_results": [],
+        "peak_native_elastic": 0.005964848418888398,
+        "integrated_Dchem": 4.659918746064496,
+        "integrated_Dmech": 0.218933380514817,
+        "continuous_signed_defect": 0.0032173935533134253,
+        "continuous_abs_defect": 0.0032173935533134253,
+        "event_delta_G_sum": 0.0,
+        "max_global_ledger_error": 3.2213814948889308e-15,
+        "max_material_drift": 3.552713678800501e-14,
+        "max_independent_geometry_gradient_probe_error": 1.1598710158988723e-08,
+        "work": {
+          "native": -0.005959872660240397,
+          "coupling": 1.8457094759457225e-05,
+          "osmotic": 0.22487479608028876,
+          "drag": 0.218933380514817
+        },
+        "final_G": -23.624851771865433,
+        "final_cell_ids": [
+          0
+        ],
+        "daughter_continuation_steps": 0
+      },
+      "coarse_fine_endpoint_max_difference": 0.0008279506065322906
+    },
+    "zero_source_rates": {
+      "coarse": {
+        "accepted_steps": 600,
+        "finite_events": 7,
+        "event_results": [
+          {
+            "kind": "transport",
+            "cell": 0,
+            "time": 0.05,
+            "delta_G": 0.44286404485358943,
+            "chemical_release": -0.44286404485358766,
+            "mechanical_storage_change": 0.0
+          },
+          {
+            "kind": "growth",
+            "cell": 0,
+            "time": 0.1,
+            "delta_G": -0.5063590028017941,
+            "chemical_release": 0.5063545341109514,
+            "mechanical_storage_change": -4.468690843202074e-06
+          },
+          {
+            "kind": "maturation",
+            "cell": 0,
+            "time": 0.15,
+            "delta_G": -0.003811092897013424,
+            "chemical_release": 0.009999999999999787,
+            "mechanical_storage_change": 0.006188907102984623
+          },
+          {
+            "kind": "remesh",
+            "cell": 0,
+            "time": 0.2,
+            "delta_G": -7.105427357601002e-15,
+            "chemical_release": 7.105427357601002e-15,
+            "mechanical_storage_change": 3.0357660829594124e-17
+          },
+          {
+            "kind": "fission",
+            "cell": 0,
+            "time": 0.3,
+            "delta_G": -9.95089965158446,
+            "chemical_release": 9.962156456067401,
+            "mechanical_storage_change": 0.011256804482940959
+          },
+          {
+            "kind": "maturation",
+            "cell": 1,
+            "time": 0.4,
+            "delta_G": 0.3840915736788624,
+            "chemical_release": 0.0024999999999995026,
+            "mechanical_storage_change": 0.3865915736788619
+          },
+          {
+            "kind": "maturation",
+            "cell": 2,
+            "time": 0.4,
+            "delta_G": 0.38405458627182654,
+            "chemical_release": 0.0024999999999995026,
+            "mechanical_storage_change": 0.38655458627182876
+          }
+        ],
+        "peak_native_elastic": 0.7789187671885691,
+        "integrated_Dchem": 0.0,
+        "integrated_Dmech": 0.1418821314917168,
+        "continuous_signed_defect": 9.481038340725275e-06,
+        "continuous_abs_defect": 9.481038340725275e-06,
+        "event_delta_G_sum": -9.250059542478997,
+        "max_global_ledger_error": 1.7763568394002505e-15,
+        "max_material_drift": 7.105427357601002e-15,
+        "max_independent_geometry_gradient_probe_error": 1.1598710158988723e-08,
+        "work": {
+          "native": 0.000583596789129469,
+          "coupling": -0.00013277601927492113,
+          "osmotic": 0.14143131072185594,
+          "drag": 0.1418821314917168
+        },
+        "final_G": -28.141149231771806,
+        "final_cell_ids": [
+          1,
+          2
+        ],
+        "daughter_continuation_steps": 300
+      },
+      "fine": {
+        "accepted_steps": 1200,
+        "finite_events": 7,
+        "event_results": [
+          {
+            "kind": "transport",
+            "cell": 0,
+            "time": 0.05,
+            "delta_G": 0.4428640653869067,
+            "chemical_release": -0.4428640653869049,
+            "mechanical_storage_change": 0.0
+          },
+          {
+            "kind": "growth",
+            "cell": 0,
+            "time": 0.1,
+            "delta_G": -0.5063590359869075,
+            "chemical_release": 0.5063545676114392,
+            "mechanical_storage_change": -4.46837546779272e-06
+          },
+          {
+            "kind": "maturation",
+            "cell": 0,
+            "time": 0.15,
+            "delta_G": -0.0038110435851201885,
+            "chemical_release": 0.009999999999999787,
+            "mechanical_storage_change": 0.006188956414879712
+          },
+          {
+            "kind": "remesh",
+            "cell": 0,
+            "time": 0.2,
+            "delta_G": 0.0,
+            "chemical_release": -0.0,
+            "mechanical_storage_change": -4.5102810375396984e-17
+          },
+          {
+            "kind": "fission",
+            "cell": 0,
+            "time": 0.3,
+            "delta_G": -9.950899471353292,
+            "chemical_release": 9.962156263458498,
+            "mechanical_storage_change": 0.011256792105206751
+          },
+          {
+            "kind": "maturation",
+            "cell": 1,
+            "time": 0.4,
+            "delta_G": 0.3840915583632416,
+            "chemical_release": 0.002500000000000391,
+            "mechanical_storage_change": 0.3865915583632408
+          },
+          {
+            "kind": "maturation",
+            "cell": 2,
+            "time": 0.4,
+            "delta_G": 0.3840545732170746,
+            "chemical_release": 0.002500000000000391,
+            "mechanical_storage_change": 0.3865545732170735
+          }
+        ],
+        "peak_native_elastic": 0.7789187617179112,
+        "integrated_Dchem": 0.0,
+        "integrated_Dmech": 0.14187302708009653,
+        "continuous_signed_defect": 4.740131499589611e-06,
+        "continuous_abs_defect": 4.740131499589611e-06,
+        "event_delta_G_sum": -9.250059353958097,
+        "max_global_ledger_error": 1.7763568394002505e-15,
+        "max_material_drift": 7.105427357601002e-15,
+        "max_independent_geometry_gradient_probe_error": 1.1598710158988723e-08,
+        "work": {
+          "native": 0.0005806536932952685,
+          "coupling": -0.00013277165251090783,
+          "osmotic": 0.14142514503930947,
+          "drag": 0.14187302708009653
+        },
+        "final_G": -28.141144679746127,
+        "final_cell_ids": [
+          1,
+          2
+        ],
+        "daughter_continuation_steps": 600
+      },
+      "coarse_fine_endpoint_max_difference": 3.298912879756699e-06
+    },
+    "zero_coupling": {
+      "coarse": {
+        "accepted_steps": 600,
+        "finite_events": 7,
+        "event_results": [
+          {
+            "kind": "transport",
+            "cell": 0,
+            "time": 0.05,
+            "delta_G": 0.4329380221539516,
+            "chemical_release": -0.4329380221539516,
+            "mechanical_storage_change": 0.0
+          },
+          {
+            "kind": "growth",
+            "cell": 0,
+            "time": 0.1,
+            "delta_G": -0.4751372184280527,
+            "chemical_release": 0.47513281231159477,
+            "mechanical_storage_change": -4.40611645813438e-06
+          },
+          {
+            "kind": "maturation",
+            "cell": 0,
+            "time": 0.15,
+            "delta_G": -0.0037964709278135444,
+            "chemical_release": 0.009999999999999787,
+            "mechanical_storage_change": 0.006203529072187612
+          },
+          {
+            "kind": "remesh",
+            "cell": 0,
+            "time": 0.2,
+            "delta_G": 0.0,
+            "chemical_release": -0.0,
+            "mechanical_storage_change": -3.729655473350135e-17
+          },
+          {
+            "kind": "fission",
+            "cell": 0,
+            "time": 0.3,
+            "delta_G": -7.961164822805465,
+            "chemical_release": 7.961164822805465,
+            "mechanical_storage_change": 0.0
+          },
+          {
+            "kind": "maturation",
+            "cell": 1,
+            "time": 0.4,
+            "delta_G": 0.38414352450183387,
+            "chemical_release": 0.002500000000000391,
+            "mechanical_storage_change": 0.3866435245018357
+          },
+          {
+            "kind": "maturation",
+            "cell": 2,
+            "time": 0.4,
+            "delta_G": 0.3841076962402319,
+            "chemical_release": 0.002500000000000391,
+            "mechanical_storage_change": 0.38660769624023256
+          }
+        ],
+        "peak_native_elastic": 0.7789088513259443,
+        "integrated_Dchem": 3.792022673938325,
+        "integrated_Dmech": 0.136133746038218,
+        "continuous_signed_defect": 0.005573319802713982,
+        "continuous_abs_defect": 0.005573319802713982,
+        "event_delta_G_sum": -7.238909269265314,
+        "max_global_ledger_error": 8.881784197001252e-15,
+        "max_material_drift": 1.4210854715202004e-14,
+        "max_independent_geometry_gradient_probe_error": 1.1776345842928748e-08,
+        "work": {
+          "native": 0.0006453601524895948,
+          "coupling": 0.0,
+          "osmotic": 0.13548838588572484,
+          "drag": 0.136133746038218
+        },
+        "final_G": -29.91070940827857,
+        "final_cell_ids": [
+          1,
+          2
+        ],
+        "daughter_continuation_steps": 300
+      },
+      "fine": {
+        "accepted_steps": 1200,
+        "finite_events": 7,
+        "event_results": [
+          {
+            "kind": "transport",
+            "cell": 0,
+            "time": 0.05,
+            "delta_G": 0.4329441674966965,
+            "chemical_release": -0.4329441674966965,
+            "mechanical_storage_change": 0.0
+          },
+          {
+            "kind": "growth",
+            "cell": 0,
+            "time": 0.1,
+            "delta_G": -0.4751527004545508,
+            "chemical_release": 0.47514829484958776,
+            "mechanical_storage_change": -4.405604963649863e-06
+          },
+          {
+            "kind": "maturation",
+            "cell": 0,
+            "time": 0.15,
+            "delta_G": -0.0037963988435869567,
+            "chemical_release": 0.009999999999999787,
+            "mechanical_storage_change": 0.006203601156412736
+          },
+          {
+            "kind": "remesh",
+            "cell": 0,
+            "time": 0.2,
+            "delta_G": -3.552713678800501e-15,
+            "chemical_release": -0.0,
+            "mechanical_storage_change": -4.163336342344337e-17
+          },
+          {
+            "kind": "fission",
+            "cell": 0,
+            "time": 0.3,
+            "delta_G": -7.961981223092295,
+            "chemical_release": 7.961981223092295,
+            "mechanical_storage_change": 0.0
+          },
+          {
+            "kind": "maturation",
+            "cell": 1,
+            "time": 0.4,
+            "delta_G": 0.3841435119248757,
+            "chemical_release": 0.002500000000000391,
+            "mechanical_storage_change": 0.38664351192487606
+          },
+          {
+            "kind": "maturation",
+            "cell": 2,
+            "time": 0.4,
+            "delta_G": 0.38410768588764554,
+            "chemical_release": 0.002500000000000391,
+            "mechanical_storage_change": 0.38660768588764505
+          }
+        ],
+        "peak_native_elastic": 0.7789088513100886,
+        "integrated_Dchem": 3.7883694283715337,
+        "integrated_Dmech": 0.13612431754018373,
+        "continuous_signed_defect": 0.0027831877551089796,
+        "continuous_abs_defect": 0.0027831877551089796,
+        "event_delta_G_sum": -7.239734957081218,
+        "max_global_ledger_error": 4.440892098500626e-15,
+        "max_material_drift": 2.842170943040401e-14,
+        "max_independent_geometry_gradient_probe_error": 1.1776345842928748e-08,
+        "work": {
+          "native": 0.0006425501196289408,
+          "coupling": 0.0,
+          "osmotic": 0.13548176742055731,
+          "drag": 0.13612431754018373
+        },
+        "final_G": -29.91066255407726,
+        "final_cell_ids": [
+          1,
+          2
+        ],
+        "daughter_continuation_steps": 600
+      },
+      "coarse_fine_endpoint_max_difference": 0.0002069409701481728
+    },
+    "reversed_maturation_drive": {
+      "coarse": {
+        "accepted_steps": 600,
+        "finite_events": 7,
+        "event_results": [
+          {
+            "kind": "transport",
+            "cell": 0,
+            "time": 0.05,
+            "delta_G": 0.43293808918823373,
+            "chemical_release": -0.43293808918823373,
+            "mechanical_storage_change": 0.0
+          },
+          {
+            "kind": "growth",
+            "cell": 0,
+            "time": 0.1,
+            "delta_G": -0.47513738103410574,
+            "chemical_release": 0.47513297451254966,
+            "mechanical_storage_change": -4.406521555233583e-06
+          },
+          {
+            "kind": "maturation",
+            "cell": 0,
+            "time": 0.15,
+            "delta_G": 0.0362138318851688,
+            "chemical_release": -0.03000000000000025,
+            "mechanical_storage_change": 0.00621383188517
+          },
+          {
+            "kind": "remesh",
+            "cell": 0,
+            "time": 0.2,
+            "delta_G": 0.0,
+            "chemical_release": -0.0,
+            "mechanical_storage_change": 3.5561831257524545e-17
+          },
+          {
+            "kind": "fission",
+            "cell": 0,
+            "time": 0.3,
+            "delta_G": -7.951169634056555,
+            "chemical_release": 7.9611756618930976,
+            "mechanical_storage_change": 0.010006027836543125
+          },
+          {
+            "kind": "maturation",
+            "cell": 1,
+            "time": 0.4,
+            "delta_G": 0.3940879018933181,
+            "chemical_release": -0.007500000000000062,
+            "mechanical_storage_change": 0.3865879018933184
+          },
+          {
+            "kind": "maturation",
+            "cell": 2,
+            "time": 0.4,
+            "delta_G": 0.3940509061728861,
+            "chemical_release": -0.007500000000000062,
+            "mechanical_storage_change": 0.38655090617288596
+          }
+        ],
+        "peak_native_elastic": 0.7789026541042435,
+        "integrated_Dchem": 3.791064741725268,
+        "integrated_Dmech": 0.13591367220596148,
+        "continuous_signed_defect": 0.005572121228304478,
+        "continuous_abs_defect": 0.005572121228304478,
+        "event_delta_G_sum": -7.169016285951054,
+        "max_global_ledger_error": 2.6645352591003757e-15,
+        "max_material_drift": 7.105427357601002e-15,
+        "max_independent_geometry_gradient_probe_error": 1.1687528000958736e-08,
+        "work": {
+          "native": 0.0006618144232009348,
+          "coupling": -0.00011155519800425264,
+          "osmotic": 0.1353634129807684,
+          "drag": 0.13591367220596148
+        },
+        "final_G": -23.83963961749341,
+        "final_cell_ids": [
+          1,
+          2
+        ],
+        "daughter_continuation_steps": 300
+      },
+      "fine": {
+        "accepted_steps": 1200,
+        "finite_events": 7,
+        "event_results": [
+          {
+            "kind": "transport",
+            "cell": 0,
+            "time": 0.05,
+            "delta_G": 0.4329442347729717,
+            "chemical_release": -0.4329442347729717,
+            "mechanical_storage_change": 0.0
+          },
+          {
+            "kind": "growth",
+            "cell": 0,
+            "time": 0.1,
+            "delta_G": -0.4751528628903916,
+            "chemical_release": 0.47514845687957186,
+            "mechanical_storage_change": -4.406010819651149e-06
+          },
+          {
+            "kind": "maturation",
+            "cell": 0,
+            "time": 0.15,
+            "delta_G": 0.036213891391359,
+            "chemical_release": -0.03000000000000025,
+            "mechanical_storage_change": 0.006213891391357305
+          },
+          {
+            "kind": "remesh",
+            "cell": 0,
+            "time": 0.2,
+            "delta_G": -3.552713678800501e-15,
+            "chemical_release": 3.552713678800501e-15,
+            "mechanical_storage_change": -3.2959746043559335e-17
+          },
+          {
+            "kind": "fission",
+            "cell": 0,
+            "time": 0.3,
+            "delta_G": -7.951985503889755,
+            "chemical_release": 7.9619920528755355,
+            "mechanical_storage_change": 0.010006548985781075
+          },
+          {
+            "kind": "maturation",
+            "cell": 1,
+            "time": 0.4,
+            "delta_G": 0.3940878887794419,
+            "chemical_release": -0.00749999999999984,
+            "mechanical_storage_change": 0.3865878887794434
+          },
+          {
+            "kind": "maturation",
+            "cell": 2,
+            "time": 0.4,
+            "delta_G": 0.39405089528708714,
+            "chemical_release": -0.00749999999999984,
+            "mechanical_storage_change": 0.38655089528708386
+          }
+        ],
+        "peak_native_elastic": 0.7789026541563715,
+        "integrated_Dchem": 3.787413170087396,
+        "integrated_Dmech": 0.13590425403975648,
+        "continuous_signed_defect": 0.0027825898082174754,
+        "continuous_abs_defect": 0.0027825898082174754,
+        "event_delta_G_sum": -7.169841456549291,
+        "max_global_ledger_error": 4.440892098500626e-15,
+        "max_material_drift": 1.4210854715202004e-14,
+        "max_independent_geometry_gradient_probe_error": 1.1687528000958736e-08,
+        "work": {
+          "native": 0.0006590143177141024,
+          "coupling": -0.00011155435520734319,
+          "osmotic": 0.1353567940772389,
+          "drag": 0.13590425403975648
+        },
+        "final_G": -23.83959332970766,
+        "final_cell_ids": [
+          1,
+          2
+        ],
+        "daughter_continuation_steps": 600
+      },
+      "coarse_fine_endpoint_max_difference": 0.00020693966624385496
+    }
+  },
+  "accepted_native_steps": 9000,
+  "prepared_case_count": 5,
+  "atomic_rejection_controls": 8,
+  "native_full_autonomous_generator_qualified": false,
+  "empirical_full_target_qualified": false,
+  "whole_organism_qualified": false,
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "automatic_successor": false,
+  "head": "870d9517da40a913366caf135d29c9fe717da8b0",
+  "input_sha256": "8a8b9bc87959080a9dc7d9adcadae43dabb497b64c58c1edb25f1cc82828ad27",
+  "binary_sha256": "59b0df8b8d5a7a764472710cf6d686d27c432a97116d28ac56efe6b8a602e9ed"
+}
