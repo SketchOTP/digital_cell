@@ -1,0 +1,31 @@
+{
+  "role": "PRIMARY_THEORY_AND_EXISTING_QUALIFIED_CODE_REFERENCE_ONLY",
+  "research_date": "2026-10-19",
+  "sources": [
+    {
+      "title": "Rao and Esposito2016, Nonequilibrium Thermodynamics of Chemical Reaction Networks",
+      "url": "https://journals.aps.org/prx/abstract/10.1103/PhysRevX.6.041064",
+      "disposition": "REFERENCE",
+      "use": "Mass-action deterministic CRN free-energy/dissipation framework, not parameter calibration."
+    },
+    {
+      "title": "Avanzini, Falasco and Esposito2020, Thermodynamics of non-elementary chemical reaction networks",
+      "url": "https://arxiv.org/abs/2008.10495",
+      "disposition": "REFERENCE",
+      "use": "Retain explicit kinetics and standard potentials; do not infer physical coarse mapping from a reference."
+    }
+  ],
+  "local_reuse": [
+    "chemical_body_port actual native geometry/source/dilution integration pattern",
+    "chemical_work_ownership finite structural stoichiometry and regularized native primitive",
+    "qualify_chemical_work_owners independent quadrature and event reconstruction"
+  ],
+  "decision": "COMPOSE existing owned laws in a new opt-in module; no dependency or acquired code execution; no production migration",
+  "empirical_full_target_qualified": false,
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  }
+}

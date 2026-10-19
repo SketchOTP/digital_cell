@@ -7,14 +7,16 @@
 
 ## Active state after adoption
 
-- Local directive ID: `D-20261018-dcm4-mechanochemical-owners`
-- External directive ID: `DC-M4-MECHANOCHEMICAL-WORK-OWNERSHIP-001`
-- Objective: Acquire independent mechanochemical observations and define/test work owners for transport/growth/maturation/fission; preserve existing work and current records.
-- Current status: `BLOCKED`
-- Acceptance: `PARTIAL — new hypothetical finite-event owner reference independently reconstructed; physical conjugate work/chemical identity and continuous native whole-organism integration unqualified`
-- Current phase: `Four independent prepared transition pairs and native audits measured; licensed raw DNA observations acquired with unmet six-pair/continuous-work coverage`
-- Expected or actual touched areas: `New Python reference/oracles/tests, standalone native audit example, original licensed subset/provenance, sealed protocols/amendment/source/report/measurements/workflow/review and additive records`
-- Immediate next action: `Finish exact-head/source/Notion/native Atlas readbacks, then identify a justified conjugate physical work/chemical target and integrate the proposed owners into a complete native generator; no automatic successor.`
+- Local directive ID: `D-20261019-dcm4-native-composed`
+- External directive ID: `DC-M4-NATIVE-COMPOSED-INTEGRATION-001`
+- Objective: `Build and independently verify a bounded native composed source/body/structural-event trajectory and continuing daughters.`
+- Current status: `IN PROGRESS`
+- Acceptance: `NOT YET VERIFIED; empirical/full-organism target remains unqualified`
+- Current phase: `Design reconciliation and prospective protocol; no campaign result yet`
+- Expected or actual touched areas: `New opt-in composed Rust module/test/example/exact export, sealed protocol, independent oracle/tests/workflow/report/review and additive records`
+- Immediate next action: `Seal cases/criteria, implement and measure continuous source/native mechanics plus explicit prescribed finite structural kernels without state resets; preserve all prior work.`
+- Evidence: `https://app.notion.com/p/3fe833cb27ff81af99bbf13f188beefa ; /home/sketch/Projects/digital_cell-native-composed-evidence/ ; Atlas evidence/native-composed-integration/`
+- Prior final custody: `PR56 at552e379, CI39147335097,27-file review, complete artifact and103-file Atlas group verified in external completion receipts;16 prior checkouts/13 PRs/2641 scoped files protected.`
 
 ### Mechanochemical observations and four-operator work owners
 

@@ -1,0 +1,175 @@
+{
+  "schema": "digital-cell-composed-native-protocol/v1",
+  "entry_head": "552e3795c09961ba56ceef4f8da2503fbb63e0f9",
+  "role": "NEW_HYPOTHETICAL_NATIVE_HYBRID_REFERENCE_NOT_AUTONOMOUS_BIOLOGY",
+  "config": {
+    "radius": 10.0,
+    "rho": 0.1,
+    "theta": 1.0,
+    "k_s": 1.0,
+    "gamma": 1.0,
+    "K": 0.25,
+    "lambda": 0.1,
+    "mu_y": -0.25,
+    "mu_m": -0.5,
+    "growth_yield": 0.9,
+    "kappa": 1.0,
+    "source_rate_scale": 1.0,
+    "total_volume": 10.0,
+    "outside_S": 10.0,
+    "outside_Sm": 10.0,
+    "outside_inert": 10.0
+  },
+  "preparation": {
+    "vertices": "regular6 CCW radius10",
+    "mature_per_edge": "rho*geometric birth edge length",
+    "young_per_edge": 0.1,
+    "source_n6": [
+      0.1,
+      0.05,
+      0.05,
+      0.01,
+      1.0,
+      10.0
+    ],
+    "P": 0.2,
+    "a0": 0.1,
+    "R_ref": "sum mature birth rest lengths",
+    "root_area": "actual native initial area, immutable",
+    "native_pressure_bending_and_generic_chemistry": "disabled; no old arc or old outside store",
+    "l_max": 7.0,
+    "l_min": 0.05
+  },
+  "law": {
+    "potential": "one inside ideal6+one shared outside idealS/Sm/inert+solid standard Y/M+exact native regularized elastic+NEW whole-perimeter coupling",
+    "source": "four prior stoichiometric mass-action channels, V*j(n/V), symmetric exp tilt from dEc/d(ES+ESS), no structural source doublecounting",
+    "mechanics": "actual native Euler mechanics with full osmotic and perimeter forces, gamma1",
+    "continuous_identity": "dG/dt=-Dchem-Ddrag; finite dt defects measured unrepaired",
+    "finite_events": "fixed prescribed proposals with full before/after DeltaG and finite Glauber pair diagnostics; not sampled event times/hazards",
+    "global_ledger": "Gfinal-Ginitial=-integratedDchem-integratedDdrag+continuous_signed_defect+sum_event_DeltaG",
+    "fission": "after actual native6-to12 split, prescribed diameter0-to6 of evolved parent; pay2*rho*actualcutlength/yield, inherit n6/P/a0/Rref by actual area, exact inherited tags plus new closure tags, one unchanged bath/rootarea; additive compartments without contact/exclusion"
+  },
+  "horizon": 0.6,
+  "dt": [
+    0.001,
+    0.0005
+  ],
+  "schedule": [
+    {
+      "time": 0.05,
+      "kind": "transport",
+      "cell": 0,
+      "species": "Sm",
+      "direction": "in",
+      "amount": 0.2
+    },
+    {
+      "time": 0.1,
+      "kind": "growth",
+      "cell": 0,
+      "edge": 0,
+      "extent": 0.2
+    },
+    {
+      "time": 0.15,
+      "kind": "maturation",
+      "cell": 0,
+      "edge": 0,
+      "extent": 0.04
+    },
+    {
+      "time": 0.2,
+      "kind": "remesh",
+      "cell": 0,
+      "native": "all-edge midpoint6-to12"
+    },
+    {
+      "time": 0.3,
+      "kind": "fission",
+      "cell": 0,
+      "vertices": [
+        0,
+        6
+      ]
+    },
+    {
+      "time": 0.4,
+      "kind": "maturation",
+      "cell": 1,
+      "edge": 6,
+      "extent": 0.01
+    },
+    {
+      "time": 0.4,
+      "kind": "maturation",
+      "cell": 2,
+      "edge": 6,
+      "extent": 0.01
+    }
+  ],
+  "cases": [
+    {
+      "name": "coupled",
+      "events": true,
+      "overrides": {}
+    },
+    {
+      "name": "no_events",
+      "events": false,
+      "overrides": {}
+    },
+    {
+      "name": "zero_source_rates",
+      "events": true,
+      "overrides": {
+        "source_rate_scale": 0.0
+      }
+    },
+    {
+      "name": "zero_coupling",
+      "events": true,
+      "overrides": {
+        "K": 0.0
+      }
+    },
+    {
+      "name": "reversed_maturation_drive",
+      "events": true,
+      "overrides": {
+        "mu_m": 0.5
+      }
+    }
+  ],
+  "budgets": {
+    "raw_state_force_rate_absolute": 1e-09,
+    "full_energy_independent_quadrature_absolute": 1e-08,
+    "global_material_anchor_drift": 1e-09,
+    "gradient_identity_absolute": 1e-09,
+    "global_ledger_absolute": 1e-08,
+    "finite_rate_logratio_absolute": 1e-09,
+    "remesh_storage_area_pullback_absolute": 1e-08,
+    "coarse_cumulative_absolute_continuous_defect": 0.02,
+    "fine_cumulative_absolute_continuous_defect": 0.01,
+    "refinement_defect_ratio_max": 0.8,
+    "coarse_fine_common_endpoint_absolute": 0.02,
+    "native_external_force_bound": 0.5
+  },
+  "negative_controls": [
+    "overlarge growth1000 and transport1000 donor rejection leaves ALL states/pools/ledger unchanged",
+    "invalid or unsupported small-mature remesh rejection leaves state unchanged",
+    "restart law/config and ledger tamper rejection",
+    "zero source rates retains finite structural events/osmosis; not a static control",
+    "zero coupling retains native/osmotic/structural behavior; not a no-motion control",
+    "reversed solid potential changes maturation pair preference; prescribed event still chosen"
+  ],
+  "preoutcome_amendments": "Any failed fixture/protocol amendment retained separately before replacement outcome; never relax budgets or substitute favorable cases after inspection",
+  "production_values": {
+    "K": null,
+    "lambda": null,
+    "theta": null,
+    "epsilon_A": null
+  },
+  "empirical_full_target_qualified": false,
+  "whole_organism_qualified": false,
+  "automatic_successor": false
+}
